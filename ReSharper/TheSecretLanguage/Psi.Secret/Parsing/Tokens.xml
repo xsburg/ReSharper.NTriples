@@ -1,0 +1,257 @@
+﻿<Tokens TokenTypeNamespace="JetBrains.ReSharper.Psi.Secret.Parsing" TokenTypeClass="SecretTokenType"
+        KeywordNodeType="KeywordTokenNodeType" KeywordTokenElement="FixedTokenElement" TokenNodeType="FixedTokenNodeType"
+        TokenTokenElement="FixedTokenElement">
+  <Keyword name="ABSTRACT_KEYWORD" representation="abstract"/>
+  <Keyword name="AND_KEYWORD" representation="&amp;&amp;"/>
+  <Keyword name="AS_KEYWORD" representation="as"/>
+  <Keyword name="ASSERT_KEYWORD" representation="assert"/>
+  <Keyword name="BASE_KEYWORD" representation="base"/>
+  <Keyword name="BEGIN_KEYWORD" representation="begin"/>
+  <Keyword name="CLASS_KEYWORD" representation="class"/>
+  <Keyword name="DEFAULT_KEYWORD" representation="default"/>
+  <Keyword name="DELEGATE_KEYWORD" representation="delegate"/>
+  <Keyword name="DO_KEYWORD" representation="do"/>
+  <Keyword name="DONE_KEYWORD" representation="done"/>
+  <Keyword name="DOWNCAST_KEYWORD" representation=":?&gt;"/>
+  <Keyword name="DOWNTO_KEYWORD" representation="downto"/>
+  <Keyword name="ELIF_KEYWORD" representation="elif"/>
+  <Keyword name="ELSE_KEYWORD" representation="else"/>
+  <Keyword name="END_KEYWORD" representation="end"/>
+  <Keyword name="EXCEPTION_KEYWORD" representation="exception"/>
+  <Keyword name="EXTERN_KEYWORD" representation="extern"/>
+  <Keyword name="FALSE_KEYWORD" representation="false"/>
+  <Keyword name="FINALLY_KEYWORD" representation="finally"/>
+  <Keyword name="FOR_KEYWORD" representation="for"/>
+  <Keyword name="FUN_KEYWORD" representation="fun"/>
+  <Keyword name="FUNCTION_KEYWORD" representation="function"/>
+  <Keyword name="GLOBAL_KEYWORD" representation="global"/>
+  <Keyword name="IF_KEYWORD" representation="if"/>
+  <Keyword name="IN_KEYWORD" representation="in"/>
+  <Keyword name="INHERIT_KEYWORD" representation="inherit"/>
+  <Keyword name="INLINE_KEYWORD" representation="inline"/>
+  <Keyword name="INTERFACE_KEYWORD" representation="interface"/>
+  <Keyword name="INTERNAL_KEYWORD" representation="internal"/>
+  <Keyword name="LAZY_KEYWORD" representation="lazy"/>
+  <Keyword name="LET_KEYWORD" representation="let"/>
+  <Keyword name="MATCH_KEYWORD"  representation="match"/>
+  <Keyword name="MEMBER_KEYWORD" representation="member"/>
+  <Keyword name="MODULE_KEYWORD" representation="module"/>
+  <Keyword name="MUTABLE_KEYWORD" representation="mutable"/>
+  <Keyword name="NAMESPACE_KEYWORD" representation="namespace"/>
+  <Keyword name="NEW_KEYWORD" representation="new"/>
+  <Keyword name="NOT_KEYWORD" representation="not"/>
+  <Keyword name="NULL_KEYWORD" representation="null"/>
+  <Keyword name="OF_KEYWORD" representation="of"/>
+  <Keyword name="OPEN_KEYWORD" representation="open"/>
+  <Keyword name="OR_KEYWORD" representation="or"/>
+  <Keyword name="OVERRIDE_KEYWORD" representation="override"/>
+  <Keyword name="PRIVATE_KEYWORD" representation="private"/>
+  <Keyword name="PUBLIC_KEYWORD" representation="public"/>
+  <Keyword name="REC_KEYWORD" representation="rec"/>
+  <Keyword name="RETURN_KEYWORD" representation="return"/>
+  <Keyword name="STATIC_KEYWORD" representation="static"/>
+  <Keyword name="STRUCT_KEYWORD" representation="struct"/>
+  <Keyword name="THEN_KEYWORD" representation="then"/>
+  <Keyword name="TO_KEYWORD" representation="to"/>
+  <Keyword name="TRUE_KEYWORD" representation="true"/>
+  <Keyword name="TRY_KEYWORD" representation="try"/>
+  <Keyword name="TYPE_KEYWORD" representation="type"/>
+  <Keyword name="UPCAST_KEYWORD" representation="upcast"/>
+  <Keyword name="USE_KEYWORD" representation="use"/>
+  <Keyword name="VAL_KEYWORD" representation="val"/>
+  <Keyword name="VOID_KEYWORD" representation="void"/>
+  <Keyword name="WHEN_KEYWORD" representation="when"/>
+  <Keyword name="WHILE_KEYWORD" representation="while"/>
+  <Keyword name="WITH_KEYWORD" representation="with"/>
+  <Keyword name="YIELD_KEYWORD" representation="yield"/>
+  
+  <!-- Computation expression keywords -->
+  <Keyword name="LET_BANG_KEYWORD" representation="let!" />
+  <Keyword name="USE_BANG_KEYWORD" representation="use!" />
+  <Keyword name="DO_BANG_KEYWORD" representation="do!" />
+  <Keyword name="YIELD_BANG_KEYWORD" representation="yield!" />
+  <Keyword name="RETURN_BANG_KEYWORD" representation="return!" />
+
+  <!-- ML keywords -->
+  <Keyword name="ASR_ML_KEYWORD" representation="asr"/>
+  <Keyword name="LAND_ML_KEYWORD" representation="land"/>
+  <Keyword name="LOR_ML_KEYWORD" representation="lor"/>
+  <Keyword name="LSL_ML_KEYWORD" representation="lsl"/>
+  <Keyword name="LSR_ML_KEYWORD" representation="lsr"/>
+  <Keyword name="LXOR_ML_KEYWORD" representation="lxor"/>
+  <Keyword name="MOD_ML_KEYWORD" representation="mod"/>
+  <Keyword name="SIG_ML_KEYWORD" representation="sig"/>
+
+  <!-- reserved -->
+  <Keyword name="ATOMIC_RESERVED_KEYWORD" representation="atomic"/>
+  <Keyword name="BREAK_RESERVED_KEYWORD" representation="break"/>
+  <Keyword name="CHECKED_RESERVED_KEYWORD" representation="checked"/>
+  <Keyword name="COMPONENT_RESERVED_KEYWORD" representation="component"/>
+  <Keyword name="CONST_RESERVED_KEYWORD"  representation="const"/>
+  <Keyword name="CONSTRAINT_RESERVED_KEYWORD" representation="constraint"/>
+  <Keyword name="CONSTRUCTOR_RESERVED_KEYWORD" representation="constructor"/>
+  <Keyword name="CONTINUE_RESERVED_KEYWORD" representation="continue"/>
+  <Keyword name="EAGER_RESERVED_KEYWORD" representation="eager"/>
+  <Keyword name="EVENT_RESERVED_KEYWORD" representation="event"/>
+  <Keyword name="EXTERNAL_RESERVED_KEYWORD" representation="external"/>
+  <Keyword name="FIXED_RESERVED_KEYWORD" representation="fixed"/>
+  <Keyword name="FUNCTOR_RESERVED_KEYWORD" representation="functor"/>
+  <Keyword name="INCLUDE_RESERVED_KEYWORD" representation="include"/>
+  <Keyword name="METHOD_RESERVED_KEYWORD" representation="method"/>
+  <Keyword name="MIXIN_RESERVED_KEYWORD" representation="mixin"/>
+  <Keyword name="OBJECT_RESERVED_KEYWORD" representation="object"/>
+  <Keyword name="PARALLEL_RESERVED_KEYWORD" representation="parallel"/>
+  <Keyword name="PROCESS_RESERVED_KEYWORD" representation="process"/>
+  <Keyword name="PROTECTED_RESERVED_KEYWORD" representation="protected"/>
+  <Keyword name="PURE_RESERVED_KEYWORD" representation="pure"/>
+  <Keyword name="SEALED_RESERVED_KEYWORD" representation="sealed"/>
+  <Keyword name="TAILCALL_RESERVED_KEYWORD" representation="tailcall"/>
+  <Keyword name="TRAIT_RESERVED_KEYWORD" representation="trait"/>
+  <Keyword name="VIRTUAL_RESERVED_KEYWORD" representation="virtual"/>
+  <Keyword name="VOLATILE_RESERVED_KEYWORD" representation="volatile"/>
+
+  <!-- see http://blogs.msdn.com/b/dsyme/archive/2008/09/01/the-f-operators-and-basic-functions.aspx -->
+  
+  <!-- basic type abbreviations (prefixed with _KEYWORD) -->
+  <Keyword name="OBJ_KEYWORD" representation="obj"/>
+  <Keyword name="EXN_KEYWORD" representation="exn"/>
+  <Keyword name="NATIVEINT_KEYWORD" representation="nativeint"/>
+  <Keyword name="UNATIVEINT_KEYWORD" representation="unativeint"/>
+  <Keyword name="STRING_KEYWORD" representation="string"/>
+  <Keyword name="FLOAT32_KEYWORD" representation="float32"/>
+  <Keyword name="SINGLE_KEYWORD" representation="single"/>
+  <Keyword name="FLOAT_KEYWORD" representation="float"/>
+  <Keyword name="DOUBLE_KEYWORD" representation="double"/>
+  <Keyword name="SBYTE_KEYWORD" representation="sbyte"/>
+  <Keyword name="BYTE_KEYWORD" representation="byte"/> 
+  <Keyword name="INT16_KEYWORD" representation="int16"/>
+  <Keyword name="UINT16_KEYWORD" representation="uint16"/>
+  <Keyword name="INT32_KEYWORD" representation="int32"/>
+  <Keyword name="INT_KEYWORD" representation="int"/>
+  <Keyword name="UINT32_KEYWORD" representation="uint32"/>
+  <Keyword name="INT64_KEYWORD" representation="int64"/>
+  <Keyword name="UINT64_KEYWORD" representation="uint64"/>
+  <Keyword name="CHAR_KEYWORD" representation="char"/>
+  <Keyword name="BOOL_KEYWORD" representation="bool"/>
+  <Keyword name="DECIMAL_KEYWORD" representation="decimal"/>
+  
+  <!-- basic arithmethic ops -->
+  <Token name="PLUS" representation="+"/>
+  <Token name="MINUS" representation="-"/>
+  <Token name="STAR" representation="*"/>
+  <Token name="STAR_STAR" representation="**"/>
+  <Token name="DIV" representation="/"/>
+  <Token name="PERCENT" representation="%"/>
+  <Token name="TILDE" representation="~"/>
+  
+  <!-- bitwise ops -->
+  <Token name="BITWISE_SHIFT_LEFT" representation="&lt;&lt;&lt;"/>
+  <Token name="BITWISE_SHIFT_RIGHT" representation="&gt;&gt;&gt;"/>
+  <Token name="BITWISE_XOR" representation="^^^"/>
+  <Token name="BITWISE_AND" representation="&amp;&amp;&amp;"/>
+  <Token name="BITWISE_OR" representation="|||"/>
+  <Token name="BITWISE_NOT" representation="~~~"/>
+  
+  <!-- object transformation ops (postfixed by OP because they are just too weird) -->
+  <Keyword name="BOX_OP" representation="box"/>
+  <Keyword name="HASH_OP" representation="hash"/>
+  <Keyword name="SIZEOF_OP" representation="sizeof"/>
+  <Keyword name="TYPEOF_OP" representation="typeof"/>
+  <Keyword name="TYPEDEFOF_OP" representation="typedef"/>
+  <Keyword name="UNBOX_OP" representation="unbox"/>
+  <Keyword name="REF_OP" representation="ref"/>
+  <Token name="EXCLAMATION_OP" representation="!"/>
+  
+  <Token name="AT" representation="@"/>
+  <Token name="LQUOTE" representation="&lt;%"/>
+  <Token name="LDQUOTE" representation="&lt;%%"/>
+  <Token name="BACKWARD_PIPE" representation="&lt;|" />
+  <Token name="FORWARD_PIPE" representation="|&gt;" />
+  <Token name="RQUOTE" representation="%&gt;"/>
+  <Token name="RDQUOTE" representation="%%&gt;"/>
+  <Token name="HASH" representation="#"/>
+  <Token name="AMP" representation="&amp;"/>
+  <Token name="AMP_AMP" representation="&amp;&amp;"/>
+  <Token name="BAR_BAR" representation="||"/>
+  <Token name="QUOTE"  representation="'"/>
+  <Token name="LPAREN"  representation="("/>
+  <Token name="RPAREN" representation=")"/>
+  <Token name="COMMA" representation=","/>
+  <Token name="RARROW" representation="-&gt;"/>
+  <Token name="QMARK" representation="?"/>
+  <Token name="QMARK_QMARK"  representation="??"/>
+  <Token name="DOT_DOT" representation=".."/>
+  <Token name="DOT" representation="."/>
+  <Token name="COLON" representation=":"/>
+  <Token name="COLON_COLON" representation="::"/>
+  <Token name="COLON_GREATER" representation=":>"/>
+  <Token name="RQUOTE_DOT" representation=""/>
+  <Token name="RDQUOTE_DOT" representation=""/>
+  <Token name="GREATER_BAR_RBRACK" representation=""/>
+  <Token name="COLON_QMARK_GREATER" representation=":?&gt;"/>
+  <Token name="COLON_QMARK" representation=":?"/>
+  <Token name="COLON_EQUALS" representation=":="/>
+  <Token name="MINUS_DOT" representation="-."/>
+  <Token name="SEMICOLON_SEMICOLON" representation=";;"/>
+  <Token name="SEMICOLON" representation=";"/>
+  <Token name="LARROW" representation="&lt;-"/>
+  <Token name="EQUALS" representation="="/>
+  <Token name="LBRACK" representation="["/>
+  <Token name="LBRACK_BAR" representation="[|"/>
+  <Token name="LESS" representation="&lt;"/>
+  <Token name="LESS_LESS" representation="&lt;&lt;"/>
+  <Token name="LESS_EQUALS" representation="&lt;="/>
+  <Token name="GREATER" representation="&gt;"/>
+  <Token name="GREATER_EQUALS" representation="&gt;="/>
+  <Token name="GREATER_GREATER" representation="&gt;&gt;"/>
+  <Token name="LESS_GREATER" representation="&lt;&gt;"/>
+  <Token name="LBRACK_LESS" representation="[&lt;"/>
+  <Token name="RBRACK" representation="]"/>
+  <Token name="BAR_RBRACK" representation="|]"/>
+  <Token name="GREATER_RBRACK" representation="&gt;]"/>
+  <Token name="LBRACE" representation="{"/>
+  <Token name="BAR" representation="|"/>
+  <Token name="RBRACE" representation="}"/>
+  <Token name="DOLLAR" representation="$"/>
+  <Token name="DPERCENT_OP" representation="%%"/>
+  <Token name="BQ_BQ" representation="``"/>
+  <Token name="RESERVED" representation=""/>
+  <Token name="UNDERSCORE" representation="_"/>
+  <Token name="CARET" representation="^"/>
+  
+  <!-- preprocessing tokens, mainly stolen from c# -->
+  <Token name="PP_SHARP" representation="#" />
+  <Token name="PP_DEFINE_DECLARATION" representation="define" />
+  <Token name="PP_UNDEF_DECLARATION" representation="undef" />
+  <Token name="PP_IF_SECTION" representation="if" />
+  <Token name="PP_ELIF_SECTION" representation="elif" />
+  <Token name="PP_ELSE_SECTION" representation="else" />
+  <Token name="PP_ENDIF" representation="endif" />
+  <Token name="PP_R" representation="r" />
+  <Token name="PP_Q" representation="q" />
+  <Token name="PP_QUIT" representation="quit" />
+  <Token name="PP_I" representation="i" />
+  <Token name="PP_HELP" representation="help" />
+  <Token name="PP_ERROR_DIAGNOSTIC" representation="error" />
+  <Token name="PP_WARNING_DIAGNOSTIC" representation="warning" />
+  <Token name="PP_START_REGION" representation="region" />
+  <Token name="PP_END_REGION" representation="endregion" />
+  <Token name="PP_LINE" representation="line" />
+  <Token name="PP_LIGHT" representation="light" />
+  <Token name="PP_LOAD" representation="load" />
+  <Token name="PP_COMMA" representation="" />
+  <Token name="PP_PRAGMA" representation="pragma" />
+  <Token name="PP_OR" representation="||" />
+  <Token name="PP_AND" representation="&amp;&amp;" />
+  <Token name="PP_EQU" representation="==" />
+  <Token name="PP_NEQ" representation="!=" />
+  <Token name="PP_NOT" representation="!" />
+  <Token name="PP_TRUE" representation="true" />
+  <Token name="PP_FALSE" representation="false" />
+  <Token name="PP_LPAR" representation="(" />
+  <Token name="PP_RPAR" representation=")" />
+  <Token name="PP_TIME" representation="time" />
+  <Token name="PP_NO_WARN" representation="no warn" />
+  <Token name="PP_INCLUDE" representation="Include" />
+  <Token name="PP_REFERENCE" representation="reference" />
+</Tokens>
