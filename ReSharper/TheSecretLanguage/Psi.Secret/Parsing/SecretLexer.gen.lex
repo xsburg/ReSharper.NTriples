@@ -145,11 +145,23 @@ END_LINE={NOT_NEW_LINE}*(({PP_NEW_LINE_PAIR})|({PP_NEW_LINE_CHAR}))
 
 PP_MESSAGE={INPUT_CHARACTER}*
 
+
+
+URI_IDENTIFIER=(<[^>]+>)
+
+
+
 %state PPSYMBOL
 %state PPDIGITS
 %state PPMESSAGE
 
-%% 
+%%
+
+
+
+<YYINITIAL> {URI_IDENTIFIER} { currTokenType = makeToken (SecretTokenType.URI_IDENTIFIER); return currTokenType; }
+
+
 
 <YYINITIAL> {INT_LITERAL} { currTokenType = makeToken (SecretTokenType.INT_LITERAL); return currTokenType; }
 <YYINITIAL> {INT8_LITERAL} { currTokenType = makeToken (SecretTokenType.INT8_LITERAL); return currTokenType; }

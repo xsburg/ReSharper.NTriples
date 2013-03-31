@@ -254,4 +254,7 @@
   <Token name="PP_NO_WARN" representation="no warn" />
   <Token name="PP_INCLUDE" representation="Include" />
   <Token name="PP_REFERENCE" representation="reference" />
+  
+  <!-- The Secret Language tokens -->
+  <Token name="URI_IDENTIFIER" representation="&lt;uri_identifier&gt;" />
 </Tokens>

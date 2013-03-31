@@ -14,7 +14,8 @@ namespace JetBrains.ReSharper.Psi.Secret.Tests
     // ReSharper disable StringLiteralTypo
     private readonly string[] files = new[]
     {
-      "bignum-literals",
+      "_test",
+      /*"bignum-literals",
       "bytearray-string-literals",
       "bytechar-literal",
       "decimal-literals",
@@ -71,7 +72,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Tests
       "verbatim-string-escape-double-quote", 
       "verbatim-string-escape", 
       "verbatim-string-simple",
-      "yield-bang"
+      "yield-bang"*/
     };
     // ReSharper restore StringLiteralTypo
   }

@@ -14,26 +14,26 @@ using JetBrains.ProjectModel;
 namespace JetBrains.ReSharper.Psi.Secret
 {
     [ProjectFileTypeDefinition(Name)]
-    public class N3ProjectFileType : KnownProjectFileType
+    public class SecretProjectFileType : KnownProjectFileType
     {
-        public const string N3Extension = ".n3";
-        public new const string Name = "N3";
-        public new static readonly N3ProjectFileType Instance;
+        public const string SecretExtension = ".n3";
+        public new const string Name = "Secret";
+        public new static readonly SecretProjectFileType Instance;
 
-        protected N3ProjectFileType(string name) : base(name)
+        protected SecretProjectFileType(string name) : base(name)
         {
         }
 
-        protected N3ProjectFileType(string name, string presentableName) : base(name, presentableName)
+        protected SecretProjectFileType(string name, string presentableName) : base(name, presentableName)
         {
         }
 
-        protected N3ProjectFileType(string name, string presentableName, IEnumerable<string> extensions)
+        protected SecretProjectFileType(string name, string presentableName, IEnumerable<string> extensions)
             : base(name, presentableName, extensions)
         {
         }
 
-        private N3ProjectFileType() : base(Name, "N3", new[] { N3Extension })
+        private SecretProjectFileType() : base(Name, "The Secret Project File", new[] { SecretExtension })
         {
         }
     }

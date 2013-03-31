@@ -9,17 +9,18 @@
 // ***********************************************************************
 
 using JetBrains.ReSharper.Psi.Parsing;
+using JetBrains.ReSharper.Psi.Secret.Parsing;
 using JetBrains.Text;
 
 namespace JetBrains.ReSharper.Psi.Secret
 {
-    public class N3LexerFactory : ILexerFactory
+    public class SecretLexerFactory : ILexerFactory
     {
-        public static readonly N3LexerFactory Instance = new N3LexerFactory();
+        public static readonly SecretLexerFactory Instance = new SecretLexerFactory();
 
         public ILexer CreateLexer(IBuffer buffer)
         {
-            return new N3Lexer(buffer);
+            return new SecretLexer(buffer);
         }
     }
 }

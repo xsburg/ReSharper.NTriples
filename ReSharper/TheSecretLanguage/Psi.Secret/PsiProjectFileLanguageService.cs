@@ -16,10 +16,10 @@ using JetBrains.UI.Icons;
 
 namespace JetBrains.ReSharper.Psi.Secret
 {
-    [ProjectFileType(typeof(N3ProjectFileType))]
+    [ProjectFileType(typeof(SecretProjectFileType))]
     public class PsiProjectFileLanguageService : ProjectFileLanguageService
     {
-        public PsiProjectFileLanguageService(N3ProjectFileType projectFileType)
+        public PsiProjectFileLanguageService(SecretProjectFileType projectFileType)
             : base(projectFileType)
         {
         }
@@ -43,7 +43,7 @@ namespace JetBrains.ReSharper.Psi.Secret
         public override ILexerFactory GetMixedLexerFactory(ISolution solution, IBuffer buffer, IPsiSourceFile sourceFile = null)
         {
             {
-                return new N3LexerFactory();
+                return new SecretLexerFactory();
             }
         }
     }

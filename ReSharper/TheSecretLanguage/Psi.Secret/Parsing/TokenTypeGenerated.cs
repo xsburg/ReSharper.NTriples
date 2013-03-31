@@ -3757,6 +3757,22 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
         public static readonly TokenNodeType PP_REFERENCE = new PpReferenceNodeType();
         #endregion
 
+        #region URI_IDENTIFIER
+        private class UriIdentifierNodeType : FixedTokenNodeType
+        {
+            public UriIdentifierNodeType(): base ("URI_IDENTIFIER", "<uri_identifier>") {}
+            public override LeafElementBase Create(IBuffer buffer, TreeOffset startOffset, TreeOffset endOffset)
+            {
+                return new UriIdentifierTokenElement(this);
+            }
+        }
+        private class UriIdentifierTokenElement : FixedTokenElement
+        {
+            public UriIdentifierTokenElement(UriIdentifierNodeType tokenNodeType) : base(tokenNodeType) { }
+        }
+        public static readonly TokenNodeType URI_IDENTIFIER = new UriIdentifierNodeType();
+        #endregion
+
     }
 }
  
