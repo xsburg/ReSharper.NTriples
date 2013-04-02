@@ -13,7 +13,7 @@ using JetBrains.ProjectModel;
 
 namespace JetBrains.ReSharper.Psi.Secret
 {
-    [ProjectFileTypeDefinition(Name)]
+    //TODO:[ProjectFileTypeDefinition(Name)]
     public class SecretProjectFileType : KnownProjectFileType
     {
         public const string SecretExtension = ".n3";

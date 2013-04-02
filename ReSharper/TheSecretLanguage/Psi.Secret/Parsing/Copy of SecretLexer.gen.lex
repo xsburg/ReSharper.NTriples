@@ -34,84 +34,6 @@ ASTERISKS="*"+
 
 WHITE_SPACE_CHAR=({UNICODE_ZS}|(\u0009)|(\u000B)|(\u000C)|(\u200B)|(\uFEFF)|{NULL_CHAR})
 
-BIND=(->)
-L_PARENTHESES=(\()
-R_PARENTHESES=(\))
-L_BRACE=({)
-R_BRACE=(})
-L_BRACKET=(\[)
-R_BRACKET=(\])
-
-HAS=(@has)
-IS=(@is)
-FOR_ALL=(@forAll)
-FOR_SOME=(@forSome)
-A=(a)
-OF=(@of)
-IMPLIES=(=>)
-SAME_AS=(=)
-PREFIX=(@prefix)
-STD_PREFIX=(@std_prefix)
-EXTENSION=(@extension)
-USING=(@using)
-DEFAULT_AXIS=(@axis-default)
-
-AXIS=(@?axis)
-FUNCTOR=(@?functor)
-META=(@?meta)
-IN=(@?in|@for)
-OUT=(@?out)
-SELECT=(@?select)
-FROM=(@?from)
-NOT=(@?not)
-IF=(@?if)
-TRY=(@?try)
-OR=(@?or)
-IF_NOT=(@?if-not)
-THEN=(@?then)
-ELSE=(@?else)
-ONCE=(@?once)
-
-NAME_KEY=(:-)
-EQUAL_TO=(:=|==)
-NOT_EQUAL_TO=(!=)
-CONNECT=(<->)
-ELLIPSIS=(\.\.\.|\u2026)
-
-URI_BEGIN=(<)
-URI_END=(>)
-URI_STRING=([^>]*)
-
-NAME_START_CHAR=([a-zA-Z_0-9\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD])
-NAME_CHAR=({NAME_START_CHAR}|[\-\u00B7\u0300-\u036F\u203F-\u2040])
-NAME=({NAME_START_CHAR}{NAME_CHAR}*)
-
-
-NUMERIC=([0-9])
-SIGN=([+\-])
-NUMBER=({NUMERIC}+)
-INTEGER=({SIGN}?{NUMBER})
-EXP=([eE])
-TRUE=(true)
-FALSE=(false)
-NULL=(null)
-DOT=(\.)
-SEMICOLON=(;)
-
-SINGLE_LINE_COMMENT=("#"{INPUT_CHARACTER}*)
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -138,6 +60,7 @@ DELIMITED_COMMENT_SECTION=([^\*]|({ASTERISKS}[^\*\/]))
 UNFINISHED_DELIMITED_COMMENT="(*"{DELIMITED_COMMENT_SECTION}*
 DELIMITED_COMMENT={UNFINISHED_DELIMITED_COMMENT}{ASTERISKS}"/"
 
+SINGLE_LINE_COMMENT=("//"{INPUT_CHARACTER}*)
 
 DECIMAL_DIGIT=[0-9]
 HEX_DIGIT=({DECIMAL_DIGIT}|[A-Fa-f])
@@ -258,7 +181,7 @@ URI_IDENTIFIER=(<[^>]+>)
 
 
 
-<YYINITIAL> {BIND} { currTokenType = makeToken (SecretTokenType.URI_IDENTIFIER); return currTokenType; }
+<YYINITIAL> {URI_IDENTIFIER} { currTokenType = makeToken (SecretTokenType.URI_IDENTIFIER); return currTokenType; }
 
 
 

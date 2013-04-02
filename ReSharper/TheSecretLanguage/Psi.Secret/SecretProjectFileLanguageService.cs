@@ -8,18 +8,20 @@
 // </summary>
 // ***********************************************************************
 
+using System.Collections.Generic;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi.Parsing;
 using JetBrains.ReSharper.Psi.Secret.Resources;
 using JetBrains.Text;
 using JetBrains.UI.Icons;
+using JetBrains.Util;
 
 namespace JetBrains.ReSharper.Psi.Secret
 {
-    [ProjectFileType(typeof(SecretProjectFileType))]
-    public class PsiProjectFileLanguageService : ProjectFileLanguageService
+    //TODO:[ProjectFileType(typeof(SecretProjectFileType))]
+    public class SecretProjectFileLanguageService : ProjectFileLanguageService
     {
-        public PsiProjectFileLanguageService(SecretProjectFileType projectFileType)
+        public SecretProjectFileLanguageService(SecretProjectFileType projectFileType)
             : base(projectFileType)
         {
         }
