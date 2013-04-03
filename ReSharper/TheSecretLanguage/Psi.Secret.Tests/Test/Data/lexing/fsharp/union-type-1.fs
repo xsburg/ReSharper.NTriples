@@ -1,3 +1,0 @@
-﻿type State =
-| On
-| Off

@@ -1,7 +1,7 @@
 ﻿<Tokens TokenTypeNamespace="JetBrains.ReSharper.Psi.Secret.Parsing" TokenTypeClass="SecretTokenType"
         KeywordNodeType="KeywordTokenNodeType" KeywordTokenElement="FixedTokenElement" TokenNodeType="FixedTokenNodeType"
         TokenTokenElement="FixedTokenElement">
-  <Keyword name="ABSTRACT_KEYWORD" representation="abstract"/>
+  <!--<Keyword name="ABSTRACT_KEYWORD" representation="abstract"/>
   <Keyword name="AND_KEYWORD" representation="&amp;&amp;"/>
   <Keyword name="AS_KEYWORD" representation="as"/>
   <Keyword name="ASSERT_KEYWORD" representation="assert"/>
@@ -65,14 +65,14 @@
   <Keyword name="WITH_KEYWORD" representation="with"/>
   <Keyword name="YIELD_KEYWORD" representation="yield"/>
   
-  <!-- Computation expression keywords -->
+  ~1~ Computation expression keywords @1@
   <Keyword name="LET_BANG_KEYWORD" representation="let!" />
   <Keyword name="USE_BANG_KEYWORD" representation="use!" />
   <Keyword name="DO_BANG_KEYWORD" representation="do!" />
   <Keyword name="YIELD_BANG_KEYWORD" representation="yield!" />
   <Keyword name="RETURN_BANG_KEYWORD" representation="return!" />
 
-  <!-- ML keywords -->
+  ~1~ ML keywords @1@
   <Keyword name="ASR_ML_KEYWORD" representation="asr"/>
   <Keyword name="LAND_ML_KEYWORD" representation="land"/>
   <Keyword name="LOR_ML_KEYWORD" representation="lor"/>
@@ -82,7 +82,7 @@
   <Keyword name="MOD_ML_KEYWORD" representation="mod"/>
   <Keyword name="SIG_ML_KEYWORD" representation="sig"/>
 
-  <!-- reserved -->
+  ~1~ reserved @1@
   <Keyword name="ATOMIC_RESERVED_KEYWORD" representation="atomic"/>
   <Keyword name="BREAK_RESERVED_KEYWORD" representation="break"/>
   <Keyword name="CHECKED_RESERVED_KEYWORD" representation="checked"/>
@@ -110,9 +110,9 @@
   <Keyword name="VIRTUAL_RESERVED_KEYWORD" representation="virtual"/>
   <Keyword name="VOLATILE_RESERVED_KEYWORD" representation="volatile"/>
 
-  <!-- see http://blogs.msdn.com/b/dsyme/archive/2008/09/01/the-f-operators-and-basic-functions.aspx -->
+  ~1~ see http://blogs.msdn.com/b/dsyme/archive/2008/09/01/the-f-operators-and-basic-functions.aspx @1@
   
-  <!-- basic type abbreviations (prefixed with _KEYWORD) -->
+  ~1~ basic type abbreviations (prefixed with _KEYWORD) @1@
   <Keyword name="OBJ_KEYWORD" representation="obj"/>
   <Keyword name="EXN_KEYWORD" representation="exn"/>
   <Keyword name="NATIVEINT_KEYWORD" representation="nativeint"/>
@@ -135,7 +135,7 @@
   <Keyword name="BOOL_KEYWORD" representation="bool"/>
   <Keyword name="DECIMAL_KEYWORD" representation="decimal"/>
   
-  <!-- basic arithmethic ops -->
+  ~1~ basic arithmethic ops @1@
   <Token name="PLUS" representation="+"/>
   <Token name="MINUS" representation="-"/>
   <Token name="STAR" representation="*"/>
@@ -144,7 +144,7 @@
   <Token name="PERCENT" representation="%"/>
   <Token name="TILDE" representation="~"/>
   
-  <!-- bitwise ops -->
+  ~1~ bitwise ops @1@
   <Token name="BITWISE_SHIFT_LEFT" representation="&lt;&lt;&lt;"/>
   <Token name="BITWISE_SHIFT_RIGHT" representation="&gt;&gt;&gt;"/>
   <Token name="BITWISE_XOR" representation="^^^"/>
@@ -152,7 +152,7 @@
   <Token name="BITWISE_OR" representation="|||"/>
   <Token name="BITWISE_NOT" representation="~~~"/>
   
-  <!-- object transformation ops (postfixed by OP because they are just too weird) -->
+  ~1~ object transformation ops (postfixed by OP because they are just too weird) @1@
   <Keyword name="BOX_OP" representation="box"/>
   <Keyword name="HASH_OP" representation="hash"/>
   <Keyword name="SIZEOF_OP" representation="sizeof"/>
@@ -219,7 +219,7 @@
   <Token name="UNDERSCORE" representation="_"/>
   <Token name="CARET" representation="^"/>
   
-  <!-- preprocessing tokens, mainly stolen from c# -->
+  ~1~ preprocessing tokens, mainly stolen from c# @1@
   <Token name="PP_SHARP" representation="#" />
   <Token name="PP_DEFINE_DECLARATION" representation="define" />
   <Token name="PP_UNDEF_DECLARATION" representation="undef" />
@@ -253,8 +253,71 @@
   <Token name="PP_TIME" representation="time" />
   <Token name="PP_NO_WARN" representation="no warn" />
   <Token name="PP_INCLUDE" representation="Include" />
-  <Token name="PP_REFERENCE" representation="reference" />
+  <Token name="PP_REFERENCE" representation="reference" />-->
   
   <!-- The Secret Language tokens -->
-  <Token name="URI_IDENTIFIER" representation="&lt;uri_identifier&gt;" />
+  
+  <Token name="URI_BEGIN" representation="&lt;" />
+  <Token name="URI_STRING" representation="http://uri.string/path#localName" />
+  <Token name="URI_END" representation="&gt;" />
+  
+  <Token name="INTEGER" representation="Integer" />
+  <Token name="DOUBLE" representation="Double" />
+  
+  <Keyword name="NULL_KEYWORD" representation="null" />
+  <Keyword name="TRUE_KEYWORD" representation="true" />
+  <Keyword name="FALSE_KEYWORD" representation="false" />
+  
+  <Token name="DOT" representation="." />
+  <Token name="SEMICOLON" representation=";" />
+  
+  <Token name="LANG" representation="@lang" />
+  <Token name="NS_PREFIX" representation="prefix:" />
+  <Token name="Q_NAME" representation="prefix:localName" />
+  <Token name="VARIABLE" representation="?varName" />
+
+  <!--add it to the lexer-->
+  <Token name="L_BRACE" representation="{"/>
+  <Token name="R_BRACE" representation="}"/>
+  <Token name="L_PARENTHESES" representation="(" />
+  <Token name="R_PARENTHESES" representation=")" />
+  <Token name="L_BRACKET" representation="[" />
+  <Token name="R_BRACKET" representation="]" />
+  <Token name="BIND" representation="->" />
+  <!--TODO:
+  HAS=(@has)
+IS=(@is)
+FOR_ALL=(@forAll)
+FOR_SOME=(@forSome)
+A=(a)
+OF=(@of)
+IMPLIES=(=>)
+SAME_AS=(=)
+PREFIX=(@prefix)
+STD_PREFIX=(@std_prefix)
+EXTENSION=(@extension)
+USING=(@using)
+DEFAULT_AXIS=(@axis-default)
+
+AXIS=(@?axis)
+FUNCTOR=(@?functor)
+META=(@?meta)
+IN=(@?in|@for)
+OUT=(@?out)
+SELECT=(@?select)
+FROM=(@?from)
+NOT=(@?not)
+IF=(@?if)
+TRY=(@?try)
+OR=(@?or)
+IF_NOT=(@?if-not)
+THEN=(@?then)
+ELSE=(@?else)
+ONCE=(@?once)
+
+NAME_KEY=(:-)
+EQUAL_TO=(:=|==)
+NOT_EQUAL_TO=(!=)
+CONNECT=(<->)
+ELLIPSIS=(\.\.\.|\u2026)-->
 </Tokens>

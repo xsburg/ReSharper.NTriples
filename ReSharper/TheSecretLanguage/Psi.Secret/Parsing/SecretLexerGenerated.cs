@@ -33,7 +33,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
             };
 
             // Computation expression keywords
-            addBang("LET!", SecretTokenType.LET_BANG_KEYWORD);
+            /*addBang("LET!", SecretTokenType.LET_BANG_KEYWORD);
             addBang("USE!", SecretTokenType.USE_BANG_KEYWORD);
             addBang("DO!", SecretTokenType.DO_BANG_KEYWORD);
             addBang("YIELD!", SecretTokenType.YIELD_BANG_KEYWORD);
@@ -147,7 +147,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
             add("TYPEOF", SecretTokenType.TYPEOF_OP);
             add("TYPEDEFOF", SecretTokenType.TYPEDEFOF_OP);
             add("UNBOX", SecretTokenType.UNBOX_OP);
-            add("REF", SecretTokenType.REF_OP);
+            add("REF", SecretTokenType.REF_OP);*/
         }
 
         public IBuffer Buffer
