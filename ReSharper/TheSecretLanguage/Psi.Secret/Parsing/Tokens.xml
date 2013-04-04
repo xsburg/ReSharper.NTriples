@@ -264,57 +264,56 @@
   <Token name="INTEGER" representation="Integer" />
   <Token name="DOUBLE" representation="Double" />
   
-  <Keyword name="NULL_KEYWORD" representation="null" />
-  <Keyword name="TRUE_KEYWORD" representation="true" />
-  <Keyword name="FALSE_KEYWORD" representation="false" />
   
   <Token name="DOT" representation="." />
   <Token name="SEMICOLON" representation=";" />
-  
+  <Token name="COMMA" representation="," />
+
   <Token name="LANG" representation="@lang" />
-  <Token name="NS_PREFIX" representation="prefix:" />
-  <Token name="Q_NAME" representation="prefix:localName" />
+  <Token name="NAMESPACE_PREFIX" representation="prefix:" />
+  <Token name="LOCAL_IDENTIFIER" representation="localName" />
   <Token name="VARIABLE" representation="?varName" />
 
-  <!--add it to the lexer-->
   <Token name="L_BRACE" representation="{"/>
   <Token name="R_BRACE" representation="}"/>
   <Token name="L_PARENTHESES" representation="(" />
   <Token name="R_PARENTHESES" representation=")" />
   <Token name="L_BRACKET" representation="[" />
   <Token name="R_BRACKET" representation="]" />
-  <Token name="BIND" representation="-&gt;" />
 
-  <Token name="HAS_KEYWORD" representation="@has" />
-  <Token name="IS_KEYWORD" representation="@is" />
-  <Token name="FOR_ALL_KEYWORD" representation="@forAll" />
-  <Token name="FOR_SOME_KEYWORD" representation="@forSome" />
-  <Token name="A_KEYWORD" representation="a" />
-  <Token name="OF_KEYWORD" representation="@of" />
+  <Keyword name="NULL_KEYWORD" representation="null" />
+  <Keyword name="TRUE_KEYWORD" representation="true" />
+  <Keyword name="FALSE_KEYWORD" representation="false" />
+  <Keyword name="HAS_KEYWORD" representation="@has" />
+  <Keyword name="IS_KEYWORD" representation="@is" />
+  <Keyword name="FOR_ALL_KEYWORD" representation="@forAll" />
+  <Keyword name="FOR_SOME_KEYWORD" representation="@forSome" />
+  <Keyword name="A_KEYWORD" representation="a" />
+  <Keyword name="OF_KEYWORD" representation="@of" />
+  <Keyword name="PREFIX_KEYWORD" representation="@prefix" />
+  <Keyword name="STD_PREFIX_KEYWORD" representation="@std_prefix" />
+  <Keyword name="EXTENSION_KEYWORD" representation="@extension" />
+  <Keyword name="USING_KEYWORD" representation="@using" />
+  <Keyword name="DEFAULT_AXIS_KEYWORD" representation="@axis-default" />
+  <Keyword name="AXIS_KEYWORD" representation="@?axis" />
+  <Keyword name="FUNCTOR_KEYWORD" representation="@?functor" />
+  <Keyword name="META_KEYWORD" representation="@?meta" />
+  <Keyword name="IN_KEYWORD" representation="@?in|@for" />
+  <Keyword name="OUT_KEYWORD" representation="@?out" />
+  <Keyword name="SELECT_KEYWORD" representation="@?select" />
+  <Keyword name="FROM_KEYWORD" representation="@?from" />
+  <Keyword name="NOT_KEYWORD" representation="@?not" />
+  <Keyword name="IF_KEYWORD" representation="@?if" />
+  <Keyword name="TRY_KEYWORD" representation="@?try" />
+  <Keyword name="OR_KEYWORD" representation="@?or" />
+  <Keyword name="IF_NOT_KEYWORD" representation="@?if-not" />
+  <Keyword name="THEN_KEYWORD" representation="@?then" />
+  <Keyword name="ELSE_KEYWORD" representation="@?else" />
+  <Keyword name="ONCE_KEYWORD" representation="@?once" />
+
+  <Token name="BIND" representation="-&gt;" />
   <Token name="IMPLIES" representation="=&gt;" />
   <Token name="SAME_AS" representation="=" />
-  <Token name="PREFIX_KEYWORD" representation="@prefix" />
-  <Token name="STD_PREFIX_KEYWORD" representation="@std_prefix" />
-  <Token name="EXTENSION_KEYWORD" representation="@extension" />
-  <Token name="USING_KEYWORD" representation="@using" />
-  <Token name="DEFAULT_AXIS_KEYWORD" representation="@axis-default" />
-
-  <Token name="AXIS_KEYWORD" representation="@?axis" />
-  <Token name="FUNCTOR_KEYWORD" representation="@?functor" />
-  <Token name="META_KEYWORD" representation="@?meta" />
-  <Token name="IN_KEYWORD" representation="@?in|@for" />
-  <Token name="OUT_KEYWORD" representation="@?out" />
-  <Token name="SELECT_KEYWORD" representation="@?select" />
-  <Token name="FROM_KEYWORD" representation="@?from" />
-  <Token name="NOT_KEYWORD" representation="@?not" />
-  <Token name="IF_KEYWORD" representation="@?if" />
-  <Token name="TRY_KEYWORD" representation="@?try" />
-  <Token name="OR_KEYWORD" representation="@?or" />
-  <Token name="IF_NOT_KEYWORD" representation="@?if-not" />
-  <Token name="THEN_KEYWORD" representation="@?then" />
-  <Token name="ELSE_KEYWORD" representation="@?else" />
-  <Token name="ONCE_KEYWORD" representation="@?once" />
-
   <Token name="NAME_KEY" representation=":-" />
   <Token name="EQUAL_TO" representation=":=|==" />
   <Token name="NOT_EQUAL_TO" representation="!=" />

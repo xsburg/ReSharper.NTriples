@@ -24,7 +24,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Tests
 {
     [Category("Lexer")]
     [TestFileExtension(".n3")]
-    public abstract class FSharpLexerTestBase : BaseTestWithSingleProject
+    public abstract class SecretLexerTestBase : BaseTestWithSingleProject
     {
         private Encoding myEncoding;
         private string myFileName;
@@ -33,7 +33,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Tests
         {
             get
             {
-                return @"lexing\fsharp";
+                return @"lexing\secret";
             }
         }
 

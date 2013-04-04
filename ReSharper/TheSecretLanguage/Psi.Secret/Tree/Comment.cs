@@ -56,10 +56,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree
         {
             get
             {
-                if (this.NodeType == SecretTokenType.C_STYLE_COMMENT)
-                {
-                    return CommentType.MULTILINE_COMMENT;
-                }
                 string text = this.GetText();
                 if (text.StartsWith("///") && !text.StartsWith("////"))
                 {

@@ -33,12 +33,13 @@ ASTERISKS="*"+
 %include ../obj/Unicode.lex
 
 WHITE_SPACE_CHAR=({UNICODE_ZS}|(\u0009)|(\u000B)|(\u000C)|(\u200B)|(\uFEFF)|{NULL_CHAR})
+WHITE_SPACE=({WHITE_SPACE_CHAR}+)
 
 BIND=(->)
 L_PARENTHESES=(\()
 R_PARENTHESES=(\))
-L_BRACE=({)
-R_BRACE=(})
+L_BRACE=(\{)
+R_BRACE=(\})
 L_BRACKET=(\[)
 R_BRACKET=(\])
 
@@ -90,34 +91,36 @@ TRUE=(true)
 FALSE=(false)
 NULL=(null)
 DOT=(\.)
+COMMA=(,)
 SEMICOLON=(;)
 
 SINGLE_LINE_COMMENT=("#"{INPUT_CHARACTER}*)
 
 DECIMAL_DIGIT=[0-9]
-EXPONENT_PART=([eE](([+-])?({DECIMAL_DIGIT})*))
-DOUBLE={INTEGER}{DOT}{DECIMAL_DIGIT}+(EXPONENT_PART)?
 INTEGER=[+\-]?{DECIMAL_DIGIT}+
+EXPONENT_PART=([eE](([+-])?({DECIMAL_DIGIT})*))
+DOUBLE={INTEGER}{DOT}{DECIMAL_DIGIT}+{EXPONENT_PART}?
 
 HEX_DIGIT=({DECIMAL_DIGIT}|[A-Fa-f])
 SIMPLE_ESCAPE_SEQUENCE=(\\[\"\\rnt])
 UNICODE_ESCAPE_SEQUENCE=((\\u{HEX_DIGIT}{HEX_DIGIT}{HEX_DIGIT}{HEX_DIGIT})|(\\U{HEX_DIGIT}{HEX_DIGIT}{HEX_DIGIT}{HEX_DIGIT}{HEX_DIGIT}{HEX_DIGIT}{HEX_DIGIT}{HEX_DIGIT}))
-SINGLE_CHARACTER=[^\\"\u0000-\u001f]
-CHARACTER=({SINGLE_CHARACTER}|{SIMPLE_ESCAPE_SEQUENCE}|{UNICODE_ESCAPE_SEQUENCE})
+SINGLE_CHARACTER=([^\\\"\u0000-\u001f])
+REGULAR_STRING_LITERAL_CHARACTER=({SINGLE_CHARACTER}|{SIMPLE_ESCAPE_SEQUENCE}|{UNICODE_ESCAPE_SEQUENCE})
 REGULAR_STRING_LITERAL=(\"{REGULAR_STRING_LITERAL_CHARACTER}*\")
-TRIPLE_QUOTED_STRING=\"\"\"{SIMPLE_CHAR_OR_QUOTE_CHAR_SEQUENCE}*\"\"\"
+TRIPLE_QUOTED_STRING=(\"\"\"{SIMPLE_CHAR_OR_QUOTE_CHAR_SEQUENCE}*\"\"\")
 SIMPLE_CHAR_OR_QUOTE_CHAR_SEQUENCE=([^\"]|(\"[^\"])|(\"\"[^\"]))
 STRING_LITERAL=({REGULAR_STRING_LITERAL}|{TRIPLE_QUOTED_STRING})
 
 LANG=(@[a-z]+(-[a-z0-9]+)*)
 
-NS_PREFIX=({NAME}?:)
-Q_NAME=({NS_PREFIX}{NAME}?)
+NAMESPACE_PREFIX=({NAME}?:)
+LOCAL_IDENTIFIER=({NAME})
 VARIABLE=(\?{NAME}?)
 
 
 %state URISTRING
 %state URIEND
+%state NAMESPACEPREFIX
 
 %%
 
@@ -129,18 +132,22 @@ VARIABLE=(\?{NAME}?)
 
 <YYINITIAL> {WHITE_SPACE} { currTokenType = makeToken(SecretTokenType.WHITE_SPACE); return currTokenType; }
 
+<YYINITIAL> {NEW_LINE_PAIR} { yybegin(YYINITIAL); return makeToken(SecretTokenType.NEW_LINE); }
+<YYINITIAL> {NEW_LINE_CHAR} { yybegin(YYINITIAL); return makeToken(SecretTokenType.NEW_LINE); }
+
 <YYINITIAL> {INTEGER} { currTokenType = makeToken(SecretTokenType.INTEGER); return currTokenType; }
 <YYINITIAL> {DOUBLE} { currTokenType = makeToken(SecretTokenType.DOUBLE); return currTokenType; }
 <YYINITIAL> {STRING_LITERAL} { currTokenType = makeToken(SecretTokenType.STRING_LITERAL); return currTokenType; }
+
+<YYINITIAL> {NAMESPACE_PREFIX} { yybegin(NAMESPACEPREFIX); currTokenType = makeToken(SecretTokenType.NAMESPACE_PREFIX); return currTokenType; }
+<NAMESPACEPREFIX> {LOCAL_IDENTIFIER} { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.LOCAL_IDENTIFIER); return currTokenType; }
 
 <YYINITIAL> {TRUE} { currTokenType = makeToken(SecretTokenType.TRUE_KEYWORD); return currTokenType; }
 <YYINITIAL> {FALSE} { currTokenType = makeToken(SecretTokenType.FALSE_KEYWORD); return currTokenType; }
 <YYINITIAL> {NULL} { currTokenType = makeToken(SecretTokenType.NULL_KEYWORD); return currTokenType; }
 <YYINITIAL> {DOT} { currTokenType = makeToken(SecretTokenType.DOT); return currTokenType; }
+<YYINITIAL> {COMMA} { currTokenType = makeToken(SecretTokenType.COMMA); return currTokenType; }
 <YYINITIAL> {SEMICOLON} { currTokenType = makeToken(SecretTokenType.SEMICOLON); return currTokenType; }
-<YYINITIAL> {LANG} { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
-<YYINITIAL> {Q_NAME} { currTokenType = makeToken(SecretTokenType.Q_NAME); return currTokenType; }
-<YYINITIAL> {NS_PREFIX} { currTokenType = makeToken(SecretTokenType.NS_PREFIX); return currTokenType; }
 <YYINITIAL> {VARIABLE} { currTokenType = makeToken(SecretTokenType.VARIABLE); return currTokenType; }
 
 <YYINITIAL> {L_BRACE} { currTokenType = makeToken(SecretTokenType.L_BRACE); return currTokenType; }
@@ -186,5 +193,7 @@ VARIABLE=(\?{NAME}?)
 <YYINITIAL> {NOT_EQUAL_TO} { currTokenType = makeToken(SecretTokenType.NOT_EQUAL_TO); return currTokenType; }
 <YYINITIAL> {CONNECT} { currTokenType = makeToken(SecretTokenType.CONNECT); return currTokenType; }
 <YYINITIAL> {ELLIPSIS} { currTokenType = makeToken(SecretTokenType.ELLIPSIS); return currTokenType; }
+
+<YYINITIAL> {LANG} { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
 
 <YYINITIAL> . { return makeToken(SecretTokenType.BAD_CHARACTER); }
