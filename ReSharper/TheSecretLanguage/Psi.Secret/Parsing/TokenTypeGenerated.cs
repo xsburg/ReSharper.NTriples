@@ -157,36 +157,20 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
         public static readonly TokenNodeType LANG = new LangNodeType();
         #endregion
 
-        #region NAMESPACE_PREFIX
-        private class NamespacePrefixNodeType : FixedTokenNodeType
+        #region NAMESPACE_SEPARATOR
+        private class NamespaceSeparatorNodeType : FixedTokenNodeType
         {
-            public NamespacePrefixNodeType(): base ("NAMESPACE_PREFIX", "prefix:") {}
+            public NamespaceSeparatorNodeType(): base ("NAMESPACE_SEPARATOR", ":") {}
             public override LeafElementBase Create(IBuffer buffer, TreeOffset startOffset, TreeOffset endOffset)
             {
-                return new NamespacePrefixTokenElement(this);
+                return new NamespaceSeparatorTokenElement(this);
             }
         }
-        private class NamespacePrefixTokenElement : FixedTokenElement
+        private class NamespaceSeparatorTokenElement : FixedTokenElement
         {
-            public NamespacePrefixTokenElement(NamespacePrefixNodeType tokenNodeType) : base(tokenNodeType) { }
+            public NamespaceSeparatorTokenElement(NamespaceSeparatorNodeType tokenNodeType) : base(tokenNodeType) { }
         }
-        public static readonly TokenNodeType NAMESPACE_PREFIX = new NamespacePrefixNodeType();
-        #endregion
-
-        #region LOCAL_IDENTIFIER
-        private class LocalIdentifierNodeType : FixedTokenNodeType
-        {
-            public LocalIdentifierNodeType(): base ("LOCAL_IDENTIFIER", "localName") {}
-            public override LeafElementBase Create(IBuffer buffer, TreeOffset startOffset, TreeOffset endOffset)
-            {
-                return new LocalIdentifierTokenElement(this);
-            }
-        }
-        private class LocalIdentifierTokenElement : FixedTokenElement
-        {
-            public LocalIdentifierTokenElement(LocalIdentifierNodeType tokenNodeType) : base(tokenNodeType) { }
-        }
-        public static readonly TokenNodeType LOCAL_IDENTIFIER = new LocalIdentifierNodeType();
+        public static readonly TokenNodeType NAMESPACE_SEPARATOR = new NamespaceSeparatorNodeType();
         #endregion
 
         #region VARIABLE

@@ -87,9 +87,9 @@ NAME_START_CHAR=([a-zA-Z_0-9\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D
 NAME_CHAR=({NAME_START_CHAR}|[\-\u00B7\u0300-\u036F\u203F-\u2040])
 NAME=({NAME_START_CHAR}{NAME_CHAR}*)
 
-TRUE=(true)
-FALSE=(false)
-NULL=(null)
+TRUE_KEYWORD=(true)
+FALSE_KEYWORD=(false)
+NULL_KEYWORD=(null)
 DOT=(\.)
 COMMA=(,)
 SEMICOLON=(;)
@@ -113,50 +113,17 @@ STRING_LITERAL=({REGULAR_STRING_LITERAL}|{TRIPLE_QUOTED_STRING})
 
 LANG=(@[a-z]+(-[a-z0-9]+)*)
 
-NAMESPACE_PREFIX=({NAME}?:)
-LOCAL_IDENTIFIER=({NAME})
+NAMESPACE_SEPARATOR=(:)
+IDENTIFIER=({NAME})
 VARIABLE=(\?{NAME}?)
 
 
 %state URISTRING
 %state URIEND
-%state NAMESPACEPREFIX
+%state NAMESPACESEPARATOR
+%state LOCALIDENTIFIER
 
 %%
-
-<YYINITIAL> {URI_BEGIN} { yybegin(URISTRING); currTokenType = makeToken (SecretTokenType.URI_BEGIN); return currTokenType; }
-<URISTRING> {URI_STRING} { yybegin(URIEND); currTokenType = makeToken (SecretTokenType.URI_STRING); return currTokenType; }
-<URIEND> {URI_END} { yybegin(YYINITIAL); currTokenType = makeToken (SecretTokenType.URI_END); return currTokenType; }
-
-<YYINITIAL> {SINGLE_LINE_COMMENT} { return makeToken(SecretTokenType.END_OF_LINE_COMMENT); }
-
-<YYINITIAL> {WHITE_SPACE} { currTokenType = makeToken(SecretTokenType.WHITE_SPACE); return currTokenType; }
-
-<YYINITIAL> {NEW_LINE_PAIR} { yybegin(YYINITIAL); return makeToken(SecretTokenType.NEW_LINE); }
-<YYINITIAL> {NEW_LINE_CHAR} { yybegin(YYINITIAL); return makeToken(SecretTokenType.NEW_LINE); }
-
-<YYINITIAL> {INTEGER} { currTokenType = makeToken(SecretTokenType.INTEGER); return currTokenType; }
-<YYINITIAL> {DOUBLE} { currTokenType = makeToken(SecretTokenType.DOUBLE); return currTokenType; }
-<YYINITIAL> {STRING_LITERAL} { currTokenType = makeToken(SecretTokenType.STRING_LITERAL); return currTokenType; }
-
-<YYINITIAL> {NAMESPACE_PREFIX} { yybegin(NAMESPACEPREFIX); currTokenType = makeToken(SecretTokenType.NAMESPACE_PREFIX); return currTokenType; }
-<NAMESPACEPREFIX> {LOCAL_IDENTIFIER} { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.LOCAL_IDENTIFIER); return currTokenType; }
-
-<YYINITIAL> {TRUE} { currTokenType = makeToken(SecretTokenType.TRUE_KEYWORD); return currTokenType; }
-<YYINITIAL> {FALSE} { currTokenType = makeToken(SecretTokenType.FALSE_KEYWORD); return currTokenType; }
-<YYINITIAL> {NULL} { currTokenType = makeToken(SecretTokenType.NULL_KEYWORD); return currTokenType; }
-<YYINITIAL> {DOT} { currTokenType = makeToken(SecretTokenType.DOT); return currTokenType; }
-<YYINITIAL> {COMMA} { currTokenType = makeToken(SecretTokenType.COMMA); return currTokenType; }
-<YYINITIAL> {SEMICOLON} { currTokenType = makeToken(SecretTokenType.SEMICOLON); return currTokenType; }
-<YYINITIAL> {VARIABLE} { currTokenType = makeToken(SecretTokenType.VARIABLE); return currTokenType; }
-
-<YYINITIAL> {L_BRACE} { currTokenType = makeToken(SecretTokenType.L_BRACE); return currTokenType; }
-<YYINITIAL> {R_BRACE} { currTokenType = makeToken(SecretTokenType.R_BRACE); return currTokenType; }
-<YYINITIAL> {L_PARENTHESES} { currTokenType = makeToken(SecretTokenType.L_PARENTHESES); return currTokenType; }
-<YYINITIAL> {R_PARENTHESES} { currTokenType = makeToken(SecretTokenType.R_PARENTHESES); return currTokenType; }
-<YYINITIAL> {L_BRACKET} { currTokenType = makeToken(SecretTokenType.L_BRACKET); return currTokenType; }
-<YYINITIAL> {R_BRACKET} { currTokenType = makeToken(SecretTokenType.R_BRACKET); return currTokenType; }
-<YYINITIAL> {BIND} { currTokenType = makeToken(SecretTokenType.BIND); return currTokenType; }
 
 <YYINITIAL> {HAS_KEYWORD} { currTokenType = makeToken(SecretTokenType.HAS_KEYWORD); return currTokenType; }
 <YYINITIAL> {IS_KEYWORD} { currTokenType = makeToken(SecretTokenType.IS_KEYWORD); return currTokenType; }
@@ -188,6 +155,42 @@ VARIABLE=(\?{NAME}?)
 <YYINITIAL> {ELSE_KEYWORD} { currTokenType = makeToken(SecretTokenType.ELSE_KEYWORD); return currTokenType; }
 <YYINITIAL> {ONCE_KEYWORD} { currTokenType = makeToken(SecretTokenType.ONCE_KEYWORD); return currTokenType; }
 
+<YYINITIAL> {TRUE_KEYWORD} { currTokenType = makeToken(SecretTokenType.TRUE_KEYWORD); return currTokenType; }
+<YYINITIAL> {FALSE_KEYWORD} { currTokenType = makeToken(SecretTokenType.FALSE_KEYWORD); return currTokenType; }
+<YYINITIAL> {NULL_KEYWORD} { currTokenType = makeToken(SecretTokenType.NULL_KEYWORD); return currTokenType; }
+
+<YYINITIAL> {SINGLE_LINE_COMMENT} { return makeToken(SecretTokenType.END_OF_LINE_COMMENT); }
+
+<YYINITIAL> {WHITE_SPACE} { currTokenType = makeToken(SecretTokenType.WHITE_SPACE); return currTokenType; }
+
+<YYINITIAL> {NEW_LINE_PAIR} { yybegin(YYINITIAL); return makeToken(SecretTokenType.NEW_LINE); }
+<YYINITIAL> {NEW_LINE_CHAR} { yybegin(YYINITIAL); return makeToken(SecretTokenType.NEW_LINE); }
+
+<YYINITIAL> {INTEGER} { currTokenType = makeToken(SecretTokenType.INTEGER); return currTokenType; }
+<YYINITIAL> {DOUBLE} { currTokenType = makeToken(SecretTokenType.DOUBLE); return currTokenType; }
+<YYINITIAL> {STRING_LITERAL} { currTokenType = makeToken(SecretTokenType.STRING_LITERAL); return currTokenType; }
+
+<YYINITIAL> {URI_BEGIN} { yybegin(URISTRING); currTokenType = makeToken (SecretTokenType.URI_BEGIN); return currTokenType; }
+<URISTRING> {URI_STRING} { yybegin(URIEND); currTokenType = makeToken (SecretTokenType.URI_STRING); return currTokenType; }
+<URIEND> {URI_END} { yybegin(YYINITIAL); currTokenType = makeToken (SecretTokenType.URI_END); return currTokenType; }
+
+<YYINITIAL> {IDENTIFIER} { yybegin(NAMESPACESEPARATOR); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+<NAMESPACESEPARATOR> {NAMESPACE_SEPARATOR} { yybegin(LOCALIDENTIFIER); currTokenType = makeToken(SecretTokenType.NAMESPACE_SEPARATOR); return currTokenType; }
+<LOCALIDENTIFIER> {IDENTIFIER} { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+
+<YYINITIAL> {DOT} { currTokenType = makeToken(SecretTokenType.DOT); return currTokenType; }
+<YYINITIAL> {COMMA} { currTokenType = makeToken(SecretTokenType.COMMA); return currTokenType; }
+<YYINITIAL> {SEMICOLON} { currTokenType = makeToken(SecretTokenType.SEMICOLON); return currTokenType; }
+<YYINITIAL> {VARIABLE} { currTokenType = makeToken(SecretTokenType.VARIABLE); return currTokenType; }
+
+<YYINITIAL> {L_BRACE} { currTokenType = makeToken(SecretTokenType.L_BRACE); return currTokenType; }
+<YYINITIAL> {R_BRACE} { currTokenType = makeToken(SecretTokenType.R_BRACE); return currTokenType; }
+<YYINITIAL> {L_PARENTHESES} { currTokenType = makeToken(SecretTokenType.L_PARENTHESES); return currTokenType; }
+<YYINITIAL> {R_PARENTHESES} { currTokenType = makeToken(SecretTokenType.R_PARENTHESES); return currTokenType; }
+<YYINITIAL> {L_BRACKET} { currTokenType = makeToken(SecretTokenType.L_BRACKET); return currTokenType; }
+<YYINITIAL> {R_BRACKET} { currTokenType = makeToken(SecretTokenType.R_BRACKET); return currTokenType; }
+<YYINITIAL> {BIND} { currTokenType = makeToken(SecretTokenType.BIND); return currTokenType; }
+
 <YYINITIAL> {NAME_KEY} { currTokenType = makeToken(SecretTokenType.NAME_KEY); return currTokenType; }
 <YYINITIAL> {EQUAL_TO} { currTokenType = makeToken(SecretTokenType.EQUAL_TO); return currTokenType; }
 <YYINITIAL> {NOT_EQUAL_TO} { currTokenType = makeToken(SecretTokenType.NOT_EQUAL_TO); return currTokenType; }
@@ -196,4 +199,4 @@ VARIABLE=(\?{NAME}?)
 
 <YYINITIAL> {LANG} { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
 
-<YYINITIAL> . { return makeToken(SecretTokenType.BAD_CHARACTER); }
+<YYINITIAL,URISTRING,URIEND,NAMESPACESEPARATOR,LOCALIDENTIFIER> . { return makeToken(SecretTokenType.BAD_CHARACTER); }

@@ -8,11 +8,12 @@
 // </summary>
 // ***********************************************************************
 
+
 using JetBrains.ReSharper.Psi.Tree;
 
 namespace JetBrains.ReSharper.Psi.Secret.Tree
 {
-    public interface ISecretIdentifier : IIdentifier, ITokenNode, ISecretTreeNode
+    public interface ISecretIdentifier : JetBrains.ReSharper.Psi.Tree.IIdentifier, ITokenNode, ISecretTreeNode
     {
     }
 }

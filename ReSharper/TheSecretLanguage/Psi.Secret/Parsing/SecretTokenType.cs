@@ -262,7 +262,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
             {
                 get
                 {
-                    throw new NotImplementedException();
+                    return "identifier";
                 }
             }
 

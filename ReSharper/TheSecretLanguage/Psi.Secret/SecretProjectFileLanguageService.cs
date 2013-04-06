@@ -18,7 +18,7 @@ using JetBrains.Util;
 
 namespace JetBrains.ReSharper.Psi.Secret
 {
-    //TODO:[ProjectFileType(typeof(SecretProjectFileType))]
+    [ProjectFileType(typeof(SecretProjectFileType))]
     public class SecretProjectFileLanguageService : ProjectFileLanguageService
     {
         public SecretProjectFileLanguageService(SecretProjectFileType projectFileType)

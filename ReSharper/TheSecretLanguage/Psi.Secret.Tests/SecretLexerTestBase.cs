@@ -23,7 +23,7 @@ using NUnit.Framework;
 namespace JetBrains.ReSharper.Psi.Secret.Tests
 {
     [Category("Lexer")]
-    [TestFileExtension(".n3")]
+    [TestFileExtension(SecretProjectFileType.SecretExtension)]
     public abstract class SecretLexerTestBase : BaseTestWithSingleProject
     {
         private Encoding myEncoding;

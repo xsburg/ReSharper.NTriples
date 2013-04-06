@@ -22,7 +22,7 @@ using JetBrains.Util;
 
 namespace JetBrains.ReSharper.Psi.Secret
 {
-    //TODO:[Language(typeof(SecretLanguage))]
+    [Language(typeof(SecretLanguage))]
     public class SecretLanguageService : LanguageService
     {
         //private readonly FSharpWordIndexLanguageProvider wordIndexLanguageProvider = new FSharpWordIndexLanguageProvider();
@@ -44,12 +44,8 @@ namespace JetBrains.ReSharper.Psi.Secret
 
         public override IParser CreateParser(ILexer lexer, IPsiModule module, IPsiSourceFile sourceFile)
         {
-            return null;
-            /*return CreateParser(
-                lexer,
-                module == null || sourceFile == null
-                    ? EmptyList<PreProcessingDirective>.InstanceList
-                    : sourceFile.Properties.GetDefines());*/
+            var typedLexer = (lexer as ILexer<int>) ?? lexer.ToCachingLexer();
+            return new SecretParser(typedLexer);
         }
 
         public override bool IsFilteredNode(ITreeNode node)
@@ -90,18 +86,5 @@ namespace JetBrains.ReSharper.Psi.Secret
                     SecretTokenType.NEW_LINE,
                     SecretTokenType.END_OF_LINE_COMMENT
                 });
-
-        private class SecretFilteringLexer : FilteringLexer
-        {
-            public SecretFilteringLexer(ILexer lexer)
-                : base(lexer)
-            {
-            }
-
-            protected override bool Skip(TokenNodeType tokenType)
-            {
-                return WHITESPACE_OR_COMMENT[tokenType];
-            }
-        }
     }
 }

@@ -12,7 +12,7 @@ using JetBrains.Annotations;
 
 namespace JetBrains.ReSharper.Psi.Secret
 {
-    //TODO:[LanguageDefinition(LanguageName)]
+    [LanguageDefinition(LanguageName)]
     public class SecretLanguage : KnownLanguage
     {
         public const string LanguageName = "Secret";
