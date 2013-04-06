@@ -10,7 +10,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
         private const string IDS_EXPECTED_TWO_SYMBOLS = "{0} or {1} expected";
         private const string IDS_UNEXPECTED_TOKEN = "Unexpected token";
 
-        public const string IDS__IDENTIFIER = "identifier";
+        public const string IDS_IDENTIFIER = "identifier";
 
         public const string IDS_BINARY_EXPRESSION = "expression";
         public const string IDS_BINDING_SCHEME = "binding scheme";
