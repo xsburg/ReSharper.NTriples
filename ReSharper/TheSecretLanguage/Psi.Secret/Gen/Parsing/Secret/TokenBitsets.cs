@@ -67,6 +67,11 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Tree.Impl.TokenType.URI_BEGIN,
       }
     );
+    public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet FIRST_stringLiteral = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
+      new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
+        JetBrains.ReSharper.Psi.Secret.Tree.Impl.TokenType.STRING_LITERAL,
+      }
+    );
     public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet FIRST_SecretFile = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
       new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
         JetBrains.ReSharper.Psi.Secret.Tree.Impl.TokenType.DOUBLE_LITERAL,
@@ -98,6 +103,11 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Tree.Impl.TokenType.STRING_LITERAL,
         JetBrains.ReSharper.Psi.Secret.Tree.Impl.TokenType.TRUE_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Tree.Impl.TokenType.URI_BEGIN,
+      }
+    );
+    public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet FIRST_dataLiteral = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
+      new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
+        JetBrains.ReSharper.Psi.Secret.Tree.Impl.TokenType.STRING_LITERAL,
       }
     );
     public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet FIRST_literal_keywords = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(

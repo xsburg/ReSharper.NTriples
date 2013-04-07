@@ -78,6 +78,7 @@ EQUAL_TO=(:=|==)
 NOT_EQUAL_TO=(!=)
 CONNECT=(<->)
 ELLIPSIS=(\.\.\.|\u2026)
+DATA_SUFFIX=(\u005E\u005E)
 
 URI_BEGIN=(<)
 URI_END=(>)
@@ -196,6 +197,7 @@ VARIABLE=(\?{NAME}?)
 <YYINITIAL> {NOT_EQUAL_TO} { currTokenType = makeToken(SecretTokenType.NOT_EQUAL_TO); return currTokenType; }
 <YYINITIAL> {CONNECT} { currTokenType = makeToken(SecretTokenType.CONNECT); return currTokenType; }
 <YYINITIAL> {ELLIPSIS} { currTokenType = makeToken(SecretTokenType.ELLIPSIS); return currTokenType; }
+<YYINITIAL> {DATA_SUFFIX} { currTokenType = makeToken(SecretTokenType.DATA_SUFFIX); return currTokenType; }
 
 <YYINITIAL> {LANG} { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
 

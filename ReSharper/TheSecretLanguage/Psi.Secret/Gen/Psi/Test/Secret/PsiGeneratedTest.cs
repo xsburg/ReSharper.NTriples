@@ -25,6 +25,11 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree.Impl
       if (!CanVisitFurther(param)) return;
       VisitElement (level, param, caller);
     }
+      internal static void TestDataLiteral (int level, JetBrains.ReSharper.Psi.Secret.Tree.IDataLiteral param, String caller)
+    {
+      if (!CanVisitFurther(param)) return;
+      VisitElement (level, param, caller);
+    }
       internal static void TestFact (int level, JetBrains.ReSharper.Psi.Secret.Tree.IFact param, String caller)
     {
       if (!CanVisitFurther(param)) return;
@@ -61,6 +66,11 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree.Impl
       VisitElement (level, param, caller);
     }
       internal static void TestStatement (int level, JetBrains.ReSharper.Psi.Secret.Tree.IStatement param, String caller)
+    {
+      if (!CanVisitFurther(param)) return;
+      VisitElement (level, param, caller);
+    }
+      internal static void TestStringLiteral (int level, JetBrains.ReSharper.Psi.Secret.Tree.IStringLiteral param, String caller)
     {
       if (!CanVisitFurther(param)) return;
       VisitElement (level, param, caller);

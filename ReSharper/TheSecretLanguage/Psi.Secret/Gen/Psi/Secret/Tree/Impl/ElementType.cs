@@ -30,6 +30,16 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree.Impl {
          return new AnonymousIdentifier();
       }
     }
+    public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType DATA_LITERAL = DATA_LITERAL_INTERNAL.INSTANCE;
+    private class DATA_LITERAL_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
+    {
+      public static readonly DATA_LITERAL_INTERNAL INSTANCE = new DATA_LITERAL_INTERNAL ();
+      DATA_LITERAL_INTERNAL() : base("DATA_LITERAL") {}
+      public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
+      {
+         return new DataLiteral();
+      }
+    }
     public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType FACT = FACT_INTERNAL.INSTANCE;
     private class FACT_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
     {
@@ -108,6 +118,16 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree.Impl {
       public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
       {
          return new Statement();
+      }
+    }
+    public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType STRING_LITERAL = STRING_LITERAL_INTERNAL.INSTANCE;
+    private class STRING_LITERAL_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
+    {
+      public static readonly STRING_LITERAL_INTERNAL INSTANCE = new STRING_LITERAL_INTERNAL ();
+      STRING_LITERAL_INTERNAL() : base("STRING_LITERAL") {}
+      public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
+      {
+         return new StringLiteral();
       }
     }
   }

@@ -61,4 +61,5 @@
   <Token name="NOT_EQUAL_TO" representation="!=" />
   <Token name="CONNECT" representation="&lt;-&gt;" />
   <Token name="ELLIPSIS" representation="..." />
+  <Token name="DATA_SUFFIX" representation="^^" />
 </Tokens>

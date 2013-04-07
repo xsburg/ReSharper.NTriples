@@ -10,11 +10,13 @@
 namespace JetBrains.ReSharper.Psi.Secret.Tree.Impl {
   public abstract class TokenType {
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType COMMA = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.COMMA;
+    public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType DATA_SUFFIX = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.DATA_SUFFIX;
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType DOT = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.DOT;
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType DOUBLE_LITERAL = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.DOUBLE_LITERAL;
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType FALSE_KEYWORD = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.FALSE_KEYWORD;
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType IDENTIFIER = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.IDENTIFIER;
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType INTEGER_LITERAL = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.INTEGER_LITERAL;
+    public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType LANG = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.LANG;
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType L_BRACKET = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.L_BRACKET;
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType NAMESPACE_SEPARATOR = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.NAMESPACE_SEPARATOR;
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType NULL_KEYWORD = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.NULL_KEYWORD;

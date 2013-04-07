@@ -877,6 +877,22 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
         public static readonly TokenNodeType ELLIPSIS = new EllipsisNodeType();
         #endregion
 
+        #region DATA_SUFFIX
+        private class DataSuffixNodeType : FixedTokenNodeType
+        {
+            public DataSuffixNodeType(): base ("DATA_SUFFIX", "^^") {}
+            public override LeafElementBase Create(IBuffer buffer, TreeOffset startOffset, TreeOffset endOffset)
+            {
+                return new DataSuffixTokenElement(this);
+            }
+        }
+        private class DataSuffixTokenElement : FixedTokenElement
+        {
+            public DataSuffixTokenElement(DataSuffixNodeType tokenNodeType) : base(tokenNodeType) { }
+        }
+        public static readonly TokenNodeType DATA_SUFFIX = new DataSuffixNodeType();
+        #endregion
+
     }
 }
  

@@ -18,6 +18,9 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
     public virtual void VisitAnonymousIdentifier ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IAnonymousIdentifier anonymousIdentifierParam, TContext context) {
       VisitNode (anonymousIdentifierParam, context);
     }
+    public virtual void VisitDataLiteral ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IDataLiteral dataLiteralParam, TContext context) {
+      VisitNode (dataLiteralParam, context);
+    }
     public virtual void VisitFact ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IFact factParam, TContext context) {
       VisitNode (factParam, context);
     }
@@ -41,6 +44,9 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
     }
     public virtual void VisitStatement ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IStatement statementParam, TContext context) {
       VisitNode (statementParam, context);
+    }
+    public virtual void VisitStringLiteral ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IStringLiteral stringLiteralParam, TContext context) {
+      VisitNode (stringLiteralParam, context);
     }
   }
 }
