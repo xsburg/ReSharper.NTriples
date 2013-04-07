@@ -114,10 +114,10 @@ STRING_LITERAL=({REGULAR_STRING_LITERAL}|{TRIPLE_QUOTED_STRING})
 
 LANG=(@[a-z]+(-[a-z0-9]+)*)
 
+EXPRESSION_TAIL_OPERATOR=([!\u005E])
 NAMESPACE_SEPARATOR=(:)
 IDENTIFIER=({NAME})
-VARIABLE=(\?{NAME}?)
-
+VARIABLE_PREFIX=(\?)
 
 %state URISTRING
 %state URIEND
@@ -182,7 +182,7 @@ VARIABLE=(\?{NAME}?)
 <YYINITIAL> {DOT} { currTokenType = makeToken(SecretTokenType.DOT); return currTokenType; }
 <YYINITIAL> {COMMA} { currTokenType = makeToken(SecretTokenType.COMMA); return currTokenType; }
 <YYINITIAL> {SEMICOLON} { currTokenType = makeToken(SecretTokenType.SEMICOLON); return currTokenType; }
-<YYINITIAL> {VARIABLE} { currTokenType = makeToken(SecretTokenType.VARIABLE); return currTokenType; }
+<YYINITIAL> {VARIABLE_PREFIX} { currTokenType = makeToken(SecretTokenType.VARIABLE_PREFIX); return currTokenType; }
 
 <YYINITIAL> {L_BRACE} { currTokenType = makeToken(SecretTokenType.L_BRACE); return currTokenType; }
 <YYINITIAL> {R_BRACE} { currTokenType = makeToken(SecretTokenType.R_BRACE); return currTokenType; }
@@ -198,6 +198,7 @@ VARIABLE=(\?{NAME}?)
 <YYINITIAL> {CONNECT} { currTokenType = makeToken(SecretTokenType.CONNECT); return currTokenType; }
 <YYINITIAL> {ELLIPSIS} { currTokenType = makeToken(SecretTokenType.ELLIPSIS); return currTokenType; }
 <YYINITIAL> {DATA_SUFFIX} { currTokenType = makeToken(SecretTokenType.DATA_SUFFIX); return currTokenType; }
+<YYINITIAL> {EXPRESSION_TAIL_OPERATOR} { currTokenType = makeToken(SecretTokenType.EXPRESSION_TAIL_OPERATOR); return currTokenType; }
 
 <YYINITIAL> {LANG} { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
 

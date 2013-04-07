@@ -173,20 +173,20 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
         public static readonly TokenNodeType NAMESPACE_SEPARATOR = new NamespaceSeparatorNodeType();
         #endregion
 
-        #region VARIABLE
-        private class VariableNodeType : FixedTokenNodeType
+        #region VARIABLE_PREFIX
+        private class VariablePrefixNodeType : FixedTokenNodeType
         {
-            public VariableNodeType(): base ("VARIABLE", "?varName") {}
+            public VariablePrefixNodeType(): base ("VARIABLE_PREFIX", "?") {}
             public override LeafElementBase Create(IBuffer buffer, TreeOffset startOffset, TreeOffset endOffset)
             {
-                return new VariableTokenElement(this);
+                return new VariablePrefixTokenElement(this);
             }
         }
-        private class VariableTokenElement : FixedTokenElement
+        private class VariablePrefixTokenElement : FixedTokenElement
         {
-            public VariableTokenElement(VariableNodeType tokenNodeType) : base(tokenNodeType) { }
+            public VariablePrefixTokenElement(VariablePrefixNodeType tokenNodeType) : base(tokenNodeType) { }
         }
-        public static readonly TokenNodeType VARIABLE = new VariableNodeType();
+        public static readonly TokenNodeType VARIABLE_PREFIX = new VariablePrefixNodeType();
         #endregion
 
         #region L_BRACE
@@ -891,6 +891,22 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
             public DataSuffixTokenElement(DataSuffixNodeType tokenNodeType) : base(tokenNodeType) { }
         }
         public static readonly TokenNodeType DATA_SUFFIX = new DataSuffixNodeType();
+        #endregion
+
+        #region EXPRESSION_TAIL_OPERATOR
+        private class ExpressionTailOperatorNodeType : FixedTokenNodeType
+        {
+            public ExpressionTailOperatorNodeType(): base ("EXPRESSION_TAIL_OPERATOR", "^") {}
+            public override LeafElementBase Create(IBuffer buffer, TreeOffset startOffset, TreeOffset endOffset)
+            {
+                return new ExpressionTailOperatorTokenElement(this);
+            }
+        }
+        private class ExpressionTailOperatorTokenElement : FixedTokenElement
+        {
+            public ExpressionTailOperatorTokenElement(ExpressionTailOperatorNodeType tokenNodeType) : base(tokenNodeType) { }
+        }
+        public static readonly TokenNodeType EXPRESSION_TAIL_OPERATOR = new ExpressionTailOperatorNodeType();
         #endregion
 
     }

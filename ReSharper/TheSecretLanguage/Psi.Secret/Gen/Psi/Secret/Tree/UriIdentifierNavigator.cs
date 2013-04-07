@@ -7,8 +7,11 @@
 //------------------------------------------------------------------------------
 #pragma warning disable 0168, 0219, 0108, 0414
 // ReSharper disable RedundantNameQualifier
+using System.Collections;
+using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
+using JetBrains.ReSharper.Psi.Secret.Tree.Impl;
 namespace JetBrains.ReSharper.Psi.Secret.Tree {
-  public partial interface IObject : JetBrains.ReSharper.Psi.Secret.Tree.ISecretTreeNode {
+  public static partial class UriIdentifierNavigator {
   }
 }

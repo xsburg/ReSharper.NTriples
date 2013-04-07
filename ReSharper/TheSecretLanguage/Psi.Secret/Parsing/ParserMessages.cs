@@ -9,7 +9,17 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
         private const string IDS_EXPECTED_SYMBOL = "{0} expected";
         private const string IDS_EXPECTED_TWO_SYMBOLS = "{0} or {1} expected";
         private const string IDS_UNEXPECTED_TOKEN = "Unexpected token";
-
+        
+        public const string IDS_DIRECTIVE = "directive";
+        public const string IDS_KEYWORD_STATEMENT = "keyword_statements";
+        public const string IDS_META = "meta";
+        public const string IDS_SENTENCE = "sentence";
+        public const string IDS_SMART_VAR = "list or uri";
+        public const string IDS_STATEMENT = "statement";
+        public const string IDS_URI_IDENTIFIER = "identifier";
+        public const string IDS_ANONYMOUS_IDENTIFIER = "anonymous identifier";
+        public const string IDS_FACTS = "facts";
+        public const string IDS_PREDICATE = "predicate";
         public const string IDS_LITERAL = "literal";
         public const string IDS_LITERAL_KEYWORDS = "literal keywords";
         public const string IDS_IDENTIFIER = "identifier";

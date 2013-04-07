@@ -12,23 +12,23 @@ using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Secret.Parsing;
 namespace JetBrains.ReSharper.Psi.Secret.Tree.Impl {
-  internal partial class Object : SecretCompositeElement, JetBrains.ReSharper.Psi.Secret.Tree.IObject {
-    internal Object() : base() {
+  internal partial class Metas : SecretCompositeElement, JetBrains.ReSharper.Psi.Secret.Tree.IMetas {
+    internal Metas() : base() {
     }
     public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType NodeType {
-      get { return JetBrains.ReSharper.Psi.Secret.Tree.Impl.ElementType.OBJECT; }
+      get { return JetBrains.ReSharper.Psi.Secret.Tree.Impl.ElementType.METAS; }
     }
     public override void Accept(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor visitor) {
-      visitor.VisitObject(this);
+      visitor.VisitMetas(this);
     }
     public override void Accept<TContext>(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor<TContext> visitor, TContext context) {
-      visitor.VisitObject(this, context);
+      visitor.VisitMetas(this, context);
     }
     public override TReturn Accept<TContext, TReturn>(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor<TContext, TReturn> visitor, TContext context) {
-      return visitor.VisitObject(this, context);
+      return visitor.VisitMetas(this, context);
     }
     public override string ToString() {
-      return "IObject";
+      return "IMetas";
     }
   }
 }

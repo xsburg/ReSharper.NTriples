@@ -14,7 +14,7 @@
 
   <Token name="LANG" representation="@lang" />
   <Token name="NAMESPACE_SEPARATOR" representation=":" />
-  <Token name="VARIABLE" representation="?varName" />
+  <Token name="VARIABLE_PREFIX" representation="?" />
 
   <Token name="L_BRACE" representation="{"/>
   <Token name="R_BRACE" representation="}"/>
@@ -62,4 +62,5 @@
   <Token name="CONNECT" representation="&lt;-&gt;" />
   <Token name="ELLIPSIS" representation="..." />
   <Token name="DATA_SUFFIX" representation="^^" />
+  <Token name="EXPRESSION_TAIL_OPERATOR" representation="^" />
 </Tokens>
