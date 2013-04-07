@@ -10028,7 +10028,7 @@ public TokenNodeType _locateToken()
               case 8:
                 { yybegin(YYINITIAL); return makeToken(SecretTokenType.NEW_LINE); }
               case 9:
-                { currTokenType = makeToken(SecretTokenType.INTEGER); return currTokenType; }
+                { currTokenType = makeToken(SecretTokenType.INTEGER_LITERAL); return currTokenType; }
               case 10:
                 { currTokenType = makeToken(SecretTokenType.DOT); return currTokenType; }
               case 11:
@@ -10086,7 +10086,7 @@ public TokenNodeType _locateToken()
               case 37:
                 { currTokenType = makeToken(SecretTokenType.NOT_KEYWORD); return currTokenType; }
               case 38:
-                { currTokenType = makeToken(SecretTokenType.DOUBLE); return currTokenType; }
+                { currTokenType = makeToken(SecretTokenType.DOUBLE_LITERAL); return currTokenType; }
               case 39:
                 { currTokenType = makeToken(SecretTokenType.CONNECT); return currTokenType; }
               case 40:
@@ -10148,7 +10148,7 @@ public TokenNodeType _locateToken()
               case 68:
                 { yybegin(YYINITIAL); return makeToken(SecretTokenType.NEW_LINE); }
               case 69:
-                { currTokenType = makeToken(SecretTokenType.INTEGER); return currTokenType; }
+                { currTokenType = makeToken(SecretTokenType.INTEGER_LITERAL); return currTokenType; }
               case 70:
                 { currTokenType = makeToken(SecretTokenType.VARIABLE); return currTokenType; }
               case 71:
@@ -10168,7 +10168,7 @@ public TokenNodeType _locateToken()
               case 78:
                 { currTokenType = makeToken(SecretTokenType.NOT_KEYWORD); return currTokenType; }
               case 79:
-                { currTokenType = makeToken(SecretTokenType.DOUBLE); return currTokenType; }
+                { currTokenType = makeToken(SecretTokenType.DOUBLE_LITERAL); return currTokenType; }
               case 80:
                 { currTokenType = makeToken(SecretTokenType.AXIS_KEYWORD); return currTokenType; }
               case 81:
@@ -10200,7 +10200,7 @@ public TokenNodeType _locateToken()
               case 94:
                 { currTokenType = makeToken(SecretTokenType.IN_KEYWORD); return currTokenType; }
               case 95:
-                { currTokenType = makeToken(SecretTokenType.DOUBLE); return currTokenType; }
+                { currTokenType = makeToken(SecretTokenType.DOUBLE_LITERAL); return currTokenType; }
               case 96:
                 break;
               case 97:

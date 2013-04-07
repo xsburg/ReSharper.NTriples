@@ -61,36 +61,36 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
         public static readonly TokenNodeType URI_END = new UriEndNodeType();
         #endregion
 
-        #region INTEGER
-        private class IntegerNodeType : FixedTokenNodeType
+        #region INTEGER_LITERAL
+        private class IntegerLiteralNodeType : FixedTokenNodeType
         {
-            public IntegerNodeType(): base ("INTEGER", "Integer") {}
+            public IntegerLiteralNodeType(): base ("INTEGER_LITERAL", "Integer") {}
             public override LeafElementBase Create(IBuffer buffer, TreeOffset startOffset, TreeOffset endOffset)
             {
-                return new IntegerTokenElement(this);
+                return new IntegerLiteralTokenElement(this);
             }
         }
-        private class IntegerTokenElement : FixedTokenElement
+        private class IntegerLiteralTokenElement : FixedTokenElement
         {
-            public IntegerTokenElement(IntegerNodeType tokenNodeType) : base(tokenNodeType) { }
+            public IntegerLiteralTokenElement(IntegerLiteralNodeType tokenNodeType) : base(tokenNodeType) { }
         }
-        public static readonly TokenNodeType INTEGER = new IntegerNodeType();
+        public static readonly TokenNodeType INTEGER_LITERAL = new IntegerLiteralNodeType();
         #endregion
 
-        #region DOUBLE
-        private class DoubleNodeType : FixedTokenNodeType
+        #region DOUBLE_LITERAL
+        private class DoubleLiteralNodeType : FixedTokenNodeType
         {
-            public DoubleNodeType(): base ("DOUBLE", "Double") {}
+            public DoubleLiteralNodeType(): base ("DOUBLE_LITERAL", "Double") {}
             public override LeafElementBase Create(IBuffer buffer, TreeOffset startOffset, TreeOffset endOffset)
             {
-                return new DoubleTokenElement(this);
+                return new DoubleLiteralTokenElement(this);
             }
         }
-        private class DoubleTokenElement : FixedTokenElement
+        private class DoubleLiteralTokenElement : FixedTokenElement
         {
-            public DoubleTokenElement(DoubleNodeType tokenNodeType) : base(tokenNodeType) { }
+            public DoubleLiteralTokenElement(DoubleLiteralNodeType tokenNodeType) : base(tokenNodeType) { }
         }
-        public static readonly TokenNodeType DOUBLE = new DoubleNodeType();
+        public static readonly TokenNodeType DOUBLE_LITERAL = new DoubleLiteralNodeType();
         #endregion
 
         #region DOT

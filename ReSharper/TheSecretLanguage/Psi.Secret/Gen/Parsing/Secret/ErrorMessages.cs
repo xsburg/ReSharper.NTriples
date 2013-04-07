@@ -30,5 +30,25 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
       return ourMessage_1;
     }
   
+    private static string ourMessage_2 = null;
+    public static string GetErrorMessage2 ()
+    {
+      if (ourMessage_2 == null)
+      {
+        ourMessage_2 = JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetExpectedMessage(JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetString(JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.IDS_LITERAL));
+      }
+      return ourMessage_2;
+    }
+  
+    private static string ourMessage_3 = null;
+    public static string GetErrorMessage3 ()
+    {
+      if (ourMessage_3 == null)
+      {
+        ourMessage_3 = JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetExpectedMessage(JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetString(JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.IDS_LITERAL_KEYWORDS));
+      }
+      return ourMessage_3;
+    }
+  
   }
 }

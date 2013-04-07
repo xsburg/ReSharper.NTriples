@@ -166,8 +166,8 @@ VARIABLE=(\?{NAME}?)
 <YYINITIAL> {NEW_LINE_PAIR} { yybegin(YYINITIAL); return makeToken(SecretTokenType.NEW_LINE); }
 <YYINITIAL> {NEW_LINE_CHAR} { yybegin(YYINITIAL); return makeToken(SecretTokenType.NEW_LINE); }
 
-<YYINITIAL> {INTEGER} { currTokenType = makeToken(SecretTokenType.INTEGER); return currTokenType; }
-<YYINITIAL> {DOUBLE} { currTokenType = makeToken(SecretTokenType.DOUBLE); return currTokenType; }
+<YYINITIAL> {INTEGER} { currTokenType = makeToken(SecretTokenType.INTEGER_LITERAL); return currTokenType; }
+<YYINITIAL> {DOUBLE} { currTokenType = makeToken(SecretTokenType.DOUBLE_LITERAL); return currTokenType; }
 <YYINITIAL> {STRING_LITERAL} { currTokenType = makeToken(SecretTokenType.STRING_LITERAL); return currTokenType; }
 
 <YYINITIAL> {URI_BEGIN} { yybegin(URISTRING); currTokenType = makeToken (SecretTokenType.URI_BEGIN); return currTokenType; }

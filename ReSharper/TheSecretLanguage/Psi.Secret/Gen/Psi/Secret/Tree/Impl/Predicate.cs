@@ -12,23 +12,23 @@ using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Secret.Parsing;
 namespace JetBrains.ReSharper.Psi.Secret.Tree.Impl {
-  internal partial class Triplet : SecretCompositeElement, JetBrains.ReSharper.Psi.Secret.Tree.ITriplet {
-    internal Triplet() : base() {
+  internal partial class Predicate : SecretCompositeElement, JetBrains.ReSharper.Psi.Secret.Tree.IPredicate {
+    internal Predicate() : base() {
     }
     public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType NodeType {
-      get { return JetBrains.ReSharper.Psi.Secret.Tree.Impl.ElementType.TRIPLET; }
+      get { return JetBrains.ReSharper.Psi.Secret.Tree.Impl.ElementType.PREDICATE; }
     }
     public override void Accept(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor visitor) {
-      visitor.VisitTriplet(this);
+      visitor.VisitPredicate(this);
     }
     public override void Accept<TContext>(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor<TContext> visitor, TContext context) {
-      visitor.VisitTriplet(this, context);
+      visitor.VisitPredicate(this, context);
     }
     public override TReturn Accept<TContext, TReturn>(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor<TContext, TReturn> visitor, TContext context) {
-      return visitor.VisitTriplet(this, context);
+      return visitor.VisitPredicate(this, context);
     }
     public override string ToString() {
-      return "ITriplet";
+      return "IPredicate";
     }
   }
 }

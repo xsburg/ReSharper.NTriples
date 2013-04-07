@@ -15,11 +15,32 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
     public virtual void VisitSecretFile ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.ISecretFile SecretFileParam) {
       VisitNode (SecretFileParam);
     }
+    public virtual void VisitAnonymousIdentifier ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IAnonymousIdentifier anonymousIdentifierParam) {
+      VisitNode (anonymousIdentifierParam);
+    }
+    public virtual void VisitFact ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IFact factParam) {
+      VisitNode (factParam);
+    }
+    public virtual void VisitFacts ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IFacts factsParam) {
+      VisitNode (factsParam);
+    }
     public virtual void VisitIdentifier ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IIdentifier identifierParam) {
       VisitNode (identifierParam);
     }
-    public virtual void VisitTriplet ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.ITriplet tripletParam) {
-      VisitNode (tripletParam);
+    public virtual void VisitLiteral ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.ILiteral literalParam) {
+      VisitNode (literalParam);
+    }
+    public virtual void VisitLiteral_keywords ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.ILiteral_keywords literal_keywordsParam) {
+      VisitNode (literal_keywordsParam);
+    }
+    public virtual void VisitObject ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IObject objectParam) {
+      VisitNode (objectParam);
+    }
+    public virtual void VisitPredicate ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IPredicate predicateParam) {
+      VisitNode (predicateParam);
+    }
+    public virtual void VisitStatement ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IStatement statementParam) {
+      VisitNode (statementParam);
     }
   }
 }

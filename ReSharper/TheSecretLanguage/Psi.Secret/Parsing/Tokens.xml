@@ -5,8 +5,8 @@
   <Token name="URI_STRING" representation="http://uri.string/path#localName" />
   <Token name="URI_END" representation="&gt;" />
   
-  <Token name="INTEGER" representation="Integer" />
-  <Token name="DOUBLE" representation="Double" />
+  <Token name="INTEGER_LITERAL" representation="Integer" />
+  <Token name="DOUBLE_LITERAL" representation="Double" />
   
   <Token name="DOT" representation="." />
   <Token name="SEMICOLON" representation=";" />

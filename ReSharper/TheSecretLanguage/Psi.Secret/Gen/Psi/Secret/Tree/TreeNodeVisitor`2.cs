@@ -15,11 +15,32 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
     public virtual TReturn VisitSecretFile ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.ISecretFile SecretFileParam, TContext context) {
       return VisitNode (SecretFileParam, context);
     }
+    public virtual TReturn VisitAnonymousIdentifier ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IAnonymousIdentifier anonymousIdentifierParam, TContext context) {
+      return VisitNode (anonymousIdentifierParam, context);
+    }
+    public virtual TReturn VisitFact ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IFact factParam, TContext context) {
+      return VisitNode (factParam, context);
+    }
+    public virtual TReturn VisitFacts ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IFacts factsParam, TContext context) {
+      return VisitNode (factsParam, context);
+    }
     public virtual TReturn VisitIdentifier ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IIdentifier identifierParam, TContext context) {
       return VisitNode (identifierParam, context);
     }
-    public virtual TReturn VisitTriplet ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.ITriplet tripletParam, TContext context) {
-      return VisitNode (tripletParam, context);
+    public virtual TReturn VisitLiteral ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.ILiteral literalParam, TContext context) {
+      return VisitNode (literalParam, context);
+    }
+    public virtual TReturn VisitLiteral_keywords ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.ILiteral_keywords literal_keywordsParam, TContext context) {
+      return VisitNode (literal_keywordsParam, context);
+    }
+    public virtual TReturn VisitObject ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IObject objectParam, TContext context) {
+      return VisitNode (objectParam, context);
+    }
+    public virtual TReturn VisitPredicate ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IPredicate predicateParam, TContext context) {
+      return VisitNode (predicateParam, context);
+    }
+    public virtual TReturn VisitStatement ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IStatement statementParam, TContext context) {
+      return VisitNode (statementParam, context);
     }
   }
 }
