@@ -11,12 +11,12 @@ using System;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Secret.Parsing;
-namespace JetBrains.ReSharper.Psi.Secret.Tree.Impl {
+namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
   internal partial class Sentences : SecretCompositeElement, JetBrains.ReSharper.Psi.Secret.Tree.ISentences {
     internal Sentences() : base() {
     }
     public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType NodeType {
-      get { return JetBrains.ReSharper.Psi.Secret.Tree.Impl.ElementType.SENTENCES; }
+      get { return JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.SENTENCES; }
     }
     public override void Accept(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor visitor) {
       visitor.VisitSentences(this);

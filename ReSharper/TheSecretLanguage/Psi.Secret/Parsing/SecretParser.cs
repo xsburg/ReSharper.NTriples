@@ -1,7 +1,7 @@
 using JetBrains.Annotations;
 using JetBrains.Application;
 using JetBrains.ReSharper.Psi.Parsing;
-using JetBrains.ReSharper.Psi.Secret.Tree.Impl;
+using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
 using JetBrains.ReSharper.Psi.Tree;
 
 namespace JetBrains.ReSharper.Psi.Secret.Parsing

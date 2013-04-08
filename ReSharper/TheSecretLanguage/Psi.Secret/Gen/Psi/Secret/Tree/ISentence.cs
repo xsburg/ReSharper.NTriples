@@ -10,5 +10,13 @@
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 namespace JetBrains.ReSharper.Psi.Secret.Tree {
   public partial interface ISentence : JetBrains.ReSharper.Psi.Secret.Tree.ISecretTreeNode {
+    JetBrains.ReSharper.Psi.Secret.Tree.IDirective Directive { get; }
+  
+    JetBrains.ReSharper.Psi.Secret.Tree.IStatement Statement { get; }
+  
+    JetBrains.ReSharper.Psi.Secret.Tree.IDirective SetDirective (JetBrains.ReSharper.Psi.Secret.Tree.IDirective param);
+  
+    JetBrains.ReSharper.Psi.Secret.Tree.IStatement SetStatement (JetBrains.ReSharper.Psi.Secret.Tree.IStatement param);
+  
   }
 }

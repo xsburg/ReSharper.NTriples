@@ -11,12 +11,12 @@ using System;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Secret.Parsing;
-namespace JetBrains.ReSharper.Psi.Secret.Tree.Impl {
+namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
   internal partial class UriIdentifiers : SecretCompositeElement, JetBrains.ReSharper.Psi.Secret.Tree.IUriIdentifiers {
     internal UriIdentifiers() : base() {
     }
     public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType NodeType {
-      get { return JetBrains.ReSharper.Psi.Secret.Tree.Impl.ElementType.URI_IDENTIFIERS; }
+      get { return JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.URI_IDENTIFIERS; }
     }
     public override void Accept(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor visitor) {
       visitor.VisitUriIdentifiers(this);

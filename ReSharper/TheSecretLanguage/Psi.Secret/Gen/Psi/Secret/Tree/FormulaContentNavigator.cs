@@ -10,7 +10,7 @@
 using System.Collections;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.Secret.Tree.Impl;
+using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
 namespace JetBrains.ReSharper.Psi.Secret.Tree {
   public static partial class FormulaContentNavigator {
   }

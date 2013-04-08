@@ -1,4 +1,4 @@
-﻿namespace JetBrains.ReSharper.Psi.Secret.Tree.Impl
+﻿namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 {
     internal partial class SecretFile
     {

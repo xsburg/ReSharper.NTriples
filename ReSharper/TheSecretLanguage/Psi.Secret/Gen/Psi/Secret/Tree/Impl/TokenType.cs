@@ -7,7 +7,7 @@
 //------------------------------------------------------------------------------
 #pragma warning disable 0168, 0219, 0108, 0414
 // ReSharper disable RedundantNameQualifier
-namespace JetBrains.ReSharper.Psi.Secret.Tree.Impl {
+namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
   public abstract class TokenType {
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType AXIS_KEYWORD = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.AXIS_KEYWORD;
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType A_KEYWORD = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.A_KEYWORD;

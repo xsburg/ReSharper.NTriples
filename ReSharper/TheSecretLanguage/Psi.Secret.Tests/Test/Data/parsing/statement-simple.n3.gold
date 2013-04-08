@@ -1,0 +1,29 @@
+﻿Language: PsiLanguageType:Secret
+ISecretFile
+  ISentences
+    ISentence
+      IStatement
+        ISubject
+          IIdentifier
+            IUriIdentifier
+              Identifier(type:IDENTIFIER, text:family)
+              SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+              Identifier(type:IDENTIFIER, text:jack)
+        IFacts
+          IFacts_
+            IFact
+              IPredicate
+                IExpression
+                  IIdentifier
+                    IUriIdentifier
+                      Identifier(type:IDENTIFIER, text:relation)
+                      SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                      Identifier(type:IDENTIFIER, text:hasFather)
+              IObjects
+                IIdentifier
+                  IUriIdentifier
+                    Identifier(type:IDENTIFIER, text:names)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                    Identifier(type:IDENTIFIER, text:john)
+    SecretTokenType+DotTokenElement(type:DOT, text:.)
+

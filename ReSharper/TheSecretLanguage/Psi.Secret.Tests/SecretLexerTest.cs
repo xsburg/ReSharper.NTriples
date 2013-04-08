@@ -28,6 +28,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Tests
         private readonly string[] files = new[]
             {
                 "comment",
+                "complex-test-1",
                 "double",
                 "keywords",
                 "operators",

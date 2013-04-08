@@ -11,12 +11,12 @@ using System;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Secret.Parsing;
-namespace JetBrains.ReSharper.Psi.Secret.Tree.Impl {
+namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
   internal partial class NotStatement : SecretCompositeElement, JetBrains.ReSharper.Psi.Secret.Tree.INotStatement {
     internal NotStatement() : base() {
     }
     public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType NodeType {
-      get { return JetBrains.ReSharper.Psi.Secret.Tree.Impl.ElementType.NOT_STATEMENT; }
+      get { return JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.NOT_STATEMENT; }
     }
     public override void Accept(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor visitor) {
       visitor.VisitNotStatement(this);

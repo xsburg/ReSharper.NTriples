@@ -175,9 +175,9 @@ VARIABLE_PREFIX=(\?)
 <URISTRING> {URI_STRING} { yybegin(URIEND); currTokenType = makeToken (SecretTokenType.URI_STRING); return currTokenType; }
 <URIEND> {URI_END} { yybegin(YYINITIAL); currTokenType = makeToken (SecretTokenType.URI_END); return currTokenType; }
 
-<YYINITIAL> {IDENTIFIER} { yybegin(NAMESPACESEPARATOR); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
-<NAMESPACESEPARATOR> {NAMESPACE_SEPARATOR} { yybegin(LOCALIDENTIFIER); currTokenType = makeToken(SecretTokenType.NAMESPACE_SEPARATOR); return currTokenType; }
-<LOCALIDENTIFIER> {IDENTIFIER} { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+<YYINITIAL> {IDENTIFIER} { currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+<YYINITIAL> {NAMESPACE_SEPARATOR} { currTokenType = makeToken(SecretTokenType.NAMESPACE_SEPARATOR); return currTokenType; }
+<YYINITIAL> {IDENTIFIER} { currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
 
 <YYINITIAL> {DOT} { currTokenType = makeToken(SecretTokenType.DOT); return currTokenType; }
 <YYINITIAL> {COMMA} { currTokenType = makeToken(SecretTokenType.COMMA); return currTokenType; }
@@ -202,4 +202,5 @@ VARIABLE_PREFIX=(\?)
 
 <YYINITIAL> {LANG} { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
 
-<YYINITIAL,URISTRING,URIEND,NAMESPACESEPARATOR,LOCALIDENTIFIER> . { return makeToken(SecretTokenType.BAD_CHARACTER); }
+<YYINITIAL, URISTRING, URIEND, NAMESPACESEPARATOR, LOCALIDENTIFIER> . { return makeToken(SecretTokenType.BAD_CHARACTER); }
+<YYINITIAL, URISTRING, URIEND, NAMESPACESEPARATOR, LOCALIDENTIFIER> {NEW_LINE_CHAR} { return makeToken(SecretTokenType.BAD_CHARACTER); }

@@ -1,6 +1,8 @@
-﻿using JetBrains.ReSharper.PsiTests.parsing;
+﻿using System.IO;
+using JetBrains.ReSharper.PsiTests.parsing;
 using JetBrains.ReSharper.TestFramework;
 using NUnit.Framework;
+using System.Linq;
 
 namespace JetBrains.ReSharper.Psi.Secret.Tests
 {
@@ -12,10 +14,20 @@ namespace JetBrains.ReSharper.Psi.Secret.Tests
             get { return @"parsing"; }
         }
 
-        [Test]
-        public void TestSingleLineTriplet()
+        public SecretParserTest()
         {
-            this.DoNamedTest();
+            files = this.TestDataPath2.GetDirectoryEntries("*" + SecretProjectFileType.SecretExtension, true)
+                        .Select(f => Path.GetFileNameWithoutExtension(f.FullPath))
+                        .ToArray();
+        }
+
+        private readonly string[] files;
+
+        [Test]
+        [TestCaseSource("files")]
+        public void TestParser(string file)
+        {
+            this.DoOneTest(file);
         }
     }
 }

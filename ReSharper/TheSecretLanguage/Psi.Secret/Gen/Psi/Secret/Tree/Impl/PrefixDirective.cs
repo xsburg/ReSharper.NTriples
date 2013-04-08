@@ -11,12 +11,12 @@ using System;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Secret.Parsing;
-namespace JetBrains.ReSharper.Psi.Secret.Tree.Impl {
+namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
   internal partial class PrefixDirective : SecretCompositeElement, JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDirective {
     internal PrefixDirective() : base() {
     }
     public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType NodeType {
-      get { return JetBrains.ReSharper.Psi.Secret.Tree.Impl.ElementType.PREFIX_DIRECTIVE; }
+      get { return JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.PREFIX_DIRECTIVE; }
     }
     public override void Accept(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor visitor) {
       visitor.VisitPrefixDirective(this);

@@ -11,7 +11,7 @@ using System;
 using System.IO;
 using JetBrains.ReSharper.Psi.Parsing;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-namespace JetBrains.ReSharper.Psi.Secret.Tree.Impl
+namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 {
   public partial class PsiGeneratedGetterTestUtil : PsiGetterTestUtil
   {
@@ -179,6 +179,14 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree.Impl
     {
       if (!CanVisitFurther(param)) return;
       VisitElement (level, param, caller);
+      {
+        JetBrains.ReSharper.Psi.Secret.Tree.IDirective child = ((JetBrains.ReSharper.Psi.Secret.Tree.ISentence)param).Directive;
+        TestDirective (level + 1, (JetBrains.ReSharper.Psi.Secret.Tree.IDirective)child, "Directive");
+      }
+      {
+        JetBrains.ReSharper.Psi.Secret.Tree.IStatement child = ((JetBrains.ReSharper.Psi.Secret.Tree.ISentence)param).Statement;
+        TestStatement (level + 1, (JetBrains.ReSharper.Psi.Secret.Tree.IStatement)child, "Statement");
+      }
     }
       internal static void TestSentences (int level, JetBrains.ReSharper.Psi.Secret.Tree.ISentences param, String caller)
     {

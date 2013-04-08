@@ -1,0 +1,65 @@
+﻿Language: PsiLanguageType:Secret
+ISecretFile
+  ISentences
+    ISentence
+      IStatement
+        ISubject
+          IIdentifier
+            IUriIdentifier
+              Identifier(type:IDENTIFIER, text:family)
+              SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+              Identifier(type:IDENTIFIER, text:jack)
+        IFacts
+          IFacts_
+            IFact
+              IPredicate
+                IExpression
+                  IIdentifier
+                    IUriIdentifier
+                      Identifier(type:IDENTIFIER, text:relation)
+                      SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                      Identifier(type:IDENTIFIER, text:father)
+              IObjects
+                IIdentifier
+                  IUriIdentifier
+                    Identifier(type:IDENTIFIER, text:names)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                    Identifier(type:IDENTIFIER, text:john)
+            SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
+            IFact
+              IPredicate
+                IExpression
+                  IIdentifier
+                    IUriIdentifier
+                      Identifier(type:IDENTIFIER, text:relation)
+                      SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                      Identifier(type:IDENTIFIER, text:mother)
+              IObjects
+                IIdentifier
+                  IUriIdentifier
+                    Identifier(type:IDENTIFIER, text:names)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                    Identifier(type:IDENTIFIER, text:mary)
+            SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
+            IFact
+              IPredicate
+                IExpression
+                  IIdentifier
+                    IUriIdentifier
+                      Identifier(type:IDENTIFIER, text:relation)
+                      SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                      Identifier(type:IDENTIFIER, text:brothers)
+              IObjects
+                IIdentifier
+                  IUriIdentifier
+                    Identifier(type:IDENTIFIER, text:names)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                    Identifier(type:IDENTIFIER, text:billy)
+                SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+                IIdentifier
+                  IUriIdentifier
+                    Identifier(type:IDENTIFIER, text:names)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                    Identifier(type:IDENTIFIER, text:dilly)
+    SecretTokenType+DotTokenElement(type:DOT, text:.)
+

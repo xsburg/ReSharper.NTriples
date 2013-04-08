@@ -7,7 +7,7 @@
 //------------------------------------------------------------------------------
 #pragma warning disable 0168, 0219, 0108, 0414
 // ReSharper disable RedundantNameQualifier
-namespace JetBrains.ReSharper.Psi.Secret.Tree.Impl {
+namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
   public abstract class ElementType {
     public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType ERROR_ELEMENT = JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ErrorElement.NODE_TYPE;
     public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType _SECRET_FILE = _SECRET_FILE_INTERNAL.INSTANCE;
