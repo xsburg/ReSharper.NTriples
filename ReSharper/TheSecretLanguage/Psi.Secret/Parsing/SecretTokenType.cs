@@ -36,10 +36,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
         // parser non-skippable
         public static readonly TokenNodeType IDENTIFIER = new IdentifierNodeType();
         public static readonly NodeTypeSet IDENTIFIER_KEYWORDS;
-        public static readonly TokenNodeType INT16_LITERAL = new GenericTokenNodeType("INT16_LITERAL", "42s");
-        public static readonly TokenNodeType INT32_LITERAL = new GenericTokenNodeType("INT32_LITERAL", "42l");
-        public static readonly TokenNodeType INT64_LITERAL = new GenericTokenNodeType("INT64_LITERAL", "42L");
-        public static readonly TokenNodeType INT8_LITERAL = new GenericTokenNodeType("INT8_LITERAL", "42y");
         public static readonly TokenNodeType INT_LITERAL = new GenericTokenNodeType("INT_LITERAL", "42");
         public static readonly NodeTypeSet KEYWORDS;
         public static readonly NodeTypeSet LITERALS;
@@ -48,7 +44,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
 
         public static readonly TokenNodeType STRING_LITERAL = new GenericTokenNodeType("STRING_LITERAL", "\"Annuit cœptis\"");
         public static readonly NodeTypeSet TYPE_KEYWORDS;
-        public static readonly TokenNodeType TYPE_VARIABLE = new GenericTokenNodeType("TYPE_VARIABLE", "'a");
         public static readonly TokenNodeType WHITE_SPACE = new WhitespaceNodeType();
 
         static SecretTokenType()
@@ -102,11 +97,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
                 STRING_LITERAL,
                 FLOAT_LITERAL,
                 INT_LITERAL,
-                INT8_LITERAL,
-                INT16_LITERAL,
-                INT32_LITERAL,
                 NATIVEINT_LITERAL,
-                INT64_LITERAL,
                 TRUE_KEYWORD,
                 FALSE_KEYWORD,
                 NULL_KEYWORD
@@ -326,7 +317,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
             {
                 get
                 {
-                    return this == IDENTIFIER || this == TYPE_VARIABLE;
+                    return this == IDENTIFIER;
                 }
             }
 
