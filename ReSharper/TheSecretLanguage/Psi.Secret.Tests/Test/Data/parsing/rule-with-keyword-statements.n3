@@ -1,0 +1,16 @@
+﻿{caret}
+
+{
+    if { @not { names:dilly = names:billy } }
+    then { names:dilly = names:billy }
+    else { names:dilly = names:billy }.
+    @from { names:dilly = names:billy } @select (names:kate names:jelly) -> ?someVariable.
+    @try { names:dilly = names:billy }
+    @or { names:dilly = names:billy }
+    @or { names:dilly = names:billy }.
+    functor <http://ontology.org#name> ?someVariable2 -> (names:pussy names:tilly) { names:dilly = names:billy }.
+}
+=>
+{
+    names:dilly a names:billy.
+}

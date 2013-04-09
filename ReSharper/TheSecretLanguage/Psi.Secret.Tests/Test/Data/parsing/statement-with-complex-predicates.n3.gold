@@ -1,0 +1,154 @@
+﻿Language: PsiLanguageType:Secret
+ISecretFile
+  ISentences
+    ISentence
+      IStatement
+        ISubject
+          IIdentifier
+            IUriIdentifier
+              Identifier(type:IDENTIFIER, text:family)
+              SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+              Identifier(type:IDENTIFIER, text:stan)
+        IFacts
+          IFacts_
+            IFact
+              IPredicate
+                SecretTokenType+SameAsTokenElement(type:SAME_AS, text:=)
+              IObjects
+                IIdentifier
+                  IUriIdentifier
+                    Identifier(type:IDENTIFIER, text:good)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                    Identifier(type:IDENTIFIER, text:man)
+            SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
+            IFact
+              IPredicate
+                SecretTokenType+ImpliesTokenElement(type:IMPLIES, text:=>)
+              IObjects
+                IIdentifier
+                  IUriIdentifier
+                    Identifier(type:IDENTIFIER, text:hot)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                    Identifier(type:IDENTIFIER, text:gay)
+            SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
+            IFact
+              IPredicate
+                SecretTokenType+AKeywordTokenElement(type:A_KEYWORD, text:a)
+              IObjects
+                IIdentifier
+                  IUriIdentifier
+                    Identifier(type:IDENTIFIER, text:super)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                    Identifier(type:IDENTIFIER, text:Human)
+            SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
+            IFact
+              IPredicate
+                SecretTokenType+EqualToTokenElement(type:EQUAL_TO, text::=|==)
+              IObjects
+                IIdentifier
+                  IUriIdentifier
+                    Identifier(type:IDENTIFIER, text:family)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                    Identifier(type:IDENTIFIER, text:mike)
+            SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
+            IFact
+              IPredicate
+                SecretTokenType+EqualToTokenElement(type:EQUAL_TO, text::=|==)
+              IObjects
+                IIdentifier
+                  IUriIdentifier
+                    Identifier(type:IDENTIFIER, text:family)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                    Identifier(type:IDENTIFIER, text:jim)
+            SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
+            IFact
+              IPredicate
+                SecretTokenType+NotEqualToTokenElement(type:NOT_EQUAL_TO, text:!=)
+              IObjects
+                IIdentifier
+                  IUriIdentifier
+                    Identifier(type:IDENTIFIER, text:family)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                    Identifier(type:IDENTIFIER, text:jally)
+            SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
+            IFact
+              IPredicate
+                SecretTokenType+BindTokenElement(type:BIND, text:->)
+              IObjects
+                IIdentifier
+                  IUriIdentifier
+                    Identifier(type:IDENTIFIER, text:targets)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                    Identifier(type:IDENTIFIER, text:bind)
+            SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
+            IFact
+              IPredicate
+                SecretTokenType+ConnectTokenElement(type:CONNECT, text:<->)
+              IObjects
+                IIdentifier
+                  IUriIdentifier
+                    Identifier(type:IDENTIFIER, text:targets)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                    Identifier(type:IDENTIFIER, text:connectionPoint)
+            SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
+            IFact
+              IPredicate
+                IExpression
+                  IIdentifier
+                    IUriIdentifier
+                      Identifier(type:IDENTIFIER, text:predicates)
+                      SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                      Identifier(type:IDENTIFIER, text:one)
+                  SecretTokenType+ExpressionTailOperatorTokenElement(type:EXPRESSION_TAIL_OPERATOR, text:^)
+                  IExpression
+                    IIdentifier
+                      IUriIdentifier
+                        Identifier(type:IDENTIFIER, text:predicates)
+                        SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                        Identifier(type:IDENTIFIER, text:two)
+                    SecretTokenType+ExpressionTailOperatorTokenElement(type:EXPRESSION_TAIL_OPERATOR, text:^)
+                    IExpression
+                      IIdentifier
+                        IUriIdentifier
+                          Identifier(type:IDENTIFIER, text:predicates)
+                          SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                          Identifier(type:IDENTIFIER, text:three)
+              IObjects
+                IIdentifier
+                  IUriIdentifier
+                    Identifier(type:IDENTIFIER, text:targets)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                    Identifier(type:IDENTIFIER, text:simple)
+            SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
+            IFact
+              IPredicate
+                SecretTokenType+HasKeywordTokenElement(type:HAS_KEYWORD, text:@has)
+                IExpression
+                  IIdentifier
+                    IUriIdentifier
+                      Identifier(type:IDENTIFIER, text:roundThings)
+                      SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                      Identifier(type:IDENTIFIER, text:balls)
+              IObjects
+                IIdentifier
+                  ILiteral_keywords
+                    SecretTokenType+TrueKeywordTokenElement(type:TRUE_KEYWORD, text:true)
+            SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
+            IFact
+              IPredicate
+                SecretTokenType+IsKeywordTokenElement(type:IS_KEYWORD, text:@is)
+                IExpression
+                  IIdentifier
+                    IUriIdentifier
+                      Identifier(type:IDENTIFIER, text:employment)
+                      SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                      Identifier(type:IDENTIFIER, text:servant)
+                SecretTokenType+OfKeywordTokenElement(type:OF_KEYWORD, text:@of)
+              IObjects
+                IIdentifier
+                  IUriIdentifier
+                    Identifier(type:IDENTIFIER, text:family)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                    Identifier(type:IDENTIFIER, text:jack)
+    SecretTokenType+DotTokenElement(type:DOT, text:.)
+

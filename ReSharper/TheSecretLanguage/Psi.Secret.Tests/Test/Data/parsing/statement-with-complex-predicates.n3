@@ -1,0 +1,14 @@
+﻿
+{caret}
+family:stan
+    = good:man;
+    => hot:gay;
+    a super:Human;
+    == family:mike;
+    := family:jim;
+    != family:jally;
+    -> targets:bind;
+    <-> targets:connectionPoint;
+    predicates:one^predicates:two^predicates:three targets:simple;
+    @has roundThings:balls true;
+    @is employment:servant @of family:jack.

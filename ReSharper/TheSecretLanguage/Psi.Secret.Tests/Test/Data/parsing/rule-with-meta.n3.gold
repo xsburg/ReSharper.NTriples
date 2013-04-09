@@ -1,0 +1,136 @@
+﻿Language: PsiLanguageType:Secret
+ISecretFile
+  ISentences
+    ISentence
+      IStatement
+        ISubject
+          IIdentifier
+            IFormula
+              IMetas
+                IMeta
+                  SecretTokenType+InKeywordTokenElement(type:IN_KEYWORD, text:@?in|@for)
+                  IVariables
+                    IVariableIdentifier
+                      SecretTokenType+VariablePrefixTokenElement(type:VARIABLE_PREFIX, text:?)
+                      Identifier(type:IDENTIFIER, text:dilly)
+                    SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+                    IVariables
+                      IVariableIdentifier
+                        SecretTokenType+VariablePrefixTokenElement(type:VARIABLE_PREFIX, text:?)
+                        Identifier(type:IDENTIFIER, text:billy)
+                SecretTokenType+DotTokenElement(type:DOT, text:.)
+                IMeta
+                  SecretTokenType+OutKeywordTokenElement(type:OUT_KEYWORD, text:@?out)
+                  IVariables
+                    IVariableIdentifier
+                      SecretTokenType+VariablePrefixTokenElement(type:VARIABLE_PREFIX, text:?)
+                SecretTokenType+DotTokenElement(type:DOT, text:.)
+                IMeta
+                  SecretTokenType+AxisKeywordTokenElement(type:AXIS_KEYWORD, text:@?axis)
+                  IUriIdentifiers
+                    IUriIdentifier
+                      Identifier(type:IDENTIFIER, text:things)
+                      SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                      Identifier(type:IDENTIFIER, text:table)
+                SecretTokenType+DotTokenElement(type:DOT, text:.)
+                IMeta
+                  SecretTokenType+MetaKeywordTokenElement(type:META_KEYWORD, text:@?meta)
+                  IAnonymousIdentifier
+                    SecretTokenType+LBracketTokenElement(type:L_BRACKET, text:[)
+                    IFacts_
+                      IFact
+                        IPredicate
+                          SecretTokenType+AKeywordTokenElement(type:A_KEYWORD, text:a)
+                        IObjects
+                          IIdentifier
+                            IUriIdentifier
+                              Identifier(type:IDENTIFIER, text:classes)
+                              SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                              Identifier(type:IDENTIFIER, text:WoodenTable)
+                    SecretTokenType+RBracketTokenElement(type:R_BRACKET, text:])
+                SecretTokenType+DotTokenElement(type:DOT, text:.)
+              IFormula_
+                SecretTokenType+LBraceTokenElement(type:L_BRACE, text:{)
+                SecretTokenType+NameKeyTokenElement(type:NAME_KEY, text::-)
+                IIdentifier
+                  IUriIdentifier
+                    Identifier(type:IDENTIFIER, text:ns)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                    Identifier(type:IDENTIFIER, text:mikey)
+                IFormulaContent
+                  ISentences
+                    ISentence
+                      IStatement
+                        ISubject
+                          IIdentifier
+                            IVariableIdentifier
+                              SecretTokenType+VariablePrefixTokenElement(type:VARIABLE_PREFIX, text:?)
+                              Identifier(type:IDENTIFIER, text:dilly)
+                        IFacts
+                          IFacts_
+                            IFact
+                              IPredicate
+                                SecretTokenType+AKeywordTokenElement(type:A_KEYWORD, text:a)
+                              IObjects
+                                IIdentifier
+                                  IVariableIdentifier
+                                    SecretTokenType+VariablePrefixTokenElement(type:VARIABLE_PREFIX, text:?)
+                                    Identifier(type:IDENTIFIER, text:billy)
+                    SecretTokenType+DotTokenElement(type:DOT, text:.)
+                    ISentence
+                      IStatement
+                        ISubject
+                          IIdentifier
+                            IVariableIdentifier
+                              SecretTokenType+VariablePrefixTokenElement(type:VARIABLE_PREFIX, text:?)
+                              Identifier(type:IDENTIFIER, text:dilly)
+                        IFacts
+                          IFacts_
+                            IFact
+                              IPredicate
+                                SecretTokenType+SameAsTokenElement(type:SAME_AS, text:=)
+                              IObjects
+                                IIdentifier
+                                  IUriIdentifier
+                                    Identifier(type:IDENTIFIER, text:ns)
+                                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                                    Identifier(type:IDENTIFIER, text:foo)
+                    SecretTokenType+DotTokenElement(type:DOT, text:.)
+                SecretTokenType+RBraceTokenElement(type:R_BRACE, text:})
+        IFacts
+          IFacts_
+            IFact
+              IPredicate
+                SecretTokenType+ImpliesTokenElement(type:IMPLIES, text:=>)
+              IObjects
+                IIdentifier
+                  IFormula
+                    IFormula_
+                      SecretTokenType+LBraceTokenElement(type:L_BRACE, text:{)
+                      IFormulaContent
+                        ISentences
+                          ISentence
+                            IStatement
+                              ISubject
+                                IIdentifier
+                                  IVariableIdentifier
+                                    SecretTokenType+VariablePrefixTokenElement(type:VARIABLE_PREFIX, text:?)
+                                    Identifier(type:IDENTIFIER, text:dilly)
+                              IFacts
+                                IFacts_
+                                  IFact
+                                    IPredicate
+                                      SecretTokenType+IsKeywordTokenElement(type:IS_KEYWORD, text:@is)
+                                      IExpression
+                                        IIdentifier
+                                          IVariableIdentifier
+                                            SecretTokenType+VariablePrefixTokenElement(type:VARIABLE_PREFIX, text:?)
+                                            Identifier(type:IDENTIFIER, text:billy)
+                                      SecretTokenType+OfKeywordTokenElement(type:OF_KEYWORD, text:@of)
+                                    IObjects
+                                      IIdentifier
+                                        IVariableIdentifier
+                                          SecretTokenType+VariablePrefixTokenElement(type:VARIABLE_PREFIX, text:?)
+                          SecretTokenType+DotTokenElement(type:DOT, text:.)
+                      SecretTokenType+RBraceTokenElement(type:R_BRACE, text:})
+

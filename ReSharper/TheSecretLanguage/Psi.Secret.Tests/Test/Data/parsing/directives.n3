@@ -1,0 +1,9 @@
+﻿{caret}
+
+@prefix logics: <http://my-ontology.org#logics>.
+@std_prefix someStandard: <http://my-ontology.org/logics#someStandard>.
+@extension <http://my-ontology.org#logics> <http://my-ontology.org/logics#someStandard>.
+@using <logics.n3> foo:bar, <http://my-ontology.org#logics>.
+@axis-default foo:bar, <http://my-ontology.org#logics>.
+@forAll foo:bar, foo:bar.
+@forSome <http://my-ontology.org#logics>.

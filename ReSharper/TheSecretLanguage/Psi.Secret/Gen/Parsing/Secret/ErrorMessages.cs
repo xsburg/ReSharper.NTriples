@@ -145,7 +145,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
     {
       if (ourMessage_13 == null)
       {
-        ourMessage_13 = JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetExpectedMessage("\'" + JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OR_KEYWORD.TokenRepresentation + "\'","\'" + JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.TRY_KEYWORD.TokenRepresentation + "\'");
+        ourMessage_13 = JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetExpectedMessage(JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetString(JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.IDS_META));
       }
       return ourMessage_13;
     }
@@ -155,7 +155,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
     {
       if (ourMessage_14 == null)
       {
-        ourMessage_14 = JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetExpectedMessage(JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetString(JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.IDS_PREDICATE));
+        ourMessage_14 = JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetExpectedMessage("\'" + JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OR_KEYWORD.TokenRepresentation + "\'","\'" + JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.TRY_KEYWORD.TokenRepresentation + "\'");
       }
       return ourMessage_14;
     }
@@ -165,7 +165,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
     {
       if (ourMessage_15 == null)
       {
-        ourMessage_15 = JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetExpectedMessage(JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetString(JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.IDS_SENTENCE));
+        ourMessage_15 = JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetExpectedMessage(JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetString(JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.IDS_PREDICATE));
       }
       return ourMessage_15;
     }
@@ -175,7 +175,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
     {
       if (ourMessage_16 == null)
       {
-        ourMessage_16 = JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetExpectedMessage(JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetString(JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.IDS_SMART_VAR));
+        ourMessage_16 = JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetExpectedMessage(JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetString(JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.IDS_SENTENCE));
       }
       return ourMessage_16;
     }
@@ -185,7 +185,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
     {
       if (ourMessage_17 == null)
       {
-        ourMessage_17 = JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetExpectedMessage(JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetString(JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.IDS_STATEMENT));
+        ourMessage_17 = JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetExpectedMessage(JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetString(JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.IDS_SMART_VAR));
       }
       return ourMessage_17;
     }
@@ -195,9 +195,19 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
     {
       if (ourMessage_18 == null)
       {
-        ourMessage_18 = JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetExpectedMessage(JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetString(JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.IDS_URI_IDENTIFIER));
+        ourMessage_18 = JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetExpectedMessage(JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetString(JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.IDS_STATEMENT));
       }
       return ourMessage_18;
+    }
+  
+    private static string ourMessage_19 = null;
+    public static string GetErrorMessage19 ()
+    {
+      if (ourMessage_19 == null)
+      {
+        ourMessage_19 = JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetExpectedMessage(JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetString(JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.IDS_URI_IDENTIFIER));
+      }
+      return ourMessage_19;
     }
   
   }

@@ -130,6 +130,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.DEFAULT_AXIS_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.EXTENSION_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FOR_ALL_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FOR_SOME_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STD_PREFIX_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.USING_KEYWORD,
@@ -143,6 +144,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.EXTENSION_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FALSE_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FOR_ALL_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FOR_SOME_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FROM_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FUNCTOR_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.IDENTIFIER,
@@ -183,7 +185,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
     );
     public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet FIRST_forSomeDirective = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
       new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
-        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FOR_ALL_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FOR_SOME_KEYWORD,
       }
     );
     public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet FIRST_dataLiteral = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
@@ -325,6 +327,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.EXTENSION_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FALSE_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FOR_ALL_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FOR_SOME_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FROM_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FUNCTOR_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.IDENTIFIER,
@@ -506,6 +509,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.EXTENSION_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FALSE_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FOR_ALL_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FOR_SOME_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FROM_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FUNCTOR_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.IDENTIFIER,
@@ -653,6 +657,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.EXTENSION_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FALSE_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FOR_ALL_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FOR_SOME_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FROM_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FUNCTOR_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.IDENTIFIER,
@@ -684,6 +689,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.DEFAULT_AXIS_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.EXTENSION_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FOR_ALL_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FOR_SOME_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STD_PREFIX_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.USING_KEYWORD,
@@ -698,6 +704,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.EXTENSION_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FALSE_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FOR_ALL_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FOR_SOME_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FROM_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FUNCTOR_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.IDENTIFIER,

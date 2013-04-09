@@ -1,0 +1,15 @@
+﻿
+{caret}
+@in ?dilly, ?billy.
+@out ?.
+@axis things:table.
+@meta [a classes:WoodenTable].
+{
+    :- ns:mikey # What does it mean?
+    ?dilly a ?billy.
+    ?dilly = ns:foo.
+}
+=>
+{
+    ?dilly @is ?billy @of ?.
+}

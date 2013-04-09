@@ -25,6 +25,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType EXTENSION_KEYWORD = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.EXTENSION_KEYWORD;
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType FALSE_KEYWORD = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.FALSE_KEYWORD;
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType FOR_ALL_KEYWORD = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.FOR_ALL_KEYWORD;
+    public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType FOR_SOME_KEYWORD = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.FOR_SOME_KEYWORD;
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType FROM_KEYWORD = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.FROM_KEYWORD;
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType FUNCTOR_KEYWORD = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.FUNCTOR_KEYWORD;
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType HAS_KEYWORD = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.HAS_KEYWORD;
