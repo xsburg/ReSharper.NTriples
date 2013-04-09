@@ -208,11 +208,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
       if (!CanVisitFurther(param)) return;
       VisitElement (level, param, caller);
     }
-      internal static void TestStringLiteral (int level, JetBrains.ReSharper.Psi.Secret.Tree.IStringLiteral param, String caller)
-    {
-      if (!CanVisitFurther(param)) return;
-      VisitElement (level, param, caller);
-    }
       internal static void TestSubject (int level, JetBrains.ReSharper.Psi.Secret.Tree.ISubject param, String caller)
     {
       if (!CanVisitFurther(param)) return;

@@ -35,7 +35,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
     {
       if (ourMessage_2 == null)
       {
-        ourMessage_2 = JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetExpectedMessage("\'" + JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.IDENTIFIER.TokenRepresentation + "\'","\'" + JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.URI_BEGIN.TokenRepresentation + "\'");
+        ourMessage_2 = JetBrains.ReSharper.Psi.Secret.Parsing.ParserMessages.GetExpectedMessage("\'" + JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.DATA_SUFFIX.TokenRepresentation + "\'","\'" + JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.LANG.TokenRepresentation + "\'");
       }
       return ourMessage_2;
     }

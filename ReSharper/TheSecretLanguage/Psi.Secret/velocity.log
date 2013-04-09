@@ -1,133 +1,132 @@
-Mon Apr 08 22:52:15 GMT+04:00 2013  [debug] AvalonLogSystem initialized using logfile 'velocity.log'
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] ************************************************************** 
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] Starting Jakarta Velocity v1.3.1-rc1
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] RuntimeInstance initializing.
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] Trying to use logger class org.apache.velocity.runtime.log.AvalonLogSystem
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] Using logger class org.apache.velocity.runtime.log.AvalonLogSystem
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] Resource Loader Instantiated: org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] JarResourceLoader : initialization starting.
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] JarResourceLoader # of paths : 1
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] JarResourceLoader : trying to load: jar:file:/C:/Program Files (x86)/JetBrains/ReSharper/v7.1/SDK/Tools/parserGen/parserGen.jar
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info]   JarHolder : attempting to connect to jar:file:/C:/Program Files (x86)/JetBrains/ReSharper/v7.1/SDK/Tools/parserGen/parserGen.jar!/
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info]   JarHolder : initialized JAR: jar:file:/C:/Program Files (x86)/JetBrains/ReSharper/v7.1/SDK/Tools/parserGen/parserGen.jar!/
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] JarResourceLoader : initialization complete.
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] ResourceCache : initialized. (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] Default ResourceManager initialization complete.
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Include
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] Created: 20 parsers.
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] Velocimacro : initialization starting.
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] Velocimacro : adding VMs from VM library template : VM_global_library.vm
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] ResourceManager : unable to find resource 'VM_global_library.vm' in any resource loader.
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] Velocimacro : error using  VM library template VM_global_library.vm : org.apache.velocity.exception.ResourceNotFoundException: Unable to find resource 'VM_global_library.vm'
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] Velocimacro :  VM library template macro registration complete.
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] Velocimacro : allowInline = true : VMs can be defined inline in templates
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] Velocimacro : allowInlineLocal = false : VMs defined inline will be  global in scope if allowed.
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] Velocimacro : messages on  : VM system will output logging messages
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] Velocimacro : autoload off  : VM system will not automatically reload global library macros
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] Velocimacro : initialization complete.
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] Velocity successfully started.
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Nonterminal.ParserFunctionHeader.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Nonterminal.ElementCreation.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Rule.TreeAdd.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/NonterminalRule.Parser.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Nonterminal.ParserBody.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/GetTokenType.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Grammar.TermSetCheck.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Grammar.NotInFollowCheck.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Parser.GetErrorMessage.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Grammar.SyntaxError.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Nonterminal.ErrorResultHanging.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Grammar.Skip.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Nonterminal.ErrorHandler.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Terminal.ErrorMessageText.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Grammar.Match.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Grammar.TokenBitset.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Grammar.BitsetTermSetCheck.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:15 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Nonterminal.ErrorMessageText.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:15 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Grammar.Parser.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/PsiInterface.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/GetterPrototype.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/WriteMethodPrototype.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Nonterminal.PsiStub.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/PsiLookaheadNullCheck.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Rule.PsiLookahead.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/PsiAdvance.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/RoleCheck.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/OrRule.GetChildRole.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Nonterminal.GetChildRole.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Getter.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/SetChild.PsiLookahead.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/SetChild.PsiAdvance.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/OrRule.SetChild.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Setter.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/TokenType.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [warn] org.apache.velocity.runtime.exception.ReferenceException: reference : template = parserGenTemplates/CSharp/TokenType.cs.template [line 19,column 36] : $lasttype is not a valid reference.
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/ElementType.Const.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/ElementType.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Grammar.Bitsets.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Nonterminal.NodeVisit.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Grammar.NodeVisitor.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Nonterminal.ParametrizedNodeVisit.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Grammar.ParametrizedNodeVisitor.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Nonterminal.ParametrizedNodeVisit2.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Grammar.ParametrizedNodeVisitor2.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Nonterminal.Test.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Nonterminal.Test.Getter.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Test.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Grammar.ErrorMessages.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Navigator.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/AdvancedGetter.CheckedStepUp.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/GetterBody.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
-Mon Apr 08 22:52:16 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/NavigationMethod.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013  [debug] AvalonLogSystem initialized using logfile 'velocity.log'
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ************************************************************** 
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] Starting Jakarta Velocity v1.3.1-rc1
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] RuntimeInstance initializing.
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] Trying to use logger class org.apache.velocity.runtime.log.AvalonLogSystem
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] Using logger class org.apache.velocity.runtime.log.AvalonLogSystem
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] Resource Loader Instantiated: org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] JarResourceLoader : initialization starting.
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] JarResourceLoader # of paths : 1
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] JarResourceLoader : trying to load: jar:file:/C:/Program Files (x86)/JetBrains/ReSharper/v7.1/SDK/Tools/parserGen/parserGen.jar
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info]   JarHolder : attempting to connect to jar:file:/C:/Program Files (x86)/JetBrains/ReSharper/v7.1/SDK/Tools/parserGen/parserGen.jar!/
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info]   JarHolder : initialized JAR: jar:file:/C:/Program Files (x86)/JetBrains/ReSharper/v7.1/SDK/Tools/parserGen/parserGen.jar!/
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] JarResourceLoader : initialization complete.
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceCache : initialized. (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] Default ResourceManager initialization complete.
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Include
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] Created: 20 parsers.
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] Velocimacro : initialization starting.
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] Velocimacro : adding VMs from VM library template : VM_global_library.vm
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] ResourceManager : unable to find resource 'VM_global_library.vm' in any resource loader.
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] Velocimacro : error using  VM library template VM_global_library.vm : org.apache.velocity.exception.ResourceNotFoundException: Unable to find resource 'VM_global_library.vm'
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] Velocimacro :  VM library template macro registration complete.
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] Velocimacro : allowInline = true : VMs can be defined inline in templates
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] Velocimacro : allowInlineLocal = false : VMs defined inline will be  global in scope if allowed.
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] Velocimacro : messages on  : VM system will output logging messages
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] Velocimacro : autoload off  : VM system will not automatically reload global library macros
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] Velocimacro : initialization complete.
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] Velocity successfully started.
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Nonterminal.ParserFunctionHeader.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Nonterminal.ElementCreation.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Rule.TreeAdd.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/NonterminalRule.Parser.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Nonterminal.ParserBody.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/GetTokenType.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Grammar.TermSetCheck.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Grammar.NotInFollowCheck.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Parser.GetErrorMessage.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Grammar.SyntaxError.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Nonterminal.ErrorResultHanging.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Grammar.Skip.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Nonterminal.ErrorHandler.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Terminal.ErrorMessageText.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Grammar.Match.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Grammar.TokenBitset.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Grammar.BitsetTermSetCheck.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Nonterminal.ErrorMessageText.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013  [error] Left side ($phantoms) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. parserGenTemplates/CSharp/Nonterminal.ParserFunctionBody.cs.template [line 26, column 18]
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Grammar.Parser.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/PsiInterface.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/GetterPrototype.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/WriteMethodPrototype.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Nonterminal.PsiStub.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/PsiLookaheadNullCheck.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Rule.PsiLookahead.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/PsiAdvance.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/RoleCheck.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/OrRule.GetChildRole.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Nonterminal.GetChildRole.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Getter.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/SetChild.PsiLookahead.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/SetChild.PsiAdvance.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/OrRule.SetChild.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Setter.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/TokenType.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [warn] org.apache.velocity.runtime.exception.ReferenceException: reference : template = parserGenTemplates/CSharp/TokenType.cs.template [line 19,column 36] : $lasttype is not a valid reference.
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/ElementType.Const.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/ElementType.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Grammar.Bitsets.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Nonterminal.NodeVisit.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Grammar.NodeVisitor.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Nonterminal.ParametrizedNodeVisit.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Grammar.ParametrizedNodeVisitor.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Nonterminal.ParametrizedNodeVisit2.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:10 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Grammar.ParametrizedNodeVisitor2.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:11 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Nonterminal.Test.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:11 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Nonterminal.Test.Getter.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:11 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Test.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:11 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Grammar.ErrorMessages.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:11 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/Navigator.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:11 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/AdvancedGetter.CheckedStepUp.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:11 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/GetterBody.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Tue Apr 09 22:33:11 GMT+04:00 2013   [info] ResourceManager : found parserGenTemplates/CSharp/NavigationMethod.cs.template with loader org.apache.velocity.runtime.resource.loader.JarResourceLoader

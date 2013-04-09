@@ -8,7 +8,7 @@ ISecretFile
             IUriIdentifier
               Identifier(type:IDENTIFIER, text:family)
               SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
-              Identifier(type:IDENTIFIER, text:jack)
+              Identifier(type:IDENTIFIER, text:stan)
         IFacts
           IFacts_
             IFact
@@ -16,14 +16,96 @@ ISecretFile
                 IExpression
                   IIdentifier
                     IUriIdentifier
-                      Identifier(type:IDENTIFIER, text:relation)
+                      Identifier(type:IDENTIFIER, text:itemKind)
                       SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
-                      Identifier(type:IDENTIFIER, text:hasFather)
+                      Identifier(type:IDENTIFIER, text:stuff)
               IObjects
                 IIdentifier
                   IUriIdentifier
-                    Identifier(type:IDENTIFIER, text:names)
+                    SecretTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
+                    SecretTokenType+UriStringTokenElement(type:URI_STRING, text:http://uri.string/path#localName)
+                    SecretTokenType+UriEndTokenElement(type:URI_END, text:>)
+                SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+                IIdentifier
+                  IUriIdentifier
+                    Identifier(type:IDENTIFIER, text:basics)
                     SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
-                    Identifier(type:IDENTIFIER, text:john)
+                    Identifier(type:IDENTIFIER, text:billy)
+                SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+                IIdentifier
+                  IList
+                    SecretTokenType+LParenthesesTokenElement(type:L_PARENTHESES, text:()
+                    IExpression
+                      IIdentifier
+                        ILiteral
+                          IDataLiteral
+                            SecretGenericToken(type:STRING_LITERAL, text:"text literal")
+                    IExpression
+                      IIdentifier
+                        ILiteral
+                          SecretTokenType+IntegerLiteralTokenElement(type:INTEGER_LITERAL, text:Integer)
+                    IExpression
+                      IIdentifier
+                        ILiteral
+                          SecretTokenType+DoubleLiteralTokenElement(type:DOUBLE_LITERAL, text:Double)
+                    IExpression
+                      IIdentifier
+                        ILiteral
+                          IDataLiteral
+                            SecretGenericToken(type:STRING_LITERAL, text:"PT18H")
+                            SecretTokenType+DataSuffixTokenElement(type:DATA_SUFFIX, text:^^)
+                            IUriIdentifier
+                              Identifier(type:IDENTIFIER, text:xsd)
+                              SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                              Identifier(type:IDENTIFIER, text:duration)
+                    SecretTokenType+RParenthesesTokenElement(type:R_PARENTHESES, text:))
+                SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+                IIdentifier
+                  ILiteral_keywords
+                    SecretTokenType+TrueKeywordTokenElement(type:TRUE_KEYWORD, text:true)
+                SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+                IIdentifier
+                  ILiteral_keywords
+                    SecretTokenType+FalseKeywordTokenElement(type:FALSE_KEYWORD, text:false)
+                SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+                IIdentifier
+                  ILiteral_keywords
+                    SecretTokenType+NullKeywordTokenElement(type:NULL_KEYWORD, text:null)
+                SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+                IIdentifier
+                  IVariableIdentifier
+                    SecretTokenType+VariablePrefixTokenElement(type:VARIABLE_PREFIX, text:?)
+                SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+                IIdentifier
+                  IVariableIdentifier
+                    SecretTokenType+VariablePrefixTokenElement(type:VARIABLE_PREFIX, text:?)
+                    Identifier(type:IDENTIFIER, text:someVar)
+                SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+                IIdentifier
+                  IFormula
+                    IFormula_
+                      SecretTokenType+LBraceTokenElement(type:L_BRACE, text:{)
+                      IFormulaContent
+                        ISentences
+                          ISentence
+                            IStatement
+                              ISubject
+                                IIdentifier
+                                  IUriIdentifier
+                                    Identifier(type:IDENTIFIER, text:family)
+                                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                                    Identifier(type:IDENTIFIER, text:jack)
+                              IFacts
+                                IFacts_
+                                  IFact
+                                    IPredicate
+                                      SecretTokenType+AKeywordTokenElement(type:A_KEYWORD, text:a)
+                                    IObjects
+                                      IIdentifier
+                                        IUriIdentifier
+                                          Identifier(type:IDENTIFIER, text:limbs)
+                                          SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                                          Identifier(type:IDENTIFIER, text:dick)
+                      SecretTokenType+RBraceTokenElement(type:R_BRACE, text:})
     SecretTokenType+DotTokenElement(type:DOT, text:.)
 

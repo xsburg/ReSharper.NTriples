@@ -380,16 +380,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
          return new StdPrefixDirective();
       }
     }
-    public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType STRING_LITERAL = STRING_LITERAL_INTERNAL.INSTANCE;
-    private class STRING_LITERAL_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
-    {
-      public static readonly STRING_LITERAL_INTERNAL INSTANCE = new STRING_LITERAL_INTERNAL ();
-      STRING_LITERAL_INTERNAL() : base("STRING_LITERAL") {}
-      public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
-      {
-         return new StringLiteral();
-      }
-    }
     public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType SUBJECT = SUBJECT_INTERNAL.INSTANCE;
     private class SUBJECT_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
     {

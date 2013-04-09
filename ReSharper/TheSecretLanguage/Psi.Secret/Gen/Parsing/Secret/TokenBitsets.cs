@@ -601,11 +601,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.VARIABLE_PREFIX,
       }
     );
-    public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet FIRST_stringLiteral = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
-      new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
-        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STRING_LITERAL,
-      }
-    );
     public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet FIRST_axisDirective = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
       new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.DEFAULT_AXIS_KEYWORD,

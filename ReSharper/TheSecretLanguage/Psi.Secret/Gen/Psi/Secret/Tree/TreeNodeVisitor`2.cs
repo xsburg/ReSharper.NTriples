@@ -123,9 +123,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
     public virtual TReturn VisitStdPrefixDirective ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IStdPrefixDirective stdPrefixDirectiveParam, TContext context) {
       return VisitNode (stdPrefixDirectiveParam, context);
     }
-    public virtual TReturn VisitStringLiteral ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IStringLiteral stringLiteralParam, TContext context) {
-      return VisitNode (stringLiteralParam, context);
-    }
     public virtual TReturn VisitSubject ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.ISubject subjectParam, TContext context) {
       return VisitNode (subjectParam, context);
     }
