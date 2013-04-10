@@ -83,49 +83,27 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
 
             IDENTIFIER_KEYWORDS = new NodeTypeSet
                 (
-                //YIELD_KEYWORD,
-                //LET_KEYWORD
+                    IDENTIFIER
                 );
 
             TYPE_KEYWORDS = new NodeTypeSet
                 (
-                //VOID_KEYWORD
+                    // 'class' etc
                 );
 
             LITERALS = new NodeTypeSet
                 (
-                STRING_LITERAL,
-                FLOAT_LITERAL,
-                INT_LITERAL,
-                NATIVEINT_LITERAL,
-                TRUE_KEYWORD,
-                FALSE_KEYWORD,
-                NULL_KEYWORD
+                    STRING_LITERAL,
+                    INTEGER_LITERAL,
+                    DOUBLE_LITERAL,
+                    TRUE_KEYWORD,
+                    FALSE_KEYWORD,
+                    NULL_KEYWORD
                 );
 
             TYPE_KEYWORDS = new NodeTypeSet
                 (
-                /*OBJ_KEYWORD,
-                EXN_KEYWORD,
-                NATIVEINT_KEYWORD,
-                UNATIVEINT_KEYWORD,
-                STRING_KEYWORD,
-                FLOAT32_KEYWORD,
-                SINGLE_KEYWORD,
-                FLOAT_KEYWORD,
-                DOUBLE_KEYWORD,
-                SBYTE_KEYWORD,
-                BYTE_KEYWORD,
-                INT16_KEYWORD,
-                UINT16_KEYWORD,
-                INT32_KEYWORD,
-                INT_KEYWORD,
-                UINT32_KEYWORD,
-                INT64_KEYWORD,
-                UINT64_KEYWORD,
-                CHAR_KEYWORD,
-                BOOL_KEYWORD,
-                DECIMAL_KEYWORD*/
+                    // something like 'bool' or 'int' in C#
                 );
         }
 

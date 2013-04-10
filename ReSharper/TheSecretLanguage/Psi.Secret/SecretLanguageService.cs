@@ -14,6 +14,7 @@ using JetBrains.ReSharper.Psi.Impl;
 using JetBrains.ReSharper.Psi.Impl.PsiManagerImpl;
 using JetBrains.ReSharper.Psi.Parsing;
 using JetBrains.ReSharper.Psi.Resolve;
+using JetBrains.ReSharper.Psi.Secret.Impl;
 using JetBrains.ReSharper.Psi.Secret.Parsing;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.Xml.Impl.Tree;
@@ -25,7 +26,7 @@ namespace JetBrains.ReSharper.Psi.Secret
     [Language(typeof(SecretLanguage))]
     public class SecretLanguageService : LanguageService
     {
-        //private readonly FSharpWordIndexLanguageProvider wordIndexLanguageProvider = new FSharpWordIndexLanguageProvider();
+        private readonly SecretWordIndexLanguageProvider wordIndexLanguageProvider = new SecretWordIndexLanguageProvider();
 
         public SecretLanguageService(PsiLanguageType psiLanguageType, IConstantValueService constantValueService)
             : base(psiLanguageType, constantValueService)
@@ -50,17 +51,14 @@ namespace JetBrains.ReSharper.Psi.Secret
 
         public override bool IsFilteredNode(ITreeNode node)
         {
-            // todo: filter out preprocessor, error elements, doc comment blocks, whitespace nodes as well
-            // as whitespace and preprocessor token
-
-            return false;
+            return node.IsWhitespaceToken();
         }
 
         public override IWordIndexLanguageProvider WordIndexLanguageProvider
         {
             get
             {
-                return null;
+                return wordIndexLanguageProvider;
             }
         }
 
