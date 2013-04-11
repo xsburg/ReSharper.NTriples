@@ -1,5 +1,7 @@
 ﻿Language: PsiLanguageType:Secret
 ISecretFile
+  NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+  NewLine(type:NEW_LINE, text:\n) spaces:"\n"
   ISentences
     ISentence
       IStatement
@@ -8,6 +10,8 @@ ISecretFile
             IFormula
               IFormula_
                 SecretTokenType+LBraceTokenElement(type:L_BRACE, text:{)
+                NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
                 IFormulaContent
                   ISentences
                     ISentence
@@ -18,6 +22,7 @@ ISecretFile
                             IFormula
                               IFormula_
                                 SecretTokenType+LBraceTokenElement(type:L_BRACE, text:{)
+                                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                 IFormulaContent
                                   ISentences
                                     ISentence
@@ -28,6 +33,7 @@ ISecretFile
                                             IFormula
                                               IFormula_
                                                 SecretTokenType+LBraceTokenElement(type:L_BRACE, text:{)
+                                                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                                 IFormulaContent
                                                   ISentences
                                                     ISentence
@@ -38,23 +44,30 @@ ISecretFile
                                                               Identifier(type:IDENTIFIER, text:names)
                                                               SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                                               Identifier(type:IDENTIFIER, text:dilly)
+                                                        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                                         IFacts
                                                           IFacts_
                                                             IFact
                                                               IPredicate
                                                                 SecretTokenType+SameAsTokenElement(type:SAME_AS, text:=)
+                                                              Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                                               IObjects
                                                                 IIdentifier
                                                                   IUriIdentifier
                                                                     Identifier(type:IDENTIFIER, text:names)
                                                                     SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                                                     Identifier(type:IDENTIFIER, text:billy)
+                                                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                                 SecretTokenType+RBraceTokenElement(type:R_BRACE, text:})
+                                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                 SecretTokenType+RBraceTokenElement(type:R_BRACE, text:})
+                            NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                            Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
                             SecretTokenType+ThenKeywordTokenElement(type:THEN_KEYWORD, text:@?then)
                             IFormula
                               IFormula_
                                 SecretTokenType+LBraceTokenElement(type:L_BRACE, text:{)
+                                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                 IFormulaContent
                                   ISentences
                                     ISentence
@@ -65,22 +78,28 @@ ISecretFile
                                               Identifier(type:IDENTIFIER, text:names)
                                               SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                               Identifier(type:IDENTIFIER, text:dilly)
+                                        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                         IFacts
                                           IFacts_
                                             IFact
                                               IPredicate
                                                 SecretTokenType+SameAsTokenElement(type:SAME_AS, text:=)
+                                              Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                               IObjects
                                                 IIdentifier
                                                   IUriIdentifier
                                                     Identifier(type:IDENTIFIER, text:names)
                                                     SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                                     Identifier(type:IDENTIFIER, text:billy)
+                                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                 SecretTokenType+RBraceTokenElement(type:R_BRACE, text:})
+                            NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                            Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
                             SecretTokenType+ElseKeywordTokenElement(type:ELSE_KEYWORD, text:@?else)
                             IFormula
                               IFormula_
                                 SecretTokenType+LBraceTokenElement(type:L_BRACE, text:{)
+                                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                 IFormulaContent
                                   ISentences
                                     ISentence
@@ -91,19 +110,24 @@ ISecretFile
                                               Identifier(type:IDENTIFIER, text:names)
                                               SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                               Identifier(type:IDENTIFIER, text:dilly)
+                                        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                         IFacts
                                           IFacts_
                                             IFact
                                               IPredicate
                                                 SecretTokenType+SameAsTokenElement(type:SAME_AS, text:=)
+                                              Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                               IObjects
                                                 IIdentifier
                                                   IUriIdentifier
                                                     Identifier(type:IDENTIFIER, text:names)
                                                     SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                                     Identifier(type:IDENTIFIER, text:billy)
+                                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                 SecretTokenType+RBraceTokenElement(type:R_BRACE, text:})
                     SecretTokenType+DotTokenElement(type:DOT, text:.)
+                    NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                    Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
                     ISentence
                       IStatement
                         IKeywordStatement
@@ -112,6 +136,7 @@ ISecretFile
                             IFormula
                               IFormula_
                                 SecretTokenType+LBraceTokenElement(type:L_BRACE, text:{)
+                                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                 IFormulaContent
                                   ISentences
                                     ISentence
@@ -122,18 +147,22 @@ ISecretFile
                                               Identifier(type:IDENTIFIER, text:names)
                                               SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                               Identifier(type:IDENTIFIER, text:dilly)
+                                        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                         IFacts
                                           IFacts_
                                             IFact
                                               IPredicate
                                                 SecretTokenType+SameAsTokenElement(type:SAME_AS, text:=)
+                                              Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                               IObjects
                                                 IIdentifier
                                                   IUriIdentifier
                                                     Identifier(type:IDENTIFIER, text:names)
                                                     SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                                     Identifier(type:IDENTIFIER, text:billy)
+                                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                 SecretTokenType+RBraceTokenElement(type:R_BRACE, text:})
+                            Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                             SecretTokenType+SelectKeywordTokenElement(type:SELECT_KEYWORD, text:@?select)
                             IList
                               SecretTokenType+LParenthesesTokenElement(type:L_PARENTHESES, text:()
@@ -143,6 +172,7 @@ ISecretFile
                                     Identifier(type:IDENTIFIER, text:names)
                                     SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                     Identifier(type:IDENTIFIER, text:kate)
+                              Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                               IExpression
                                 IIdentifier
                                   IUriIdentifier
@@ -150,11 +180,15 @@ ISecretFile
                                     SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                     Identifier(type:IDENTIFIER, text:jelly)
                               SecretTokenType+RParenthesesTokenElement(type:R_PARENTHESES, text:))
+                            Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                             SecretTokenType+BindTokenElement(type:BIND, text:->)
+                            Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                             IVariableIdentifier
                               SecretTokenType+VariablePrefixTokenElement(type:VARIABLE_PREFIX, text:?)
                               Identifier(type:IDENTIFIER, text:someVariable)
                     SecretTokenType+DotTokenElement(type:DOT, text:.)
+                    NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                    Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
                     ISentence
                       IStatement
                         IKeywordStatement
@@ -163,6 +197,7 @@ ISecretFile
                             IFormula
                               IFormula_
                                 SecretTokenType+LBraceTokenElement(type:L_BRACE, text:{)
+                                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                 IFormulaContent
                                   ISentences
                                     ISentence
@@ -173,23 +208,29 @@ ISecretFile
                                               Identifier(type:IDENTIFIER, text:names)
                                               SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                               Identifier(type:IDENTIFIER, text:dilly)
+                                        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                         IFacts
                                           IFacts_
                                             IFact
                                               IPredicate
                                                 SecretTokenType+SameAsTokenElement(type:SAME_AS, text:=)
+                                              Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                               IObjects
                                                 IIdentifier
                                                   IUriIdentifier
                                                     Identifier(type:IDENTIFIER, text:names)
                                                     SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                                     Identifier(type:IDENTIFIER, text:billy)
+                                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                 SecretTokenType+RBraceTokenElement(type:R_BRACE, text:})
+                            NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                            Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
                             SecretTokenType+OrKeywordTokenElement(type:OR_KEYWORD, text:@?or)
                             IOrStatement_
                               IFormula
                                 IFormula_
                                   SecretTokenType+LBraceTokenElement(type:L_BRACE, text:{)
+                                  Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                   IFormulaContent
                                     ISentences
                                       ISentence
@@ -200,23 +241,29 @@ ISecretFile
                                                 Identifier(type:IDENTIFIER, text:names)
                                                 SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                                 Identifier(type:IDENTIFIER, text:dilly)
+                                          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                           IFacts
                                             IFacts_
                                               IFact
                                                 IPredicate
                                                   SecretTokenType+SameAsTokenElement(type:SAME_AS, text:=)
+                                                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                                 IObjects
                                                   IIdentifier
                                                     IUriIdentifier
                                                       Identifier(type:IDENTIFIER, text:names)
                                                       SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                                       Identifier(type:IDENTIFIER, text:billy)
+                                  Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                   SecretTokenType+RBraceTokenElement(type:R_BRACE, text:})
+                              NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                              Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
                               SecretTokenType+OrKeywordTokenElement(type:OR_KEYWORD, text:@?or)
                               IOrStatement_
                                 IFormula
                                   IFormula_
                                     SecretTokenType+LBraceTokenElement(type:L_BRACE, text:{)
+                                    Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                     IFormulaContent
                                       ISentences
                                         ISentence
@@ -227,19 +274,24 @@ ISecretFile
                                                   Identifier(type:IDENTIFIER, text:names)
                                                   SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                                   Identifier(type:IDENTIFIER, text:dilly)
+                                            Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                             IFacts
                                               IFacts_
                                                 IFact
                                                   IPredicate
                                                     SecretTokenType+SameAsTokenElement(type:SAME_AS, text:=)
+                                                  Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                                   IObjects
                                                     IIdentifier
                                                       IUriIdentifier
                                                         Identifier(type:IDENTIFIER, text:names)
                                                         SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                                         Identifier(type:IDENTIFIER, text:billy)
+                                    Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                     SecretTokenType+RBraceTokenElement(type:R_BRACE, text:})
                     SecretTokenType+DotTokenElement(type:DOT, text:.)
+                    NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                    Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
                     ISentence
                       IStatement
                         IKeywordStatement
@@ -253,7 +305,9 @@ ISecretFile
                               IVariableIdentifier
                                 SecretTokenType+VariablePrefixTokenElement(type:VARIABLE_PREFIX, text:?)
                                 Identifier(type:IDENTIFIER, text:someVariable2)
+                            Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                             SecretTokenType+BindTokenElement(type:BIND, text:->)
+                            Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                             ISmartVar
                               IList
                                 SecretTokenType+LParenthesesTokenElement(type:L_PARENTHESES, text:()
@@ -263,6 +317,7 @@ ISecretFile
                                       Identifier(type:IDENTIFIER, text:names)
                                       SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                       Identifier(type:IDENTIFIER, text:pussy)
+                                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                 IExpression
                                   IIdentifier
                                     IUriIdentifier
@@ -270,9 +325,11 @@ ISecretFile
                                       SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                       Identifier(type:IDENTIFIER, text:tilly)
                                 SecretTokenType+RParenthesesTokenElement(type:R_PARENTHESES, text:))
+                            Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                             IFormula
                               IFormula_
                                 SecretTokenType+LBraceTokenElement(type:L_BRACE, text:{)
+                                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                 IFormulaContent
                                   ISentences
                                     ISentence
@@ -283,30 +340,38 @@ ISecretFile
                                               Identifier(type:IDENTIFIER, text:names)
                                               SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                               Identifier(type:IDENTIFIER, text:dilly)
+                                        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                         IFacts
                                           IFacts_
                                             IFact
                                               IPredicate
                                                 SecretTokenType+SameAsTokenElement(type:SAME_AS, text:=)
+                                              Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                               IObjects
                                                 IIdentifier
                                                   IUriIdentifier
                                                     Identifier(type:IDENTIFIER, text:names)
                                                     SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                                     Identifier(type:IDENTIFIER, text:billy)
+                                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                 SecretTokenType+RBraceTokenElement(type:R_BRACE, text:})
                     SecretTokenType+DotTokenElement(type:DOT, text:.)
+                NewLine(type:NEW_LINE, text:\n) spaces:"\n"
                 SecretTokenType+RBraceTokenElement(type:R_BRACE, text:})
+        NewLine(type:NEW_LINE, text:\n) spaces:"\n"
         IFacts
           IFacts_
             IFact
               IPredicate
                 SecretTokenType+ImpliesTokenElement(type:IMPLIES, text:=>)
+              NewLine(type:NEW_LINE, text:\n) spaces:"\n"
               IObjects
                 IIdentifier
                   IFormula
                     IFormula_
                       SecretTokenType+LBraceTokenElement(type:L_BRACE, text:{)
+                      NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                      Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
                       IFormulaContent
                         ISentences
                           ISentence
@@ -317,11 +382,13 @@ ISecretFile
                                     Identifier(type:IDENTIFIER, text:names)
                                     SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                     Identifier(type:IDENTIFIER, text:dilly)
+                              Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                               IFacts
                                 IFacts_
                                   IFact
                                     IPredicate
                                       SecretTokenType+AKeywordTokenElement(type:A_KEYWORD, text:a)
+                                    Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                     IObjects
                                       IIdentifier
                                         IUriIdentifier
@@ -329,5 +396,6 @@ ISecretFile
                                           SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                           Identifier(type:IDENTIFIER, text:billy)
                           SecretTokenType+DotTokenElement(type:DOT, text:.)
+                      NewLine(type:NEW_LINE, text:\n) spaces:"\n"
                       SecretTokenType+RBraceTokenElement(type:R_BRACE, text:})
 

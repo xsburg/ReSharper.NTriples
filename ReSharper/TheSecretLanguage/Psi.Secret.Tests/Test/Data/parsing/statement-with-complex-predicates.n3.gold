@@ -1,5 +1,7 @@
 ﻿Language: PsiLanguageType:Secret
 ISecretFile
+  NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+  NewLine(type:NEW_LINE, text:\n) spaces:"\n"
   ISentences
     ISentence
       IStatement
@@ -9,11 +11,14 @@ ISecretFile
               Identifier(type:IDENTIFIER, text:family)
               SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
               Identifier(type:IDENTIFIER, text:stan)
+        NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+        Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
         IFacts
           IFacts_
             IFact
               IPredicate
                 SecretTokenType+SameAsTokenElement(type:SAME_AS, text:=)
+              Whitespace(type:WHITE_SPACE, text: ) spaces:" "
               IObjects
                 IIdentifier
                   IUriIdentifier
@@ -21,9 +26,12 @@ ISecretFile
                     SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     Identifier(type:IDENTIFIER, text:man)
             SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
+            NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+            Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
             IFact
               IPredicate
                 SecretTokenType+ImpliesTokenElement(type:IMPLIES, text:=>)
+              Whitespace(type:WHITE_SPACE, text: ) spaces:" "
               IObjects
                 IIdentifier
                   IUriIdentifier
@@ -31,9 +39,12 @@ ISecretFile
                     SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     Identifier(type:IDENTIFIER, text:gay)
             SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
+            NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+            Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
             IFact
               IPredicate
                 SecretTokenType+AKeywordTokenElement(type:A_KEYWORD, text:a)
+              Whitespace(type:WHITE_SPACE, text: ) spaces:" "
               IObjects
                 IIdentifier
                   IUriIdentifier
@@ -41,6 +52,8 @@ ISecretFile
                     SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     Identifier(type:IDENTIFIER, text:Human)
             SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
+            NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+            Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
             IFact
               IPredicate
                 SecretTokenType+EqualToTokenElement(type:EQUAL_TO, text::=|==)
@@ -51,6 +64,8 @@ ISecretFile
                     SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     Identifier(type:IDENTIFIER, text:mike)
             SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
+            NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+            Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
             IFact
               IPredicate
                 SecretTokenType+EqualToTokenElement(type:EQUAL_TO, text::=|==)
@@ -61,9 +76,12 @@ ISecretFile
                     SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     Identifier(type:IDENTIFIER, text:jim)
             SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
+            NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+            Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
             IFact
               IPredicate
                 SecretTokenType+NotEqualToTokenElement(type:NOT_EQUAL_TO, text:!=)
+              Whitespace(type:WHITE_SPACE, text: ) spaces:" "
               IObjects
                 IIdentifier
                   IUriIdentifier
@@ -71,9 +89,12 @@ ISecretFile
                     SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     Identifier(type:IDENTIFIER, text:jally)
             SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
+            NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+            Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
             IFact
               IPredicate
                 SecretTokenType+BindTokenElement(type:BIND, text:->)
+              Whitespace(type:WHITE_SPACE, text: ) spaces:" "
               IObjects
                 IIdentifier
                   IUriIdentifier
@@ -81,9 +102,12 @@ ISecretFile
                     SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     Identifier(type:IDENTIFIER, text:bind)
             SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
+            NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+            Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
             IFact
               IPredicate
                 SecretTokenType+ConnectTokenElement(type:CONNECT, text:<->)
+              Whitespace(type:WHITE_SPACE, text: ) spaces:" "
               IObjects
                 IIdentifier
                   IUriIdentifier
@@ -91,6 +115,8 @@ ISecretFile
                     SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     Identifier(type:IDENTIFIER, text:connectionPoint)
             SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
+            NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+            Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
             IFact
               IPredicate
                 IExpression
@@ -113,6 +139,7 @@ ISecretFile
                           Identifier(type:IDENTIFIER, text:predicates)
                           SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                           Identifier(type:IDENTIFIER, text:three)
+              Whitespace(type:WHITE_SPACE, text: ) spaces:" "
               IObjects
                 IIdentifier
                   IUriIdentifier
@@ -120,30 +147,39 @@ ISecretFile
                     SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     Identifier(type:IDENTIFIER, text:simple)
             SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
+            NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+            Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
             IFact
               IPredicate
                 SecretTokenType+HasKeywordTokenElement(type:HAS_KEYWORD, text:@has)
+                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                 IExpression
                   IIdentifier
                     IUriIdentifier
                       Identifier(type:IDENTIFIER, text:roundThings)
                       SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                       Identifier(type:IDENTIFIER, text:balls)
+              Whitespace(type:WHITE_SPACE, text: ) spaces:" "
               IObjects
                 IIdentifier
                   ILiteral_keywords
                     SecretTokenType+TrueKeywordTokenElement(type:TRUE_KEYWORD, text:true)
             SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
+            NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+            Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
             IFact
               IPredicate
                 SecretTokenType+IsKeywordTokenElement(type:IS_KEYWORD, text:@is)
+                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                 IExpression
                   IIdentifier
                     IUriIdentifier
                       Identifier(type:IDENTIFIER, text:employment)
                       SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                       Identifier(type:IDENTIFIER, text:servant)
+                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                 SecretTokenType+OfKeywordTokenElement(type:OF_KEYWORD, text:@of)
+              Whitespace(type:WHITE_SPACE, text: ) spaces:" "
               IObjects
                 IIdentifier
                   IUriIdentifier

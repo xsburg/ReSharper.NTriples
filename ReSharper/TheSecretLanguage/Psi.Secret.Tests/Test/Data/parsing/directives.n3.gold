@@ -1,12 +1,16 @@
 ﻿Language: PsiLanguageType:Secret
 ISecretFile
+  NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+  NewLine(type:NEW_LINE, text:\n) spaces:"\n"
   ISentences
     ISentence
       IDirective
         IPrefixDirective
           SecretTokenType+PrefixKeywordTokenElement(type:PREFIX_KEYWORD, text:@prefix)
+          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           Identifier(type:IDENTIFIER, text:logics)
           SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           SecretTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
           SecretTokenType+UriStringTokenElement(type:URI_STRING, text:http://uri.string/path#localName)
           SecretTokenType+UriEndTokenElement(type:URI_END, text:>)
@@ -15,16 +19,20 @@ ISecretFile
       IDirective
         IStdPrefixDirective
           SecretTokenType+StdPrefixKeywordTokenElement(type:STD_PREFIX_KEYWORD, text:@std_prefix)
+          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           Identifier(type:IDENTIFIER, text:someStandard)
           SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           SecretTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
           SecretTokenType+UriStringTokenElement(type:URI_STRING, text:http://uri.string/path#localName)
           SecretTokenType+UriEndTokenElement(type:URI_END, text:>)
     SecretTokenType+DotTokenElement(type:DOT, text:.)
+    NewLine(type:NEW_LINE, text:\n) spaces:"\n"
     ISentence
       IDirective
         IExtensionDirective
           SecretTokenType+ExtensionKeywordTokenElement(type:EXTENSION_KEYWORD, text:@extension)
+          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           IUriIdentifier
             SecretTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
             SecretTokenType+UriStringTokenElement(type:URI_STRING, text:http://uri.string/path#localName)
@@ -34,10 +42,12 @@ ISecretFile
             SecretTokenType+UriStringTokenElement(type:URI_STRING, text:http://uri.string/path#localName)
             SecretTokenType+UriEndTokenElement(type:URI_END, text:>)
     SecretTokenType+DotTokenElement(type:DOT, text:.)
+    NewLine(type:NEW_LINE, text:\n) spaces:"\n"
     ISentence
       IDirective
         IUseExternalDirective
           SecretTokenType+UsingKeywordTokenElement(type:USING_KEYWORD, text:@using)
+          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           SecretTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
           SecretTokenType+UriStringTokenElement(type:URI_STRING, text:http://uri.string/path#localName)
           SecretTokenType+UriEndTokenElement(type:URI_END, text:>)
@@ -57,12 +67,14 @@ ISecretFile
       IDirective
         IAxisDirective
           SecretTokenType+DefaultAxisKeywordTokenElement(type:DEFAULT_AXIS_KEYWORD, text:@axis-default)
+          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           IUriIdentifiers
             IUriIdentifier
               Identifier(type:IDENTIFIER, text:foo)
               SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
               Identifier(type:IDENTIFIER, text:bar)
             SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+            Whitespace(type:WHITE_SPACE, text: ) spaces:" "
             IUriIdentifiers
               IUriIdentifier
                 SecretTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
@@ -73,22 +85,26 @@ ISecretFile
       IDirective
         IForAllDirective
           SecretTokenType+ForAllKeywordTokenElement(type:FOR_ALL_KEYWORD, text:@forAll)
+          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           IUriIdentifiers
             IUriIdentifier
               Identifier(type:IDENTIFIER, text:foo)
               SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
               Identifier(type:IDENTIFIER, text:bar)
             SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+            Whitespace(type:WHITE_SPACE, text: ) spaces:" "
             IUriIdentifiers
               IUriIdentifier
                 Identifier(type:IDENTIFIER, text:foo)
                 SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                 Identifier(type:IDENTIFIER, text:bar)
     SecretTokenType+DotTokenElement(type:DOT, text:.)
+    NewLine(type:NEW_LINE, text:\n) spaces:"\n"
     ISentence
       IDirective
         IForSomeDirective
           SecretTokenType+ForSomeKeywordTokenElement(type:FOR_SOME_KEYWORD, text:@forSome)
+          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           IUriIdentifiers
             IUriIdentifier
               SecretTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)

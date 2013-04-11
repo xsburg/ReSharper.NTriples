@@ -33,17 +33,11 @@ namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
 
             using (IMultiCoreFibers fibers = this.DaemonProcess.CreateFibers())
             {
-                // highlgiht global space
-                //if (DaemonProcess.FullRehighlightingRequired)
                 fibers.EnqueueJob(globalHighlighter);
             }
 
-            // remove all old highlightings
-            //if (DaemonProcess.FullRehighlightingRequired)
             commiter(new DaemonStageResult(EmptyArray<HighlightingInfo>.Instance));
         }
-
-        #region Nested type: GlobalProcessor
 
         private class GlobalProcessor : ProcessorBase
         {
@@ -52,10 +46,6 @@ namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
             {
             }
         }
-
-        #endregion
-
-        #region Nested type: ProcessorBase
 
         private class ProcessorBase : IRecursiveElementProcessor
         {
@@ -67,8 +57,6 @@ namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
                 this.myProcess = process;
                 this.myConsumer = consumer;
             }
-
-            #region IRecursiveElementProcessor Members
 
             public bool ProcessingIsFinished
             {
@@ -89,10 +77,6 @@ namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
             {
                 return this.myProcess.InteriorShouldBeProcessed(element, this.myConsumer);
             }
-
-            #endregion
         }
-
-        #endregion
     }
 }

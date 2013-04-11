@@ -13,28 +13,26 @@ using JetBrains.ReSharper.Daemon;
 using JetBrains.ReSharper.Daemon.Impl;
 using JetBrains.ReSharper.Psi.Tree;
 
-[assembly: RegisterConfigurableSeverity("String", null, HighlightingGroupIds.LanguageUsage, "String", @"String", Severity.INFO, false, Internal = false)]
+//[assembly: RegisterConfigurableSeverity("String", null, HighlightingGroupIds.LanguageUsage, "String", @"String", Severity.INFO, false, Internal = false)]
 
 namespace JetBrains.ReSharper.Psi.Secret.CodeInspections.Highlightings
 {
-    [ConfigurableSeverityHighlighting("String", "Secret", OverlapResolve = OverlapResolveKind.NONE, ToolTipFormatString = "String")]
-    internal class SecretStringLiteralHighlighting : ICustomAttributeIdHighlighting, IHighlightingWithRange
+    //[ConfigurableSeverityHighlighting("String", "Secret", OverlapResolve = OverlapResolveKind.NONE, ToolTipFormatString = "String")]
+    [StaticSeverityHighlighting(Severity.INFO, HighlightingGroupIds.LanguageUsage, OverlapResolve = OverlapResolveKind.NONE, ShowToolTipInStatusBar = false)]
+    internal class SecretSyntaxHighlighting : ICustomAttributeIdHighlighting, IHighlightingWithRange
     {
-        private const string AtributeId = "String"; // a text from the 'Environment -> Fonts and colors -> display items' list
         private readonly ITreeNode myElement;
 
-        public SecretStringLiteralHighlighting(ITreeNode element)
+        /// <summary>Constructor.</summary>
+        /// <param name="element">The tree node element.</param>
+        /// <param name="attributeId">The text from the 'Environment -> Fonts and colors -> display items' list.</param>
+        public SecretSyntaxHighlighting(ITreeNode element, string attributeId)
         {
             this.myElement = element;
+            this.AttributeId = attributeId;
         }
 
-        public string AttributeId
-        {
-            get
-            {
-                return AtributeId;
-            }
-        }
+        public string AttributeId { get; private set; }
 
         public string ErrorStripeToolTip
         {

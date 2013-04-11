@@ -1,5 +1,7 @@
 ﻿Language: PsiLanguageType:Secret
 ISecretFile
+  NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+  NewLine(type:NEW_LINE, text:\n) spaces:"\n"
   ISentences
     ISentence
       IStatement
@@ -9,6 +11,8 @@ ISecretFile
               Identifier(type:IDENTIFIER, text:family)
               SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
               Identifier(type:IDENTIFIER, text:stan)
+        NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+        Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
         IFacts
           IFacts_
             IFact
@@ -19,6 +23,11 @@ ISecretFile
                       Identifier(type:IDENTIFIER, text:itemKind)
                       SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                       Identifier(type:IDENTIFIER, text:stuff)
+              NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+              Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
+              Comment(type:END_OF_LINE_COMMENT, text:# uri)(CommentType:END_OF_LINE_COMMENT)
+              NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+              Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
               IObjects
                 IIdentifier
                   IUriIdentifier
@@ -26,20 +35,31 @@ ISecretFile
                     SecretTokenType+UriStringTokenElement(type:URI_STRING, text:http://uri.string/path#localName)
                     SecretTokenType+UriEndTokenElement(type:URI_END, text:>)
                 SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+                NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
                 IIdentifier
                   IUriIdentifier
                     Identifier(type:IDENTIFIER, text:basics)
                     SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     Identifier(type:IDENTIFIER, text:billy)
                 SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+                NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
+                Comment(type:END_OF_LINE_COMMENT, text:# list of literals)(CommentType:END_OF_LINE_COMMENT)
+                NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
                 IIdentifier
                   IList
                     SecretTokenType+LParenthesesTokenElement(type:L_PARENTHESES, text:()
+                    NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                    Whitespace(type:WHITE_SPACE, text:            ) spaces:"            "
                     IExpression
                       IIdentifier
                         ILiteral
                           IDataLiteral
                             SecretGenericToken(type:STRING_LITERAL, text:"text literal")
+                    NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                    Whitespace(type:WHITE_SPACE, text:            ) spaces:"            "
                     IExpression
                       IIdentifier
                         ILiteral
@@ -48,6 +68,8 @@ ISecretFile
                       IIdentifier
                         ILiteral
                           SecretTokenType+DoubleLiteralTokenElement(type:DOUBLE_LITERAL, text:Double)
+                    NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                    Whitespace(type:WHITE_SPACE, text:            ) spaces:"            "
                     IExpression
                       IIdentifier
                         ILiteral
@@ -58,33 +80,57 @@ ISecretFile
                               Identifier(type:IDENTIFIER, text:xsd)
                               SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                               Identifier(type:IDENTIFIER, text:duration)
+                    NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                    Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
                     SecretTokenType+RParenthesesTokenElement(type:R_PARENTHESES, text:))
                 SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+                NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
+                Comment(type:END_OF_LINE_COMMENT, text:# literal keywords)(CommentType:END_OF_LINE_COMMENT)
+                NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
                 IIdentifier
                   ILiteral_keywords
                     SecretTokenType+TrueKeywordTokenElement(type:TRUE_KEYWORD, text:true)
                 SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+                NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
                 IIdentifier
                   ILiteral_keywords
                     SecretTokenType+FalseKeywordTokenElement(type:FALSE_KEYWORD, text:false)
                 SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+                NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
                 IIdentifier
                   ILiteral_keywords
                     SecretTokenType+NullKeywordTokenElement(type:NULL_KEYWORD, text:null)
                 SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+                NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
+                Comment(type:END_OF_LINE_COMMENT, text:# variables (it should not be in a regular statement but the parser accepts it))(CommentType:END_OF_LINE_COMMENT)
+                NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
                 IIdentifier
                   IVariableIdentifier
                     SecretTokenType+VariablePrefixTokenElement(type:VARIABLE_PREFIX, text:?)
                 SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+                NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
                 IIdentifier
                   IVariableIdentifier
                     SecretTokenType+VariablePrefixTokenElement(type:VARIABLE_PREFIX, text:?)
                     Identifier(type:IDENTIFIER, text:someVar)
                 SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+                NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
+                Comment(type:END_OF_LINE_COMMENT, text:# and a simple formula)(CommentType:END_OF_LINE_COMMENT)
+                NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
                 IIdentifier
                   IFormula
                     IFormula_
                       SecretTokenType+LBraceTokenElement(type:L_BRACE, text:{)
+                      Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                       IFormulaContent
                         ISentences
                           ISentence
@@ -95,17 +141,22 @@ ISecretFile
                                     Identifier(type:IDENTIFIER, text:family)
                                     SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                     Identifier(type:IDENTIFIER, text:jack)
+                              Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                               IFacts
                                 IFacts_
                                   IFact
                                     IPredicate
                                       SecretTokenType+AKeywordTokenElement(type:A_KEYWORD, text:a)
+                                    Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                     IObjects
                                       IIdentifier
                                         IUriIdentifier
                                           Identifier(type:IDENTIFIER, text:limbs)
                                           SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                           Identifier(type:IDENTIFIER, text:dick)
+                      Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                       SecretTokenType+RBraceTokenElement(type:R_BRACE, text:})
+    NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+    Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
     SecretTokenType+DotTokenElement(type:DOT, text:.)
 

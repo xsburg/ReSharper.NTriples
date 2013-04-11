@@ -28,18 +28,12 @@ namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
             get { return this.myFile; }
         }
 
-        #region IDaemonStageProcess Members
-
         public IDaemonProcess DaemonProcess
         {
             get { return this.myDaemonProcess; }
         }
 
         public abstract void Execute(Action<DaemonStageResult> commiter);
-
-        #endregion
-
-        #region IRecursiveElementProcessor<IHighlightingConsumer> Members
 
         public virtual bool InteriorShouldBeProcessed(ITreeNode element, IHighlightingConsumer context)
         {
@@ -75,8 +69,6 @@ namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
                 this.VisitNode(element, consumer);
             }
         }
-
-        #endregion
 
         protected void HighlightInFile(Action<ISecretFile, IHighlightingConsumer> fileHighlighter, Action<DaemonStageResult> commiter)
         {

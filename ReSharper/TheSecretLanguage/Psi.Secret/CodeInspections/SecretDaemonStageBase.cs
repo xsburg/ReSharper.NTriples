@@ -9,8 +9,6 @@ namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
 {
     public abstract class SecretDaemonStageBase : IDaemonStage
     {
-        #region IDaemonStage Members
-
         public abstract IEnumerable<IDaemonStageProcess> CreateProcess(
             IDaemonProcess process, IContextBoundSettingsStore settings, DaemonProcessKind processKind);
 
@@ -29,8 +27,6 @@ namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
 
             return ErrorStripeRequest.STRIPE_AND_ERRORS;
         }
-
-        #endregion
 
         [CanBeNull]
         public static ISecretFile GetSecretFile(IPsiSourceFile sourceFile)
