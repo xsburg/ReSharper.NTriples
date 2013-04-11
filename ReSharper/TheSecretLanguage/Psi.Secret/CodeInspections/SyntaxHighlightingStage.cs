@@ -53,29 +53,31 @@ namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
 
             public override void VisitNode(ITreeNode node, IHighlightingConsumer consumer)
             {
-                var token = node as SecretGenericToken;
-                if (token != null)
+                var token = node as ITokenNode;
+                if (token == null)
                 {
-                    if (token.GetTokenType().IsStringLiteral)
-                    {
-                        this.AddSyntaxHighlighting(consumer, node, "String");
-                    }
-                    else if (token.GetTokenType().IsComment)
-                    {
-                        this.AddSyntaxHighlighting(consumer, node, "Comment");
-                    }
-                    else if (token.GetTokenType().IsKeyword)
-                    {
-                        this.AddSyntaxHighlighting(consumer, node, "Keyword");
-                    }
-                    else if (token.GetTokenType().IsIdentifier)
-                    {
-                        this.AddSyntaxHighlighting(consumer, node, HighlightingAttributeIds.METHOD_IDENTIFIER_ATTRIBUTE);
-                    }
-                    else if (token.GetTokenType().IsConstantLiteral)
-                    {
-                        this.AddSyntaxHighlighting(consumer, node, HighlightingAttributeIds.NAMESPACE_IDENTIFIER_ATTRIBUTE);
-                    }
+                    return;
+                }
+
+                if (token.GetTokenType().IsStringLiteral)
+                {
+                    this.AddSyntaxHighlighting(consumer, node, "String");
+                }
+                else if (token.GetTokenType().IsComment)
+                {
+                    this.AddSyntaxHighlighting(consumer, node, "Comment");
+                }
+                else if (token.GetTokenType().IsKeyword)
+                {
+                    this.AddSyntaxHighlighting(consumer, node, "Keyword");
+                }
+                else if (token.GetTokenType().IsIdentifier)
+                {
+                    this.AddSyntaxHighlighting(consumer, node, HighlightingAttributeIds.METHOD_IDENTIFIER_ATTRIBUTE);
+                }
+                else if (token.GetTokenType().IsConstantLiteral)
+                {
+                    this.AddSyntaxHighlighting(consumer, node, HighlightingAttributeIds.NAMESPACE_IDENTIFIER_ATTRIBUTE);
                 }
             }
 

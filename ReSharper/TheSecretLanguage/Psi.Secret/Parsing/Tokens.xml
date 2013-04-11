@@ -2,7 +2,6 @@
         KeywordNodeType="KeywordTokenNodeType" KeywordTokenElement="FixedTokenElement" TokenNodeType="FixedTokenNodeType"
         TokenTokenElement="FixedTokenElement">
   <Token name="URI_BEGIN" representation="&lt;" />
-  <Token name="URI_STRING" representation="http://uri.string/path#localName" />
   <Token name="URI_END" representation="&gt;" />
   
   <Token name="INTEGER_LITERAL" representation="Integer" />

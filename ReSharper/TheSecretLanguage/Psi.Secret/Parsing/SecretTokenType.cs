@@ -35,6 +35,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
 
         // parser non-skippable
         public static readonly TokenNodeType IDENTIFIER = new IdentifierNodeType();
+        public static readonly TokenNodeType URI_STRING = new UriStringNodeType();
         public static readonly NodeTypeSet IDENTIFIER_KEYWORDS;
         public static readonly TokenNodeType INT_LITERAL = new GenericTokenNodeType("INT_LITERAL", "42");
         public static readonly NodeTypeSet KEYWORDS;
@@ -238,6 +239,26 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
             public override LeafElementBase Create(IBuffer buffer, TreeOffset startOffset, TreeOffset endOffset)
             {
                 return new Identifier(buffer.GetText(new TextRange(startOffset.Offset, endOffset.Offset)));
+            }
+        }
+
+        private sealed class UriStringNodeType : SecretTokenNodeType
+        {
+            public UriStringNodeType() : base("URI_STRING")
+            {
+            }
+
+            public override string TokenRepresentation
+            {
+                get
+                {
+                    return "http://domain.com/path#name";
+                }
+            }
+
+            public override LeafElementBase Create(IBuffer buffer, TreeOffset startOffset, TreeOffset endOffset)
+            {
+                return new UriString(buffer.GetText(new TextRange(startOffset.Offset, endOffset.Offset)));
             }
         }
 

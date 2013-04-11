@@ -29,22 +29,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
         public static readonly TokenNodeType URI_BEGIN = new UriBeginNodeType();
         #endregion
 
-        #region URI_STRING
-        private class UriStringNodeType : FixedTokenNodeType
-        {
-            public UriStringNodeType(): base ("URI_STRING", "http://uri.string/path#localName") {}
-            public override LeafElementBase Create(IBuffer buffer, TreeOffset startOffset, TreeOffset endOffset)
-            {
-                return new UriStringTokenElement(this);
-            }
-        }
-        private class UriStringTokenElement : FixedTokenElement
-        {
-            public UriStringTokenElement(UriStringNodeType tokenNodeType) : base(tokenNodeType) { }
-        }
-        public static readonly TokenNodeType URI_STRING = new UriStringNodeType();
-        #endregion
-
         #region URI_END
         private class UriEndNodeType : FixedTokenNodeType
         {

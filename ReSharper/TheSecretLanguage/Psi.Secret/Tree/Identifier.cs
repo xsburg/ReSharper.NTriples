@@ -11,12 +11,13 @@
 using JetBrains.ReSharper.Psi.CSharp.Impl.Resolve;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Secret.Parsing;
+using JetBrains.ReSharper.Psi.Tree;
 
 namespace JetBrains.ReSharper.Psi.Secret.Tree
 {
     internal class Identifier : SecretTokenBase, ISecretIdentifier
     {
-        private readonly string myText = null;
+        private readonly string myText;
 
         public Identifier(string text)
         {
@@ -33,7 +34,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree
 
         public string Name
         {
-            // todo: verify it's ok to use c#
             get
             {
                 return CSharpResolveUtil.ReferenceName(this.myText);
