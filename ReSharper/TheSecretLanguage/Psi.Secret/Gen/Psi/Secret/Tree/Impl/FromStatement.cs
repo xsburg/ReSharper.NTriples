@@ -13,6 +13,8 @@ using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Secret.Parsing;
 namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
   internal partial class FromStatement : SecretCompositeElement, JetBrains.ReSharper.Psi.Secret.Tree.IFromStatement {
+    public const short FROM_FORMULA= ChildRole.LAST + 1;
+    public const short BIND_VARIABLE_IDENTIFIER= ChildRole.LAST + 2;
     internal FromStatement() : base() {
     }
     public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType NodeType {
@@ -26,6 +28,16 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
     }
     public override TReturn Accept<TContext, TReturn>(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor<TContext, TReturn> visitor, TContext context) {
       return visitor.VisitFromStatement(this, context);
+    }
+    private static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeDictionary<short> CHILD_ROLES = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeDictionary<short>(
+      new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>[]
+      {
+        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.FORMULA, FROM_FORMULA),
+        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.VARIABLE_IDENTIFIER, BIND_VARIABLE_IDENTIFIER),
+      }
+    );
+    public override short GetChildRole (JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement child) {
+      return CHILD_ROLES[child.NodeType];
     }
     public override string ToString() {
       return "IFromStatement";

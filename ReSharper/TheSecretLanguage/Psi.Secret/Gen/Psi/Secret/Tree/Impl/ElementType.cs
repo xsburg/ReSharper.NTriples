@@ -110,16 +110,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
          return new Facts();
       }
     }
-    public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType FACTS_ = FACTS__INTERNAL.INSTANCE;
-    private class FACTS__INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
-    {
-      public static readonly FACTS__INTERNAL INSTANCE = new FACTS__INTERNAL ();
-      FACTS__INTERNAL() : base("FACTS_") {}
-      public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
-      {
-         return new Facts_();
-      }
-    }
     public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType FOR_ALL_DIRECTIVE = FOR_ALL_DIRECTIVE_INTERNAL.INSTANCE;
     private class FOR_ALL_DIRECTIVE_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
     {
@@ -148,26 +138,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
       public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
       {
          return new Formula();
-      }
-    }
-    public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType FORMULA_CONTENT = FORMULA_CONTENT_INTERNAL.INSTANCE;
-    private class FORMULA_CONTENT_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
-    {
-      public static readonly FORMULA_CONTENT_INTERNAL INSTANCE = new FORMULA_CONTENT_INTERNAL ();
-      FORMULA_CONTENT_INTERNAL() : base("FORMULA_CONTENT") {}
-      public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
-      {
-         return new FormulaContent();
-      }
-    }
-    public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType FORMULA_ = FORMULA__INTERNAL.INSTANCE;
-    private class FORMULA__INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
-    {
-      public static readonly FORMULA__INTERNAL INSTANCE = new FORMULA__INTERNAL ();
-      FORMULA__INTERNAL() : base("FORMULA_") {}
-      public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
-      {
-         return new Formula_();
       }
     }
     public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType FROM_STATEMENT = FROM_STATEMENT_INTERNAL.INSTANCE;
@@ -230,26 +200,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
          return new List();
       }
     }
-    public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType LITERAL = LITERAL_INTERNAL.INSTANCE;
-    private class LITERAL_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
-    {
-      public static readonly LITERAL_INTERNAL INSTANCE = new LITERAL_INTERNAL ();
-      LITERAL_INTERNAL() : base("LITERAL") {}
-      public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
-      {
-         return new Literal();
-      }
-    }
-    public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType LITERAL_KEYWORDS = LITERAL_KEYWORDS_INTERNAL.INSTANCE;
-    private class LITERAL_KEYWORDS_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
-    {
-      public static readonly LITERAL_KEYWORDS_INTERNAL INSTANCE = new LITERAL_KEYWORDS_INTERNAL ();
-      LITERAL_KEYWORDS_INTERNAL() : base("LITERAL_KEYWORDS") {}
-      public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
-      {
-         return new Literal_keywords();
-      }
-    }
     public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType META = META_INTERNAL.INSTANCE;
     private class META_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
     {
@@ -258,16 +208,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
       public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
       {
          return new Meta();
-      }
-    }
-    public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType METAS = METAS_INTERNAL.INSTANCE;
-    private class METAS_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
-    {
-      public static readonly METAS_INTERNAL INSTANCE = new METAS_INTERNAL ();
-      METAS_INTERNAL() : base("METAS") {}
-      public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
-      {
-         return new Metas();
       }
     }
     public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType NOT_STATEMENT = NOT_STATEMENT_INTERNAL.INSTANCE;
@@ -298,16 +238,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
       public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
       {
          return new OrStatement();
-      }
-    }
-    public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType OR_STATEMENT_ = OR_STATEMENT__INTERNAL.INSTANCE;
-    private class OR_STATEMENT__INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
-    {
-      public static readonly OR_STATEMENT__INTERNAL INSTANCE = new OR_STATEMENT__INTERNAL ();
-      OR_STATEMENT__INTERNAL() : base("OR_STATEMENT_") {}
-      public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
-      {
-         return new OrStatement_();
       }
     }
     public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType PREDICATE = PREDICATE_INTERNAL.INSTANCE;

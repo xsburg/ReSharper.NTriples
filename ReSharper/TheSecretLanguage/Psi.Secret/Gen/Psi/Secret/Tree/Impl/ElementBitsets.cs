@@ -10,5 +10,14 @@
 using System.Collections;
 namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
   public static class ElementBitsets {
+    public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet LITERAL_BIT_SET = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
+      new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.DATA_LITERAL,
+      }
+    );
+    public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet LITERAL_KEYWORDS_BIT_SET = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
+      new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
+      }
+    );
   }
 }

@@ -4,14 +4,10 @@
   <Token name="URI_BEGIN" representation="&lt;" />
   <Token name="URI_END" representation="&gt;" />
   
-  <Token name="INTEGER_LITERAL" representation="Integer" />
-  <Token name="DOUBLE_LITERAL" representation="Double" />
-  
   <Token name="DOT" representation="." />
   <Token name="SEMICOLON" representation=";" />
   <Token name="COMMA" representation="," />
 
-  <Token name="LANG" representation="@lang" />
   <Token name="NAMESPACE_SEPARATOR" representation=":" />
   <Token name="VARIABLE_PREFIX" representation="?" />
 
@@ -36,30 +32,13 @@
   <Keyword name="EXTENSION_KEYWORD" representation="@extension" />
   <Keyword name="USING_KEYWORD" representation="@using" />
   <Keyword name="DEFAULT_AXIS_KEYWORD" representation="@axis-default" />
-  <Keyword name="AXIS_KEYWORD" representation="@?axis" />
-  <Keyword name="FUNCTOR_KEYWORD" representation="@?functor" />
-  <Keyword name="META_KEYWORD" representation="@?meta" />
-  <Keyword name="IN_KEYWORD" representation="@?in|@for" />
-  <Keyword name="OUT_KEYWORD" representation="@?out" />
-  <Keyword name="SELECT_KEYWORD" representation="@?select" />
-  <Keyword name="FROM_KEYWORD" representation="@?from" />
-  <Keyword name="NOT_KEYWORD" representation="@?not" />
-  <Keyword name="IF_KEYWORD" representation="@?if" />
-  <Keyword name="TRY_KEYWORD" representation="@?try" />
-  <Keyword name="OR_KEYWORD" representation="@?or" />
-  <Keyword name="IF_NOT_KEYWORD" representation="@?if-not" />
-  <Keyword name="THEN_KEYWORD" representation="@?then" />
-  <Keyword name="ELSE_KEYWORD" representation="@?else" />
-  <Keyword name="ONCE_KEYWORD" representation="@?once" />
 
   <Token name="BIND" representation="-&gt;" />
   <Token name="IMPLIES" representation="=&gt;" />
   <Token name="SAME_AS" representation="=" />
   <Token name="NAME_KEY" representation=":-" />
-  <Token name="EQUAL_TO" representation=":=|==" />
   <Token name="NOT_EQUAL_TO" representation="!=" />
   <Token name="CONNECT" representation="&lt;-&gt;" />
-  <Token name="ELLIPSIS" representation="..." />
   <Token name="DATA_SUFFIX" representation="^^" />
   <Token name="EXPRESSION_TAIL_OPERATOR" representation="^" />
 </Tokens>

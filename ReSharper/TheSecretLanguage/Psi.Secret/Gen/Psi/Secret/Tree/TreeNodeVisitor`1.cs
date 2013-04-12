@@ -25,7 +25,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
       VisitNode (cutStatementParam, context);
     }
     public virtual void VisitDataLiteral ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IDataLiteral dataLiteralParam, TContext context) {
-      VisitNode (dataLiteralParam, context);
+      VisitLiteral (dataLiteralParam, context);
     }
     public virtual void VisitDirective ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IDirective directiveParam, TContext context) {
       VisitNode (directiveParam, context);
@@ -42,9 +42,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
     public virtual void VisitFacts ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IFacts factsParam, TContext context) {
       VisitNode (factsParam, context);
     }
-    public virtual void VisitFacts_ ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IFacts_ facts_Param, TContext context) {
-      VisitNode (facts_Param, context);
-    }
     public virtual void VisitForAllDirective ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IForAllDirective forAllDirectiveParam, TContext context) {
       VisitNode (forAllDirectiveParam, context);
     }
@@ -53,12 +50,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
     }
     public virtual void VisitFormula ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IFormula formulaParam, TContext context) {
       VisitNode (formulaParam, context);
-    }
-    public virtual void VisitFormulaContent ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IFormulaContent formulaContentParam, TContext context) {
-      VisitNode (formulaContentParam, context);
-    }
-    public virtual void VisitFormula_ ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IFormula_ formula_Param, TContext context) {
-      VisitNode (formula_Param, context);
     }
     public virtual void VisitFromStatement ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IFromStatement fromStatementParam, TContext context) {
       VisitNode (fromStatementParam, context);
@@ -87,9 +78,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
     public virtual void VisitMeta ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IMeta metaParam, TContext context) {
       VisitNode (metaParam, context);
     }
-    public virtual void VisitMetas ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IMetas metasParam, TContext context) {
-      VisitNode (metasParam, context);
-    }
     public virtual void VisitNotStatement ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.INotStatement notStatementParam, TContext context) {
       VisitNode (notStatementParam, context);
     }
@@ -98,9 +86,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
     }
     public virtual void VisitOrStatement ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IOrStatement orStatementParam, TContext context) {
       VisitNode (orStatementParam, context);
-    }
-    public virtual void VisitOrStatement_ ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IOrStatement_ orStatement_Param, TContext context) {
-      VisitNode (orStatement_Param, context);
     }
     public virtual void VisitPredicate ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IPredicate predicateParam, TContext context) {
       VisitNode (predicateParam, context);

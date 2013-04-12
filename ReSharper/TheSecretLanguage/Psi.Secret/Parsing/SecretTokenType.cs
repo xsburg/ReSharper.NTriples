@@ -20,32 +20,46 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
     // ReSharper disable InconsistentNaming
     public static partial class SecretTokenType
     {
-        // todo: this is (arguably) wrong
-        public static readonly TokenNodeType BAD_CHARACTER = new GenericTokenNodeType("BAD_CHARACTER");
-
-        public static readonly TokenNodeType END_OF_LINE_COMMENT = new EndOfLineCommentNodeType();
-
         /// <summary>
         ///     Special token for some implementation details.
-        ///     It should never be returned from the F# lexer.
+        ///     It should never be returned from the lexer.
         /// </summary>
         public static readonly TokenNodeType EOF = new GenericTokenNodeType("EOF");
 
-        public static readonly TokenNodeType FLOAT_LITERAL = new GenericTokenNodeType("FLOAT_LITERAL", "42.0");
-
-        // parser non-skippable
+        public static readonly TokenNodeType STRING_LITERAL = new GenericTokenNodeType("STRING_LITERAL", "\"Annuit cœptis\"");
+        public static readonly TokenNodeType DOUBLE_LITERAL = new GenericTokenNodeType("DOUBLE_LITERAL", "42.0");
+        public static readonly TokenNodeType INTEGER_LITERAL = new GenericTokenNodeType("INTEGER_LITERAL", "42");
+        public static readonly TokenNodeType URI_STRING = new GenericTokenNodeType("URI_STRING");
         public static readonly TokenNodeType IDENTIFIER = new IdentifierNodeType();
-        public static readonly TokenNodeType URI_STRING = new UriStringNodeType();
+        public static readonly TokenNodeType WHITE_SPACE = new WhitespaceNodeType();
+        public static readonly TokenNodeType NEW_LINE = new NewLineNodeType();
+        public static readonly TokenNodeType END_OF_LINE_COMMENT = new EndOfLineCommentNodeType();
+        public static readonly TokenNodeType BAD_CHARACTER = new GenericTokenNodeType("BAD_CHARACTER");
+
+        public static readonly TokenNodeType AXIS_KEYWORD = new GenericTokenNodeType("AXIS_KEYWORD");
+        public static readonly TokenNodeType FUNCTOR_KEYWORD = new GenericTokenNodeType("FUNCTOR_KEYWORD");
+        public static readonly TokenNodeType META_KEYWORD = new GenericTokenNodeType("META_KEYWORD");
+        public static readonly TokenNodeType IN_KEYWORD = new GenericTokenNodeType("IN_KEYWORD");
+        public static readonly TokenNodeType OUT_KEYWORD = new GenericTokenNodeType("OUT_KEYWORD");
+        public static readonly TokenNodeType SELECT_KEYWORD = new GenericTokenNodeType("SELECT_KEYWORD");
+        public static readonly TokenNodeType FROM_KEYWORD = new GenericTokenNodeType("FROM_KEYWORD");
+        public static readonly TokenNodeType NOT_KEYWORD = new GenericTokenNodeType("NOT_KEYWORD");
+        public static readonly TokenNodeType IF_KEYWORD = new GenericTokenNodeType("IF_KEYWORD");
+        public static readonly TokenNodeType TRY_KEYWORD = new GenericTokenNodeType("TRY_KEYWORD");
+        public static readonly TokenNodeType OR_KEYWORD = new GenericTokenNodeType("OR_KEYWORD");
+        public static readonly TokenNodeType IF_NOT_KEYWORD = new GenericTokenNodeType("IF_NOT_KEYWORD");
+        public static readonly TokenNodeType THEN_KEYWORD = new GenericTokenNodeType("THEN_KEYWORD");
+        public static readonly TokenNodeType ELSE_KEYWORD = new GenericTokenNodeType("ELSE_KEYWORD");
+        public static readonly TokenNodeType ONCE_KEYWORD = new GenericTokenNodeType("ONCE_KEYWORD");
+
+        public static readonly TokenNodeType EQUAL_TO = new GenericTokenNodeType("EQUAL_TO");
+        public static readonly TokenNodeType ELLIPSIS = new GenericTokenNodeType("ELLIPSIS");
+        public static readonly TokenNodeType LANG = new GenericTokenNodeType("LANG");
+
         public static readonly NodeTypeSet IDENTIFIER_KEYWORDS;
-        public static readonly TokenNodeType INT_LITERAL = new GenericTokenNodeType("INT_LITERAL", "42");
         public static readonly NodeTypeSet KEYWORDS;
         public static readonly NodeTypeSet LITERALS;
-        public static readonly TokenNodeType NATIVEINT_LITERAL = new GenericTokenNodeType("NATIVEINT_LITERAL", "42n");
-        public static readonly TokenNodeType NEW_LINE = new NewLineNodeType();
-
-        public static readonly TokenNodeType STRING_LITERAL = new GenericTokenNodeType("STRING_LITERAL", "\"Annuit cœptis\"");
         public static readonly NodeTypeSet TYPE_KEYWORDS;
-        public static readonly TokenNodeType WHITE_SPACE = new WhitespaceNodeType();
 
         static SecretTokenType()
         {
@@ -100,11 +114,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
                     TRUE_KEYWORD,
                     FALSE_KEYWORD,
                     NULL_KEYWORD
-                );
-
-            TYPE_KEYWORDS = new NodeTypeSet
-                (
-                    // something like 'bool' or 'int' in C#
                 );
         }
 
@@ -239,26 +248,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
             public override LeafElementBase Create(IBuffer buffer, TreeOffset startOffset, TreeOffset endOffset)
             {
                 return new Identifier(buffer.GetText(new TextRange(startOffset.Offset, endOffset.Offset)));
-            }
-        }
-
-        private sealed class UriStringNodeType : SecretTokenNodeType
-        {
-            public UriStringNodeType() : base("URI_STRING")
-            {
-            }
-
-            public override string TokenRepresentation
-            {
-                get
-                {
-                    return "http://domain.com/path#name";
-                }
-            }
-
-            public override LeafElementBase Create(IBuffer buffer, TreeOffset startOffset, TreeOffset endOffset)
-            {
-                return new UriString(buffer.GetText(new TextRange(startOffset.Offset, endOffset.Offset)));
             }
         }
 

@@ -9,6 +9,6 @@
 // ReSharper disable RedundantNameQualifier
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 namespace JetBrains.ReSharper.Psi.Secret.Tree {
-  public partial interface IDataLiteral : JetBrains.ReSharper.Psi.Secret.Tree.ISecretTreeNode {
+  public partial interface IDataLiteral : JetBrains.ReSharper.Psi.Secret.Tree.ILiteral {
   }
 }

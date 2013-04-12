@@ -65,11 +65,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
       if (!CanVisitFurther(param)) return;
       VisitElement (level, param, caller);
     }
-      internal static void TestFacts_ (int level, JetBrains.ReSharper.Psi.Secret.Tree.IFacts_ param, String caller)
-    {
-      if (!CanVisitFurther(param)) return;
-      VisitElement (level, param, caller);
-    }
       internal static void TestForAllDirective (int level, JetBrains.ReSharper.Psi.Secret.Tree.IForAllDirective param, String caller)
     {
       if (!CanVisitFurther(param)) return;
@@ -81,16 +76,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
       VisitElement (level, param, caller);
     }
       internal static void TestFormula (int level, JetBrains.ReSharper.Psi.Secret.Tree.IFormula param, String caller)
-    {
-      if (!CanVisitFurther(param)) return;
-      VisitElement (level, param, caller);
-    }
-      internal static void TestFormulaContent (int level, JetBrains.ReSharper.Psi.Secret.Tree.IFormulaContent param, String caller)
-    {
-      if (!CanVisitFurther(param)) return;
-      VisitElement (level, param, caller);
-    }
-      internal static void TestFormula_ (int level, JetBrains.ReSharper.Psi.Secret.Tree.IFormula_ param, String caller)
     {
       if (!CanVisitFurther(param)) return;
       VisitElement (level, param, caller);
@@ -128,19 +113,15 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
       internal static void TestLiteral (int level, JetBrains.ReSharper.Psi.Secret.Tree.ILiteral param, String caller)
     {
       if (!CanVisitFurther(param)) return;
-      VisitElement (level, param, caller);
+      if (param is JetBrains.ReSharper.Psi.Secret.Tree.IDataLiteral) TestDataLiteral (level, (JetBrains.ReSharper.Psi.Secret.Tree.IDataLiteral)param, caller);
+      else throw new System.InvalidOperationException();
     }
       internal static void TestLiteral_keywords (int level, JetBrains.ReSharper.Psi.Secret.Tree.ILiteral_keywords param, String caller)
     {
       if (!CanVisitFurther(param)) return;
-      VisitElement (level, param, caller);
+      else throw new System.InvalidOperationException();
     }
       internal static void TestMeta (int level, JetBrains.ReSharper.Psi.Secret.Tree.IMeta param, String caller)
-    {
-      if (!CanVisitFurther(param)) return;
-      VisitElement (level, param, caller);
-    }
-      internal static void TestMetas (int level, JetBrains.ReSharper.Psi.Secret.Tree.IMetas param, String caller)
     {
       if (!CanVisitFurther(param)) return;
       VisitElement (level, param, caller);
@@ -156,11 +137,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
       VisitElement (level, param, caller);
     }
       internal static void TestOrStatement (int level, JetBrains.ReSharper.Psi.Secret.Tree.IOrStatement param, String caller)
-    {
-      if (!CanVisitFurther(param)) return;
-      VisitElement (level, param, caller);
-    }
-      internal static void TestOrStatement_ (int level, JetBrains.ReSharper.Psi.Secret.Tree.IOrStatement_ param, String caller)
     {
       if (!CanVisitFurther(param)) return;
       VisitElement (level, param, caller);

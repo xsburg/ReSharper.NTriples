@@ -177,7 +177,6 @@ VARIABLE_PREFIX=(\?)
 
 <YYINITIAL> {IDENTIFIER} { currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
 <YYINITIAL> {NAMESPACE_SEPARATOR} { currTokenType = makeToken(SecretTokenType.NAMESPACE_SEPARATOR); return currTokenType; }
-<YYINITIAL> {IDENTIFIER} { currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
 
 <YYINITIAL> {DOT} { currTokenType = makeToken(SecretTokenType.DOT); return currTokenType; }
 <YYINITIAL> {COMMA} { currTokenType = makeToken(SecretTokenType.COMMA); return currTokenType; }
