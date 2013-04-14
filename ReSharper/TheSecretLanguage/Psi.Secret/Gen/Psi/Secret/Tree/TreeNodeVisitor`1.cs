@@ -57,11 +57,17 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
     public virtual void VisitFunctorStatement ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IFunctorStatement functorStatementParam, TContext context) {
       VisitNode (functorStatementParam, context);
     }
+    public virtual void VisitHasExpression ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IHasExpression hasExpressionParam, TContext context) {
+      VisitNode (hasExpressionParam, context);
+    }
     public virtual void VisitIdentifier ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IIdentifier identifierParam, TContext context) {
       VisitNode (identifierParam, context);
     }
     public virtual void VisitIfStatement ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IIfStatement ifStatementParam, TContext context) {
       VisitNode (ifStatementParam, context);
+    }
+    public virtual void VisitIsOfExpression ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IIsOfExpression isOfExpressionParam, TContext context) {
+      VisitNode (isOfExpressionParam, context);
     }
     public virtual void VisitKeywordStatement ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IKeywordStatement keywordStatementParam, TContext context) {
       VisitNode (keywordStatementParam, context);
@@ -104,9 +110,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
     }
     public virtual void VisitStatement ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IStatement statementParam, TContext context) {
       VisitNode (statementParam, context);
-    }
-    public virtual void VisitStdPrefixDirective ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IStdPrefixDirective stdPrefixDirectiveParam, TContext context) {
-      VisitNode (stdPrefixDirectiveParam, context);
     }
     public virtual void VisitSubject ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.ISubject subjectParam, TContext context) {
       VisitNode (subjectParam, context);

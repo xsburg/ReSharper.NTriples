@@ -90,12 +90,22 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
       if (!CanVisitFurther(param)) return;
       VisitElement (level, param, caller);
     }
+      internal static void TestHasExpression (int level, JetBrains.ReSharper.Psi.Secret.Tree.IHasExpression param, String caller)
+    {
+      if (!CanVisitFurther(param)) return;
+      VisitElement (level, param, caller);
+    }
       internal static void TestIdentifier (int level, JetBrains.ReSharper.Psi.Secret.Tree.IIdentifier param, String caller)
     {
       if (!CanVisitFurther(param)) return;
       VisitElement (level, param, caller);
     }
       internal static void TestIfStatement (int level, JetBrains.ReSharper.Psi.Secret.Tree.IIfStatement param, String caller)
+    {
+      if (!CanVisitFurther(param)) return;
+      VisitElement (level, param, caller);
+    }
+      internal static void TestIsOfExpression (int level, JetBrains.ReSharper.Psi.Secret.Tree.IIsOfExpression param, String caller)
     {
       if (!CanVisitFurther(param)) return;
       VisitElement (level, param, caller);
@@ -150,6 +160,18 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
     {
       if (!CanVisitFurther(param)) return;
       VisitElement (level, param, caller);
+      {
+        JetBrains.ReSharper.Psi.Tree.ITokenNode child = ((JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDirective)param).Name;
+        TestTokenNode (level + 1, (JetBrains.ReSharper.Psi.Tree.ITokenNode)child, "Name");
+      }
+      {
+        JetBrains.ReSharper.Psi.Tree.ITokenNode child = ((JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDirective)param).Prefix;
+        TestTokenNode (level + 1, (JetBrains.ReSharper.Psi.Tree.ITokenNode)child, "Prefix");
+      }
+      {
+        JetBrains.ReSharper.Psi.Tree.ITokenNode child = ((JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDirective)param).UriString;
+        TestTokenNode (level + 1, (JetBrains.ReSharper.Psi.Tree.ITokenNode)child, "UriString");
+      }
     }
       internal static void TestSentence (int level, JetBrains.ReSharper.Psi.Secret.Tree.ISentence param, String caller)
     {
@@ -175,11 +197,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
       VisitElement (level, param, caller);
     }
       internal static void TestStatement (int level, JetBrains.ReSharper.Psi.Secret.Tree.IStatement param, String caller)
-    {
-      if (!CanVisitFurther(param)) return;
-      VisitElement (level, param, caller);
-    }
-      internal static void TestStdPrefixDirective (int level, JetBrains.ReSharper.Psi.Secret.Tree.IStdPrefixDirective param, String caller)
     {
       if (!CanVisitFurther(param)) return;
       VisitElement (level, param, caller);

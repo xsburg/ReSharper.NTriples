@@ -57,11 +57,17 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
     public virtual TReturn VisitFunctorStatement ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IFunctorStatement functorStatementParam, TContext context) {
       return VisitNode (functorStatementParam, context);
     }
+    public virtual TReturn VisitHasExpression ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IHasExpression hasExpressionParam, TContext context) {
+      return VisitNode (hasExpressionParam, context);
+    }
     public virtual TReturn VisitIdentifier ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IIdentifier identifierParam, TContext context) {
       return VisitNode (identifierParam, context);
     }
     public virtual TReturn VisitIfStatement ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IIfStatement ifStatementParam, TContext context) {
       return VisitNode (ifStatementParam, context);
+    }
+    public virtual TReturn VisitIsOfExpression ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IIsOfExpression isOfExpressionParam, TContext context) {
+      return VisitNode (isOfExpressionParam, context);
     }
     public virtual TReturn VisitKeywordStatement ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IKeywordStatement keywordStatementParam, TContext context) {
       return VisitNode (keywordStatementParam, context);
@@ -104,9 +110,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
     }
     public virtual TReturn VisitStatement ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IStatement statementParam, TContext context) {
       return VisitNode (statementParam, context);
-    }
-    public virtual TReturn VisitStdPrefixDirective ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IStdPrefixDirective stdPrefixDirectiveParam, TContext context) {
-      return VisitNode (stdPrefixDirectiveParam, context);
     }
     public virtual TReturn VisitSubject ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.ISubject subjectParam, TContext context) {
       return VisitNode (subjectParam, context);

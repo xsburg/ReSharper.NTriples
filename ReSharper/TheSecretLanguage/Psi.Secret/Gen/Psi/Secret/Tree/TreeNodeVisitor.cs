@@ -57,11 +57,17 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
     public virtual void VisitFunctorStatement ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IFunctorStatement functorStatementParam) {
       VisitNode (functorStatementParam);
     }
+    public virtual void VisitHasExpression ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IHasExpression hasExpressionParam) {
+      VisitNode (hasExpressionParam);
+    }
     public virtual void VisitIdentifier ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IIdentifier identifierParam) {
       VisitNode (identifierParam);
     }
     public virtual void VisitIfStatement ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IIfStatement ifStatementParam) {
       VisitNode (ifStatementParam);
+    }
+    public virtual void VisitIsOfExpression ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IIsOfExpression isOfExpressionParam) {
+      VisitNode (isOfExpressionParam);
     }
     public virtual void VisitKeywordStatement ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IKeywordStatement keywordStatementParam) {
       VisitNode (keywordStatementParam);
@@ -104,9 +110,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
     }
     public virtual void VisitStatement ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IStatement statementParam) {
       VisitNode (statementParam);
-    }
-    public virtual void VisitStdPrefixDirective ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IStdPrefixDirective stdPrefixDirectiveParam) {
-      VisitNode (stdPrefixDirectiveParam);
     }
     public virtual void VisitSubject ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.ISubject subjectParam) {
       VisitNode (subjectParam);

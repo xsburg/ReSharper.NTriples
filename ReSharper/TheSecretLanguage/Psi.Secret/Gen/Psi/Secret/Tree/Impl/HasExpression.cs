@@ -12,33 +12,23 @@ using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Secret.Parsing;
 namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
-  internal partial class Objects : SecretCompositeElement, JetBrains.ReSharper.Psi.Secret.Tree.IObjects {
-    public const short IDENTIFIERS= ChildRole.LAST + 1;
-    internal Objects() : base() {
+  internal partial class HasExpression : SecretCompositeElement, JetBrains.ReSharper.Psi.Secret.Tree.IHasExpression {
+    internal HasExpression() : base() {
     }
     public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType NodeType {
-      get { return JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.OBJECTS; }
+      get { return JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.HAS_EXPRESSION; }
     }
     public override void Accept(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor visitor) {
-      visitor.VisitObjects(this);
+      visitor.VisitHasExpression(this);
     }
     public override void Accept<TContext>(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor<TContext> visitor, TContext context) {
-      visitor.VisitObjects(this, context);
+      visitor.VisitHasExpression(this, context);
     }
     public override TReturn Accept<TContext, TReturn>(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor<TContext, TReturn> visitor, TContext context) {
-      return visitor.VisitObjects(this, context);
-    }
-    private static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeDictionary<short> CHILD_ROLES = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeDictionary<short>(
-      new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>[]
-      {
-        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.IDENTIFIER, IDENTIFIERS),
-      }
-    );
-    public override short GetChildRole (JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement child) {
-      return CHILD_ROLES[child.NodeType];
+      return visitor.VisitHasExpression(this, context);
     }
     public override string ToString() {
-      return "IObjects";
+      return "IHasExpression";
     }
   }
 }

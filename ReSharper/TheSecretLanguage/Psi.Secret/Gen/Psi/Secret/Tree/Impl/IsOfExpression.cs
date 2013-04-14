@@ -12,23 +12,23 @@ using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Secret.Parsing;
 namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
-  internal partial class StdPrefixDirective : SecretCompositeElement, JetBrains.ReSharper.Psi.Secret.Tree.IStdPrefixDirective {
-    internal StdPrefixDirective() : base() {
+  internal partial class IsOfExpression : SecretCompositeElement, JetBrains.ReSharper.Psi.Secret.Tree.IIsOfExpression {
+    internal IsOfExpression() : base() {
     }
     public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType NodeType {
-      get { return JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.STD_PREFIX_DIRECTIVE; }
+      get { return JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.IS_OF_EXPRESSION; }
     }
     public override void Accept(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor visitor) {
-      visitor.VisitStdPrefixDirective(this);
+      visitor.VisitIsOfExpression(this);
     }
     public override void Accept<TContext>(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor<TContext> visitor, TContext context) {
-      visitor.VisitStdPrefixDirective(this, context);
+      visitor.VisitIsOfExpression(this, context);
     }
     public override TReturn Accept<TContext, TReturn>(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor<TContext, TReturn> visitor, TContext context) {
-      return visitor.VisitStdPrefixDirective(this, context);
+      return visitor.VisitIsOfExpression(this, context);
     }
     public override string ToString() {
-      return "IStdPrefixDirective";
+      return "IIsOfExpression";
     }
   }
 }

@@ -9,7 +9,6 @@
 // ***********************************************************************
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
 using JetBrains.DocumentModel;
@@ -22,12 +21,65 @@ using JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve;
 using JetBrains.ReSharper.Psi.Resolve;
 using JetBrains.ReSharper.Psi.Secret;
 using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
+using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.ReSharper.Psi.Services;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
 
 namespace JetBrains.ReSharper.Psi.Secret.Completion
 {
+    [IntellisensePart]
+    internal class SecretCodeCompletionContextProvider : CodeCompletionContextProviderBase
+    {
+        public override bool IsApplicable(CodeCompletionContext context)
+        {
+            var psiFile = context.File as SecretFile;
+            return psiFile != null;
+        }
+
+        public override ISpecificCodeCompletionContext GetCompletionContext(CodeCompletionContext context)
+        {
+            var unterminatedContext = new SecretReparsedCompletionContext(context.File, context.SelectedTreeRange, "aaa");
+            unterminatedContext.Init();
+            IReference referenceToComplete = unterminatedContext.Reference;
+            ITreeNode elementToComplete = unterminatedContext.TreeNode;
+            if (elementToComplete == null)
+            {
+                return null;
+            }
+
+            TreeTextRange referenceRange = referenceToComplete != null ? referenceToComplete.GetTreeTextRange() : GetElementRange(elementToComplete);
+            TextRange referenceDocumentRange = unterminatedContext.ToDocumentRange(referenceRange);
+            if (!referenceDocumentRange.IsValid)
+            {
+                return null;
+            }
+
+            if (!referenceDocumentRange.Contains(context.CaretDocumentRange.TextRange))
+            {
+                return null;
+            }
+
+            TextLookupRanges ranges = GetTextLookupRanges(context, referenceDocumentRange);
+            return new SecretCodeCompletionContext(context, ranges, unterminatedContext);
+        }
+
+        private static TreeTextRange GetElementRange(ITreeNode element)
+        {
+            var tokenNode = element as ITokenNode;
+
+            if (tokenNode != null)
+            {
+                if (tokenNode.GetTokenType().IsIdentifier || tokenNode.GetTokenType().IsKeyword)
+                {
+                    return tokenNode.GetTreeTextRange();
+                }
+            }
+
+            return new TreeTextRange(element.GetTreeTextRange().EndOffset);
+        }
+    }
+
     [Language(typeof(SecretLanguage))]
     public class PsiCompletionItemsProviderKeywords : ItemsProviderOfSpecificContext<SecretCodeCompletionContext>
     {
@@ -44,10 +96,10 @@ namespace JetBrains.ReSharper.Psi.Secret.Completion
             return type == CodeCompletionType.AutomaticCompletion || type == CodeCompletionType.BasicCompletion;
         }
 
-        /*private static TextLookupItemBase CreateKeyworkLookupItem(string x)
+        private static TextLookupItemBase CreateKeyworkLookupItem(string x)
         {
-            return new PsiKeywordLookupItem(x, GetSuffix());
-        }*/
+            return new SecretKeywordLookupItem(x, GetSuffix());
+        }
 
         private static string GetSuffix()
         {
@@ -56,17 +108,19 @@ namespace JetBrains.ReSharper.Psi.Secret.Completion
 
         protected override bool AddLookupItems(SecretCodeCompletionContext context, GroupedItemsCollector collector)
         {
-            return base.AddLookupItems(context, collector);
-            /*var psiFile = context.BasicContext.File as IPsiFile;
-            if (psiFile == null)
+            var secretFile = context.BasicContext.File as ISecretFile;
+            if (secretFile == null)
             {
                 return false;
             }
-            foreach (TextLookupItemBase textLookupItem in KeywordCompletionUtil.GetAplicableKeywords(psiFile, context.BasicContext.SelectedTreeRange).Select(CreateKeyworkLookupItem))
+
+            var keywords = KeywordCompletionUtil.GetAplicableKeywords(secretFile, context.BasicContext.SelectedTreeRange).Select(CreateKeyworkLookupItem);
+            foreach (TextLookupItemBase textLookupItem in keywords)
             {
                 textLookupItem.InitializeRanges(context.Ranges, context.BasicContext);
                 collector.AddAtDefaultPlace(textLookupItem);
-            }*/
+            }
+
             return true;
         }
 
@@ -117,8 +171,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Completion
     public class SecretCodeCompletionContext : SpecificCodeCompletionContext
     {
         public SecretCodeCompletionContext(CodeCompletionContext context, TextLookupRanges completionRanges, SecretReparsedCompletionContext reparsedContext)
-            :
-              base(context)
+            : base(context)
         {
             ReparsedContext = reparsedContext;
             Ranges = completionRanges;
@@ -151,7 +204,8 @@ namespace JetBrains.ReSharper.Psi.Secret.Completion
             return treeNode.FindReferencesAt(referenceRange).FirstOrDefault();
         }
     }
-/*
+
+    /*
     public abstract class PsiReferenceBase : TreeReferenceBase<ITreeNode>, ICompleteableReference
     {
         protected readonly ITreeNode TreeNode;

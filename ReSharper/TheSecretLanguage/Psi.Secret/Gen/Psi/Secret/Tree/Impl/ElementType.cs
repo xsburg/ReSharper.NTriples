@@ -160,6 +160,16 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
          return new FunctorStatement();
       }
     }
+    public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType HAS_EXPRESSION = HAS_EXPRESSION_INTERNAL.INSTANCE;
+    private class HAS_EXPRESSION_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
+    {
+      public static readonly HAS_EXPRESSION_INTERNAL INSTANCE = new HAS_EXPRESSION_INTERNAL ();
+      HAS_EXPRESSION_INTERNAL() : base("HAS_EXPRESSION") {}
+      public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
+      {
+         return new HasExpression();
+      }
+    }
     public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType IDENTIFIER = IDENTIFIER_INTERNAL.INSTANCE;
     private class IDENTIFIER_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
     {
@@ -178,6 +188,16 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
       public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
       {
          return new IfStatement();
+      }
+    }
+    public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType IS_OF_EXPRESSION = IS_OF_EXPRESSION_INTERNAL.INSTANCE;
+    private class IS_OF_EXPRESSION_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
+    {
+      public static readonly IS_OF_EXPRESSION_INTERNAL INSTANCE = new IS_OF_EXPRESSION_INTERNAL ();
+      IS_OF_EXPRESSION_INTERNAL() : base("IS_OF_EXPRESSION") {}
+      public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
+      {
+         return new IsOfExpression();
       }
     }
     public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType KEYWORD_STATEMENT = KEYWORD_STATEMENT_INTERNAL.INSTANCE;
@@ -298,16 +318,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
       public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
       {
          return new Statement();
-      }
-    }
-    public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType STD_PREFIX_DIRECTIVE = STD_PREFIX_DIRECTIVE_INTERNAL.INSTANCE;
-    private class STD_PREFIX_DIRECTIVE_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
-    {
-      public static readonly STD_PREFIX_DIRECTIVE_INTERNAL INSTANCE = new STD_PREFIX_DIRECTIVE_INTERNAL ();
-      STD_PREFIX_DIRECTIVE_INTERNAL() : base("STD_PREFIX_DIRECTIVE") {}
-      public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
-      {
-         return new StdPrefixDirective();
       }
     }
     public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType SUBJECT = SUBJECT_INTERNAL.INSTANCE;

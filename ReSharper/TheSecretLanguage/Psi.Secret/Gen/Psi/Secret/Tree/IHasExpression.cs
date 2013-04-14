@@ -9,12 +9,6 @@
 // ReSharper disable RedundantNameQualifier
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 namespace JetBrains.ReSharper.Psi.Secret.Tree {
-  public partial interface IPrefixDirective : JetBrains.ReSharper.Psi.Secret.Tree.ISecretTreeNode {
-    JetBrains.ReSharper.Psi.Tree.ITokenNode Name { get; }
-  
-    JetBrains.ReSharper.Psi.Tree.ITokenNode Prefix { get; }
-  
-    JetBrains.ReSharper.Psi.Tree.ITokenNode UriString { get; }
-  
+  public partial interface IHasExpression : JetBrains.ReSharper.Psi.Secret.Tree.ISecretTreeNode {
   }
 }
