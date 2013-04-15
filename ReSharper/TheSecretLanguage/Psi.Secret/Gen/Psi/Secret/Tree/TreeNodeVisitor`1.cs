@@ -84,6 +84,9 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
     public virtual void VisitMeta ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IMeta metaParam, TContext context) {
       VisitNode (metaParam, context);
     }
+    public virtual void VisitNamespacePrefix ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.INamespacePrefix namespacePrefixParam, TContext context) {
+      VisitNode (namespacePrefixParam, context);
+    }
     public virtual void VisitNotStatement ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.INotStatement notStatementParam, TContext context) {
       VisitNode (notStatementParam, context);
     }

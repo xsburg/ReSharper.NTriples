@@ -230,6 +230,16 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
          return new Meta();
       }
     }
+    public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType NAMESPACE_PREFIX = NAMESPACE_PREFIX_INTERNAL.INSTANCE;
+    private class NAMESPACE_PREFIX_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
+    {
+      public static readonly NAMESPACE_PREFIX_INTERNAL INSTANCE = new NAMESPACE_PREFIX_INTERNAL ();
+      NAMESPACE_PREFIX_INTERNAL() : base("NAMESPACE_PREFIX") {}
+      public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
+      {
+         return new NamespacePrefix();
+      }
+    }
     public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType NOT_STATEMENT = NOT_STATEMENT_INTERNAL.INSTANCE;
     private class NOT_STATEMENT_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
     {

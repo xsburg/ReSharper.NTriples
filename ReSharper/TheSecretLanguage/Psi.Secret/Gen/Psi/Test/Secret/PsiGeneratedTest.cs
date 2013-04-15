@@ -136,6 +136,11 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
       if (!CanVisitFurther(param)) return;
       VisitElement (level, param, caller);
     }
+      internal static void TestNamespacePrefix (int level, JetBrains.ReSharper.Psi.Secret.Tree.INamespacePrefix param, String caller)
+    {
+      if (!CanVisitFurther(param)) return;
+      VisitElement (level, param, caller);
+    }
       internal static void TestNotStatement (int level, JetBrains.ReSharper.Psi.Secret.Tree.INotStatement param, String caller)
     {
       if (!CanVisitFurther(param)) return;

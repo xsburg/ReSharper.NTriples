@@ -1032,6 +1032,25 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         throw;
       }
     }
+    public virtual JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement parseNamespacePrefix () {
+      JetBrains.ReSharper.Psi.Parsing.TokenNodeType tokenType;
+      CompositeElement result = null;
+      TreeElement tempParsingResult = null; 
+      try {
+        result = TreeElementFactory.CreateCompositeElement (JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.NAMESPACE_PREFIX);
+        tempParsingResult = match(JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.IDENTIFIER);
+        result.AppendNewChild (tempParsingResult);
+      } catch (JetBrains.ReSharper.Psi.Parsing.SyntaxError e) {
+        if (e.ParsingResult != null && result != null) {
+          result.AppendNewChild (e.ParsingResult);
+        }
+        if (result != null) {
+          e.ParsingResult = result;
+        }
+        throw;
+      }
+      return result;
+    }
     public virtual JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement parseNotStatement () {
       JetBrains.ReSharper.Psi.Parsing.TokenNodeType tokenType;
       CompositeElement result = null;
@@ -1458,7 +1477,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         result = TreeElementFactory.CreateCompositeElement (JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.URI_IDENTIFIER);
         tokenType = myLexer.TokenType;
         if (tokenType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.IDENTIFIER) {
-          tempParsingResult = match(JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.IDENTIFIER);
+          tempParsingResult = parseNamespacePrefix();
           result.AppendNewChild (tempParsingResult);
           tempParsingResult = match(JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR);
           result.AppendNewChild (tempParsingResult);
