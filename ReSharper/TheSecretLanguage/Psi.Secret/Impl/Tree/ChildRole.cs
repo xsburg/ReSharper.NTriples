@@ -8,6 +8,7 @@
 // </summary>
 // ***********************************************************************
 // 
+
 namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 {
     public static class ChildRole

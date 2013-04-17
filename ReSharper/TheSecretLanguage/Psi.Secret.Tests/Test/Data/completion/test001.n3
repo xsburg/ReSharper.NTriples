@@ -17,12 +17,12 @@ family:stan
     itemKind:stuff
         # uri
         <http://domain.com/ontology#name>,
-        basics:billy,
+        {caret}basics:billy,
         # list of literals
         (
             "text literal" 
             "PT18H"^^xsd:duration
-        ),{caret}
+        ),
         # literal keywords
         true,
         false,
