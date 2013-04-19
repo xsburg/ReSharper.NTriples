@@ -8,6 +8,7 @@
 // </summary>
 // ***********************************************************************
 
+using System;
 using System.Collections.Generic;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve;
 using JetBrains.ReSharper.Psi.Resolve;
@@ -18,16 +19,16 @@ using JetBrains.ReSharper.Psi.Tree;
 
 namespace JetBrains.ReSharper.Psi.Secret.Resolve
 {
-    public class SecretNamespacePrefixReference : SecretReferenceBase
+    public class SecretPrefixReference : SecretReferenceBase
     {
-        public SecretNamespacePrefixReference(ITreeNode node)
+        public SecretPrefixReference(ITreeNode node)
             : base(node)
         {
         }
 
         public override IReference BindTo(IDeclaredElement element)
         {
-            var namespacePrefix = (INamespacePrefix)this.GetTreeNode();
+            var namespacePrefix = (IPrefix)this.GetTreeNode();
             if (namespacePrefix.Parent != null)
             {
                 PsiTreeUtil.ReplaceChild(namespacePrefix, namespacePrefix.FirstChild, element.ShortName);
@@ -48,7 +49,8 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
             {
                 return EmptySymbolTable.INSTANCE;
             }
-            return file.FileNamespacePrefixSymbolTable;
+
+            return file.FilePrefixesSymbolTable;
         }
 
         public override ResolveResultWithInfo ResolveWithoutCache()
@@ -65,12 +67,17 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
             }
             if (elements.Count == 0)
             {
-                var ruleName = this.myOwner as NamespacePrefix;
+                var ruleName = this.myOwner as Prefix;
                 // Unresolved namespaces creation
-                /* if( PsiTreeUtil.HasParent<InterfacesDefinition>(this.myOwner) && (ruleName != null))
-        {
-          elements = new List<DeclaredElementInstance>{new DeclaredElementInstance(new UnresolvedRuleInterfacesDeclaredElement(ruleName.GetSourceFile(), this.GetName(), this.myOwner.GetPsiServices()))};
-        }*/
+                if (ruleName != null)
+                {
+                    elements = new List<DeclaredElementInstance>
+                        {
+                            new DeclaredElementInstance(
+                                new UnresolvedNamespacePrefixDeclaredElement(
+                                    ruleName.GetSourceFile(), this.GetName(), this.myOwner.GetPsiServices()))
+                        };
+                }
             }
 
             return new ResolveResultWithInfo(ResolveResultFactory.CreateResolveResultFinaly(elements), ResolveErrorType.OK);

@@ -2,9 +2,9 @@
 
 namespace JetBrains.ReSharper.Psi.Secret.Tree
 {
-    public partial interface INamespacePrefix
+    public partial interface IPrefix
     {
-        SecretNamespacePrefixReference RuleNameReference { get; }
+        SecretPrefixReference PrefixReference { get; }
         void SetName(string shortName);
     }
 }

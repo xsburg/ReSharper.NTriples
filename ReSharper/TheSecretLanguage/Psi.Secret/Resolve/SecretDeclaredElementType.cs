@@ -21,7 +21,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
 
         public override string PresentableName
         {
-            get { return "Psi"; }
+            get { return "Secret"; }
         }
 
         protected override IDeclaredElementPresenter DefaultPresenter

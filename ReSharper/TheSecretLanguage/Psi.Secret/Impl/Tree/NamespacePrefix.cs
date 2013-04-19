@@ -3,29 +3,29 @@ using JetBrains.ReSharper.Psi.Tree;
 
 namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 {
-    internal partial class NamespacePrefix
+    internal partial class Prefix
     {
-        private SecretNamespacePrefixReference myNamespacePrefixReference;
+        private SecretPrefixReference myPrefixReference;
 
-        public SecretNamespacePrefixReference RuleNameReference
+        public SecretPrefixReference PrefixReference
         {
             get
             {
                 lock (this)
                 {
-                    return this.myNamespacePrefixReference ?? (this.myNamespacePrefixReference = new SecretNamespacePrefixReference(this));
+                    return this.myPrefixReference ?? (this.myPrefixReference = new SecretPrefixReference(this));
                 }
             }
         }
 
         public override ReferenceCollection GetFirstClassReferences()
         {
-            return new ReferenceCollection(this.RuleNameReference);
+            return new ReferenceCollection(this.PrefixReference);
         }
 
         public void SetName(string shortName)
         {
-            this.RuleNameReference.SetName(shortName);
+            this.PrefixReference.SetName(shortName);
         }
     }
 }

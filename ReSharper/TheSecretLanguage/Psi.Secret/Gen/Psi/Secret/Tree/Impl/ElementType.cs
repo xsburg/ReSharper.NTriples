@@ -230,16 +230,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
          return new Meta();
       }
     }
-    public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType NAMESPACE_PREFIX = NAMESPACE_PREFIX_INTERNAL.INSTANCE;
-    private class NAMESPACE_PREFIX_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
-    {
-      public static readonly NAMESPACE_PREFIX_INTERNAL INSTANCE = new NAMESPACE_PREFIX_INTERNAL ();
-      NAMESPACE_PREFIX_INTERNAL() : base("NAMESPACE_PREFIX") {}
-      public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
-      {
-         return new NamespacePrefix();
-      }
-    }
     public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType NOT_STATEMENT = NOT_STATEMENT_INTERNAL.INSTANCE;
     private class NOT_STATEMENT_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
     {
@@ -280,14 +270,34 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
          return new Predicate();
       }
     }
-    public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType PREFIX_DIRECTIVE = PREFIX_DIRECTIVE_INTERNAL.INSTANCE;
-    private class PREFIX_DIRECTIVE_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
+    public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType PREFIX = PREFIX_INTERNAL.INSTANCE;
+    private class PREFIX_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
     {
-      public static readonly PREFIX_DIRECTIVE_INTERNAL INSTANCE = new PREFIX_DIRECTIVE_INTERNAL ();
-      PREFIX_DIRECTIVE_INTERNAL() : base("PREFIX_DIRECTIVE") {}
+      public static readonly PREFIX_INTERNAL INSTANCE = new PREFIX_INTERNAL ();
+      PREFIX_INTERNAL() : base("PREFIX") {}
       public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
       {
-         return new PrefixDirective();
+         return new Prefix();
+      }
+    }
+    public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType PREFIX_DECLARATION = PREFIX_DECLARATION_INTERNAL.INSTANCE;
+    private class PREFIX_DECLARATION_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
+    {
+      public static readonly PREFIX_DECLARATION_INTERNAL INSTANCE = new PREFIX_DECLARATION_INTERNAL ();
+      PREFIX_DECLARATION_INTERNAL() : base("PREFIX_DECLARATION") {}
+      public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
+      {
+         return new PrefixDeclaration();
+      }
+    }
+    public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType PREFIX_DECLARED_NAME = PREFIX_DECLARED_NAME_INTERNAL.INSTANCE;
+    private class PREFIX_DECLARED_NAME_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
+    {
+      public static readonly PREFIX_DECLARED_NAME_INTERNAL INSTANCE = new PREFIX_DECLARED_NAME_INTERNAL ();
+      PREFIX_DECLARED_NAME_INTERNAL() : base("PREFIX_DECLARED_NAME") {}
+      public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
+      {
+         return new PrefixDeclaredName();
       }
     }
     public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType SENTENCE = SENTENCE_INTERNAL.INSTANCE;

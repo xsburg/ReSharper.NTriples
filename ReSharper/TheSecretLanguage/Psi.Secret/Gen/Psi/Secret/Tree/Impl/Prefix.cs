@@ -12,33 +12,23 @@ using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Secret.Parsing;
 namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
-  internal partial class Sentences : SecretCompositeElement, JetBrains.ReSharper.Psi.Secret.Tree.ISentences {
-    public const short SENTENCES= ChildRole.LAST + 1;
-    internal Sentences() : base() {
+  internal partial class Prefix : SecretCompositeElement, JetBrains.ReSharper.Psi.Secret.Tree.IPrefix {
+    internal Prefix() : base() {
     }
     public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType NodeType {
-      get { return JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.SENTENCES; }
+      get { return JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.PREFIX; }
     }
     public override void Accept(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor visitor) {
-      visitor.VisitSentences(this);
+      visitor.VisitPrefix(this);
     }
     public override void Accept<TContext>(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor<TContext> visitor, TContext context) {
-      visitor.VisitSentences(this, context);
+      visitor.VisitPrefix(this, context);
     }
     public override TReturn Accept<TContext, TReturn>(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor<TContext, TReturn> visitor, TContext context) {
-      return visitor.VisitSentences(this, context);
-    }
-    private static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeDictionary<short> CHILD_ROLES = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeDictionary<short>(
-      new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>[]
-      {
-        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.SENTENCE, SENTENCES),
-      }
-    );
-    public override short GetChildRole (JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement child) {
-      return CHILD_ROLES[child.NodeType];
+      return visitor.VisitPrefix(this, context);
     }
     public override string ToString() {
-      return "ISentences";
+      return "IPrefix";
     }
   }
 }

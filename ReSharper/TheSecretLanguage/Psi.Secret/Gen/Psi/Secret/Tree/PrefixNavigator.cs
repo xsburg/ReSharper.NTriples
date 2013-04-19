@@ -12,6 +12,6 @@ using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
 namespace JetBrains.ReSharper.Psi.Secret.Tree {
-  public static partial class PrefixDirectiveNavigator {
+  public static partial class PrefixNavigator {
   }
 }

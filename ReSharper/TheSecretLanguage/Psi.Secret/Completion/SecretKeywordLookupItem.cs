@@ -1,4 +1,14 @@
-﻿using JetBrains.ReSharper.Feature.Services.Lookup;
+﻿// ***********************************************************************
+// <author>Stephan B</author>
+// <copyright company="Comindware">
+//   Copyright (c) Comindware 2010-2013. All rights reserved.
+// </copyright>
+// <summary>
+//   SecretKeywordLookupItem.cs
+// </summary>
+// ***********************************************************************
+
+using JetBrains.ReSharper.Feature.Services.Lookup;
 using JetBrains.UI.Icons;
 using JetBrains.UI.RichText;
 using JetBrains.Util;
@@ -18,7 +28,10 @@ namespace JetBrains.ReSharper.Psi.Secret.Completion
 
         public override IconId Image
         {
-            get { return null; }
+            get
+            {
+                return null;
+            }
         }
 
         protected override RichText GetDisplayName()

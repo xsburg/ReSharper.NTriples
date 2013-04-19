@@ -7,11 +7,16 @@
 //------------------------------------------------------------------------------
 #pragma warning disable 0168, 0219, 0108, 0414
 // ReSharper disable RedundantNameQualifier
-using System.Collections;
-using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
 namespace JetBrains.ReSharper.Psi.Secret.Tree {
-  public static partial class NamespacePrefixNavigator {
+  public partial interface IPrefixDeclaration : JetBrains.ReSharper.Psi.Secret.Tree.ISecretTreeNode {
+    JetBrains.ReSharper.Psi.Tree.ITokenNode Prefix { get; }
+  
+    JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaredName PrefixName { get; }
+  
+    JetBrains.ReSharper.Psi.Tree.ITokenNode UriString { get; }
+  
+    JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaredName SetPrefixName (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaredName param);
+  
   }
 }

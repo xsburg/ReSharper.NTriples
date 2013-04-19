@@ -19,6 +19,11 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
     {
       if (!CanVisitFurther(param)) return;
       VisitElement (level, param, caller);
+      {
+        JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<JetBrains.ReSharper.Psi.Secret.Tree.ISentence> children = ((JetBrains.ReSharper.Psi.Secret.Tree.ISecretFile)param).Sentences;
+        foreach (JetBrains.ReSharper.Psi.Secret.Tree.ISentence child in children)
+        TestSentence (level + 1, (JetBrains.ReSharper.Psi.Secret.Tree.ISentence)child, "Sentences");
+      }
     }
       internal static void TestAnonymousIdentifier (int level, JetBrains.ReSharper.Psi.Secret.Tree.IAnonymousIdentifier param, String caller)
     {
@@ -136,11 +141,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
       if (!CanVisitFurther(param)) return;
       VisitElement (level, param, caller);
     }
-      internal static void TestNamespacePrefix (int level, JetBrains.ReSharper.Psi.Secret.Tree.INamespacePrefix param, String caller)
-    {
-      if (!CanVisitFurther(param)) return;
-      VisitElement (level, param, caller);
-    }
       internal static void TestNotStatement (int level, JetBrains.ReSharper.Psi.Secret.Tree.INotStatement param, String caller)
     {
       if (!CanVisitFurther(param)) return;
@@ -161,22 +161,32 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
       if (!CanVisitFurther(param)) return;
       VisitElement (level, param, caller);
     }
-      internal static void TestPrefixDirective (int level, JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDirective param, String caller)
+      internal static void TestPrefix (int level, JetBrains.ReSharper.Psi.Secret.Tree.IPrefix param, String caller)
+    {
+      if (!CanVisitFurther(param)) return;
+      VisitElement (level, param, caller);
+    }
+      internal static void TestPrefixDeclaration (int level, JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaration param, String caller)
     {
       if (!CanVisitFurther(param)) return;
       VisitElement (level, param, caller);
       {
-        JetBrains.ReSharper.Psi.Tree.ITokenNode child = ((JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDirective)param).Name;
-        TestTokenNode (level + 1, (JetBrains.ReSharper.Psi.Tree.ITokenNode)child, "Name");
-      }
-      {
-        JetBrains.ReSharper.Psi.Tree.ITokenNode child = ((JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDirective)param).Prefix;
+        JetBrains.ReSharper.Psi.Tree.ITokenNode child = ((JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaration)param).Prefix;
         TestTokenNode (level + 1, (JetBrains.ReSharper.Psi.Tree.ITokenNode)child, "Prefix");
       }
       {
-        JetBrains.ReSharper.Psi.Tree.ITokenNode child = ((JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDirective)param).UriString;
+        JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaredName child = ((JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaration)param).PrefixName;
+        TestPrefixDeclaredName (level + 1, (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaredName)child, "PrefixName");
+      }
+      {
+        JetBrains.ReSharper.Psi.Tree.ITokenNode child = ((JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaration)param).UriString;
         TestTokenNode (level + 1, (JetBrains.ReSharper.Psi.Tree.ITokenNode)child, "UriString");
       }
+    }
+      internal static void TestPrefixDeclaredName (int level, JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaredName param, String caller)
+    {
+      if (!CanVisitFurther(param)) return;
+      VisitElement (level, param, caller);
     }
       internal static void TestSentence (int level, JetBrains.ReSharper.Psi.Secret.Tree.ISentence param, String caller)
     {

@@ -3,6 +3,9 @@
 # ${CASE_SENSITIVE_COMPLETION:false}
 # ${COMPLETION_TYPE:Replace}
 
+@prefix family: <http://ontology:org/ontology#family>.
+@prefix relation: <http://ontology:org/ontology#relation>.
+
 family:jack
     relation:father names:john;
     relation:mother names:mary;

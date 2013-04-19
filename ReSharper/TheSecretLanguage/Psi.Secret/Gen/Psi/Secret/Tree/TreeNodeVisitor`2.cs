@@ -84,9 +84,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
     public virtual TReturn VisitMeta ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IMeta metaParam, TContext context) {
       return VisitNode (metaParam, context);
     }
-    public virtual TReturn VisitNamespacePrefix ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.INamespacePrefix namespacePrefixParam, TContext context) {
-      return VisitNode (namespacePrefixParam, context);
-    }
     public virtual TReturn VisitNotStatement ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.INotStatement notStatementParam, TContext context) {
       return VisitNode (notStatementParam, context);
     }
@@ -99,8 +96,14 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
     public virtual TReturn VisitPredicate ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IPredicate predicateParam, TContext context) {
       return VisitNode (predicateParam, context);
     }
-    public virtual TReturn VisitPrefixDirective ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDirective prefixDirectiveParam, TContext context) {
-      return VisitNode (prefixDirectiveParam, context);
+    public virtual TReturn VisitPrefix ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IPrefix prefixParam, TContext context) {
+      return VisitNode (prefixParam, context);
+    }
+    public virtual TReturn VisitPrefixDeclaration ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaration prefixDeclarationParam, TContext context) {
+      return VisitNode (prefixDeclarationParam, context);
+    }
+    public virtual TReturn VisitPrefixDeclaredName ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaredName prefixDeclaredNameParam, TContext context) {
+      return VisitNode (prefixDeclaredNameParam, context);
     }
     public virtual TReturn VisitSentence ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.ISentence sentenceParam, TContext context) {
       return VisitNode (sentenceParam, context);

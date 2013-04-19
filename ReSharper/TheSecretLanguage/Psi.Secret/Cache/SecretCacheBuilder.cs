@@ -80,7 +80,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
 
         public void ProcessBeforeInterior(ITreeNode element)
         {
-            var prefix = element as IPrefixDirective;
+            var prefix = element as IPrefixDeclaration;
             if (prefix != null)
             {
                 VisitPrefix(prefix);
@@ -98,9 +98,9 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
       }*/
         }
 
-        private void VisitPrefix(IPrefixDirective prefix)
+        private void VisitPrefix(IPrefixDeclaration prefix)
         {
-            var name = prefix.Name.GetText();
+            var name = prefix.PrefixName.GetText();
             int offset = prefix.GetNavigationRange().TextRange.StartOffset;
             var psiSourceFile = prefix.GetSourceFile();
             var uri = prefix.UriString.GetText();

@@ -84,9 +84,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
     public virtual void VisitMeta ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IMeta metaParam) {
       VisitNode (metaParam);
     }
-    public virtual void VisitNamespacePrefix ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.INamespacePrefix namespacePrefixParam) {
-      VisitNode (namespacePrefixParam);
-    }
     public virtual void VisitNotStatement ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.INotStatement notStatementParam) {
       VisitNode (notStatementParam);
     }
@@ -99,8 +96,14 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
     public virtual void VisitPredicate ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IPredicate predicateParam) {
       VisitNode (predicateParam);
     }
-    public virtual void VisitPrefixDirective ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDirective prefixDirectiveParam) {
-      VisitNode (prefixDirectiveParam);
+    public virtual void VisitPrefix ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IPrefix prefixParam) {
+      VisitNode (prefixParam);
+    }
+    public virtual void VisitPrefixDeclaration ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaration prefixDeclarationParam) {
+      VisitNode (prefixDeclarationParam);
+    }
+    public virtual void VisitPrefixDeclaredName ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaredName prefixDeclaredNameParam) {
+      VisitNode (prefixDeclaredNameParam);
     }
     public virtual void VisitSentence ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.ISentence sentenceParam) {
       VisitNode (sentenceParam);

@@ -12,22 +12,18 @@ using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
 namespace JetBrains.ReSharper.Psi.Secret.Tree {
-  public static partial class SecretFileNavigator {
+  public static partial class PrefixDeclarationNavigator {
     [JetBrains.Annotations.Pure]
     [JetBrains.Annotations.CanBeNull]
     [JetBrains.Annotations.ContractAnnotation("null <= null")]
-    public static JetBrains.ReSharper.Psi.Secret.Tree.ISecretFile GetBySentence (JetBrains.ReSharper.Psi.Secret.Tree.ISentence param) {
+    public static JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaration GetByPrefixName (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaredName param) {
       if (param == null) return null;
       TreeElement current = (TreeElement)param;
-      if (current.parent is JetBrains.ReSharper.Psi.Secret.Impl.Tree.Sentences) {
-        if (current.parent.GetChildRole (current) != JetBrains.ReSharper.Psi.Secret.Impl.Tree.Sentences.SENTENCES) return null;
+      if (current.parent is JetBrains.ReSharper.Psi.Secret.Impl.Tree.PrefixDeclaration) {
+        if (current.parent.GetChildRole (current) != JetBrains.ReSharper.Psi.Secret.Impl.Tree.PrefixDeclaration.IDENTIFIER) return null;
         current = current.parent;
       } else return null;
-      if (current.parent is JetBrains.ReSharper.Psi.Secret.Impl.Tree.SecretFile) {
-        if (current.parent.GetChildRole (current) != JetBrains.ReSharper.Psi.Secret.Impl.Tree.SecretFile.SENTENCES) return null;
-        current = current.parent;
-      } else return null;
-      return (JetBrains.ReSharper.Psi.Secret.Tree.ISecretFile) current;
+      return (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaration) current;
     }
   }
 }

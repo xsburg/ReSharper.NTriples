@@ -84,9 +84,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
     public virtual void VisitMeta ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IMeta metaParam, TContext context) {
       VisitNode (metaParam, context);
     }
-    public virtual void VisitNamespacePrefix ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.INamespacePrefix namespacePrefixParam, TContext context) {
-      VisitNode (namespacePrefixParam, context);
-    }
     public virtual void VisitNotStatement ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.INotStatement notStatementParam, TContext context) {
       VisitNode (notStatementParam, context);
     }
@@ -99,8 +96,14 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
     public virtual void VisitPredicate ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IPredicate predicateParam, TContext context) {
       VisitNode (predicateParam, context);
     }
-    public virtual void VisitPrefixDirective ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDirective prefixDirectiveParam, TContext context) {
-      VisitNode (prefixDirectiveParam, context);
+    public virtual void VisitPrefix ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IPrefix prefixParam, TContext context) {
+      VisitNode (prefixParam, context);
+    }
+    public virtual void VisitPrefixDeclaration ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaration prefixDeclarationParam, TContext context) {
+      VisitNode (prefixDeclarationParam, context);
+    }
+    public virtual void VisitPrefixDeclaredName ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaredName prefixDeclaredNameParam, TContext context) {
+      VisitNode (prefixDeclaredNameParam, context);
     }
     public virtual void VisitSentence ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.ISentence sentenceParam, TContext context) {
       VisitNode (sentenceParam, context);
