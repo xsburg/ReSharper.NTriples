@@ -6,14 +6,14 @@ using JetBrains.Util.DataStructures;
 
 namespace JetBrains.ReSharper.Psi.Secret.Resolve
 {
-    internal class NamespacePrefixDeclaredElement : IDeclaredElement
+    internal class PrefixDeclaredElement : IDeclaredElement
     {
         private readonly IFile myFile;
         private readonly IPsiServices myServices;
         private string myName;
         private string myNewName;
 
-        public NamespacePrefixDeclaredElement(IFile file, string name, IPsiServices services)
+        public PrefixDeclaredElement(IFile file, string name, IPsiServices services)
         {
             this.myFile = file;
             this.myName = name;

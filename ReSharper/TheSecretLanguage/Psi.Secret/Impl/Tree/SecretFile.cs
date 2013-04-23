@@ -77,5 +77,11 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 
             return list;
         }
+
+        public void ClearTables()
+        {
+            myPrefixesSymbolTable = null;
+            myPrefixes.Clear();
+        }
     }
 }
