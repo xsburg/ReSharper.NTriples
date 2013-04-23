@@ -2,16 +2,25 @@
 
 namespace JetBrains.ReSharper.Psi.Secret.Cache
 {
-    public class SecretSymbolBase
+    public abstract class SecretSymbolBase : ISecretSymbol
     {
         public string Name { get; private set; }
         public int Offset { get; private set; }
         public IPsiSourceFile SourceFile { get; private set; }
 
-        public SecretSymbolBase(string name, int offset, IPsiSourceFile sourceFile)
+        protected SecretSymbolBase(string name, int offset, IPsiSourceFile sourceFile)
         {
             this.Name = name;
             this.Offset = offset;
+            this.SourceFile = sourceFile;
+        }
+
+        protected SecretSymbolBase()
+        {
+        }
+
+        public void SetSourceFile(IPsiSourceFile sourceFile)
+        {
             this.SourceFile = sourceFile;
         }
 

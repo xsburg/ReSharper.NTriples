@@ -136,6 +136,11 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
       if (!CanVisitFurther(param)) return;
       else throw new System.InvalidOperationException();
     }
+      internal static void TestLocalName (int level, JetBrains.ReSharper.Psi.Secret.Tree.ILocalName param, String caller)
+    {
+      if (!CanVisitFurther(param)) return;
+      VisitElement (level, param, caller);
+    }
       internal static void TestMeta (int level, JetBrains.ReSharper.Psi.Secret.Tree.IMeta param, String caller)
     {
       if (!CanVisitFurther(param)) return;
@@ -225,6 +230,18 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
     {
       if (!CanVisitFurther(param)) return;
       VisitElement (level, param, caller);
+      {
+        JetBrains.ReSharper.Psi.Secret.Tree.ILocalName child = ((JetBrains.ReSharper.Psi.Secret.Tree.IUriIdentifier)param).LocalName;
+        TestLocalName (level + 1, (JetBrains.ReSharper.Psi.Secret.Tree.ILocalName)child, "LocalName");
+      }
+      {
+        JetBrains.ReSharper.Psi.Secret.Tree.IPrefix child = ((JetBrains.ReSharper.Psi.Secret.Tree.IUriIdentifier)param).Prefix;
+        TestPrefix (level + 1, (JetBrains.ReSharper.Psi.Secret.Tree.IPrefix)child, "Prefix");
+      }
+      {
+        JetBrains.ReSharper.Psi.Tree.ITokenNode child = ((JetBrains.ReSharper.Psi.Secret.Tree.IUriIdentifier)param).UriString;
+        TestTokenNode (level + 1, (JetBrains.ReSharper.Psi.Tree.ITokenNode)child, "UriString");
+      }
     }
       internal static void TestUriIdentifiers (int level, JetBrains.ReSharper.Psi.Secret.Tree.IUriIdentifiers param, String caller)
     {

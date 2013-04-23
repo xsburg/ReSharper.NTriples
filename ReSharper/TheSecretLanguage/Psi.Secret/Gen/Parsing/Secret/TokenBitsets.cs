@@ -496,6 +496,11 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OUT_KEYWORD,
       }
     );
+    public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet FIRST_localName = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
+      new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.IDENTIFIER,
+      }
+    );
     public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet FIRST_facts = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
       new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.AXIS_KEYWORD,

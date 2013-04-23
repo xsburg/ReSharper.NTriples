@@ -29,6 +29,21 @@ namespace JetBrains.ReSharper.Psi.Secret.Util
 
             return null;
         }
+        
+        public static T GetParent<T>(this ITreeNode element) where T : class
+        {
+            while (element != null)
+            {
+                if (element is T)
+                {
+                    return element as T;
+                }
+
+                element = element.Parent;
+            }
+
+            return null;
+        }
 
         public static ITreeNode GetFirstChild<T>(ITreeNode element) where T : ITreeNode
         {

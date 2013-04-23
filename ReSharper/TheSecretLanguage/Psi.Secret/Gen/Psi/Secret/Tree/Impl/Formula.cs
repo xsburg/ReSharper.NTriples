@@ -34,8 +34,8 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
       new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>[]
       {
         new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.SENTENCES, SENTENCES),
-        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.IDENTIFIER, NAME_KEY_IDENTIFIER),
         new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.META, META),
+        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.IDENTIFIER, NAME_KEY_IDENTIFIER),
       }
     );
     public override short GetChildRole (JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement child) {

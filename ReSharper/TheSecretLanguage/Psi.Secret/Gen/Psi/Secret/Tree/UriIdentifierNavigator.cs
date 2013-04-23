@@ -13,5 +13,29 @@ using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
 namespace JetBrains.ReSharper.Psi.Secret.Tree {
   public static partial class UriIdentifierNavigator {
+    [JetBrains.Annotations.Pure]
+    [JetBrains.Annotations.CanBeNull]
+    [JetBrains.Annotations.ContractAnnotation("null <= null")]
+    public static JetBrains.ReSharper.Psi.Secret.Tree.IUriIdentifier GetByLocalName (JetBrains.ReSharper.Psi.Secret.Tree.ILocalName param) {
+      if (param == null) return null;
+      TreeElement current = (TreeElement)param;
+      if (current.parent is JetBrains.ReSharper.Psi.Secret.Impl.Tree.UriIdentifier) {
+        if (current.parent.GetChildRole (current) != JetBrains.ReSharper.Psi.Secret.Impl.Tree.UriIdentifier.LOCALNAME) return null;
+        current = current.parent;
+      } else return null;
+      return (JetBrains.ReSharper.Psi.Secret.Tree.IUriIdentifier) current;
+    }
+    [JetBrains.Annotations.Pure]
+    [JetBrains.Annotations.CanBeNull]
+    [JetBrains.Annotations.ContractAnnotation("null <= null")]
+    public static JetBrains.ReSharper.Psi.Secret.Tree.IUriIdentifier GetByPrefix (JetBrains.ReSharper.Psi.Secret.Tree.IPrefix param) {
+      if (param == null) return null;
+      TreeElement current = (TreeElement)param;
+      if (current.parent is JetBrains.ReSharper.Psi.Secret.Impl.Tree.UriIdentifier) {
+        if (current.parent.GetChildRole (current) != JetBrains.ReSharper.Psi.Secret.Impl.Tree.UriIdentifier.PREFIX) return null;
+        current = current.parent;
+      } else return null;
+      return (JetBrains.ReSharper.Psi.Secret.Tree.IUriIdentifier) current;
+    }
   }
 }

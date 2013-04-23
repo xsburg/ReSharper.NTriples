@@ -140,5 +140,13 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
         {
             return PrefixName.GetText();
         }
+
+        public string NamespaceUri
+        {
+            get
+            {
+                return this.UriString.GetText().TrimEnd('#');
+            }
+        }
     }
 }

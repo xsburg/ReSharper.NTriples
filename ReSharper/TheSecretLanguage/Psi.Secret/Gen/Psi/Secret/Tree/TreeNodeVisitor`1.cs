@@ -81,6 +81,9 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
     public virtual void VisitLiteral_keywords ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.ILiteral_keywords literal_keywordsParam, TContext context) {
       VisitNode (literal_keywordsParam, context);
     }
+    public virtual void VisitLocalName ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.ILocalName localNameParam, TContext context) {
+      VisitNode (localNameParam, context);
+    }
     public virtual void VisitMeta ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IMeta metaParam, TContext context) {
       VisitNode (metaParam, context);
     }

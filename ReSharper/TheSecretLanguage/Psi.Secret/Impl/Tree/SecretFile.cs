@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve;
 using JetBrains.ReSharper.Psi.Resolve;
 using JetBrains.ReSharper.Psi.Secret.Resolve;
@@ -58,6 +59,23 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 
 
             return this.myPrefixesSymbolTable;
+        }
+
+        public IEnumerable<IDeclaredElement> GetDeclaredElements(string name)
+        {
+            if (FilePrefixesSymbolTable == null)
+            {
+                throw new Exception("never thrown");
+            }
+
+            var list = new LinkedList<IDeclaredElement>();
+            IDeclaredElement declaredElement;
+            if (myPrefixes.TryGetValue(name, out declaredElement))
+            {
+                list.AddFirst(declaredElement);
+            }
+
+            return list;
         }
     }
 }

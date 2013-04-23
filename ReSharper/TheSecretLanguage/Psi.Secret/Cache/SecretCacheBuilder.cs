@@ -10,12 +10,15 @@
 
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using JetBrains.Annotations;
 using JetBrains.DocumentModel;
+using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
 using JetBrains.ReSharper.Psi.Secret.Parsing;
 using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
+using JetBrains.ReSharper.Psi.Secret.Util;
 
 namespace JetBrains.ReSharper.Psi.Secret.Cache
 {
@@ -42,31 +45,17 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
             return Build(file);
         }
 
-        public static CachePair Read(BinaryReader reader, IPsiSourceFile sourceFile)
+        public static SecretFileCache Read(BinaryReader reader, IPsiSourceFile sourceFile)
         {
-            IList<SecretRuleSymbol> ruleData = ReadRules(reader, sourceFile);
-            IList<SecretPrefixSymbol> optionData = ReadOptions(reader, sourceFile);
-
-            return new CachePair(ruleData, optionData);
+            var uriIdentifierSymbols = ReadSymbolsOfType<SecretUriIdentifierSymbol>(reader, sourceFile);
+            return new SecretFileCache(uriIdentifierSymbols);
         }
 
-        public static void Write(CachePair pair, BinaryWriter writer)
+        public static void Write(SecretFileCache pair, BinaryWriter writer)
         {
-            IList<SecretRuleSymbol> ruleItems = pair.Rules;
-            writer.Write(ruleItems.Count);
-
-            foreach (SecretRuleSymbol ruleItem in ruleItems)
-            {
-                ruleItem.Write(writer);
-            }
-
-            IList<SecretPrefixSymbol> optionItems = pair.Options;
-            writer.Write(optionItems.Count);
-
-            foreach (SecretPrefixSymbol optionItem in optionItems)
-            {
-                optionItem.Write(writer);
-            }
+            var uriIdentifiers = pair.UriIdentifiers;
+            writer.Write(uriIdentifiers.Count);
+            uriIdentifiers.Apply(i => i.Write(writer));
         }
 
         public bool InteriorShouldBeProcessed(ITreeNode element)
@@ -78,27 +67,55 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
         {
         }
 
-        public void ProcessBeforeInterior(ITreeNode element)
+        private readonly List<IUriIdentifier> myUriIdentifiers = new List<IUriIdentifier>();
+        private readonly ISecretFile file;
+
+        private SecretCacheBuilder(ISecretFile file)
         {
-            var prefix = element as IPrefixDeclaration;
-            if (prefix != null)
-            {
-                VisitPrefix(prefix);
-            }
-            /*var optionDefinition = element as IOptionDefinition;
-      if (optionDefinition != null)
-      {
-        VisitOptionDefinition(optionDefinition);
-        return;
-      }
-      var ruleDeclaration = element as IRuleDeclaration;
-      if (ruleDeclaration != null)
-      {
-        VisitRuleDeclaration(ruleDeclaration);
-      }*/
+            this.file = file;
         }
 
-        private void VisitPrefix(IPrefixDeclaration prefix)
+        public void ProcessBeforeInterior(ITreeNode element)
+        {
+            var uriIdentifier = element as IUriIdentifier;
+            if (uriIdentifier != null)
+            {
+                if (uriIdentifier.Prefix != null)
+                {
+                    var psiSourceFile = uriIdentifier.GetSourceFile();
+                    var prefixElement = ((SecretFile)file).GetDeclaredElements(uriIdentifier.Prefix.GetText()).FirstOrDefault();
+                    if (prefixElement != null)
+                    {
+                        var prefixDeclaration = prefixElement.GetDeclarationsIn(psiSourceFile).OfType<IPrefixDeclaration>().FirstOrDefault();
+                        if (prefixDeclaration != null)
+                        {
+                            int offset = uriIdentifier.GetNavigationRange().TextRange.StartOffset;
+                            var ns = prefixDeclaration.UriString.GetText().TrimEnd('#');
+                            mySymbols.Add(new SecretUriIdentifierSymbol(ns, uriIdentifier.LocalName.GetText(), offset, psiSourceFile));
+                        }
+                    }
+                }
+                else
+                {
+                    var uriString = uriIdentifier.UriString.GetText();
+                    var separatorIndex = uriString.LastIndexOf('#');
+                    if (separatorIndex > 0)
+                    {
+                        var ns = uriString.Substring(0, separatorIndex);
+                        var length = uriString.Length - (separatorIndex + 1);
+                        if (length > 0)
+                        {
+                            int offset = uriIdentifier.GetNavigationRange().TextRange.StartOffset;
+                            var psiSourceFile = uriIdentifier.GetSourceFile();
+                            var localName = uriString.Substring(separatorIndex + 1, length);
+                            mySymbols.Add(new SecretUriIdentifierSymbol(ns, localName, offset, psiSourceFile));
+                        }
+                    }
+                }
+            }
+        }
+
+        /*private void VisitPrefix(IPrefixDeclaration prefix)
         {
             var name = prefix.PrefixName.GetText();
             int offset = prefix.GetNavigationRange().TextRange.StartOffset;
@@ -106,7 +123,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
             var uri = prefix.UriString.GetText();
             var isStandard = prefix.Prefix.GetTokenType() == SecretTokenType.STD_PREFIX_KEYWORD;
             mySymbols.Add(new SecretPrefixSymbol(name, offset, uri, isStandard, psiSourceFile));
-        }
+        }*/
 
         /*private void VisitOptionDefinition(IOptionDefinition optionDefinition)
     {
@@ -141,34 +158,20 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
         [CanBeNull]
         private static ICollection<ISecretSymbol> Build(ISecretFile file)
         {
-            var ret = new SecretCacheBuilder();
+            var ret = new SecretCacheBuilder(file);
             file.ProcessDescendants(ret);
             return ret.GetSymbols();
         }
 
-        private static IList<SecretPrefixSymbol> ReadOptions(BinaryReader reader, IPsiSourceFile sourceFile)
+        private static IList<TSymbol> ReadSymbolsOfType<TSymbol>(BinaryReader reader, IPsiSourceFile sourceFile) where TSymbol : SecretSymbolBase, new()
         {
             int count = reader.ReadInt32();
-            var ret = new List<SecretPrefixSymbol>();
+            var ret = new List<TSymbol>();
 
             for (int i = 0; i < count; i++)
             {
-                var symbol = new SecretPrefixSymbol(sourceFile);
-                symbol.Read(reader);
-                ret.Add(symbol);
-            }
-
-            return ret;
-        }
-
-        private static IList<SecretRuleSymbol> ReadRules(BinaryReader reader, IPsiSourceFile sourceFile)
-        {
-            int count = reader.ReadInt32();
-            var ret = new List<SecretRuleSymbol>();
-
-            for (int i = 0; i < count; i++)
-            {
-                var symbol = new SecretRuleSymbol(sourceFile);
+                var symbol = new TSymbol();
+                symbol.SetSourceFile(sourceFile);
                 symbol.Read(reader);
                 ret.Add(symbol);
             }

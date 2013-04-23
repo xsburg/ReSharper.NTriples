@@ -220,6 +220,16 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
          return new List();
       }
     }
+    public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType LOCAL_NAME = LOCAL_NAME_INTERNAL.INSTANCE;
+    private class LOCAL_NAME_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
+    {
+      public static readonly LOCAL_NAME_INTERNAL INSTANCE = new LOCAL_NAME_INTERNAL ();
+      LOCAL_NAME_INTERNAL() : base("LOCAL_NAME") {}
+      public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
+      {
+         return new LocalName();
+      }
+    }
     public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType META = META_INTERNAL.INSTANCE;
     private class META_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
     {

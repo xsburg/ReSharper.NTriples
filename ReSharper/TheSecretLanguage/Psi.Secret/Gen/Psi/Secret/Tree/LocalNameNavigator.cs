@@ -7,18 +7,11 @@
 //------------------------------------------------------------------------------
 #pragma warning disable 0168, 0219, 0108, 0414
 // ReSharper disable RedundantNameQualifier
+using System.Collections;
+using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
+using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
 namespace JetBrains.ReSharper.Psi.Secret.Tree {
-  public partial interface IUriIdentifier : JetBrains.ReSharper.Psi.Secret.Tree.ISecretTreeNode {
-    JetBrains.ReSharper.Psi.Secret.Tree.ILocalName LocalName { get; }
-  
-    JetBrains.ReSharper.Psi.Secret.Tree.IPrefix Prefix { get; }
-  
-    JetBrains.ReSharper.Psi.Tree.ITokenNode UriString { get; }
-  
-    JetBrains.ReSharper.Psi.Secret.Tree.ILocalName SetLocalName (JetBrains.ReSharper.Psi.Secret.Tree.ILocalName param);
-  
-    JetBrains.ReSharper.Psi.Secret.Tree.IPrefix SetPrefix (JetBrains.ReSharper.Psi.Secret.Tree.IPrefix param);
-  
+  public static partial class LocalNameNavigator {
   }
 }

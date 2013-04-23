@@ -14,6 +14,8 @@ using JetBrains.DocumentModel;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure;
 using JetBrains.ReSharper.Feature.Services.Lookup;
+using JetBrains.ReSharper.Psi.Resolve;
+using JetBrains.ReSharper.Psi.Secret.Resolve;
 using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
@@ -53,7 +55,14 @@ namespace JetBrains.ReSharper.Psi.Secret.Completion
         protected override bool IsAvailable(SecretCodeCompletionContext context)
         {
             CodeCompletionType type = context.BasicContext.CodeCompletionType;
-            return type == CodeCompletionType.AutomaticCompletion || type == CodeCompletionType.BasicCompletion;
+            var correctCompletionType = type == CodeCompletionType.AutomaticCompletion || type == CodeCompletionType.BasicCompletion;
+            if (!correctCompletionType)
+            {
+                return false;
+            }
+
+            var correctContext = !(context.ReparsedContext.Reference is SecretLocalNameReference);
+            return correctContext;
         }
 
         private static TextLookupItemBase CreateKeyworkLookupItem(string x)
