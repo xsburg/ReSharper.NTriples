@@ -1,38 +1,87 @@
-﻿using System.Collections.Generic;
+﻿// ***********************************************************************
+// <author>Stephan B</author>
+// <copyright company="Comindware">
+//   Copyright (c) Comindware 2010-2013. All rights reserved.
+// </copyright>
+// <summary>
+//   PsiElementFactoryImpl.cs
+// </summary>
+// ***********************************************************************
+
 using JetBrains.Annotations;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Secret.Parsing;
+using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Text;
-using JetBrains.Util;
 
 namespace JetBrains.ReSharper.Psi.Secret.Util
 {
-  public class PsiElementFactoryImpl : PsiElementFactory
-  {
-    private readonly SecretLanguageService myLanguageService;
-    private readonly IPsiModule myModule;
-
-    public PsiElementFactoryImpl([NotNull] IPsiModule module)
-      : this(module, module.GetSolution())
+    public class PsiElementFactoryImpl : PsiElementFactory
     {
-    }
+        private readonly SecretLanguageService myLanguageService;
+        private readonly IPsiModule myModule;
 
-    private PsiElementFactoryImpl([NotNull] IPsiModule module, [NotNull] ISolution solution)
-    {
-      this.myModule = module;
-      this.Solution = solution;
-      this.Solution.GetPsiServices();
-      this.myLanguageService = (SecretLanguageService)SecretLanguage.Instance.LanguageService();
-    }
+        public PsiElementFactoryImpl([NotNull] IPsiModule module)
+            : this(module, module.GetSolution())
+        {
+        }
 
-    private SecretParser CreateParser(string text)
-    {
-        return (SecretParser)this.myLanguageService.CreateParser(this.myLanguageService.GetPrimaryLexerFactory().CreateLexer(new StringBuffer(text)), null, null);
-    }
+        private PsiElementFactoryImpl([NotNull] IPsiModule module, [NotNull] ISolution solution)
+        {
+            this.myModule = module;
+            this.Solution = solution;
+            this.Solution.GetPsiServices();
+            this.myLanguageService = (SecretLanguageService)SecretLanguage.Instance.LanguageService();
+        }
 
-    /*public override IRuleName CreateIdentifierExpression(string name)
+        private SecretParser CreateParser(string text)
+        {
+            return
+                (SecretParser)
+                this.myLanguageService.CreateParser(
+                    this.myLanguageService.GetPrimaryLexerFactory().CreateLexer(new StringBuffer(text)), null, null);
+        }
+
+        public override IPrefixName CreatePrefixExpression(string name)
+        {
+            var expression = (IPrefixName)this.CreateExpression("$0", name);
+            return expression;
+        }
+
+        private IPrefixName CreateExpression(string format, string name)
+        {
+            var node = this.CreateParser(name + "\n" + ":" + name + "\n" + ";").ParseSecretFile(false) as ISecretFile;
+            if (node == null)
+            {
+                throw new ElementFactoryException(string.Format("Cannot create expression '{0}'", format));
+            }
+
+            SandBox.CreateSandBoxFor(node, this.myModule);
+            var ruleDeclaration = node.FirstChild as IRuleDeclaration;
+            if (ruleDeclaration != null)
+            {
+                IRuleBody ruleBody = ruleDeclaration.Body;
+                ITreeNode child = ruleBody.FirstChild;
+                while (child != null && !(child is IPsiExpression))
+                {
+                    child = child.NextSibling;
+                }
+                while (child != null && !(child is IRuleName))
+                {
+                    child = child.FirstChild;
+                }
+                if (child != null)
+                {
+                    return child;
+                }
+            }
+
+            throw new ElementFactoryException(string.Format("Cannot create expression '{0}'" + name, format));
+        }
+
+        /*public override IRuleName CreateIdentifierExpression(string name)
     {
       var expression = (IRuleName)this.CreateExpression("$0", name);
       return expression;
@@ -121,5 +170,5 @@ namespace JetBrains.ReSharper.Psi.Secret.Util
       }
       throw new ElementFactoryException(string.Format("Cannot create expression '{0}'" + name, format));
     }*/
-  }
+    }
 }

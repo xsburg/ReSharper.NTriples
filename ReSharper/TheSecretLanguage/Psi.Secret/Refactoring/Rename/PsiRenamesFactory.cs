@@ -41,7 +41,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Refactoring.Rename
         public override IEnumerable<AtomicRenameBase> CreateAtomicRenames(
             IDeclaredElement declaredElement, string newName, bool doNotAddBindingConflicts)
         {
-            yield return new PsiAtomicRename(declaredElement, newName, doNotAddBindingConflicts);
+            yield return new PsiDerivedElementRename(declaredElement, newName, doNotAddBindingConflicts);
             // TODO: uriSymbols should be declared elements, find it and rename if it is localName rename etc. 
             /*
       if (declaredElement is RuleDeclaration)

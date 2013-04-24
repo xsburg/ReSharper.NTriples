@@ -16,7 +16,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
     [JetBrains.Annotations.Pure]
     [JetBrains.Annotations.CanBeNull]
     [JetBrains.Annotations.ContractAnnotation("null <= null")]
-    public static JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaration GetByPrefixName (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaredName param) {
+    public static JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaration GetByPrefixName (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName param) {
       if (param == null) return null;
       TreeElement current = (TreeElement)param;
       if (current.parent is JetBrains.ReSharper.Psi.Secret.Impl.Tree.PrefixDeclaration) {

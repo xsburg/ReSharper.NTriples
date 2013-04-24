@@ -180,15 +180,15 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
         TestTokenNode (level + 1, (JetBrains.ReSharper.Psi.Tree.ITokenNode)child, "Prefix");
       }
       {
-        JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaredName child = ((JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaration)param).PrefixName;
-        TestPrefixDeclaredName (level + 1, (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaredName)child, "PrefixName");
+        JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName child = ((JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaration)param).PrefixName;
+        TestPrefixDeclaredName (level + 1, (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName)child, "PrefixName");
       }
       {
         JetBrains.ReSharper.Psi.Tree.ITokenNode child = ((JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaration)param).UriString;
         TestTokenNode (level + 1, (JetBrains.ReSharper.Psi.Tree.ITokenNode)child, "UriString");
       }
     }
-      internal static void TestPrefixDeclaredName (int level, JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaredName param, String caller)
+      internal static void TestPrefixDeclaredName (int level, JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName param, String caller)
     {
       if (!CanVisitFurther(param)) return;
       VisitElement (level, param, caller);

@@ -105,8 +105,8 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
     public virtual void VisitPrefixDeclaration ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaration prefixDeclarationParam) {
       VisitNode (prefixDeclarationParam);
     }
-    public virtual void VisitPrefixDeclaredName ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaredName prefixDeclaredNameParam) {
-      VisitNode (prefixDeclaredNameParam);
+    public virtual void VisitPrefixName ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName prefixNameParam) {
+      VisitNode (prefixNameParam);
     }
     public virtual void VisitSentence ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.ISentence sentenceParam) {
       VisitNode (sentenceParam);

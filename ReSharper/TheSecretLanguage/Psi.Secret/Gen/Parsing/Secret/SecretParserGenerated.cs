@@ -1275,7 +1275,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
           if (result.firstChild == null) result = null;
           throw new JetBrains.ReSharper.Psi.Parsing.UnexpectedToken (ErrorMessages.GetErrorMessage24());
         }
-        tempParsingResult = parsePrefixDeclaredName();
+        tempParsingResult = this.parsePrefixName();
         result.AppendNewChild (tempParsingResult);
         tempParsingResult = match(JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR);
         result.AppendNewChild (tempParsingResult);
@@ -1296,7 +1296,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
       }
       return result;
     }
-    public virtual JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement parsePrefixDeclaredName () {
+    public virtual JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement parsePrefixName () {
       JetBrains.ReSharper.Psi.Parsing.TokenNodeType tokenType;
       CompositeElement result = null;
       TreeElement tempParsingResult = null; 

@@ -45,13 +45,13 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
     public virtual JetBrains.ReSharper.Psi.Tree.ITokenNode Prefix {
       get { return (JetBrains.ReSharper.Psi.Tree.ITokenNode) FindChildByRole(PREFIX); }
     }
-    public virtual JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaredName PrefixName {
-      get { return (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaredName) FindChildByRole(IDENTIFIER); }
+    public virtual JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName PrefixName {
+      get { return (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName) FindChildByRole(IDENTIFIER); }
     }
     public virtual JetBrains.ReSharper.Psi.Tree.ITokenNode UriString {
       get { return (JetBrains.ReSharper.Psi.Tree.ITokenNode) FindChildByRole(URI_STRING); }
     }
-    public virtual JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaredName SetPrefixName (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaredName param)
+    public virtual JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName SetPrefixName (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName param)
     {
       using (JetBrains.Application.WriteLockCookie.Create (this.IsPhysical()))
       {
@@ -60,24 +60,24 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
         if (next.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_KEYWORD) {
           next = GetNextFilteredChild (current);
           if (next == null) {
-            return (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaredName)result;
+            return (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName)result;
           } else {
             if (next.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_KEYWORD) {
               current = next;
             } else {
-              return (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaredName)result;
+              return (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName)result;
             }
           }
         }
         else if (next.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STD_PREFIX_KEYWORD) {
           next = GetNextFilteredChild (current);
           if (next == null) {
-            return (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaredName)result;
+            return (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName)result;
           } else {
             if (next.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STD_PREFIX_KEYWORD) {
               current = next;
             } else {
-              return (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaredName)result;
+              return (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName)result;
             }
           }
         }
@@ -100,7 +100,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
             current = next;
           }
         }
-        return (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaredName)result;
+        return (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName)result;
       }
     }
     public override string ToString() {

@@ -307,7 +307,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
       PREFIX_DECLARED_NAME_INTERNAL() : base("PREFIX_DECLARED_NAME") {}
       public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
       {
-         return new PrefixDeclaredName();
+         return new PrefixName();
       }
     }
     public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType SENTENCE = SENTENCE_INTERNAL.INSTANCE;

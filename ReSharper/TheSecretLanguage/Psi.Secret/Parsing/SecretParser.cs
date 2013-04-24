@@ -9,10 +9,11 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
 {
     internal class SecretParser : SecretParserGenerated, ISecretParser
     {
-        private readonly ILexer<int> originalLexer;
+        private readonly ILexer originalLexer;
         private readonly SeldomInterruptChecker myCheckForInterrupt;
+        protected IPsiSourceFile SourceFile;
 
-        public SecretParser(ILexer<int> lexer)
+        public SecretParser(ILexer lexer)
         {
             this.originalLexer = lexer;
             myCheckForInterrupt = new SeldomInterruptChecker();
@@ -37,6 +38,24 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
         private void InsertMissingTokens(TreeElement result, bool trimMissingTokens)
         {
             SecretMissingTokensInserter.Run(result, originalLexer, this, trimMissingTokens, myCheckForInterrupt);
+        }
+
+        public override TreeElement parseSecretFile()
+        {
+            return this.ParseSecretFile(true);
+        }
+
+        public TreeElement ParseSecretFile(bool isFileReal)
+        {
+            TreeElement file = base.parseSecretFile();
+            var psiFile = file as SecretFile;
+            if (psiFile != null)
+            {
+                psiFile.SetSourceFile(SourceFile);
+                psiFile.CreatePrefixesSymbolTable();
+            }
+
+            return psiFile;
         }
     }
 }

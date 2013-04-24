@@ -12,20 +12,20 @@ using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Secret.Parsing;
 namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
-  internal partial class PrefixDeclaredName : SecretCompositeElement, JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaredName {
-    internal PrefixDeclaredName() : base() {
+  internal partial class PrefixName : SecretCompositeElement, JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName {
+    internal PrefixName() : base() {
     }
     public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType NodeType {
       get { return JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.PREFIX_DECLARED_NAME; }
     }
     public override void Accept(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor visitor) {
-      visitor.VisitPrefixDeclaredName(this);
+      visitor.VisitPrefixName(this);
     }
     public override void Accept<TContext>(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor<TContext> visitor, TContext context) {
-      visitor.VisitPrefixDeclaredName(this, context);
+      visitor.VisitPrefixName(this, context);
     }
     public override TReturn Accept<TContext, TReturn>(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor<TContext, TReturn> visitor, TContext context) {
-      return visitor.VisitPrefixDeclaredName(this, context);
+      return visitor.VisitPrefixName(this, context);
     }
     public override string ToString() {
       return "IPrefixDeclaredName";

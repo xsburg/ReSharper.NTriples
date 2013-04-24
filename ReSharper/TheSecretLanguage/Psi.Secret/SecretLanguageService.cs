@@ -46,7 +46,7 @@ namespace JetBrains.ReSharper.Psi.Secret
         public override IParser CreateParser(ILexer lexer, IPsiModule module, IPsiSourceFile sourceFile)
         {
             var typedLexer = (lexer as ILexer<int>) ?? lexer.ToCachingLexer();
-            return new SecretParser(typedLexer);
+            return new Parser(typedLexer, sourceFile);
         }
 
         public override bool IsFilteredNode(ITreeNode node)
@@ -84,5 +84,14 @@ namespace JetBrains.ReSharper.Psi.Secret
                     SecretTokenType.NEW_LINE,
                     SecretTokenType.END_OF_LINE_COMMENT
                 });
+
+        private class Parser : SecretParser
+        {
+            public Parser(ILexer lexer, IPsiSourceFile sourceFile)
+                : base(lexer)
+            {
+                SourceFile = sourceFile;
+            }
+        }
     }
 }
