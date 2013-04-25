@@ -29,12 +29,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Util
             return new PsiElementFactoryImpl(context.GetPsiModule());
         }
 
-        public abstract IPrefixName CreatePrefixExpression(string name);
-
-        /*public abstract IRuleName CreateIdentifierExpression(string name);
-
-    public abstract IRuleDeclaration CreateRuleDeclaration(string name, bool hasBraceParameters = false);
-
-    public abstract IRuleDeclaration CreateRuleDeclaration(string name, bool hasBraceParameters, IList<Pair<string, string>> variableParameters);*/
+        public abstract IPrefix CreatePrefixExpression(string name);
+        public abstract IPrefixName CreatePrefixNameExpression(string name);
     }
 }

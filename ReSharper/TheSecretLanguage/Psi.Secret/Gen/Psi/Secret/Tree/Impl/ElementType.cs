@@ -300,11 +300,11 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
          return new PrefixDeclaration();
       }
     }
-    public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType PREFIX_DECLARED_NAME = PREFIX_DECLARED_NAME_INTERNAL.INSTANCE;
-    private class PREFIX_DECLARED_NAME_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
+    public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType PREFIX_NAME = PREFIX_NAME_INTERNAL.INSTANCE;
+    private class PREFIX_NAME_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
     {
-      public static readonly PREFIX_DECLARED_NAME_INTERNAL INSTANCE = new PREFIX_DECLARED_NAME_INTERNAL ();
-      PREFIX_DECLARED_NAME_INTERNAL() : base("PREFIX_DECLARED_NAME") {}
+      public static readonly PREFIX_NAME_INTERNAL INSTANCE = new PREFIX_NAME_INTERNAL ();
+      PREFIX_NAME_INTERNAL() : base("PREFIX_NAME") {}
       public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
       {
          return new PrefixName();

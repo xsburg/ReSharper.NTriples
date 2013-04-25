@@ -15,6 +15,7 @@ using JetBrains.ReSharper.Psi.Secret.Parsing;
 using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Text;
+using System.Linq;
 
 namespace JetBrains.ReSharper.Psi.Secret.Util
 {
@@ -44,41 +45,49 @@ namespace JetBrains.ReSharper.Psi.Secret.Util
                     this.myLanguageService.GetPrimaryLexerFactory().CreateLexer(new StringBuffer(text)), null, null);
         }
 
-        public override IPrefixName CreatePrefixExpression(string name)
+        public override IPrefix CreatePrefixExpression(string name)
         {
-            var expression = (IPrefixName)this.CreateExpression("$0", name);
-            return expression;
+            var text = string.Format("{0}:bar a false.", name);
+            var node = this.CreateSecretFile(text);
+
+            var identifier = (Tree.IIdentifier)node.SentencesEnumerable.First().Statement.Subject.FirstChild;
+            if (identifier != null)
+            {
+                var uriIdentifier = (IUriIdentifier)identifier.FirstChild;
+
+                if (uriIdentifier != null && uriIdentifier.Prefix != null)
+                {
+                    return uriIdentifier.Prefix;
+                }
+            }
+
+            throw new ElementFactoryException(string.Format("Cannot create file '{0}'", text));
         }
 
-        private IPrefixName CreateExpression(string format, string name)
+        public override IPrefixName CreatePrefixNameExpression(string name)
         {
-            var node = this.CreateParser(name + "\n" + ":" + name + "\n" + ";").ParseSecretFile(false) as ISecretFile;
+            var text = string.Format("@prefix {0}: <http://foo.bar>.", name);
+            var node = this.CreateSecretFile(text);
+
+            var prefixDeclaration = (IPrefixDeclaration)node.SentencesEnumerable.First().Directive.FirstChild;
+            if (prefixDeclaration != null && prefixDeclaration.PrefixName != null)
+            {
+                return prefixDeclaration.PrefixName;
+            }
+
+            throw new ElementFactoryException(string.Format("Cannot create file '{0}'", text));
+        }
+
+        private ISecretFile CreateSecretFile(string text)
+        {
+            var node = this.CreateParser(text).ParseSecretFile(false) as ISecretFile;
             if (node == null)
             {
-                throw new ElementFactoryException(string.Format("Cannot create expression '{0}'", format));
+                throw new ElementFactoryException(string.Format("Cannot create file '{0}'", text));
             }
 
             SandBox.CreateSandBoxFor(node, this.myModule);
-            var ruleDeclaration = node.FirstChild as IRuleDeclaration;
-            if (ruleDeclaration != null)
-            {
-                IRuleBody ruleBody = ruleDeclaration.Body;
-                ITreeNode child = ruleBody.FirstChild;
-                while (child != null && !(child is IPsiExpression))
-                {
-                    child = child.NextSibling;
-                }
-                while (child != null && !(child is IRuleName))
-                {
-                    child = child.FirstChild;
-                }
-                if (child != null)
-                {
-                    return child;
-                }
-            }
-
-            throw new ElementFactoryException(string.Format("Cannot create expression '{0}'" + name, format));
+            return node;
         }
 
         /*public override IRuleName CreateIdentifierExpression(string name)

@@ -16,7 +16,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
     internal PrefixName() : base() {
     }
     public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType NodeType {
-      get { return JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.PREFIX_DECLARED_NAME; }
+      get { return JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.PREFIX_NAME; }
     }
     public override void Accept(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor visitor) {
       visitor.VisitPrefixName(this);
@@ -28,7 +28,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
       return visitor.VisitPrefixName(this, context);
     }
     public override string ToString() {
-      return "IPrefixDeclaredName";
+      return "IPrefixName";
     }
   }
 }

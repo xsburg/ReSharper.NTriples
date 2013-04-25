@@ -1,25 +1,31 @@
-﻿using System;
-using System.IO;
-using JetBrains.ReSharper.FeaturesTests.Finding.FindUsages;
+﻿using System.IO;
+using System.Linq;
+using FindUsagesTestBase = JetBrains.ReSharper.Psi.Find.Test.FindUsagesTestBase;
 using JetBrains.ReSharper.Psi.Search;
-using JetBrains.ReSharper.PsiTests.parsing;
 using JetBrains.ReSharper.TestFramework;
 using NUnit.Framework;
-using System.Linq;
 
 namespace JetBrains.ReSharper.Psi.Secret.Tests
 {
+    [TestFixture]
+    [Category("Find")]
+    [TestNetFramework4]
     [TestFileExtension(SecretProjectFileType.SecretExtension)]
-    public class SecretParserTest : ParserTestBase
+    public class SecretFindTest : FindUsagesTestBase
     {
         protected override string RelativeTestDataPath
         {
-            get { return @"parsing"; }
+            get { return @"Find"; }
         }
 
-        public SecretParserTest()
+        protected override SearchPattern SearchPattern
         {
-            files = this.TestDataPath2.GetDirectoryEntries("*" + SecretProjectFileType.SecretExtension, true)
+            get { return SearchPattern.FIND_USAGES | SearchPattern.FIND_IMPLEMENTORS_USAGES | SearchPattern.FIND_RELATED_ELEMENTS; }
+        }
+
+        public SecretFindTest()
+        {
+            this.files = this.TestDataPath2.GetDirectoryEntries("*" + SecretProjectFileType.SecretExtension, true)
                         .Select(f => Path.GetFileNameWithoutExtension(f.FullPath))
                         .ToArray();
         }

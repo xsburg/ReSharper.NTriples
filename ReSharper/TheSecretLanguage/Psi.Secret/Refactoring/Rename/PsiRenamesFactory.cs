@@ -43,40 +43,11 @@ namespace JetBrains.ReSharper.Psi.Secret.Refactoring.Rename
         {
             yield return new PsiDerivedElementRename(declaredElement, newName, doNotAddBindingConflicts);
             // TODO: uriSymbols should be declared elements, find it and rename if it is localName rename etc. 
-            /*
-      if (declaredElement is RuleDeclaration)
-      {
-        var ruleDeclaration = declaredElement as RuleDeclaration;
-        foreach (IDeclaredElement element in ruleDeclaration.DerivedParserMethods)
-        {
-          yield return new PsiDerivedElementRename(element, "parse" + NameToCamelCase(newName),
-            doNotAddBindingConflicts);
-        }
-        foreach (IDeclaredElement element in ruleDeclaration.DerivedClasses)
-        {
-          yield return new PsiDerivedElementRename(element, NameToCamelCase(newName),
-            doNotAddBindingConflicts);
-        }
-        foreach (IDeclaredElement element in ruleDeclaration.DerivedInterfaces)
-        {
-          yield return new PsiDerivedElementRename(element, ruleDeclaration.InterfacePrefix + NameToCamelCase(newName),
-            doNotAddBindingConflicts);
-        }
-        foreach (IDeclaredElement element in ruleDeclaration.DerivedVisitorMethods)
-        {
-          yield return new PsiDerivedElementRename(element, ruleDeclaration.VisitorMethodPrefix + NameToCamelCase(newName) + ruleDeclaration.VisitorMethodSuffix,
-            doNotAddBindingConflicts);
-        }
-      }*/
         }
 
         public override bool IsApplicable(IDeclaredElement declaredElement)
         {
-            if (declaredElement.PresentationLanguage.Is<SecretLanguage>())
-            {
-                return true;
-            }
-            return false;
+            return declaredElement.PresentationLanguage.Is<SecretLanguage>();
         }
     }
 }

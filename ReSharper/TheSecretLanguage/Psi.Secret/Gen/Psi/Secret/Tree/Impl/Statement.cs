@@ -39,6 +39,41 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
     public override short GetChildRole (JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement child) {
       return CHILD_ROLES[child.NodeType];
     }
+    public virtual JetBrains.ReSharper.Psi.Secret.Tree.ISubject Subject {
+      get { return (JetBrains.ReSharper.Psi.Secret.Tree.ISubject) FindChildByRole(SUBJECT); }
+    }
+    public virtual JetBrains.ReSharper.Psi.Secret.Tree.ISubject SetSubject (JetBrains.ReSharper.Psi.Secret.Tree.ISubject param)
+    {
+      using (JetBrains.Application.WriteLockCookie.Create (this.IsPhysical()))
+      {
+        TreeElement current = null, next = GetNextFilteredChild (current), result = null;
+        next = GetNextFilteredChild (current);
+        if (next.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.SUBJECT) {
+          next = GetNextFilteredChild (current);
+          if (next == null) {
+            if (param == null) return null;
+            result = current = (TreeElement)JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.AddChildAfter (this, current, (JetBrains.ReSharper.Psi.Tree.ITreeNode)param);
+          } else {
+            if (next.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.SUBJECT) {
+              if (param != null) {
+                result = current = (TreeElement)JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.ReplaceChild(next, (JetBrains.ReSharper.Psi.Tree.ITreeNode)param);
+              } else {
+                current = GetNextFilteredChild (next);
+                JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.DeleteChild (next);
+              }
+            } else {
+              if (param == null) return null;
+              result = (TreeElement)JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.AddChildBefore(next, (JetBrains.ReSharper.Psi.Tree.ITreeNode)param);
+              current = next;
+            }
+          }
+        }
+        else if (next.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.KEYWORD_STATEMENT) {
+        }
+        else return null;
+        return (JetBrains.ReSharper.Psi.Secret.Tree.ISubject)result;
+      }
+    }
     public override string ToString() {
       return "IStatement";
     }
