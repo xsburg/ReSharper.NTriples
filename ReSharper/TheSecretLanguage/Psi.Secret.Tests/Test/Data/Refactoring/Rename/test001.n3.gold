@@ -1,0 +1,33 @@
+﻿# ${CHANGE_TEXT:true}
+# ${RENAME_FILE:true}
+# ${NEW_NAME:relation222}
+
+@prefix family: <http://ontology.org/ontology/family#>.
+@prefix relation222: <http://ontology.org/ontology/relation#>.
+@prefix names: <http://ontology.org/ontology/names#>.
+@prefix info: <http://ontology.org/ontology/info#>.
+@prefix limbs: <http://ontology.org/ontology/limbs#>.
+
+family:jack
+    relation222:father names:john;
+    relation222:mother names:mary;
+    relation222:hasFather true;
+    relation222:hasMother true;
+    relation222:brothers
+        names:billy,
+        [a info:Man].
+
+family:stan
+    relation222:stuff
+        <http://domain.com/ontology#name>,
+        (
+            "text relation literal"
+            "PT18H"^^xsd:relation
+        ),
+        true,
+        false,
+        null,
+        ?,
+        ?relation,
+        { family:jack a limbs:dick }
+        .

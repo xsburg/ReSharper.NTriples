@@ -13,8 +13,11 @@ using System.Linq;
 using JetBrains.Annotations;
 using JetBrains.Application;
 using JetBrains.Application.Progress;
+using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Feature.Services.Util;
 using JetBrains.ReSharper.Psi.Resolve;
+using JetBrains.ReSharper.Psi.Secret.Cache;
+using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Refactorings;
 using JetBrains.ReSharper.Refactorings.Conflicts;
@@ -121,6 +124,24 @@ namespace JetBrains.ReSharper.Psi.Secret.Refactoring.Rename
             }
 
             psiServices.PsiManager.UpdateCaches();
+
+            SecretCache cache = null;
+            if (myDeclarations.Any())
+            {
+                cache = this.myDeclarations[0].GetSolution().GetComponent<SecretCache>();
+            }
+
+            foreach (var declaration in myDeclarations)
+            {
+                var file = (SecretFile)declaration.Root();
+                file.ClearTables();
+                //cache.MarkAsDirty(declaration.GetSourceFile());
+            }
+
+            /*if (cache != null)
+            {
+                cache.SyncUpdate(true);
+            }*/
 
             IDeclaredElement newDeclaredElement = null;
             if (this.myDeclarations.Count > 0)
