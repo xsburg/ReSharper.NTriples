@@ -10,5 +10,7 @@
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 namespace JetBrains.ReSharper.Psi.Secret.Tree {
   public partial interface ILiteral : JetBrains.ReSharper.Psi.Secret.Tree.ISecretTreeNode {
+    JetBrains.ReSharper.Psi.Tree.ITokenNode String { get; }
+  
   }
 }

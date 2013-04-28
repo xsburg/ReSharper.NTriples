@@ -4,8 +4,8 @@ using System.Globalization;
 using System.Reflection;
 using System.Text;
 using JetBrains.DocumentModel;
-using JetBrains.ReSharper.Psi.Asp.Impl.Tree;
 using JetBrains.ReSharper.Psi.BuildScripts.NAnt;
+using JetBrains.ReSharper.Psi.CodeStyle;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Caches2;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Html;
@@ -14,6 +14,7 @@ using JetBrains.ReSharper.Psi.Impl;
 using JetBrains.ReSharper.Psi.Impl.PsiManagerImpl;
 using JetBrains.ReSharper.Psi.Parsing;
 using JetBrains.ReSharper.Psi.Resolve;
+using JetBrains.ReSharper.Psi.Secret.Formatter;
 using JetBrains.ReSharper.Psi.Secret.Impl;
 using JetBrains.ReSharper.Psi.Secret.Parsing;
 using JetBrains.ReSharper.Psi.Tree;
@@ -26,11 +27,13 @@ namespace JetBrains.ReSharper.Psi.Secret
     [Language(typeof(SecretLanguage))]
     public class SecretLanguageService : LanguageService
     {
+        private readonly SecretCodeFormatter formatter;
         private readonly SecretWordIndexLanguageProvider wordIndexLanguageProvider = new SecretWordIndexLanguageProvider();
 
-        public SecretLanguageService(PsiLanguageType psiLanguageType, IConstantValueService constantValueService)
+        public SecretLanguageService(PsiLanguageType psiLanguageType, IConstantValueService constantValueService, SecretCodeFormatter formatter)
             : base(psiLanguageType, constantValueService)
         {
+            this.formatter = formatter;
         }
 
         public override ILexerFactory GetPrimaryLexerFactory()
@@ -47,6 +50,11 @@ namespace JetBrains.ReSharper.Psi.Secret
         {
             var typedLexer = (lexer as ILexer<int>) ?? lexer.ToCachingLexer();
             return new Parser(typedLexer, sourceFile);
+        }
+
+        public override ICodeFormatter CodeFormatter
+        {
+            get { return formatter; }
         }
 
         public override bool IsFilteredNode(ITreeNode node)

@@ -14,5 +14,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree
         string GetUri(ISecretFile file);
         UriIdentifierKind GetKind();
         IDeclaredElement DescendantDeclaredElement { get; }
+        string GetLocalName();
+        string GetNamespace(ISecretFile file);
     }
 }

@@ -51,9 +51,9 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
             return new SecretFileCache(uriIdentifierSymbols);
         }
 
-        public static void Write(SecretFileCache pair, BinaryWriter writer)
+        public static void Write(SecretFileCache fileCache, BinaryWriter writer)
         {
-            var uriIdentifiers = pair.UriIdentifiers;
+            var uriIdentifiers = fileCache.UriIdentifiers;
             writer.Write(uriIdentifiers.Count);
             uriIdentifiers.Apply(i => i.Write(writer));
         }
@@ -67,7 +67,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
         {
         }
 
-        private readonly List<IUriIdentifier> myUriIdentifiers = new List<IUriIdentifier>();
         private readonly ISecretFile file;
 
         private SecretCacheBuilder(ISecretFile file)
@@ -80,82 +79,16 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
             var uriIdentifier = element as IUriIdentifier;
             if (uriIdentifier != null)
             {
-                if (uriIdentifier.Prefix != null)
+                var ns = uriIdentifier.GetNamespace(file);
+                if (!string.IsNullOrEmpty(ns))
                 {
+                    var kind = uriIdentifier.GetKind();
+                    int offset = uriIdentifier.GetNavigationRange().TextRange.StartOffset;
                     var psiSourceFile = uriIdentifier.GetSourceFile();
-                    var prefixElement = ((SecretFile)file).GetDeclaredElements(uriIdentifier.Prefix.GetText()).FirstOrDefault();
-                    if (prefixElement != null)
-                    {
-                        var prefixDeclaration = prefixElement.GetDeclarationsIn(psiSourceFile).OfType<IPrefixDeclaration>().FirstOrDefault();
-                        if (prefixDeclaration != null)
-                        {
-                            var kind = uriIdentifier.GetKind();
-                            int offset = uriIdentifier.GetNavigationRange().TextRange.StartOffset;
-                            var ns = prefixDeclaration.UriString.GetText();
-                            mySymbols.Add(new SecretUriIdentifierSymbol(ns, uriIdentifier.LocalName.GetText(), kind, offset, psiSourceFile));
-                        }
-                    }
-                }
-                else
-                {
-                    var uriString = uriIdentifier.UriString.GetText();
-                    var separatorIndex = uriString.LastIndexOf('#');
-                    if (separatorIndex > 0)
-                    {
-                        var ns = uriString.Substring(0, separatorIndex + 1);
-                        var length = uriString.Length - (separatorIndex + 1);
-                        if (length > 0)
-                        {
-                            var kind = uriIdentifier.GetKind();
-                            int offset = uriIdentifier.GetNavigationRange().TextRange.StartOffset;
-                            var psiSourceFile = uriIdentifier.GetSourceFile();
-                            var localName = uriString.Substring(separatorIndex + 1, length);
-                            mySymbols.Add(new SecretUriIdentifierSymbol(ns, localName, kind, offset, psiSourceFile));
-                        }
-                    }
+                    mySymbols.Add(new SecretUriIdentifierSymbol(ns, uriIdentifier.GetLocalName(), kind, offset, psiSourceFile));
                 }
             }
         }
-
-        /*private void VisitPrefix(IPrefixDeclaration prefix)
-        {
-            var name = prefix.PrefixName.GetText();
-            int offset = prefix.GetNavigationRange().TextRange.StartOffset;
-            var psiSourceFile = prefix.GetSourceFile();
-            var uri = prefix.UriString.GetText();
-            var isStandard = prefix.Prefix.GetTokenType() == SecretTokenType.STD_PREFIX_KEYWORD;
-            mySymbols.Add(new SecretPrefixSymbol(name, offset, uri, isStandard, psiSourceFile));
-        }*/
-
-        /*private void VisitOptionDefinition(IOptionDefinition optionDefinition)
-    {
-      string name = optionDefinition.OptionName.GetText();
-      int offset = optionDefinition.GetNavigationRange().TextRange.StartOffset;
-      IPsiSourceFile psiSourceFile = optionDefinition.GetSourceFile();
-      string value = "";
-      IOptionStringValue valueNode = optionDefinition.OptionStringValue;
-      if (valueNode != null)
-      {
-        value = valueNode.GetText();
-        if ("\"".Equals(value.Substring(0, 1)))
-        {
-          value = value.Substring(1, value.Length - 1);
-        }
-        if ("\"".Equals(value.Substring(value.Length - 1, 1)))
-        {
-          value = value.Substring(0, value.Length - 1);
-        }
-      }
-      mySymbols.Add(new SecretOptionSymbol(name, offset, value, psiSourceFile));
-    }
-
-    private void VisitRuleDeclaration(IRuleDeclaration ruleDeclaration)
-    {
-      string name = ruleDeclaration.DeclaredName;
-      int offset = ruleDeclaration.GetNavigationRange().TextRange.StartOffset;
-      IPsiSourceFile psiSourceFile = ruleDeclaration.GetSourceFile();
-      mySymbols.Add(new SecretRuleSymbol(name, offset, psiSourceFile));
-    }*/
 
         [CanBeNull]
         private static ICollection<ISecretSymbol> Build(ISecretFile file)

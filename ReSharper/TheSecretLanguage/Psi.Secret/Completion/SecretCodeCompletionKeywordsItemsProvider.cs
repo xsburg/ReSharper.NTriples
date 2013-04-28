@@ -23,7 +23,7 @@ using JetBrains.Util;
 namespace JetBrains.ReSharper.Psi.Secret.Completion
 {
     [Language(typeof(SecretLanguage))]
-    public class SecretCompletionItemsProviderKeywords : ItemsProviderOfSpecificContext<SecretCodeCompletionContext>
+    public class SecretCodeCompletionKeywordsItemsProvider : ItemsProviderOfSpecificContext<SecretCodeCompletionContext>
     {
         protected override void AddItemsGroups(
             SecretCodeCompletionContext context, GroupedItemsCollector collector, IntellisenseManager intellisenseManager)

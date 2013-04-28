@@ -44,6 +44,10 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
     {
       if (!CanVisitFurther(param)) return;
       VisitElement (level, param, caller);
+      {
+        JetBrains.ReSharper.Psi.Tree.ITokenNode child = ((JetBrains.ReSharper.Psi.Secret.Tree.IDataLiteral)param).String;
+        TestTokenNode (level + 1, (JetBrains.ReSharper.Psi.Tree.ITokenNode)child, "String");
+      }
     }
       internal static void TestDirective (int level, JetBrains.ReSharper.Psi.Secret.Tree.IDirective param, String caller)
     {

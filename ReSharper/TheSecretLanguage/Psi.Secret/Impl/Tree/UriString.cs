@@ -10,7 +10,7 @@ using JetBrains.Util;
 
 namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 {
-    internal partial class UriString : IDeclaredElement
+    internal partial class UriString : IDeclaredElement, IUriIdentifierDeclaredElement
     {
         #region IDeclaredElement Members
 
@@ -178,19 +178,28 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
             }
         }
 
-        public string Namespace
+        public string GetNamespace()
         {
-            get
+            var fullName = Value.GetText();
+            var index = fullName.LastIndexOf('#');
+            if (index == -1)
             {
-                var fullName = Value.GetText();
-                var index = fullName.LastIndexOf('#');
-                if (index == -1)
-                {
-                    return "";
-                }
-
-                return fullName.Substring(0, index);
+                return "";
             }
+
+            return fullName.Substring(0, index + 1);
+        }
+
+        public string GetLocalName()
+        {
+            var fullName = Value.GetText();
+            var index = fullName.LastIndexOf('#');
+            if (index == -1 || index == fullName.Length - 1)
+            {
+                return "";
+            }
+
+            return fullName.Substring(index + 1);
         }
 
         public override ReferenceCollection GetFirstClassReferences()

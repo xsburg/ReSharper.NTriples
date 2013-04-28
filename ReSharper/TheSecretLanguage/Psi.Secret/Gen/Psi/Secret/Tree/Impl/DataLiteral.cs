@@ -37,6 +37,9 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
     public override short GetChildRole (JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement child) {
       return CHILD_ROLES[child.NodeType];
     }
+    public virtual JetBrains.ReSharper.Psi.Tree.ITokenNode String {
+      get { return (JetBrains.ReSharper.Psi.Tree.ITokenNode) FindChildByRole(STRING); }
+    }
     public override string ToString() {
       return "IDataLiteral";
     }

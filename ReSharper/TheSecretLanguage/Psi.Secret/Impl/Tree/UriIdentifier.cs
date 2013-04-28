@@ -57,13 +57,48 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
         {
             if (Prefix == null)
             {
-                return UriString.GetText();
+                return UriString != null
+                           ? UriString.GetText()
+                           : null;
             }
 
             var declaration = ((SecretFile)file).GetDeclaredElements(Prefix.GetText()).FirstOrDefault() as IPrefixDeclaration;
-            if (declaration != null)
+            if (declaration != null && declaration.UriString != null)
             {
-                return declaration.UriString.GetText() + LocalName.GetText();
+                return declaration.UriString.GetText() + this.GetLocalName();
+            }
+
+            return null;
+        }
+
+        public string GetLocalName()
+        {
+            return this.LocalName != null ? this.LocalName.GetText() : "";
+        }
+
+        public string GetNamespace(ISecretFile file)
+        {
+            if (Prefix == null)
+            {
+                if (UriString == null)
+                {
+                    return null;
+                }
+
+                var uri = UriString.GetText();
+                var index = uri.LastIndexOf('#');
+                if (index == -1)
+                {
+                    return uri;
+                }
+
+                return uri.Substring(0, index + 1);
+            }
+
+            var declaration = ((SecretFile)file).GetDeclaredElements(Prefix.GetText()).FirstOrDefault() as IPrefixDeclaration;
+            if (declaration != null && declaration.UriString != null)
+            {
+                return declaration.UriString.GetText();
             }
 
             return null;

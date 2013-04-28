@@ -11,15 +11,12 @@ using JetBrains.Util;
 
 namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 {
-    internal partial class LocalName : IDeclaredElement
+    internal partial class LocalName : IDeclaredElement, IUriIdentifierDeclaredElement
     {
         #region IDeclaredElement Members
 
         public IList<IDeclaration> GetDeclarations()
         {
-            
-
-
             var sourceFiles =
                 this.GetSolution()
                     .GetAllProjects()
@@ -82,6 +79,11 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
             }
 
             return null;
+        }
+
+        public string GetLocalName()
+        {
+            return this.GetText();
         }
 
         public string GetUri()

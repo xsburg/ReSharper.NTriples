@@ -50,34 +50,51 @@ namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
                 : base(process, settingsStore)
             {
             }
-
+            
             public override void VisitNode(ITreeNode node, IHighlightingConsumer consumer)
             {
-                var token = node as ITokenNode;
-                if (token == null)
+                // Tree level highlighting
+                //
+                if (node is IPrefix || node is IPrefixName)
                 {
-                    return;
+                    this.AddSyntaxHighlighting(consumer, node, HighlightingAttributeIds.NAMESPACE_IDENTIFIER_ATTRIBUTE);
                 }
-
-                if (token.GetTokenType().IsStringLiteral)
-                {
-                    this.AddSyntaxHighlighting(consumer, node, "String");
-                }
-                else if (token.GetTokenType().IsComment)
-                {
-                    this.AddSyntaxHighlighting(consumer, node, "Comment");
-                }
-                else if (token.GetTokenType().IsKeyword)
-                {
-                    this.AddSyntaxHighlighting(consumer, node, "Keyword");
-                }
-                else if (token.GetTokenType().IsIdentifier)
+                else if (node is ILocalName)
                 {
                     this.AddSyntaxHighlighting(consumer, node, HighlightingAttributeIds.METHOD_IDENTIFIER_ATTRIBUTE);
                 }
-                else if (token.GetTokenType().IsConstantLiteral)
+                else if (node is IVariableIdentifier)
                 {
-                    this.AddSyntaxHighlighting(consumer, node, HighlightingAttributeIds.NAMESPACE_IDENTIFIER_ATTRIBUTE);
+                    this.AddSyntaxHighlighting(consumer, node, HighlightingAttributeIds.FIELD_IDENTIFIER_ATTRIBUTE);
+                }
+                else if (node is ITokenNode)
+                {
+                    // Token level highlighting
+                    // 
+                    var token = node as ITokenNode;
+                    if (token.GetTokenType().IsStringLiteral)
+                    {
+                        if (token.Parent is IDataLiteral && token.Parent.LastChild != token)
+                        {
+                            this.AddSyntaxHighlighting(consumer, node, "String");
+                        }
+                        else
+                        {
+                            this.AddSyntaxHighlighting(consumer, node, "String");
+                        }
+                    }
+                    else if (token.GetTokenType().IsComment)
+                    {
+                        this.AddSyntaxHighlighting(consumer, node, "Comment");
+                    }
+                    else if (token.GetTokenType().IsKeyword)
+                    {
+                        this.AddSyntaxHighlighting(consumer, node, "Keyword");
+                    }
+                    else if (token.GetTokenType().IsConstantLiteral)
+                    {
+                        this.AddSyntaxHighlighting(consumer, node, "Literal");
+                    }
                 }
             }
 

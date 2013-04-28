@@ -29,5 +29,12 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
         {
             return tokenTypesToText[tokenType];
         }
+
+        public static bool IsWhitespace(string s)
+        {
+            var lexer = new SecretLexer(new StringBuffer(s));
+            lexer.Start();
+            return lexer.TokenType != null && lexer.TokenType.IsWhitespace && lexer.TokenEnd == s.Length;
+        }
     }
 }

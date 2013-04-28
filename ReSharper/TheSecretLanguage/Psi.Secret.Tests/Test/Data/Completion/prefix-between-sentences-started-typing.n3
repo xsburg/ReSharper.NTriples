@@ -1,0 +1,42 @@
+# ${COMPLETE_ITEM:false}
+# ${SHOW_SIGNATURES:false}
+# ${CASE_SENSITIVE_COMPLETION:false}
+# ${COMPLETION_TYPE:Replace}
+
+@prefix family: <http://ontology:org/ontology#family>.
+@prefix relation: <http://ontology:org/ontology#relation>.
+
+family:jack
+    relation:father names:john;
+    relation:mother names:mary;
+    relation:hasFather true;
+    relation:hasMother true;
+    relation:brothers
+        names:billy,
+        [a info:Man].
+
+family:stan
+    a asd:asd;
+    itemKind:stuff
+        # uri
+        <http://domain.com/ontology#name>,
+        basics:billy,
+        # list of literals
+        (
+            "text literal" 
+            "PT18H"^^xsd:duration
+        ),
+        # literal keywords
+        true,
+        false,
+        null,
+        # variables (it should not be in a regular statement but the parser accepts it)
+        ?,
+        ?someVar,
+        # and a simple formula
+        { family:jack a limbs:dick }
+        .
+
+r{caret}
+
+asd:asd asd:asd false.

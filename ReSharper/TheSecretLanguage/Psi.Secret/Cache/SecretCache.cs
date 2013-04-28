@@ -102,6 +102,15 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
             return symbols;
         }
 
+        public IList<IPsiSourceFile> GetFilesContainingUri(string @namespace, string localName)
+        {
+            var result = this.myProjectFileToSymbolsUriIdentifierMap
+                .Where(pair => pair.Value.Any(s => s.Namespace == @namespace && s.LocalName == localName))
+                .Select(pair => pair.Key)
+                .ToList();
+            return result;
+        }
+
         public object Load(IProgressIndicator progress, bool enablePersistence)
         {
             if (!enablePersistence)

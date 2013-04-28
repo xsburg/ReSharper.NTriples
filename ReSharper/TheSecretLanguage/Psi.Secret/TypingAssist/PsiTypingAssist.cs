@@ -12,6 +12,7 @@ using JetBrains.ReSharper.Feature.Services.TypingAssist;
 using JetBrains.ReSharper.Psi.CodeStyle;
 using JetBrains.ReSharper.Psi.Impl.CodeStyle;
 using JetBrains.ReSharper.Psi.Parsing;
+using JetBrains.ReSharper.Psi.Secret.Formatter;
 using JetBrains.ReSharper.Psi.Secret.Parsing;
 using JetBrains.ReSharper.Psi.Services;
 using JetBrains.ReSharper.Psi.Tree;
@@ -32,12 +33,13 @@ namespace JetBrains.ReSharper.Psi.Secret.TypingAssist
       : base(solution, settingsStore, cachingLexerService, commandProcessor, psiServices)
     {
       typingAssistManager.AddTypingHandler(lifetime, '{', this, this.HandleLeftBraceTyped, this.IsTypingSmartLBraceHandlerAvailable);
-      typingAssistManager.AddTypingHandler(lifetime, '(', this, this.HandleLeftBracketOrParenthTyped, this.IsTypingSmartParenthesisHandlerAvailable);
-      typingAssistManager.AddTypingHandler(lifetime, ')', this, this.HandleRightBracketTyped, this.IsTypingSmartParenthesisHandlerAvailable);
-      typingAssistManager.AddTypingHandler(lifetime, '[', this, this.HandleLeftBracketOrParenthTyped, this.IsTypingSmartParenthesisHandlerAvailable);
-      typingAssistManager.AddTypingHandler(lifetime, ';', this, this.HandleSemicolonTyped, this.IsTypingSmartParenthesisHandlerAvailable);
-      typingAssistManager.AddTypingHandler(lifetime, '"', this, this.HandleQuoteTyped, this.IsTypingSmartParenthesisHandlerAvailable);
+        /*typingAssistManager.AddTypingHandler(lifetime, '(', this, this.HandleLeftBracketOrParenthTyped, this.IsTypingSmartParenthesisHandlerAvailable);
+        typingAssistManager.AddTypingHandler(lifetime, ')', this, this.HandleRightBracketTyped, this.IsTypingSmartParenthesisHandlerAvailable);
+        typingAssistManager.AddTypingHandler(lifetime, '[', this, this.HandleLeftBracketOrParenthTyped, this.IsTypingSmartParenthesisHandlerAvailable);
+        typingAssistManager.AddTypingHandler(lifetime, ';', this, this.HandleSemicolonTyped, this.IsTypingSmartParenthesisHandlerAvailable);
+        typingAssistManager.AddTypingHandler(lifetime, '"', this, this.HandleQuoteTyped, this.IsTypingSmartParenthesisHandlerAvailable);*/
       typingAssistManager.AddActionHandler(lifetime, TextControlActions.ENTER_ACTION_ID, this, this.HandleEnterPressed, this.IsActionHandlerAvailabile);
+      typingAssistManager.AddActionHandler(lifetime, TextControlActions.BACKSPACE_ACTION_ID, this, this.HandleEnterPressed, this.IsActionHandlerAvailabile);
     }
 
     #region ITypingHandler Members
@@ -192,7 +194,7 @@ namespace JetBrains.ReSharper.Psi.Secret.TypingAssist
         return;
       }
 
-      if (mixedLexer.TokenType == SecretTokenType.C_STYLE_COMMENT || mixedLexer.TokenType == SecretTokenType.STRING_LITERAL)
+      if (mixedLexer.TokenType == SecretTokenType.STRING_LITERAL)
       {
         return;
       }
@@ -226,7 +228,7 @@ namespace JetBrains.ReSharper.Psi.Secret.TypingAssist
         }
 
         this.PsiServices.PsiManager.CommitAllDocuments();
-        var file = projectItem.GetPsiFile<PsiLanguage>(new DocumentRange(textControl.Document, offset));
+        var file = projectItem.GetPsiFile<SecretLanguage>(new DocumentRange(textControl.Document, offset));
 
         if (file == null)
         {
@@ -269,7 +271,8 @@ namespace JetBrains.ReSharper.Psi.Secret.TypingAssist
                 return;
               }
 
-              if (tokenNode.Parent is IParenExpression || prevToken.Parent is IParenExpression)
+                  //TODO changes was made here
+              /*if (tokenNode.Parent is IParenExpression || prevToken.Parent is IParenExpression)
               {
                 var node = tokenNode.Parent;
                 if (prevToken.Parent is IParenExpression)
@@ -278,7 +281,7 @@ namespace JetBrains.ReSharper.Psi.Secret.TypingAssist
                 }
                 codeFormatter.Format(node.FirstChild, node.LastChild,
                   CodeFormatProfile.DEFAULT, NullProgressIndicator.Instance, boundSettingsStore);
-              }
+              }*/
               else
               {
                 codeFormatter.Format(prevToken, tokenNode,
@@ -651,13 +654,9 @@ namespace JetBrains.ReSharper.Psi.Secret.TypingAssist
       }
 
       // Select the correct start node for formatting
-      ITreeNode startNode = node.FindFormattingRangeToLeft();
-      if (startNode == null)
-      {
-        startNode = node.FirstChild;
-      }
+      ITreeNode startNode = node.FindFormattingRangeToLeft() ?? node.FirstChild;
 
-      SecretCodeFormatter codeFormatter = this.GetCodeFormatter(tokenNode);
+        SecretCodeFormatter codeFormatter = this.GetCodeFormatter(tokenNode);
       using (PsiTransactionCookie.CreateAutoCommitCookieWithCachesUpdate(this.PsiServices, "Format code"))
       {
         using (WriteLockCookie.Create())

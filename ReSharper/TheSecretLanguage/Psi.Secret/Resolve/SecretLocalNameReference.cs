@@ -52,7 +52,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
 
                 var elements = cache.GetAllUriIdentifiersInNamespace(@namespace)
                                     .Distinct(x => x.LocalName)
-                                    .Select(x => new UriIdentifierDeclaredElement(file, x.LocalName, psiServices));
+                                    .Select(x => new UriIdentifierDeclaredElement(file, x.Namespace, x.LocalName, psiServices));
 
                 var symbolTable = ResolveUtil.CreateSymbolTable(elements, 0);
                 return symbolTable;
@@ -63,6 +63,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
 
         public override ResolveResultWithInfo ResolveWithoutCache()
         {
+            return new ResolveResultWithInfo(ResolveResultFactory.CreateResolveResultFinaly(new List<DeclaredElementInstance>()), ResolveErrorType.OK);
             ISymbolTable table = this.GetReferenceSymbolTable(true);
             IList<DeclaredElementInstance> elements = new List<DeclaredElementInstance>();
             {
