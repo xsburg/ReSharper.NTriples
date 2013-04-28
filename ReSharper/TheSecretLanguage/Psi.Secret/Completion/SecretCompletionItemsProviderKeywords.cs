@@ -61,7 +61,14 @@ namespace JetBrains.ReSharper.Psi.Secret.Completion
                 return false;
             }
 
-            var correctContext = !(context.ReparsedContext.Reference is SecretLocalNameReference);
+            var referencesToAvoid = new[]
+                {
+                    typeof(SecretUriStringReference),
+                    typeof(SecretLocalNameReference)
+                };
+
+            var correctContext = context.ReparsedContext.Reference == null ||
+                                 !referencesToAvoid.Contains(context.ReparsedContext.Reference.GetType());
             return correctContext;
         }
 

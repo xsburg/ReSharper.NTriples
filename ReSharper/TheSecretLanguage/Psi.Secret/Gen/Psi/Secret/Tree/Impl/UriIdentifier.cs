@@ -33,8 +33,8 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
     private static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeDictionary<short> CHILD_ROLES = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeDictionary<short>(
       new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>[]
       {
+        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.URI_STRING, URISTRING),
         new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.PREFIX, PREFIX),
-        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.URI_STRING, URISTRING),
         new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.LOCAL_NAME, LOCALNAME),
       }
     );
@@ -47,8 +47,24 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
     public virtual JetBrains.ReSharper.Psi.Secret.Tree.IPrefix Prefix {
       get { return (JetBrains.ReSharper.Psi.Secret.Tree.IPrefix) FindChildByRole(PREFIX); }
     }
-    public virtual JetBrains.ReSharper.Psi.Tree.ITokenNode UriString {
-      get { return (JetBrains.ReSharper.Psi.Tree.ITokenNode) FindChildByRole(URISTRING); }
+    public virtual JetBrains.ReSharper.Psi.Secret.Tree.IUriString UriStringElement {
+      get { return (JetBrains.ReSharper.Psi.Secret.Tree.IUriString) FindChildByRole(URISTRING); }
+    }
+    public virtual  JetBrains.ReSharper.Psi.Tree.ITokenNode UriString {
+      get
+      {
+        CompositeElement current = this;  
+    
+        JetBrains.ReSharper.Psi.Tree.ITokenNode result = null;
+        CompositeElement current0 = (CompositeElement)current.FindChildByRole (JetBrains.ReSharper.Psi.Secret.Impl.Tree.UriIdentifier.URISTRING);
+        if (current0 != null) {
+          TreeElement current1 = current0.FindChildByRole (JetBrains.ReSharper.Psi.Secret.Impl.Tree.UriString.URISTRING);
+          if (current1 != null) {
+            result = (JetBrains.ReSharper.Psi.Tree.ITokenNode) current1;
+          }
+        }
+        return result;
+      }
     }
     public virtual JetBrains.ReSharper.Psi.Secret.Tree.ILocalName SetLocalName (JetBrains.ReSharper.Psi.Secret.Tree.ILocalName param)
     {
@@ -132,6 +148,78 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
         }
         else return null;
         return (JetBrains.ReSharper.Psi.Secret.Tree.IPrefix)result;
+      }
+    }
+    public virtual JetBrains.ReSharper.Psi.Secret.Tree.IUriString SetUriStringElement (JetBrains.ReSharper.Psi.Secret.Tree.IUriString param)
+    {
+      using (JetBrains.Application.WriteLockCookie.Create (this.IsPhysical()))
+      {
+        TreeElement current = null, next = GetNextFilteredChild (current), result = null;
+        next = GetNextFilteredChild (current);
+        if (next.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.PREFIX) {
+          next = GetNextFilteredChild (current);
+          if (next == null) {
+            return (JetBrains.ReSharper.Psi.Secret.Tree.IUriString)result;
+          } else {
+            if (next.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.PREFIX) {
+              current = next;
+            } else {
+              return (JetBrains.ReSharper.Psi.Secret.Tree.IUriString)result;
+            }
+          }
+          next = GetNextFilteredChild (current);
+          if (next == null) {
+            return (JetBrains.ReSharper.Psi.Secret.Tree.IUriString)result;
+          } else {
+            if (next.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR) {
+              current = next;
+            } else {
+              return (JetBrains.ReSharper.Psi.Secret.Tree.IUriString)result;
+            }
+          }
+          next = GetNextFilteredChild (current);
+          if (next == null) {
+            return (JetBrains.ReSharper.Psi.Secret.Tree.IUriString)result;
+          } else {
+            if (next.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.LOCAL_NAME) {
+              current = next;
+            } else {
+              return (JetBrains.ReSharper.Psi.Secret.Tree.IUriString)result;
+            }
+          }
+        }
+        else if (next.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.URI_BEGIN) {
+          next = GetNextFilteredChild (current);
+          if (next == null) {
+            return (JetBrains.ReSharper.Psi.Secret.Tree.IUriString)result;
+          } else {
+            if (next.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.URI_BEGIN) {
+              current = next;
+            } else {
+              return (JetBrains.ReSharper.Psi.Secret.Tree.IUriString)result;
+            }
+          }
+          next = GetNextFilteredChild (current);
+          if (next == null) {
+            if (param == null) return null;
+            result = current = (TreeElement)JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.AddChildAfter (this, current, (JetBrains.ReSharper.Psi.Tree.ITreeNode)param);
+          } else {
+            if (next.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.URI_STRING) {
+              if (param != null) {
+                result = current = (TreeElement)JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.ReplaceChild(next, (JetBrains.ReSharper.Psi.Tree.ITreeNode)param);
+              } else {
+                current = GetNextFilteredChild (next);
+                JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.DeleteChild (next);
+              }
+            } else {
+              if (param == null) return null;
+              result = (TreeElement)JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.AddChildBefore(next, (JetBrains.ReSharper.Psi.Tree.ITreeNode)param);
+              current = next;
+            }
+          }
+        }
+        else return null;
+        return (JetBrains.ReSharper.Psi.Secret.Tree.IUriString)result;
       }
     }
     public override string ToString() {

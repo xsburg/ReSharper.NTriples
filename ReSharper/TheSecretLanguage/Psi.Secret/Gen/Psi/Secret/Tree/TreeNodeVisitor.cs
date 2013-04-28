@@ -129,6 +129,9 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
     public virtual void VisitUriIdentifiers ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IUriIdentifiers uriIdentifiersParam) {
       VisitNode (uriIdentifiersParam);
     }
+    public virtual void VisitUriString ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IUriString uriStringParam) {
+      VisitNode (uriStringParam);
+    }
     public virtual void VisitUseExternalDirective ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IUseExternalDirective useExternalDirectiveParam) {
       VisitNode (useExternalDirectiveParam);
     }

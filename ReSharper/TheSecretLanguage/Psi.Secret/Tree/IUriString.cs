@@ -2,9 +2,9 @@
 
 namespace JetBrains.ReSharper.Psi.Secret.Tree
 {
-    public partial interface ILocalName : IDeclaration//, IChameleonNode
+    public partial interface IUriString : IDeclaration//, IChameleonNode
     {
         void SetReferenceName(string shortName);
-        string GetUri();
+        string GetUri(ISecretFile file);
     }
 }

@@ -93,20 +93,29 @@ namespace JetBrains.ReSharper.Psi.Secret.Util
 
             using (WriteLockCookie.Create(parent.IsPhysical()))
             {
+                ITreeNode newNode;
                 if (parent is IPrefixName)
                 {
-                    var prefixName = PsiElementFactory.GetInstance(parent.GetPsiModule()).CreatePrefixNameExpression(name);
-                    LowLevelModificationUtil.ReplaceChildRange(nameNode, nameNode, prefixName.FirstChild);
+                    newNode = PsiElementFactory.GetInstance(parent.GetPsiModule()).CreatePrefixNameExpression(name).FirstChild;
                 }
                 else if (parent is IPrefix)
                 {
-                    var prefix = PsiElementFactory.GetInstance(parent.GetPsiModule()).CreatePrefixExpression(name);
-                    LowLevelModificationUtil.ReplaceChildRange(nameNode, nameNode, prefix.FirstChild);
+                    newNode = PsiElementFactory.GetInstance(parent.GetPsiModule()).CreatePrefixExpression(name).FirstChild;
+                }
+                else if (parent is ILocalName)
+                {
+                    newNode = PsiElementFactory.GetInstance(parent.GetPsiModule()).CreateLocalNameExpression(name).FirstChild;
+                }
+                else if (parent is UriString)
+                {
+                    newNode = PsiElementFactory.GetInstance(parent.GetPsiModule()).CreateUriIdentifierExpression(name).FirstChild;
                 }
                 else
                 {
                     throw new NotSupportedException();
                 }
+
+                LowLevelModificationUtil.ReplaceChildRange(nameNode, nameNode, newNode);
             }
         }
 

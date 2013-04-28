@@ -78,6 +78,44 @@ namespace JetBrains.ReSharper.Psi.Secret.Util
             throw new ElementFactoryException(string.Format("Cannot create file '{0}'", text));
         }
 
+        public override ILocalName CreateLocalNameExpression(string name)
+        {
+            var text = string.Format("foo:{0} a false.", name);
+            var node = this.CreateSecretFile(text);
+
+            var identifier = (Tree.IIdentifier)node.SentencesEnumerable.First().Statement.Subject.FirstChild;
+            if (identifier != null)
+            {
+                var uriIdentifier = (IUriIdentifier)identifier.FirstChild;
+
+                if (uriIdentifier != null && uriIdentifier.LocalName != null)
+                {
+                    return uriIdentifier.LocalName;
+                }
+            }
+
+            throw new ElementFactoryException(string.Format("Cannot create file '{0}'", text));
+        }
+
+        public override IUriIdentifier CreateUriIdentifierExpression(string name)
+        {
+            var text = string.Format("<{0}> a false.", name);
+            var node = this.CreateSecretFile(text);
+
+            var identifier = (Tree.IIdentifier)node.SentencesEnumerable.First().Statement.Subject.FirstChild;
+            if (identifier != null)
+            {
+                var uriIdentifier = (IUriIdentifier)identifier.FirstChild;
+
+                if (uriIdentifier != null && uriIdentifier.UriString != null)
+                {
+                    return uriIdentifier;
+                }
+            }
+
+            throw new ElementFactoryException(string.Format("Cannot create file '{0}'", text));
+        }
+
         private ISecretFile CreateSecretFile(string text)
         {
             var node = this.CreateParser(text).ParseSecretFile(false) as ISecretFile;

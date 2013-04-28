@@ -725,6 +725,11 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.HAS_KEYWORD,
       }
     );
+    public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet FIRST_uriString = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
+      new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.URI_STRING,
+      }
+    );
     public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet FIRST_prefixDeclaration = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
       new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_KEYWORD,

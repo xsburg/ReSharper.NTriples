@@ -380,6 +380,16 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
          return new UriIdentifiers();
       }
     }
+    public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType URI_STRING = URI_STRING_INTERNAL.INSTANCE;
+    private class URI_STRING_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
+    {
+      public static readonly URI_STRING_INTERNAL INSTANCE = new URI_STRING_INTERNAL ();
+      URI_STRING_INTERNAL() : base("URI_STRING") {}
+      public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
+      {
+         return new UriString();
+      }
+    }
     public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType USE_EXTERNAL_DIRECTIVE = USE_EXTERNAL_DIRECTIVE_INTERNAL.INSTANCE;
     private class USE_EXTERNAL_DIRECTIVE_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
     {

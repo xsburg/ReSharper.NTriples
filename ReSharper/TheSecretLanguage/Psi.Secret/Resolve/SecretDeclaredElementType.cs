@@ -8,7 +8,12 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
     {
         private static readonly PsiLanguageType Language = SecretLanguage.Instance;
 
-        public static readonly SecretDeclaredElementType NamespacePrefix = new SecretDeclaredElementType("NamespacePrefix", N3PluginSymbolThemedIcons.AccordionDisable.Id);
+        public static readonly SecretDeclaredElementType Prefix = new SecretDeclaredElementType(
+            "Prefix", N3PluginSymbolThemedIcons.AccordionDisable.Id);
+
+        public static readonly SecretDeclaredElementType UriIdentifier = new SecretDeclaredElementType(
+            "UriIdentifier", N3PluginSymbolThemedIcons.AccordionDisable.Id);
+
         private readonly IDeclaredElementPresenter myElementPresenter;
         private readonly IconId myIconId;
 

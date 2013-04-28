@@ -1,0 +1,20 @@
+# ${CHANGE_TEXT:true}
+# ${RENAME_FILE:true}
+# ${NEW_NAME:brothers222}
+
+@prefix family: <http://ontology.org/ontology/family#>.
+@prefix relation: <http://ontology.org/ontology/relation#>.
+@prefix names: <http://ontology.org/ontology/names#>.
+@prefix info: <http://ontology.org/ontology/info#>.
+@prefix limbs: <http://ontology.org/ontology/limbs#>.
+
+family:jack
+    relation:father names:john;
+    relation:mother names:mary;
+    relation:hasFather true;
+    relation:hasMother true;
+    relation:brothers
+        names:billy,
+        [a info:Man].
+
+family:stan relation:br{caret}others names:billy.

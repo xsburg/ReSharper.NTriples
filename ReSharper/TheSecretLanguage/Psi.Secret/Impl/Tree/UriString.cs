@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Xml;
 using JetBrains.DocumentModel;
-using JetBrains.ReSharper.Psi.Secret.Cache;
 using JetBrains.ReSharper.Psi.Secret.Resolve;
 using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.ReSharper.Psi.Secret.Util;
@@ -11,23 +10,13 @@ using JetBrains.Util;
 
 namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 {
-    internal partial class LocalName : IDeclaredElement
+    internal partial class UriString : IDeclaredElement
     {
         #region IDeclaredElement Members
 
         public IList<IDeclaration> GetDeclarations()
         {
-            
-
-
-            var sourceFiles =
-                this.GetSolution()
-                    .GetAllProjects()
-                    .SelectMany(p => p.GetPsiModules())
-                    .SelectMany(m => m.SourceFiles)
-                    .Where(f => f.PrimaryPsiLanguage.Is<SecretLanguage>())
-                    .ToArray();
-
+            var sourceFiles = this.GetSourceFiles();
             var result = new List<IDeclaration>();
             foreach (var sourceFile in sourceFiles)
             {
@@ -45,7 +34,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
                 return EmptyList<IDeclaration>.InstanceList;
             }
 
-            var fullName = this.GetUri();
+            var fullName = this.GetUri(secretFile);
 
             if (string.IsNullOrEmpty(fullName))
             {
@@ -55,44 +44,9 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
             return secretFile.GetUriIdentifiers(fullName);
         }
 
-        public string GetNamespace()
+        public string GetUri(ISecretFile file)
         {
-            var uriIdentifier = Parent as UriIdentifier;
-            if (uriIdentifier == null)
-            {
-                return null;
-            }
-
-            var prefix = uriIdentifier.Prefix;
-            if (prefix == null)
-            {
-                return uriIdentifier.UriString.GetText();
-            }
-
-            var secretFile = (SecretFile)this.GetContainingFile();
-            if (secretFile == null)
-            {
-                return null;
-            }
-
-            var declaration = secretFile.GetDeclaredElements(prefix.GetText()).FirstOrDefault() as IPrefixDeclaration;
-            if (declaration != null)
-            {
-                return declaration.UriString.GetText();
-            }
-
-            return null;
-        }
-
-        public string GetUri()
-        {
-            var ns = this.GetNamespace();
-            if (ns == null)
-            {
-                return null;
-            }
-
-            return ns + this.GetText();
+            return Value.GetText();
         }
 
         public DeclaredElementType GetElementType()
@@ -139,7 +93,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 
         public void SetName(string name)
         {
-            PsiTreeUtil.ReplaceChild(this, this.FirstChild, name);
+            PsiTreeUtil.ReplaceChild(this, this.Value, name);
         }
 
         public TreeTextRange GetNameRange()
@@ -211,27 +165,42 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
             return this.GetText();
         }
 
-        private SecretLocalNameReference myLocalNameReference;
+        private SecretUriStringReference myUriStringReference;
 
-        public SecretLocalNameReference LocalNameReference
+        public SecretUriStringReference UriStringReference
         {
             get
             {
                 lock (this)
                 {
-                    return this.myLocalNameReference ?? (this.myLocalNameReference = new SecretLocalNameReference(this));
+                    return this.myUriStringReference ?? (this.myUriStringReference = new SecretUriStringReference(this));
                 }
+            }
+        }
+
+        public string Namespace
+        {
+            get
+            {
+                var fullName = Value.GetText();
+                var index = fullName.LastIndexOf('#');
+                if (index == -1)
+                {
+                    return "";
+                }
+
+                return fullName.Substring(0, index);
             }
         }
 
         public override ReferenceCollection GetFirstClassReferences()
         {
-            return new ReferenceCollection(this.LocalNameReference);
+            return new ReferenceCollection(this.UriStringReference);
         }
 
         public void SetReferenceName(string shortName)
         {
-            this.LocalNameReference.SetName(shortName);
+            this.UriStringReference.SetName(shortName);
         }
     }
 }

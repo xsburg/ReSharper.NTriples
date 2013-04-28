@@ -12,35 +12,36 @@ using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Secret.Parsing;
 namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
-  internal partial class FromStatement : SecretCompositeElement, JetBrains.ReSharper.Psi.Secret.Tree.IFromStatement {
-    public const short FROM_FORMULA= ChildRole.LAST + 1;
-    public const short BIND_VARIABLE_IDENTIFIER= ChildRole.LAST + 2;
-    internal FromStatement() : base() {
+  internal partial class UriString : SecretCompositeElement, JetBrains.ReSharper.Psi.Secret.Tree.IUriString {
+    public const short URISTRING= ChildRole.LAST + 1;
+    internal UriString() : base() {
     }
     public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType NodeType {
-      get { return JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.FROM_STATEMENT; }
+      get { return JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.URI_STRING; }
     }
     public override void Accept(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor visitor) {
-      visitor.VisitFromStatement(this);
+      visitor.VisitUriString(this);
     }
     public override void Accept<TContext>(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor<TContext> visitor, TContext context) {
-      visitor.VisitFromStatement(this, context);
+      visitor.VisitUriString(this, context);
     }
     public override TReturn Accept<TContext, TReturn>(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor<TContext, TReturn> visitor, TContext context) {
-      return visitor.VisitFromStatement(this, context);
+      return visitor.VisitUriString(this, context);
     }
     private static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeDictionary<short> CHILD_ROLES = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeDictionary<short>(
       new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>[]
       {
-        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.VARIABLE_IDENTIFIER, BIND_VARIABLE_IDENTIFIER),
-        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.FORMULA, FROM_FORMULA),
+        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.URI_STRING, URISTRING),
       }
     );
     public override short GetChildRole (JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement child) {
       return CHILD_ROLES[child.NodeType];
     }
+    public virtual JetBrains.ReSharper.Psi.Tree.ITokenNode Value {
+      get { return (JetBrains.ReSharper.Psi.Tree.ITokenNode) FindChildByRole(URISTRING); }
+    }
     public override string ToString() {
-      return "IFromStatement";
+      return "IUriString";
     }
   }
 }

@@ -8,23 +8,24 @@ using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
 using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.ReSharper.Psi.Secret.Util;
 using JetBrains.ReSharper.Psi.Tree;
+using UriString = JetBrains.ReSharper.Psi.Secret.Impl.Tree.UriString;
 
 namespace JetBrains.ReSharper.Psi.Secret.Resolve
 {
-    public class SecretLocalNameReference : SecretReferenceBase
+    public class SecretUriStringReference : SecretReferenceBase
     {
-        public SecretLocalNameReference(ITreeNode node)
+        public SecretUriStringReference(ITreeNode node)
             : base(node)
         {
         }
 
         public override IReference BindTo(IDeclaredElement element)
         {
-            var localName = (ILocalName)this.GetTreeNode();
-            if (localName.Parent != null)
+            var uriString = (IUriString)this.GetTreeNode();
+            if (uriString.Parent != null)
             {
-                PsiTreeUtil.ReplaceChild(localName, localName.FirstChild, element.ShortName);
-                localName.SetReferenceName(element.ShortName);
+                PsiTreeUtil.ReplaceChild(uriString, uriString.FirstChild, element.ShortName);
+                uriString.SetReferenceName(element.ShortName);
             }
 
             return this;
@@ -43,15 +44,14 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
                 return EmptySymbolTable.INSTANCE;
             }
 
-            var localName = (LocalName)this.myOwner;
-            var @namespace = localName.GetNamespace();
-            var cache = this.myOwner.GetSolution().GetComponent<SecretCache>();
-            if (@namespace != null)
+            var uriString = (UriString)this.myOwner;
+            var @namespace = uriString.Namespace;
+            if (string.IsNullOrEmpty(@namespace))
             {
+                var cache = this.myOwner.GetSolution().GetComponent<SecretCache>();
                 var psiServices = this.myOwner.GetPsiServices();
 
                 var elements = cache.GetAllUriIdentifiersInNamespace(@namespace)
-                                    .Distinct(x => x.LocalName)
                                     .Select(x => new UriIdentifierDeclaredElement(file, x.LocalName, psiServices));
 
                 var symbolTable = ResolveUtil.CreateSymbolTable(elements, 0);

@@ -243,6 +243,10 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
         TestPrefix (level + 1, (JetBrains.ReSharper.Psi.Secret.Tree.IPrefix)child, "Prefix");
       }
       {
+        JetBrains.ReSharper.Psi.Secret.Tree.IUriString child = ((JetBrains.ReSharper.Psi.Secret.Tree.IUriIdentifier)param).UriStringElement;
+        TestUriString (level + 1, (JetBrains.ReSharper.Psi.Secret.Tree.IUriString)child, "UriStringElement");
+      }
+      {
         JetBrains.ReSharper.Psi.Tree.ITokenNode child = ((JetBrains.ReSharper.Psi.Secret.Tree.IUriIdentifier)param).UriString;
         TestTokenNode (level + 1, (JetBrains.ReSharper.Psi.Tree.ITokenNode)child, "UriString");
       }
@@ -251,6 +255,15 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
     {
       if (!CanVisitFurther(param)) return;
       VisitElement (level, param, caller);
+    }
+      internal static void TestUriString (int level, JetBrains.ReSharper.Psi.Secret.Tree.IUriString param, String caller)
+    {
+      if (!CanVisitFurther(param)) return;
+      VisitElement (level, param, caller);
+      {
+        JetBrains.ReSharper.Psi.Tree.ITokenNode child = ((JetBrains.ReSharper.Psi.Secret.Tree.IUriString)param).Value;
+        TestTokenNode (level + 1, (JetBrains.ReSharper.Psi.Tree.ITokenNode)child, "Value");
+      }
     }
       internal static void TestUseExternalDirective (int level, JetBrains.ReSharper.Psi.Secret.Tree.IUseExternalDirective param, String caller)
     {

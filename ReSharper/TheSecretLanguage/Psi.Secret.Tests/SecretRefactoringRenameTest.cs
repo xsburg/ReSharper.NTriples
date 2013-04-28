@@ -26,7 +26,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Tests
 
         [Test]
         [TestCaseSource("files")]
-        public void TestCompletion(string file)
+        public void TestRefactoringRename(string file)
         {
             this.DoOneTest(file);
         }

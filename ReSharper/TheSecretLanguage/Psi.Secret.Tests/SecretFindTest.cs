@@ -34,7 +34,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Tests
 
         [Test]
         [TestCaseSource("files")]
-        public void TestParser(string file)
+        public void TestFind(string file)
         {
             this.DoOneTest(file);
         }

@@ -89,9 +89,10 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
                         var prefixDeclaration = prefixElement.GetDeclarationsIn(psiSourceFile).OfType<IPrefixDeclaration>().FirstOrDefault();
                         if (prefixDeclaration != null)
                         {
+                            var kind = uriIdentifier.GetKind();
                             int offset = uriIdentifier.GetNavigationRange().TextRange.StartOffset;
-                            var ns = prefixDeclaration.UriString.GetText().TrimEnd('#');
-                            mySymbols.Add(new SecretUriIdentifierSymbol(ns, uriIdentifier.LocalName.GetText(), offset, psiSourceFile));
+                            var ns = prefixDeclaration.UriString.GetText();
+                            mySymbols.Add(new SecretUriIdentifierSymbol(ns, uriIdentifier.LocalName.GetText(), kind, offset, psiSourceFile));
                         }
                     }
                 }
@@ -101,14 +102,15 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
                     var separatorIndex = uriString.LastIndexOf('#');
                     if (separatorIndex > 0)
                     {
-                        var ns = uriString.Substring(0, separatorIndex);
+                        var ns = uriString.Substring(0, separatorIndex + 1);
                         var length = uriString.Length - (separatorIndex + 1);
                         if (length > 0)
                         {
+                            var kind = uriIdentifier.GetKind();
                             int offset = uriIdentifier.GetNavigationRange().TextRange.StartOffset;
                             var psiSourceFile = uriIdentifier.GetSourceFile();
                             var localName = uriString.Substring(separatorIndex + 1, length);
-                            mySymbols.Add(new SecretUriIdentifierSymbol(ns, localName, offset, psiSourceFile));
+                            mySymbols.Add(new SecretUriIdentifierSymbol(ns, localName, kind, offset, psiSourceFile));
                         }
                     }
                 }

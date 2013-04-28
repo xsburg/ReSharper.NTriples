@@ -18,16 +18,19 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
         {
         }
 
-        public SecretUriIdentifierSymbol(string @namespace, string localName, int offset, IPsiSourceFile psiSourceFile)
-            : base(localName, offset, psiSourceFile)
+        public SecretUriIdentifierSymbol(string @namespace, string localName, UriIdentifierKind kind, int offset, IPsiSourceFile psiSourceFile)
+            : base(@namespace + localName, offset, psiSourceFile)
         {
             LocalName = localName;
+            Kind = kind;
             Namespace = @namespace;
         }
 
         public string Namespace { get; private set; }
 
         public string LocalName { get; private set; }
+
+        public UriIdentifierKind Kind { get; private set; }
 
         public override void Read(BinaryReader reader)
         {

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Xml;
 using JetBrains.DocumentModel;
 using JetBrains.ReSharper.Psi.Secret.Cache;
@@ -8,26 +7,76 @@ using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.ReSharper.Psi.Secret.Util;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
+using System.Linq;
 
 namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 {
-    internal partial class LocalName : IDeclaredElement
+    internal partial class UriIdentifier
+    {
+        public UriIdentifierKind GetKind()
+        {
+            var kind = UriIdentifierKind.Other;
+            var parent2 = this.Parent;
+            while (parent2 != null && !(parent2 is ISentence) && !(parent2 is IAnonymousIdentifier))
+            {
+                if (parent2 is ISubject)
+                {
+                    kind = UriIdentifierKind.Subject;
+                    break;
+                }
+
+                if (parent2 is IPredicate)
+                {
+                    kind = UriIdentifierKind.Predicate;
+                    break;
+                }
+
+                if (parent2 is IObjects)
+                {
+                    kind = UriIdentifierKind.Object;
+                    break;
+                }
+
+                parent2 = parent2.Parent;
+            }
+
+            return kind;
+        }
+
+        public IDeclaredElement DescendantDeclaredElement
+        {
+            get
+            {
+                return this.Prefix != null
+                           ? this.LocalName.DeclaredElement
+                           : this.UriStringElement.DeclaredElement;
+            }
+        }
+
+        public string GetUri(ISecretFile file)
+        {
+            if (Prefix == null)
+            {
+                return UriString.GetText();
+            }
+
+            var declaration = ((SecretFile)file).GetDeclaredElements(Prefix.GetText()).FirstOrDefault() as IPrefixDeclaration;
+            if (declaration != null)
+            {
+                return declaration.UriString.GetText() + LocalName.GetText();
+            }
+
+            return null;
+        }
+    }
+
+    /*internal partial class UriIdentifier : IDeclaredElement
     {
         #region IDeclaredElement Members
 
         public IList<IDeclaration> GetDeclarations()
         {
-            
-
-
-            var sourceFiles =
-                this.GetSolution()
-                    .GetAllProjects()
-                    .SelectMany(p => p.GetPsiModules())
-                    .SelectMany(m => m.SourceFiles)
-                    .Where(f => f.PrimaryPsiLanguage.Is<SecretLanguage>())
-                    .ToArray();
-
+            var sourceFiles = this.GetSourceFiles();
             var result = new List<IDeclaration>();
             foreach (var sourceFile in sourceFiles)
             {
@@ -45,7 +94,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
                 return EmptyList<IDeclaration>.InstanceList;
             }
 
-            var fullName = this.GetUri();
+            var fullName = GetFullName(secretFile);
 
             if (string.IsNullOrEmpty(fullName))
             {
@@ -55,44 +104,20 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
             return secretFile.GetUriIdentifiers(fullName);
         }
 
-        public string GetNamespace()
+        public string GetUri(ISecretFile file)
         {
-            var uriIdentifier = Parent as UriIdentifier;
-            if (uriIdentifier == null)
+            if (Prefix == null)
             {
-                return null;
+                return UriString.GetText();
             }
 
-            var prefix = uriIdentifier.Prefix;
-            if (prefix == null)
-            {
-                return uriIdentifier.UriString.GetText();
-            }
-
-            var secretFile = (SecretFile)this.GetContainingFile();
-            if (secretFile == null)
-            {
-                return null;
-            }
-
-            var declaration = secretFile.GetDeclaredElements(prefix.GetText()).FirstOrDefault() as IPrefixDeclaration;
+            var declaration = ((SecretFile)file).GetDeclaredElements(Prefix.GetText()).FirstOrDefault() as IPrefixDeclaration;
             if (declaration != null)
             {
-                return declaration.UriString.GetText();
+                return declaration.UriString.GetText() + LocalName.GetText();
             }
 
             return null;
-        }
-
-        public string GetUri()
-        {
-            var ns = this.GetNamespace();
-            if (ns == null)
-            {
-                return null;
-            }
-
-            return ns + this.GetText();
         }
 
         public DeclaredElementType GetElementType()
@@ -119,7 +144,9 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
         {
             get
             {
-                return this.GetText();
+                return Prefix != null
+                           ? LocalName.GetText()
+                           : UriString.GetText();
             }
         }
 
@@ -139,7 +166,14 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 
         public void SetName(string name)
         {
-            PsiTreeUtil.ReplaceChild(this, this.FirstChild, name);
+            if (Prefix != null)
+            {
+                PsiTreeUtil.ReplaceChild(LocalName, LocalName.FirstChild, name);
+            }
+            else
+            {
+                PsiTreeUtil.ReplaceChild(this, this.UriString, name);
+            }
         }
 
         public TreeTextRange GetNameRange()
@@ -193,13 +227,43 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
                         psiFile.ClearTables();
                     }
                     return newElement as IRuleDeclaration;
-                }#2#
+                }#3#
             }
 
             return null;
-        }*/
+        }#1#
 
         #endregion
+
+        public UriIdentifierKind GetKind()
+        {
+            var kind = UriIdentifierKind.Other;
+            var parent2 = this.Parent;
+            while (parent2 != null && !(parent2 is ISentence) && !(parent2 is IAnonymousIdentifier))
+            {
+                if (parent2 is ISubject)
+                {
+                    kind = UriIdentifierKind.Subject;
+                    break;
+                }
+
+                if (parent2 is IPredicate)
+                {
+                    kind = UriIdentifierKind.Predicate;
+                    break;
+                }
+
+                if (parent2 is IObjects)
+                {
+                    kind = UriIdentifierKind.Object;
+                    break;
+                }
+
+                parent2 = parent2.Parent;
+            }
+
+            return kind;
+        }
 
         public bool IsOpened
         {
@@ -208,30 +272,30 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 
         private string GetDeclaredName()
         {
-            return this.GetText();
+            return Prefix != null ? LocalName.GetText() : UriString.GetText();
         }
 
-        private SecretLocalNameReference myLocalNameReference;
+        private SecretUriIdentifierReference myUriIdentifierReference;
 
-        public SecretLocalNameReference LocalNameReference
+        public SecretUriIdentifierReference UriIdentifierReference
         {
             get
             {
                 lock (this)
                 {
-                    return this.myLocalNameReference ?? (this.myLocalNameReference = new SecretLocalNameReference(this));
+                    return this.myUriIdentifierReference ?? (this.myUriIdentifierReference = new SecretUriIdentifierReference(this));
                 }
             }
         }
 
         public override ReferenceCollection GetFirstClassReferences()
         {
-            return new ReferenceCollection(this.LocalNameReference);
+            return new ReferenceCollection(this.UriIdentifierReference);
         }
 
         public void SetReferenceName(string shortName)
         {
-            this.LocalNameReference.SetName(shortName);
+            this.UriIdentifierReference.SetName(shortName);
         }
-    }
+    }*/
 }

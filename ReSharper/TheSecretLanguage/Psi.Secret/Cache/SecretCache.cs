@@ -17,7 +17,11 @@ using JetBrains.DataFlow;
 using JetBrains.DocumentManagers.impl;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi.Caches;
+using JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
+using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
+using JetBrains.ReSharper.Psi.Secret.Resolve;
+using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.Util.Caches;
 using JetBrains.Util;
@@ -82,14 +86,14 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
             return this.myNameToSymbolsUriIdentifierMap[name];
         }
 
-        public IEnumerable<ISecretSymbol> GetSymbols(string name)
-        {
-            return this.myNameToSymbolsUriIdentifierMap[name];
-        }
-
         public IEnumerable<SecretUriIdentifierSymbol> GetAllUriIdentifierSymbols()
         {
             return this.myNameToSymbolsUriIdentifierMap.SelectMany(x => x.Value);
+        }
+
+        public IEnumerable<SecretUriIdentifierSymbol> GetAllUriIdentifiersInNamespace(string @namespace)
+        {
+            return this.myNameToSymbolsUriIdentifierMap.SelectMany(x => x.Value).Where(s => s.Namespace == @namespace);
         }
 
         public IEnumerable<ISecretSymbol> GetSymbolsDeclaredInFile(IPsiSourceFile sourceFile)

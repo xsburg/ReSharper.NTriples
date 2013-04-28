@@ -38,7 +38,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
 
         public DeclaredElementType GetElementType()
         {
-            return SecretDeclaredElementType.NamespacePrefix;
+            return SecretDeclaredElementType.Prefix;
         }
 
         public XmlNode GetXMLDoc(bool inherit)

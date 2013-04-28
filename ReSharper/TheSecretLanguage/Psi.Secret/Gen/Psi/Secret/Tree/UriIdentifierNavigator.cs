@@ -37,5 +37,17 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
       } else return null;
       return (JetBrains.ReSharper.Psi.Secret.Tree.IUriIdentifier) current;
     }
+    [JetBrains.Annotations.Pure]
+    [JetBrains.Annotations.CanBeNull]
+    [JetBrains.Annotations.ContractAnnotation("null <= null")]
+    public static JetBrains.ReSharper.Psi.Secret.Tree.IUriIdentifier GetByUriStringElement (JetBrains.ReSharper.Psi.Secret.Tree.IUriString param) {
+      if (param == null) return null;
+      TreeElement current = (TreeElement)param;
+      if (current.parent is JetBrains.ReSharper.Psi.Secret.Impl.Tree.UriIdentifier) {
+        if (current.parent.GetChildRole (current) != JetBrains.ReSharper.Psi.Secret.Impl.Tree.UriIdentifier.URISTRING) return null;
+        current = current.parent;
+      } else return null;
+      return (JetBrains.ReSharper.Psi.Secret.Tree.IUriIdentifier) current;
+    }
   }
 }

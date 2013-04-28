@@ -14,11 +14,15 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
   
     JetBrains.ReSharper.Psi.Secret.Tree.IPrefix Prefix { get; }
   
+    JetBrains.ReSharper.Psi.Secret.Tree.IUriString UriStringElement { get; }
+  
     JetBrains.ReSharper.Psi.Tree.ITokenNode UriString { get; }
   
     JetBrains.ReSharper.Psi.Secret.Tree.ILocalName SetLocalName (JetBrains.ReSharper.Psi.Secret.Tree.ILocalName param);
   
     JetBrains.ReSharper.Psi.Secret.Tree.IPrefix SetPrefix (JetBrains.ReSharper.Psi.Secret.Tree.IPrefix param);
+  
+    JetBrains.ReSharper.Psi.Secret.Tree.IUriString SetUriStringElement (JetBrains.ReSharper.Psi.Secret.Tree.IUriString param);
   
   }
 }
