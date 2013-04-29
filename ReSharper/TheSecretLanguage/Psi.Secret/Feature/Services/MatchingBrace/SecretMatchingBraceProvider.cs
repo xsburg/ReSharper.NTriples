@@ -4,7 +4,7 @@
 //   Copyright (c) Comindware 2010-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   Class1.cs
+//   SecretMatchingBraceProvider.cs
 // </summary>
 // ***********************************************************************
 
@@ -12,7 +12,7 @@ using JetBrains.ReSharper.Feature.Services.MatchingBrace;
 using JetBrains.ReSharper.Psi.Parsing;
 using JetBrains.ReSharper.Psi.Secret.Parsing;
 
-namespace JetBrains.ReSharper.Psi.Secret.Feature.Services
+namespace JetBrains.ReSharper.Psi.Secret.Feature.Services.MatchingBrace
 {
     [Language(typeof(SecretLanguage))]
     internal class SecretMatchingBraceProvider : ISimpleMatchingBraceProvider
@@ -43,7 +43,8 @@ namespace JetBrains.ReSharper.Psi.Secret.Feature.Services
 
         public bool IsLeftBracket(TokenNodeType tokenType)
         {
-            if (((tokenType != SecretTokenType.L_BRACE) && (tokenType != SecretTokenType.L_PARENTHESES)) && (tokenType != SecretTokenType.L_BRACKET))
+            if (((tokenType != SecretTokenType.L_BRACE) && (tokenType != SecretTokenType.L_PARENTHESES)) &&
+                (tokenType != SecretTokenType.L_BRACKET))
             {
                 return false;
             }
@@ -52,7 +53,8 @@ namespace JetBrains.ReSharper.Psi.Secret.Feature.Services
 
         public bool IsRightBracket(TokenNodeType tokenType)
         {
-            if (((tokenType != SecretTokenType.R_BRACE) && (tokenType != SecretTokenType.R_PARENTHESES)) && (tokenType != SecretTokenType.R_BRACKET))
+            if (((tokenType != SecretTokenType.R_BRACE) && (tokenType != SecretTokenType.R_PARENTHESES)) &&
+                (tokenType != SecretTokenType.R_BRACKET))
             {
                 return false;
             }

@@ -14,7 +14,7 @@ using JetBrains.ReSharper.Psi.Impl;
 using JetBrains.ReSharper.Psi.Impl.PsiManagerImpl;
 using JetBrains.ReSharper.Psi.Parsing;
 using JetBrains.ReSharper.Psi.Resolve;
-using JetBrains.ReSharper.Psi.Secret.Formatter;
+//using JetBrains.ReSharper.Psi.Secret.Formatter;
 using JetBrains.ReSharper.Psi.Secret.Impl;
 using JetBrains.ReSharper.Psi.Secret.Parsing;
 using JetBrains.ReSharper.Psi.Tree;
@@ -27,13 +27,13 @@ namespace JetBrains.ReSharper.Psi.Secret
     [Language(typeof(SecretLanguage))]
     public class SecretLanguageService : LanguageService
     {
-        private readonly SecretCodeFormatter formatter;
+        //private readonly SecretCodeFormatter formatter;
         private readonly SecretWordIndexLanguageProvider wordIndexLanguageProvider = new SecretWordIndexLanguageProvider();
 
-        public SecretLanguageService(PsiLanguageType psiLanguageType, IConstantValueService constantValueService, SecretCodeFormatter formatter)
+        public SecretLanguageService(PsiLanguageType psiLanguageType, IConstantValueService constantValueService/*, SecretCodeFormatter formatter*/)
             : base(psiLanguageType, constantValueService)
         {
-            this.formatter = formatter;
+            //this.formatter = formatter;
         }
 
         public override ILexerFactory GetPrimaryLexerFactory()
@@ -54,7 +54,8 @@ namespace JetBrains.ReSharper.Psi.Secret
 
         public override ICodeFormatter CodeFormatter
         {
-            get { return formatter; }
+            //get { return formatter; }
+            get { return null; }
         }
 
         public override bool IsFilteredNode(ITreeNode node)

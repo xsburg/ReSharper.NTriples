@@ -4,7 +4,7 @@
 //   Copyright (c) Comindware 2010-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   PsiBracketMatcher.cs
+//   SecretBracketMatcher.cs
 // </summary>
 // ***********************************************************************
 
@@ -15,9 +15,9 @@ using JetBrains.Util;
 
 namespace JetBrains.ReSharper.Psi.Secret.TypingAssist
 {
-    public class PsiBracketMatcher : BracketMatcher
+    public class SecretBracketMatcher : BracketMatcher
     {
-        public PsiBracketMatcher()
+        public SecretBracketMatcher()
             : base(
                 new[]
                     {
