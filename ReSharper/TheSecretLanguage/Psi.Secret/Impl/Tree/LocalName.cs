@@ -8,6 +8,7 @@ using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.ReSharper.Psi.Secret.Util;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
+using JetBrains.Util.DataStructures;
 
 namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 {
@@ -17,39 +18,12 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 
         public IList<IDeclaration> GetDeclarations()
         {
-            var sourceFiles =
-                this.GetSolution()
-                    .GetAllProjects()
-                    .SelectMany(p => p.GetPsiModules())
-                    .SelectMany(m => m.SourceFiles)
-                    .Where(f => f.PrimaryPsiLanguage.Is<SecretLanguage>())
-                    .ToArray();
-
-            var result = new List<IDeclaration>();
-            foreach (var sourceFile in sourceFiles)
-            {
-                result.AddRange(this.GetDeclarationsIn(sourceFile));
-            }
-
-            return result;
+            return UriIdentifierDeclaredElement.GetDeclarations(this);
         }
 
         public IList<IDeclaration> GetDeclarationsIn(IPsiSourceFile sourceFile)
         {
-            var secretFile = sourceFile.GetPsiFile<SecretLanguage>(new DocumentRange(sourceFile.Document, 0)) as SecretFile;
-            if (secretFile == null)
-            {
-                return EmptyList<IDeclaration>.InstanceList;
-            }
-
-            var fullName = this.GetUri();
-
-            if (string.IsNullOrEmpty(fullName))
-            {
-                return EmptyList<IDeclaration>.InstanceList;
-            }
-
-            return secretFile.GetUriIdentifiers(fullName);
+            return UriIdentifierDeclaredElement.GetDeclarationsIn(sourceFile, this);
         }
 
         public string GetNamespace()
@@ -133,6 +107,17 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
         public PsiLanguageType PresentationLanguage
         {
             get { return SecretLanguage.Instance; }
+        }
+
+        public UriIdentifierKind GetKind()
+        {
+            var uriIdentifier = Parent as UriIdentifier;
+            if (uriIdentifier == null)
+            {
+                return UriIdentifierKind.Other;
+            }
+
+            return uriIdentifier.GetKind();
         }
 
         #endregion

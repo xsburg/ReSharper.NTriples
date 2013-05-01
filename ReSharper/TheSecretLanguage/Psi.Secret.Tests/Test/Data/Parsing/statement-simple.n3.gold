@@ -8,26 +8,31 @@ ISecretFile
         ISubject
           IIdentifier
             IUriIdentifier
-              Identifier(type:IDENTIFIER, text:family)
+              IPrefix
+                Identifier(type:IDENTIFIER, text:family)
               SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
-              Identifier(type:IDENTIFIER, text:jack)
+              ILocalName
+                Identifier(type:IDENTIFIER, text:jack)
         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
         IFacts
-          IFacts_
-            IFact
-              IPredicate
-                IExpression
-                  IIdentifier
-                    IUriIdentifier
-                      Identifier(type:IDENTIFIER, text:relation)
-                      SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
-                      Identifier(type:IDENTIFIER, text:hasFather)
-              Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-              IObjects
+          IFact
+            IPredicate
+              IExpression
                 IIdentifier
                   IUriIdentifier
-                    Identifier(type:IDENTIFIER, text:names)
+                    IPrefix
+                      Identifier(type:IDENTIFIER, text:relation)
                     SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                    ILocalName
+                      Identifier(type:IDENTIFIER, text:hasFather)
+            Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+            IObjects
+              IIdentifier
+                IUriIdentifier
+                  IPrefix
+                    Identifier(type:IDENTIFIER, text:names)
+                  SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                  ILocalName
                     Identifier(type:IDENTIFIER, text:john)
     SecretTokenType+DotTokenElement(type:DOT, text:.)
 

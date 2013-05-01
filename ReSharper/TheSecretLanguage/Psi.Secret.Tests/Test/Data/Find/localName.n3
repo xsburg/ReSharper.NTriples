@@ -1,0 +1,18 @@
+
+@prefix family: <http://ontology.org/ontology/family#>.
+@prefix names: <http://ontology.org/ontology/names#>.
+@prefix relation: <http://ontology.org/ontology/relation#>.
+
+family:jack{def:jack}{ref:jack}
+    relation:father names:john;
+    relation:mother names:mary;
+    relation:hasFather true;
+    relation:hasMother true;
+    relation:brothers
+        names:billy.
+
+names:foo names:bar family:jack{ref:jack};
+    names:baz family:jack{ref:jack}.
+
+relation:brothers family:jack{ref:jack} names:baz.
+relation:brothers <http://ontology.org/ontology/family#jack{ref:jack}> names:baz.

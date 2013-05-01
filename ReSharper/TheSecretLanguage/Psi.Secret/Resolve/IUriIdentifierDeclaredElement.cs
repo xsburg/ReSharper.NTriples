@@ -1,8 +1,13 @@
-﻿namespace JetBrains.ReSharper.Psi.Secret.Resolve
+﻿using JetBrains.ReSharper.Psi.Secret.Cache;
+
+namespace JetBrains.ReSharper.Psi.Secret.Resolve
 {
-    internal interface IUriIdentifierDeclaredElement
+    public interface IUriIdentifierDeclaredElement : IDeclaredElement
     {
         string GetNamespace();
         string GetLocalName();
+        string GetUri();
+
+        UriIdentifierKind GetKind();
     }
 }

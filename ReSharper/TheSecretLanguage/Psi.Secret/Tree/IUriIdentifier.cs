@@ -1,5 +1,6 @@
 ﻿using JetBrains.ReSharper.Psi.Secret.Cache;
 using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
+using JetBrains.ReSharper.Psi.Secret.Resolve;
 using JetBrains.ReSharper.Psi.Tree;
 
 namespace JetBrains.ReSharper.Psi.Secret.Tree
@@ -11,10 +12,10 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree
     }*/
     public partial interface IUriIdentifier
     {
-        string GetUri(ISecretFile file);
+        string GetUri();
         UriIdentifierKind GetKind();
-        IDeclaredElement DescendantDeclaredElement { get; }
+        IUriIdentifierDeclaredElement DescendantDeclaredElement { get; }
         string GetLocalName();
-        string GetNamespace(ISecretFile file);
+        string GetNamespace();
     }
 }

@@ -1,0 +1,7 @@
+# ${CHANGE_TEXT:true}
+# ${RENAME_FILE:true}
+# ${NEW_NAME:brothers222}
+
+@prefix relation: <http://ontology.org/ontology/relation#>.
+
+relation:brothers relation:br{caret}others <http://ontology.org/ontology/relation#brothers>.

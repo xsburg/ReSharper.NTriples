@@ -106,7 +106,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
                     .GetResults();
             foreach (var uriIdentifier in uriIdentifiers)
             {
-                var fullName = uriIdentifier.GetUri(this);
+                var fullName = uriIdentifier.GetUri();
                 if (fullName != null)
                 {
                     IList<IDeclaredElement> elements;

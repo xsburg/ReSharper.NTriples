@@ -32,6 +32,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Util
         public abstract IPrefix CreatePrefixExpression(string name);
         public abstract IPrefixName CreatePrefixNameExpression(string name);
         public abstract ILocalName CreateLocalNameExpression(string name);
-        public abstract IUriIdentifier CreateUriIdentifierExpression(string name);
+        public abstract IUriString CreateUriStringExpression(string name);
     }
 }

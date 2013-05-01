@@ -1,4 +1,14 @@
-﻿using JetBrains.Application.Settings;
+﻿// ***********************************************************************
+// <author>Stephan B</author>
+// <copyright company="Comindware">
+//   Copyright (c) Comindware 2010-2013. All rights reserved.
+// </copyright>
+// <summary>
+//   SecretIntellisenseManager.cs
+// </summary>
+// ***********************************************************************
+
+using JetBrains.Application.Settings;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Settings;
 

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Xml;
 using JetBrains.DocumentModel;
+using JetBrains.ReSharper.Psi.Secret.Cache;
 using JetBrains.ReSharper.Psi.Secret.Resolve;
 using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.ReSharper.Psi.Secret.Util;
@@ -16,37 +17,12 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 
         public IList<IDeclaration> GetDeclarations()
         {
-            var sourceFiles = this.GetSourceFiles();
-            var result = new List<IDeclaration>();
-            foreach (var sourceFile in sourceFiles)
-            {
-                result.AddRange(this.GetDeclarationsIn(sourceFile));
-            }
-
-            return result;
+            return UriIdentifierDeclaredElement.GetDeclarations(this);
         }
 
         public IList<IDeclaration> GetDeclarationsIn(IPsiSourceFile sourceFile)
         {
-            var secretFile = sourceFile.GetPsiFile<SecretLanguage>(new DocumentRange(sourceFile.Document, 0)) as SecretFile;
-            if (secretFile == null)
-            {
-                return EmptyList<IDeclaration>.InstanceList;
-            }
-
-            var fullName = this.GetUri(secretFile);
-
-            if (string.IsNullOrEmpty(fullName))
-            {
-                return EmptyList<IDeclaration>.InstanceList;
-            }
-
-            return secretFile.GetUriIdentifiers(fullName);
-        }
-
-        public string GetUri(ISecretFile file)
-        {
-            return Value.GetText();
+            return UriIdentifierDeclaredElement.GetDeclarationsIn(sourceFile, this);
         }
 
         public DeclaredElementType GetElementType()
@@ -200,6 +176,24 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
             }
 
             return fullName.Substring(index + 1);
+        }
+
+        public string GetUri()
+        {
+            return Value == null
+                       ? null
+                       : Value.GetText();
+        }
+
+        public UriIdentifierKind GetKind()
+        {
+            var uriIdentifier = Parent as UriIdentifier;
+            if (uriIdentifier == null)
+            {
+                return UriIdentifierKind.Other;
+            }
+
+            return uriIdentifier.GetKind();
         }
 
         public override ReferenceCollection GetFirstClassReferences()

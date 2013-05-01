@@ -52,7 +52,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
                 var psiServices = this.myOwner.GetPsiServices();
 
                 var elements = cache.GetAllUriIdentifiersInNamespace(@namespace)
-                                    .Select(x => new UriIdentifierDeclaredElement(file, x.Namespace, x.LocalName, psiServices));
+                                    .Select(x => new UriIdentifierDeclaredElement(file, x.Namespace, x.LocalName, x.Kind, psiServices));
 
                 var symbolTable = ResolveUtil.CreateSymbolTable(elements, 0);
                 return symbolTable;

@@ -97,7 +97,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Util
             throw new ElementFactoryException(string.Format("Cannot create file '{0}'", text));
         }
 
-        public override IUriIdentifier CreateUriIdentifierExpression(string name)
+        public override IUriString CreateUriStringExpression(string name)
         {
             var text = string.Format("<{0}> a false.", name);
             var node = this.CreateSecretFile(text);
@@ -107,9 +107,9 @@ namespace JetBrains.ReSharper.Psi.Secret.Util
             {
                 var uriIdentifier = (IUriIdentifier)identifier.FirstChild;
 
-                if (uriIdentifier != null && uriIdentifier.UriString != null)
+                if (uriIdentifier != null && uriIdentifier.UriStringElement != null)
                 {
-                    return uriIdentifier;
+                    return uriIdentifier.UriStringElement;
                 }
             }
 

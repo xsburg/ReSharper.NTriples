@@ -33,7 +33,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Tests
         {
             get
             {
-                return @"lexing\secret";
+                return @"Lexing";
             }
         }
 

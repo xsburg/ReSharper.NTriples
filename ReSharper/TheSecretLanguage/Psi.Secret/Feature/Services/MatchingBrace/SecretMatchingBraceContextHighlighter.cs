@@ -18,6 +18,7 @@ using JetBrains.UI.RichText;
 
 namespace JetBrains.ReSharper.Psi.Secret.Feature.Services.MatchingBrace
 {
+#if !UNITTEST
     [CaretDependentFeature]
     public class SecretMatchingBraceContextHighlighter : MatchingBraceContextHighlighterBase
     {
@@ -257,4 +258,5 @@ namespace JetBrains.ReSharper.Psi.Secret.Feature.Services.MatchingBrace
             }
         }
     }
+#endif
 }

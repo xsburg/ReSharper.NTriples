@@ -17,12 +17,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Tests
     [TestFixture]
     public class SecretLexerTest : SecretLexerTestBase
     {
-        public SecretLexerTest()
-        {
-            var extension = this.GetType().BaseType.GetCustomAttributes(true).OfType<TestFileExtensionAttribute>().Single().Extension;
-            // TODO: generate files list automatically and use exclude list to ignore unnecesserily files
-        }
-
         // ReSharper disable StringLiteralTypo
 
         private readonly string[] files = new[]

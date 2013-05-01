@@ -4,27 +4,30 @@
 //   Copyright (c) Comindware 2010-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   PsiCacheBuilder.cs
+//   SecretCacheBuilder.cs
 // </summary>
 // ***********************************************************************
 
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using JetBrains.Annotations;
 using JetBrains.DocumentModel;
-using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
-using JetBrains.ReSharper.Psi.Secret.Parsing;
+using JetBrains.ReSharper.Psi.Secret.Resolve;
 using JetBrains.ReSharper.Psi.Secret.Tree;
-using JetBrains.ReSharper.Psi.Tree;
-using JetBrains.Util;
 using JetBrains.ReSharper.Psi.Secret.Util;
+using JetBrains.ReSharper.Psi.Tree;
 
 namespace JetBrains.ReSharper.Psi.Secret.Cache
 {
     internal class SecretCacheBuilder : IRecursiveElementProcessor
     {
+        private readonly ISecretFile file;
         private readonly List<ISecretSymbol> mySymbols = new List<ISecretSymbol>();
+
+        private SecretCacheBuilder(ISecretFile file)
+        {
+            this.file = file;
+        }
 
         public bool ProcessingIsFinished
         {
@@ -67,25 +70,19 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
         {
         }
 
-        private readonly ISecretFile file;
-
-        private SecretCacheBuilder(ISecretFile file)
-        {
-            this.file = file;
-        }
-
         public void ProcessBeforeInterior(ITreeNode element)
         {
-            var uriIdentifier = element as IUriIdentifier;
+            var uriIdentifier = element as IUriIdentifierDeclaredElement;
             if (uriIdentifier != null)
             {
-                var ns = uriIdentifier.GetNamespace(file);
+                var ns = uriIdentifier.GetNamespace();
                 if (!string.IsNullOrEmpty(ns))
                 {
+                    var ln = uriIdentifier.GetLocalName();
                     var kind = uriIdentifier.GetKind();
-                    int offset = uriIdentifier.GetNavigationRange().TextRange.StartOffset;
-                    var psiSourceFile = uriIdentifier.GetSourceFile();
-                    mySymbols.Add(new SecretUriIdentifierSymbol(ns, uriIdentifier.GetLocalName(), kind, offset, psiSourceFile));
+                    int offset = element.GetNavigationRange().TextRange.StartOffset;
+                    var psiSourceFile = element.GetSourceFile();
+                    this.mySymbols.Add(new SecretUriIdentifierSymbol(ns, ln, kind, offset, psiSourceFile));
                 }
             }
         }
@@ -98,7 +95,8 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
             return ret.GetSymbols();
         }
 
-        private static IList<TSymbol> ReadSymbolsOfType<TSymbol>(BinaryReader reader, IPsiSourceFile sourceFile) where TSymbol : SecretSymbolBase, new()
+        private static IList<TSymbol> ReadSymbolsOfType<TSymbol>(BinaryReader reader, IPsiSourceFile sourceFile)
+            where TSymbol : SecretSymbolBase, new()
         {
             int count = reader.ReadInt32();
             var ret = new List<TSymbol>();

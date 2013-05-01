@@ -18,6 +18,7 @@ using JetBrains.ReSharper.Feature.Services.Util;
 using JetBrains.ReSharper.Psi.Resolve;
 using JetBrains.ReSharper.Psi.Secret.Cache;
 using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
+using JetBrains.ReSharper.Psi.Secret.Resolve;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Refactorings;
 using JetBrains.ReSharper.Refactorings.Conflicts;
@@ -242,9 +243,13 @@ namespace JetBrains.ReSharper.Psi.Secret.Refactoring.Rename
                 return;
             }
 
-            IList<IDeclaration> declarations = new MultyPsiDeclarations(element).AllDeclarations;
+            var declarations = new MultyPsiDeclarations(element).AllDeclarations.ToList();
+            if (element is IUriIdentifierDeclaredElement)
+            {
+                declarations.AddRange(UriIdentifierDeclaredElement.GetDeclarations(element as IUriIdentifierDeclaredElement));
+            }
 
-            foreach (IDeclaration declaration in declarations)
+            foreach (var declaration in declarations)
             {
                 this.myDeclarations.Add(declaration);
             }

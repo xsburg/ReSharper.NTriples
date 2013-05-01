@@ -1,4 +1,13 @@
-﻿using System;
+﻿// ***********************************************************************
+// <author>Stephan B</author>
+// <copyright company="Comindware">
+//   Copyright (c) Comindware 2010-2013. All rights reserved.
+// </copyright>
+// <summary>
+//   UriIdentifierDeclaredElement.cs
+// </summary>
+// ***********************************************************************
+
 using System.Collections.Generic;
 using System.Xml;
 using JetBrains.DocumentModel;
@@ -8,30 +17,24 @@ using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
 using JetBrains.Util.DataStructures;
+using System.Linq;
 
 namespace JetBrains.ReSharper.Psi.Secret.Resolve
 {
     internal class UriIdentifierDeclaredElement : IDeclaredElement, IUriIdentifierDeclaredElement
     {
+        private readonly UriIdentifierKind kind;
+        private readonly string localName;
         private readonly IFile myFile;
 
-        public string GetNamespace()
-        {
-            return this.ns;
-        }
-
-        public string GetLocalName()
-        {
-            return this.localName;
-        }
-
-        private readonly IPsiServices myServices;
         private readonly string myName;
-        private readonly string localName;
-        private string myNewName;
+        private readonly IPsiServices myServices;
+        private readonly bool filterDeclarations;
         private readonly string ns;
+        private string myNewName;
 
-        public UriIdentifierDeclaredElement(IFile file, string @namespace, string localName, IPsiServices services)
+        public UriIdentifierDeclaredElement(
+            IFile file, string @namespace, string localName, UriIdentifierKind kind, IPsiServices services, bool filterDeclarations = false)
         {
             this.myFile = file;
             this.ns = @namespace;
@@ -39,11 +42,40 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
             this.myName = localName;
             this.myNewName = localName;
             this.myServices = services;
+            this.filterDeclarations = filterDeclarations;
+            this.kind = kind;
+        }
+
+        public bool CaseSensistiveName
+        {
+            get
+            {
+                return true;
+            }
         }
 
         public IFile File
         {
-            get { return this.myFile; }
+            get
+            {
+                return this.myFile;
+            }
+        }
+
+        public PsiLanguageType PresentationLanguage
+        {
+            get
+            {
+                return SecretLanguage.Instance;
+            }
+        }
+
+        public string ShortName
+        {
+            get
+            {
+                return this.myName;
+            }
         }
 
         /*public bool ChangeName { get; set; }
@@ -58,9 +90,53 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
             }
         }*/
 
-        public IPsiServices GetPsiServices()
+        public static IList<IDeclaration> GetDeclarations(IUriIdentifierDeclaredElement declaredElement)
         {
-            return this.myServices;
+            var result = new List<IDeclaration>();
+            foreach (var sourceFile in GetSourceFiles(declaredElement))
+            {
+                result.AddRange(GetDeclarationsIn(sourceFile, declaredElement));
+            }
+
+            return result;
+        }
+
+        public static IList<IDeclaration> GetDeclarationsIn(
+            IPsiSourceFile sourceFile, IUriIdentifierDeclaredElement declaredElement)
+        {
+            var secretFile = sourceFile.GetPsiFile<SecretLanguage>(new DocumentRange(sourceFile.Document, 0)) as SecretFile;
+            if (secretFile == null)
+            {
+                return EmptyList<IDeclaration>.InstanceList;
+            }
+
+            var uri = declaredElement.GetUri();
+            if (string.IsNullOrEmpty(uri))
+            {
+                return EmptyList<IDeclaration>.InstanceList;
+            }
+
+            var uriIdentifiers = secretFile.GetUriIdentifiers(uri);
+            return uriIdentifiers;
+        }
+
+        public static HybridCollection<IPsiSourceFile> GetSourceFiles(IUriIdentifierDeclaredElement declaredElement)
+        {
+            var cache = declaredElement.GetSolution().GetComponent<SecretCache>();
+            return new HybridCollection<IPsiSourceFile>(
+                cache.GetFilesContainingUri(declaredElement.GetNamespace(), declaredElement.GetLocalName()));
+        }
+
+        public override bool Equals(object obj)
+        {
+            var other = obj as IUriIdentifierDeclaredElement;
+            if (other == null)
+            {
+                return false;
+            }
+
+            return string.Equals(this.GetNamespace(), other.GetNamespace()) &&
+                   string.Equals(this.GetLocalName(), other.GetLocalName());
         }
 
         public IList<IDeclaration> GetDeclarations()
@@ -76,19 +152,17 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
 
         public IList<IDeclaration> GetDeclarationsIn(IPsiSourceFile sourceFile)
         {
-            var secretFile = sourceFile.GetPsiFile<SecretLanguage>(new DocumentRange(sourceFile.Document, 0)) as SecretFile;
-            if (secretFile == null)
+            var declarations = GetDeclarationsIn(sourceFile, this);
+            if (filterDeclarations)
             {
-                return EmptyList<IDeclaration>.InstanceList;
+                return
+                    declarations.Where(
+                        d =>
+                        d is IUriIdentifierDeclaredElement &&
+                        (d as IUriIdentifierDeclaredElement).GetKind() == UriIdentifierKind.Subject).ToList();
             }
 
-            var uriIdentifiers = secretFile.GetUriIdentifiers(GetUri());
-            return uriIdentifiers;
-        }
-
-        public string GetUri()
-        {
-            return this.GetNamespace() + this.GetLocalName();
+            return declarations;
         }
 
         public DeclaredElementType GetElementType()
@@ -96,9 +170,39 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
             return SecretDeclaredElementType.UriIdentifier;
         }
 
-        public XmlNode GetXMLDoc(bool inherit)
+        public override int GetHashCode()
         {
-            return null;
+            return this.GetUri().GetHashCode();
+        }
+
+        public UriIdentifierKind GetKind()
+        {
+            return this.kind;
+        }
+
+        public string GetLocalName()
+        {
+            return this.localName;
+        }
+
+        public string GetNamespace()
+        {
+            return this.ns;
+        }
+
+        public IPsiServices GetPsiServices()
+        {
+            return this.myServices;
+        }
+
+        public HybridCollection<IPsiSourceFile> GetSourceFiles()
+        {
+            return GetSourceFiles(this);
+        }
+
+        public string GetUri()
+        {
+            return this.GetNamespace() + this.GetLocalName();
         }
 
         public XmlNode GetXMLDescriptionSummary(bool inherit)
@@ -106,9 +210,14 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
             return null;
         }
 
-        public bool IsValid()
+        public XmlNode GetXMLDoc(bool inherit)
         {
-            return !string.IsNullOrEmpty(this.GetNamespace());
+            return null;
+        }
+
+        public bool HasDeclarationsIn(IPsiSourceFile sourceFile)
+        {
+            return this.GetSourceFiles().Contains(sourceFile);
         }
 
         public bool IsSynthetic()
@@ -116,51 +225,9 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
             return false;
         }
 
-        public HybridCollection<IPsiSourceFile> GetSourceFiles()
+        public bool IsValid()
         {
-            var cache = this.GetSolution().GetComponent<SecretCache>();
-            return new HybridCollection<IPsiSourceFile>(cache.GetFilesContainingUri(this.GetNamespace(), this.GetLocalName()));
-        }
-
-        public bool HasDeclarationsIn(IPsiSourceFile sourceFile)
-        {
-            return GetSourceFiles().Contains(sourceFile);
-        }
-
-        public string ShortName
-        {
-            get { return this.myName; }
-        }
-
-        public bool CaseSensistiveName
-        {
-            get { return true; }
-        }
-
-        public PsiLanguageType PresentationLanguage
-        {
-            get { return SecretLanguage.Instance; }
-        }
-
-        /*public void SetName(string name)
-        {
-            this.myName = name;
-        }*/
-
-        public override bool Equals(object obj)
-        {
-            var other = obj as IUriIdentifierDeclaredElement;
-            if (other == null)
-            {
-                return false;
-            }
-
-            return string.Equals(GetNamespace(), other.GetNamespace()) && string.Equals(GetLocalName(), other.GetLocalName());
-        }
-
-        public override int GetHashCode()
-        {
-            return this.GetUri().GetHashCode();
+            return !string.IsNullOrEmpty(this.GetNamespace());
         }
     }
 }

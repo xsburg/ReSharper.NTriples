@@ -14,6 +14,7 @@ using JetBrains.Application;
 using JetBrains.ReSharper;
 using JetBrains.ReSharper.Psi.Secret;
 using JetBrains.Threading;
+using JetBrains.Util;
 using NUnit.Framework;
 
 // ReSharper disable CheckNamespace
@@ -46,6 +47,10 @@ public class IsolatedReSharperTestEnvironmentAssembly : ReSharperTestEnvironment
 [SetUpFixture]
 public class TestEnvironmentAssembly : ReSharperTestEnvironmentAssembly
 {
+    static TestEnvironmentAssembly()
+    {
+    }
+
     public override void SetUp()
     {
         base.SetUp();

@@ -5,26 +5,29 @@ ISecretFile
   ISentences
     ISentence
       IDirective
-        IPrefixDirective
+        IPrefixDeclaration
           SecretTokenType+PrefixKeywordTokenElement(type:PREFIX_KEYWORD, text:@prefix)
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          Identifier(type:IDENTIFIER, text:logics)
+          IPrefixName
+            Identifier(type:IDENTIFIER, text:logics)
           SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           SecretTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
-          SecretTokenType+UriStringTokenElement(type:URI_STRING, text:http://uri.string/path#localName)
+          SecretGenericToken(type:URI_STRING, text:http://my-ontology.org#logics)
           SecretTokenType+UriEndTokenElement(type:URI_END, text:>)
     SecretTokenType+DotTokenElement(type:DOT, text:.)
+    NewLine(type:NEW_LINE, text:\n) spaces:"\n"
     ISentence
       IDirective
-        IStdPrefixDirective
+        IPrefixDeclaration
           SecretTokenType+StdPrefixKeywordTokenElement(type:STD_PREFIX_KEYWORD, text:@std_prefix)
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          Identifier(type:IDENTIFIER, text:someStandard)
+          IPrefixName
+            Identifier(type:IDENTIFIER, text:someStandard)
           SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           SecretTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
-          SecretTokenType+UriStringTokenElement(type:URI_STRING, text:http://uri.string/path#localName)
+          SecretGenericToken(type:URI_STRING, text:http://my-ontology.org/logics#someStandard)
           SecretTokenType+UriEndTokenElement(type:URI_END, text:>)
     SecretTokenType+DotTokenElement(type:DOT, text:.)
     NewLine(type:NEW_LINE, text:\n) spaces:"\n"
@@ -35,11 +38,14 @@ ISecretFile
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           IUriIdentifier
             SecretTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
-            SecretTokenType+UriStringTokenElement(type:URI_STRING, text:http://uri.string/path#localName)
+            IUriString
+              SecretGenericToken(type:URI_STRING, text:http://my-ontology.org#logics)
             SecretTokenType+UriEndTokenElement(type:URI_END, text:>)
+          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           IUriIdentifier
             SecretTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
-            SecretTokenType+UriStringTokenElement(type:URI_STRING, text:http://uri.string/path#localName)
+            IUriString
+              SecretGenericToken(type:URI_STRING, text:http://my-ontology.org/logics#someStandard)
             SecretTokenType+UriEndTokenElement(type:URI_END, text:>)
     SecretTokenType+DotTokenElement(type:DOT, text:.)
     NewLine(type:NEW_LINE, text:\n) spaces:"\n"
@@ -49,20 +55,26 @@ ISecretFile
           SecretTokenType+UsingKeywordTokenElement(type:USING_KEYWORD, text:@using)
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           SecretTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
-          SecretTokenType+UriStringTokenElement(type:URI_STRING, text:http://uri.string/path#localName)
+          SecretGenericToken(type:URI_STRING, text:logics.n3)
           SecretTokenType+UriEndTokenElement(type:URI_END, text:>)
+          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           IUriIdentifiers
             IUriIdentifier
-              Identifier(type:IDENTIFIER, text:foo)
+              IPrefix
+                Identifier(type:IDENTIFIER, text:foo)
               SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
-              Identifier(type:IDENTIFIER, text:bar)
+              ILocalName
+                Identifier(type:IDENTIFIER, text:bar)
             SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+            Whitespace(type:WHITE_SPACE, text: ) spaces:" "
             IUriIdentifiers
               IUriIdentifier
                 SecretTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
-                SecretTokenType+UriStringTokenElement(type:URI_STRING, text:http://uri.string/path#localName)
+                IUriString
+                  SecretGenericToken(type:URI_STRING, text:http://my-ontology.org#logics)
                 SecretTokenType+UriEndTokenElement(type:URI_END, text:>)
     SecretTokenType+DotTokenElement(type:DOT, text:.)
+    NewLine(type:NEW_LINE, text:\n) spaces:"\n"
     ISentence
       IDirective
         IAxisDirective
@@ -70,17 +82,21 @@ ISecretFile
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           IUriIdentifiers
             IUriIdentifier
-              Identifier(type:IDENTIFIER, text:foo)
+              IPrefix
+                Identifier(type:IDENTIFIER, text:foo)
               SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
-              Identifier(type:IDENTIFIER, text:bar)
+              ILocalName
+                Identifier(type:IDENTIFIER, text:bar)
             SecretTokenType+CommaTokenElement(type:COMMA, text:,)
             Whitespace(type:WHITE_SPACE, text: ) spaces:" "
             IUriIdentifiers
               IUriIdentifier
                 SecretTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
-                SecretTokenType+UriStringTokenElement(type:URI_STRING, text:http://uri.string/path#localName)
+                IUriString
+                  SecretGenericToken(type:URI_STRING, text:http://my-ontology.org#logics)
                 SecretTokenType+UriEndTokenElement(type:URI_END, text:>)
     SecretTokenType+DotTokenElement(type:DOT, text:.)
+    NewLine(type:NEW_LINE, text:\n) spaces:"\n"
     ISentence
       IDirective
         IForAllDirective
@@ -88,16 +104,20 @@ ISecretFile
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           IUriIdentifiers
             IUriIdentifier
-              Identifier(type:IDENTIFIER, text:foo)
+              IPrefix
+                Identifier(type:IDENTIFIER, text:foo)
               SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
-              Identifier(type:IDENTIFIER, text:bar)
+              ILocalName
+                Identifier(type:IDENTIFIER, text:bar)
             SecretTokenType+CommaTokenElement(type:COMMA, text:,)
             Whitespace(type:WHITE_SPACE, text: ) spaces:" "
             IUriIdentifiers
               IUriIdentifier
-                Identifier(type:IDENTIFIER, text:foo)
+                IPrefix
+                  Identifier(type:IDENTIFIER, text:foo)
                 SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
-                Identifier(type:IDENTIFIER, text:bar)
+                ILocalName
+                  Identifier(type:IDENTIFIER, text:bar)
     SecretTokenType+DotTokenElement(type:DOT, text:.)
     NewLine(type:NEW_LINE, text:\n) spaces:"\n"
     ISentence
@@ -108,7 +128,9 @@ ISecretFile
           IUriIdentifiers
             IUriIdentifier
               SecretTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
-              SecretTokenType+UriStringTokenElement(type:URI_STRING, text:http://uri.string/path#localName)
+              IUriString
+                SecretGenericToken(type:URI_STRING, text:http://my-ontology.org#logics)
               SecretTokenType+UriEndTokenElement(type:URI_END, text:>)
     SecretTokenType+DotTokenElement(type:DOT, text:.)
+  NewLine(type:NEW_LINE, text:\n) spaces:"\n"
 

@@ -10,11 +10,17 @@
 
 using System;
 using System.Collections.Generic;
+using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi.ExtensionsAPI;
 using JetBrains.ReSharper.Psi.Search;
+using JetBrains.ReSharper.Psi.Secret.Cache;
 using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
+using JetBrains.ReSharper.Psi.Secret.Resolve;
+using JetBrains.ReSharper.Psi.Secret.Tree;
+using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
 using JetBrains.Util.DataStructures;
+using System.Linq;
 
 namespace JetBrains.ReSharper.Psi.Secret.Feature.Services.FindUsages
 {
@@ -81,21 +87,29 @@ namespace JetBrains.ReSharper.Psi.Secret.Feature.Services.FindUsages
 
         public ISearchDomain GetDeclaredElementSearchDomain(IDeclaredElement declaredElement)
         {
-            HybridCollection<IPsiSourceFile> files = declaredElement.GetSourceFiles();
-            if (!(declaredElement is PrefixDeclaration))
+            var uriIdentifier = declaredElement as IUriIdentifierDeclaredElement;
+            if (uriIdentifier != null)
             {
+                var cache = declaredElement.GetSolution().GetComponent<SecretCache>();
+                var files = cache.GetFilesContainingUri(uriIdentifier.GetNamespace(), uriIdentifier.GetLocalName());
+                return this.mySearchDomainFactory.CreateSearchDomain(files);
+            }
+
+            if (declaredElement is PrefixDeclaration)
+            {
+                var files = declaredElement.GetSourceFiles();
                 if (files.Count > 0)
                 {
                     return this.mySearchDomainFactory.CreateSearchDomain(files[0]);
                 }
             }
+
             return this.mySearchDomainFactory.CreateSearchDomain(declaredElement.GetSolution(), false);
         }
 
         public JetTuple<ICollection<IDeclaredElement>, Predicate<IFindResultReference>, bool> GetDerivedFindRequest(
             IFindResultReference result)
         {
-            //todo
             return null;
         }
 
@@ -106,8 +120,30 @@ namespace JetBrains.ReSharper.Psi.Secret.Feature.Services.FindUsages
 
         public IEnumerable<Pair<IDeclaredElement, Predicate<FindResult>>> GetRelatedDeclaredElements(IDeclaredElement element)
         {
-            //todo
-            yield return new Pair<IDeclaredElement, Predicate<FindResult>>(element, JetPredicate<FindResult>.True);
+            var uriIdentifier = element as IUriIdentifierDeclaredElement;
+            if (uriIdentifier != null)
+            {
+                var declarations = element.GetDeclarations();
+                var subjects =
+                    declarations.Where(
+                        d =>
+                        d.DeclaredElement is IUriIdentifierDeclaredElement &&
+                        (d.DeclaredElement as IUriIdentifierDeclaredElement).GetKind() == UriIdentifierKind.Subject).ToArray();
+
+                Func<IDeclaration, Pair<IDeclaredElement, Predicate<FindResult>>> selector =
+                    e => new Pair<IDeclaredElement, Predicate<FindResult>>(e.DeclaredElement, JetPredicate<FindResult>.True);
+                if (subjects.Any())
+                {
+                    return subjects.Select(selector);
+                }
+
+                if (declarations.Any())
+                {
+                    return declarations.Select(selector);
+                }
+            }
+
+            return new[] { new Pair<IDeclaredElement, Predicate<FindResult>>(element, JetPredicate<FindResult>.True) };
         }
 
         public bool IsCompatibleWithLanguage(PsiLanguageType languageType)

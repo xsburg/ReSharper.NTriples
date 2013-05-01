@@ -93,7 +93,7 @@ namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
                     }
                     else if (token.GetTokenType().IsConstantLiteral)
                     {
-                        this.AddSyntaxHighlighting(consumer, node, "Literal");
+                        this.AddSyntaxHighlighting(consumer, node, "Text");
                     }
                 }
             }

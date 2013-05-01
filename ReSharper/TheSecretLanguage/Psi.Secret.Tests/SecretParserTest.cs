@@ -14,7 +14,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Tests
     {
         protected override string RelativeTestDataPath
         {
-            get { return @"parsing"; }
+            get { return @"Parsing"; }
         }
 
         public SecretParserTest()

@@ -9,10 +9,13 @@
 // ***********************************************************************
 
 using System.Collections.Generic;
+using System.Linq;
 using JetBrains.DocumentModel;
 using JetBrains.ReSharper.Psi.ExtensionsAPI;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Finder;
 using JetBrains.ReSharper.Psi.Search;
+using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
+using JetBrains.ReSharper.Psi.Secret.Resolve;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
 
@@ -74,6 +77,20 @@ namespace JetBrains.ReSharper.Psi.Secret.Feature.Services.FindUsages
             }
             else
             {
+                var psiSourceFile = element.GetSourceFile();
+                foreach (var myElement in this.myElements)
+                {
+                    var declarations = myElement.GetDeclarationsIn(psiSourceFile);
+                    foreach (var declaration in declarations)
+                    {
+                        var refs = declaration.GetFirstClassReferences();
+                        foreach (var r in refs)
+                        {
+                            consumer.Accept(new FindResultReference(r, declaration.DeclaredElement));
+                        }
+                    }
+                }
+
                 result =
                     new ReferenceSearchSourceFileProcessor<TResult>(
                         element,
@@ -85,6 +102,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Feature.Services.FindUsages
                             : names,
                         names).Run();
             }
+
             return result == FindExecution.Stop;
         }
 

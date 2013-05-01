@@ -93,6 +93,30 @@ namespace JetBrains.ReSharper.Psi.Secret.Util
 
             using (WriteLockCookie.Create(parent.IsPhysical()))
             {
+                var srcIsUri = Uri.IsWellFormedUriString(name, UriKind.Absolute);
+                var dstIsUri = parent is IUriString;
+                if (srcIsUri && !dstIsUri)
+                {
+                    var uri = new Uri(name);
+                    if (uri.Fragment.Length < 2)
+                    {
+                        throw new FormatException("The new name provided in rename operation is invalid.");
+                    }
+
+                    name = uri.Fragment.Substring(1);
+                }
+                else if (!srcIsUri && dstIsUri)
+                {
+                    if (parent.Parent == null)
+                    {
+                        throw new InvalidOperationException("The element being replaced doesn't have a parent.");
+                    }
+
+                    var uriIdentifier = (IUriIdentifier)parent.Parent;
+                    var ns = uriIdentifier.GetNamespace();
+                    name = ns + name;
+                }
+
                 ITreeNode newNode;
                 if (parent is IPrefixName)
                 {
@@ -106,9 +130,9 @@ namespace JetBrains.ReSharper.Psi.Secret.Util
                 {
                     newNode = PsiElementFactory.GetInstance(parent.GetPsiModule()).CreateLocalNameExpression(name).FirstChild;
                 }
-                else if (parent is UriString)
+                else if (parent is IUriString)
                 {
-                    newNode = PsiElementFactory.GetInstance(parent.GetPsiModule()).CreateUriIdentifierExpression(name).FirstChild;
+                    newNode = PsiElementFactory.GetInstance(parent.GetPsiModule()).CreateUriStringExpression(name).FirstChild;
                 }
                 else
                 {
