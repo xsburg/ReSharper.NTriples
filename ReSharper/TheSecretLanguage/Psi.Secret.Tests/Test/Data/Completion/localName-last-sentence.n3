@@ -28,6 +28,7 @@ family:stan
         true,
         false,
         null,
+        <>,
         ?,
         ?someVar,
         { family:jack a limbs:dick }

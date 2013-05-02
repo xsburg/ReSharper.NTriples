@@ -33,9 +33,9 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
     private static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeDictionary<short> CHILD_ROLES = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeDictionary<short>(
       new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>[]
       {
+        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.PREFIX, PREFIX),
         new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.LOCAL_NAME, LOCALNAME),
         new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.URI_STRING, URISTRING),
-        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.PREFIX, PREFIX),
       }
     );
     public override short GetChildRole (JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement child) {
@@ -78,16 +78,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
             return (JetBrains.ReSharper.Psi.Secret.Tree.ILocalName)result;
           } else {
             if (next.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.PREFIX) {
-              current = next;
-            } else {
-              return (JetBrains.ReSharper.Psi.Secret.Tree.ILocalName)result;
-            }
-          }
-          next = GetNextFilteredChild (current);
-          if (next == null) {
-            return (JetBrains.ReSharper.Psi.Secret.Tree.ILocalName)result;
-          } else {
-            if (next.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR) {
               current = next;
             } else {
               return (JetBrains.ReSharper.Psi.Secret.Tree.ILocalName)result;
@@ -162,16 +152,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
             return (JetBrains.ReSharper.Psi.Secret.Tree.IUriString)result;
           } else {
             if (next.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.PREFIX) {
-              current = next;
-            } else {
-              return (JetBrains.ReSharper.Psi.Secret.Tree.IUriString)result;
-            }
-          }
-          next = GetNextFilteredChild (current);
-          if (next == null) {
-            return (JetBrains.ReSharper.Psi.Secret.Tree.IUriString)result;
-          } else {
-            if (next.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR) {
               current = next;
             } else {
               return (JetBrains.ReSharper.Psi.Secret.Tree.IUriString)result;

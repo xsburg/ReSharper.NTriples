@@ -5,3 +5,4 @@
 @prefix relation: <http://ontology.org/ontology/relation#>.
 
 relation:brothers relation:brothers <http://ontology.org/onto{caret}logy/relation#brothers>.
+<> <> <>.

@@ -19,4 +19,4 @@ family:jack
         names:billy,
         [a info:Man].
 
-family:stan relation:br{caret}others names:billy.
+family:stan relation:br{caret}others <>.

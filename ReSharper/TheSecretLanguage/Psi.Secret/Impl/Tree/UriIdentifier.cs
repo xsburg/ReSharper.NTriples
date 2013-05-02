@@ -58,17 +58,23 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 
         public string GetLocalName()
         {
-            return this.DescendantDeclaredElement.GetLocalName();
+            return this.DescendantDeclaredElement == null
+                       ? null
+                       : this.DescendantDeclaredElement.GetLocalName();
         }
 
         public string GetNamespace()
         {
-            return this.DescendantDeclaredElement.GetNamespace();
+            return this.DescendantDeclaredElement == null
+                       ? null
+                       : this.DescendantDeclaredElement.GetNamespace();
         }
 
         public string GetUri()
         {
-            return this.DescendantDeclaredElement.GetUri();
+            return this.DescendantDeclaredElement == null
+                       ? null
+                       : this.DescendantDeclaredElement.GetUri();
         }
     }
 }

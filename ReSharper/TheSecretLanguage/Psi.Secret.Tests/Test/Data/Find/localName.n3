@@ -14,5 +14,5 @@ family:jack{def:jack}{ref:jack}
 names:foo names:bar family:jack{ref:jack};
     names:baz family:jack{ref:jack}.
 
-relation:brothers family:jack{ref:jack} names:baz.
+relation:brothers family:jack{ref:jack} <>.
 relation:brothers <http://ontology.org/ontology/family#jack{ref:jack}> names:baz.

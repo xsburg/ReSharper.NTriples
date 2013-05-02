@@ -9,8 +9,7 @@ ISecretFile
           SecretTokenType+PrefixKeywordTokenElement(type:PREFIX_KEYWORD, text:@prefix)
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           IPrefixName
-            Identifier(type:IDENTIFIER, text:logics)
-          SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+            PrefixIdentifier(type:PREFIX_IDENTIFIER, text:logics:)
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           SecretTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
           SecretGenericToken(type:URI_STRING, text:http://my-ontology.org#logics)
@@ -23,8 +22,7 @@ ISecretFile
           SecretTokenType+StdPrefixKeywordTokenElement(type:STD_PREFIX_KEYWORD, text:@std_prefix)
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           IPrefixName
-            Identifier(type:IDENTIFIER, text:someStandard)
-          SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+            PrefixIdentifier(type:PREFIX_IDENTIFIER, text:someStandard:)
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           SecretTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
           SecretGenericToken(type:URI_STRING, text:http://my-ontology.org/logics#someStandard)
@@ -61,8 +59,7 @@ ISecretFile
           IUriIdentifiers
             IUriIdentifier
               IPrefix
-                Identifier(type:IDENTIFIER, text:foo)
-              SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                PrefixIdentifier(type:PREFIX_IDENTIFIER, text:foo:)
               ILocalName
                 Identifier(type:IDENTIFIER, text:bar)
             SecretTokenType+CommaTokenElement(type:COMMA, text:,)
@@ -83,8 +80,7 @@ ISecretFile
           IUriIdentifiers
             IUriIdentifier
               IPrefix
-                Identifier(type:IDENTIFIER, text:foo)
-              SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                PrefixIdentifier(type:PREFIX_IDENTIFIER, text:foo:)
               ILocalName
                 Identifier(type:IDENTIFIER, text:bar)
             SecretTokenType+CommaTokenElement(type:COMMA, text:,)
@@ -105,8 +101,7 @@ ISecretFile
           IUriIdentifiers
             IUriIdentifier
               IPrefix
-                Identifier(type:IDENTIFIER, text:foo)
-              SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                PrefixIdentifier(type:PREFIX_IDENTIFIER, text:foo:)
               ILocalName
                 Identifier(type:IDENTIFIER, text:bar)
             SecretTokenType+CommaTokenElement(type:COMMA, text:,)
@@ -114,8 +109,7 @@ ISecretFile
             IUriIdentifiers
               IUriIdentifier
                 IPrefix
-                  Identifier(type:IDENTIFIER, text:foo)
-                SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                  PrefixIdentifier(type:PREFIX_IDENTIFIER, text:foo:)
                 ILocalName
                   Identifier(type:IDENTIFIER, text:bar)
     SecretTokenType+DotTokenElement(type:DOT, text:.)

@@ -51,7 +51,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 
         public string ShortName
         {
-            get { return PrefixName.GetText(); }
+            get { return PrefixName.GetText().TrimEnd(':'); }
         }
 
         public bool CaseSensistiveName
@@ -77,7 +77,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
         {
             ITreeNode prefixName = PrefixName;
             int offset = prefixName.GetNavigationRange().TextRange.StartOffset;
-            return new TreeTextRange(new TreeOffset(offset), prefixName.GetText().Length);
+            return new TreeTextRange(new TreeOffset(offset), GetDeclaredName().Length);
         }
 
         public IDeclaredElement DeclaredElement
@@ -138,15 +138,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 
         private string GetDeclaredName()
         {
-            return PrefixName.GetText();
-        }
-
-        public string NamespaceUri
-        {
-            get
-            {
-                return this.UriString.GetText().TrimEnd('#');
-            }
+            return PrefixName.GetText().TrimEnd(':');
         }
     }
 }

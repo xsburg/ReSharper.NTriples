@@ -23,6 +23,7 @@ family:stan
         ),
         true,
         false,
+        <>,
         null,
         ?,
         ?someVar,

@@ -24,12 +24,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
         public const string IDS_LITERAL_KEYWORDS = "literal keywords";
         public const string IDS_IDENTIFIER = "identifier";
 
-        public const string IDS_BINARY_EXPRESSION = "expression";
-        public const string IDS_BINDING_SCHEME = "binding scheme";
-        public const string IDS_BINDING_SOURCE = "binding source";
-        public const string IDS_BINDING_VALUE_SCHEME = "binding value scheme";
-        public const string IDS_CONSTANT_VALUE = "constant";
-        public const string IDS_DEFINITION = "definition";
         public const string IDS_EXPRESSION = "expression";
         public const string IDS_INFIX_SYMBOL = "symbol";
         public const string IDS_OPERATOR_EXPRESSION = "expression";
@@ -46,7 +40,8 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
         public const string IDS_UNARY_EXPRESSION = "expression";
         public const string IDS_VALUE_NAME = "value name";
         public const string IDS_VALUE_REFERENCE_EXPRESSION_OLD = "expression";
-        public const string IDS_FACTS_AND_SEMICOLON_ = "facts";
+        public const string IDS_PREFIX_NAME = "prefixName:";
+        public const string IDS_PREFIX = "prefix:";
 
         public static string GetString(string id)
         {

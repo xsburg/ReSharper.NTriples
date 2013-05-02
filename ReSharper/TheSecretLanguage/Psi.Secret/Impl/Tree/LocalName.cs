@@ -46,7 +46,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
                 return null;
             }
 
-            var declaration = secretFile.GetDeclaredElements(prefix.GetText()).FirstOrDefault() as IPrefixDeclaration;
+            var declaration = secretFile.GetDeclaredElements(prefix.PrefixReference.GetName()).FirstOrDefault() as IPrefixDeclaration;
             if (declaration != null)
             {
                 return declaration.UriString.GetText();

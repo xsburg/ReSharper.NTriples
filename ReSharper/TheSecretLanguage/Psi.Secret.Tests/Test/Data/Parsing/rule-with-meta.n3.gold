@@ -6,120 +6,122 @@ ISecretFile
     ISentence
       IStatement
         ISubject
-          IIdentifier
-            IFormula
-              IMeta
-                SecretGenericToken(type:IN_KEYWORD, text:@in)
-                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-                IVariables
-                  IVariableIdentifier
-                    VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?dilly)
-                  SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+          IExpression
+            IIdentifier
+              IFormula
+                IMeta
+                  SecretGenericToken(type:IN_KEYWORD, text:@in)
                   Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                   IVariables
                     IVariableIdentifier
-                      VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?billy)
-              SecretTokenType+DotTokenElement(type:DOT, text:.)
-              NewLine(type:NEW_LINE, text:\n) spaces:"\n"
-              IMeta
-                SecretGenericToken(type:OUT_KEYWORD, text:@out)
-                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-                IVariables
-                  IVariableIdentifier
-                    VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?)
-              SecretTokenType+DotTokenElement(type:DOT, text:.)
-              NewLine(type:NEW_LINE, text:\n) spaces:"\n"
-              IMeta
-                SecretGenericToken(type:AXIS_KEYWORD, text:@axis)
-                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-                IUriIdentifiers
-                  IUriIdentifier
-                    IPrefix
-                      Identifier(type:IDENTIFIER, text:things)
-                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
-                    ILocalName
-                      Identifier(type:IDENTIFIER, text:table)
-              SecretTokenType+DotTokenElement(type:DOT, text:.)
-              NewLine(type:NEW_LINE, text:\n) spaces:"\n"
-              IMeta
-                SecretGenericToken(type:META_KEYWORD, text:@meta)
-                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-                IAnonymousIdentifier
-                  SecretTokenType+LBracketTokenElement(type:L_BRACKET, text:[)
-                  IFact
-                    IPredicate
-                      SecretTokenType+AKeywordTokenElement(type:A_KEYWORD, text:a)
+                      VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?dilly)
+                    SecretTokenType+CommaTokenElement(type:COMMA, text:,)
                     Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-                    IObjects
-                      IIdentifier
-                        IUriIdentifier
-                          IPrefix
-                            Identifier(type:IDENTIFIER, text:classes)
-                          SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
-                          ILocalName
-                            Identifier(type:IDENTIFIER, text:WoodenTable)
-                  SecretTokenType+RBracketTokenElement(type:R_BRACKET, text:])
-              SecretTokenType+DotTokenElement(type:DOT, text:.)
-              NewLine(type:NEW_LINE, text:\n) spaces:"\n"
-              SecretTokenType+LBraceTokenElement(type:L_BRACE, text:{)
-              NewLine(type:NEW_LINE, text:\n) spaces:"\n"
-              Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
-              SecretTokenType+NameKeyTokenElement(type:NAME_KEY, text::-)
-              Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-              IIdentifier
-                IUriIdentifier
-                  IPrefix
-                    Identifier(type:IDENTIFIER, text:ns)
-                  SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
-                  ILocalName
-                    Identifier(type:IDENTIFIER, text:mikey)
-              Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-              Comment(type:END_OF_LINE_COMMENT, text:# What does it mean?)(CommentType:END_OF_LINE_COMMENT)
-              NewLine(type:NEW_LINE, text:\n) spaces:"\n"
-              Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
-              ISentences
-                ISentence
-                  IStatement
-                    ISubject
-                      IIdentifier
-                        IVariableIdentifier
-                          VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?dilly)
-                    Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-                    IFacts
-                      IFact
-                        IPredicate
-                          SecretTokenType+AKeywordTokenElement(type:A_KEYWORD, text:a)
-                        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-                        IObjects
-                          IIdentifier
-                            IVariableIdentifier
-                              VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?billy)
+                    IVariables
+                      IVariableIdentifier
+                        VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?billy)
                 SecretTokenType+DotTokenElement(type:DOT, text:.)
                 NewLine(type:NEW_LINE, text:\n) spaces:"\n"
-                Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
-                ISentence
-                  IStatement
-                    ISubject
-                      IIdentifier
-                        IVariableIdentifier
-                          VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?dilly)
-                    Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-                    IFacts
-                      IFact
-                        IPredicate
-                          SecretTokenType+SameAsTokenElement(type:SAME_AS, text:=)
-                        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-                        IObjects
+                IMeta
+                  SecretGenericToken(type:OUT_KEYWORD, text:@out)
+                  Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+                  IVariables
+                    IVariableIdentifier
+                      VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?)
+                SecretTokenType+DotTokenElement(type:DOT, text:.)
+                NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                IMeta
+                  SecretGenericToken(type:AXIS_KEYWORD, text:@axis)
+                  Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+                  IUriIdentifiers
+                    IUriIdentifier
+                      IPrefix
+                        PrefixIdentifier(type:PREFIX_IDENTIFIER, text:things:)
+                      ILocalName
+                        Identifier(type:IDENTIFIER, text:table)
+                SecretTokenType+DotTokenElement(type:DOT, text:.)
+                NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                IMeta
+                  SecretGenericToken(type:META_KEYWORD, text:@meta)
+                  Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+                  IAnonymousIdentifier
+                    SecretTokenType+LBracketTokenElement(type:L_BRACKET, text:[)
+                    IFact
+                      IPredicate
+                        SecretTokenType+AKeywordTokenElement(type:A_KEYWORD, text:a)
+                      Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+                      IObjects
+                        IExpression
                           IIdentifier
                             IUriIdentifier
                               IPrefix
-                                Identifier(type:IDENTIFIER, text:ns)
-                              SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                                PrefixIdentifier(type:PREFIX_IDENTIFIER, text:classes:)
                               ILocalName
-                                Identifier(type:IDENTIFIER, text:foo)
+                                Identifier(type:IDENTIFIER, text:WoodenTable)
+                    SecretTokenType+RBracketTokenElement(type:R_BRACKET, text:])
                 SecretTokenType+DotTokenElement(type:DOT, text:.)
-              NewLine(type:NEW_LINE, text:\n) spaces:"\n"
-              SecretTokenType+RBraceTokenElement(type:R_BRACE, text:})
+                NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                SecretTokenType+LBraceTokenElement(type:L_BRACE, text:{)
+                NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
+                SecretTokenType+NameKeyTokenElement(type:NAME_KEY, text::-)
+                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+                IIdentifier
+                  IUriIdentifier
+                    IPrefix
+                      PrefixIdentifier(type:PREFIX_IDENTIFIER, text:ns:)
+                    ILocalName
+                      Identifier(type:IDENTIFIER, text:mikey)
+                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+                Comment(type:END_OF_LINE_COMMENT, text:# What does it mean?)(CommentType:END_OF_LINE_COMMENT)
+                NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
+                ISentences
+                  ISentence
+                    IStatement
+                      ISubject
+                        IExpression
+                          IIdentifier
+                            IVariableIdentifier
+                              VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?dilly)
+                      Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+                      IFacts
+                        IFact
+                          IPredicate
+                            SecretTokenType+AKeywordTokenElement(type:A_KEYWORD, text:a)
+                          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+                          IObjects
+                            IExpression
+                              IIdentifier
+                                IVariableIdentifier
+                                  VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?billy)
+                  SecretTokenType+DotTokenElement(type:DOT, text:.)
+                  NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                  Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
+                  ISentence
+                    IStatement
+                      ISubject
+                        IExpression
+                          IIdentifier
+                            IVariableIdentifier
+                              VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?dilly)
+                      Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+                      IFacts
+                        IFact
+                          IPredicate
+                            SecretTokenType+SameAsTokenElement(type:SAME_AS, text:=)
+                          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+                          IObjects
+                            IExpression
+                              IIdentifier
+                                IUriIdentifier
+                                  IPrefix
+                                    PrefixIdentifier(type:PREFIX_IDENTIFIER, text:ns:)
+                                  ILocalName
+                                    Identifier(type:IDENTIFIER, text:foo)
+                  SecretTokenType+DotTokenElement(type:DOT, text:.)
+                NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                SecretTokenType+RBraceTokenElement(type:R_BRACE, text:})
         NewLine(type:NEW_LINE, text:\n) spaces:"\n"
         IFacts
           IFact
@@ -127,37 +129,40 @@ ISecretFile
               SecretTokenType+ImpliesTokenElement(type:IMPLIES, text:=>)
             NewLine(type:NEW_LINE, text:\n) spaces:"\n"
             IObjects
-              IIdentifier
-                IFormula
-                  SecretTokenType+LBraceTokenElement(type:L_BRACE, text:{)
-                  NewLine(type:NEW_LINE, text:\n) spaces:"\n"
-                  Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
-                  ISentences
-                    ISentence
-                      IStatement
-                        ISubject
-                          IIdentifier
-                            IVariableIdentifier
-                              VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?dilly)
-                        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-                        IFacts
-                          IFact
-                            IPredicate
-                              IIsOfExpression
-                                SecretTokenType+IsKeywordTokenElement(type:IS_KEYWORD, text:@is)
-                                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+              IExpression
+                IIdentifier
+                  IFormula
+                    SecretTokenType+LBraceTokenElement(type:L_BRACE, text:{)
+                    NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                    Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
+                    ISentences
+                      ISentence
+                        IStatement
+                          ISubject
+                            IExpression
+                              IIdentifier
+                                IVariableIdentifier
+                                  VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?dilly)
+                          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+                          IFacts
+                            IFact
+                              IPredicate
+                                IIsOfExpression
+                                  SecretTokenType+IsKeywordTokenElement(type:IS_KEYWORD, text:@is)
+                                  Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+                                  IExpression
+                                    IIdentifier
+                                      IVariableIdentifier
+                                        VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?billy)
+                                  Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+                                  SecretTokenType+OfKeywordTokenElement(type:OF_KEYWORD, text:@of)
+                              Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+                              IObjects
                                 IExpression
                                   IIdentifier
                                     IVariableIdentifier
-                                      VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?billy)
-                                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-                                SecretTokenType+OfKeywordTokenElement(type:OF_KEYWORD, text:@of)
-                            Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-                            IObjects
-                              IIdentifier
-                                IVariableIdentifier
-                                  VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?)
-                    SecretTokenType+DotTokenElement(type:DOT, text:.)
-                  NewLine(type:NEW_LINE, text:\n) spaces:"\n"
-                  SecretTokenType+RBraceTokenElement(type:R_BRACE, text:})
+                                      VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?)
+                      SecretTokenType+DotTokenElement(type:DOT, text:.)
+                    NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+                    SecretTokenType+RBraceTokenElement(type:R_BRACE, text:})
 

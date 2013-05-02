@@ -50,14 +50,18 @@ namespace JetBrains.ReSharper.Psi.Secret.Util
             var text = string.Format("{0}:bar a false.", name);
             var node = this.CreateSecretFile(text);
 
-            var identifier = (Tree.IIdentifier)node.SentencesEnumerable.First().Statement.Subject.FirstChild;
-            if (identifier != null)
+            var expression = node.SentencesEnumerable.First().Statement.Subject.FirstChild;
+            if (expression != null)
             {
-                var uriIdentifier = (IUriIdentifier)identifier.FirstChild;
-
-                if (uriIdentifier != null && uriIdentifier.Prefix != null)
+                var identifier = (Tree.IIdentifier)expression.FirstChild;
+                if (identifier != null)
                 {
-                    return uriIdentifier.Prefix;
+                    var uriIdentifier = (IUriIdentifier)identifier.FirstChild;
+
+                    if (uriIdentifier != null && uriIdentifier.Prefix != null)
+                    {
+                        return uriIdentifier.Prefix;
+                    }
                 }
             }
 
@@ -83,14 +87,18 @@ namespace JetBrains.ReSharper.Psi.Secret.Util
             var text = string.Format("foo:{0} a false.", name);
             var node = this.CreateSecretFile(text);
 
-            var identifier = (Tree.IIdentifier)node.SentencesEnumerable.First().Statement.Subject.FirstChild;
-            if (identifier != null)
+            var expression = node.SentencesEnumerable.First().Statement.Subject.FirstChild;
+            if (expression != null)
             {
-                var uriIdentifier = (IUriIdentifier)identifier.FirstChild;
-
-                if (uriIdentifier != null && uriIdentifier.LocalName != null)
+                var identifier = (Tree.IIdentifier)expression.FirstChild;
+                if (identifier != null)
                 {
-                    return uriIdentifier.LocalName;
+                    var uriIdentifier = (IUriIdentifier)identifier.FirstChild;
+
+                    if (uriIdentifier != null && uriIdentifier.LocalName != null)
+                    {
+                        return uriIdentifier.LocalName;
+                    }
                 }
             }
 
@@ -102,14 +110,18 @@ namespace JetBrains.ReSharper.Psi.Secret.Util
             var text = string.Format("<{0}> a false.", name);
             var node = this.CreateSecretFile(text);
 
-            var identifier = (Tree.IIdentifier)node.SentencesEnumerable.First().Statement.Subject.FirstChild;
-            if (identifier != null)
+            var expression = node.SentencesEnumerable.First().Statement.Subject.FirstChild;
+            if (expression != null)
             {
-                var uriIdentifier = (IUriIdentifier)identifier.FirstChild;
-
-                if (uriIdentifier != null && uriIdentifier.UriStringElement != null)
+                var identifier = (Tree.IIdentifier)expression.FirstChild;
+                if (identifier != null)
                 {
-                    return uriIdentifier.UriStringElement;
+                    var uriIdentifier = (IUriIdentifier)identifier.FirstChild;
+
+                    if (uriIdentifier != null && uriIdentifier.UriStringElement != null)
+                    {
+                        return uriIdentifier.UriStringElement;
+                    }
                 }
             }
 

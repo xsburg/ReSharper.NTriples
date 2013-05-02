@@ -12,13 +12,21 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
   public static class TokenBitsets {
     public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet TokenBitset_0 = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
       new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.IDENTIFIER,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_IDENTIFIER,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.URI_BEGIN,
+      }
+    );
+    public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet TokenBitset_1 = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
+      new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.DOT,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.R_BRACE,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.R_BRACKET,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.SEMICOLON,
       }
     );
-    public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet TokenBitset_1 = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
+    public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet TokenBitset_2 = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
       new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.AXIS_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.A_KEYWORD,
@@ -37,9 +45,11 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_BRACKET,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_PARENTHESES,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.META_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NOT_EQUAL_TO,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NULL_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OUT_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_IDENTIFIER,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.SAME_AS,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STRING_LITERAL,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.TRUE_KEYWORD,
@@ -47,7 +57,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.VARIABLE_IDENTIFIER,
       }
     );
-    public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet TokenBitset_2 = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
+    public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet TokenBitset_3 = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
       new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.AXIS_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.IN_KEYWORD,
@@ -55,7 +65,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OUT_KEYWORD,
       }
     );
-    public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet TokenBitset_3 = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
+    public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet TokenBitset_4 = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
       new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.AXIS_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.A_KEYWORD,
@@ -87,6 +97,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_BRACKET,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_PARENTHESES,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.META_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAME_KEY,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NOT_EQUAL_TO,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NOT_KEYWORD,
@@ -95,6 +106,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.ONCE_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OR_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OUT_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_IDENTIFIER,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.R_BRACE,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.R_BRACKET,
@@ -112,7 +124,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.VARIABLE_IDENTIFIER,
       }
     );
-    public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet TokenBitset_4 = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
+    public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet TokenBitset_5 = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
       new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.AXIS_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.IN_KEYWORD,
@@ -121,7 +133,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OUT_KEYWORD,
       }
     );
-    public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet TokenBitset_5 = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
+    public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet TokenBitset_6 = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
       new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.AXIS_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.A_KEYWORD,
@@ -152,6 +164,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_BRACKET,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_PARENTHESES,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.META_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAME_KEY,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NOT_EQUAL_TO,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NOT_KEYWORD,
@@ -160,6 +173,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.ONCE_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OR_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OUT_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_IDENTIFIER,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.R_BRACE,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.R_BRACKET,
@@ -175,7 +189,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.VARIABLE_IDENTIFIER,
       }
     );
-    public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet TokenBitset_6 = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
+    public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet TokenBitset_7 = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
       new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.AXIS_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.DOUBLE_LITERAL,
@@ -188,28 +202,10 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_BRACKET,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_PARENTHESES,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.META_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NULL_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OUT_KEYWORD,
-        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STRING_LITERAL,
-        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.TRUE_KEYWORD,
-        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.URI_BEGIN,
-        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.VARIABLE_IDENTIFIER,
-      }
-    );
-    public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet TokenBitset_7 = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
-      new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
-        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.AXIS_KEYWORD,
-        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.DOUBLE_LITERAL,
-        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FALSE_KEYWORD,
-        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.IDENTIFIER,
-        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.INTEGER_LITERAL,
-        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.IN_KEYWORD,
-        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_BRACE,
-        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_BRACKET,
-        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_PARENTHESES,
-        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.META_KEYWORD,
-        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NULL_KEYWORD,
-        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OUT_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_IDENTIFIER,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STRING_LITERAL,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.TRUE_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.URI_BEGIN,
@@ -221,6 +217,28 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.AXIS_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.DOUBLE_LITERAL,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FALSE_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.IDENTIFIER,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.INTEGER_LITERAL,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.IN_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_BRACE,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_BRACKET,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_PARENTHESES,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.META_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NULL_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OUT_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_IDENTIFIER,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STRING_LITERAL,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.TRUE_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.URI_BEGIN,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.VARIABLE_IDENTIFIER,
+      }
+    );
+    public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet TokenBitset_9 = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
+      new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.AXIS_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.DOUBLE_LITERAL,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FALSE_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FROM_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FUNCTOR_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.IDENTIFIER,
@@ -232,11 +250,13 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_BRACKET,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_PARENTHESES,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.META_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NOT_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NULL_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.ONCE_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OR_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OUT_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_IDENTIFIER,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STRING_LITERAL,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.TRUE_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.TRY_KEYWORD,
@@ -244,7 +264,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.VARIABLE_IDENTIFIER,
       }
     );
-    public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet TokenBitset_9 = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
+    public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet TokenBitset_10 = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
       new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.DEFAULT_AXIS_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.EXTENSION_KEYWORD,
@@ -255,7 +275,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.USING_KEYWORD,
       }
     );
-    public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet TokenBitset_10 = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
+    public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet TokenBitset_11 = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
       new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.AXIS_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.DEFAULT_AXIS_KEYWORD,
@@ -275,11 +295,13 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_BRACKET,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_PARENTHESES,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.META_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NOT_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NULL_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.ONCE_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OR_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OUT_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_IDENTIFIER,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STD_PREFIX_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STRING_LITERAL,
@@ -290,7 +312,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.VARIABLE_IDENTIFIER,
       }
     );
-    public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet TokenBitset_11 = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
+    public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet TokenBitset_12 = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
       new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FROM_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.FUNCTOR_KEYWORD,
@@ -321,6 +343,8 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
     public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet FIRST_uriIdentifier = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
       new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.IDENTIFIER,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_IDENTIFIER,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.URI_BEGIN,
       }
     );
@@ -343,9 +367,11 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_BRACKET,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_PARENTHESES,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.META_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NOT_EQUAL_TO,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NULL_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OUT_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_IDENTIFIER,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.SAME_AS,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STRING_LITERAL,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.TRUE_KEYWORD,
@@ -378,8 +404,10 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_BRACKET,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_PARENTHESES,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.META_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NULL_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OUT_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_IDENTIFIER,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STRING_LITERAL,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.TRUE_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.URI_BEGIN,
@@ -405,9 +433,11 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_BRACKET,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_PARENTHESES,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.META_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NOT_EQUAL_TO,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NULL_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OUT_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_IDENTIFIER,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.SAME_AS,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STRING_LITERAL,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.TRUE_KEYWORD,
@@ -430,6 +460,8 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
     public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet FIRST_prefix = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
       new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.IDENTIFIER,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_IDENTIFIER,
       }
     );
     public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet FIRST_useExternalDirective = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
@@ -458,11 +490,13 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_BRACKET,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_PARENTHESES,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.META_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NOT_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NULL_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.ONCE_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OR_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OUT_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_IDENTIFIER,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STD_PREFIX_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STRING_LITERAL,
@@ -520,10 +554,12 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_BRACKET,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_PARENTHESES,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.META_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAME_KEY,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NOT_EQUAL_TO,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NULL_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OUT_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_IDENTIFIER,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.SAME_AS,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STRING_LITERAL,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.TRUE_KEYWORD,
@@ -569,11 +605,13 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_BRACKET,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_PARENTHESES,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.META_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NOT_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NULL_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.ONCE_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OR_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OUT_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_IDENTIFIER,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STRING_LITERAL,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.TRUE_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.TRY_KEYWORD,
@@ -584,6 +622,8 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
     public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet FIRST_prefixName = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
       new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.IDENTIFIER,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_IDENTIFIER,
       }
     );
     public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet FIRST_expression = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
@@ -598,8 +638,10 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_BRACKET,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_PARENTHESES,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.META_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NULL_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OUT_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_IDENTIFIER,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STRING_LITERAL,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.TRUE_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.URI_BEGIN,
@@ -636,11 +678,13 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_BRACKET,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_PARENTHESES,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.META_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NOT_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NULL_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.ONCE_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OR_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OUT_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_IDENTIFIER,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STD_PREFIX_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STRING_LITERAL,
@@ -654,6 +698,8 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
     public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet FIRST_uriIdentifiers = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
       new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.IDENTIFIER,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_IDENTIFIER,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.URI_BEGIN,
       }
     );
@@ -669,8 +715,10 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_BRACKET,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_PARENTHESES,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.META_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NULL_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OUT_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_IDENTIFIER,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STRING_LITERAL,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.TRUE_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.URI_BEGIN,
@@ -710,9 +758,11 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_BRACKET,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_PARENTHESES,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.META_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NOT_EQUAL_TO,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NULL_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OUT_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_IDENTIFIER,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.SAME_AS,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STRING_LITERAL,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.TRUE_KEYWORD,
@@ -753,8 +803,10 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_BRACKET,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_PARENTHESES,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.META_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NULL_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OUT_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_IDENTIFIER,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STRING_LITERAL,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.TRUE_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.URI_BEGIN,
@@ -805,11 +857,13 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_BRACKET,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_PARENTHESES,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.META_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NOT_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NULL_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.ONCE_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OR_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OUT_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_IDENTIFIER,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STD_PREFIX_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STRING_LITERAL,
@@ -852,11 +906,13 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_BRACKET,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_PARENTHESES,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.META_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NOT_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NULL_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.ONCE_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OR_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OUT_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_IDENTIFIER,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STD_PREFIX_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STRING_LITERAL,
@@ -892,9 +948,11 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing {
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_BRACKET,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.L_PARENTHESES,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.META_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NAMESPACE_SEPARATOR,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NOT_EQUAL_TO,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.NULL_KEYWORD,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OUT_KEYWORD,
+        JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_IDENTIFIER,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.SAME_AS,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STRING_LITERAL,
         JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.TRUE_KEYWORD,

@@ -1,0 +1,43 @@
+﻿Language: PsiLanguageType:Secret
+ISecretFile
+  NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+  NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+  ISentences
+    ISentence
+      IStatement
+        ISubject
+          IExpression
+            IIdentifier
+              IUriIdentifier
+                IPrefix
+                  PrefixIdentifier(type:PREFIX_IDENTIFIER, text:foo:)
+                ILocalName
+                  Identifier(type:IDENTIFIER, text:bar)
+            SecretTokenType+ExpressionTailOperatorTokenElement(type:EXPRESSION_TAIL_OPERATOR, text:^)
+            IIdentifier
+              IUriIdentifier
+                IPrefix
+                  PrefixIdentifier(type:PREFIX_IDENTIFIER, text:foo:)
+                ILocalName
+                  Identifier(type:IDENTIFIER, text:bar)
+            SecretTokenType+ExpressionTailOperatorTokenElement(type:EXPRESSION_TAIL_OPERATOR, text:^)
+            IIdentifier
+              IUriIdentifier
+                IPrefix
+                  PrefixIdentifier(type:PREFIX_IDENTIFIER, text:foo:)
+                ILocalName
+                  Identifier(type:IDENTIFIER, text:bar)
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        IFacts
+          IFact
+            IPredicate
+              IExpression
+                IIdentifier
+                  SecretTokenType+FalseKeywordTokenElement(type:FALSE_KEYWORD, text:false)
+            Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+            IObjects
+              IExpression
+                IIdentifier
+                  SecretTokenType+FalseKeywordTokenElement(type:FALSE_KEYWORD, text:false)
+    SecretTokenType+DotTokenElement(type:DOT, text:.)
+

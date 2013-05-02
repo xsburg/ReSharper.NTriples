@@ -50,6 +50,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType ONCE_KEYWORD = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.ONCE_KEYWORD;
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType OR_KEYWORD = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.OR_KEYWORD;
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType OUT_KEYWORD = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.OUT_KEYWORD;
+    public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType PREFIX_IDENTIFIER = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.PREFIX_IDENTIFIER;
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType PREFIX_KEYWORD = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.PREFIX_KEYWORD;
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType R_BRACE = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.R_BRACE;
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType R_BRACKET = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.R_BRACKET;

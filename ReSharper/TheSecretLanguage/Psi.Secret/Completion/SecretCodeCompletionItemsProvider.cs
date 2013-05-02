@@ -41,6 +41,17 @@ namespace JetBrains.ReSharper.Psi.Secret.Completion
             return true;
         }
 
+        protected override string GetDisplayNameByDeclaredElement(DeclaredElementInstance<IDeclaredElement> declaredElementInstance, SecretReferenceBase reference, SecretCodeCompletionContext context)
+        {
+            var name = base.GetDisplayNameByDeclaredElement(declaredElementInstance, reference, context);
+            if (string.IsNullOrEmpty(name))
+            {
+                return name;
+            }
+
+            return name.TrimEnd(':');
+        }
+
         protected override bool AddLookupItems(SecretCodeCompletionContext context, GroupedItemsCollector collector)
         {
             TextLookupRanges ranges;
@@ -58,6 +69,14 @@ namespace JetBrains.ReSharper.Psi.Secret.Completion
 
             bool flag = false;
             SecretReferenceBase reference = this.GetReference(file, basicContext.SelectedTreeRange);
+            if (reference is SecretPrefixReference && context.ReparsedContext.Reference is SecretLocalNameReference)
+            {
+                // A special case for localName suggestion in the end of prefix
+                reference = context.ReparsedContext.Reference as SecretReferenceBase;
+                ranges = context.Ranges;
+                collector.AddRanges(ranges);
+                flag = this.EvaluateLookupItems(reference, null, context, collector, ranges);
+            }
             if (reference != null)
             {
                 ranges = this.EvaluateRanges(reference, null, context);
@@ -66,7 +85,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Completion
             }
             else if (context.ReparsedContext.Reference is SecretPrefixReference)
             {
-                // A special case for prefix suggestions without context
+                // A special case for prefix suggestions without context (among whitespaces between sentences)
                 reference = context.ReparsedContext.Reference as SecretReferenceBase;
                 ranges = context.Ranges;
                 collector.AddRanges(ranges);

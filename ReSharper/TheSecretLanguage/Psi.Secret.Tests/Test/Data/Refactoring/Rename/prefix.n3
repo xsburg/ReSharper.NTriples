@@ -11,7 +11,7 @@
 family:jack
     relation:father names:john;
     rela{caret}tion:mother names:mary;
-    relation:hasFather true;
+    relation:hasFather!relation:hasFather true;
     relation:hasMother true;
     relation:brothers
         names:billy,
@@ -26,6 +26,7 @@ family:stan
         ),
         true,
         false,
+        <>,
         null,
         ?,
         ?relation,
