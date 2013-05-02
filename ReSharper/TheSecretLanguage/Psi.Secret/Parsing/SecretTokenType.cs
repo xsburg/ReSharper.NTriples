@@ -31,6 +31,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
         public static readonly TokenNodeType INTEGER_LITERAL = new GenericTokenNodeType("INTEGER_LITERAL", "42");
         public static readonly TokenNodeType URI_STRING = new GenericTokenNodeType("URI_STRING");
         public static readonly TokenNodeType IDENTIFIER = new IdentifierNodeType();
+        public static readonly TokenNodeType VARIABLE_IDENTIFIER = new VariableIdentifierNodeType();
         public static readonly TokenNodeType WHITE_SPACE = new WhitespaceNodeType();
         public static readonly TokenNodeType NEW_LINE = new NewLineNodeType();
         public static readonly TokenNodeType END_OF_LINE_COMMENT = new EndOfLineCommentNodeType();
@@ -98,7 +99,8 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
 
             IDENTIFIER_KEYWORDS = new NodeTypeSet
                 (
-                    IDENTIFIER
+                    IDENTIFIER,
+                    VARIABLE_IDENTIFIER
                 );
 
             TYPE_KEYWORDS = new NodeTypeSet
@@ -248,6 +250,27 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
             public override LeafElementBase Create(IBuffer buffer, TreeOffset startOffset, TreeOffset endOffset)
             {
                 return new Identifier(buffer.GetText(new TextRange(startOffset.Offset, endOffset.Offset)));
+            }
+        }
+
+        private sealed class VariableIdentifierNodeType : SecretTokenNodeType
+        {
+            public VariableIdentifierNodeType()
+                : base("VARIABLE_IDENTIFIER")
+            {
+            }
+
+            public override string TokenRepresentation
+            {
+                get
+                {
+                    return "?variable";
+                }
+            }
+
+            public override LeafElementBase Create(IBuffer buffer, TreeOffset startOffset, TreeOffset endOffset)
+            {
+                return new VariableIdentifier(buffer.GetText(new TextRange(startOffset.Offset, endOffset.Offset)));
             }
         }
 

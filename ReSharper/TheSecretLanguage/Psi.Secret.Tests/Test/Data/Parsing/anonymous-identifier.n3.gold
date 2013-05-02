@@ -1,0 +1,64 @@
+﻿Language: PsiLanguageType:Secret
+ISecretFile
+  NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+  NewLine(type:NEW_LINE, text:\n) spaces:"\n"
+  ISentences
+    ISentence
+      IStatement
+        ISubject
+          IIdentifier
+            SecretTokenType+FalseKeywordTokenElement(type:FALSE_KEYWORD, text:false)
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        IFacts
+          IFact
+            IPredicate
+              IExpression
+                IIdentifier
+                  IAnonymousIdentifier
+                    SecretTokenType+LBracketTokenElement(type:L_BRACKET, text:[)
+                    IFact
+                      IPredicate
+                        SecretTokenType+AKeywordTokenElement(type:A_KEYWORD, text:a)
+                      Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+                      IObjects
+                        IIdentifier
+                          SecretTokenType+FalseKeywordTokenElement(type:FALSE_KEYWORD, text:false)
+                    SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
+                    Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+                    IFact
+                      IPredicate
+                        SecretTokenType+AKeywordTokenElement(type:A_KEYWORD, text:a)
+                      Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+                      IObjects
+                        IIdentifier
+                          SecretTokenType+FalseKeywordTokenElement(type:FALSE_KEYWORD, text:false)
+                    Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+                    SecretTokenType+RBracketTokenElement(type:R_BRACKET, text:])
+            Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+            IObjects
+              IIdentifier
+                IAnonymousIdentifier
+                  SecretTokenType+LBracketTokenElement(type:L_BRACKET, text:[)
+                  IFact
+                    IPredicate
+                      SecretTokenType+AKeywordTokenElement(type:A_KEYWORD, text:a)
+                    Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+                    IObjects
+                      IIdentifier
+                        SecretTokenType+TrueKeywordTokenElement(type:TRUE_KEYWORD, text:true)
+                  SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
+                  Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+                  IFact
+                    IPredicate
+                      IExpression
+                        IIdentifier
+                          SecretTokenType+TrueKeywordTokenElement(type:TRUE_KEYWORD, text:true)
+                    Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+                    IObjects
+                      IIdentifier
+                        SecretTokenType+TrueKeywordTokenElement(type:TRUE_KEYWORD, text:true)
+                  SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
+                  Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+                  SecretTokenType+RBracketTokenElement(type:R_BRACKET, text:])
+    SecretTokenType+DotTokenElement(type:DOT, text:.)
+

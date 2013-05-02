@@ -13,14 +13,12 @@ ISecretFile
                 Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                 IVariables
                   IVariableIdentifier
-                    SecretTokenType+VariablePrefixTokenElement(type:VARIABLE_PREFIX, text:?)
-                    Identifier(type:IDENTIFIER, text:dilly)
+                    VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?dilly)
                   SecretTokenType+CommaTokenElement(type:COMMA, text:,)
                   Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                   IVariables
                     IVariableIdentifier
-                      SecretTokenType+VariablePrefixTokenElement(type:VARIABLE_PREFIX, text:?)
-                      Identifier(type:IDENTIFIER, text:billy)
+                      VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?billy)
               SecretTokenType+DotTokenElement(type:DOT, text:.)
               NewLine(type:NEW_LINE, text:\n) spaces:"\n"
               IMeta
@@ -28,7 +26,7 @@ ISecretFile
                 Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                 IVariables
                   IVariableIdentifier
-                    SecretTokenType+VariablePrefixTokenElement(type:VARIABLE_PREFIX, text:?)
+                    VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?)
               SecretTokenType+DotTokenElement(type:DOT, text:.)
               NewLine(type:NEW_LINE, text:\n) spaces:"\n"
               IMeta
@@ -85,8 +83,7 @@ ISecretFile
                     ISubject
                       IIdentifier
                         IVariableIdentifier
-                          SecretTokenType+VariablePrefixTokenElement(type:VARIABLE_PREFIX, text:?)
-                          Identifier(type:IDENTIFIER, text:dilly)
+                          VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?dilly)
                     Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                     IFacts
                       IFact
@@ -96,8 +93,7 @@ ISecretFile
                         IObjects
                           IIdentifier
                             IVariableIdentifier
-                              SecretTokenType+VariablePrefixTokenElement(type:VARIABLE_PREFIX, text:?)
-                              Identifier(type:IDENTIFIER, text:billy)
+                              VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?billy)
                 SecretTokenType+DotTokenElement(type:DOT, text:.)
                 NewLine(type:NEW_LINE, text:\n) spaces:"\n"
                 Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
@@ -106,8 +102,7 @@ ISecretFile
                     ISubject
                       IIdentifier
                         IVariableIdentifier
-                          SecretTokenType+VariablePrefixTokenElement(type:VARIABLE_PREFIX, text:?)
-                          Identifier(type:IDENTIFIER, text:dilly)
+                          VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?dilly)
                     Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                     IFacts
                       IFact
@@ -143,8 +138,7 @@ ISecretFile
                         ISubject
                           IIdentifier
                             IVariableIdentifier
-                              SecretTokenType+VariablePrefixTokenElement(type:VARIABLE_PREFIX, text:?)
-                              Identifier(type:IDENTIFIER, text:dilly)
+                              VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?dilly)
                         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                         IFacts
                           IFact
@@ -155,15 +149,14 @@ ISecretFile
                                 IExpression
                                   IIdentifier
                                     IVariableIdentifier
-                                      SecretTokenType+VariablePrefixTokenElement(type:VARIABLE_PREFIX, text:?)
-                                      Identifier(type:IDENTIFIER, text:billy)
+                                      VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?billy)
                                 Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                                 SecretTokenType+OfKeywordTokenElement(type:OF_KEYWORD, text:@of)
                             Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                             IObjects
                               IIdentifier
                                 IVariableIdentifier
-                                  SecretTokenType+VariablePrefixTokenElement(type:VARIABLE_PREFIX, text:?)
+                                  VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?)
                     SecretTokenType+DotTokenElement(type:DOT, text:.)
                   NewLine(type:NEW_LINE, text:\n) spaces:"\n"
                   SecretTokenType+RBraceTokenElement(type:R_BRACE, text:})

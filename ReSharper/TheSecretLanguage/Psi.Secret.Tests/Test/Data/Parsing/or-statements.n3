@@ -1,0 +1,11 @@
+﻿{caret}
+
+@in ?value. @out ?dynamicType.
+
+{
+
+  @try { names:dilly = names:billy }
+@or { names:dilly = names:billy}.
+
+} => { ?value cmw:dynamicType ?dynamicType. }.
+

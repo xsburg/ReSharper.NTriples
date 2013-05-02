@@ -64,7 +64,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
         public override ResolveResultWithInfo ResolveWithoutCache()
         {
             return new ResolveResultWithInfo(ResolveResultFactory.CreateResolveResultFinaly(new List<DeclaredElementInstance>()), ResolveErrorType.OK);
-            ISymbolTable table = this.GetReferenceSymbolTable(true);
+            /*ISymbolTable table = this.GetReferenceSymbolTable(true);
             IList<DeclaredElementInstance> elements = new List<DeclaredElementInstance>();
             {
                 IList<ISymbolInfo> infos = table.GetSymbolInfos(this.GetName());
@@ -75,7 +75,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
                 }
             }
 
-            return new ResolveResultWithInfo(ResolveResultFactory.CreateResolveResultFinaly(elements), ResolveErrorType.OK);
+            return new ResolveResultWithInfo(ResolveResultFactory.CreateResolveResultFinaly(elements), ResolveErrorType.OK);*/
         }
 
         public void SetName(string shortName)

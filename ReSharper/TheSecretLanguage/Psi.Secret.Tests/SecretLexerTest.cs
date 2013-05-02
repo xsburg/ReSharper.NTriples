@@ -8,6 +8,7 @@
 // </summary>
 // ***********************************************************************
 
+using System.IO;
 using System.Linq;
 using JetBrains.ReSharper.TestFramework;
 using NUnit.Framework;
@@ -19,24 +20,14 @@ namespace JetBrains.ReSharper.Psi.Secret.Tests
     {
         // ReSharper disable StringLiteralTypo
 
-        private readonly string[] files = new[]
-            {
-                "comment",
-                "complex-test-1",
-                "double",
-                "keywords",
-                "operators",
-                "integer",
-                "regular-string-bad-escaped",
-                "regular-string-escaped",
-                "regular-string-simple",
-                "triple-quoted-string",
-                "rule-complex",
-                "triplet-simple",
-                "triplet-complex",
-                "triplet-anonymous",
-                "uri-identifier",
-            };
+        public SecretLexerTest()
+        {
+            files = this.TestDataPath2.GetDirectoryEntries("*" + SecretProjectFileType.SecretExtension, true)
+                        .Select(f => Path.GetFileNameWithoutExtension(f.FullPath))
+                        .ToArray();
+        }
+
+        private readonly string[] files;
 
         [Test]
         [TestCaseSource("files")]

@@ -194,8 +194,7 @@ ISecretFile
                         SecretTokenType+BindTokenElement(type:BIND, text:->)
                         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                         IVariableIdentifier
-                          SecretTokenType+VariablePrefixTokenElement(type:VARIABLE_PREFIX, text:?)
-                          Identifier(type:IDENTIFIER, text:someVariable)
+                          VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?someVariable)
                 SecretTokenType+DotTokenElement(type:DOT, text:.)
                 NewLine(type:NEW_LINE, text:\n) spaces:"\n"
                 Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
@@ -303,7 +302,6 @@ ISecretFile
                                             Identifier(type:IDENTIFIER, text:billy)
                           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                           SecretTokenType+RBraceTokenElement(type:R_BRACE, text:})
-                    ErrorElement:OR_KEYWORD expected
                 SecretTokenType+DotTokenElement(type:DOT, text:.)
                 NewLine(type:NEW_LINE, text:\n) spaces:"\n"
                 Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
@@ -321,8 +319,7 @@ ISecretFile
                         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                         ISmartVar
                           IVariableIdentifier
-                            SecretTokenType+VariablePrefixTokenElement(type:VARIABLE_PREFIX, text:?)
-                            Identifier(type:IDENTIFIER, text:someVariable2)
+                            VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?someVariable2)
                         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                         SecretTokenType+BindTokenElement(type:BIND, text:->)
                         Whitespace(type:WHITE_SPACE, text: ) spaces:" "

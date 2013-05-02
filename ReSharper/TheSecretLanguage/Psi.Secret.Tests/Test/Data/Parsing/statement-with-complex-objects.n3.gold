@@ -115,14 +115,13 @@ ISecretFile
               Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
               IIdentifier
                 IVariableIdentifier
-                  SecretTokenType+VariablePrefixTokenElement(type:VARIABLE_PREFIX, text:?)
+                  VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?)
               SecretTokenType+CommaTokenElement(type:COMMA, text:,)
               NewLine(type:NEW_LINE, text:\n) spaces:"\n"
               Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
               IIdentifier
                 IVariableIdentifier
-                  SecretTokenType+VariablePrefixTokenElement(type:VARIABLE_PREFIX, text:?)
-                  Identifier(type:IDENTIFIER, text:someVar)
+                  VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?someVar)
               SecretTokenType+CommaTokenElement(type:COMMA, text:,)
               NewLine(type:NEW_LINE, text:\n) spaces:"\n"
               Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "

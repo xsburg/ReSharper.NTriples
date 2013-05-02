@@ -9,7 +9,6 @@
   <Token name="COMMA" representation="," />
 
   <Token name="NAMESPACE_SEPARATOR" representation=":" />
-  <Token name="VARIABLE_PREFIX" representation="?" />
 
   <Token name="L_BRACE" representation="{"/>
   <Token name="R_BRACE" representation="}"/>

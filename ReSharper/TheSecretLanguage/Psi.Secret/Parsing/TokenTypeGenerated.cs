@@ -109,22 +109,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
         public static readonly TokenNodeType NAMESPACE_SEPARATOR = new NamespaceSeparatorNodeType();
         #endregion
 
-        #region VARIABLE_PREFIX
-        private class VariablePrefixNodeType : FixedTokenNodeType
-        {
-            public VariablePrefixNodeType(): base ("VARIABLE_PREFIX", "?") {}
-            public override LeafElementBase Create(IBuffer buffer, TreeOffset startOffset, TreeOffset endOffset)
-            {
-                return new VariablePrefixTokenElement(this);
-            }
-        }
-        private class VariablePrefixTokenElement : FixedTokenElement
-        {
-            public VariablePrefixTokenElement(VariablePrefixNodeType tokenNodeType) : base(tokenNodeType) { }
-        }
-        public static readonly TokenNodeType VARIABLE_PREFIX = new VariablePrefixNodeType();
-        #endregion
-
         #region L_BRACE
         private class LBraceNodeType : FixedTokenNodeType
         {

@@ -46,6 +46,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
         public const string IDS_UNARY_EXPRESSION = "expression";
         public const string IDS_VALUE_NAME = "value name";
         public const string IDS_VALUE_REFERENCE_EXPRESSION_OLD = "expression";
+        public const string IDS_FACTS_AND_SEMICOLON_ = "facts";
 
         public static string GetString(string id)
         {

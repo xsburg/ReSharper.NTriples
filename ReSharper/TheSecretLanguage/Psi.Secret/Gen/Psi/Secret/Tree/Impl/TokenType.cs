@@ -66,7 +66,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType URI_END = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.URI_END;
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType URI_STRING = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.URI_STRING;
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType USING_KEYWORD = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.USING_KEYWORD;
-    public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType VARIABLE_PREFIX = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.VARIABLE_PREFIX;
+    public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType VARIABLE_IDENTIFIER = JetBrains.ReSharper.Psi.Secret.Parsing.SecretTokenType.VARIABLE_IDENTIFIER;
     //  public const short FIRST_TYPE = null + 1;
     //  public const short LAST_TYPE = $lasttype;
   }
