@@ -10,21 +10,24 @@ ISecretFile
             IIdentifier
               IUriIdentifier
                 IPrefix
-                  PrefixIdentifier(type:PREFIX_IDENTIFIER, text:foo:)
+                  Identifier(type:IDENTIFIER, text:foo)
+                SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                 ILocalName
                   Identifier(type:IDENTIFIER, text:bar)
             SecretTokenType+ExpressionTailOperatorTokenElement(type:EXPRESSION_TAIL_OPERATOR, text:^)
             IIdentifier
               IUriIdentifier
                 IPrefix
-                  PrefixIdentifier(type:PREFIX_IDENTIFIER, text:foo:)
+                  Identifier(type:IDENTIFIER, text:foo)
+                SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                 ILocalName
                   Identifier(type:IDENTIFIER, text:bar)
             SecretTokenType+ExpressionTailOperatorTokenElement(type:EXPRESSION_TAIL_OPERATOR, text:^)
             IIdentifier
               IUriIdentifier
                 IPrefix
-                  PrefixIdentifier(type:PREFIX_IDENTIFIER, text:foo:)
+                  Identifier(type:IDENTIFIER, text:foo)
+                SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                 ILocalName
                   Identifier(type:IDENTIFIER, text:bar)
         Whitespace(type:WHITE_SPACE, text: ) spaces:" "

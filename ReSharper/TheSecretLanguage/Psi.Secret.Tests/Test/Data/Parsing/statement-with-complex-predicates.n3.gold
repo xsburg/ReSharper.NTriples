@@ -10,7 +10,8 @@ ISecretFile
             IIdentifier
               IUriIdentifier
                 IPrefix
-                  PrefixIdentifier(type:PREFIX_IDENTIFIER, text:family:)
+                  Identifier(type:IDENTIFIER, text:family)
+                SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                 ILocalName
                   Identifier(type:IDENTIFIER, text:stan)
         NewLine(type:NEW_LINE, text:\n) spaces:"\n"
@@ -25,7 +26,8 @@ ISecretFile
                 IIdentifier
                   IUriIdentifier
                     IPrefix
-                      PrefixIdentifier(type:PREFIX_IDENTIFIER, text:good:)
+                      Identifier(type:IDENTIFIER, text:good)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:man)
           SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
@@ -40,7 +42,8 @@ ISecretFile
                 IIdentifier
                   IUriIdentifier
                     IPrefix
-                      PrefixIdentifier(type:PREFIX_IDENTIFIER, text:hot:)
+                      Identifier(type:IDENTIFIER, text:hot)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:gay)
           SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
@@ -55,7 +58,8 @@ ISecretFile
                 IIdentifier
                   IUriIdentifier
                     IPrefix
-                      PrefixIdentifier(type:PREFIX_IDENTIFIER, text:super:)
+                      Identifier(type:IDENTIFIER, text:super)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:Human)
           SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
@@ -70,7 +74,8 @@ ISecretFile
                 IIdentifier
                   IUriIdentifier
                     IPrefix
-                      PrefixIdentifier(type:PREFIX_IDENTIFIER, text:family:)
+                      Identifier(type:IDENTIFIER, text:family)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:mike)
           SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
@@ -85,7 +90,8 @@ ISecretFile
                 IIdentifier
                   IUriIdentifier
                     IPrefix
-                      PrefixIdentifier(type:PREFIX_IDENTIFIER, text:family:)
+                      Identifier(type:IDENTIFIER, text:family)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:jim)
           SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
@@ -100,7 +106,8 @@ ISecretFile
                 IIdentifier
                   IUriIdentifier
                     IPrefix
-                      PrefixIdentifier(type:PREFIX_IDENTIFIER, text:family:)
+                      Identifier(type:IDENTIFIER, text:family)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:jally)
           SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
@@ -115,7 +122,8 @@ ISecretFile
                 IIdentifier
                   IUriIdentifier
                     IPrefix
-                      PrefixIdentifier(type:PREFIX_IDENTIFIER, text:targets:)
+                      Identifier(type:IDENTIFIER, text:targets)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:bind)
           SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
@@ -130,7 +138,8 @@ ISecretFile
                 IIdentifier
                   IUriIdentifier
                     IPrefix
-                      PrefixIdentifier(type:PREFIX_IDENTIFIER, text:targets:)
+                      Identifier(type:IDENTIFIER, text:targets)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:connectionPoint)
           SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
@@ -142,21 +151,24 @@ ISecretFile
                 IIdentifier
                   IUriIdentifier
                     IPrefix
-                      PrefixIdentifier(type:PREFIX_IDENTIFIER, text:predicates:)
+                      Identifier(type:IDENTIFIER, text:predicates)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:one)
                 SecretTokenType+ExpressionTailOperatorTokenElement(type:EXPRESSION_TAIL_OPERATOR, text:^)
                 IIdentifier
                   IUriIdentifier
                     IPrefix
-                      PrefixIdentifier(type:PREFIX_IDENTIFIER, text:predicates:)
+                      Identifier(type:IDENTIFIER, text:predicates)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:two)
                 SecretTokenType+ExpressionTailOperatorTokenElement(type:EXPRESSION_TAIL_OPERATOR, text:^)
                 IIdentifier
                   IUriIdentifier
                     IPrefix
-                      PrefixIdentifier(type:PREFIX_IDENTIFIER, text:predicates:)
+                      Identifier(type:IDENTIFIER, text:predicates)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:three)
             Whitespace(type:WHITE_SPACE, text: ) spaces:" "
@@ -165,7 +177,8 @@ ISecretFile
                 IIdentifier
                   IUriIdentifier
                     IPrefix
-                      PrefixIdentifier(type:PREFIX_IDENTIFIER, text:targets:)
+                      Identifier(type:IDENTIFIER, text:targets)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:simple)
           SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
@@ -180,7 +193,8 @@ ISecretFile
                   IIdentifier
                     IUriIdentifier
                       IPrefix
-                        PrefixIdentifier(type:PREFIX_IDENTIFIER, text:roundThings:)
+                        Identifier(type:IDENTIFIER, text:roundThings)
+                      SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                       ILocalName
                         Identifier(type:IDENTIFIER, text:balls)
             Whitespace(type:WHITE_SPACE, text: ) spaces:" "
@@ -200,7 +214,8 @@ ISecretFile
                   IIdentifier
                     IUriIdentifier
                       IPrefix
-                        PrefixIdentifier(type:PREFIX_IDENTIFIER, text:employment:)
+                        Identifier(type:IDENTIFIER, text:employment)
+                      SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                       ILocalName
                         Identifier(type:IDENTIFIER, text:servant)
                 Whitespace(type:WHITE_SPACE, text: ) spaces:" "
@@ -211,7 +226,8 @@ ISecretFile
                 IIdentifier
                   IUriIdentifier
                     IPrefix
-                      PrefixIdentifier(type:PREFIX_IDENTIFIER, text:family:)
+                      Identifier(type:IDENTIFIER, text:family)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:jack)
     SecretTokenType+DotTokenElement(type:DOT, text:.)

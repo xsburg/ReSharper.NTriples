@@ -51,7 +51,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 
         public string ShortName
         {
-            get { return PrefixName.GetText().TrimEnd(':'); }
+            get { return PrefixName.GetText(); }
         }
 
         public bool CaseSensistiveName
@@ -138,7 +138,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 
         private string GetDeclaredName()
         {
-            return PrefixName.GetText().TrimEnd(':');
+            return PrefixName.GetText();
         }
     }
 }

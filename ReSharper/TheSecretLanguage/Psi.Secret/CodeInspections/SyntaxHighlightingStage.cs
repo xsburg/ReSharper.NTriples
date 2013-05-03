@@ -55,9 +55,10 @@ namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
             {
                 // Tree level highlighting
                 //
+                const string prefixHighlighting = HighlightingAttributeIds.NAMESPACE_IDENTIFIER_ATTRIBUTE;
                 if (node is IPrefix || node is IPrefixName)
                 {
-                    this.AddSyntaxHighlighting(consumer, node, HighlightingAttributeIds.NAMESPACE_IDENTIFIER_ATTRIBUTE);
+                    this.AddSyntaxHighlighting(consumer, node, prefixHighlighting);
                 }
                 else if (node is ILocalName)
                 {
@@ -93,7 +94,11 @@ namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
                     }
                     else if (token.GetTokenType().IsConstantLiteral)
                     {
-                        this.AddSyntaxHighlighting(consumer, node, "Text");
+                        // TODO: Constant literal highlighting
+                    }
+                    else if (token.GetTokenType() == SecretTokenType.NAMESPACE_SEPARATOR)
+                    {
+                        this.AddSyntaxHighlighting(consumer, node, prefixHighlighting);
                     }
                 }
             }

@@ -10,7 +10,8 @@ ISecretFile
             IIdentifier
               IUriIdentifier
                 IPrefix
-                  PrefixIdentifier(type:PREFIX_IDENTIFIER, text:family:)
+                  Identifier(type:IDENTIFIER, text:family)
+                SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                 ILocalName
                   Identifier(type:IDENTIFIER, text:jack)
         NewLine(type:NEW_LINE, text:\n) spaces:"\n"
@@ -22,7 +23,8 @@ ISecretFile
                 IIdentifier
                   IUriIdentifier
                     IPrefix
-                      PrefixIdentifier(type:PREFIX_IDENTIFIER, text:relation:)
+                      Identifier(type:IDENTIFIER, text:relation)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:father)
             Whitespace(type:WHITE_SPACE, text: ) spaces:" "
@@ -31,7 +33,8 @@ ISecretFile
                 IIdentifier
                   IUriIdentifier
                     IPrefix
-                      PrefixIdentifier(type:PREFIX_IDENTIFIER, text:names:)
+                      Identifier(type:IDENTIFIER, text:names)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:john)
           SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
@@ -43,7 +46,8 @@ ISecretFile
                 IIdentifier
                   IUriIdentifier
                     IPrefix
-                      PrefixIdentifier(type:PREFIX_IDENTIFIER, text:relation:)
+                      Identifier(type:IDENTIFIER, text:relation)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:mother)
             Whitespace(type:WHITE_SPACE, text: ) spaces:" "
@@ -52,7 +56,8 @@ ISecretFile
                 IIdentifier
                   IUriIdentifier
                     IPrefix
-                      PrefixIdentifier(type:PREFIX_IDENTIFIER, text:names:)
+                      Identifier(type:IDENTIFIER, text:names)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:mary)
           SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
@@ -64,7 +69,8 @@ ISecretFile
                 IIdentifier
                   IUriIdentifier
                     IPrefix
-                      PrefixIdentifier(type:PREFIX_IDENTIFIER, text:relation:)
+                      Identifier(type:IDENTIFIER, text:relation)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:brothers)
             NewLine(type:NEW_LINE, text:\n) spaces:"\n"
@@ -74,7 +80,8 @@ ISecretFile
                 IIdentifier
                   IUriIdentifier
                     IPrefix
-                      PrefixIdentifier(type:PREFIX_IDENTIFIER, text:names:)
+                      Identifier(type:IDENTIFIER, text:names)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:billy)
               SecretTokenType+CommaTokenElement(type:COMMA, text:,)
@@ -84,7 +91,8 @@ ISecretFile
                 IIdentifier
                   IUriIdentifier
                     IPrefix
-                      PrefixIdentifier(type:PREFIX_IDENTIFIER, text:names:)
+                      Identifier(type:IDENTIFIER, text:names)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:dilly)
     SecretTokenType+DotTokenElement(type:DOT, text:.)

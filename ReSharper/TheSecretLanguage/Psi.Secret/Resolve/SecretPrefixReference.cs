@@ -85,12 +85,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
 
         public void SetName(string shortName)
         {
-            this.Name = shortName.TrimEnd(':');
-        }
-
-        public override string GetName()
-        {
-            return this.Name.TrimEnd(':');
+            this.Name = shortName;
         }
     }
 }

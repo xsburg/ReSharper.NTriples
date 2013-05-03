@@ -48,7 +48,8 @@ ISecretFile
                                       IIdentifier
                                         IUriIdentifier
                                           IPrefix
-                                            PrefixIdentifier(type:PREFIX_IDENTIFIER, text:names:)
+                                            Identifier(type:IDENTIFIER, text:names)
+                                          SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                           ILocalName
                                             Identifier(type:IDENTIFIER, text:dilly)
                                   Whitespace(type:WHITE_SPACE, text: ) spaces:" "
@@ -62,7 +63,8 @@ ISecretFile
                                           IIdentifier
                                             IUriIdentifier
                                               IPrefix
-                                                PrefixIdentifier(type:PREFIX_IDENTIFIER, text:names:)
+                                                Identifier(type:IDENTIFIER, text:names)
+                                              SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                               ILocalName
                                                 Identifier(type:IDENTIFIER, text:billy)
                             Whitespace(type:WHITE_SPACE, text: ) spaces:" "
@@ -81,7 +83,8 @@ ISecretFile
                                       IIdentifier
                                         IUriIdentifier
                                           IPrefix
-                                            PrefixIdentifier(type:PREFIX_IDENTIFIER, text:names:)
+                                            Identifier(type:IDENTIFIER, text:names)
+                                          SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                           ILocalName
                                             Identifier(type:IDENTIFIER, text:dilly)
                                   Whitespace(type:WHITE_SPACE, text: ) spaces:" "
@@ -95,7 +98,8 @@ ISecretFile
                                           IIdentifier
                                             IUriIdentifier
                                               IPrefix
-                                                PrefixIdentifier(type:PREFIX_IDENTIFIER, text:names:)
+                                                Identifier(type:IDENTIFIER, text:names)
+                                              SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                               ILocalName
                                                 Identifier(type:IDENTIFIER, text:billy)
                             SecretTokenType+RBraceTokenElement(type:R_BRACE, text:})
@@ -131,7 +135,8 @@ ISecretFile
                                   IIdentifier
                                     IUriIdentifier
                                       IPrefix
-                                        PrefixIdentifier(type:PREFIX_IDENTIFIER, text:cmw:)
+                                        Identifier(type:IDENTIFIER, text:cmw)
+                                      SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                       ILocalName
                                         Identifier(type:IDENTIFIER, text:dynamicType)
                               Whitespace(type:WHITE_SPACE, text: ) spaces:" "

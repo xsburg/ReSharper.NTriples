@@ -36,7 +36,8 @@ ISecretFile
                   IUriIdentifiers
                     IUriIdentifier
                       IPrefix
-                        PrefixIdentifier(type:PREFIX_IDENTIFIER, text:things:)
+                        Identifier(type:IDENTIFIER, text:things)
+                      SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                       ILocalName
                         Identifier(type:IDENTIFIER, text:table)
                 SecretTokenType+DotTokenElement(type:DOT, text:.)
@@ -55,7 +56,8 @@ ISecretFile
                           IIdentifier
                             IUriIdentifier
                               IPrefix
-                                PrefixIdentifier(type:PREFIX_IDENTIFIER, text:classes:)
+                                Identifier(type:IDENTIFIER, text:classes)
+                              SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                               ILocalName
                                 Identifier(type:IDENTIFIER, text:WoodenTable)
                     SecretTokenType+RBracketTokenElement(type:R_BRACKET, text:])
@@ -69,7 +71,8 @@ ISecretFile
                 IIdentifier
                   IUriIdentifier
                     IPrefix
-                      PrefixIdentifier(type:PREFIX_IDENTIFIER, text:ns:)
+                      Identifier(type:IDENTIFIER, text:ns)
+                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:mikey)
                 Whitespace(type:WHITE_SPACE, text: ) spaces:" "
@@ -116,7 +119,8 @@ ISecretFile
                               IIdentifier
                                 IUriIdentifier
                                   IPrefix
-                                    PrefixIdentifier(type:PREFIX_IDENTIFIER, text:ns:)
+                                    Identifier(type:IDENTIFIER, text:ns)
+                                  SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                   ILocalName
                                     Identifier(type:IDENTIFIER, text:foo)
                   SecretTokenType+DotTokenElement(type:DOT, text:.)
