@@ -81,11 +81,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
             return null;
         }
 
-        public IEnumerable<SecretUriIdentifierSymbol> GetUriIdentifierSymbols(string name)
-        {
-            return this.myNameToSymbolsUriIdentifierMap[name];
-        }
-
         public IEnumerable<SecretUriIdentifierSymbol> GetAllUriIdentifierSymbols()
         {
             return this.myNameToSymbolsUriIdentifierMap.SelectMany(x => x.Value);
@@ -93,7 +88,13 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
 
         public IEnumerable<SecretUriIdentifierSymbol> GetAllUriIdentifiersInNamespace(string @namespace)
         {
+            @namespace = FixNamespace(@namespace);
             return this.myNameToSymbolsUriIdentifierMap.SelectMany(x => x.Value).Where(s => s.Namespace == @namespace);
+        }
+
+        private static string FixNamespace(string @namespace)
+        {
+            return @namespace ?? "";
         }
 
         public IEnumerable<ISecretSymbol> GetSymbolsDeclaredInFile(IPsiSourceFile sourceFile)
@@ -104,6 +105,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
 
         public IList<IPsiSourceFile> GetFilesContainingUri(string @namespace, string localName)
         {
+            @namespace = FixNamespace(@namespace);
             var result = this.myProjectFileToSymbolsUriIdentifierMap
                 .Where(pair => pair.Value.Any(s => s.Namespace == @namespace && s.LocalName == localName))
                 .Select(pair => pair.Key)

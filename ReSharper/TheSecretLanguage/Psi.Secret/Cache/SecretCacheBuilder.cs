@@ -75,15 +75,12 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
             var uriIdentifier = element as IUriIdentifierDeclaredElement;
             if (uriIdentifier != null)
             {
-                var ns = uriIdentifier.GetNamespace();
-                if (!string.IsNullOrEmpty(ns))
-                {
-                    var ln = uriIdentifier.GetLocalName();
-                    var kind = uriIdentifier.GetKind();
-                    int offset = element.GetNavigationRange().TextRange.StartOffset;
-                    var psiSourceFile = element.GetSourceFile();
-                    this.mySymbols.Add(new SecretUriIdentifierSymbol(ns, ln, kind, offset, psiSourceFile));
-                }
+                var ns = uriIdentifier.GetNamespace() ?? "";
+                var ln = uriIdentifier.GetLocalName();
+                var kind = uriIdentifier.GetKind();
+                int offset = element.GetNavigationRange().TextRange.StartOffset;
+                var psiSourceFile = element.GetSourceFile();
+                this.mySymbols.Add(new SecretUriIdentifierSymbol(ns, ln, kind, offset, psiSourceFile));
             }
         }
 

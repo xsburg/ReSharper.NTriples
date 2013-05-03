@@ -34,25 +34,26 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
                 return null;
             }
 
-            var prefix = uriIdentifier.Prefix;
-            if (prefix == null)
+            var prefixElement = uriIdentifier.Prefix;
+            if (prefixElement == null)
             {
                 return uriIdentifier.UriString.GetText();
             }
 
+            var prefix = prefixElement.PrefixReference.GetName();
             var secretFile = (SecretFile)this.GetContainingFile();
             if (secretFile == null)
             {
-                return null;
+                return prefix;
             }
 
-            var declaration = secretFile.GetDeclaredElements(prefix.PrefixReference.GetName()).FirstOrDefault() as IPrefixDeclaration;
+            var declaration = secretFile.GetDeclaredElements(prefix).FirstOrDefault() as IPrefixDeclaration;
             if (declaration != null)
             {
                 return declaration.UriString.GetText();
             }
 
-            return null;
+            return prefix;
         }
 
         public string GetLocalName()

@@ -1,0 +1,36 @@
+# ${COMPLETE_ITEM:false}
+# ${SHOW_SIGNATURES:false}
+# ${CASE_SENSITIVE_COMPLETION:false}
+# ${COMPLETION_TYPE:Replace}
+
+@prefix family: <http://ontology:org/ontology/family#>.
+@prefix : <http://ontology:org/ontology/relation#>.
+@prefix names: <http://ontology:org/ontology/names#>.
+@prefix info: <http://ontology:org/ontology/info#>.
+@prefix limbs: <http://ontology:org/ontology/limbs#>.
+
+family:jack
+    :father names:john;
+    foo:mother names:mary;
+    foo:hasFather true;
+    foo:hasMother true;
+    foo:brothers
+        names:billy,
+        [a info:Man].
+
+family:stan
+    foo:{caret}stuff
+        <http://domain.com/ontology#name>,
+        (
+            "text literal" 
+            "PT18H"^^xsd:duration
+        ),
+        true,
+        false,
+        null,
+        <>,
+        ?,
+        ?someVar,
+        { family:jack a limbs:dick }
+        .
+

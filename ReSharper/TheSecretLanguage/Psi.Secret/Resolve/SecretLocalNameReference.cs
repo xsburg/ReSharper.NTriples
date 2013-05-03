@@ -46,19 +46,14 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
             var localName = (LocalName)this.myOwner;
             var @namespace = localName.GetNamespace();
             var cache = this.myOwner.GetSolution().GetComponent<SecretCache>();
-            if (@namespace != null)
-            {
-                var psiServices = this.myOwner.GetPsiServices();
+            var psiServices = this.myOwner.GetPsiServices();
 
-                var elements = cache.GetAllUriIdentifiersInNamespace(@namespace)
-                                    .Distinct(x => x.LocalName)
-                                    .Select(x => new UriIdentifierDeclaredElement(file, x.Namespace, x.LocalName, x.Kind, psiServices));
+            var elements = cache.GetAllUriIdentifiersInNamespace(@namespace)
+                                .Distinct(x => x.LocalName)
+                                .Select(x => new UriIdentifierDeclaredElement(file, x.Namespace, x.LocalName, x.Kind, psiServices));
 
-                var symbolTable = ResolveUtil.CreateSymbolTable(elements, 0);
-                return symbolTable;
-            }
-
-            return EmptySymbolTable.INSTANCE;
+            var symbolTable = ResolveUtil.CreateSymbolTable(elements, 0);
+            return symbolTable;
         }
 
         public override ResolveResultWithInfo ResolveWithoutCache()
