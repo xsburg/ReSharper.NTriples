@@ -1,15 +1,14 @@
 ﻿// ***********************************************************************
-// <author>Stephan B</author>
-// <copyright company="Comindware">
-//   Copyright (c) Comindware 2010-2013. All rights reserved.
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   PsiCache.cs
+//   SecretCache.cs
 // </summary>
 // ***********************************************************************
 
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using JetBrains.Application;
 using JetBrains.Application.Progress;
@@ -17,11 +16,7 @@ using JetBrains.DataFlow;
 using JetBrains.DocumentManagers.impl;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi.Caches;
-using JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
-using JetBrains.ReSharper.Psi.Secret.Resolve;
-using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.Util.Caches;
 using JetBrains.Util;
@@ -34,17 +29,23 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
         private const int Version = 8;
         private readonly JetHashSet<IPsiSourceFile> myDirtyFiles = new JetHashSet<IPsiSourceFile>();
 
-        private readonly IPersistentIndexManager myPersistentIdIndex;
-
-        private readonly IPsiConfiguration myPsiConfiguration;
-        private readonly IShellLocks myShellLocks;
-        private SecretPersistentCache<SecretFileCache> myPersistentCache;
+        private readonly OneToSetMap<string, SecretPrefixDeclarationSymbol> myNameToSymbolsPrefixDeclarationMap =
+            new OneToSetMap<string, SecretPrefixDeclarationSymbol>();
 
         private readonly OneToSetMap<string, SecretUriIdentifierSymbol> myNameToSymbolsUriIdentifierMap =
             new OneToSetMap<string, SecretUriIdentifierSymbol>();
 
+        private readonly IPersistentIndexManager myPersistentIdIndex;
+
+        private readonly OneToListMap<IPsiSourceFile, SecretPrefixDeclarationSymbol> myProjectFileToSymbolsPrefixDeclarationMap =
+            new OneToListMap<IPsiSourceFile, SecretPrefixDeclarationSymbol>();
+
         private readonly OneToListMap<IPsiSourceFile, SecretUriIdentifierSymbol> myProjectFileToSymbolsUriIdentifierMap =
             new OneToListMap<IPsiSourceFile, SecretUriIdentifierSymbol>();
+
+        private readonly IPsiConfiguration myPsiConfiguration;
+        private readonly IShellLocks myShellLocks;
+        private SecretPersistentCache<SecretFileCache> myPersistentCache;
 
         public SecretCache(
             Lifetime lifetime,
@@ -92,25 +93,25 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
             return this.myNameToSymbolsUriIdentifierMap.SelectMany(x => x.Value).Where(s => s.Namespace == @namespace);
         }
 
-        private static string FixNamespace(string @namespace)
-        {
-            return @namespace ?? "";
-        }
-
-        public IEnumerable<ISecretSymbol> GetSymbolsDeclaredInFile(IPsiSourceFile sourceFile)
-        {
-            var symbols = this.myProjectFileToSymbolsUriIdentifierMap.GetValuesCollection(sourceFile);
-            return symbols;
-        }
-
         public IList<IPsiSourceFile> GetFilesContainingUri(string @namespace, string localName)
         {
             @namespace = FixNamespace(@namespace);
             var result = this.myProjectFileToSymbolsUriIdentifierMap
-                .Where(pair => pair.Value.Any(s => s.Namespace == @namespace && s.LocalName == localName))
-                .Select(pair => pair.Key)
-                .ToList();
+                             .Where(pair => pair.Value.Any(s => s.Namespace == @namespace && s.LocalName == localName))
+                             .Select(pair => pair.Key)
+                             .ToList();
             return result;
+        }
+
+        public IEnumerable<SecretPrefixDeclarationSymbol> GetPrefixDeclarationSymbols(string name)
+        {
+            return this.myNameToSymbolsPrefixDeclarationMap.SelectMany(x => x.Value).Where(s => s.Name == name);
+        }
+
+        public IEnumerable<ISecretSymbol> GetUriIdentifierSymbolsDeclaredInFile(IPsiSourceFile sourceFile)
+        {
+            var symbols = this.myProjectFileToSymbolsUriIdentifierMap.GetValuesCollection(sourceFile);
+            return symbols;
         }
 
         public object Load(IProgressIndicator progress, bool enablePersistence)
@@ -172,12 +173,20 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
             if (data != null)
             {
                 var uriIdentifierData = new List<SecretUriIdentifierSymbol>();
+                var prefixDeclarationData = new List<SecretPrefixDeclarationSymbol>();
                 foreach (ISecretSymbol symbol in data)
                 {
                     var uriIdentifierSymbol = symbol as SecretUriIdentifierSymbol;
                     if (uriIdentifierSymbol != null)
                     {
                         uriIdentifierData.Add(uriIdentifierSymbol);
+                        continue;
+                    }
+
+                    var prefixDeclarationSymbol = symbol as SecretPrefixDeclarationSymbol;
+                    if (prefixDeclarationSymbol != null)
+                    {
+                        prefixDeclarationData.Add(prefixDeclarationSymbol);
                     }
                 }
 
@@ -187,7 +196,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
                 }
 
                 // clear old declarations cache...
-                //uri identifiers
+                // uri identifiers
                 if (this.myProjectFileToSymbolsUriIdentifierMap.ContainsKey(sourceFile))
                 {
                     foreach (SecretUriIdentifierSymbol oldDeclaration in this.myProjectFileToSymbolsUriIdentifierMap[sourceFile])
@@ -196,16 +205,34 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
                         this.myNameToSymbolsUriIdentifierMap.Remove(oldName, oldDeclaration);
                     }
                 }
+                // prefix declarations
+                if (this.myProjectFileToSymbolsPrefixDeclarationMap.ContainsKey(sourceFile))
+                {
+                    foreach (
+                        SecretPrefixDeclarationSymbol oldDeclaration in
+                            this.myProjectFileToSymbolsPrefixDeclarationMap[sourceFile])
+                    {
+                        string oldName = oldDeclaration.Name;
+                        this.myNameToSymbolsPrefixDeclarationMap.Remove(oldName, oldDeclaration);
+                    }
+                }
 
                 this.myDirtyFiles.Remove(sourceFile);
 
                 this.myProjectFileToSymbolsUriIdentifierMap.RemoveKey(sourceFile);
+                this.myProjectFileToSymbolsPrefixDeclarationMap.RemoveKey(sourceFile);
 
                 // add to projectFile to data map...
                 this.myProjectFileToSymbolsUriIdentifierMap.AddValueRange(sourceFile, uriIdentifierData);
                 foreach (SecretUriIdentifierSymbol declaration in uriIdentifierData)
                 {
                     this.myNameToSymbolsUriIdentifierMap.Add(declaration.Name, declaration);
+                }
+
+                this.myProjectFileToSymbolsPrefixDeclarationMap.AddValueRange(sourceFile, prefixDeclarationData);
+                foreach (SecretPrefixDeclarationSymbol declaration in prefixDeclarationData)
+                {
+                    this.myNameToSymbolsPrefixDeclarationMap.Add(declaration.Name, declaration);
                 }
             }
         }
@@ -257,7 +284,19 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
                 }
             }
 
+            if (this.myProjectFileToSymbolsPrefixDeclarationMap.ContainsKey(sourceFile))
+            {
+                foreach (
+                    SecretPrefixDeclarationSymbol oldDeclaration in this.myProjectFileToSymbolsPrefixDeclarationMap[sourceFile])
+                {
+                    string oldName = oldDeclaration.Name;
+                    this.myNameToSymbolsPrefixDeclarationMap.Remove(oldName, oldDeclaration);
+                }
+            }
+
             this.myProjectFileToSymbolsUriIdentifierMap.RemoveKey(sourceFile);
+            this.myProjectFileToSymbolsPrefixDeclarationMap.RemoveKey(sourceFile);
+
             if (this.myPersistentCache != null)
             {
                 this.myPersistentCache.MarkDataToDelete(sourceFile);
@@ -349,12 +388,19 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
                 return true;
             }
 
-            return !this.myDirtyFiles.Contains(sourceFile) && this.myProjectFileToSymbolsUriIdentifierMap.ContainsKey(sourceFile);
+            return !this.myDirtyFiles.Contains(sourceFile) &&
+                   this.myProjectFileToSymbolsUriIdentifierMap.ContainsKey(sourceFile) &&
+                   this.myProjectFileToSymbolsPrefixDeclarationMap.ContainsKey(sourceFile);
         }
 
         private static bool Accepts(IPsiSourceFile sourceFile)
         {
             return sourceFile.GetAllPossiblePsiLanguages().Any(x => x.Is<SecretLanguage>());
+        }
+
+        private static string FixNamespace(string @namespace)
+        {
+            return @namespace ?? "";
         }
 
         private class SecretPersistentCache<T> : SimplePersistentCache<T>

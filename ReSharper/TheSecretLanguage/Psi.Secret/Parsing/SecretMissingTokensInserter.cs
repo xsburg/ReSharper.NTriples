@@ -1,4 +1,14 @@
-﻿using System;
+﻿// ***********************************************************************
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
+// </copyright>
+// <summary>
+//   SecretMissingTokensInserter.cs
+// </summary>
+// ***********************************************************************
+
+using System;
 using JetBrains.Application;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Parsing;
@@ -14,10 +24,45 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
         private readonly ILexer myLexer;
         private new readonly DataIntern<string> myWhitespaceIntern = new DataIntern<string>();
 
-        private SecretMissingTokensInserter(ILexer lexer, ITokenOffsetProvider offsetProvider, SeldomInterruptChecker interruptChecker)
+        private SecretMissingTokensInserter(
+            ILexer lexer, ITokenOffsetProvider offsetProvider, SeldomInterruptChecker interruptChecker)
             : base(offsetProvider, interruptChecker)
         {
             this.myLexer = lexer;
+        }
+
+        public static void Run(
+            TreeElement node,
+            ILexer lexer,
+            ITokenOffsetProvider offsetProvider,
+            bool trimTokens,
+            SeldomInterruptChecker interruptChecker)
+        {
+            Assertion.Assert(node.parent == null, "node.parent == null");
+
+            var root = node as CompositeElement;
+            if (root == null)
+            {
+                return;
+            }
+
+            var inserter = new SecretMissingTokensInserter(lexer, offsetProvider, interruptChecker);
+            lexer.Start();
+
+            if (trimTokens)
+            {
+                using (var container = new DummyContainer(root))
+                {
+                    inserter.Run(container);
+                }
+            }
+            else
+            {
+                var terminator = new EofToken(lexer.Buffer);
+                root.AppendNewChild(terminator);
+                inserter.Run(root);
+                root.DeleteChildRange(terminator, terminator);
+            }
         }
 
         protected override void ProcessLeafElement(TreeElement element)
@@ -78,37 +123,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
             return TreeElementFactory.CreateLeafElement(this.myLexer);
         }
 
-        public static void Run(TreeElement node, ILexer lexer, ITokenOffsetProvider offsetProvider, bool trimTokens, SeldomInterruptChecker interruptChecker)
-        {
-            Assertion.Assert(node.parent == null, "node.parent == null");
-
-            var root = node as CompositeElement;
-            if (root == null)
-            {
-                return;
-            }
-
-            var inserter = new SecretMissingTokensInserter(lexer, offsetProvider, interruptChecker);
-            lexer.Start();
-
-            if (trimTokens)
-            {
-                using (var container = new DummyContainer(root))
-                {
-                    inserter.Run(container);
-                }
-            }
-            else
-            {
-                var terminator = new EofToken(lexer.Buffer);
-                root.AppendNewChild(terminator);
-                inserter.Run(root);
-                root.DeleteChildRange(terminator, terminator);
-            }
-        }
-
-        #region Nested type: DummyContainer
-
         private sealed class DummyContainer : CompositeElement, IDisposable
         {
             public DummyContainer(TreeElement element)
@@ -116,26 +130,26 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
                 this.AppendNewChild(element);
             }
 
-            public override NodeType NodeType
-            {
-                get { return DummyNodeType.Instance; }
-            }
-
             public override PsiLanguageType Language
             {
-                get { return SecretLanguage.Instance; }
+                get
+                {
+                    return SecretLanguage.Instance;
+                }
             }
 
-            #region IDisposable Members
+            public override NodeType NodeType
+            {
+                get
+                {
+                    return DummyNodeType.Instance;
+                }
+            }
 
             public void Dispose()
             {
                 this.DeleteChildRange(this.firstChild, this.firstChild);
             }
-
-            #endregion
-
-            #region Nested type: DummyNodeType
 
             private sealed class DummyNodeType : CompositeNodeType
             {
@@ -152,13 +166,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
                     throw new InvalidOperationException();
                 }
             }
-
-            #endregion
         }
-
-        #endregion
-
-        #region Nested type: EofToken
 
         private sealed class EofToken : BindedToBufferLeafElement
         {
@@ -169,10 +177,11 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
 
             public override PsiLanguageType Language
             {
-                get { return SecretLanguage.Instance; }
+                get
+                {
+                    return SecretLanguage.Instance;
+                }
             }
         }
-
-        #endregion
     }
 }

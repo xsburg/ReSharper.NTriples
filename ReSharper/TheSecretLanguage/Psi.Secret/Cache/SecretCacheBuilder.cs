@@ -1,7 +1,7 @@
 ﻿// ***********************************************************************
-// <author>Stephan B</author>
-// <copyright company="Comindware">
-//   Copyright (c) Comindware 2010-2013. All rights reserved.
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
 //   SecretCacheBuilder.cs
@@ -81,6 +81,23 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
                 int offset = element.GetNavigationRange().TextRange.StartOffset;
                 var psiSourceFile = element.GetSourceFile();
                 this.mySymbols.Add(new SecretUriIdentifierSymbol(ns, ln, kind, offset, psiSourceFile));
+                return;
+            }
+
+            var prefixDeclaration = element as IPrefixDeclaration;
+            if (prefixDeclaration != null)
+            {
+                var name = prefixDeclaration.PrefixName != null
+                               ? prefixDeclaration.PrefixName.GetText()
+                               : "";
+
+                if (prefixDeclaration.UriString != null)
+                {
+                    var uri = prefixDeclaration.UriString.GetText();
+                    int offset = element.GetNavigationRange().TextRange.StartOffset;
+                    var psiSourceFile = element.GetSourceFile();
+                    this.mySymbols.Add(new SecretPrefixDeclarationSymbol(uri, name, offset, psiSourceFile));
+                }
             }
         }
 

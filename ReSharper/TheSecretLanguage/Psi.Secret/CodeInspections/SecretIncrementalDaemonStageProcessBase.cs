@@ -1,4 +1,14 @@
-﻿using System;
+﻿// ***********************************************************************
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
+// </copyright>
+// <summary>
+//   SecretIncrementalDaemonStageProcessBase.cs
+// </summary>
+// ***********************************************************************
+
+using System;
 using JetBrains.Application.Settings;
 using JetBrains.Application.Threading;
 using JetBrains.ReSharper.Daemon;
@@ -9,7 +19,7 @@ using JetBrains.Util;
 namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
 {
     /// <summary>
-    ///   Base class for daemon stages which can incrementally re-highlight changed function only
+    ///     Base class for daemon stages which can incrementally re-highlight changed function only
     /// </summary>
     public abstract class SecretIncrementalDaemonStageProcessBase : SecretDaemonStageProcessBase
     {
@@ -28,7 +38,11 @@ namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
             {
                 var consumer = new DefaultHighlightingConsumer(this, this.mySettingsStore);
                 this.File.ProcessThisAndDescendants(new GlobalProcessor(this, consumer));
-                commiter(new DaemonStageResult(consumer.Highlightings) { Layer = 1 });
+                commiter(
+                    new DaemonStageResult(consumer.Highlightings)
+                        {
+                            Layer = 1
+                        });
             };
 
             using (IMultiCoreFibers fibers = this.DaemonProcess.CreateFibers())
@@ -60,12 +74,15 @@ namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
 
             public bool ProcessingIsFinished
             {
-                get { return this.myProcess.IsProcessingFinished(this.myConsumer); }
+                get
+                {
+                    return this.myProcess.IsProcessingFinished(this.myConsumer);
+                }
             }
 
-            public virtual void ProcessBeforeInterior(ITreeNode element)
+            public virtual bool InteriorShouldBeProcessed(ITreeNode element)
             {
-                this.myProcess.ProcessBeforeInterior(element, this.myConsumer);
+                return this.myProcess.InteriorShouldBeProcessed(element, this.myConsumer);
             }
 
             public virtual void ProcessAfterInterior(ITreeNode element)
@@ -73,9 +90,9 @@ namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
                 this.myProcess.ProcessAfterInterior(element, this.myConsumer);
             }
 
-            public virtual bool InteriorShouldBeProcessed(ITreeNode element)
+            public virtual void ProcessBeforeInterior(ITreeNode element)
             {
-                return this.myProcess.InteriorShouldBeProcessed(element, this.myConsumer);
+                this.myProcess.ProcessBeforeInterior(element, this.myConsumer);
             }
         }
     }

@@ -1,10 +1,10 @@
 ﻿// ***********************************************************************
-// <author>Stephan B</author>
-// <copyright company="Comindware">
-//   Copyright (c) Comindware 2010-2013. All rights reserved.
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   PsiElementFactory.cs
+//   SecretElementFactory.cs
 // </summary>
 // ***********************************************************************
 
@@ -15,23 +15,25 @@ using JetBrains.ReSharper.Psi.Tree;
 
 namespace JetBrains.ReSharper.Psi.Secret.Util
 {
-    public abstract class PsiElementFactory
+    public abstract class SecretElementFactory
     {
         protected ISolution Solution { get; set; }
 
-        public static PsiElementFactory GetInstance([NotNull] IPsiModule module)
+        public static SecretElementFactory GetInstance([NotNull] IPsiModule module)
         {
-            return new PsiElementFactoryImpl(module);
+            return new SecretElementFactoryImpl(module);
         }
 
-        public static PsiElementFactory GetInstance([NotNull] ITreeNode context)
+        public static SecretElementFactory GetInstance([NotNull] ITreeNode context)
         {
-            return new PsiElementFactoryImpl(context.GetPsiModule());
+            return new SecretElementFactoryImpl(context.GetPsiModule());
         }
+
+        public abstract ILocalName CreateLocalNameExpression(string name);
+        public abstract ISentence CreatePrefixDeclarationSentence(string name, string uri);
 
         public abstract IPrefix CreatePrefixExpression(string name);
         public abstract IPrefixName CreatePrefixNameExpression(string name);
-        public abstract ILocalName CreateLocalNameExpression(string name);
         public abstract IUriString CreateUriStringExpression(string name);
     }
 }

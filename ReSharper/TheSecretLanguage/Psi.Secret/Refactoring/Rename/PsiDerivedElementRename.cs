@@ -1,7 +1,7 @@
 ﻿// ***********************************************************************
-// <author>Stephan B</author>
-// <copyright company="Comindware">
-//   Copyright (c) Comindware 2010-2013. All rights reserved.
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
 //   PsiDerivedElementRename.cs
@@ -127,12 +127,12 @@ namespace JetBrains.ReSharper.Psi.Secret.Refactoring.Rename
             psiServices.PsiManager.UpdateCaches();
 
             SecretCache cache = null;
-            if (myDeclarations.Any())
+            if (this.myDeclarations.Any())
             {
                 cache = this.myDeclarations[0].GetSolution().GetComponent<SecretCache>();
             }
 
-            foreach (var declaration in myDeclarations)
+            foreach (var declaration in this.myDeclarations)
             {
                 var file = (SecretFile)declaration.Root();
                 file.ClearTables();

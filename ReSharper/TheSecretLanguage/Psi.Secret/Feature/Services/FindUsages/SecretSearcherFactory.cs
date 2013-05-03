@@ -1,7 +1,7 @@
 ﻿// ***********************************************************************
-// <author>Stephan B</author>
-// <copyright company="Comindware">
-//   Copyright (c) Comindware 2010-2013. All rights reserved.
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
 //   SecretSearcherFactory.cs
@@ -10,17 +10,15 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi.ExtensionsAPI;
 using JetBrains.ReSharper.Psi.Search;
 using JetBrains.ReSharper.Psi.Secret.Cache;
 using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
 using JetBrains.ReSharper.Psi.Secret.Resolve;
-using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
-using JetBrains.Util.DataStructures;
-using System.Linq;
 
 namespace JetBrains.ReSharper.Psi.Secret.Feature.Services.FindUsages
 {

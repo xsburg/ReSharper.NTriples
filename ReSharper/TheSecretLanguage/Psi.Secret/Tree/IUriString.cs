@@ -1,10 +1,20 @@
-﻿using JetBrains.ReSharper.Psi.Tree;
+﻿// ***********************************************************************
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
+// </copyright>
+// <summary>
+//   IUriString.cs
+// </summary>
+// ***********************************************************************
+
+using JetBrains.ReSharper.Psi.Tree;
 
 namespace JetBrains.ReSharper.Psi.Secret.Tree
 {
-    public partial interface IUriString : IDeclaration//, IChameleonNode
+    public partial interface IUriString : IDeclaration //, IChameleonNode
     {
-        void SetReferenceName(string shortName);
         string GetUri();
+        void SetReferenceName(string shortName);
     }
 }

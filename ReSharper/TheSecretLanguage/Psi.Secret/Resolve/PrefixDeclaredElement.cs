@@ -1,4 +1,14 @@
-﻿using System.Collections.Generic;
+﻿// ***********************************************************************
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
+// </copyright>
+// <summary>
+//   PrefixDeclaredElement.cs
+// </summary>
+// ***********************************************************************
+
+using System.Collections.Generic;
 using System.Xml;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
@@ -21,16 +31,30 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
             this.myServices = services;
         }
 
-        public IFile File
+        public bool CaseSensistiveName
         {
-            get { return this.myFile; }
+            get
+            {
+                return true;
+            }
         }
 
         public bool ChangeName { get; set; }
 
+        public IFile File
+        {
+            get
+            {
+                return this.myFile;
+            }
+        }
+
         public string NewName
         {
-            get { return this.myNewName; }
+            get
+            {
+                return this.myNewName;
+            }
             set
             {
                 this.ChangeName = true;
@@ -38,9 +62,20 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
             }
         }
 
-        public IPsiServices GetPsiServices()
+        public PsiLanguageType PresentationLanguage
         {
-            return this.myServices;
+            get
+            {
+                return SecretLanguage.Instance;
+            }
+        }
+
+        public string ShortName
+        {
+            get
+            {
+                return this.myName;
+            }
         }
 
         public IList<IDeclaration> GetDeclarations()
@@ -58,9 +93,17 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
             return SecretDeclaredElementType.Prefix;
         }
 
-        public XmlNode GetXMLDoc(bool inherit)
+        public IPsiServices GetPsiServices()
         {
-            return null;
+            return this.myServices;
+        }
+
+        public HybridCollection<IPsiSourceFile> GetSourceFiles()
+        {
+            return new HybridCollection<IPsiSourceFile>
+                {
+                    this.myFile.GetSourceFile()
+                };
         }
 
         public XmlNode GetXMLDescriptionSummary(bool inherit)
@@ -68,19 +111,9 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
             return null;
         }
 
-        public bool IsValid()
+        public XmlNode GetXMLDoc(bool inherit)
         {
-            return true;
-        }
-
-        public bool IsSynthetic()
-        {
-            return false;
-        }
-
-        public HybridCollection<IPsiSourceFile> GetSourceFiles()
-        {
-            return new HybridCollection<IPsiSourceFile> { this.myFile.GetSourceFile() };
+            return null;
         }
 
         public bool HasDeclarationsIn(IPsiSourceFile sourceFile)
@@ -88,19 +121,14 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
             return sourceFile == this.myFile.GetSourceFile();
         }
 
-        public string ShortName
+        public bool IsSynthetic()
         {
-            get { return this.myName; }
+            return false;
         }
 
-        public bool CaseSensistiveName
+        public bool IsValid()
         {
-            get { return true; }
-        }
-
-        public PsiLanguageType PresentationLanguage
-        {
-            get { return SecretLanguage.Instance; }
+            return true;
         }
 
         public void SetName(string name)

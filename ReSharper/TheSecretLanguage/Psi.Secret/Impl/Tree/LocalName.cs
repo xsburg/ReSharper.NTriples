@@ -1,18 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
-using JetBrains.DocumentModel;
 using JetBrains.ReSharper.Psi.Secret.Cache;
 using JetBrains.ReSharper.Psi.Secret.Resolve;
 using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.ReSharper.Psi.Secret.Util;
 using JetBrains.ReSharper.Psi.Tree;
-using JetBrains.Util;
-using JetBrains.Util.DataStructures;
 
 namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 {
-    internal partial class LocalName : IDeclaredElement, IUriIdentifierDeclaredElement
+    internal partial class LocalName : IUriIdentifierDeclaredElement
     {
         #region IDeclaredElement Members
 
@@ -37,7 +34,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
             var prefixElement = uriIdentifier.Prefix;
             if (prefixElement == null)
             {
-                return uriIdentifier.UriString.GetText();
+                return uriIdentifier.GetUri();
             }
 
             var prefix = prefixElement.PrefixReference.GetName();
@@ -48,7 +45,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
             }
 
             var declaration = secretFile.GetDeclaredElements(prefix).FirstOrDefault() as IPrefixDeclaration;
-            if (declaration != null)
+            if (declaration != null && declaration.UriString != null)
             {
                 return declaration.UriString.GetText();
             }

@@ -1,4 +1,14 @@
-﻿using System.Collections.Generic;
+﻿// ***********************************************************************
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
+// </copyright>
+// <summary>
+//   SecretDaemonStageBase.cs
+// </summary>
+// ***********************************************************************
+
+using System.Collections.Generic;
 using JetBrains.Annotations;
 using JetBrains.Application.Settings;
 using JetBrains.DocumentModel;
@@ -9,6 +19,14 @@ namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
 {
     public abstract class SecretDaemonStageBase : IDaemonStage
     {
+        [CanBeNull]
+        public static ISecretFile GetSecretFile(IPsiSourceFile sourceFile)
+        {
+            PsiManager manager = PsiManager.GetInstance(sourceFile.GetSolution());
+            manager.AssertAllDocumentAreCommited();
+            return manager.GetPsiFile<SecretLanguage>(new DocumentRange(sourceFile.Document, 0)) as ISecretFile;
+        }
+
         public abstract IEnumerable<IDaemonStageProcess> CreateProcess(
             IDaemonProcess process, IContextBoundSettingsStore settings, DaemonProcessKind processKind);
 
@@ -26,14 +44,6 @@ namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
             }
 
             return ErrorStripeRequest.STRIPE_AND_ERRORS;
-        }
-
-        [CanBeNull]
-        public static ISecretFile GetSecretFile(IPsiSourceFile sourceFile)
-        {
-            PsiManager manager = PsiManager.GetInstance(sourceFile.GetSolution());
-            manager.AssertAllDocumentAreCommited();
-            return manager.GetPsiFile<SecretLanguage>(new DocumentRange(sourceFile.Document, 0)) as ISecretFile;
         }
 
         protected bool IsSupported(IPsiSourceFile sourceFile)

@@ -1,10 +1,10 @@
 ﻿// ***********************************************************************
-// <author>Stephan B</author>
-// <copyright company="Comindware">
-//   Copyright (c) Comindware 2010-2013. All rights reserved.
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretCompletionItemsProviderKeywords.cs
+//   SecretCodeCompletionKeywordsItemsProvider.cs
 // </summary>
 // ***********************************************************************
 
@@ -14,7 +14,6 @@ using JetBrains.DocumentModel;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure;
 using JetBrains.ReSharper.Feature.Services.Lookup;
-using JetBrains.ReSharper.Psi.Resolve;
 using JetBrains.ReSharper.Psi.Secret.Resolve;
 using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.ReSharper.Psi.Tree;
@@ -55,7 +54,8 @@ namespace JetBrains.ReSharper.Psi.Secret.Completion
         protected override bool IsAvailable(SecretCodeCompletionContext context)
         {
             CodeCompletionType type = context.BasicContext.CodeCompletionType;
-            var correctCompletionType = type == CodeCompletionType.AutomaticCompletion || type == CodeCompletionType.BasicCompletion;
+            var correctCompletionType = type == CodeCompletionType.AutomaticCompletion ||
+                                        type == CodeCompletionType.BasicCompletion;
             if (!correctCompletionType)
             {
                 return false;

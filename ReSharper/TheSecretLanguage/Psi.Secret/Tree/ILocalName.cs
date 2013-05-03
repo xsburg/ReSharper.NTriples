@@ -1,10 +1,20 @@
-﻿using JetBrains.ReSharper.Psi.Tree;
+﻿// ***********************************************************************
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
+// </copyright>
+// <summary>
+//   ILocalName.cs
+// </summary>
+// ***********************************************************************
+
+using JetBrains.ReSharper.Psi.Tree;
 
 namespace JetBrains.ReSharper.Psi.Secret.Tree
 {
-    public partial interface ILocalName : IDeclaration//, IChameleonNode
+    public partial interface ILocalName : IDeclaration //, IChameleonNode
     {
-        void SetReferenceName(string shortName);
         string GetUri();
+        void SetReferenceName(string shortName);
     }
 }

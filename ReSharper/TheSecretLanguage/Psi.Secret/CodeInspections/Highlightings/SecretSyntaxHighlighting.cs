@@ -1,10 +1,10 @@
 ﻿// ***********************************************************************
-// <author>Stephan B</author>
-// <copyright company="Comindware">
-//   Copyright (c) Comindware 2010-2013. All rights reserved.
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   Strings.cs
+//   SecretSyntaxHighlighting.cs
 // </summary>
 // ***********************************************************************
 
@@ -18,7 +18,8 @@ using JetBrains.ReSharper.Psi.Tree;
 namespace JetBrains.ReSharper.Psi.Secret.CodeInspections.Highlightings
 {
     //[ConfigurableSeverityHighlighting("String", "Secret", OverlapResolve = OverlapResolveKind.NONE, ToolTipFormatString = "String")]
-    [StaticSeverityHighlighting(Severity.INFO, HighlightingGroupIds.LanguageUsage, OverlapResolve = OverlapResolveKind.NONE, ShowToolTipInStatusBar = false)]
+    [StaticSeverityHighlighting(Severity.INFO, HighlightingGroupIds.LanguageUsage, OverlapResolve = OverlapResolveKind.NONE,
+        ShowToolTipInStatusBar = false)]
     internal class SecretSyntaxHighlighting : ICustomAttributeIdHighlighting, IHighlightingWithRange
     {
         private readonly ITreeNode myElement;

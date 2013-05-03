@@ -1,4 +1,14 @@
-﻿using System.Collections.Generic;
+﻿// ***********************************************************************
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
+// </copyright>
+// <summary>
+//   SecretLocalNameReference.cs
+// </summary>
+// ***********************************************************************
+
+using System.Collections.Generic;
 using System.Linq;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve;
@@ -50,15 +60,11 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
 
             var elements = cache.GetAllUriIdentifiersInNamespace(@namespace)
                                 .Distinct(x => x.LocalName)
-                                .Select(x => new UriIdentifierDeclaredElement(file, x.Namespace, x.LocalName, x.Kind, psiServices));
+                                .Select(
+                                    x => new UriIdentifierDeclaredElement(file, x.Namespace, x.LocalName, x.Kind, psiServices));
 
             var symbolTable = ResolveUtil.CreateSymbolTable(elements, 0);
             return symbolTable;
-        }
-
-        public override ResolveResultWithInfo ResolveWithoutCache()
-        {
-            return new ResolveResultWithInfo(ResolveResultFactory.CreateResolveResultFinaly(new List<DeclaredElementInstance>()), ResolveErrorType.OK);
         }
 
         public ResolveResultWithInfo ResolveVirtualReferences()
@@ -75,6 +81,12 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
             }
 
             return new ResolveResultWithInfo(ResolveResultFactory.CreateResolveResultFinaly(elements), ResolveErrorType.OK);
+        }
+
+        public override ResolveResultWithInfo ResolveWithoutCache()
+        {
+            return new ResolveResultWithInfo(
+                ResolveResultFactory.CreateResolveResultFinaly(new List<DeclaredElementInstance>()), ResolveErrorType.OK);
         }
 
         public void SetName(string shortName)

@@ -1,7 +1,7 @@
 ﻿// ***********************************************************************
-// <author>Stephan B</author>
-// <copyright company="Comindware">
-//   Copyright (c) Comindware 2010-2013. All rights reserved.
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
 //   MSBuildPropertiesCache.cs
@@ -17,6 +17,7 @@ using JetBrains.ProjectModel.impl;
 using JetBrains.Util;
 using Microsoft.Build.Evaluation;
 using Microsoft.Build.Execution;
+using ILogger = Microsoft.Build.Framework.ILogger;
 
 namespace JetBrains.ReSharper.Psi.Secret.Cache
 {
@@ -63,7 +64,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
                 const string resolveassemblyreference = "ResolveAssemblyReferences";
                 IProjectFile projectFile = project.ProjectFile;
                 if (projectFile == null)
-                {   
+                {
                     return null;
                 }
 
@@ -78,7 +79,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
                 Project loadedProject = loadedProjects[0];
                 ProjectInstance projectInstance =
                     BuildManager.DefaultBuildManager.GetProjectInstanceForBuild(loadedProject);
-                if (projectInstance.Build(resolveassemblyreference, EmptyList<Microsoft.Build.Framework.ILogger>.InstanceList))
+                if (projectInstance.Build(resolveassemblyreference, JetBrains.Util.EmptyList<ILogger>.InstanceList))
                 {
                     ICollection<ProjectPropertyInstance> allProperties = projectInstance.Properties;
                     foreach (ProjectPropertyInstance property in allProperties)

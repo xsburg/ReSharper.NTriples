@@ -1,7 +1,15 @@
-﻿using JetBrains.ReSharper.Psi.Secret.Cache;
-using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
+﻿// ***********************************************************************
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
+// </copyright>
+// <summary>
+//   IUriIdentifier.cs
+// </summary>
+// ***********************************************************************
+
+using JetBrains.ReSharper.Psi.Secret.Cache;
 using JetBrains.ReSharper.Psi.Secret.Resolve;
-using JetBrains.ReSharper.Psi.Tree;
 
 namespace JetBrains.ReSharper.Psi.Secret.Tree
 {
@@ -10,12 +18,13 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree
         void SetReferenceName(string shortName);
         string GetFullName(ISecretFile file);
     }*/
+
     public partial interface IUriIdentifier
     {
-        string GetUri();
-        UriIdentifierKind GetKind();
         IUriIdentifierDeclaredElement DescendantDeclaredElement { get; }
+        UriIdentifierKind GetKind();
         string GetLocalName();
         string GetNamespace();
+        string GetUri();
     }
 }

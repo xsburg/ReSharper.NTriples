@@ -1,7 +1,7 @@
 ﻿// ***********************************************************************
-// <author>Stephan B</author>
-// <copyright company="Comindware">
-//   Copyright (c) Comindware 2010-2013. All rights reserved.
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
 //   SecretLexerTest.cs
@@ -10,7 +10,6 @@
 
 using System.IO;
 using System.Linq;
-using JetBrains.ReSharper.TestFramework;
 using NUnit.Framework;
 
 namespace JetBrains.ReSharper.Psi.Secret.Tests
@@ -20,14 +19,14 @@ namespace JetBrains.ReSharper.Psi.Secret.Tests
     {
         // ReSharper disable StringLiteralTypo
 
+        private readonly string[] files;
+
         public SecretLexerTest()
         {
-            files = this.TestDataPath2.GetDirectoryEntries("*" + SecretProjectFileType.SecretExtension, true)
-                        .Select(f => Path.GetFileNameWithoutExtension(f.FullPath))
-                        .ToArray();
+            this.files = this.TestDataPath2.GetDirectoryEntries("*" + SecretProjectFileType.SecretExtension, true)
+                             .Select(f => Path.GetFileNameWithoutExtension(f.FullPath))
+                             .ToArray();
         }
-
-        private readonly string[] files;
 
         [Test]
         [TestCaseSource("files")]

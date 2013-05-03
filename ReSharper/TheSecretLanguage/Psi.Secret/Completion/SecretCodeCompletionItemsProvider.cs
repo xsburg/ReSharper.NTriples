@@ -1,14 +1,13 @@
 ﻿// ***********************************************************************
-// <author>Stephan B</author>
-// <copyright company="Comindware">
-//   Copyright (c) Comindware 2010-2013. All rights reserved.
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
 //   SecretCodeCompletionItemsProvider.cs
 // </summary>
 // ***********************************************************************
 
-using System.Collections.Generic;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Impl;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure;
@@ -23,24 +22,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Completion
     internal class SecretCodeCompletionItemsProvider
         : ItemsProviderWithReference<SecretCodeCompletionContext, SecretReferenceBase, SecretFile>
     {
-        protected override bool IsAvailable(SecretCodeCompletionContext context)
-        {
-            if (
-                !((context.BasicContext.CodeCompletionType == CodeCompletionType.BasicCompletion) ||
-                  (context.BasicContext.CodeCompletionType == CodeCompletionType.AutomaticCompletion)))
-            {
-                return false;
-            }
-
-            IReference reference = context.ReparsedContext.Reference;
-            if (reference == null)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
         protected override bool AddLookupItems(SecretCodeCompletionContext context, GroupedItemsCollector collector)
         {
             TextLookupRanges ranges;
@@ -50,7 +31,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Completion
             {
                 return false;
             }
-            
+
             if (context.BasicContext.CodeCompletionType != CodeCompletionType.AutomaticCompletion)
             {
                 context.BasicContext.CompletionManager.PsiServices.PsiManager.UpdateCaches();
@@ -97,6 +78,24 @@ namespace JetBrains.ReSharper.Psi.Secret.Completion
                 }
             }
             return flag;
+        }
+
+        protected override bool IsAvailable(SecretCodeCompletionContext context)
+        {
+            if (
+                !((context.BasicContext.CodeCompletionType == CodeCompletionType.BasicCompletion) ||
+                  (context.BasicContext.CodeCompletionType == CodeCompletionType.AutomaticCompletion)))
+            {
+                return false;
+            }
+
+            IReference reference = context.ReparsedContext.Reference;
+            if (reference == null)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

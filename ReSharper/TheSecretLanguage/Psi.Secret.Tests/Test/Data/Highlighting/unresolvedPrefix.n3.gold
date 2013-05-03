@@ -1,0 +1,12 @@
+﻿@prefix names: <http://ontology.org/ontology/names#>.
+@prefix relation: <http://ontology.org/ontology/relation#>.
+
+names:jack
+    relation:father names:john;
+    relation:mother names:mary.
+
+names:jack |skills|(0):skill |skills|(1):carpenter.
+
+---------------------------------------------------------
+(0): ReSharper Underlined Error Highlighting: Unresolved prefix
+(1): ReSharper Underlined Error Highlighting: Unresolved prefix

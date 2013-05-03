@@ -1,7 +1,7 @@
 ﻿// ***********************************************************************
-// <author>Stephan B</author>
-// <copyright company="Comindware">
-//   Copyright (c) Comindware 2010-2013. All rights reserved.
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
 //   UriIdentifierDeclaredElement.cs
@@ -9,6 +9,7 @@
 // ***********************************************************************
 
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml;
 using JetBrains.DocumentModel;
 using JetBrains.ProjectModel;
@@ -17,24 +18,28 @@ using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
 using JetBrains.Util.DataStructures;
-using System.Linq;
 
 namespace JetBrains.ReSharper.Psi.Secret.Resolve
 {
     internal class UriIdentifierDeclaredElement : IDeclaredElement, IUriIdentifierDeclaredElement
     {
+        private readonly bool filterDeclarations;
         private readonly UriIdentifierKind kind;
         private readonly string localName;
         private readonly IFile myFile;
 
         private readonly string myName;
         private readonly IPsiServices myServices;
-        private readonly bool filterDeclarations;
         private readonly string ns;
         private string myNewName;
 
         public UriIdentifierDeclaredElement(
-            IFile file, string @namespace, string localName, UriIdentifierKind kind, IPsiServices services, bool filterDeclarations = false)
+            IFile file,
+            string @namespace,
+            string localName,
+            UriIdentifierKind kind,
+            IPsiServices services,
+            bool filterDeclarations = false)
         {
             this.myFile = file;
             this.ns = @namespace;
@@ -153,7 +158,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
         public IList<IDeclaration> GetDeclarationsIn(IPsiSourceFile sourceFile)
         {
             var declarations = GetDeclarationsIn(sourceFile, this);
-            if (filterDeclarations)
+            if (this.filterDeclarations)
             {
                 return
                     declarations.Where(

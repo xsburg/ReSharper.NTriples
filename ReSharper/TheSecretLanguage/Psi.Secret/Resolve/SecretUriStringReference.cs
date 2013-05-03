@@ -1,4 +1,14 @@
-﻿using System.Collections.Generic;
+﻿// ***********************************************************************
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
+// </copyright>
+// <summary>
+//   SecretUriStringReference.cs
+// </summary>
+// ***********************************************************************
+
+using System.Collections.Generic;
 using System.Linq;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve;
@@ -52,7 +62,8 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
                 var psiServices = this.myOwner.GetPsiServices();
 
                 var elements = cache.GetAllUriIdentifiersInNamespace(@namespace)
-                                    .Select(x => new UriIdentifierDeclaredElement(file, x.Namespace, x.LocalName, x.Kind, psiServices));
+                                    .Select(
+                                        x => new UriIdentifierDeclaredElement(file, x.Namespace, x.LocalName, x.Kind, psiServices));
 
                 var symbolTable = ResolveUtil.CreateSymbolTable(elements, 0);
                 return symbolTable;
@@ -63,7 +74,8 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
 
         public override ResolveResultWithInfo ResolveWithoutCache()
         {
-            return new ResolveResultWithInfo(ResolveResultFactory.CreateResolveResultFinaly(new List<DeclaredElementInstance>()), ResolveErrorType.OK);
+            return new ResolveResultWithInfo(
+                ResolveResultFactory.CreateResolveResultFinaly(new List<DeclaredElementInstance>()), ResolveErrorType.OK);
             /*ISymbolTable table = this.GetReferenceSymbolTable(true);
             IList<DeclaredElementInstance> elements = new List<DeclaredElementInstance>();
             {

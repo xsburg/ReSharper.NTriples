@@ -1,15 +1,14 @@
 ﻿// ***********************************************************************
-// <author>Stephan B</author>
-// <copyright company="Comindware">
-//   Copyright (c) Comindware 2010-2013. All rights reserved.
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   KeywordHighlightingStage.cs
+//   SyntaxHighlightingStage.cs
 // </summary>
 // ***********************************************************************
 
 using System.Collections.Generic;
-using System.Linq;
 using JetBrains.Annotations;
 using JetBrains.Application.Settings;
 using JetBrains.ReSharper.Daemon;
@@ -50,7 +49,7 @@ namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
                 : base(process, settingsStore)
             {
             }
-            
+
             public override void VisitNode(ITreeNode node, IHighlightingConsumer consumer)
             {
                 // Tree level highlighting

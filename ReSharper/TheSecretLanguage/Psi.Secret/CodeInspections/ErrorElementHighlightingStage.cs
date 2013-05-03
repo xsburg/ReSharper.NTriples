@@ -1,10 +1,10 @@
 // ***********************************************************************
-// <author>Stephan B</author>
-// <copyright company="Comindware">
-//   Copyright (c) Comindware 2010-2013. All rights reserved.
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   ErrorElementHighlighting.cs
+//   ErrorElementHighlightingStage.cs
 // </summary>
 // ***********************************************************************
 
@@ -21,9 +21,9 @@ using JetBrains.Util;
 namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
 {
     [DaemonStage(StagesBefore = new[] { typeof(LanguageSpecificDaemonStage) })]
-    public class ErrorElementHighlighting : SecretDaemonStageBase
+    public class ErrorElementHighlightingStage : SecretDaemonStageBase
     {
-        public ErrorElementHighlighting(CodeAnnotationsCache codeAnnotationsCache)
+        public ErrorElementHighlightingStage(CodeAnnotationsCache codeAnnotationsCache)
         {
         }
 

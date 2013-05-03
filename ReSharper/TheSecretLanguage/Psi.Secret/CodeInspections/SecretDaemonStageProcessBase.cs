@@ -1,4 +1,14 @@
-﻿using System;
+﻿// ***********************************************************************
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
+// </copyright>
+// <summary>
+//   SecretDaemonStageProcessBase.cs
+// </summary>
+// ***********************************************************************
+
+using System;
 using JetBrains.Application.Progress;
 using JetBrains.Application.Settings;
 using JetBrains.ReSharper.Daemon;
@@ -8,8 +18,10 @@ using JetBrains.ReSharper.Psi.Tree;
 
 namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
 {
-    public abstract class SecretDaemonStageProcessBase : 
-        TreeNodeVisitor<IHighlightingConsumer>, IRecursiveElementProcessor<IHighlightingConsumer>, IDaemonStageProcess
+    public abstract class SecretDaemonStageProcessBase :
+        TreeNodeVisitor<IHighlightingConsumer>,
+        IRecursiveElementProcessor<IHighlightingConsumer>,
+        IDaemonStageProcess
     {
         private readonly IDaemonProcess myDaemonProcess;
         private readonly ISecretFile myFile;
@@ -23,14 +35,20 @@ namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
             this.myFile = SecretDaemonStageBase.GetSecretFile(this.myDaemonProcess.SourceFile);
         }
 
-        protected ISecretFile File
-        {
-            get { return this.myFile; }
-        }
-
         public IDaemonProcess DaemonProcess
         {
-            get { return this.myDaemonProcess; }
+            get
+            {
+                return this.myDaemonProcess;
+            }
+        }
+
+        protected ISecretFile File
+        {
+            get
+            {
+                return this.myFile;
+            }
         }
 
         public abstract void Execute(Action<DaemonStageResult> commiter);
@@ -47,10 +65,6 @@ namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
                 throw new ProcessCancelledException();
             }
             return false;
-        }
-
-        public virtual void ProcessBeforeInterior(ITreeNode element, IHighlightingConsumer consumer)
-        {
         }
 
         public virtual void ProcessAfterInterior(ITreeNode element, IHighlightingConsumer consumer)
@@ -70,7 +84,12 @@ namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
             }
         }
 
-        protected void HighlightInFile(Action<ISecretFile, IHighlightingConsumer> fileHighlighter, Action<DaemonStageResult> commiter)
+        public virtual void ProcessBeforeInterior(ITreeNode element, IHighlightingConsumer consumer)
+        {
+        }
+
+        protected void HighlightInFile(
+            Action<ISecretFile, IHighlightingConsumer> fileHighlighter, Action<DaemonStageResult> commiter)
         {
             var consumer = new DefaultHighlightingConsumer(this, this.mySettingsStore);
             fileHighlighter(this.File, consumer);

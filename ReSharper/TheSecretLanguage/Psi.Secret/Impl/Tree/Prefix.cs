@@ -1,4 +1,6 @@
-﻿using JetBrains.ReSharper.Psi.Secret.Resolve;
+﻿using JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve;
+using JetBrains.ReSharper.Psi.Resolve;
+using JetBrains.ReSharper.Psi.Secret.Resolve;
 using JetBrains.ReSharper.Psi.Tree;
 
 namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
@@ -26,6 +28,11 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
         public void SetName(string shortName)
         {
             this.PrefixReference.SetName(shortName);
+        }
+
+        public ResolveResultWithInfo Resolve()
+        {
+            return PrefixReference.Resolve();
         }
     }
 }

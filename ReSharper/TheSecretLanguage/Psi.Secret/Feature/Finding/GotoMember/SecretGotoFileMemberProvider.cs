@@ -1,10 +1,10 @@
 ﻿// ***********************************************************************
-// <author>Stephan B</author>
-// <copyright company="Comindware">
-//   Copyright (c) Comindware 2010-2013. All rights reserved.
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   Class1.cs
+//   SecretGotoFileMemberProvider.cs
 // </summary>
 // ***********************************************************************
 
@@ -143,7 +143,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Feature.Finding.GotoMember
         private IEnumerable<ISecretSymbol> GetPsiSourceFileTypeElements(IPsiSourceFile primarySourceFile)
         {
             var solution = primarySourceFile.GetSolution();
-            var typeElements = solution.GetComponent<SecretCache>().GetSymbolsDeclaredInFile(primarySourceFile);
+            var typeElements = solution.GetComponent<SecretCache>().GetUriIdentifierSymbolsDeclaredInFile(primarySourceFile);
             return typeElements.ToList();
         }
 
@@ -182,7 +182,8 @@ namespace JetBrains.ReSharper.Psi.Secret.Feature.Finding.GotoMember
 
         private class SecretFileMembersMap : OneToSetMap<string, SecretFileMemberData>
         {
-            public static readonly Key<SecretFileMembersMap> SecretFileMembersMapKey = new Key<SecretFileMembersMap>("SecretFileMembersMap");
+            public static readonly Key<SecretFileMembersMap> SecretFileMembersMapKey =
+                new Key<SecretFileMembersMap>("SecretFileMembersMap");
         }
     }
 }

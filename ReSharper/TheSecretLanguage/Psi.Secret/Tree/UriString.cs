@@ -1,4 +1,14 @@
-﻿using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
+﻿// ***********************************************************************
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
+// </copyright>
+// <summary>
+//   UriString.cs
+// </summary>
+// ***********************************************************************
+
+using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Secret.Parsing;
 
 namespace JetBrains.ReSharper.Psi.Secret.Tree

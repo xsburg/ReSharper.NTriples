@@ -1,4 +1,14 @@
-﻿using System;
+﻿// ***********************************************************************
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
+// </copyright>
+// <summary>
+//   PsiTreeUtil.cs
+// </summary>
+// ***********************************************************************
+
+using System;
 using System.Collections.Generic;
 using JetBrains.Application;
 using JetBrains.ReSharper.Psi.ExtensionsAPI;
@@ -10,39 +20,18 @@ namespace JetBrains.ReSharper.Psi.Secret.Util
 {
     internal static class PsiTreeUtil
     {
-        /// <summary>Looks for a parent of specified type and returns null if the node is not found.</summary>
-        /// <param name="element">The element to operate on.</param>
-        /// <param name="maxDistance">The max distance to find. Use 0 to look only this item, 1 to look the direct parent only etc.</param>
-        public static ITreeNode GetParent<T>(this ITreeNode element, int maxDistance)
+        public static bool EqualsElements(ITreeNode treeNode1, ITreeNode treeNode2)
         {
-            int distance = 0;
-            while (element != null && distance <= maxDistance)
-            {
-                if (element is T)
-                {
-                    return element;
-                }
-
-                element = element.Parent;
-                distance++;
-            }
-
-            return null;
+            string s1 = GetTextWhithoutWhitespaces(treeNode1);
+            string s2 = GetTextWhithoutWhitespaces(treeNode2);
+            return s1.Equals(s2);
         }
-        
-        public static T GetParent<T>(this ITreeNode element) where T : class
+
+        public static ICollection<T> GetAllChildren<T>(ITreeNode parent)
         {
-            while (element != null)
-            {
-                if (element is T)
-                {
-                    return element as T;
-                }
-
-                element = element.Parent;
-            }
-
-            return null;
+            IList<T> list = new List<T>();
+            GetAllChildren(parent, list);
+            return list;
         }
 
         public static ITreeNode GetFirstChild<T>(ITreeNode element) where T : ITreeNode
@@ -66,6 +55,41 @@ namespace JetBrains.ReSharper.Psi.Secret.Util
                     return result;
                 }
                 child = child.NextSibling;
+            }
+
+            return null;
+        }
+
+        /// <summary>Looks for a parent of specified type and returns null if the node is not found.</summary>
+        /// <param name="element">The element to operate on.</param>
+        /// <param name="maxDistance">The max distance to find. Use 0 to look only this item, 1 to look the direct parent only etc.</param>
+        public static ITreeNode GetParent<T>(this ITreeNode element, int maxDistance)
+        {
+            int distance = 0;
+            while (element != null && distance <= maxDistance)
+            {
+                if (element is T)
+                {
+                    return element;
+                }
+
+                element = element.Parent;
+                distance++;
+            }
+
+            return null;
+        }
+
+        public static T GetParent<T>(this ITreeNode element) where T : class
+        {
+            while (element != null)
+            {
+                if (element is T)
+                {
+                    return element as T;
+                }
+
+                element = element.Parent;
             }
 
             return null;
@@ -120,19 +144,19 @@ namespace JetBrains.ReSharper.Psi.Secret.Util
                 ITreeNode newNode;
                 if (parent is IPrefixName)
                 {
-                    newNode = PsiElementFactory.GetInstance(parent.GetPsiModule()).CreatePrefixNameExpression(name).FirstChild;
+                    newNode = SecretElementFactory.GetInstance(parent.GetPsiModule()).CreatePrefixNameExpression(name).FirstChild;
                 }
                 else if (parent is IPrefix)
                 {
-                    newNode = PsiElementFactory.GetInstance(parent.GetPsiModule()).CreatePrefixExpression(name).FirstChild;
+                    newNode = SecretElementFactory.GetInstance(parent.GetPsiModule()).CreatePrefixExpression(name).FirstChild;
                 }
                 else if (parent is ILocalName)
                 {
-                    newNode = PsiElementFactory.GetInstance(parent.GetPsiModule()).CreateLocalNameExpression(name).FirstChild;
+                    newNode = SecretElementFactory.GetInstance(parent.GetPsiModule()).CreateLocalNameExpression(name).FirstChild;
                 }
                 else if (parent is IUriString)
                 {
-                    newNode = PsiElementFactory.GetInstance(parent.GetPsiModule()).CreateUriStringExpression(name).FirstChild;
+                    newNode = SecretElementFactory.GetInstance(parent.GetPsiModule()).CreateUriStringExpression(name).FirstChild;
                 }
                 else
                 {
@@ -141,13 +165,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Util
 
                 LowLevelModificationUtil.ReplaceChildRange(nameNode, nameNode, newNode);
             }
-        }
-
-        public static ICollection<T> GetAllChildren<T>(ITreeNode parent)
-        {
-            IList<T> list = new List<T>();
-            GetAllChildren(parent, list);
-            return list;
         }
 
         private static void GetAllChildren<T>(ITreeNode parent, ICollection<T> collection)
@@ -162,13 +179,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Util
                 GetAllChildren(child, collection);
                 child = child.NextSibling;
             }
-        }
-
-        public static bool EqualsElements(ITreeNode treeNode1, ITreeNode treeNode2)
-        {
-            string s1 = GetTextWhithoutWhitespaces(treeNode1);
-            string s2 = GetTextWhithoutWhitespaces(treeNode2);
-            return s1.Equals(s2);
         }
 
         private static string GetTextWhithoutWhitespaces(ITreeNode treeNode)

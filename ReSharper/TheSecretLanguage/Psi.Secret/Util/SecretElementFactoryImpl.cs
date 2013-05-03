@@ -1,35 +1,34 @@
 ﻿// ***********************************************************************
-// <author>Stephan B</author>
-// <copyright company="Comindware">
-//   Copyright (c) Comindware 2010-2013. All rights reserved.
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   PsiElementFactoryImpl.cs
+//   SecretElementFactoryImpl.cs
 // </summary>
 // ***********************************************************************
 
+using System.Linq;
 using JetBrains.Annotations;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Secret.Parsing;
 using JetBrains.ReSharper.Psi.Secret.Tree;
-using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Text;
-using System.Linq;
 
 namespace JetBrains.ReSharper.Psi.Secret.Util
 {
-    public class PsiElementFactoryImpl : PsiElementFactory
+    public class SecretElementFactoryImpl : SecretElementFactory
     {
         private readonly SecretLanguageService myLanguageService;
         private readonly IPsiModule myModule;
 
-        public PsiElementFactoryImpl([NotNull] IPsiModule module)
+        public SecretElementFactoryImpl([NotNull] IPsiModule module)
             : this(module, module.GetSolution())
         {
         }
 
-        private PsiElementFactoryImpl([NotNull] IPsiModule module, [NotNull] ISolution solution)
+        private SecretElementFactoryImpl([NotNull] IPsiModule module, [NotNull] ISolution solution)
         {
             this.myModule = module;
             this.Solution = solution;
@@ -37,12 +36,40 @@ namespace JetBrains.ReSharper.Psi.Secret.Util
             this.myLanguageService = (SecretLanguageService)SecretLanguage.Instance.LanguageService();
         }
 
-        private SecretParser CreateParser(string text)
+        public override ILocalName CreateLocalNameExpression(string name)
         {
-            return
-                (SecretParser)
-                this.myLanguageService.CreateParser(
-                    this.myLanguageService.GetPrimaryLexerFactory().CreateLexer(new StringBuffer(text)), null, null);
+            var text = string.Format("foo:{0} a false.", name);
+            var node = this.CreateSecretFile(text);
+
+            var expression = node.SentencesEnumerable.First().Statement.Subject.FirstChild;
+            if (expression != null)
+            {
+                var identifier = (IIdentifier)expression.FirstChild;
+                if (identifier != null)
+                {
+                    var uriIdentifier = (IUriIdentifier)identifier.FirstChild;
+
+                    if (uriIdentifier != null && uriIdentifier.LocalName != null)
+                    {
+                        return uriIdentifier.LocalName;
+                    }
+                }
+            }
+
+            throw new ElementFactoryException(string.Format("Cannot create file '{0}'", text));
+        }
+
+        public override ISentence CreatePrefixDeclarationSentence(string name, string uri)
+        {
+            if (string.IsNullOrEmpty(uri))
+            {
+                uri = "uri";
+            }
+
+            var text = string.Format("@prefix {0}: <{1}>.", name, uri);
+            var file = this.CreateSecretFile(text, true);
+            var sentence = file.SentencesEnumerable.First();
+            return sentence;
         }
 
         public override IPrefix CreatePrefixExpression(string name)
@@ -53,7 +80,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Util
             var expression = node.SentencesEnumerable.First().Statement.Subject.FirstChild;
             if (expression != null)
             {
-                var identifier = (Tree.IIdentifier)expression.FirstChild;
+                var identifier = (IIdentifier)expression.FirstChild;
                 if (identifier != null)
                 {
                     var uriIdentifier = (IUriIdentifier)identifier.FirstChild;
@@ -82,29 +109,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Util
             throw new ElementFactoryException(string.Format("Cannot create file '{0}'", text));
         }
 
-        public override ILocalName CreateLocalNameExpression(string name)
-        {
-            var text = string.Format("foo:{0} a false.", name);
-            var node = this.CreateSecretFile(text);
-
-            var expression = node.SentencesEnumerable.First().Statement.Subject.FirstChild;
-            if (expression != null)
-            {
-                var identifier = (Tree.IIdentifier)expression.FirstChild;
-                if (identifier != null)
-                {
-                    var uriIdentifier = (IUriIdentifier)identifier.FirstChild;
-
-                    if (uriIdentifier != null && uriIdentifier.LocalName != null)
-                    {
-                        return uriIdentifier.LocalName;
-                    }
-                }
-            }
-
-            throw new ElementFactoryException(string.Format("Cannot create file '{0}'", text));
-        }
-
         public override IUriString CreateUriStringExpression(string name)
         {
             var text = string.Format("<{0}> a false.", name);
@@ -113,7 +117,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Util
             var expression = node.SentencesEnumerable.First().Statement.Subject.FirstChild;
             if (expression != null)
             {
-                var identifier = (Tree.IIdentifier)expression.FirstChild;
+                var identifier = (IIdentifier)expression.FirstChild;
                 if (identifier != null)
                 {
                     var uriIdentifier = (IUriIdentifier)identifier.FirstChild;
@@ -128,9 +132,17 @@ namespace JetBrains.ReSharper.Psi.Secret.Util
             throw new ElementFactoryException(string.Format("Cannot create file '{0}'", text));
         }
 
-        private ISecretFile CreateSecretFile(string text)
+        private SecretParser CreateParser(string text)
         {
-            var node = this.CreateParser(text).ParseSecretFile(false) as ISecretFile;
+            return
+                (SecretParser)
+                this.myLanguageService.CreateParser(
+                    this.myLanguageService.GetPrimaryLexerFactory().CreateLexer(new StringBuffer(text)), null, null);
+        }
+
+        private ISecretFile CreateSecretFile(string text, bool restoreWhitespaces = false)
+        {
+            var node = this.CreateParser(text).ParseSecretFile(false, restoreWhitespaces) as ISecretFile;
             if (node == null)
             {
                 throw new ElementFactoryException(string.Format("Cannot create file '{0}'", text));

@@ -1,0 +1,8 @@
+@prefix names: <http://ontology.org/ontology/names#>.
+@prefix relation: <http://ontology.org/ontology/relation#>.
+
+names:jack
+    relation:father names:john;
+    relation:mother names:mary.
+
+names:jack skills:skill skills:carpenter.

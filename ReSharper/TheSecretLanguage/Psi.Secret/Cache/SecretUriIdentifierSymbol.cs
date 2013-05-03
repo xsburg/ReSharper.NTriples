@@ -1,10 +1,10 @@
 // ***********************************************************************
-// <author>Stephan B</author>
-// <copyright company="Comindware">
-//   Copyright (c) Comindware 2010-2013. All rights reserved.
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretRuleSymbol.cs
+//   SecretUriIdentifierSymbol.cs
 // </summary>
 // ***********************************************************************
 
@@ -18,19 +18,18 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
         {
         }
 
-        public SecretUriIdentifierSymbol(string @namespace, string localName, UriIdentifierKind kind, int offset, IPsiSourceFile psiSourceFile)
+        public SecretUriIdentifierSymbol(
+            string @namespace, string localName, UriIdentifierKind kind, int offset, IPsiSourceFile psiSourceFile)
             : base(@namespace + localName, offset, psiSourceFile)
         {
-            LocalName = localName;
-            Kind = kind;
-            Namespace = @namespace;
+            this.LocalName = localName;
+            this.Kind = kind;
+            this.Namespace = @namespace;
         }
 
-        public string Namespace { get; private set; }
-
-        public string LocalName { get; private set; }
-
         public UriIdentifierKind Kind { get; private set; }
+        public string LocalName { get; private set; }
+        public string Namespace { get; private set; }
 
         public override void Read(BinaryReader reader)
         {

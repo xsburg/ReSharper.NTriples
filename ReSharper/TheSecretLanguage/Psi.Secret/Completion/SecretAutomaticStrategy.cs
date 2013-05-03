@@ -1,4 +1,14 @@
-﻿using JetBrains.Application.Settings;
+﻿// ***********************************************************************
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
+// </copyright>
+// <summary>
+//   SecretAutomaticStrategy.cs
+// </summary>
+// ***********************************************************************
+
+using JetBrains.Application.Settings;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Settings;
@@ -15,12 +25,24 @@ namespace JetBrains.ReSharper.Psi.Secret.Completion
 
         public SecretAutomaticStrategy(ISettingsStore settingsStore)
         {
-            this.mySettingsScalarEntry = settingsStore.Schema.GetScalarEntry((SecretAutopopupEnabledSettingsKey key) => key.OnIdent);
+            this.mySettingsScalarEntry =
+                settingsStore.Schema.GetScalarEntry((SecretAutopopupEnabledSettingsKey key) => key.OnIdent);
         }
 
-        public AutopopupType IsEnabledInSettings(IContextBoundSettingsStore settingsStore, ITextControl textControl)
+        public CodeCompletionType CodeCompletionType
         {
-            return (AutopopupType)settingsStore.GetValue(this.mySettingsScalarEntry, null);
+            get
+            {
+                return CodeCompletionType.AutomaticCompletion;
+            }
+        }
+
+        public PsiLanguageType Language
+        {
+            get
+            {
+                return SecretLanguage.Instance;
+            }
         }
 
         public bool AcceptTyping(char c, ITextControl textControl, IContextBoundSettingsStore boundSettingsStore)
@@ -28,34 +50,29 @@ namespace JetBrains.ReSharper.Psi.Secret.Completion
             return IsIdentStart(c);
         }
 
-        public bool ProcessSubsequentTyping(char c, ITextControl textControl)
-        {
-            return IsIdentBody(c);
-        }
-
         public bool AcceptsFile(IFile file, ITextControl textControl)
         {
             return file is ISecretFile;
         }
 
-        public CodeCompletionType CodeCompletionType
+        public AutopopupType IsEnabledInSettings(IContextBoundSettingsStore settingsStore, ITextControl textControl)
         {
-            get { return CodeCompletionType.AutomaticCompletion; }
+            return (AutopopupType)settingsStore.GetValue(this.mySettingsScalarEntry, null);
         }
 
-        public PsiLanguageType Language
+        public bool ProcessSubsequentTyping(char c, ITextControl textControl)
         {
-            get { return SecretLanguage.Instance; }
-        }
-
-        private static bool IsIdentStart(char c)
-        {
-            return char.IsLetter(c) || c == ':';
+            return IsIdentBody(c);
         }
 
         private static bool IsIdentBody(char c)
         {
             return char.IsLetterOrDigit(c) || c == '_';
+        }
+
+        private static bool IsIdentStart(char c)
+        {
+            return char.IsLetter(c) || c == ':';
         }
     }
 }
