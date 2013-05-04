@@ -1,0 +1,10 @@
+# ${COMPLETE_ITEM:false}
+# ${SHOW_SIGNATURES:false}
+# ${CASE_SENSITIVE_COMPLETION:false}
+# ${COMPLETION_TYPE:Replace}
+
+@prefix family: <http://ontolo{caret}gy.org/ontology/family#>.
+@prefix relation: <http://ontology.org/ontology/relation#>.
+@prefix names: <http://ontology.org/ontology/names#>.
+@prefix info: <http://ontology.org/ontology/info#>.
+@prefix limbs: <http://ontology.org/ontology/limbs#>.

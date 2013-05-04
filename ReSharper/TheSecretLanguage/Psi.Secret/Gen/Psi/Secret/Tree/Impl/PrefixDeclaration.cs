@@ -15,7 +15,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
   internal partial class PrefixDeclaration : SecretCompositeElement, JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaration {
     public const short PREFIX= ChildRole.LAST + 1;
     public const short IDENTIFIER= ChildRole.LAST + 3;
-    public const short URI_STRING= ChildRole.LAST + 4;
+    public const short URISTRING= ChildRole.LAST + 4;
     internal PrefixDeclaration() : base() {
     }
     public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType NodeType {
@@ -35,7 +35,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
       {
         new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.PREFIX_KEYWORD, PREFIX),
         new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.PREFIX_NAME, IDENTIFIER),
-        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.URI_STRING, URI_STRING),
+        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.PREFIX_URI, URISTRING),
         new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STD_PREFIX_KEYWORD, PREFIX),
       }
     );
@@ -48,8 +48,21 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
     public virtual JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName PrefixName {
       get { return (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName) FindChildByRole(IDENTIFIER); }
     }
-    public virtual JetBrains.ReSharper.Psi.Tree.ITokenNode UriString {
-      get { return (JetBrains.ReSharper.Psi.Tree.ITokenNode) FindChildByRole(URI_STRING); }
+    public virtual  JetBrains.ReSharper.Psi.Tree.ITokenNode UriString {
+      get
+      {
+        CompositeElement current = this;  
+    
+        JetBrains.ReSharper.Psi.Tree.ITokenNode result = null;
+        CompositeElement current0 = (CompositeElement)current.FindChildByRole (JetBrains.ReSharper.Psi.Secret.Impl.Tree.PrefixDeclaration.URISTRING);
+        if (current0 != null) {
+          TreeElement current1 = current0.FindChildByRole (JetBrains.ReSharper.Psi.Secret.Impl.Tree.PrefixUri.URISTRING);
+          if (current1 != null) {
+            result = (JetBrains.ReSharper.Psi.Tree.ITokenNode) current1;
+          }
+        }
+        return result;
+      }
     }
     public virtual JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName SetPrefixName (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName param)
     {

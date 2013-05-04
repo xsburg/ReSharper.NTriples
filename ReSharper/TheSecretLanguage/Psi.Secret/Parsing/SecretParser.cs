@@ -156,7 +156,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
 
                 tempParsingResult = this.match(TokenType.URI_BEGIN);
                 result.AppendNewChild(tempParsingResult);
-                tempParsingResult = this.match(TokenType.URI_STRING);
+                tempParsingResult = parsePrefixUri();
                 result.AppendNewChild(tempParsingResult);
                 tempParsingResult = this.match(TokenType.URI_END);
                 result.AppendNewChild(tempParsingResult);

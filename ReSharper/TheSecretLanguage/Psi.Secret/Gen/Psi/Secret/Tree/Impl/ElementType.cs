@@ -310,6 +310,16 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
          return new PrefixName();
       }
     }
+    public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType PREFIX_URI = PREFIX_URI_INTERNAL.INSTANCE;
+    private class PREFIX_URI_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
+    {
+      public static readonly PREFIX_URI_INTERNAL INSTANCE = new PREFIX_URI_INTERNAL ();
+      PREFIX_URI_INTERNAL() : base("PREFIX_URI") {}
+      public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeElement Create()
+      {
+         return new PrefixUri();
+      }
+    }
     public static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.CompositeNodeType SENTENCE = SENTENCE_INTERNAL.INSTANCE;
     private class SENTENCE_INTERNAL : JetBrains.ReSharper.Psi.Secret.Tree.SecretCompositeNodeType
     {

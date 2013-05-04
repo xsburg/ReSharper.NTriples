@@ -197,6 +197,11 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
       if (!CanVisitFurther(param)) return;
       VisitElement (level, param, caller);
     }
+      internal static void TestPrefixUri (int level, JetBrains.ReSharper.Psi.Secret.Tree.IPrefixUri param, String caller)
+    {
+      if (!CanVisitFurther(param)) return;
+      VisitElement (level, param, caller);
+    }
       internal static void TestSentence (int level, JetBrains.ReSharper.Psi.Secret.Tree.ISentence param, String caller)
     {
       if (!CanVisitFurther(param)) return;

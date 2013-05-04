@@ -8,5 +8,5 @@ names:jack
 names:jack |skills|(0):skill |skills|(1):carpenter.
 
 ---------------------------------------------------------
-(0): ReSharper Underlined Error Highlighting: Unresolved prefix
-(1): ReSharper Underlined Error Highlighting: Unresolved prefix
+(0): ReSharper Error Highlighting: Unresolved prefix 'skills'
+(1): ReSharper Error Highlighting: Unresolved prefix 'skills'

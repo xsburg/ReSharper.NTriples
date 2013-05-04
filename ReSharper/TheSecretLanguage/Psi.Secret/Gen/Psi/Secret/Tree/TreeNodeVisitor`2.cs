@@ -108,6 +108,9 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
     public virtual TReturn VisitPrefixName ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName prefixNameParam, TContext context) {
       return VisitNode (prefixNameParam, context);
     }
+    public virtual TReturn VisitPrefixUri ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.IPrefixUri prefixUriParam, TContext context) {
+      return VisitNode (prefixUriParam, context);
+    }
     public virtual TReturn VisitSentence ([JetBrains.Annotations.NotNull] JetBrains.ReSharper.Psi.Secret.Tree.ISentence sentenceParam, TContext context) {
       return VisitNode (sentenceParam, context);
     }

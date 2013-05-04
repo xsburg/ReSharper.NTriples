@@ -8,8 +8,11 @@
 // </summary>
 // ***********************************************************************
 
+using JetBrains.ReSharper.Features.Altering.Resources;
+using JetBrains.ReSharper.Psi.Resources;
 using JetBrains.ReSharper.Psi.Secret.Resources;
 using JetBrains.ReSharper.Psi.Secret.Services;
+using JetBrains.ReSharper.Psi.Xaml.Resources;
 using JetBrains.UI.Icons;
 
 namespace JetBrains.ReSharper.Psi.Secret.Resolve
@@ -17,10 +20,13 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
     public class SecretDeclaredElementType : DeclaredElementType
     {
         public static readonly SecretDeclaredElementType Prefix = new SecretDeclaredElementType(
-            "Prefix", N3PluginSymbolThemedIcons.AccordionDisable.Id);
+            "Prefix", PsiXamlThemedIcons.XamlNamespaceAlias.Id);
 
         public static readonly SecretDeclaredElementType UriIdentifier = new SecretDeclaredElementType(
-            "UriIdentifier", N3PluginSymbolThemedIcons.AccordionDisable.Id);
+            "UriIdentifier", PsiXamlThemedIcons.XamlPredefinedObjectElement.Id);
+
+        public static readonly SecretDeclaredElementType PrefixUri = new SecretDeclaredElementType(
+            "PrefixUri", PsiSymbolsThemedIcons.Namespace.Id);
 
         private static readonly PsiLanguageType Language = SecretLanguage.Instance;
 

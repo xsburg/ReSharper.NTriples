@@ -30,7 +30,7 @@ namespace JetBrains.ReSharper.Psi.Secret
         {
             get
             {
-                return N3PluginSymbolThemedIcons.AccordionDisable.Id;
+                return N3PluginSymbolThemedIcons.N3Icon.Id;
             }
         }
 
