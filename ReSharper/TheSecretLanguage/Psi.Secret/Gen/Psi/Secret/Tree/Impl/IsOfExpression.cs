@@ -13,6 +13,9 @@ using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Secret.Parsing;
 namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
   internal partial class IsOfExpression : SecretCompositeElement, JetBrains.ReSharper.Psi.Secret.Tree.IIsOfExpression {
+    public const short ISKEYWORD= ChildRole.LAST + 1;
+    public const short EXPRESSION= ChildRole.LAST + 2;
+    public const short OFKEYWORD= ChildRole.LAST + 3;
     internal IsOfExpression() : base() {
     }
     public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType NodeType {
@@ -26,6 +29,62 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
     }
     public override TReturn Accept<TContext, TReturn>(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor<TContext, TReturn> visitor, TContext context) {
       return visitor.VisitIsOfExpression(this, context);
+    }
+    private static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeDictionary<short> CHILD_ROLES = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeDictionary<short>(
+      new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>[]
+      {
+        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.OF_KEYWORD, OFKEYWORD),
+        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.IS_KEYWORD, ISKEYWORD),
+        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.EXPRESSION, EXPRESSION),
+      }
+    );
+    public override short GetChildRole (JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement child) {
+      return CHILD_ROLES[child.NodeType];
+    }
+    public virtual JetBrains.ReSharper.Psi.Secret.Tree.IExpression Expression {
+      get { return (JetBrains.ReSharper.Psi.Secret.Tree.IExpression) FindChildByRole(EXPRESSION); }
+    }
+    public virtual JetBrains.ReSharper.Psi.Tree.ITokenNode IsKeyword {
+      get { return (JetBrains.ReSharper.Psi.Tree.ITokenNode) FindChildByRole(ISKEYWORD); }
+    }
+    public virtual JetBrains.ReSharper.Psi.Tree.ITokenNode OfKeyword {
+      get { return (JetBrains.ReSharper.Psi.Tree.ITokenNode) FindChildByRole(OFKEYWORD); }
+    }
+    public virtual JetBrains.ReSharper.Psi.Secret.Tree.IExpression SetExpression (JetBrains.ReSharper.Psi.Secret.Tree.IExpression param)
+    {
+      using (JetBrains.Application.WriteLockCookie.Create (this.IsPhysical()))
+      {
+        TreeElement current = null, next = GetNextFilteredChild (current), result = null;
+        next = GetNextFilteredChild (current);
+        if (next == null) {
+          return (JetBrains.ReSharper.Psi.Secret.Tree.IExpression)result;
+        } else {
+          if (next.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.IS_KEYWORD) {
+            current = next;
+          } else {
+            return (JetBrains.ReSharper.Psi.Secret.Tree.IExpression)result;
+          }
+        }
+        next = GetNextFilteredChild (current);
+        if (next == null) {
+          if (param == null) return null;
+          result = current = (TreeElement)JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.AddChildAfter (this, current, (JetBrains.ReSharper.Psi.Tree.ITreeNode)param);
+        } else {
+          if (next.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.EXPRESSION) {
+            if (param != null) {
+              result = current = (TreeElement)JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.ReplaceChild(next, (JetBrains.ReSharper.Psi.Tree.ITreeNode)param);
+            } else {
+              current = GetNextFilteredChild (next);
+              JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.DeleteChild (next);
+            }
+          } else {
+            if (param == null) return null;
+            result = (TreeElement)JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.AddChildBefore(next, (JetBrains.ReSharper.Psi.Tree.ITreeNode)param);
+            current = next;
+          }
+        }
+        return (JetBrains.ReSharper.Psi.Secret.Tree.IExpression)result;
+      }
     }
     public override string ToString() {
       return "IIsOfExpression";

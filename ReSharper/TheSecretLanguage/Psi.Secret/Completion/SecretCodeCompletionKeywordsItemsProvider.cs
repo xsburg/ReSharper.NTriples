@@ -40,12 +40,12 @@ namespace JetBrains.ReSharper.Psi.Secret.Completion
             }
 
             var keywords =
-                KeywordCompletionUtil.GetAplicableKeywords(secretFile, context.BasicContext.SelectedTreeRange)
-                                     .Select(CreateKeyworkLookupItem);
+                KeywordCompletionUtil.GetAplicableKeywords(secretFile, context.BasicContext.SelectedTreeRange, context)
+                                     .Select(CreateKeywordLookupItem);
             foreach (TextLookupItemBase textLookupItem in keywords)
             {
                 textLookupItem.InitializeRanges(context.Ranges, context.BasicContext);
-                collector.AddAtDefaultPlace(textLookupItem);
+                collector.AddToBottom(textLookupItem);
             }
 
             return true;
@@ -53,7 +53,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Completion
 
         protected override bool IsAvailable(SecretCodeCompletionContext context)
         {
-            CodeCompletionType type = context.BasicContext.CodeCompletionType;
+            var type = context.BasicContext.CodeCompletionType;
             var correctCompletionType = type == CodeCompletionType.AutomaticCompletion ||
                                         type == CodeCompletionType.BasicCompletion;
             if (!correctCompletionType)
@@ -61,18 +61,12 @@ namespace JetBrains.ReSharper.Psi.Secret.Completion
                 return false;
             }
 
-            var referencesToAvoid = new[]
-                {
-                    typeof(SecretUriStringReference),
-                    typeof(SecretLocalNameReference)
-                };
-
             var correctContext = context.ReparsedContext.Reference == null ||
-                                 !referencesToAvoid.Contains(context.ReparsedContext.Reference.GetType());
+                                 context.ReparsedContext.Reference is SecretPrefixReference;
             return correctContext;
         }
 
-        private static TextLookupItemBase CreateKeyworkLookupItem(string x)
+        private static TextLookupItemBase CreateKeywordLookupItem(string x)
         {
             return new SecretKeywordLookupItem(x, GetSuffix());
         }

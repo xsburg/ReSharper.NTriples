@@ -118,7 +118,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
             return this.myPrefixesSymbolTable;
         }
 
-        public IEnumerable<IDeclaredElement> GetDeclaredElements(string name)
+        public IEnumerable<IDeclaredElement> GetPrefixDeclaredElements(string name)
         {
             if (FilePrefixesSymbolTable == null)
             {
@@ -135,12 +135,24 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
             return list;
         }
 
-        public void ClearTables()
+        public IEnumerable<IDeclaredElement> GetAllPrefixDeclaredElements()
         {
-            myPrefixesSymbolTable = null;
-            myUriIdentifiersSymbolTable = null;
-            myPrefixes.Clear();
-            myUriIdentifiers.Clear();
+            if (FilePrefixesSymbolTable == null)
+            {
+                throw new Exception("never thrown");
+            }
+
+            return myPrefixes.Select(x => x.Value);
+        }
+
+        public IEnumerable<IDeclaredElement> GetAllUriIdentifierDeclaredElements()
+        {
+            if (FileUriIdentifiersSymbolTable == null)
+            {
+                throw new Exception("never thrown");
+            }
+
+            return myUriIdentifiers.SelectMany(x => x.Value);
         }
 
         public IList<IDeclaration> GetUriIdentifiers(string fullName)
@@ -157,6 +169,14 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
             }
             
             return elements.Cast<IDeclaration>().ToList();
+        }
+
+        public void ClearTables()
+        {
+            this.myPrefixesSymbolTable = null;
+            this.myUriIdentifiersSymbolTable = null;
+            this.myPrefixes.Clear();
+            this.myUriIdentifiers.Clear();
         }
     }
 }

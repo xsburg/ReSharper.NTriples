@@ -10,7 +10,6 @@
 
 using JetBrains.ReSharper.Psi.Secret.Cache;
 using JetBrains.ReSharper.Psi.Secret.Resolve;
-using JetBrains.ReSharper.Psi.Secret.Tree;
 
 namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 {
@@ -26,34 +25,15 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
             }
         }
 
-        public UriIdentifierKind GetKind()
+        public IdentifierKind GetKind()
         {
-            var kind = UriIdentifierKind.Other;
-            var parent2 = this.Parent;
-            while (parent2 != null && !(parent2 is ISentence) && !(parent2 is IAnonymousIdentifier))
+            var identifier = this.Parent as Identifier;
+            if (identifier == null)
             {
-                if (parent2 is ISubject)
-                {
-                    kind = UriIdentifierKind.Subject;
-                    break;
-                }
-
-                if (parent2 is IPredicate)
-                {
-                    kind = UriIdentifierKind.Predicate;
-                    break;
-                }
-
-                if (parent2 is IObjects)
-                {
-                    kind = UriIdentifierKind.Object;
-                    break;
-                }
-
-                parent2 = parent2.Parent;
+                return IdentifierKind.Other;
             }
 
-            return kind;
+            return identifier.GetKind();
         }
 
         public string GetLocalName()

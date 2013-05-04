@@ -8,59 +8,137 @@
 // </summary>
 // ***********************************************************************
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using JetBrains.ReSharper.Psi.Secret.Cache;
+using JetBrains.ReSharper.Psi.Secret.Resolve;
 using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.ReSharper.Psi.Secret.Util;
 using JetBrains.ReSharper.Psi.Tree;
+using JetBrains.Util;
 using IIdentifier = JetBrains.ReSharper.Psi.Secret.Tree.IIdentifier;
 
 namespace JetBrains.ReSharper.Psi.Secret.Completion
 {
     internal static class KeywordCompletionUtil
     {
-        public static IEnumerable<string> GetAplicableKeywords(ISecretFile file, TreeTextRange referenceRange)
+        private const string OfPredicateKeyword = "@of";
+
+        public static IEnumerable<string> GetAplicableKeywords(ISecretFile file, TreeTextRange referenceRange, SecretCodeCompletionContext context)
         {
             var list = new List<string>();
-            var token = file.FindNodeAt(referenceRange) as ITokenNode;
+            var token = file.FindNodeAt(referenceRange);
             if (token == null)
             {
                 return list;
             }
 
-            // identifier/literal_keywords
-            var identifier = token.GetParent<IIdentifier>(2);
-            if (identifier != null)
+            var references = file.FindReferencesAt(referenceRange);
+
+            if (references.Length == 0 && token.Parent is ISentences && token.Parent.Parent is ISecretFile)
             {
-                list.Add("true");
-                list.Add("false");
-                list.Add("null");
+                list.AddRange(DirectiveKeywords);
+                list.AddRange(MetaKeywords);
             }
+            else if (references.OfType<SecretPrefixReference>().Any() || context.ReparsedContext.Reference is SecretPrefixReference)
+            {
+                IdentifierKind kind;
+                IIdentifier identifier;
+                if (token.Parent is IAnonymousIdentifier)
+                {
+                    kind = IdentifierKind.Predicate;
+                }
+                else if ((identifier = token.GetParent<IIdentifier>(2) as IIdentifier) != null)
+                {
+                    kind = identifier.GetKind();
+                }
+                else
+                {
+                    if (token.Parent is IObjects || HasPrevSibling<IPredicate>(token))
+                    {
+                        kind = IdentifierKind.Object;
+                    }
+                    else if (token.Parent is IFacts || token.Parent is IIsOfExpression || HasPrevSibling<ISubject>(token))
+                    {
+                        kind = IdentifierKind.Predicate;
+                    }
+                    else
+                    {
+                        return EmptyList<string>.InstanceList;
+                    }
+                }
 
-            // predicate
-            list.Add("a");
-            // predicate/hasExpression
-            list.Add("@has");
-            // predicate/isOfExpression
-            list.Add("@is");
-            list.Add("@of");
-
-            // meta
-            list.Add("in");
-            list.Add("@for");
-            list.Add("out");
-            list.Add("axis");
-            list.Add("meta");
-
-            // directives (starts directive, global scope)
-            list.Add("@prefix");
-            list.Add("@std_prefix");
-            list.Add("@extension");
-            list.Add("@using");
-            list.Add("@axis-default");
-            list.Add("@forAll");
-            list.Add("@forSome");
+                if (kind == IdentifierKind.Object)
+                {
+                    list.AddRange(ObjectLiteralKeywords);
+                }
+                else if (kind == IdentifierKind.Predicate)
+                {
+                    var isOfExpression = token.Parent as IIsOfExpression;
+                    if (isOfExpression != null && isOfExpression.IsKeyword != null && isOfExpression.Expression != null)
+                    {
+                        // is-of identifier continuation
+                        list.Add(OfPredicateKeyword);
+                    }
+                    else
+                    {
+                        list.AddRange(PredicateKeywords);
+                    }
+                }
+            }
 
             return list;
         }
+
+        private static bool HasPrevSibling<T>(ITreeNode node) where T : ITreeNode
+        {
+            var prevSibling = node.PrevSibling;
+            while (prevSibling != null)
+            {
+                if (prevSibling is T)
+                {
+                    return true;
+                }
+
+                prevSibling = prevSibling.PrevSibling;
+            }
+
+            return false;
+        }
+
+        private static readonly string[] PredicateKeywords = new[]
+            {
+                "a",
+                "@has",
+                "@is"
+            };
+
+        private static readonly string[] DirectiveKeywords = new[]
+            {
+                "@prefix",
+                "@std_prefix",
+                "@extension",
+                "@using",
+                "@axis-default",
+                "@forAll",
+                "@forSome"
+            };
+
+        private static readonly string[] ObjectLiteralKeywords = new[]
+            {
+                "true",
+                "false",
+                "null"
+            };
+
+        private static readonly string[] MetaKeywords = new[]
+            {
+                "in",
+                "@for",
+                "out",
+                "axis",
+                "meta"
+            };
     }
 }

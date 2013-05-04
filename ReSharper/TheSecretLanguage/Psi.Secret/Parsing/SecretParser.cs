@@ -49,6 +49,10 @@ namespace JetBrains.ReSharper.Psi.Secret.Parsing
             {
                 psiFile.SetSourceFile(this.SourceFile);
                 psiFile.CreatePrefixesSymbolTable();
+                if (this.SourceFile != null)
+                {
+                    psiFile.CreateUriIdentifiersSymbolTable();
+                }
             }
 
             return psiFile;

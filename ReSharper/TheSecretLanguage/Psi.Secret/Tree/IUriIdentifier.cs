@@ -22,7 +22,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree
     public partial interface IUriIdentifier
     {
         IUriIdentifierDeclaredElement DescendantDeclaredElement { get; }
-        UriIdentifierKind GetKind();
+        IdentifierKind GetKind();
         string GetLocalName();
         string GetNamespace();
         string GetUri();

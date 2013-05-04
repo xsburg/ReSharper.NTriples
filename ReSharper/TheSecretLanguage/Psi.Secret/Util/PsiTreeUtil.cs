@@ -118,7 +118,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Util
             using (WriteLockCookie.Create(parent.IsPhysical()))
             {
                 var srcIsUri = Uri.IsWellFormedUriString(name, UriKind.Absolute);
-                var dstIsUri = parent is IUriString;
+                var dstIsUri = parent is IUriString || parent is IPrefixUri;
                 if (srcIsUri && !dstIsUri)
                 {
                     var uri = new Uri(name);
@@ -149,6 +149,10 @@ namespace JetBrains.ReSharper.Psi.Secret.Util
                 else if (parent is IPrefix)
                 {
                     newNode = SecretElementFactory.GetInstance(parent.GetPsiModule()).CreatePrefixExpression(name).FirstChild;
+                }
+                else if (parent is IPrefixUri)
+                {
+                    newNode = SecretElementFactory.GetInstance(parent.GetPsiModule()).CreatePrefixUriExpression(name).FirstChild;
                 }
                 else if (parent is ILocalName)
                 {

@@ -21,7 +21,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Completion
         {
             get
             {
-                return 10;
+                return 0;
             }
         }
 

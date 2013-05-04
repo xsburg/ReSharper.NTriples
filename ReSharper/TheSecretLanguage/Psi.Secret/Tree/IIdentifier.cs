@@ -1,20 +1,19 @@
-// ***********************************************************************
+﻿// ***********************************************************************
 // <author>Stephan Burguchev</author>
 // <copyright company="Stephan Burguchev">
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   UriIdentifierKind.cs
+//   IIdentifier.cs
 // </summary>
 // ***********************************************************************
 
-namespace JetBrains.ReSharper.Psi.Secret.Cache
+using JetBrains.ReSharper.Psi.Secret.Cache;
+
+namespace JetBrains.ReSharper.Psi.Secret.Tree
 {
-    public enum UriIdentifierKind
+    public partial interface IIdentifier
     {
-        Subject,
-        Predicate,
-        Object,
-        Other
+        IdentifierKind GetKind();
     }
 }

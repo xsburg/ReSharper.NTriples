@@ -24,6 +24,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Completion
             this.InsertCaretOffset = suffix.Length;
             this.ReplaceCaretOffset = suffix.Length;
             this.Text = text;
+            this.OrderingString = char.MaxValue + text.ToLowerInvariant();
         }
 
         public override IconId Image

@@ -4,19 +4,17 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   IUriIdentifierDeclaredElement.cs
+//   IPrefixUri.cs
 // </summary>
 // ***********************************************************************
 
-using JetBrains.ReSharper.Psi.Secret.Cache;
+using JetBrains.ReSharper.Psi.Secret.Resolve;
 
-namespace JetBrains.ReSharper.Psi.Secret.Resolve
+namespace JetBrains.ReSharper.Psi.Secret.Tree
 {
-    public interface IUriIdentifierDeclaredElement : IDeclaredElement
+    public partial interface IPrefixUri
     {
-        IdentifierKind GetKind();
-        string GetLocalName();
-        string GetNamespace();
-        string GetUri();
+        SecretPrefixUriReference PrefixUriReference { get; }
+        void SetName(string shortName);
     }
 }

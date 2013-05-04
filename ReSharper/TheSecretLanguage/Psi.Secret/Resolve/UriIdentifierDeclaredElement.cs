@@ -8,6 +8,7 @@
 // </summary>
 // ***********************************************************************
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
@@ -24,7 +25,8 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
     internal class UriIdentifierDeclaredElement : IDeclaredElement, IUriIdentifierDeclaredElement
     {
         private readonly bool filterDeclarations;
-        private readonly UriIdentifierKind kind;
+        private readonly IUriIdentifierDeclaredElement parent;
+        private readonly IdentifierKind kind;
         private readonly string localName;
         private readonly IFile myFile;
 
@@ -37,9 +39,10 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
             IFile file,
             string @namespace,
             string localName,
-            UriIdentifierKind kind,
+            IdentifierKind kind,
             IPsiServices services,
-            bool filterDeclarations = false)
+            bool filterDeclarations = false,
+            IUriIdentifierDeclaredElement parent = null)
         {
             this.myFile = file;
             this.ns = @namespace;
@@ -48,6 +51,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
             this.myNewName = localName;
             this.myServices = services;
             this.filterDeclarations = filterDeclarations;
+            this.parent = parent;
             this.kind = kind;
         }
 
@@ -146,6 +150,11 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
 
         public IList<IDeclaration> GetDeclarations()
         {
+            if (parent != null)
+            {
+                return parent.GetDeclarations();
+            }
+
             var result = new List<IDeclaration>();
             foreach (var sourceFile in this.GetSourceFiles())
             {
@@ -157,6 +166,11 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
 
         public IList<IDeclaration> GetDeclarationsIn(IPsiSourceFile sourceFile)
         {
+            if (parent != null)
+            {
+                return parent.GetDeclarationsIn(sourceFile);
+            }
+
             var declarations = GetDeclarationsIn(sourceFile, this);
             if (this.filterDeclarations)
             {
@@ -164,7 +178,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
                     declarations.Where(
                         d =>
                         d is IUriIdentifierDeclaredElement &&
-                        (d as IUriIdentifierDeclaredElement).GetKind() == UriIdentifierKind.Subject).ToList();
+                        (d as IUriIdentifierDeclaredElement).GetKind() == IdentifierKind.Subject).ToList();
             }
 
             return declarations;
@@ -180,7 +194,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
             return this.GetUri().GetHashCode();
         }
 
-        public UriIdentifierKind GetKind()
+        public IdentifierKind GetKind()
         {
             return this.kind;
         }

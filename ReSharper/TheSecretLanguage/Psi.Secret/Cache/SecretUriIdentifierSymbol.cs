@@ -19,7 +19,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
         }
 
         public SecretUriIdentifierSymbol(
-            string @namespace, string localName, UriIdentifierKind kind, int offset, IPsiSourceFile psiSourceFile)
+            string @namespace, string localName, IdentifierKind kind, int offset, IPsiSourceFile psiSourceFile)
             : base(@namespace + localName, offset, psiSourceFile)
         {
             this.LocalName = localName;
@@ -27,7 +27,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
             this.Namespace = @namespace;
         }
 
-        public UriIdentifierKind Kind { get; private set; }
+        public IdentifierKind Kind { get; private set; }
         public string LocalName { get; private set; }
         public string Namespace { get; private set; }
 

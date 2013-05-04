@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using JetBrains.ReSharper.Psi.Secret.Cache;
@@ -6,6 +7,7 @@ using JetBrains.ReSharper.Psi.Secret.Resolve;
 using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.ReSharper.Psi.Secret.Util;
 using JetBrains.ReSharper.Psi.Tree;
+using JetBrains.Util;
 
 namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 {
@@ -15,13 +17,27 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 
         public IList<IDeclaration> GetDeclarations()
         {
+            if (this.ScopeToMainFile)
+            {
+                return UriIdentifierDeclaredElement.GetDeclarationsIn(this.GetSourceFile(), this);
+            }
+
             return UriIdentifierDeclaredElement.GetDeclarations(this);
         }
 
         public IList<IDeclaration> GetDeclarationsIn(IPsiSourceFile sourceFile)
         {
+            if (filesScope.Contains(sourceFile) && this.GetSourceFile() != sourceFile)
+            {
+                return EmptyList<IDeclaration>.InstanceList;
+            }
+
             return UriIdentifierDeclaredElement.GetDeclarationsIn(sourceFile, this);
         }
+
+        private readonly IList<IPsiSourceFile> filesScope = new List<IPsiSourceFile>();
+
+        public bool ScopeToMainFile { get; set; }
 
         public string GetNamespace()
         {
@@ -44,7 +60,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
                 return prefix;
             }
 
-            var declaration = secretFile.GetDeclaredElements(prefix).FirstOrDefault() as IPrefixDeclaration;
+            var declaration = secretFile.GetPrefixDeclaredElements(prefix).FirstOrDefault() as IPrefixDeclaration;
             if (declaration != null && declaration.UriString != null)
             {
                 return declaration.UriString.GetText();
@@ -107,12 +123,12 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
             get { return SecretLanguage.Instance; }
         }
 
-        public UriIdentifierKind GetKind()
+        public IdentifierKind GetKind()
         {
             var uriIdentifier = Parent as UriIdentifier;
             if (uriIdentifier == null)
             {
-                return UriIdentifierKind.Other;
+                return IdentifierKind.Other;
             }
 
             return uriIdentifier.GetKind();

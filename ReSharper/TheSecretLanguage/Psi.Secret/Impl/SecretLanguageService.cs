@@ -116,7 +116,8 @@ namespace JetBrains.ReSharper.Psi.Secret
                 element.GetLocalName(),
                 element.GetKind(),
                 element.GetPsiServices(),
-                true);
+                true,
+                element);
 
             var sourceElementPointer = new SourceElementPointer<T>((T)fakeDeclaredElement);
             return sourceElementPointer;

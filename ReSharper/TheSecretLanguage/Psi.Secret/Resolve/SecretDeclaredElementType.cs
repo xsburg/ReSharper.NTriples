@@ -19,6 +19,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
 {
     public class SecretDeclaredElementType : DeclaredElementType
     {
+        // Full list of PSI symbols is located here: http://www.jetbrains.com/resharper/webhelp/Reference__Symbol_Icons.html
         public static readonly SecretDeclaredElementType Prefix = new SecretDeclaredElementType(
             "Prefix", PsiXamlThemedIcons.XamlNamespaceAlias.Id);
 

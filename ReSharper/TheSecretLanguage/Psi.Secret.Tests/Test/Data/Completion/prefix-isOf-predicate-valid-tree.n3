@@ -1,0 +1,11 @@
+# ${SHOW_SIGNATURES:false}
+# ${CASE_SENSITIVE_COMPLETION:false}
+# ${COMPLETION_TYPE:Auto}
+
+@prefix family: <http://ontology:org/ontology#family>.
+@prefix relation: <http://ontology:org/ontology#relation>.
+
+family:stan
+    a asd:asd;
+    @is itemKind:stuff {caret}@of
+        <http://domain.com/ontology#name>.

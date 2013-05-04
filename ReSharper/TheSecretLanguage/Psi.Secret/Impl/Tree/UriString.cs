@@ -185,12 +185,12 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
                        : Value.GetText();
         }
 
-        public UriIdentifierKind GetKind()
+        public IdentifierKind GetKind()
         {
             var uriIdentifier = Parent as UriIdentifier;
             if (uriIdentifier == null)
             {
-                return UriIdentifierKind.Other;
+                return IdentifierKind.Other;
             }
 
             return uriIdentifier.GetKind();

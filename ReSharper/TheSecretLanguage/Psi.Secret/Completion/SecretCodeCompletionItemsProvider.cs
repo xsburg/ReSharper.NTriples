@@ -15,6 +15,7 @@ using JetBrains.ReSharper.Feature.Services.Lookup;
 using JetBrains.ReSharper.Psi.Resolve;
 using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
 using JetBrains.ReSharper.Psi.Secret.Resolve;
+using System.Linq;
 
 namespace JetBrains.ReSharper.Psi.Secret.Completion
 {
@@ -22,6 +23,20 @@ namespace JetBrains.ReSharper.Psi.Secret.Completion
     internal class SecretCodeCompletionItemsProvider
         : ItemsProviderWithReference<SecretCodeCompletionContext, SecretReferenceBase, SecretFile>
     {
+        protected override void AddItemsGroups(
+            SecretCodeCompletionContext context, GroupedItemsCollector collector, IntellisenseManager intellisenseManager)
+        {
+            collector.AddFilter(new ReferencesBetterFilter());
+        }
+
+        protected override void DecorateItems(SecretCodeCompletionContext context, System.Collections.Generic.IEnumerable<ILookupItem> items)
+        {
+            foreach (var item in items.OfType<DeclaredElementLookupItem>())
+            {
+                item.OrderingString = item.Text.ToLowerInvariant();
+            }
+        }
+
         protected override bool AddLookupItems(SecretCodeCompletionContext context, GroupedItemsCollector collector)
         {
             TextLookupRanges ranges;
@@ -39,14 +54,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Completion
 
             bool flag = false;
             SecretReferenceBase reference = this.GetReference(file, basicContext.SelectedTreeRange);
-            /*if (reference is SecretPrefixReference && context.ReparsedContext.Reference is SecretLocalNameReference)
-            {
-                // A special case for localName suggestion in the end of prefix
-                reference = context.ReparsedContext.Reference as SecretReferenceBase;
-                ranges = context.Ranges;
-                collector.AddRanges(ranges);
-                flag = this.EvaluateLookupItems(reference, null, context, collector, ranges);
-            }*/
             if (reference != null)
             {
                 ranges = this.EvaluateRanges(reference, null, context);

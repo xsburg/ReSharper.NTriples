@@ -126,7 +126,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Feature.Services.FindUsages
                     declarations.Where(
                         d =>
                         d.DeclaredElement is IUriIdentifierDeclaredElement &&
-                        (d.DeclaredElement as IUriIdentifierDeclaredElement).GetKind() == UriIdentifierKind.Subject).ToArray();
+                        (d.DeclaredElement as IUriIdentifierDeclaredElement).GetKind() == IdentifierKind.Subject).ToArray();
 
                 Func<IDeclaration, Pair<IDeclaredElement, Predicate<FindResult>>> selector =
                     e => new Pair<IDeclaredElement, Predicate<FindResult>>(e.DeclaredElement, JetPredicate<FindResult>.True);

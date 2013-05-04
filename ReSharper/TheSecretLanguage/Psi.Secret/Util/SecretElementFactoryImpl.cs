@@ -132,6 +132,20 @@ namespace JetBrains.ReSharper.Psi.Secret.Util
             throw new ElementFactoryException(string.Format("Cannot create file '{0}'", text));
         }
 
+        public override IPrefixUri CreatePrefixUriExpression(string name)
+        {
+            var text = string.Format("@prefix foo: <{0}>.", name);
+            var node = this.CreateSecretFile(text);
+
+            var prefixDeclaration = (IPrefixDeclaration)node.SentencesEnumerable.First().Directive.FirstChild;
+            if (prefixDeclaration != null && prefixDeclaration.PrefixUri != null)
+            {
+                return prefixDeclaration.PrefixUri;
+            }
+
+            throw new ElementFactoryException(string.Format("Cannot create file '{0}'", text));
+        }
+
         private SecretParser CreateParser(string text)
         {
             return

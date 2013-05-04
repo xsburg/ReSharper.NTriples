@@ -103,6 +103,11 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
             return result;
         }
 
+        public OneToListMap<IPsiSourceFile, SecretUriIdentifierSymbol> GetAllUriIdentifierSymbolsByFile()
+        {
+            return this.myProjectFileToSymbolsUriIdentifierMap;
+        }
+
         public IEnumerable<SecretPrefixDeclarationSymbol> GetPrefixDeclarationSymbols(string name)
         {
             return this.myNameToSymbolsPrefixDeclarationMap.SelectMany(x => x.Value).Where(s => s.Name == name);

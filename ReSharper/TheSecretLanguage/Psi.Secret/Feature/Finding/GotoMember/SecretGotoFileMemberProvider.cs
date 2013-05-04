@@ -13,12 +13,14 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using JetBrains.Annotations;
 using JetBrains.Application;
+using JetBrains.DocumentModel;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Feature.Services.Goto;
 using JetBrains.ReSharper.Feature.Services.Occurences;
 using JetBrains.ReSharper.Feature.Services.Search;
 using JetBrains.ReSharper.Psi.Secret.Cache;
 using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
+using JetBrains.ReSharper.Psi.Secret.Resolve;
 using JetBrains.Text;
 using JetBrains.Util;
 
@@ -96,15 +98,26 @@ namespace JetBrains.ReSharper.Psi.Secret.Feature.Finding.GotoMember
         [CanBeNull]
         protected IOccurence CreateOccurence(SecretFileMemberData secretFileMemberData)
         {
-            return new DeclaredElementOccurence(
-                secretFileMemberData.Element,
-                new OccurencePresentationOptions
-                    {
-                        ContainerStyle = !(secretFileMemberData.Element is ITypeElement)
-                                             ? secretFileMemberData.ContainerDisplayStyle
-                                             : ContainerDisplayStyle.NoContainer,
-                        LocationStyle = GlobalLocationStyle.None
-                    });
+            var localName = secretFileMemberData.Element as LocalName;
+            if (localName != null)
+            {
+                localName.ScopeToMainFile = true;
+            }
+
+            var declaredElementOccurence = new DeclaredElementOccurence(secretFileMemberData.Element, new OccurencePresentationOptions
+                {
+                    ContainerStyle = !(secretFileMemberData.Element is ITypeElement)
+                                         ? secretFileMemberData.ContainerDisplayStyle
+                                         : ContainerDisplayStyle.NoContainer,
+                    LocationStyle = GlobalLocationStyle.None
+                });
+
+            if (localName != null)
+            {
+                localName.ScopeToMainFile = false;
+            }
+
+            return declaredElementOccurence;
         }
 
         protected virtual bool IsSourceFileAvailable(IPsiSourceFile sourceFile)
@@ -120,70 +133,31 @@ namespace JetBrains.ReSharper.Psi.Secret.Feature.Finding.GotoMember
                 return EmptyList<SecretFileMemberData>.InstanceList;
             }
 
-            var secretSymbols = this.GetPsiSourceFileTypeElements(primarySourceFile);
-
             var psiManager = primarySourceFile.GetSolution().GetComponent<PsiManager>();
-            var secretFile = psiManager.GetPrimaryPsiFile(primarySourceFile) as SecretFile;
-            var primaryMembers = new LinkedList<SecretFileMemberData>();
-            foreach (var symbol in secretSymbols)
+            var file = psiManager.GetPrimaryPsiFile(primarySourceFile) as SecretFile;
+            if (file == null)
             {
-                if (secretFile != null)
-                {
-                    var declaredElements = secretFile.GetDeclaredElements(symbol.Name);
-                    foreach (var declaredElement in declaredElements)
-                    {
-                        primaryMembers.AddFirst(new SecretFileMemberData(declaredElement, ContainerDisplayStyle.NoContainer));
-                    }
-                }
+                return EmptyList<SecretFileMemberData>.InstanceList;
+            }
+
+            var primaryMembers = new LinkedList<SecretFileMemberData>();
+            foreach (var declaredElement in file.GetAllPrefixDeclaredElements())
+            {
+                primaryMembers.AddFirst(new SecretFileMemberData(declaredElement, ContainerDisplayStyle.Namespace));
+            }
+
+            var subjects = file.GetAllUriIdentifierDeclaredElements().Where(e => ((IUriIdentifierDeclaredElement)e).GetKind() == IdentifierKind.Subject);
+            foreach (var declaredElement in subjects)
+            {
+                primaryMembers.AddFirst(new SecretFileMemberData(declaredElement, ContainerDisplayStyle.Namespace));
             }
 
             return primaryMembers;
         }
 
-        private IEnumerable<ISecretSymbol> GetPsiSourceFileTypeElements(IPsiSourceFile primarySourceFile)
-        {
-            var solution = primarySourceFile.GetSolution();
-            var typeElements = solution.GetComponent<SecretCache>().GetUriIdentifierSymbolsDeclaredInFile(primarySourceFile);
-            return typeElements.ToList();
-        }
-
         private IEnumerable<JetTuple<string, bool>> GetQuickSearchTexts(IDeclaredElement declaredElement)
         {
             return new[] { JetTuple.Of(declaredElement.ShortName, true) };
-        }
-
-        protected class SecretFileMemberData
-        {
-            private readonly ContainerDisplayStyle myDisambigStyle;
-            private readonly IDeclaredElement myElement;
-
-            public SecretFileMemberData(IDeclaredElement element, ContainerDisplayStyle disambigStyle)
-            {
-                this.myElement = element;
-                this.myDisambigStyle = disambigStyle;
-            }
-
-            public ContainerDisplayStyle ContainerDisplayStyle
-            {
-                get
-                {
-                    return this.myDisambigStyle;
-                }
-            }
-
-            public IDeclaredElement Element
-            {
-                get
-                {
-                    return this.myElement;
-                }
-            }
-        }
-
-        private class SecretFileMembersMap : OneToSetMap<string, SecretFileMemberData>
-        {
-            public static readonly Key<SecretFileMembersMap> SecretFileMembersMapKey =
-                new Key<SecretFileMembersMap>("SecretFileMembersMap");
         }
     }
 }

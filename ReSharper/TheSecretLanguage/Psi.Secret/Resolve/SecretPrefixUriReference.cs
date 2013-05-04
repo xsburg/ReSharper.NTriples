@@ -20,7 +20,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
 
         public override IReference BindTo(IDeclaredElement element)
         {
-            var namespacePrefix = (IPrefix)this.GetTreeNode();
+            var namespacePrefix = (IPrefixUri)this.GetTreeNode();
             if (namespacePrefix.Parent != null)
             {
                 PsiTreeUtil.ReplaceChild(namespacePrefix, namespacePrefix.FirstChild, element.ShortName);

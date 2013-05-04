@@ -118,6 +118,18 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
     {
       if (!CanVisitFurther(param)) return;
       VisitElement (level, param, caller);
+      {
+        JetBrains.ReSharper.Psi.Secret.Tree.IExpression child = ((JetBrains.ReSharper.Psi.Secret.Tree.IIsOfExpression)param).Expression;
+        TestExpression (level + 1, (JetBrains.ReSharper.Psi.Secret.Tree.IExpression)child, "Expression");
+      }
+      {
+        JetBrains.ReSharper.Psi.Tree.ITokenNode child = ((JetBrains.ReSharper.Psi.Secret.Tree.IIsOfExpression)param).IsKeyword;
+        TestTokenNode (level + 1, (JetBrains.ReSharper.Psi.Tree.ITokenNode)child, "IsKeyword");
+      }
+      {
+        JetBrains.ReSharper.Psi.Tree.ITokenNode child = ((JetBrains.ReSharper.Psi.Secret.Tree.IIsOfExpression)param).OfKeyword;
+        TestTokenNode (level + 1, (JetBrains.ReSharper.Psi.Tree.ITokenNode)child, "OfKeyword");
+      }
     }
       internal static void TestKeywordStatement (int level, JetBrains.ReSharper.Psi.Secret.Tree.IKeywordStatement param, String caller)
     {
@@ -186,6 +198,10 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
       {
         JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName child = ((JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaration)param).PrefixName;
         TestPrefixName (level + 1, (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName)child, "PrefixName");
+      }
+      {
+        JetBrains.ReSharper.Psi.Secret.Tree.IPrefixUri child = ((JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaration)param).PrefixUri;
+        TestPrefixUri (level + 1, (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixUri)child, "PrefixUri");
       }
       {
         JetBrains.ReSharper.Psi.Tree.ITokenNode child = ((JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaration)param).UriString;

@@ -10,5 +10,13 @@
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 namespace JetBrains.ReSharper.Psi.Secret.Tree {
   public partial interface IIsOfExpression : JetBrains.ReSharper.Psi.Secret.Tree.ISecretTreeNode {
+    JetBrains.ReSharper.Psi.Secret.Tree.IExpression Expression { get; }
+  
+    JetBrains.ReSharper.Psi.Tree.ITokenNode IsKeyword { get; }
+  
+    JetBrains.ReSharper.Psi.Tree.ITokenNode OfKeyword { get; }
+  
+    JetBrains.ReSharper.Psi.Secret.Tree.IExpression SetExpression (JetBrains.ReSharper.Psi.Secret.Tree.IExpression param);
+  
   }
 }

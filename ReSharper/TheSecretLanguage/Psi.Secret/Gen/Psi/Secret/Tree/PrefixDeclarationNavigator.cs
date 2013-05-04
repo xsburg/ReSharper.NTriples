@@ -25,5 +25,17 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
       } else return null;
       return (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaration) current;
     }
+    [JetBrains.Annotations.Pure]
+    [JetBrains.Annotations.CanBeNull]
+    [JetBrains.Annotations.ContractAnnotation("null <= null")]
+    public static JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaration GetByPrefixUri (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixUri param) {
+      if (param == null) return null;
+      TreeElement current = (TreeElement)param;
+      if (current.parent is JetBrains.ReSharper.Psi.Secret.Impl.Tree.PrefixDeclaration) {
+        if (current.parent.GetChildRole (current) != JetBrains.ReSharper.Psi.Secret.Impl.Tree.PrefixDeclaration.URISTRING) return null;
+        current = current.parent;
+      } else return null;
+      return (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaration) current;
+    }
   }
 }

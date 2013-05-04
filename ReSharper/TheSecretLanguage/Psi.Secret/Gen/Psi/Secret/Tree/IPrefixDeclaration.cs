@@ -14,9 +14,13 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
   
     JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName PrefixName { get; }
   
+    JetBrains.ReSharper.Psi.Secret.Tree.IPrefixUri PrefixUri { get; }
+  
     JetBrains.ReSharper.Psi.Tree.ITokenNode UriString { get; }
   
     JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName SetPrefixName (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName param);
+  
+    JetBrains.ReSharper.Psi.Secret.Tree.IPrefixUri SetPrefixUri (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixUri param);
   
   }
 }
