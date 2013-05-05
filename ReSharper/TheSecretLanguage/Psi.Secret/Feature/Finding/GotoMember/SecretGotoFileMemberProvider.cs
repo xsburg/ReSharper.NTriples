@@ -19,6 +19,7 @@ using JetBrains.ReSharper.Feature.Services.Goto;
 using JetBrains.ReSharper.Feature.Services.Occurences;
 using JetBrains.ReSharper.Feature.Services.Search;
 using JetBrains.ReSharper.Psi.Secret.Cache;
+using JetBrains.ReSharper.Psi.Secret.Impl;
 using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
 using JetBrains.ReSharper.Psi.Secret.Resolve;
 using JetBrains.Text;
@@ -146,7 +147,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Feature.Finding.GotoMember
                 primaryMembers.AddFirst(new SecretFileMemberData(declaredElement, ContainerDisplayStyle.Namespace));
             }
 
-            var subjects = file.GetAllUriIdentifierDeclaredElements().Where(e => ((IUriIdentifierDeclaredElement)e).GetKind() == IdentifierKind.Subject);
+            var subjects = SecretIdentifierFilter.GetImportantSubjects(file.GetAllUriIdentifierDeclaredElements());
             foreach (var declaredElement in subjects)
             {
                 primaryMembers.AddFirst(new SecretFileMemberData(declaredElement, ContainerDisplayStyle.Namespace));

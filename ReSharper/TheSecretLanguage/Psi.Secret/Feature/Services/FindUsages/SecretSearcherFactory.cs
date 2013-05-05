@@ -15,6 +15,7 @@ using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi.ExtensionsAPI;
 using JetBrains.ReSharper.Psi.Search;
 using JetBrains.ReSharper.Psi.Secret.Cache;
+using JetBrains.ReSharper.Psi.Secret.Impl;
 using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
 using JetBrains.ReSharper.Psi.Secret.Resolve;
 using JetBrains.ReSharper.Psi.Tree;
@@ -122,17 +123,13 @@ namespace JetBrains.ReSharper.Psi.Secret.Feature.Services.FindUsages
             if (uriIdentifier != null)
             {
                 var declarations = element.GetDeclarations();
-                var subjects =
-                    declarations.Where(
-                        d =>
-                        d.DeclaredElement is IUriIdentifierDeclaredElement &&
-                        (d.DeclaredElement as IUriIdentifierDeclaredElement).GetKind() == IdentifierKind.Subject).ToArray();
+                var subjects = SecretIdentifierFilter.GetImportantSubjects(declarations).ToArray();
 
                 Func<IDeclaration, Pair<IDeclaredElement, Predicate<FindResult>>> selector =
                     e => new Pair<IDeclaredElement, Predicate<FindResult>>(e.DeclaredElement, JetPredicate<FindResult>.True);
                 if (subjects.Any())
                 {
-                    return subjects.Select(selector);
+                    return subjects.Cast<IDeclaration>().Select(selector);
                 }
 
                 if (declarations.Any())

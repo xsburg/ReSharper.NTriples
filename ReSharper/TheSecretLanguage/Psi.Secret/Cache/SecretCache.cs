@@ -14,9 +14,13 @@ using JetBrains.Application;
 using JetBrains.Application.Progress;
 using JetBrains.DataFlow;
 using JetBrains.DocumentManagers.impl;
+using JetBrains.DocumentModel;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi.Caches;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
+using JetBrains.ReSharper.Psi.Secret.Impl;
+using JetBrains.ReSharper.Psi.Secret.Resolve;
+using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.Util.Caches;
 using JetBrains.Util;
@@ -122,6 +126,75 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
         {
             var symbols = this.myProjectFileToSymbolsUriIdentifierMap.GetValuesCollection(sourceFile);
             return symbols;
+        }
+        
+        public IEnumerable<IUriIdentifierDeclaredElement> GetImportantSubjects()
+        {
+            bool foundImportant = false;
+            foreach (var pair in this.myProjectFileToSymbolsUriIdentifierMap)
+            {
+                var sourceFile = pair.Key;
+                foreach (var symbol in pair.Value)
+                {
+                    var uriIdentifier = GetUriIdentifier(sourceFile, symbol);
+                    if (uriIdentifier == null)
+                    {
+                        continue;
+                    }
+
+                    var declaredElement = uriIdentifier.DescendantDeclaredElement;
+                    if (declaredElement == null || !SecretIdentifierFilter.IsImportantSubject(declaredElement))
+                    {
+                        continue;
+                    }
+
+                    foundImportant = true;
+                    yield return declaredElement;
+                }
+            }
+
+            // Fallback to return subjects
+            if (!foundImportant)
+            {
+                foreach (var pair in this.myProjectFileToSymbolsUriIdentifierMap)
+                {
+                    var sourceFile = pair.Key;
+                    foreach (var symbol in pair.Value)
+                    {
+                        var uriIdentifier = GetUriIdentifier(sourceFile, symbol);
+                        if (uriIdentifier == null)
+                        {
+                            continue;
+                        }
+
+                        var declaredElement = uriIdentifier.DescendantDeclaredElement;
+                        if (declaredElement == null)
+                        {
+                            continue;
+                        }
+
+                        yield return declaredElement;
+                    }
+                }
+            }
+        }
+
+        private static IUriIdentifier GetUriIdentifier(IPsiSourceFile sourceFile, SecretUriIdentifierSymbol symbol)
+        {
+            var file = sourceFile.GetPsiFile<SecretLanguage>(new DocumentRange(sourceFile.Document, 0));
+            if (file == null)
+            {
+                return null;
+            }
+
+            var treeNode = file.FindNodeAt(new TreeTextRange(new TreeOffset(symbol.Offset), 1));
+            if (treeNode == null)
+            {
+                return null;
+            }
+
+            var uriIdentifier = treeNode.GetContainingNode<IUriIdentifier>();
+            return uriIdentifier;
         }
 
         public object Load(IProgressIndicator progress, bool enablePersistence)

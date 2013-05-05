@@ -15,6 +15,7 @@ using System.Xml;
 using JetBrains.DocumentModel;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi.Secret.Cache;
+using JetBrains.ReSharper.Psi.Secret.Impl;
 using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
@@ -174,11 +175,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
             var declarations = GetDeclarationsIn(sourceFile, this);
             if (this.filterDeclarations)
             {
-                return
-                    declarations.Where(
-                        d =>
-                        d is IUriIdentifierDeclaredElement &&
-                        (d as IUriIdentifierDeclaredElement).GetKind() == IdentifierKind.Subject).ToList();
+                return SecretIdentifierFilter.GetImportantSubjects(declarations).Cast<IDeclaration>().ToArray();
             }
 
             return declarations;

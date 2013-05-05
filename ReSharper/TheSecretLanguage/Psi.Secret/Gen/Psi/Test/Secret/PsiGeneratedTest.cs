@@ -68,6 +68,20 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
     {
       if (!CanVisitFurther(param)) return;
       VisitElement (level, param, caller);
+      {
+        JetBrains.ReSharper.Psi.Secret.Tree.IPredicate child = ((JetBrains.ReSharper.Psi.Secret.Tree.IFact)param).Predicate;
+        TestPredicate (level + 1, (JetBrains.ReSharper.Psi.Secret.Tree.IPredicate)child, "Predicate");
+      }
+      {
+        JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<JetBrains.ReSharper.Psi.Secret.Tree.IExpression> children = ((JetBrains.ReSharper.Psi.Secret.Tree.IFact)param).Objects;
+        foreach (JetBrains.ReSharper.Psi.Secret.Tree.IExpression child in children)
+        TestExpression (level + 1, (JetBrains.ReSharper.Psi.Secret.Tree.IExpression)child, "Objects");
+      }
+      {
+        JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<JetBrains.ReSharper.Psi.Secret.Tree.IIdentifier> children = ((JetBrains.ReSharper.Psi.Secret.Tree.IFact)param).PredicateIdentifiers;
+        foreach (JetBrains.ReSharper.Psi.Secret.Tree.IIdentifier child in children)
+        TestIdentifier (level + 1, (JetBrains.ReSharper.Psi.Secret.Tree.IIdentifier)child, "PredicateIdentifiers");
+      }
     }
       internal static void TestFacts (int level, JetBrains.ReSharper.Psi.Secret.Tree.IFacts param, String caller)
     {
@@ -248,6 +262,11 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
       {
         JetBrains.ReSharper.Psi.Secret.Tree.ISubject child = ((JetBrains.ReSharper.Psi.Secret.Tree.IStatement)param).Subject;
         TestSubject (level + 1, (JetBrains.ReSharper.Psi.Secret.Tree.ISubject)child, "Subject");
+      }
+      {
+        JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<JetBrains.ReSharper.Psi.Secret.Tree.IFact> children = ((JetBrains.ReSharper.Psi.Secret.Tree.IStatement)param).Facts;
+        foreach (JetBrains.ReSharper.Psi.Secret.Tree.IFact child in children)
+        TestFact (level + 1, (JetBrains.ReSharper.Psi.Secret.Tree.IFact)child, "Facts");
       }
     }
       internal static void TestSubject (int level, JetBrains.ReSharper.Psi.Secret.Tree.ISubject param, String caller)

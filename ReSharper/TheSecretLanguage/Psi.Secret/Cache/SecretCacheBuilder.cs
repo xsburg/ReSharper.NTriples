@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.IO;
 using JetBrains.Annotations;
 using JetBrains.DocumentModel;
+using JetBrains.ReSharper.Psi.Secret.Impl;
 using JetBrains.ReSharper.Psi.Secret.Resolve;
 using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.ReSharper.Psi.Secret.Util;
@@ -78,9 +79,10 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
                 var ns = uriIdentifier.GetNamespace() ?? "";
                 var ln = uriIdentifier.GetLocalName();
                 var kind = uriIdentifier.GetKind();
+                var important = SecretIdentifierFilter.IsImportantSubject(uriIdentifier);
                 int offset = element.GetNavigationRange().TextRange.StartOffset;
                 var psiSourceFile = element.GetSourceFile();
-                this.mySymbols.Add(new SecretUriIdentifierSymbol(ns, ln, kind, offset, psiSourceFile));
+                this.mySymbols.Add(new SecretUriIdentifierSymbol(ns, ln, kind, important, offset, psiSourceFile));
                 return;
             }
 

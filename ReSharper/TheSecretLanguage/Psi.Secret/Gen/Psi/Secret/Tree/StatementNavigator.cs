@@ -16,6 +16,22 @@ namespace JetBrains.ReSharper.Psi.Secret.Tree {
     [JetBrains.Annotations.Pure]
     [JetBrains.Annotations.CanBeNull]
     [JetBrains.Annotations.ContractAnnotation("null <= null")]
+    public static JetBrains.ReSharper.Psi.Secret.Tree.IStatement GetByFact (JetBrains.ReSharper.Psi.Secret.Tree.IFact param) {
+      if (param == null) return null;
+      TreeElement current = (TreeElement)param;
+      if (current.parent is JetBrains.ReSharper.Psi.Secret.Impl.Tree.Facts) {
+        if (current.parent.GetChildRole (current) != JetBrains.ReSharper.Psi.Secret.Impl.Tree.Facts.FACTS) return null;
+        current = current.parent;
+      } else return null;
+      if (current.parent is JetBrains.ReSharper.Psi.Secret.Impl.Tree.Statement) {
+        if (current.parent.GetChildRole (current) != JetBrains.ReSharper.Psi.Secret.Impl.Tree.Statement.FACTS) return null;
+        current = current.parent;
+      } else return null;
+      return (JetBrains.ReSharper.Psi.Secret.Tree.IStatement) current;
+    }
+    [JetBrains.Annotations.Pure]
+    [JetBrains.Annotations.CanBeNull]
+    [JetBrains.Annotations.ContractAnnotation("null <= null")]
     public static JetBrains.ReSharper.Psi.Secret.Tree.IStatement GetBySubject (JetBrains.ReSharper.Psi.Secret.Tree.ISubject param) {
       if (param == null) return null;
       TreeElement current = (TreeElement)param;

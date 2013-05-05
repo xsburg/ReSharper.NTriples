@@ -13,5 +13,53 @@ using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
 namespace JetBrains.ReSharper.Psi.Secret.Tree {
   public static partial class FactNavigator {
+    [JetBrains.Annotations.Pure]
+    [JetBrains.Annotations.CanBeNull]
+    [JetBrains.Annotations.ContractAnnotation("null <= null")]
+    public static JetBrains.ReSharper.Psi.Secret.Tree.IFact GetByObject (JetBrains.ReSharper.Psi.Secret.Tree.IExpression param) {
+      if (param == null) return null;
+      TreeElement current = (TreeElement)param;
+      if (current.parent is JetBrains.ReSharper.Psi.Secret.Impl.Tree.Objects) {
+        if (current.parent.GetChildRole (current) != JetBrains.ReSharper.Psi.Secret.Impl.Tree.Objects.IDENTIFIERS) return null;
+        current = current.parent;
+      } else return null;
+      if (current.parent is JetBrains.ReSharper.Psi.Secret.Impl.Tree.Fact) {
+        if (current.parent.GetChildRole (current) != JetBrains.ReSharper.Psi.Secret.Impl.Tree.Fact.OBJECTS) return null;
+        current = current.parent;
+      } else return null;
+      return (JetBrains.ReSharper.Psi.Secret.Tree.IFact) current;
+    }
+    [JetBrains.Annotations.Pure]
+    [JetBrains.Annotations.CanBeNull]
+    [JetBrains.Annotations.ContractAnnotation("null <= null")]
+    public static JetBrains.ReSharper.Psi.Secret.Tree.IFact GetByPredicate (JetBrains.ReSharper.Psi.Secret.Tree.IPredicate param) {
+      if (param == null) return null;
+      TreeElement current = (TreeElement)param;
+      if (current.parent is JetBrains.ReSharper.Psi.Secret.Impl.Tree.Fact) {
+        if (current.parent.GetChildRole (current) != JetBrains.ReSharper.Psi.Secret.Impl.Tree.Fact.PREDICATE) return null;
+        current = current.parent;
+      } else return null;
+      return (JetBrains.ReSharper.Psi.Secret.Tree.IFact) current;
+    }
+    [JetBrains.Annotations.Pure]
+    [JetBrains.Annotations.CanBeNull]
+    [JetBrains.Annotations.ContractAnnotation("null <= null")]
+    public static JetBrains.ReSharper.Psi.Secret.Tree.IFact GetByPredicateIdentifier (JetBrains.ReSharper.Psi.Secret.Tree.IIdentifier param) {
+      if (param == null) return null;
+      TreeElement current = (TreeElement)param;
+      if (current.parent is JetBrains.ReSharper.Psi.Secret.Impl.Tree.Expression) {
+        if (current.parent.GetChildRole (current) != JetBrains.ReSharper.Psi.Secret.Impl.Tree.Expression.IDENTIFIER) return null;
+        current = current.parent;
+      } else return null;
+      if (current.parent is JetBrains.ReSharper.Psi.Secret.Impl.Tree.Predicate) {
+        if (current.parent.GetChildRole (current) != JetBrains.ReSharper.Psi.Secret.Impl.Tree.Predicate.EXPRESSION) return null;
+        current = current.parent;
+      } else return null;
+      if (current.parent is JetBrains.ReSharper.Psi.Secret.Impl.Tree.Fact) {
+        if (current.parent.GetChildRole (current) != JetBrains.ReSharper.Psi.Secret.Impl.Tree.Fact.PREDICATE) return null;
+        current = current.parent;
+      } else return null;
+      return (JetBrains.ReSharper.Psi.Secret.Tree.IFact) current;
+    }
   }
 }

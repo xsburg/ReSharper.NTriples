@@ -119,6 +119,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Feature.Finding.GotoMember
         private IEnumerable<SecretFileMemberData> GetPrimaryMembers(ISolution solution)
         {
             var cache = solution.GetComponent<SecretCache>();
+            //var subjects = cache.GetImportantSubjects().ToArray();
 
             var symbolsByFile = cache.GetAllUriIdentifierSymbolsByFile();
             var services = solution.GetPsiServices();
@@ -213,11 +214,6 @@ namespace JetBrains.ReSharper.Psi.Secret.Feature.Finding.GotoMember
         {
             // always perform unscoped search
             return solution.GetComponent<SecretCache>();
-        }
-
-        protected IEnumerable<SecretUriIdentifierSymbol> GetNames(SecretCache cache, INavigationScope scope)
-        {
-            return cache.GetAllUriIdentifierSymbols().Where(s => s.Kind == IdentifierKind.Subject);
         }
 
         protected virtual bool IsDeclaredElementVisible(IClrDeclaredElement element)

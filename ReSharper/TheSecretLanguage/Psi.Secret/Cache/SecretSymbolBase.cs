@@ -9,6 +9,7 @@
 // ***********************************************************************
 
 using System.IO;
+using JetBrains.DocumentModel;
 
 namespace JetBrains.ReSharper.Psi.Secret.Cache
 {

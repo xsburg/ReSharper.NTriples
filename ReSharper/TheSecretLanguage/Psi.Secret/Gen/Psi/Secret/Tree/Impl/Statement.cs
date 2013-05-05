@@ -42,6 +42,27 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
     public virtual JetBrains.ReSharper.Psi.Secret.Tree.ISubject Subject {
       get { return (JetBrains.ReSharper.Psi.Secret.Tree.ISubject) FindChildByRole(SUBJECT); }
     }
+    public virtual JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<JetBrains.ReSharper.Psi.Secret.Tree.IFact>  Facts {
+      get
+      {
+        CompositeElement current = this;  
+    
+        var result = JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<JetBrains.ReSharper.Psi.Secret.Tree.IFact>.Empty;
+        CompositeElement current0 = (CompositeElement)current.FindChildByRole (JetBrains.ReSharper.Psi.Secret.Impl.Tree.Statement.FACTS);
+        if (current0 != null) {
+          result = ((CompositeElement)current0).FindListOfChildrenByRole<JetBrains.ReSharper.Psi.Secret.Tree.IFact> (JetBrains.ReSharper.Psi.Secret.Impl.Tree.Facts.FACTS);
+        }
+        return result;
+      }
+    }
+    public virtual JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<JetBrains.ReSharper.Psi.Secret.Tree.IFact> FactsEnumerable {
+      get
+      {
+        CompositeElement current = this;
+    
+        return new JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<JetBrains.ReSharper.Psi.Secret.Tree.IFact>(current, JetBrains.ReSharper.Psi.Secret.Impl.Tree.Statement.FACTS, JetBrains.ReSharper.Psi.Secret.Impl.Tree.Facts.FACTS);
+      }
+    }
     public virtual JetBrains.ReSharper.Psi.Secret.Tree.ISubject SetSubject (JetBrains.ReSharper.Psi.Secret.Tree.ISubject param)
     {
       using (JetBrains.Application.WriteLockCookie.Create (this.IsPhysical()))
