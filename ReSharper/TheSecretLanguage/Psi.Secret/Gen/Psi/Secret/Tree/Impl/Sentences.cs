@@ -37,6 +37,12 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
     public override short GetChildRole (JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement child) {
       return CHILD_ROLES[child.NodeType];
     }
+    public JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<JetBrains.ReSharper.Psi.Secret.Tree.ISentence> SentenceList {
+      get { return FindListOfChildrenByRole<JetBrains.ReSharper.Psi.Secret.Tree.ISentence>(SENTENCES); }
+    }
+    public JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<JetBrains.ReSharper.Psi.Secret.Tree.ISentence> SentenceListEnumerable {
+      get { return AsChildrenEnumerable<JetBrains.ReSharper.Psi.Secret.Tree.ISentence>(SENTENCES); }
+    }
     public override string ToString() {
       return "ISentences";
     }

@@ -249,6 +249,11 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
     {
       if (!CanVisitFurther(param)) return;
       VisitElement (level, param, caller);
+      {
+        JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<JetBrains.ReSharper.Psi.Secret.Tree.ISentence> children = ((JetBrains.ReSharper.Psi.Secret.Tree.ISentences)param).SentenceList;
+        foreach (JetBrains.ReSharper.Psi.Secret.Tree.ISentence child in children)
+        TestSentence (level + 1, (JetBrains.ReSharper.Psi.Secret.Tree.ISentence)child, "SentenceList");
+      }
     }
       internal static void TestSmartVar (int level, JetBrains.ReSharper.Psi.Secret.Tree.ISmartVar param, String caller)
     {

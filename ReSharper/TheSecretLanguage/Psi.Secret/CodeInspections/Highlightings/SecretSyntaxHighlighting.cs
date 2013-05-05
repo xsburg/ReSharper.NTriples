@@ -13,11 +13,8 @@ using JetBrains.ReSharper.Daemon;
 using JetBrains.ReSharper.Daemon.Impl;
 using JetBrains.ReSharper.Psi.Tree;
 
-//[assembly: RegisterConfigurableSeverity("String", null, HighlightingGroupIds.LanguageUsage, "String", @"String", Severity.INFO, false, Internal = false)]
-
 namespace JetBrains.ReSharper.Psi.Secret.CodeInspections.Highlightings
 {
-    //[ConfigurableSeverityHighlighting("String", "Secret", OverlapResolve = OverlapResolveKind.NONE, ToolTipFormatString = "String")]
     [StaticSeverityHighlighting(Severity.INFO, HighlightingGroupIds.LanguageUsage, OverlapResolve = OverlapResolveKind.NONE,
         ShowToolTipInStatusBar = false)]
     internal class SecretSyntaxHighlighting : ICustomAttributeIdHighlighting, IHighlightingWithRange

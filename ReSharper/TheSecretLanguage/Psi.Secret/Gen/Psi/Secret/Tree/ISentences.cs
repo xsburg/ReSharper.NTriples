@@ -10,5 +10,7 @@
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 namespace JetBrains.ReSharper.Psi.Secret.Tree {
   public partial interface ISentences : JetBrains.ReSharper.Psi.Secret.Tree.ISecretTreeNode {
+    JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<JetBrains.ReSharper.Psi.Secret.Tree.ISentence> SentenceList { get; }
+    JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<JetBrains.ReSharper.Psi.Secret.Tree.ISentence> SentenceListEnumerable { get; }
   }
 }

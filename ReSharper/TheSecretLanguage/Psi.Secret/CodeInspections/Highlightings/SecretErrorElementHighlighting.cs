@@ -13,9 +13,6 @@ using JetBrains.ReSharper.Daemon;
 using JetBrains.ReSharper.Daemon.Impl;
 using JetBrains.ReSharper.Psi.Tree;
 
-/*[assembly: RegisterConfigurableSeverity("SyntaxError", null, HighlightingGroupIds.LanguageUsage, "Syntax Error", @"
-          Syntax error", Severity.ERROR, false, Internal = false)]*/
-
 namespace JetBrains.ReSharper.Psi.Secret.CodeInspections.Highlightings
 {
     [ConfigurableSeverityHighlighting("SyntaxError", "Secret", OverlapResolve = OverlapResolveKind.ERROR,

@@ -13,5 +13,17 @@ using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
 namespace JetBrains.ReSharper.Psi.Secret.Tree {
   public static partial class SentencesNavigator {
+    [JetBrains.Annotations.Pure]
+    [JetBrains.Annotations.CanBeNull]
+    [JetBrains.Annotations.ContractAnnotation("null <= null")]
+    public static JetBrains.ReSharper.Psi.Secret.Tree.ISentences GetBySentenceList (JetBrains.ReSharper.Psi.Secret.Tree.ISentence param) {
+      if (param == null) return null;
+      TreeElement current = (TreeElement)param;
+      if (current.parent is JetBrains.ReSharper.Psi.Secret.Impl.Tree.Sentences) {
+        if (current.parent.GetChildRole (current) != JetBrains.ReSharper.Psi.Secret.Impl.Tree.Sentences.SENTENCES) return null;
+        current = current.parent;
+      } else return null;
+      return (JetBrains.ReSharper.Psi.Secret.Tree.ISentences) current;
+    }
   }
 }
