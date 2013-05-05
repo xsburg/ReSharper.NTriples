@@ -10,28 +10,28 @@
 using System;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.Secret.Parsing;
-namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
-  internal partial class DataLiteral : SecretCompositeElement, JetBrains.ReSharper.Psi.Secret.Tree.IDataLiteral {
+using ReSharper.NTriples.Parsing;
+namespace ReSharper.NTriples.Impl.Tree {
+  internal partial class DataLiteral : SecretCompositeElement, ReSharper.NTriples.Tree.IDataLiteral {
     public const short STRING= ChildRole.LAST + 1;
     internal DataLiteral() : base() {
     }
     public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType NodeType {
-      get { return JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.DATA_LITERAL; }
+      get { return ReSharper.NTriples.Impl.Tree.ElementType.DATA_LITERAL; }
     }
-    public override void Accept(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor visitor) {
+    public override void Accept(ReSharper.NTriples.Tree.TreeNodeVisitor visitor) {
       visitor.VisitDataLiteral(this);
     }
-    public override void Accept<TContext>(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor<TContext> visitor, TContext context) {
+    public override void Accept<TContext>(ReSharper.NTriples.Tree.TreeNodeVisitor<TContext> visitor, TContext context) {
       visitor.VisitDataLiteral(this, context);
     }
-    public override TReturn Accept<TContext, TReturn>(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor<TContext, TReturn> visitor, TContext context) {
+    public override TReturn Accept<TContext, TReturn>(ReSharper.NTriples.Tree.TreeNodeVisitor<TContext, TReturn> visitor, TContext context) {
       return visitor.VisitDataLiteral(this, context);
     }
     private static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeDictionary<short> CHILD_ROLES = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeDictionary<short>(
       new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>[]
       {
-        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.STRING_LITERAL, STRING),
+        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(ReSharper.NTriples.Impl.Tree.TokenType.STRING_LITERAL, STRING),
       }
     );
     public override short GetChildRole (JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement child) {

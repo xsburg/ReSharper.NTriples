@@ -10,10 +10,10 @@
 
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Feature.Services.Bulbs;
-using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.TextControl;
+using ReSharper.NTriples.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.Feature.Services.MatchingBrace
+namespace ReSharper.NTriples.Feature.Services.MatchingBrace
 {
     public class SecretContextActionDataProvider
         : CachedContextActionDataProviderBase<ISecretFile>, ISecretContextActionDataProvider

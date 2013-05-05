@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using JetBrains.ReSharper.Psi.Impl.CodeStyle;
 using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.ReSharper.Psi.Tree;
+using ReSharper.NTriples.Tree;
 
 namespace JetBrains.ReSharper.Psi.Secret.Formatter
 {

@@ -12,12 +12,14 @@ using JetBrains.ReSharper.Feature.Services.CodeCompletion;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Impl;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure;
 using JetBrains.ReSharper.Feature.Services.Lookup;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Resolve;
-using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
-using JetBrains.ReSharper.Psi.Secret.Resolve;
 using System.Linq;
+using ReSharper.NTriples.Impl;
+using ReSharper.NTriples.Impl.Tree;
+using ReSharper.NTriples.Resolve;
 
-namespace JetBrains.ReSharper.Psi.Secret.Completion
+namespace ReSharper.NTriples.Completion
 {
     [Language(typeof(SecretLanguage))]
     internal class SecretCodeCompletionItemsProvider

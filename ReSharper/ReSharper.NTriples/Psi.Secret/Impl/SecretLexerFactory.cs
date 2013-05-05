@@ -9,10 +9,10 @@
 // ***********************************************************************
 
 using JetBrains.ReSharper.Psi.Parsing;
-using JetBrains.ReSharper.Psi.Secret.Parsing;
 using JetBrains.Text;
+using ReSharper.NTriples.Parsing;
 
-namespace JetBrains.ReSharper.Psi.Secret
+namespace ReSharper.NTriples.Impl
 {
     public class SecretLexerFactory : ILexerFactory
     {

@@ -13,12 +13,13 @@ using JetBrains.Annotations;
 using JetBrains.Application.Settings;
 using JetBrains.ReSharper.Daemon;
 using JetBrains.ReSharper.Daemon.Stages;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.CodeAnnotations;
-using JetBrains.ReSharper.Psi.Secret.CodeInspections.Highlightings;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
+using ReSharper.NTriples.CodeInspections.Highlightings;
 
-namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
+namespace ReSharper.NTriples.CodeInspections
 {
     [DaemonStage(StagesBefore = new[] { typeof(LanguageSpecificDaemonStage) })]
     public class ErrorElementHighlightingStage : SecretDaemonStageBase

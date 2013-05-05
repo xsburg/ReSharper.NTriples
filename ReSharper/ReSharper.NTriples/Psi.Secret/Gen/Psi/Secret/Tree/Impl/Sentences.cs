@@ -10,38 +10,38 @@
 using System;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.Secret.Parsing;
-namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
-  internal partial class Sentences : SecretCompositeElement, JetBrains.ReSharper.Psi.Secret.Tree.ISentences {
+using ReSharper.NTriples.Parsing;
+namespace ReSharper.NTriples.Impl.Tree {
+  internal partial class Sentences : SecretCompositeElement, ReSharper.NTriples.Tree.ISentences {
     public const short SENTENCES= ChildRole.LAST + 1;
     internal Sentences() : base() {
     }
     public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType NodeType {
-      get { return JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.SENTENCES; }
+      get { return ReSharper.NTriples.Impl.Tree.ElementType.SENTENCES; }
     }
-    public override void Accept(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor visitor) {
+    public override void Accept(ReSharper.NTriples.Tree.TreeNodeVisitor visitor) {
       visitor.VisitSentences(this);
     }
-    public override void Accept<TContext>(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor<TContext> visitor, TContext context) {
+    public override void Accept<TContext>(ReSharper.NTriples.Tree.TreeNodeVisitor<TContext> visitor, TContext context) {
       visitor.VisitSentences(this, context);
     }
-    public override TReturn Accept<TContext, TReturn>(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor<TContext, TReturn> visitor, TContext context) {
+    public override TReturn Accept<TContext, TReturn>(ReSharper.NTriples.Tree.TreeNodeVisitor<TContext, TReturn> visitor, TContext context) {
       return visitor.VisitSentences(this, context);
     }
     private static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeDictionary<short> CHILD_ROLES = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeDictionary<short>(
       new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>[]
       {
-        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.SENTENCE, SENTENCES),
+        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(ReSharper.NTriples.Impl.Tree.ElementType.SENTENCE, SENTENCES),
       }
     );
     public override short GetChildRole (JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement child) {
       return CHILD_ROLES[child.NodeType];
     }
-    public JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<JetBrains.ReSharper.Psi.Secret.Tree.ISentence> SentenceList {
-      get { return FindListOfChildrenByRole<JetBrains.ReSharper.Psi.Secret.Tree.ISentence>(SENTENCES); }
+    public JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<ReSharper.NTriples.Tree.ISentence> SentenceList {
+      get { return FindListOfChildrenByRole<ReSharper.NTriples.Tree.ISentence>(SENTENCES); }
     }
-    public JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<JetBrains.ReSharper.Psi.Secret.Tree.ISentence> SentenceListEnumerable {
-      get { return AsChildrenEnumerable<JetBrains.ReSharper.Psi.Secret.Tree.ISentence>(SENTENCES); }
+    public JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<ReSharper.NTriples.Tree.ISentence> SentenceListEnumerable {
+      get { return AsChildrenEnumerable<ReSharper.NTriples.Tree.ISentence>(SENTENCES); }
     }
     public override string ToString() {
       return "ISentences";

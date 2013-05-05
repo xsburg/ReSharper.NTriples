@@ -12,10 +12,10 @@ using System.Collections.Generic;
 using JetBrains.DocumentModel;
 using JetBrains.ReSharper.Feature.Services.Intentions.Impl.TemplateFieldHolders;
 using JetBrains.ReSharper.LiveTemplates;
-using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.ReSharper.Psi.Tree;
+using ReSharper.NTriples.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.Intentions.CreateFromUsage
+namespace ReSharper.NTriples.Intentions.CreateFromUsage
 {
     public static class SecretPrefixBuilder
     {

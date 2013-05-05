@@ -9,8 +9,9 @@
 // ***********************************************************************
 
 using JetBrains.Annotations;
+using JetBrains.ReSharper.Psi;
 
-namespace JetBrains.ReSharper.Psi.Secret.Cache
+namespace ReSharper.NTriples.Cache
 {
     /// <summary>
     ///     Customization point for pdi properties

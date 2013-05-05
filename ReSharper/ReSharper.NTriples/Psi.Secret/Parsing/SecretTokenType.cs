@@ -9,13 +9,14 @@
 // ***********************************************************************
 
 using System;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Parsing;
-using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.Text;
 using JetBrains.Util;
+using ReSharper.NTriples.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.Parsing
+namespace ReSharper.NTriples.Parsing
 {
     // ReSharper disable InconsistentNaming
     public static partial class SecretTokenType

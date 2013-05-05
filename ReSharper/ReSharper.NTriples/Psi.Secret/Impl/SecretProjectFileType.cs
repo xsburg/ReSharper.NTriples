@@ -11,7 +11,7 @@
 using System.Collections.Generic;
 using JetBrains.ProjectModel;
 
-namespace JetBrains.ReSharper.Psi.Secret
+namespace ReSharper.NTriples.Impl
 {
     [ProjectFileTypeDefinition(Name)]
     public class SecretProjectFileType : KnownProjectFileType

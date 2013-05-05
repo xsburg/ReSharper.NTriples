@@ -8,8 +8,8 @@
     <ProjectGuid>{F161D712-214A-4D7F-A610-708B057FC5F3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JetBrains.ReSharper.Psi.Secret</RootNamespace>
-    <AssemblyName>JetBrains.ReSharper.Psi.Secret</AssemblyName>
+    <RootNamespace>ReSharper.NTriples</RootNamespace>
+    <AssemblyName>ReSharper.NTriples</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PsiLanguageName>Secret</PsiLanguageName>
@@ -191,7 +191,7 @@
     <Compile Include="Tree\Whitespace.cs" />
     <Compile Include="Tree\WhitespaceBase.cs" />
     <CsLex Include="Parsing\SecretLexer.gen.lex" />
-    <ParserGen Include="secret.psi" />
+    <ParserGen Include="Parsing\secret.psi" />
     <None Include="Parsing\TokenTypeGenerated.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TokenTypeGenerated.cs</LastGenOutput>

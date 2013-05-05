@@ -8,9 +8,10 @@
 // </summary>
 // ***********************************************************************
 
-using JetBrains.ReSharper.Psi.Secret.Cache;
+using JetBrains.ReSharper.Psi;
+using ReSharper.NTriples.Cache;
 
-namespace JetBrains.ReSharper.Psi.Secret.Resolve
+namespace ReSharper.NTriples.Resolve
 {
     public interface IUriIdentifierDeclaredElement : IDeclaredElement
     {

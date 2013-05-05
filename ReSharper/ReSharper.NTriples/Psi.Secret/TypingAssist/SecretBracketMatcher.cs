@@ -10,10 +10,10 @@
 
 using JetBrains.ReSharper.Feature.Services.TypingAssist;
 using JetBrains.ReSharper.Psi.Parsing;
-using JetBrains.ReSharper.Psi.Secret.Parsing;
 using JetBrains.Util;
+using ReSharper.NTriples.Parsing;
 
-namespace JetBrains.ReSharper.Psi.Secret.TypingAssist
+namespace ReSharper.NTriples.TypingAssist
 {
     public class SecretBracketMatcher : BracketMatcher
     {

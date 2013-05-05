@@ -9,12 +9,13 @@
 // ***********************************************************************
 
 using JetBrains.Application;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Parsing;
-using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
 using JetBrains.ReSharper.Psi.Tree;
+using ReSharper.NTriples.Impl.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.Parsing
+namespace ReSharper.NTriples.Parsing
 {
     internal class SecretParser : SecretParserGenerated, ISecretParser
     {

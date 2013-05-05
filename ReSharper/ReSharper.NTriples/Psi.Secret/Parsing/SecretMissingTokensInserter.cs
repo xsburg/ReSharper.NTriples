@@ -10,14 +10,17 @@
 
 using System;
 using JetBrains.Application;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Parsing;
-using JetBrains.ReSharper.Psi.Secret.Tree;
+using JetBrains.ReSharper.Psi.Secret;
 using JetBrains.Text;
 using JetBrains.Util;
 using JetBrains.Util.DataStructures;
+using ReSharper.NTriples.Impl;
+using ReSharper.NTriples.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.Parsing
+namespace ReSharper.NTriples.Parsing
 {
     internal sealed class SecretMissingTokensInserter : MissingTokenInserterBase
     {

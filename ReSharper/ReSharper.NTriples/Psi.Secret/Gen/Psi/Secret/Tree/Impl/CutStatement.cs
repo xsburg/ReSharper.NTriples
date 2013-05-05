@@ -10,21 +10,21 @@
 using System;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.Secret.Parsing;
-namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
-  internal partial class CutStatement : SecretCompositeElement, JetBrains.ReSharper.Psi.Secret.Tree.ICutStatement {
+using ReSharper.NTriples.Parsing;
+namespace ReSharper.NTriples.Impl.Tree {
+  internal partial class CutStatement : SecretCompositeElement, ReSharper.NTriples.Tree.ICutStatement {
     internal CutStatement() : base() {
     }
     public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType NodeType {
-      get { return JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.CUT_STATEMENT; }
+      get { return ReSharper.NTriples.Impl.Tree.ElementType.CUT_STATEMENT; }
     }
-    public override void Accept(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor visitor) {
+    public override void Accept(ReSharper.NTriples.Tree.TreeNodeVisitor visitor) {
       visitor.VisitCutStatement(this);
     }
-    public override void Accept<TContext>(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor<TContext> visitor, TContext context) {
+    public override void Accept<TContext>(ReSharper.NTriples.Tree.TreeNodeVisitor<TContext> visitor, TContext context) {
       visitor.VisitCutStatement(this, context);
     }
-    public override TReturn Accept<TContext, TReturn>(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor<TContext, TReturn> visitor, TContext context) {
+    public override TReturn Accept<TContext, TReturn>(ReSharper.NTriples.Tree.TreeNodeVisitor<TContext, TReturn> visitor, TContext context) {
       return visitor.VisitCutStatement(this, context);
     }
     public override string ToString() {

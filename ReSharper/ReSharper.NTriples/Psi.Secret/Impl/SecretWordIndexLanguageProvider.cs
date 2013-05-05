@@ -1,7 +1,7 @@
 ﻿using JetBrains.ReSharper.Psi.ExtensionsAPI.Caches2;
 using JetBrains.ReSharper.Psi.Impl.Caches2.WordIndex;
 
-namespace JetBrains.ReSharper.Psi.Secret.Impl
+namespace ReSharper.NTriples.Impl
 {
     internal class SecretWordIndexLanguageProvider : IWordIndexLanguageProvider
     {

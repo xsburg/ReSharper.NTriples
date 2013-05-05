@@ -8,14 +8,14 @@
 // </summary>
 // ***********************************************************************
 
-using JetBrains.ReSharper.Features.Altering.Resources;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Resources;
-using JetBrains.ReSharper.Psi.Secret.Resources;
-using JetBrains.ReSharper.Psi.Secret.Services;
 using JetBrains.ReSharper.Psi.Xaml.Resources;
 using JetBrains.UI.Icons;
+using ReSharper.NTriples.Impl;
+using ReSharper.NTriples.Services;
 
-namespace JetBrains.ReSharper.Psi.Secret.Resolve
+namespace ReSharper.NTriples.Resolve
 {
     public class SecretDeclaredElementType : DeclaredElementType
     {

@@ -11,8 +11,9 @@
 using System.IO;
 using System.Linq;
 using JetBrains.Application.Test;
+using ReSharper.NTriples.Impl;
 
-namespace JetBrains.ReSharper.Psi.Secret.Tests
+namespace ReSharper.NTriples.Tests
 {
     public static class Extensions
     {

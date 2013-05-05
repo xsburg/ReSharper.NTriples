@@ -11,9 +11,10 @@
 using JetBrains.DocumentModel;
 using JetBrains.ReSharper.Daemon;
 using JetBrains.ReSharper.Daemon.Impl;
-using JetBrains.ReSharper.Psi.Secret.Tree;
+using ReSharper.NTriples.Impl;
+using ReSharper.NTriples.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.CodeInspections.Highlightings
+namespace ReSharper.NTriples.CodeInspections.Highlightings
 {
     [ConfigurableSeverityHighlighting(
         "UnresolvedReference",

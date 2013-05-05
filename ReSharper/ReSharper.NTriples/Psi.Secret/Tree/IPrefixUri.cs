@@ -8,9 +8,9 @@
 // </summary>
 // ***********************************************************************
 
-using JetBrains.ReSharper.Psi.Secret.Resolve;
+using ReSharper.NTriples.Resolve;
 
-namespace JetBrains.ReSharper.Psi.Secret.Tree
+namespace ReSharper.NTriples.Tree
 {
     public partial interface IPrefixUri
     {

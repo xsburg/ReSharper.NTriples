@@ -15,6 +15,7 @@ using JetBrains.ReSharper.Psi.CodeStyle;
 using JetBrains.ReSharper.Psi.Impl.CodeStyle;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.Util;
+using ReSharper.NTriples.Impl;
 
 namespace JetBrains.ReSharper.Psi.Secret.Formatter
 {

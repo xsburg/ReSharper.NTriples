@@ -10,12 +10,13 @@
 
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Impl;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Resolve;
-using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
+using ReSharper.NTriples.Impl.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.Completion
+namespace ReSharper.NTriples.Completion
 {
     [IntellisensePart]
     internal class SecretCodeCompletionContextProvider : CodeCompletionContextProviderBase

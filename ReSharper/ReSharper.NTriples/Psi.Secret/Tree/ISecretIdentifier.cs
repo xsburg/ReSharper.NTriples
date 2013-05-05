@@ -10,9 +10,9 @@
 
 using JetBrains.ReSharper.Psi.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.Tree
+namespace ReSharper.NTriples.Tree
 {
-    public interface ISecretIdentifier : Psi.Tree.IIdentifier, ITokenNode, ISecretTreeNode
+    public interface ISecretIdentifier : JetBrains.ReSharper.Psi.Tree.IIdentifier, ITokenNode, ISecretTreeNode
     {
     }
 }

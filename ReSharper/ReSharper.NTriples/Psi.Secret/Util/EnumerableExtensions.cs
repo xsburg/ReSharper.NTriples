@@ -12,7 +12,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace JetBrains.ReSharper.Psi.Secret.Util
+namespace ReSharper.NTriples.Util
 {
     public static class EnumerableExtensions
     {

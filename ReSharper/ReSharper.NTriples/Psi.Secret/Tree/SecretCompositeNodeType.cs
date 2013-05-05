@@ -10,7 +10,7 @@
 
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.Tree
+namespace ReSharper.NTriples.Tree
 {
     public abstract class SecretCompositeNodeType : CompositeNodeType
     {

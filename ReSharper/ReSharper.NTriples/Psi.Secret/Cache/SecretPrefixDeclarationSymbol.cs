@@ -9,8 +9,9 @@
 // ***********************************************************************
 
 using System.IO;
+using JetBrains.ReSharper.Psi;
 
-namespace JetBrains.ReSharper.Psi.Secret.Cache
+namespace ReSharper.NTriples.Cache
 {
     public class SecretPrefixDeclarationSymbol : SecretSymbolBase
     {

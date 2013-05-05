@@ -13,7 +13,7 @@ using JetBrains.DocumentModel;
 using JetBrains.ReSharper.Feature.Services.LiveTemplates.Hotspots;
 using JetBrains.TextControl;
 
-namespace JetBrains.ReSharper.Psi.Secret.Intentions.CreateFromUsage
+namespace ReSharper.NTriples.Intentions.CreateFromUsage
 {
     [ShellComponent]
     public class SecretIntentionResultBehavior

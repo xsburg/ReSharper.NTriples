@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Xml;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
 using JetBrains.Util.DataStructures;
+using ReSharper.NTriples.Impl;
 
-namespace JetBrains.ReSharper.Psi.Secret.Resolve
+namespace ReSharper.NTriples.Resolve
 {
     internal class PrefixUriDeclaredElement : IDeclaredElement
     {

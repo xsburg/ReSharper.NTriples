@@ -13,19 +13,17 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using JetBrains.Annotations;
 using JetBrains.Application;
-using JetBrains.DocumentModel;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Feature.Services.Goto;
 using JetBrains.ReSharper.Feature.Services.Occurences;
 using JetBrains.ReSharper.Feature.Services.Search;
-using JetBrains.ReSharper.Psi.Secret.Cache;
-using JetBrains.ReSharper.Psi.Secret.Impl;
-using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
-using JetBrains.ReSharper.Psi.Secret.Resolve;
+using JetBrains.ReSharper.Psi;
 using JetBrains.Text;
 using JetBrains.Util;
+using ReSharper.NTriples.Impl;
+using ReSharper.NTriples.Impl.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.Feature.Finding.GotoMember
+namespace ReSharper.NTriples.Feature.Finding.GotoMember
 {
     [FeaturePart]
     public class SecretGotoFileMemberProvider : IGotoFileMemberProvider

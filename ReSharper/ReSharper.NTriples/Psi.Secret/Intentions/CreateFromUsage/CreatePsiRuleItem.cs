@@ -15,10 +15,11 @@ using JetBrains.ReSharper.Feature.Services.Intentions;
 using JetBrains.ReSharper.Feature.Services.Intentions.DataProviders;
 using JetBrains.ReSharper.Intentions.CreateFromUsage;
 using JetBrains.ReSharper.Intentions.Util;
+using JetBrains.ReSharper.Psi;
 using JetBrains.TextControl;
 using JetBrains.Util;
 
-namespace JetBrains.ReSharper.Psi.Secret.Intentions.CreateFromUsage
+namespace ReSharper.NTriples.Intentions.CreateFromUsage
 {
     public class CreatePsiRuleItem : CreateFromUsageItemBase<CreateSecretPrefixContext>, IPartBulbItem
     {

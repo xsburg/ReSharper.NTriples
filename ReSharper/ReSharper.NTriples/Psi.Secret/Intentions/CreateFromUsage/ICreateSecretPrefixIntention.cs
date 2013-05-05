@@ -8,7 +8,7 @@
 // </summary>
 // ***********************************************************************
 
-namespace JetBrains.ReSharper.Psi.Secret.Intentions.CreateFromUsage
+namespace ReSharper.NTriples.Intentions.CreateFromUsage
 {
     public interface ICreateSecretPrefixIntention
     {

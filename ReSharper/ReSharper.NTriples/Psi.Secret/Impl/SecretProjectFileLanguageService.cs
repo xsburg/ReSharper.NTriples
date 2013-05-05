@@ -8,15 +8,15 @@
 // </summary>
 // ***********************************************************************
 
-using System.Collections.Generic;
 using JetBrains.ProjectModel;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Parsing;
-using JetBrains.ReSharper.Psi.Secret.Resources;
 using JetBrains.Text;
 using JetBrains.UI.Icons;
-using JetBrains.Util;
+using ReSharper.NTriples.Resources;
+using ReSharper.NTriples.Resources.N3PluginSymbolIcons;
 
-namespace JetBrains.ReSharper.Psi.Secret
+namespace ReSharper.NTriples.Impl
 {
     [ProjectFileType(typeof(SecretProjectFileType))]
     public class SecretProjectFileLanguageService : ProjectFileLanguageService

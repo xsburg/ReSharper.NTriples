@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
-using JetBrains.ReSharper.Psi.Secret.Cache;
-using JetBrains.ReSharper.Psi.Secret.Resolve;
-using JetBrains.ReSharper.Psi.Secret.Tree;
-using JetBrains.ReSharper.Psi.Secret.Util;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
+using ReSharper.NTriples.Cache;
+using ReSharper.NTriples.Resolve;
+using ReSharper.NTriples.Tree;
+using ReSharper.NTriples.Util;
 
-namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
+namespace ReSharper.NTriples.Impl.Tree
 {
     internal partial class LocalName : IUriIdentifierDeclaredElement
     {
@@ -27,7 +27,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 
         public IList<IDeclaration> GetDeclarationsIn(IPsiSourceFile sourceFile)
         {
-            if (filesScope.Contains(sourceFile) && this.GetSourceFile() != sourceFile)
+            if (this.filesScope.Contains(sourceFile) && this.GetSourceFile() != sourceFile)
             {
                 return EmptyList<IDeclaration>.InstanceList;
             }

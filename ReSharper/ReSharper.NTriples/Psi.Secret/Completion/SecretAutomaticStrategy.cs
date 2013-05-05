@@ -12,11 +12,13 @@ using JetBrains.Application.Settings;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Settings;
-using JetBrains.ReSharper.Psi.Secret.Tree;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.TextControl;
+using ReSharper.NTriples.Impl;
+using ReSharper.NTriples.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.Completion
+namespace ReSharper.NTriples.Completion
 {
     [SolutionComponent]
     public class SecretAutomaticStrategy : IAutomaticCodeCompletionStrategy

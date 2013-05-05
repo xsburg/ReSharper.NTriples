@@ -13,10 +13,11 @@ using JetBrains.Application.Progress;
 using JetBrains.Application.Settings;
 using JetBrains.ReSharper.Daemon;
 using JetBrains.ReSharper.Daemon.Stages;
-using JetBrains.ReSharper.Psi.Secret.Tree;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Tree;
+using ReSharper.NTriples.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
+namespace ReSharper.NTriples.CodeInspections
 {
     public abstract class SecretDaemonStageProcessBase :
         TreeNodeVisitor<IHighlightingConsumer>,

@@ -1,9 +1,8 @@
 ﻿using JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve;
-using JetBrains.ReSharper.Psi.Resolve;
-using JetBrains.ReSharper.Psi.Secret.Resolve;
 using JetBrains.ReSharper.Psi.Tree;
+using ReSharper.NTriples.Resolve;
 
-namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
+namespace ReSharper.NTriples.Impl.Tree
 {
     internal partial class Prefix
     {
@@ -32,7 +31,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 
         public ResolveResultWithInfo Resolve()
         {
-            return PrefixReference.Resolve();
+            return this.PrefixReference.Resolve();
         }
     }
 }

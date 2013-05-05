@@ -12,19 +12,21 @@ using System;
 using System.IO;
 using System.Text;
 using JetBrains.ProjectModel;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Parsing;
-using JetBrains.ReSharper.Psi.Secret.Parsing;
 using JetBrains.ReSharper.TestFramework;
 using JetBrains.Text;
 using JetBrains.Util;
 using JetBrains.Util.Text;
 using NUnit.Framework;
+using ReSharper.NTriples.Impl;
+using ReSharper.NTriples.Parsing;
 
-namespace JetBrains.ReSharper.Psi.Secret.Tests
+namespace ReSharper.NTriples.Tests
 {
     [Category("Lexer")]
     [TestFileExtension(SecretProjectFileType.SecretExtension)]
-    public abstract class SecretLexerTestBase : BaseTestWithSingleProject
+    public abstract class NTriplesLexerTestBase : BaseTestWithSingleProject
     {
         private Encoding myEncoding;
         private string myFileName;

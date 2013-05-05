@@ -8,19 +8,19 @@
 #pragma warning disable 0168, 0219, 0108, 0414
 // ReSharper disable RedundantNameQualifier
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-namespace JetBrains.ReSharper.Psi.Secret.Tree {
-  public partial interface IPrefixDeclaration : JetBrains.ReSharper.Psi.Secret.Tree.ISecretTreeNode {
+namespace ReSharper.NTriples.Tree {
+  public partial interface IPrefixDeclaration : ReSharper.NTriples.Tree.ISecretTreeNode {
     JetBrains.ReSharper.Psi.Tree.ITokenNode Prefix { get; }
   
-    JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName PrefixName { get; }
+    ReSharper.NTriples.Tree.IPrefixName PrefixName { get; }
   
-    JetBrains.ReSharper.Psi.Secret.Tree.IPrefixUri PrefixUri { get; }
+    ReSharper.NTriples.Tree.IPrefixUri PrefixUri { get; }
   
     JetBrains.ReSharper.Psi.Tree.ITokenNode UriString { get; }
   
-    JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName SetPrefixName (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName param);
+    ReSharper.NTriples.Tree.IPrefixName SetPrefixName (ReSharper.NTriples.Tree.IPrefixName param);
   
-    JetBrains.ReSharper.Psi.Secret.Tree.IPrefixUri SetPrefixUri (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixUri param);
+    ReSharper.NTriples.Tree.IPrefixUri SetPrefixUri (ReSharper.NTriples.Tree.IPrefixUri param);
   
   }
 }

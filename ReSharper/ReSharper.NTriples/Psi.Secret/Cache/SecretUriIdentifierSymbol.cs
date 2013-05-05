@@ -9,8 +9,9 @@
 // ***********************************************************************
 
 using System.IO;
+using JetBrains.ReSharper.Psi;
 
-namespace JetBrains.ReSharper.Psi.Secret.Cache
+namespace ReSharper.NTriples.Cache
 {
     public class SecretUriIdentifierSymbol : SecretSymbolBase
     {
@@ -23,7 +24,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Cache
         {
             this.LocalName = localName;
             this.Kind = kind;
-            Important = important;
+            this.Important = important;
             this.Namespace = @namespace;
         }
 

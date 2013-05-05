@@ -4,43 +4,53 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretRefactoringRenameTest.cs
+//   SecretCompletionTest.cs
 // </summary>
 // ***********************************************************************
 
 using System;
 using System.IO;
 using System.Linq;
-using JetBrains.ReSharper.Refactorings;
+using JetBrains.ReSharper.Feature.Services.Tests.CSharp.FeatureServices.CodeCompletion;
 using JetBrains.ReSharper.TestFramework;
 using NUnit.Framework;
+using ReSharper.NTriples.Impl;
 
-namespace JetBrains.ReSharper.Psi.Secret.Tests
+namespace ReSharper.NTriples.Tests
 {
     [TestFixture]
+    [TestReferences("System.Core.dll")]
     [TestFileExtension(SecretProjectFileType.SecretExtension)]
-    public class SecretRefactoringRenameTest : RenameTestBase
+    public class NTriplesCompletionTest : CodeCompletionTestBase
     {
         private readonly string[] files;
 
-        public SecretRefactoringRenameTest()
+        public NTriplesCompletionTest()
         {
             this.files = this.TestDataPath2.GetDirectoryEntries("*" + SecretProjectFileType.SecretExtension, true)
                              .Select(f => Path.GetFileNameWithoutExtension(f.FullPath))
                              .ToArray();
         }
 
+        protected override bool ExecuteAction
+        {
+            get
+            {
+                return true;
+            }
+        }
+
         protected override String RelativeTestDataPath
         {
             get
             {
-                return @"Refactoring/Rename";
+                return @"completion";
             }
         }
 
         [Test]
         [TestCaseSource("files")]
-        public void TestRefactoringRename(string file)
+        public void TestCompletion(string file)
         {
             this.DoOneTest(file);
         }

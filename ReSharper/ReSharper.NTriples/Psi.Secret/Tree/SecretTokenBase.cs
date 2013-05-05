@@ -9,12 +9,15 @@
 // ***********************************************************************
 
 using System.Text;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Parsing;
+using JetBrains.ReSharper.Psi.Secret;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Text;
+using ReSharper.NTriples.Impl;
 
-namespace JetBrains.ReSharper.Psi.Secret.Tree
+namespace ReSharper.NTriples.Tree
 {
     public abstract class SecretTokenBase : LeafElementBase, ISecretTreeNode, ITokenNode
     {

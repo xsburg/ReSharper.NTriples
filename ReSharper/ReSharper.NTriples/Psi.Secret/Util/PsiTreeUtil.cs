@@ -12,11 +12,11 @@ using System;
 using System.Collections.Generic;
 using JetBrains.Application;
 using JetBrains.ReSharper.Psi.ExtensionsAPI;
-using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
+using ReSharper.NTriples.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.Util
+namespace ReSharper.NTriples.Util
 {
     internal static class PsiTreeUtil
     {

@@ -13,7 +13,7 @@ using JetBrains.UI.Icons;
 using JetBrains.UI.RichText;
 using JetBrains.Util;
 
-namespace JetBrains.ReSharper.Psi.Secret.Completion
+namespace ReSharper.NTriples.Completion
 {
     internal sealed class SecretKeywordLookupItem : TextLookupItemBase, IKeywordLookupItem
     {

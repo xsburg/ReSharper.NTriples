@@ -10,7 +10,7 @@
 
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure;
 
-namespace JetBrains.ReSharper.Psi.Secret.Completion
+namespace ReSharper.NTriples.Completion
 {
     public class SecretCodeCompletionContext : SpecificCodeCompletionContext
     {

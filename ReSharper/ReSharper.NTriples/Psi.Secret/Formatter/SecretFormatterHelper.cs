@@ -15,10 +15,10 @@ using System.Linq;
 using JetBrains.Annotations;
 using JetBrains.ReSharper.Psi.ExtensionsAPI;
 using JetBrains.ReSharper.Psi.Impl.CodeStyle;
-using JetBrains.ReSharper.Psi.Secret.Parsing;
 using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
+using ReSharper.NTriples.Parsing;
 
 namespace JetBrains.ReSharper.Psi.Secret.Formatter
 {

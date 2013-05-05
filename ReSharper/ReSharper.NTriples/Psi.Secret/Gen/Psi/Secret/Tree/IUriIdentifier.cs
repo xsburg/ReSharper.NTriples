@@ -8,21 +8,21 @@
 #pragma warning disable 0168, 0219, 0108, 0414
 // ReSharper disable RedundantNameQualifier
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-namespace JetBrains.ReSharper.Psi.Secret.Tree {
-  public partial interface IUriIdentifier : JetBrains.ReSharper.Psi.Secret.Tree.ISecretTreeNode {
-    JetBrains.ReSharper.Psi.Secret.Tree.ILocalName LocalName { get; }
+namespace ReSharper.NTriples.Tree {
+  public partial interface IUriIdentifier : ReSharper.NTriples.Tree.ISecretTreeNode {
+    ReSharper.NTriples.Tree.ILocalName LocalName { get; }
   
-    JetBrains.ReSharper.Psi.Secret.Tree.IPrefix Prefix { get; }
+    ReSharper.NTriples.Tree.IPrefix Prefix { get; }
   
-    JetBrains.ReSharper.Psi.Secret.Tree.IUriString UriStringElement { get; }
+    ReSharper.NTriples.Tree.IUriString UriStringElement { get; }
   
     JetBrains.ReSharper.Psi.Tree.ITokenNode UriString { get; }
   
-    JetBrains.ReSharper.Psi.Secret.Tree.ILocalName SetLocalName (JetBrains.ReSharper.Psi.Secret.Tree.ILocalName param);
+    ReSharper.NTriples.Tree.ILocalName SetLocalName (ReSharper.NTriples.Tree.ILocalName param);
   
-    JetBrains.ReSharper.Psi.Secret.Tree.IPrefix SetPrefix (JetBrains.ReSharper.Psi.Secret.Tree.IPrefix param);
+    ReSharper.NTriples.Tree.IPrefix SetPrefix (ReSharper.NTriples.Tree.IPrefix param);
   
-    JetBrains.ReSharper.Psi.Secret.Tree.IUriString SetUriStringElement (JetBrains.ReSharper.Psi.Secret.Tree.IUriString param);
+    ReSharper.NTriples.Tree.IUriString SetUriStringElement (ReSharper.NTriples.Tree.IUriString param);
   
   }
 }

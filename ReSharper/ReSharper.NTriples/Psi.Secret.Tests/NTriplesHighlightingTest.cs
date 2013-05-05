@@ -13,21 +13,23 @@ using System.Collections.Generic;
 using JetBrains.ProjectModel.Properties;
 using JetBrains.ProjectModel.Properties.Common;
 using JetBrains.ReSharper.Daemon.Test;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.TestFramework;
 using NUnit.Framework;
+using ReSharper.NTriples.Impl;
 using PlatformID = JetBrains.ProjectModel.PlatformID;
 
-namespace JetBrains.ReSharper.Psi.Secret.Tests
+namespace ReSharper.NTriples.Tests
 {
     [TestFixture]
     [Category("Highlighting")]
     [TestNetFramework4]
     [TestFileExtension(SecretProjectFileType.SecretExtension)]
-    public class SecretHighlightingTest : HighlightingTestBase
+    public class NTriplesHighlightingTest : HighlightingTestBase
     {
         private readonly string[] files;
 
-        public SecretHighlightingTest()
+        public NTriplesHighlightingTest()
         {
             this.files = this.GetFilesToTest();
         }

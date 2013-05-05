@@ -11,12 +11,14 @@
 using System.Linq;
 using JetBrains.Annotations;
 using JetBrains.ProjectModel;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.Secret.Parsing;
-using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.Text;
+using ReSharper.NTriples.Impl;
+using ReSharper.NTriples.Parsing;
+using ReSharper.NTriples.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.Util
+namespace ReSharper.NTriples.Util
 {
     public class SecretElementFactoryImpl : SecretElementFactory
     {

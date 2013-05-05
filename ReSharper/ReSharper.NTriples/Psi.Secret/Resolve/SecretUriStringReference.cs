@@ -11,16 +11,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.ProjectModel;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve;
 using JetBrains.ReSharper.Psi.Resolve;
-using JetBrains.ReSharper.Psi.Secret.Cache;
-using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
-using JetBrains.ReSharper.Psi.Secret.Tree;
-using JetBrains.ReSharper.Psi.Secret.Util;
 using JetBrains.ReSharper.Psi.Tree;
-using UriString = JetBrains.ReSharper.Psi.Secret.Impl.Tree.UriString;
+using ReSharper.NTriples.Cache;
+using ReSharper.NTriples.Impl.Tree;
+using ReSharper.NTriples.Tree;
+using ReSharper.NTriples.Util;
+using UriString = ReSharper.NTriples.Impl.Tree.UriString;
 
-namespace JetBrains.ReSharper.Psi.Secret.Resolve
+namespace ReSharper.NTriples.Resolve
 {
     public class SecretUriStringReference : SecretReferenceBase
     {

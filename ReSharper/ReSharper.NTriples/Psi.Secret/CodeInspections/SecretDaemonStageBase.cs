@@ -13,9 +13,11 @@ using JetBrains.Annotations;
 using JetBrains.Application.Settings;
 using JetBrains.DocumentModel;
 using JetBrains.ReSharper.Daemon;
-using JetBrains.ReSharper.Psi.Secret.Tree;
+using JetBrains.ReSharper.Psi;
+using ReSharper.NTriples.Impl;
+using ReSharper.NTriples.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
+namespace ReSharper.NTriples.CodeInspections
 {
     public abstract class SecretDaemonStageBase : IDaemonStage
     {

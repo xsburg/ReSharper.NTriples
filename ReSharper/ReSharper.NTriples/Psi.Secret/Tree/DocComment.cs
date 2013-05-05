@@ -9,11 +9,12 @@
 // ***********************************************************************
 
 using JetBrains.Application;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Parsing;
 using JetBrains.ReSharper.Psi.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.Tree
+namespace ReSharper.NTriples.Tree
 {
     internal class DocComment : Comment, IDocCommentNode
     {

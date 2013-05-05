@@ -8,15 +8,15 @@
 #pragma warning disable 0168, 0219, 0108, 0414
 // ReSharper disable RedundantNameQualifier
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-namespace JetBrains.ReSharper.Psi.Secret.Tree {
-  public partial interface IFact : JetBrains.ReSharper.Psi.Secret.Tree.ISecretTreeNode {
-    JetBrains.ReSharper.Psi.Secret.Tree.IPredicate Predicate { get; }
+namespace ReSharper.NTriples.Tree {
+  public partial interface IFact : ReSharper.NTriples.Tree.ISecretTreeNode {
+    ReSharper.NTriples.Tree.IPredicate Predicate { get; }
   
-    JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<JetBrains.ReSharper.Psi.Secret.Tree.IExpression> Objects { get; }
-    JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<JetBrains.ReSharper.Psi.Secret.Tree.IExpression> ObjectsEnumerable { get; }
-    JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<JetBrains.ReSharper.Psi.Secret.Tree.IIdentifier> PredicateIdentifiers { get; }
-    JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<JetBrains.ReSharper.Psi.Secret.Tree.IIdentifier> PredicateIdentifiersEnumerable { get; }
-    JetBrains.ReSharper.Psi.Secret.Tree.IPredicate SetPredicate (JetBrains.ReSharper.Psi.Secret.Tree.IPredicate param);
+    JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<ReSharper.NTriples.Tree.IExpression> Objects { get; }
+    JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<ReSharper.NTriples.Tree.IExpression> ObjectsEnumerable { get; }
+    JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<ReSharper.NTriples.Tree.IIdentifier> PredicateIdentifiers { get; }
+    JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<ReSharper.NTriples.Tree.IIdentifier> PredicateIdentifiersEnumerable { get; }
+    ReSharper.NTriples.Tree.IPredicate SetPredicate (ReSharper.NTriples.Tree.IPredicate param);
   
   }
 }

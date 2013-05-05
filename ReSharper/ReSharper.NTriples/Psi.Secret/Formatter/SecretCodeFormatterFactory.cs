@@ -10,6 +10,7 @@
 
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi.Impl.CodeStyle;
+using ReSharper.NTriples.Impl;
 
 namespace JetBrains.ReSharper.Psi.Secret.Formatter
 {

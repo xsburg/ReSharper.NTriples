@@ -10,7 +10,7 @@
 
 using JetBrains.ReSharper.Psi.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.Tree
+namespace ReSharper.NTriples.Tree
 {
     public partial interface IUriString : IDeclaration //, IChameleonNode
     {

@@ -9,10 +9,12 @@
 // ***********************************************************************
 
 using System.Collections.Generic;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Refactorings.Rename;
 using JetBrains.ReSharper.Refactorings.RenameModel;
+using ReSharper.NTriples.Impl;
 
-namespace JetBrains.ReSharper.Psi.Secret.Refactoring.Rename
+namespace ReSharper.NTriples.Refactoring.Rename
 {
     [FeaturePart]
     public class PsiRenamesFactory : AtomicRenamesFactory

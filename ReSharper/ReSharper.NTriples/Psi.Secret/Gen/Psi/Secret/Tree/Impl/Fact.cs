@@ -10,84 +10,84 @@
 using System;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.Secret.Parsing;
-namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
-  internal partial class Fact : SecretCompositeElement, JetBrains.ReSharper.Psi.Secret.Tree.IFact {
+using ReSharper.NTriples.Parsing;
+namespace ReSharper.NTriples.Impl.Tree {
+  internal partial class Fact : SecretCompositeElement, ReSharper.NTriples.Tree.IFact {
     public const short PREDICATE= ChildRole.LAST + 1;
     public const short OBJECTS= ChildRole.LAST + 2;
     internal Fact() : base() {
     }
     public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType NodeType {
-      get { return JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.FACT; }
+      get { return ReSharper.NTriples.Impl.Tree.ElementType.FACT; }
     }
-    public override void Accept(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor visitor) {
+    public override void Accept(ReSharper.NTriples.Tree.TreeNodeVisitor visitor) {
       visitor.VisitFact(this);
     }
-    public override void Accept<TContext>(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor<TContext> visitor, TContext context) {
+    public override void Accept<TContext>(ReSharper.NTriples.Tree.TreeNodeVisitor<TContext> visitor, TContext context) {
       visitor.VisitFact(this, context);
     }
-    public override TReturn Accept<TContext, TReturn>(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor<TContext, TReturn> visitor, TContext context) {
+    public override TReturn Accept<TContext, TReturn>(ReSharper.NTriples.Tree.TreeNodeVisitor<TContext, TReturn> visitor, TContext context) {
       return visitor.VisitFact(this, context);
     }
     private static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeDictionary<short> CHILD_ROLES = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeDictionary<short>(
       new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>[]
       {
-        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.OBJECTS, OBJECTS),
-        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.PREDICATE, PREDICATE),
+        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(ReSharper.NTriples.Impl.Tree.ElementType.OBJECTS, OBJECTS),
+        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(ReSharper.NTriples.Impl.Tree.ElementType.PREDICATE, PREDICATE),
       }
     );
     public override short GetChildRole (JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement child) {
       return CHILD_ROLES[child.NodeType];
     }
-    public virtual JetBrains.ReSharper.Psi.Secret.Tree.IPredicate Predicate {
-      get { return (JetBrains.ReSharper.Psi.Secret.Tree.IPredicate) FindChildByRole(PREDICATE); }
+    public virtual ReSharper.NTriples.Tree.IPredicate Predicate {
+      get { return (ReSharper.NTriples.Tree.IPredicate) FindChildByRole(PREDICATE); }
     }
-    public virtual JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<JetBrains.ReSharper.Psi.Secret.Tree.IExpression>  Objects {
+    public virtual JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<ReSharper.NTriples.Tree.IExpression>  Objects {
       get
       {
         CompositeElement current = this;  
     
-        var result = JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<JetBrains.ReSharper.Psi.Secret.Tree.IExpression>.Empty;
-        CompositeElement current0 = (CompositeElement)current.FindChildByRole (JetBrains.ReSharper.Psi.Secret.Impl.Tree.Fact.OBJECTS);
+        var result = JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<ReSharper.NTriples.Tree.IExpression>.Empty;
+        CompositeElement current0 = (CompositeElement)current.FindChildByRole (ReSharper.NTriples.Impl.Tree.Fact.OBJECTS);
         if (current0 != null) {
-          result = ((CompositeElement)current0).FindListOfChildrenByRole<JetBrains.ReSharper.Psi.Secret.Tree.IExpression> (JetBrains.ReSharper.Psi.Secret.Impl.Tree.Objects.IDENTIFIERS);
+          result = ((CompositeElement)current0).FindListOfChildrenByRole<ReSharper.NTriples.Tree.IExpression> (ReSharper.NTriples.Impl.Tree.Objects.IDENTIFIERS);
         }
         return result;
       }
     }
-    public virtual JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<JetBrains.ReSharper.Psi.Secret.Tree.IExpression> ObjectsEnumerable {
+    public virtual JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<ReSharper.NTriples.Tree.IExpression> ObjectsEnumerable {
       get
       {
         CompositeElement current = this;
     
-        return new JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<JetBrains.ReSharper.Psi.Secret.Tree.IExpression>(current, JetBrains.ReSharper.Psi.Secret.Impl.Tree.Fact.OBJECTS, JetBrains.ReSharper.Psi.Secret.Impl.Tree.Objects.IDENTIFIERS);
+        return new JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<ReSharper.NTriples.Tree.IExpression>(current, ReSharper.NTriples.Impl.Tree.Fact.OBJECTS, ReSharper.NTriples.Impl.Tree.Objects.IDENTIFIERS);
       }
     }
-    public virtual JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<JetBrains.ReSharper.Psi.Secret.Tree.IIdentifier>  PredicateIdentifiers {
+    public virtual JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<ReSharper.NTriples.Tree.IIdentifier>  PredicateIdentifiers {
       get
       {
         CompositeElement current = this;  
     
-        var result = JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<JetBrains.ReSharper.Psi.Secret.Tree.IIdentifier>.Empty;
-        CompositeElement current0 = (CompositeElement)current.FindChildByRole (JetBrains.ReSharper.Psi.Secret.Impl.Tree.Fact.PREDICATE);
+        var result = JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<ReSharper.NTriples.Tree.IIdentifier>.Empty;
+        CompositeElement current0 = (CompositeElement)current.FindChildByRole (ReSharper.NTriples.Impl.Tree.Fact.PREDICATE);
         if (current0 != null) {
-          CompositeElement current1 = (CompositeElement)current0.FindChildByRole (JetBrains.ReSharper.Psi.Secret.Impl.Tree.Predicate.EXPRESSION);
+          CompositeElement current1 = (CompositeElement)current0.FindChildByRole (ReSharper.NTriples.Impl.Tree.Predicate.EXPRESSION);
           if (current1 != null) {
-            result = ((CompositeElement)current1).FindListOfChildrenByRole<JetBrains.ReSharper.Psi.Secret.Tree.IIdentifier> (JetBrains.ReSharper.Psi.Secret.Impl.Tree.Expression.IDENTIFIER);
+            result = ((CompositeElement)current1).FindListOfChildrenByRole<ReSharper.NTriples.Tree.IIdentifier> (ReSharper.NTriples.Impl.Tree.Expression.IDENTIFIER);
           }
         }
         return result;
       }
     }
-    public virtual JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<JetBrains.ReSharper.Psi.Secret.Tree.IIdentifier> PredicateIdentifiersEnumerable {
+    public virtual JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<ReSharper.NTriples.Tree.IIdentifier> PredicateIdentifiersEnumerable {
       get
       {
         CompositeElement current = this;
     
-        return new JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<JetBrains.ReSharper.Psi.Secret.Tree.IIdentifier>(current, JetBrains.ReSharper.Psi.Secret.Impl.Tree.Fact.PREDICATE, JetBrains.ReSharper.Psi.Secret.Impl.Tree.Predicate.EXPRESSION, JetBrains.ReSharper.Psi.Secret.Impl.Tree.Expression.IDENTIFIER);
+        return new JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<ReSharper.NTriples.Tree.IIdentifier>(current, ReSharper.NTriples.Impl.Tree.Fact.PREDICATE, ReSharper.NTriples.Impl.Tree.Predicate.EXPRESSION, ReSharper.NTriples.Impl.Tree.Expression.IDENTIFIER);
       }
     }
-    public virtual JetBrains.ReSharper.Psi.Secret.Tree.IPredicate SetPredicate (JetBrains.ReSharper.Psi.Secret.Tree.IPredicate param)
+    public virtual ReSharper.NTriples.Tree.IPredicate SetPredicate (ReSharper.NTriples.Tree.IPredicate param)
     {
       using (JetBrains.Application.WriteLockCookie.Create (this.IsPhysical()))
       {
@@ -97,7 +97,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
           if (param == null) return null;
           result = current = (TreeElement)JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.AddChildAfter (this, current, (JetBrains.ReSharper.Psi.Tree.ITreeNode)param);
         } else {
-          if (next.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.PREDICATE) {
+          if (next.NodeType == ReSharper.NTriples.Impl.Tree.ElementType.PREDICATE) {
             if (param != null) {
               result = current = (TreeElement)JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.ReplaceChild(next, (JetBrains.ReSharper.Psi.Tree.ITreeNode)param);
             } else {
@@ -110,7 +110,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
             current = next;
           }
         }
-        return (JetBrains.ReSharper.Psi.Secret.Tree.IPredicate)result;
+        return (ReSharper.NTriples.Tree.IPredicate)result;
       }
     }
     public override string ToString() {

@@ -12,7 +12,7 @@ using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Parsing;
 using JetBrains.Text;
 
-namespace JetBrains.ReSharper.Psi.Secret.Parsing
+namespace ReSharper.NTriples.Parsing
 {
     public class SecretLexer : SecretLexerGenerated
     {

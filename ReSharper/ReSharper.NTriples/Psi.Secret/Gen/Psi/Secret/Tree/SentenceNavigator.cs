@@ -10,32 +10,32 @@
 using System.Collections;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
-namespace JetBrains.ReSharper.Psi.Secret.Tree {
+using ReSharper.NTriples.Impl.Tree;
+namespace ReSharper.NTriples.Tree {
   public static partial class SentenceNavigator {
     [JetBrains.Annotations.Pure]
     [JetBrains.Annotations.CanBeNull]
     [JetBrains.Annotations.ContractAnnotation("null <= null")]
-    public static JetBrains.ReSharper.Psi.Secret.Tree.ISentence GetByDirective (JetBrains.ReSharper.Psi.Secret.Tree.IDirective param) {
+    public static ReSharper.NTriples.Tree.ISentence GetByDirective (ReSharper.NTriples.Tree.IDirective param) {
       if (param == null) return null;
       TreeElement current = (TreeElement)param;
-      if (current.parent is JetBrains.ReSharper.Psi.Secret.Impl.Tree.Sentence) {
-        if (current.parent.GetChildRole (current) != JetBrains.ReSharper.Psi.Secret.Impl.Tree.Sentence.DIRECTIVE) return null;
+      if (current.parent is ReSharper.NTriples.Impl.Tree.Sentence) {
+        if (current.parent.GetChildRole (current) != ReSharper.NTriples.Impl.Tree.Sentence.DIRECTIVE) return null;
         current = current.parent;
       } else return null;
-      return (JetBrains.ReSharper.Psi.Secret.Tree.ISentence) current;
+      return (ReSharper.NTriples.Tree.ISentence) current;
     }
     [JetBrains.Annotations.Pure]
     [JetBrains.Annotations.CanBeNull]
     [JetBrains.Annotations.ContractAnnotation("null <= null")]
-    public static JetBrains.ReSharper.Psi.Secret.Tree.ISentence GetByStatement (JetBrains.ReSharper.Psi.Secret.Tree.IStatement param) {
+    public static ReSharper.NTriples.Tree.ISentence GetByStatement (ReSharper.NTriples.Tree.IStatement param) {
       if (param == null) return null;
       TreeElement current = (TreeElement)param;
-      if (current.parent is JetBrains.ReSharper.Psi.Secret.Impl.Tree.Sentence) {
-        if (current.parent.GetChildRole (current) != JetBrains.ReSharper.Psi.Secret.Impl.Tree.Sentence.STATEMENT) return null;
+      if (current.parent is ReSharper.NTriples.Impl.Tree.Sentence) {
+        if (current.parent.GetChildRole (current) != ReSharper.NTriples.Impl.Tree.Sentence.STATEMENT) return null;
         current = current.parent;
       } else return null;
-      return (JetBrains.ReSharper.Psi.Secret.Tree.ISentence) current;
+      return (ReSharper.NTriples.Tree.ISentence) current;
     }
   }
 }

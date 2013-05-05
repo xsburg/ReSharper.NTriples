@@ -1,15 +1,12 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Xml;
-using JetBrains.DocumentModel;
-using JetBrains.ReSharper.Psi.Secret.Cache;
-using JetBrains.ReSharper.Psi.Secret.Resolve;
-using JetBrains.ReSharper.Psi.Secret.Tree;
-using JetBrains.ReSharper.Psi.Secret.Util;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Tree;
-using JetBrains.Util;
+using ReSharper.NTriples.Cache;
+using ReSharper.NTriples.Resolve;
+using ReSharper.NTriples.Util;
 
-namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
+namespace ReSharper.NTriples.Impl.Tree
 {
     internal partial class UriString : IDeclaredElement, IUriIdentifierDeclaredElement
     {

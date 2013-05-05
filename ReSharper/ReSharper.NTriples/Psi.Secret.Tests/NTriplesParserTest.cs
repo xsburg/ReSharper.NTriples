@@ -4,37 +4,44 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretLexerTest.cs
+//   SecretParserTest.cs
 // </summary>
 // ***********************************************************************
 
 using System.IO;
 using System.Linq;
+using JetBrains.ReSharper.PsiTests.parsing;
+using JetBrains.ReSharper.TestFramework;
 using NUnit.Framework;
+using ReSharper.NTriples.Impl;
 
-namespace JetBrains.ReSharper.Psi.Secret.Tests
+namespace ReSharper.NTriples.Tests
 {
-    [TestFixture]
-    public class SecretLexerTest : SecretLexerTestBase
+    [TestFileExtension(SecretProjectFileType.SecretExtension)]
+    public class NTriplesParserTest : ParserTestBase
     {
-        // ReSharper disable StringLiteralTypo
-
         private readonly string[] files;
 
-        public SecretLexerTest()
+        public NTriplesParserTest()
         {
             this.files = this.TestDataPath2.GetDirectoryEntries("*" + SecretProjectFileType.SecretExtension, true)
                              .Select(f => Path.GetFileNameWithoutExtension(f.FullPath))
                              .ToArray();
         }
 
-        [Test]
-        [TestCaseSource("files")]
-        public void TestLexer(string file)
+        protected override string RelativeTestDataPath
         {
-            this.DoTestFile(file);
+            get
+            {
+                return @"Parsing";
+            }
         }
 
-        // ReSharper restore StringLiteralTypo
+        [Test]
+        [TestCaseSource("files")]
+        public void TestParser(string file)
+        {
+            this.DoOneTest(file);
+        }
     }
 }

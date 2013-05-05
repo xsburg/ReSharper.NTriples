@@ -9,8 +9,10 @@
 // ***********************************************************************
 
 using JetBrains.ReSharper.Psi.Parsing;
+using JetBrains.ReSharper.Psi.Secret;
+using ReSharper.NTriples.Impl;
 
-namespace JetBrains.ReSharper.Psi.Secret.Parsing
+namespace ReSharper.NTriples.Parsing
 {
     internal class SecretFilteringLexer : FilteringLexer, ILexer<int>
     {

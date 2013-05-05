@@ -8,7 +8,7 @@
 // </summary>
 // ***********************************************************************
 
-namespace JetBrains.ReSharper.Psi.Secret.Tree
+namespace ReSharper.NTriples.Tree
 {
     public interface IDocCommentNode : ISecretCommentNode
     {

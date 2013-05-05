@@ -9,9 +9,10 @@
 // ***********************************************************************
 
 using System;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Resolve;
 
-namespace JetBrains.ReSharper.Psi.Secret.Services
+namespace ReSharper.NTriples.Services
 {
     internal class SecretDeclaredElementPresenter : IDeclaredElementPresenter
     {

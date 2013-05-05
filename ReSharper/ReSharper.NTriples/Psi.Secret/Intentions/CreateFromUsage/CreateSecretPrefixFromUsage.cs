@@ -17,12 +17,12 @@ using JetBrains.ReSharper.Feature.Services.Intentions.DataProviders;
 using JetBrains.ReSharper.Intentions.CreateFromUsage;
 using JetBrains.ReSharper.Intentions.Extensibility;
 using JetBrains.ReSharper.Intentions.Extensibility.Menu;
-using JetBrains.ReSharper.Psi.Secret.CodeInspections.Highlightings;
-using JetBrains.ReSharper.Psi.Secret.Resolve;
 using JetBrains.Util;
 using JetBrains.Util.Lazy;
+using ReSharper.NTriples.CodeInspections.Highlightings;
+using ReSharper.NTriples.Resolve;
 
-namespace JetBrains.ReSharper.Psi.Secret.Intentions.CreateFromUsage
+namespace ReSharper.NTriples.Intentions.CreateFromUsage
 {
     [QuickFix]
     internal class CreateSecretPrefixFromUsage

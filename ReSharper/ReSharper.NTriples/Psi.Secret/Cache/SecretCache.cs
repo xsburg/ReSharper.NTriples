@@ -16,16 +16,17 @@ using JetBrains.DataFlow;
 using JetBrains.DocumentManagers.impl;
 using JetBrains.DocumentModel;
 using JetBrains.ProjectModel;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Caches;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.Secret.Impl;
-using JetBrains.ReSharper.Psi.Secret.Resolve;
-using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.Util.Caches;
 using JetBrains.Util;
+using ReSharper.NTriples.Impl;
+using ReSharper.NTriples.Resolve;
+using ReSharper.NTriples.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.Cache
+namespace ReSharper.NTriples.Cache
 {
     [PsiComponent]
     public class SecretCache : ICache

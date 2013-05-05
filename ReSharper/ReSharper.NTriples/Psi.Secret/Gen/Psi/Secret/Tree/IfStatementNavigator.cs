@@ -10,8 +10,8 @@
 using System.Collections;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
-namespace JetBrains.ReSharper.Psi.Secret.Tree {
+using ReSharper.NTriples.Impl.Tree;
+namespace ReSharper.NTriples.Tree {
   public static partial class IfStatementNavigator {
   }
 }

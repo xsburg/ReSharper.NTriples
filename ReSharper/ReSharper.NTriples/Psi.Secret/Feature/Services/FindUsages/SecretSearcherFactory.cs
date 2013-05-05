@@ -12,16 +12,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.ProjectModel;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.ExtensionsAPI;
 using JetBrains.ReSharper.Psi.Search;
-using JetBrains.ReSharper.Psi.Secret.Cache;
-using JetBrains.ReSharper.Psi.Secret.Impl;
-using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
-using JetBrains.ReSharper.Psi.Secret.Resolve;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
+using ReSharper.NTriples.Cache;
+using ReSharper.NTriples.Impl;
+using ReSharper.NTriples.Impl.Tree;
+using ReSharper.NTriples.Resolve;
 
-namespace JetBrains.ReSharper.Psi.Secret.Feature.Services.FindUsages
+namespace ReSharper.NTriples.Feature.Services.FindUsages
 {
     [PsiSharedComponent]
     internal class SecretSearcherFactory : IDomainSpecificSearcherFactory

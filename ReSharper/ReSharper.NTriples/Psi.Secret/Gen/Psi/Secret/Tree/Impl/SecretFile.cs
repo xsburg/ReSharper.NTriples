@@ -10,52 +10,52 @@
 using System;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.Secret.Parsing;
-namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
-  internal partial class SecretFile : SecretFileElement, JetBrains.ReSharper.Psi.Secret.Tree.ISecretFile {
+using ReSharper.NTriples.Parsing;
+namespace ReSharper.NTriples.Impl.Tree {
+  internal partial class SecretFile : SecretFileElement, ReSharper.NTriples.Tree.ISecretFile {
     public const short SENTENCES= ChildRole.LAST + 1;
     internal SecretFile() : base() {
     }
     public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType NodeType {
-      get { return JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType._SECRET_FILE; }
+      get { return ReSharper.NTriples.Impl.Tree.ElementType._SECRET_FILE; }
     }
-    public override void Accept(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor visitor) {
+    public override void Accept(ReSharper.NTriples.Tree.TreeNodeVisitor visitor) {
       visitor.VisitSecretFile(this);
     }
-    public override void Accept<TContext>(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor<TContext> visitor, TContext context) {
+    public override void Accept<TContext>(ReSharper.NTriples.Tree.TreeNodeVisitor<TContext> visitor, TContext context) {
       visitor.VisitSecretFile(this, context);
     }
-    public override TReturn Accept<TContext, TReturn>(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor<TContext, TReturn> visitor, TContext context) {
+    public override TReturn Accept<TContext, TReturn>(ReSharper.NTriples.Tree.TreeNodeVisitor<TContext, TReturn> visitor, TContext context) {
       return visitor.VisitSecretFile(this, context);
     }
     private static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeDictionary<short> CHILD_ROLES = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeDictionary<short>(
       new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>[]
       {
-        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.SENTENCES, SENTENCES),
+        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(ReSharper.NTriples.Impl.Tree.ElementType.SENTENCES, SENTENCES),
       }
     );
     public override short GetChildRole (JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement child) {
       return CHILD_ROLES[child.NodeType];
     }
-    public virtual JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<JetBrains.ReSharper.Psi.Secret.Tree.ISentence>  Sentences {
+    public virtual JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<ReSharper.NTriples.Tree.ISentence>  Sentences {
       get
       {
         CompositeElement current = this;  
     
-        var result = JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<JetBrains.ReSharper.Psi.Secret.Tree.ISentence>.Empty;
-        CompositeElement current0 = (CompositeElement)current.FindChildByRole (JetBrains.ReSharper.Psi.Secret.Impl.Tree.SecretFile.SENTENCES);
+        var result = JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<ReSharper.NTriples.Tree.ISentence>.Empty;
+        CompositeElement current0 = (CompositeElement)current.FindChildByRole (ReSharper.NTriples.Impl.Tree.SecretFile.SENTENCES);
         if (current0 != null) {
-          result = ((CompositeElement)current0).FindListOfChildrenByRole<JetBrains.ReSharper.Psi.Secret.Tree.ISentence> (JetBrains.ReSharper.Psi.Secret.Impl.Tree.Sentences.SENTENCES);
+          result = ((CompositeElement)current0).FindListOfChildrenByRole<ReSharper.NTriples.Tree.ISentence> (ReSharper.NTriples.Impl.Tree.Sentences.SENTENCES);
         }
         return result;
       }
     }
-    public virtual JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<JetBrains.ReSharper.Psi.Secret.Tree.ISentence> SentencesEnumerable {
+    public virtual JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<ReSharper.NTriples.Tree.ISentence> SentencesEnumerable {
       get
       {
         CompositeElement current = this;
     
-        return new JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<JetBrains.ReSharper.Psi.Secret.Tree.ISentence>(current, JetBrains.ReSharper.Psi.Secret.Impl.Tree.SecretFile.SENTENCES, JetBrains.ReSharper.Psi.Secret.Impl.Tree.Sentences.SENTENCES);
+        return new JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<ReSharper.NTriples.Tree.ISentence>(current, ReSharper.NTriples.Impl.Tree.SecretFile.SENTENCES, ReSharper.NTriples.Impl.Tree.Sentences.SENTENCES);
       }
     }
     public override string ToString() {

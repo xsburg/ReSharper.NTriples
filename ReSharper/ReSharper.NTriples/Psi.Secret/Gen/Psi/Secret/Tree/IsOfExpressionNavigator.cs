@@ -10,20 +10,20 @@
 using System.Collections;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
-namespace JetBrains.ReSharper.Psi.Secret.Tree {
+using ReSharper.NTriples.Impl.Tree;
+namespace ReSharper.NTriples.Tree {
   public static partial class IsOfExpressionNavigator {
     [JetBrains.Annotations.Pure]
     [JetBrains.Annotations.CanBeNull]
     [JetBrains.Annotations.ContractAnnotation("null <= null")]
-    public static JetBrains.ReSharper.Psi.Secret.Tree.IIsOfExpression GetByExpression (JetBrains.ReSharper.Psi.Secret.Tree.IExpression param) {
+    public static ReSharper.NTriples.Tree.IIsOfExpression GetByExpression (ReSharper.NTriples.Tree.IExpression param) {
       if (param == null) return null;
       TreeElement current = (TreeElement)param;
-      if (current.parent is JetBrains.ReSharper.Psi.Secret.Impl.Tree.IsOfExpression) {
-        if (current.parent.GetChildRole (current) != JetBrains.ReSharper.Psi.Secret.Impl.Tree.IsOfExpression.EXPRESSION) return null;
+      if (current.parent is ReSharper.NTriples.Impl.Tree.IsOfExpression) {
+        if (current.parent.GetChildRole (current) != ReSharper.NTriples.Impl.Tree.IsOfExpression.EXPRESSION) return null;
         current = current.parent;
       } else return null;
-      return (JetBrains.ReSharper.Psi.Secret.Tree.IIsOfExpression) current;
+      return (ReSharper.NTriples.Tree.IIsOfExpression) current;
     }
   }
 }

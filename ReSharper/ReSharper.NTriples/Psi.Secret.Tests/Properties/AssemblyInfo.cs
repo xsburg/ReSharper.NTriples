@@ -12,9 +12,9 @@ using System.Collections.Generic;
 using System.Reflection;
 using JetBrains.Application;
 using JetBrains.ReSharper;
-using JetBrains.ReSharper.Psi.Secret;
 using JetBrains.Threading;
 using NUnit.Framework;
+using ReSharper.NTriples.Impl;
 
 // ReSharper disable CheckNamespace
 [SetUpFixture]

@@ -8,11 +8,11 @@
 #pragma warning disable 0168, 0219, 0108, 0414
 // ReSharper disable RedundantNameQualifier
 using System.Collections;
-namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
+namespace ReSharper.NTriples.Impl.Tree {
   public static class ElementBitsets {
     public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet LITERAL_BIT_SET = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(
       new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType[] {
-        JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.DATA_LITERAL,
+        ReSharper.NTriples.Impl.Tree.ElementType.DATA_LITERAL,
       }
     );
     public static JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet LITERAL_KEYWORDS_BIT_SET = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeSet(

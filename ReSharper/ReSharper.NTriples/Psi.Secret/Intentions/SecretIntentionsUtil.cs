@@ -9,9 +9,9 @@
 // ***********************************************************************
 
 using JetBrains.ReSharper.Feature.Services.Intentions.DataProviders;
-using JetBrains.ReSharper.Psi.Secret.Tree;
+using ReSharper.NTriples.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.Intentions
+namespace ReSharper.NTriples.Intentions
 {
     internal static class SecretIntentionsUtil
     {

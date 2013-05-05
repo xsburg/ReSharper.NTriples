@@ -9,11 +9,12 @@
 // ***********************************************************************
 
 using System.Collections.Generic;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve;
 using JetBrains.ReSharper.Psi.Resolve;
 using JetBrains.ReSharper.Psi.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.Resolve
+namespace ReSharper.NTriples.Resolve
 {
     public abstract class SecretReferenceBase : TreeReferenceBase<ITreeNode>, ICompleteableReference
     {

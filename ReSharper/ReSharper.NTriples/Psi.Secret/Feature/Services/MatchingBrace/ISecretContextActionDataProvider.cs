@@ -9,9 +9,9 @@
 // ***********************************************************************
 
 using JetBrains.ReSharper.Feature.Services.Bulbs;
-using JetBrains.ReSharper.Psi.Secret.Tree;
+using ReSharper.NTriples.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.Feature.Services.MatchingBrace
+namespace ReSharper.NTriples.Feature.Services.MatchingBrace
 {
     public interface ISecretContextActionDataProvider : IContextActionDataProvider<ISecretFile>
     {

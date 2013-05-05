@@ -13,13 +13,14 @@ using System.Collections.Generic;
 using System.Linq;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Feature.Services.Intentions.DataProviders;
-using JetBrains.ReSharper.Psi.Secret.Cache;
-using JetBrains.ReSharper.Psi.Secret.Resolve;
-using JetBrains.ReSharper.Psi.Secret.Tree;
-using JetBrains.ReSharper.Psi.Secret.Util;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Tree;
+using ReSharper.NTriples.Cache;
+using ReSharper.NTriples.Resolve;
+using ReSharper.NTriples.Tree;
+using ReSharper.NTriples.Util;
 
-namespace JetBrains.ReSharper.Psi.Secret.Intentions.CreateFromUsage
+namespace ReSharper.NTriples.Intentions.CreateFromUsage
 {
     public class CreateSecretPrefixTarget : ICreationTarget
     {

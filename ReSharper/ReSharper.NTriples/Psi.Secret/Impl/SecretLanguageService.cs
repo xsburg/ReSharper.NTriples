@@ -1,35 +1,18 @@
 using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Reflection;
-using System.Text;
-using JetBrains.Annotations;
-using JetBrains.Application;
-using JetBrains.DocumentModel;
-using JetBrains.ProjectModel;
-using JetBrains.ReSharper.Psi.BuildScripts.NAnt;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.CodeStyle;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Caches2;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.Html;
-using JetBrains.ReSharper.Psi.Html.Impl.Parsing;
-using JetBrains.ReSharper.Psi.Impl;
 using JetBrains.ReSharper.Psi.Impl.PsiManagerImpl;
 using JetBrains.ReSharper.Psi.Naming.Impl;
 using JetBrains.ReSharper.Psi.Parsing;
-using JetBrains.ReSharper.Psi.Resolve;
-//using JetBrains.ReSharper.Psi.Secret.Formatter;
-using JetBrains.ReSharper.Psi.Secret.Impl;
-using JetBrains.ReSharper.Psi.Secret.Parsing;
-using JetBrains.ReSharper.Psi.Secret.Resolve;
 using JetBrains.ReSharper.Psi.Tree;
-using JetBrains.ReSharper.Psi.Util;
-using JetBrains.ReSharper.Psi.Xml.Impl.Tree;
-using JetBrains.Text;
-using JetBrains.Util;
-using JetBrains.Util.DataStructures;
+using ReSharper.NTriples.Parsing;
+using ReSharper.NTriples.Resolve;
 
-namespace JetBrains.ReSharper.Psi.Secret
+//using JetBrains.ReSharper.Psi.Secret.Formatter;
+
+namespace ReSharper.NTriples.Impl
 {
     [Language(typeof(SecretLanguage))]
     public class SecretLanguageService : LanguageService
@@ -79,7 +62,7 @@ namespace JetBrains.ReSharper.Psi.Secret
         {
             get
             {
-                return wordIndexLanguageProvider;
+                return this.wordIndexLanguageProvider;
             }
         }
 
@@ -136,7 +119,7 @@ namespace JetBrains.ReSharper.Psi.Secret
             public Parser(ILexer lexer, IPsiSourceFile sourceFile)
                 : base(lexer)
             {
-                SourceFile = sourceFile;
+                this.SourceFile = sourceFile;
             }
         }
     }

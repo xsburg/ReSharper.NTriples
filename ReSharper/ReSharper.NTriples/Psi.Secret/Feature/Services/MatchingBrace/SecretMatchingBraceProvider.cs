@@ -9,10 +9,12 @@
 // ***********************************************************************
 
 using JetBrains.ReSharper.Feature.Services.MatchingBrace;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Parsing;
-using JetBrains.ReSharper.Psi.Secret.Parsing;
+using ReSharper.NTriples.Impl;
+using ReSharper.NTriples.Parsing;
 
-namespace JetBrains.ReSharper.Psi.Secret.Feature.Services.MatchingBrace
+namespace ReSharper.NTriples.Feature.Services.MatchingBrace
 {
     [Language(typeof(SecretLanguage))]
     internal class SecretMatchingBraceProvider : ISimpleMatchingBraceProvider

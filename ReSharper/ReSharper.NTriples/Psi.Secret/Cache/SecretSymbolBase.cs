@@ -9,9 +9,9 @@
 // ***********************************************************************
 
 using System.IO;
-using JetBrains.DocumentModel;
+using JetBrains.ReSharper.Psi;
 
-namespace JetBrains.ReSharper.Psi.Secret.Cache
+namespace ReSharper.NTriples.Cache
 {
     public abstract class SecretSymbolBase : ISecretSymbol
     {

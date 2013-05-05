@@ -13,7 +13,7 @@ using System.Linq;
 using JetBrains.ReSharper.Feature.Services.LiveTemplates.Util;
 using JetBrains.ReSharper.Feature.Services.Lookup;
 
-namespace JetBrains.ReSharper.Psi.Secret.Completion
+namespace ReSharper.NTriples.Completion
 {
     internal class KeywordsBetterFilter : ILookupItemsPreference
     {

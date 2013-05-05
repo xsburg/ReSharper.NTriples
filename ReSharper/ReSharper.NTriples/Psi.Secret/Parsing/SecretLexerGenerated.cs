@@ -9,11 +9,12 @@
 // ***********************************************************************
 
 using System.Collections.Generic;
+using JetBrains;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Parsing;
 using JetBrains.Text;
 
-namespace JetBrains.ReSharper.Psi.Secret.Parsing
+namespace ReSharper.NTriples.Parsing
 {
     public partial class SecretLexerGenerated : ILexer<SecretLexerState>
     {

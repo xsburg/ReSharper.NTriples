@@ -19,10 +19,11 @@ using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Feature.Services.Intentions.Impl.TemplateFieldHolders;
 using JetBrains.ReSharper.Feature.Services.LiveTemplates.Hotspots;
 using JetBrains.ReSharper.Feature.Services.LiveTemplates.LiveTemplates;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
 
-namespace JetBrains.ReSharper.Psi.Secret.Intentions.CreateFromUsage
+namespace ReSharper.NTriples.Intentions.CreateFromUsage
 {
     public class SecretIntentionResult
     {

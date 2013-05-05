@@ -1,6 +1,7 @@
 ﻿using JetBrains.ReSharper.Feature.Services.Occurences;
+using JetBrains.ReSharper.Psi;
 
-namespace JetBrains.ReSharper.Psi.Secret.Feature.Finding.GotoMember
+namespace ReSharper.NTriples.Feature.Finding.GotoMember
 {
     public class SecretFileMemberData
     {

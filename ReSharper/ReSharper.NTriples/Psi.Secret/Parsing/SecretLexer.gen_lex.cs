@@ -5,16 +5,14 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace JetBrains.ReSharper.Psi.Secret.Parsing
-{
-using JetBrains;
+
 using JetBrains.ReSharper.Psi.Parsing;
 using JetBrains.Text;
 using JetBrains.Util;
-using System.Collections;
 
-
-public  partial class SecretLexerGenerated : ILexer
+namespace ReSharper.NTriples.Parsing
+{
+    public  partial class SecretLexerGenerated : ILexer
 {
 private const int YY_F = -1;
 private const int YY_NO_STATE = -1;
@@ -38,25 +36,25 @@ public SecretLexerGenerated(IBuffer buffer) : this()
     {
         throw new System.ApplicationException("Error: Bad lexer buffer.");
     }
-  yy_buffer = buffer;
-  yy_eof_pos = yy_buffer.Length;
+  this.yy_buffer = buffer;
+  this.yy_eof_pos = this.yy_buffer.Length;
   }
 
 public SecretLexerGenerated(IBuffer buffer, int startOffset, int endOffset) : this(buffer)
   {
-  yy_buffer_index = startOffset;
-  yy_buffer_start = startOffset;
-  yy_buffer_end = startOffset;
-  yy_eof_pos = endOffset + 1;
+  this.yy_buffer_index = startOffset;
+  this.yy_buffer_start = startOffset;
+  this.yy_buffer_end = startOffset;
+  this.yy_eof_pos = endOffset + 1;
   }
 
 private SecretLexerGenerated()
   {
-  yy_buffer_index = 0;
-  yy_buffer_start = 0;
-  yy_buffer_end = 0;
-  yy_at_bol = true;
-  yy_lexical_state = YYINITIAL;
+  this.yy_buffer_index = 0;
+  this.yy_buffer_start = 0;
+  this.yy_buffer_end = 0;
+  this.yy_at_bol = true;
+  this.yy_lexical_state = YYINITIAL;
   }
 
 protected const int URISTRING = 1;
@@ -72,17 +70,17 @@ private static int[] yy_state_dtrans = new int[]
   };
 private void yybegin (int state)
   {
-  yy_lexical_state = state;
+  this.yy_lexical_state = state;
   }
 
 private void yy_move_end ()
   {
-  if (yy_buffer_end > yy_buffer_start && 
-      '\n' == yy_buffer[yy_buffer_end-1])
-    yy_buffer_end--;
-  if (yy_buffer_end > yy_buffer_start &&
-      '\r' == yy_buffer[yy_buffer_end-1])
-    yy_buffer_end--;
+  if (this.yy_buffer_end > this.yy_buffer_start && 
+      '\n' == this.yy_buffer[this.yy_buffer_end-1])
+    this.yy_buffer_end--;
+  if (this.yy_buffer_end > this.yy_buffer_start &&
+      '\r' == this.yy_buffer[this.yy_buffer_end-1])
+    this.yy_buffer_end--;
   }
 private static bool yy_isnewline (char c)
   {
@@ -90,11 +88,11 @@ private static bool yy_isnewline (char c)
   }
 internal string yytext()
   {
-  return  yy_buffer.GetText(new TextRange(yy_buffer_start, yy_buffer_end));
+  return  this.yy_buffer.GetText(new TextRange(this.yy_buffer_start, this.yy_buffer_end));
   }
 private int yylength ()
   {
-  return yy_buffer_end - yy_buffer_start;
+  return this.yy_buffer_end - this.yy_buffer_start;
   }
 private const int YY_E_INTERNAL = 0;
 private const int YY_E_MATCH = 1;
@@ -9965,34 +9963,34 @@ public TokenNodeType _locateToken()
   {
   int yy_lookahead;
   int yy_anchor = YY_NO_ANCHOR;
-  int yy_state = yy_state_dtrans[yy_lexical_state];
+  int yy_state = yy_state_dtrans[this.yy_lexical_state];
   int yy_next_state = YY_NO_STATE;
   int yy_last_accept_state = YY_NO_STATE;
   bool yy_initial = true;
   int yy_this_accept;
 
-  yy_buffer_start = yy_buffer_index;
+  this.yy_buffer_start = this.yy_buffer_index;
   yy_this_accept = yy_acpt[yy_state];
   if (YY_NOT_ACCEPT != yy_this_accept)
     {
     yy_last_accept_state = yy_state;
-    yy_buffer_end = yy_buffer_index;
+    this.yy_buffer_end = this.yy_buffer_index;
     }
 
   while (true)
     {
-    if (yy_initial && yy_at_bol)
+    if (yy_initial && this.yy_at_bol)
       yy_lookahead = YY_BOL;
     else
       {
-      yy_lookahead = (yy_buffer_index >= yy_eof_pos) ? YY_EOF : yy_buffer[yy_buffer_index++]; // inline yy_advance
+      yy_lookahead = (this.yy_buffer_index >= this.yy_eof_pos) ? YY_EOF : this.yy_buffer[this.yy_buffer_index++]; // inline yy_advance
       }
     yy_next_state = yy_nxt[yy_rmap[yy_state],yy_cmap[yy_lookahead]];
 
     if (YY_EOF == yy_lookahead && yy_initial)
       {
  
-  currTokenType = null; return currTokenType;
+  this.currTokenType = null; return this.currTokenType;
 
       }
     if (YY_F != yy_next_state)
@@ -10003,7 +10001,7 @@ public TokenNodeType _locateToken()
       if (YY_NOT_ACCEPT != yy_this_accept)
         {
         yy_last_accept_state = yy_state;
-        yy_buffer_end = yy_buffer_index;
+        this.yy_buffer_end = this.yy_buffer_index;
         }
       }
     else
@@ -10017,14 +10015,14 @@ public TokenNodeType _locateToken()
         yy_anchor = yy_acpt[yy_last_accept_state];
         if (0 != (YY_END & yy_anchor))
           {
-          yy_move_end();
+          this.yy_move_end();
           }
-        yy_buffer_index = yy_buffer_end; // inlined yy_to_mark()
-        yy_at_bol = (yy_buffer_end > yy_buffer_start) && yy_isnewline(yy_buffer[yy_buffer_end-1]);
+        this.yy_buffer_index = this.yy_buffer_end; // inlined yy_to_mark()
+        this.yy_at_bol = (this.yy_buffer_end > this.yy_buffer_start) && yy_isnewline(this.yy_buffer[this.yy_buffer_end-1]);
         if (yy_last_accept_state < 0)
           {
           if (yy_last_accept_state < 237)
-            yy_error(YY_E_INTERNAL, false);
+            this.yy_error(YY_E_INTERNAL, false);
           }
         else
           {
@@ -10034,485 +10032,485 @@ public TokenNodeType _locateToken()
               case 1:
                 break;
               case 2:
-                { yybegin(YYINITIAL); return makeToken(SecretTokenType.BAD_CHARACTER); }
+                { this.yybegin(YYINITIAL); return this.makeToken(SecretTokenType.BAD_CHARACTER); }
               case 3:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 4:
-                { currTokenType = makeToken(SecretTokenType.A_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.A_KEYWORD); return this.currTokenType; }
               case 5:
-                { currTokenType = makeToken(SecretTokenType.SAME_AS); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.SAME_AS); return this.currTokenType; }
               case 6:
-                { return makeToken(SecretTokenType.END_OF_LINE_COMMENT); }
+                { return this.makeToken(SecretTokenType.END_OF_LINE_COMMENT); }
               case 7:
-                { currTokenType = makeToken(SecretTokenType.WHITE_SPACE); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.WHITE_SPACE); return this.currTokenType; }
               case 8:
-                { yybegin(YYINITIAL); return makeToken(SecretTokenType.NEW_LINE); }
+                { this.yybegin(YYINITIAL); return this.makeToken(SecretTokenType.NEW_LINE); }
               case 9:
-                { currTokenType = makeToken(SecretTokenType.INTEGER_LITERAL); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.INTEGER_LITERAL); return this.currTokenType; }
               case 10:
-                { currTokenType = makeToken(SecretTokenType.DOT); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.DOT); return this.currTokenType; }
               case 11:
-                { yybegin(URISTRING); currTokenType = makeToken (SecretTokenType.URI_BEGIN); return currTokenType; }
+                { this.yybegin(URISTRING); this.currTokenType = this.makeToken (SecretTokenType.URI_BEGIN); return this.currTokenType; }
               case 12:
-                { yybegin(AFTERPREFIX); currTokenType = makeToken(SecretTokenType.NAMESPACE_SEPARATOR); return currTokenType; }
+                { this.yybegin(AFTERPREFIX); this.currTokenType = this.makeToken(SecretTokenType.NAMESPACE_SEPARATOR); return this.currTokenType; }
               case 13:
-                { currTokenType = makeToken(SecretTokenType.COMMA); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.COMMA); return this.currTokenType; }
               case 14:
-                { currTokenType = makeToken(SecretTokenType.SEMICOLON); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.SEMICOLON); return this.currTokenType; }
               case 15:
-                { currTokenType = makeToken(SecretTokenType.VARIABLE_IDENTIFIER); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.VARIABLE_IDENTIFIER); return this.currTokenType; }
               case 16:
-                { currTokenType = makeToken(SecretTokenType.L_BRACE); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.L_BRACE); return this.currTokenType; }
               case 17:
-                { currTokenType = makeToken(SecretTokenType.R_BRACE); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.R_BRACE); return this.currTokenType; }
               case 18:
-                { currTokenType = makeToken(SecretTokenType.L_PARENTHESES); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.L_PARENTHESES); return this.currTokenType; }
               case 19:
-                { currTokenType = makeToken(SecretTokenType.R_PARENTHESES); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.R_PARENTHESES); return this.currTokenType; }
               case 20:
-                { currTokenType = makeToken(SecretTokenType.L_BRACKET); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.L_BRACKET); return this.currTokenType; }
               case 21:
-                { currTokenType = makeToken(SecretTokenType.R_BRACKET); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.R_BRACKET); return this.currTokenType; }
               case 22:
-                { currTokenType = makeToken(SecretTokenType.EXPRESSION_TAIL_OPERATOR); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.EXPRESSION_TAIL_OPERATOR); return this.currTokenType; }
               case 23:
-                { currTokenType = makeToken(SecretTokenType.ELLIPSIS); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.ELLIPSIS); return this.currTokenType; }
               case 24:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 25:
-                { yybegin(AFTERPREFIX); currTokenType = makeToken(SecretTokenType.PREFIX_IDENTIFIER); return currTokenType; }
+                { this.yybegin(AFTERPREFIX); this.currTokenType = this.makeToken(SecretTokenType.PREFIX_IDENTIFIER); return this.currTokenType; }
               case 26:
-                { currTokenType = makeToken(SecretTokenType.IF_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.IF_KEYWORD); return this.currTokenType; }
               case 27:
-                { currTokenType = makeToken(SecretTokenType.IN_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.IN_KEYWORD); return this.currTokenType; }
               case 28:
-                { currTokenType = makeToken(SecretTokenType.OR_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.OR_KEYWORD); return this.currTokenType; }
               case 29:
-                { currTokenType = makeToken(SecretTokenType.EQUAL_TO); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.EQUAL_TO); return this.currTokenType; }
               case 30:
-                { currTokenType = makeToken(SecretTokenType.IMPLIES); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.IMPLIES); return this.currTokenType; }
               case 31:
-                { currTokenType = makeToken(SecretTokenType.BIND); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.BIND); return this.currTokenType; }
               case 32:
-                { yybegin(YYINITIAL); return makeToken(SecretTokenType.NEW_LINE); }
+                { this.yybegin(YYINITIAL); return this.makeToken(SecretTokenType.NEW_LINE); }
               case 33:
-                { currTokenType = makeToken(SecretTokenType.STRING_LITERAL); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.STRING_LITERAL); return this.currTokenType; }
               case 34:
-                { currTokenType = makeToken(SecretTokenType.NAME_KEY); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.NAME_KEY); return this.currTokenType; }
               case 35:
-                { currTokenType = makeToken(SecretTokenType.NOT_EQUAL_TO); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.NOT_EQUAL_TO); return this.currTokenType; }
               case 36:
-                { currTokenType = makeToken(SecretTokenType.DATA_SUFFIX); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.DATA_SUFFIX); return this.currTokenType; }
               case 37:
-                { currTokenType = makeToken(SecretTokenType.IS_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.IS_KEYWORD); return this.currTokenType; }
               case 38:
-                { currTokenType = makeToken(SecretTokenType.OF_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.OF_KEYWORD); return this.currTokenType; }
               case 39:
-                { currTokenType = makeToken(SecretTokenType.OUT_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.OUT_KEYWORD); return this.currTokenType; }
               case 40:
-                { currTokenType = makeToken(SecretTokenType.TRY_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.TRY_KEYWORD); return this.currTokenType; }
               case 41:
-                { currTokenType = makeToken(SecretTokenType.NOT_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.NOT_KEYWORD); return this.currTokenType; }
               case 42:
-                { currTokenType = makeToken(SecretTokenType.DOUBLE_LITERAL); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.DOUBLE_LITERAL); return this.currTokenType; }
               case 43:
-                { currTokenType = makeToken(SecretTokenType.CONNECT); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.CONNECT); return this.currTokenType; }
               case 44:
-                { currTokenType = makeToken(SecretTokenType.HAS_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.HAS_KEYWORD); return this.currTokenType; }
               case 45:
-                { currTokenType = makeToken(SecretTokenType.AXIS_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.AXIS_KEYWORD); return this.currTokenType; }
               case 46:
-                { currTokenType = makeToken(SecretTokenType.FROM_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.FROM_KEYWORD); return this.currTokenType; }
               case 47:
-                { currTokenType = makeToken(SecretTokenType.ONCE_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.ONCE_KEYWORD); return this.currTokenType; }
               case 48:
-                { currTokenType = makeToken(SecretTokenType.META_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.META_KEYWORD); return this.currTokenType; }
               case 49:
-                { currTokenType = makeToken(SecretTokenType.ELSE_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.ELSE_KEYWORD); return this.currTokenType; }
               case 50:
-                { currTokenType = makeToken(SecretTokenType.THEN_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.THEN_KEYWORD); return this.currTokenType; }
               case 51:
-                { currTokenType = makeToken(SecretTokenType.TRUE_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.TRUE_KEYWORD); return this.currTokenType; }
               case 52:
-                { currTokenType = makeToken(SecretTokenType.NULL_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.NULL_KEYWORD); return this.currTokenType; }
               case 53:
-                { currTokenType = makeToken(SecretTokenType.FALSE_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.FALSE_KEYWORD); return this.currTokenType; }
               case 54:
-                { currTokenType = makeToken(SecretTokenType.USING_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.USING_KEYWORD); return this.currTokenType; }
               case 55:
-                { currTokenType = makeToken(SecretTokenType.SELECT_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.SELECT_KEYWORD); return this.currTokenType; }
               case 56:
-                { currTokenType = makeToken(SecretTokenType.IF_NOT_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.IF_NOT_KEYWORD); return this.currTokenType; }
               case 57:
-                { currTokenType = makeToken(SecretTokenType.FOR_ALL_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.FOR_ALL_KEYWORD); return this.currTokenType; }
               case 58:
-                { currTokenType = makeToken(SecretTokenType.PREFIX_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.PREFIX_KEYWORD); return this.currTokenType; }
               case 59:
-                { currTokenType = makeToken(SecretTokenType.FUNCTOR_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.FUNCTOR_KEYWORD); return this.currTokenType; }
               case 60:
-                { currTokenType = makeToken(SecretTokenType.FOR_SOME_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.FOR_SOME_KEYWORD); return this.currTokenType; }
               case 61:
-                { currTokenType = makeToken(SecretTokenType.EXTENSION_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.EXTENSION_KEYWORD); return this.currTokenType; }
               case 62:
-                { currTokenType = makeToken(SecretTokenType.STD_PREFIX_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.STD_PREFIX_KEYWORD); return this.currTokenType; }
               case 63:
-                { currTokenType = makeToken(SecretTokenType.DEFAULT_AXIS_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.DEFAULT_AXIS_KEYWORD); return this.currTokenType; }
               case 64:
-                { yybegin(URIEND); currTokenType = makeToken (SecretTokenType.URI_STRING); return currTokenType; }
+                { this.yybegin(URIEND); this.currTokenType = this.makeToken (SecretTokenType.URI_STRING); return this.currTokenType; }
               case 65:
-                { yybegin(YYINITIAL); currTokenType = makeToken (SecretTokenType.URI_END); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken (SecretTokenType.URI_END); return this.currTokenType; }
               case 66:
-                { yybegin(YYINITIAL); return makeToken(SecretTokenType.BAD_CHARACTER); }
+                { this.yybegin(YYINITIAL); return this.makeToken(SecretTokenType.BAD_CHARACTER); }
               case 67:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 68:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.WHITE_SPACE); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.WHITE_SPACE); return this.currTokenType; }
               case 69:
-                { yybegin(URISTRING); currTokenType = makeToken (SecretTokenType.URI_BEGIN); return currTokenType; }
+                { this.yybegin(URISTRING); this.currTokenType = this.makeToken (SecretTokenType.URI_BEGIN); return this.currTokenType; }
               case 70:
                 break;
               case 71:
-                { yybegin(YYINITIAL); return makeToken(SecretTokenType.BAD_CHARACTER); }
+                { this.yybegin(YYINITIAL); return this.makeToken(SecretTokenType.BAD_CHARACTER); }
               case 72:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 73:
-                { currTokenType = makeToken(SecretTokenType.WHITE_SPACE); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.WHITE_SPACE); return this.currTokenType; }
               case 74:
-                { yybegin(YYINITIAL); return makeToken(SecretTokenType.NEW_LINE); }
+                { this.yybegin(YYINITIAL); return this.makeToken(SecretTokenType.NEW_LINE); }
               case 75:
-                { currTokenType = makeToken(SecretTokenType.INTEGER_LITERAL); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.INTEGER_LITERAL); return this.currTokenType; }
               case 76:
-                { currTokenType = makeToken(SecretTokenType.VARIABLE_IDENTIFIER); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.VARIABLE_IDENTIFIER); return this.currTokenType; }
               case 77:
-                { currTokenType = makeToken(SecretTokenType.EXPRESSION_TAIL_OPERATOR); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.EXPRESSION_TAIL_OPERATOR); return this.currTokenType; }
               case 78:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 79:
-                { currTokenType = makeToken(SecretTokenType.IF_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.IF_KEYWORD); return this.currTokenType; }
               case 80:
-                { currTokenType = makeToken(SecretTokenType.IN_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.IN_KEYWORD); return this.currTokenType; }
               case 81:
-                { currTokenType = makeToken(SecretTokenType.OR_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.OR_KEYWORD); return this.currTokenType; }
               case 82:
-                { currTokenType = makeToken(SecretTokenType.STRING_LITERAL); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.STRING_LITERAL); return this.currTokenType; }
               case 83:
-                { currTokenType = makeToken(SecretTokenType.OUT_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.OUT_KEYWORD); return this.currTokenType; }
               case 84:
-                { currTokenType = makeToken(SecretTokenType.TRY_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.TRY_KEYWORD); return this.currTokenType; }
               case 85:
-                { currTokenType = makeToken(SecretTokenType.NOT_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.NOT_KEYWORD); return this.currTokenType; }
               case 86:
-                { currTokenType = makeToken(SecretTokenType.DOUBLE_LITERAL); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.DOUBLE_LITERAL); return this.currTokenType; }
               case 87:
-                { currTokenType = makeToken(SecretTokenType.AXIS_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.AXIS_KEYWORD); return this.currTokenType; }
               case 88:
-                { currTokenType = makeToken(SecretTokenType.FROM_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.FROM_KEYWORD); return this.currTokenType; }
               case 89:
-                { currTokenType = makeToken(SecretTokenType.ONCE_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.ONCE_KEYWORD); return this.currTokenType; }
               case 90:
-                { currTokenType = makeToken(SecretTokenType.META_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.META_KEYWORD); return this.currTokenType; }
               case 91:
-                { currTokenType = makeToken(SecretTokenType.ELSE_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.ELSE_KEYWORD); return this.currTokenType; }
               case 92:
-                { currTokenType = makeToken(SecretTokenType.THEN_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.THEN_KEYWORD); return this.currTokenType; }
               case 93:
-                { currTokenType = makeToken(SecretTokenType.SELECT_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.SELECT_KEYWORD); return this.currTokenType; }
               case 94:
-                { currTokenType = makeToken(SecretTokenType.IF_NOT_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.IF_NOT_KEYWORD); return this.currTokenType; }
               case 95:
-                { currTokenType = makeToken(SecretTokenType.FUNCTOR_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.FUNCTOR_KEYWORD); return this.currTokenType; }
               case 96:
-                { yybegin(URIEND); currTokenType = makeToken (SecretTokenType.URI_STRING); return currTokenType; }
+                { this.yybegin(URIEND); this.currTokenType = this.makeToken (SecretTokenType.URI_STRING); return this.currTokenType; }
               case 97:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 98:
                 break;
               case 99:
-                { yybegin(YYINITIAL); return makeToken(SecretTokenType.BAD_CHARACTER); }
+                { this.yybegin(YYINITIAL); return this.makeToken(SecretTokenType.BAD_CHARACTER); }
               case 100:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 101:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 102:
-                { currTokenType = makeToken(SecretTokenType.IN_KEYWORD); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.IN_KEYWORD); return this.currTokenType; }
               case 103:
-                { currTokenType = makeToken(SecretTokenType.DOUBLE_LITERAL); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.DOUBLE_LITERAL); return this.currTokenType; }
               case 104:
                 break;
               case 105:
-                { yybegin(YYINITIAL); return makeToken(SecretTokenType.BAD_CHARACTER); }
+                { this.yybegin(YYINITIAL); return this.makeToken(SecretTokenType.BAD_CHARACTER); }
               case 106:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 107:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 108:
                 break;
               case 109:
-                { yybegin(YYINITIAL); return makeToken(SecretTokenType.BAD_CHARACTER); }
+                { this.yybegin(YYINITIAL); return this.makeToken(SecretTokenType.BAD_CHARACTER); }
               case 110:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 111:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 112:
                 break;
               case 113:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 114:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 115:
                 break;
               case 116:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 117:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 118:
                 break;
               case 119:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 120:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 121:
                 break;
               case 122:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 123:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 124:
                 break;
               case 125:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 126:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 127:
                 break;
               case 128:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 129:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 130:
                 break;
               case 131:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 132:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 133:
                 break;
               case 134:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 135:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 136:
                 break;
               case 137:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 138:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 139:
                 break;
               case 140:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 141:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 142:
                 break;
               case 143:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 144:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 145:
                 break;
               case 146:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 147:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 148:
                 break;
               case 149:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 150:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 151:
                 break;
               case 152:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 153:
                 break;
               case 154:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 155:
                 break;
               case 156:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 157:
                 break;
               case 158:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 159:
                 break;
               case 160:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 161:
                 break;
               case 162:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 163:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 164:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 165:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 166:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 167:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 168:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 169:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 170:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 171:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 172:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 173:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 174:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 175:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 176:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 177:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 178:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 179:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 180:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 181:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 182:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 183:
               case 184:
                 break;
               case 185:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 186:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 187:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 188:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 189:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 190:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 191:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 192:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 193:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 194:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 195:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 196:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 197:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 198:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 199:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 200:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 201:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 202:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 203:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 204:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 205:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 206:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 207:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 208:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 209:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 210:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 211:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 212:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 213:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 214:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 215:
               case 216:
                 break;
               case 217:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 218:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 219:
                 break;
               case 220:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 221:
                 break;
               case 222:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 223:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 224:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 225:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 226:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 227:
                 break;
               case 228:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 229:
                 break;
               case 230:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 231:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 232:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 233:
                 break;
               case 234:
-                { yybegin(YYINITIAL); currTokenType = makeToken(SecretTokenType.IDENTIFIER); return currTokenType; }
+                { this.yybegin(YYINITIAL); this.currTokenType = this.makeToken(SecretTokenType.IDENTIFIER); return this.currTokenType; }
               case 235:
-                { currTokenType = makeToken(SecretTokenType.LANG); return currTokenType; }
+                { this.currTokenType = this.makeToken(SecretTokenType.LANG); return this.currTokenType; }
               case 236:
                 break;
             }
           }
         yy_initial = true;
-        yy_state = yy_state_dtrans[yy_lexical_state];
+        yy_state = yy_state_dtrans[this.yy_lexical_state];
         yy_next_state = YY_NO_STATE;
         yy_last_accept_state = YY_NO_STATE;
-        yy_buffer_start = yy_buffer_index;
+        this.yy_buffer_start = this.yy_buffer_index;
         yy_this_accept = yy_acpt[yy_state];
         if (YY_NOT_ACCEPT != yy_this_accept)
           {
           yy_last_accept_state = yy_state;
-          yy_buffer_end = yy_buffer_index;
+          this.yy_buffer_end = this.yy_buffer_index;
           }
         }
       }

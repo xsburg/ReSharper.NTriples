@@ -8,7 +8,10 @@
 // </summary>
 // ***********************************************************************
 
-namespace JetBrains.ReSharper.Psi.Secret.Intentions.CreateFromUsage
+using JetBrains.ReSharper.Psi;
+using ReSharper.NTriples.Impl;
+
+namespace ReSharper.NTriples.Intentions.CreateFromUsage
 {
     [Language(typeof(SecretLanguage))]
     internal class CreateSecretPrefixIntention : ICreateSecretPrefixIntention

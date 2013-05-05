@@ -13,7 +13,7 @@ using JetBrains.ReSharper.Daemon;
 using JetBrains.ReSharper.Daemon.Impl;
 using JetBrains.ReSharper.Psi.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.CodeInspections.Highlightings
+namespace ReSharper.NTriples.CodeInspections.Highlightings
 {
     [StaticSeverityHighlighting(Severity.INFO, HighlightingGroupIds.LanguageUsage, OverlapResolve = OverlapResolveKind.NONE,
         ShowToolTipInStatusBar = false)]

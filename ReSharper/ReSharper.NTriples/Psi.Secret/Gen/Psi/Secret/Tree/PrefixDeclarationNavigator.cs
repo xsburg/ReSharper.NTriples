@@ -10,32 +10,32 @@
 using System.Collections;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
-namespace JetBrains.ReSharper.Psi.Secret.Tree {
+using ReSharper.NTriples.Impl.Tree;
+namespace ReSharper.NTriples.Tree {
   public static partial class PrefixDeclarationNavigator {
     [JetBrains.Annotations.Pure]
     [JetBrains.Annotations.CanBeNull]
     [JetBrains.Annotations.ContractAnnotation("null <= null")]
-    public static JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaration GetByPrefixName (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixName param) {
+    public static ReSharper.NTriples.Tree.IPrefixDeclaration GetByPrefixName (ReSharper.NTriples.Tree.IPrefixName param) {
       if (param == null) return null;
       TreeElement current = (TreeElement)param;
-      if (current.parent is JetBrains.ReSharper.Psi.Secret.Impl.Tree.PrefixDeclaration) {
-        if (current.parent.GetChildRole (current) != JetBrains.ReSharper.Psi.Secret.Impl.Tree.PrefixDeclaration.IDENTIFIER) return null;
+      if (current.parent is ReSharper.NTriples.Impl.Tree.PrefixDeclaration) {
+        if (current.parent.GetChildRole (current) != ReSharper.NTriples.Impl.Tree.PrefixDeclaration.IDENTIFIER) return null;
         current = current.parent;
       } else return null;
-      return (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaration) current;
+      return (ReSharper.NTriples.Tree.IPrefixDeclaration) current;
     }
     [JetBrains.Annotations.Pure]
     [JetBrains.Annotations.CanBeNull]
     [JetBrains.Annotations.ContractAnnotation("null <= null")]
-    public static JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaration GetByPrefixUri (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixUri param) {
+    public static ReSharper.NTriples.Tree.IPrefixDeclaration GetByPrefixUri (ReSharper.NTriples.Tree.IPrefixUri param) {
       if (param == null) return null;
       TreeElement current = (TreeElement)param;
-      if (current.parent is JetBrains.ReSharper.Psi.Secret.Impl.Tree.PrefixDeclaration) {
-        if (current.parent.GetChildRole (current) != JetBrains.ReSharper.Psi.Secret.Impl.Tree.PrefixDeclaration.URISTRING) return null;
+      if (current.parent is ReSharper.NTriples.Impl.Tree.PrefixDeclaration) {
+        if (current.parent.GetChildRole (current) != ReSharper.NTriples.Impl.Tree.PrefixDeclaration.URISTRING) return null;
         current = current.parent;
       } else return null;
-      return (JetBrains.ReSharper.Psi.Secret.Tree.IPrefixDeclaration) current;
+      return (ReSharper.NTriples.Tree.IPrefixDeclaration) current;
     }
   }
 }

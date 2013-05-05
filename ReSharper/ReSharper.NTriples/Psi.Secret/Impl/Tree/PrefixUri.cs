@@ -9,10 +9,10 @@
 // ***********************************************************************
 
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve;
-using JetBrains.ReSharper.Psi.Secret.Resolve;
 using JetBrains.ReSharper.Psi.Tree;
+using ReSharper.NTriples.Resolve;
 
-namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
+namespace ReSharper.NTriples.Impl.Tree
 {
     internal partial class PrefixUri
     {

@@ -12,7 +12,7 @@ using JetBrains.Application.Settings;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Settings;
 
-namespace JetBrains.ReSharper.Psi.Secret.Completion
+namespace ReSharper.NTriples.Completion
 {
     [SolutionComponent]
     public class SecretIntellisenseManager : LanguageSpecificIntellisenseManager

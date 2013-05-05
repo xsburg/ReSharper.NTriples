@@ -1,6 +1,6 @@
 ﻿using JetBrains.Util;
 
-namespace JetBrains.ReSharper.Psi.Secret.Feature.Finding.GotoMember
+namespace ReSharper.NTriples.Feature.Finding.GotoMember
 {
     internal class SecretFileMembersMap : OneToSetMap<string, SecretFileMemberData>
     {

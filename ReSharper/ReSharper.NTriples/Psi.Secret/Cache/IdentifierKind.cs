@@ -8,7 +8,7 @@
 // </summary>
 // ***********************************************************************
 
-namespace JetBrains.ReSharper.Psi.Secret.Cache
+namespace ReSharper.NTriples.Cache
 {
     public enum IdentifierKind
     {

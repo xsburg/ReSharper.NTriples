@@ -12,10 +12,10 @@ using System.Diagnostics;
 using JetBrains.Application;
 using JetBrains.ReSharper.Feature.Services.Intentions.DataProviders;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.Secret.Parsing;
-using JetBrains.ReSharper.Psi.Secret.Tree;
+using ReSharper.NTriples.Parsing;
+using ReSharper.NTriples.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.Intentions
+namespace ReSharper.NTriples.Intentions
 {
     internal class SecretPrefixInserter
     {

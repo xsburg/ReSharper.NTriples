@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve;
 using JetBrains.ReSharper.Psi.Resolve;
-using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
+using ReSharper.NTriples.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
+namespace ReSharper.NTriples.Impl.Tree
 {
     internal partial class SecretFile
     {
@@ -58,7 +59,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
             foreach (var declaration in declarations)
             {
                 string s = declaration.DeclaredName;
-                myPrefixes[s] = declaration.DeclaredElement;
+                this.myPrefixes[s] = declaration.DeclaredElement;
             }
         }
 
@@ -120,14 +121,14 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 
         public IEnumerable<IDeclaredElement> GetPrefixDeclaredElements(string name)
         {
-            if (FilePrefixesSymbolTable == null)
+            if (this.FilePrefixesSymbolTable == null)
             {
                 throw new Exception("never thrown");
             }
 
             var list = new LinkedList<IDeclaredElement>();
             IDeclaredElement declaredElement;
-            if (myPrefixes.TryGetValue(name, out declaredElement))
+            if (this.myPrefixes.TryGetValue(name, out declaredElement))
             {
                 list.AddFirst(declaredElement);
             }
@@ -137,33 +138,33 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 
         public IEnumerable<IDeclaredElement> GetAllPrefixDeclaredElements()
         {
-            if (FilePrefixesSymbolTable == null)
+            if (this.FilePrefixesSymbolTable == null)
             {
                 throw new Exception("never thrown");
             }
 
-            return myPrefixes.Select(x => x.Value);
+            return this.myPrefixes.Select(x => x.Value);
         }
 
         public IEnumerable<IDeclaredElement> GetAllUriIdentifierDeclaredElements()
         {
-            if (FileUriIdentifiersSymbolTable == null)
+            if (this.FileUriIdentifiersSymbolTable == null)
             {
                 throw new Exception("never thrown");
             }
 
-            return myUriIdentifiers.SelectMany(x => x.Value);
+            return this.myUriIdentifiers.SelectMany(x => x.Value);
         }
 
         public IList<IDeclaration> GetUriIdentifiers(string fullName)
         {
-            if (FileUriIdentifiersSymbolTable == null)
+            if (this.FileUriIdentifiersSymbolTable == null)
             {
                 throw new Exception("never thrown");
             }
 
             IList<IDeclaredElement> elements;
-            if (!myUriIdentifiers.TryGetValue(fullName, out elements))
+            if (!this.myUriIdentifiers.TryGetValue(fullName, out elements))
             {
                 return EmptyList<IDeclaration>.InstanceList;
             }

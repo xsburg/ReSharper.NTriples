@@ -4,49 +4,44 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretFindTest.cs
+//   SecretRefactoringRenameTest.cs
 // </summary>
 // ***********************************************************************
 
-using JetBrains.ReSharper.Psi.Find.Test;
-using JetBrains.ReSharper.Psi.Search;
+using System;
+using System.IO;
+using System.Linq;
+using JetBrains.ReSharper.Refactorings;
 using JetBrains.ReSharper.TestFramework;
 using NUnit.Framework;
+using ReSharper.NTriples.Impl;
 
-namespace JetBrains.ReSharper.Psi.Secret.Tests
+namespace ReSharper.NTriples.Tests
 {
     [TestFixture]
-    [Category("Find")]
-    [TestNetFramework4]
     [TestFileExtension(SecretProjectFileType.SecretExtension)]
-    public class SecretFindTest : FindUsagesTestBase
+    public class NTriplesRefactoringRenameTest : RenameTestBase
     {
         private readonly string[] files;
 
-        public SecretFindTest()
+        public NTriplesRefactoringRenameTest()
         {
-            this.files = this.GetFilesToTest();
+            this.files = this.TestDataPath2.GetDirectoryEntries("*" + SecretProjectFileType.SecretExtension, true)
+                             .Select(f => Path.GetFileNameWithoutExtension(f.FullPath))
+                             .ToArray();
         }
 
-        protected override string RelativeTestDataPath
+        protected override String RelativeTestDataPath
         {
             get
             {
-                return @"Find";
-            }
-        }
-
-        protected override SearchPattern SearchPattern
-        {
-            get
-            {
-                return SearchPattern.FIND_USAGES | SearchPattern.FIND_IMPLEMENTORS_USAGES | SearchPattern.FIND_RELATED_ELEMENTS;
+                return @"Refactoring/Rename";
             }
         }
 
         [Test]
         [TestCaseSource("files")]
-        public void TestFind(string file)
+        public void TestRefactoringRename(string file)
         {
             this.DoOneTest(file);
         }

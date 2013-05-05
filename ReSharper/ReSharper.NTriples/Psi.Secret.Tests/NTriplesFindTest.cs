@@ -4,52 +4,50 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretCompletionTest.cs
+//   SecretFindTest.cs
 // </summary>
 // ***********************************************************************
 
-using System;
-using System.IO;
-using System.Linq;
-using JetBrains.ReSharper.Feature.Services.Tests.CSharp.FeatureServices.CodeCompletion;
+using JetBrains.ReSharper.Psi.Find.Test;
+using JetBrains.ReSharper.Psi.Search;
 using JetBrains.ReSharper.TestFramework;
 using NUnit.Framework;
+using ReSharper.NTriples.Impl;
 
-namespace JetBrains.ReSharper.Psi.Secret.Tests
+namespace ReSharper.NTriples.Tests
 {
     [TestFixture]
-    [TestReferences("System.Core.dll")]
+    [Category("Find")]
+    [TestNetFramework4]
     [TestFileExtension(SecretProjectFileType.SecretExtension)]
-    public class SecretCompletionTest : CodeCompletionTestBase
+    public class NTriplesFindTest : FindUsagesTestBase
     {
         private readonly string[] files;
 
-        public SecretCompletionTest()
+        public NTriplesFindTest()
         {
-            this.files = this.TestDataPath2.GetDirectoryEntries("*" + SecretProjectFileType.SecretExtension, true)
-                             .Select(f => Path.GetFileNameWithoutExtension(f.FullPath))
-                             .ToArray();
+            this.files = this.GetFilesToTest();
         }
 
-        protected override bool ExecuteAction
+        protected override string RelativeTestDataPath
         {
             get
             {
-                return true;
+                return @"Find";
             }
         }
 
-        protected override String RelativeTestDataPath
+        protected override SearchPattern SearchPattern
         {
             get
             {
-                return @"completion";
+                return SearchPattern.FIND_USAGES | SearchPattern.FIND_IMPLEMENTORS_USAGES | SearchPattern.FIND_RELATED_ELEMENTS;
             }
         }
 
         [Test]
         [TestCaseSource("files")]
-        public void TestCompletion(string file)
+        public void TestFind(string file)
         {
             this.DoOneTest(file);
         }

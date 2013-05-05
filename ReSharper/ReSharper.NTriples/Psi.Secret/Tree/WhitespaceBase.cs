@@ -10,7 +10,7 @@
 
 using System;
 
-namespace JetBrains.ReSharper.Psi.Secret.Tree
+namespace ReSharper.NTriples.Tree
 {
     internal abstract class WhitespaceBase : SecretTokenBase, IWhitespaceNode
     {

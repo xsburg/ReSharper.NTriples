@@ -8,10 +8,11 @@
 // </summary>
 // ***********************************************************************
 
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.Secret.Tree;
+using ReSharper.NTriples.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
+namespace ReSharper.NTriples.Impl.Tree
 {
     public abstract class SecretCompositeElement : CompositeElement, ISecretTreeNode
     {

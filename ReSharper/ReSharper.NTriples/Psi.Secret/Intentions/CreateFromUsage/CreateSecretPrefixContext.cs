@@ -12,10 +12,10 @@ using System.Diagnostics;
 using JetBrains.DocumentModel;
 using JetBrains.ReSharper.Feature.Services.Intentions.CreateDeclaration;
 using JetBrains.ReSharper.Feature.Services.Intentions.DataProviders;
-using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.ReSharper.Psi.Tree;
+using ReSharper.NTriples.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.Intentions.CreateFromUsage
+namespace ReSharper.NTriples.Intentions.CreateFromUsage
 {
     public class CreateSecretPrefixContext : CreateContextBase
     {

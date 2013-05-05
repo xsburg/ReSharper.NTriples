@@ -8,10 +8,10 @@
 // </summary>
 // ***********************************************************************
 
-using JetBrains.ReSharper.Psi.Secret.Cache;
-using JetBrains.ReSharper.Psi.Secret.Tree;
+using ReSharper.NTriples.Cache;
+using ReSharper.NTriples.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
+namespace ReSharper.NTriples.Impl.Tree
 {
     internal partial class Identifier
     {

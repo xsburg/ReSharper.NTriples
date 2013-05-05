@@ -10,7 +10,7 @@
 
 using JetBrains.ReSharper.Psi.Parsing;
 
-namespace JetBrains.ReSharper.Psi.Secret.Parsing
+namespace ReSharper.NTriples.Parsing
 {
     public struct SecretLexerState
     {

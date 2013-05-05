@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Xml;
-using JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve;
-using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.Parsing;
-using JetBrains.ReSharper.Psi.Resolve;
-using JetBrains.ReSharper.Psi.Secret.Parsing;
-using JetBrains.ReSharper.Psi.Secret.Resolve;
-using JetBrains.ReSharper.Psi.Secret.Util;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Tree;
-using JetBrains.Util;
+using ReSharper.NTriples.Resolve;
+using ReSharper.NTriples.Util;
 
-namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
+namespace ReSharper.NTriples.Impl.Tree
 {
     internal partial class PrefixDeclaration : IDeclaredElement
     {
@@ -77,7 +71,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
         {
             ITreeNode prefixName = PrefixName;
             int offset = prefixName.GetNavigationRange().TextRange.StartOffset;
-            return new TreeTextRange(new TreeOffset(offset), GetDeclaredName().Length);
+            return new TreeTextRange(new TreeOffset(offset), this.GetDeclaredName().Length);
         }
 
         public IDeclaredElement DeclaredElement
@@ -87,7 +81,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree
 
         public string DeclaredName
         {
-            get { return GetDeclaredName(); }
+            get { return this.GetDeclaredName(); }
         }
 
         /*public IChameleonNode ReSync(CachingLexer cachingLexer, TreeTextRange changedRange, int insertedTextLen)

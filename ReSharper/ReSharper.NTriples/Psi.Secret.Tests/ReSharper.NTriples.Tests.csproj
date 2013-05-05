@@ -8,8 +8,8 @@
     <ProjectGuid>{0EC2B637-2639-4D41-B9CD-1E8C9E224E81}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JetBrains.ReSharper.Psi.Secret.Tests</RootNamespace>
-    <AssemblyName>JetBrains.ReSharper.Psi.Secret.Tests</AssemblyName>
+    <RootNamespace>ReSharper.NTriples.Tests</RootNamespace>
+    <AssemblyName>ReSharper.NTriples.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -48,16 +48,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions.cs" />
-    <Compile Include="SecretHighlightingTest.cs" />
-    <Compile Include="SecretCompletionTest.cs" />
-    <Compile Include="SecretFindTest.cs" />
-    <Compile Include="SecretLexerTest.cs" />
-    <Compile Include="SecretLexerTestBase.cs" />
+    <Compile Include="NTriplesHighlightingTest.cs" />
+    <Compile Include="NTriplesCompletionTest.cs" />
+    <Compile Include="NTriplesFindTest.cs" />
+    <Compile Include="NTriplesLexerTest.cs" />
+    <Compile Include="NTriplesLexerTestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SecretParserTest.cs" />
-    <Compile Include="SecretRefactoringRenameTest.cs" />
-    <None Include="temp\ReverseStringAvailabilityTests.cs" />
-    <None Include="temp\ReverseStringExecuteTests.cs" />
+    <Compile Include="NTriplesParserTest.cs" />
+    <Compile Include="NTriplesRefactoringRenameTest.cs" />
     <None Include="Test\Data\Completion\keywords-in-anonymous-identifier-before-prefix-valid-tree.n3" />
     <None Include="Test\Data\Completion\keywords-directives-valid-tree.n3" />
     <None Include="Test\Data\Completion\keywords-directives-valid-tree.n3.gold" />
@@ -162,9 +160,9 @@
     <None Include="Test\Data\Refactoring\Rename\prefix.n3.gold" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Psi.Secret\Psi.Secret.csproj">
+    <ProjectReference Include="..\Psi.Secret\ReSharper.NTriples.csproj">
       <Project>{f161d712-214a-4d7f-a610-708b057fc5f3}</Project>
-      <Name>Psi.Secret</Name>
+      <Name>ReSharper.NTriples</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

@@ -36,7 +36,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug UnitTests|x86'">
     <StartProgram>C:\Program Files %28x86%29\Microsoft Visual Studio 11.0\Common7\IDE\devenv.exe</StartProgram>
     <StartWorkingDirectory>D:\Documents\svn_netvisor\trunk\RND\ReSharper\TheSecretLanguage\Psi.Secret\bin\x86\Debug UnitTests\</StartWorkingDirectory>
-    <StartArguments>/ReSharper.Plugin JetBrains.ReSharper.Psi.Secret.dll /ReSharper.Internal D:\Documents\Dropbox\work\1Projects\ReSharper\TestClassLibrary2\TestClassLibrary2.sln</StartArguments>
+    <StartArguments>/ReSharper.Plugin ReSharper.NTriples.dll /ReSharper.Internal D:\Documents\Dropbox\work\1Projects\ReSharper\TestClassLibrary2\TestClassLibrary2.sln</StartArguments>
     <StartAction>Program</StartAction>
   </PropertyGroup>
 </Project>

@@ -14,7 +14,7 @@ using JetBrains.ReSharper.Daemon;
 using JetBrains.ReSharper.Daemon.UsageChecking;
 using JetBrains.Util;
 
-namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
+namespace ReSharper.NTriples.CodeInspections
 {
     [DaemonStage(StagesBefore = new[] { typeof(SyntaxHighlightingStage) }, StagesAfter = new[] { typeof(CollectUsagesStage) })]
     public class ContextErrorHighlightingStage : SecretDaemonStageBase

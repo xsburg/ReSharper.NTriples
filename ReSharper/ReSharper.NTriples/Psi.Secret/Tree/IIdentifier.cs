@@ -8,9 +8,9 @@
 // </summary>
 // ***********************************************************************
 
-using JetBrains.ReSharper.Psi.Secret.Cache;
+using ReSharper.NTriples.Cache;
 
-namespace JetBrains.ReSharper.Psi.Secret.Tree
+namespace ReSharper.NTriples.Tree
 {
     public partial interface IIdentifier
     {

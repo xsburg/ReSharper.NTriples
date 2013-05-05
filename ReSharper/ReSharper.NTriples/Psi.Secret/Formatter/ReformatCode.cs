@@ -20,6 +20,7 @@ using JetBrains.ReSharper.Feature.Services.CodeCleanup;
 using JetBrains.ReSharper.Psi.CodeStyle;
 using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.Util;
+using ReSharper.NTriples.Tree;
 
 namespace JetBrains.ReSharper.Psi.Secret.Formatter
 {

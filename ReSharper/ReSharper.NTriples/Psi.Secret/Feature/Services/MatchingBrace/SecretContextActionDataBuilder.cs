@@ -11,10 +11,12 @@
 using JetBrains.DocumentModel;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Feature.Services.Bulbs;
-using JetBrains.ReSharper.Psi.Secret.Tree;
+using JetBrains.ReSharper.Psi;
 using JetBrains.TextControl;
+using ReSharper.NTriples.Impl;
+using ReSharper.NTriples.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.Feature.Services.MatchingBrace
+namespace ReSharper.NTriples.Feature.Services.MatchingBrace
 {
     [ContextActionDataBuilder(typeof(ISecretContextActionDataProvider))]
     public class SecretContextActionDataBuilder : IContextActionDataBuilder

@@ -10,56 +10,56 @@
 using System.Collections;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
-namespace JetBrains.ReSharper.Psi.Secret.Tree {
+using ReSharper.NTriples.Impl.Tree;
+namespace ReSharper.NTriples.Tree {
   public static partial class FactNavigator {
     [JetBrains.Annotations.Pure]
     [JetBrains.Annotations.CanBeNull]
     [JetBrains.Annotations.ContractAnnotation("null <= null")]
-    public static JetBrains.ReSharper.Psi.Secret.Tree.IFact GetByObject (JetBrains.ReSharper.Psi.Secret.Tree.IExpression param) {
+    public static ReSharper.NTriples.Tree.IFact GetByObject (ReSharper.NTriples.Tree.IExpression param) {
       if (param == null) return null;
       TreeElement current = (TreeElement)param;
-      if (current.parent is JetBrains.ReSharper.Psi.Secret.Impl.Tree.Objects) {
-        if (current.parent.GetChildRole (current) != JetBrains.ReSharper.Psi.Secret.Impl.Tree.Objects.IDENTIFIERS) return null;
+      if (current.parent is ReSharper.NTriples.Impl.Tree.Objects) {
+        if (current.parent.GetChildRole (current) != ReSharper.NTriples.Impl.Tree.Objects.IDENTIFIERS) return null;
         current = current.parent;
       } else return null;
-      if (current.parent is JetBrains.ReSharper.Psi.Secret.Impl.Tree.Fact) {
-        if (current.parent.GetChildRole (current) != JetBrains.ReSharper.Psi.Secret.Impl.Tree.Fact.OBJECTS) return null;
+      if (current.parent is ReSharper.NTriples.Impl.Tree.Fact) {
+        if (current.parent.GetChildRole (current) != ReSharper.NTriples.Impl.Tree.Fact.OBJECTS) return null;
         current = current.parent;
       } else return null;
-      return (JetBrains.ReSharper.Psi.Secret.Tree.IFact) current;
+      return (ReSharper.NTriples.Tree.IFact) current;
     }
     [JetBrains.Annotations.Pure]
     [JetBrains.Annotations.CanBeNull]
     [JetBrains.Annotations.ContractAnnotation("null <= null")]
-    public static JetBrains.ReSharper.Psi.Secret.Tree.IFact GetByPredicate (JetBrains.ReSharper.Psi.Secret.Tree.IPredicate param) {
+    public static ReSharper.NTriples.Tree.IFact GetByPredicate (ReSharper.NTriples.Tree.IPredicate param) {
       if (param == null) return null;
       TreeElement current = (TreeElement)param;
-      if (current.parent is JetBrains.ReSharper.Psi.Secret.Impl.Tree.Fact) {
-        if (current.parent.GetChildRole (current) != JetBrains.ReSharper.Psi.Secret.Impl.Tree.Fact.PREDICATE) return null;
+      if (current.parent is ReSharper.NTriples.Impl.Tree.Fact) {
+        if (current.parent.GetChildRole (current) != ReSharper.NTriples.Impl.Tree.Fact.PREDICATE) return null;
         current = current.parent;
       } else return null;
-      return (JetBrains.ReSharper.Psi.Secret.Tree.IFact) current;
+      return (ReSharper.NTriples.Tree.IFact) current;
     }
     [JetBrains.Annotations.Pure]
     [JetBrains.Annotations.CanBeNull]
     [JetBrains.Annotations.ContractAnnotation("null <= null")]
-    public static JetBrains.ReSharper.Psi.Secret.Tree.IFact GetByPredicateIdentifier (JetBrains.ReSharper.Psi.Secret.Tree.IIdentifier param) {
+    public static ReSharper.NTriples.Tree.IFact GetByPredicateIdentifier (ReSharper.NTriples.Tree.IIdentifier param) {
       if (param == null) return null;
       TreeElement current = (TreeElement)param;
-      if (current.parent is JetBrains.ReSharper.Psi.Secret.Impl.Tree.Expression) {
-        if (current.parent.GetChildRole (current) != JetBrains.ReSharper.Psi.Secret.Impl.Tree.Expression.IDENTIFIER) return null;
+      if (current.parent is ReSharper.NTriples.Impl.Tree.Expression) {
+        if (current.parent.GetChildRole (current) != ReSharper.NTriples.Impl.Tree.Expression.IDENTIFIER) return null;
         current = current.parent;
       } else return null;
-      if (current.parent is JetBrains.ReSharper.Psi.Secret.Impl.Tree.Predicate) {
-        if (current.parent.GetChildRole (current) != JetBrains.ReSharper.Psi.Secret.Impl.Tree.Predicate.EXPRESSION) return null;
+      if (current.parent is ReSharper.NTriples.Impl.Tree.Predicate) {
+        if (current.parent.GetChildRole (current) != ReSharper.NTriples.Impl.Tree.Predicate.EXPRESSION) return null;
         current = current.parent;
       } else return null;
-      if (current.parent is JetBrains.ReSharper.Psi.Secret.Impl.Tree.Fact) {
-        if (current.parent.GetChildRole (current) != JetBrains.ReSharper.Psi.Secret.Impl.Tree.Fact.PREDICATE) return null;
+      if (current.parent is ReSharper.NTriples.Impl.Tree.Fact) {
+        if (current.parent.GetChildRole (current) != ReSharper.NTriples.Impl.Tree.Fact.PREDICATE) return null;
         current = current.parent;
       } else return null;
-      return (JetBrains.ReSharper.Psi.Secret.Tree.IFact) current;
+      return (ReSharper.NTriples.Tree.IFact) current;
     }
   }
 }

@@ -10,10 +10,11 @@
 
 using JetBrains.Annotations;
 using JetBrains.ProjectModel;
-using JetBrains.ReSharper.Psi.Secret.Tree;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Tree;
+using ReSharper.NTriples.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.Util
+namespace ReSharper.NTriples.Util
 {
     public abstract class SecretElementFactory
     {

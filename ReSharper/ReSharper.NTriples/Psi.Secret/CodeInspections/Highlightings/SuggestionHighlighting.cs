@@ -1,12 +1,9 @@
-using System.Collections.Generic;
-using System.Linq;
 using JetBrains.DocumentModel;
 using JetBrains.ReSharper.Daemon;
 using JetBrains.ReSharper.Daemon.Impl;
 using JetBrains.ReSharper.Psi.Tree;
-using JetBrains.Util;
 
-namespace JetBrains.ReSharper.Psi.Secret.CodeInspections.Highlightings
+namespace ReSharper.NTriples.CodeInspections.Highlightings
 {
     [StaticSeverityHighlighting(Severity.SUGGESTION, HighlightingGroupIds.BestPractice, OverlapResolve = OverlapResolveKind.WARNING)]
     internal class SuggestionHighlighting : IHighlightingWithRange, ICustomAttributeIdHighlighting
@@ -35,7 +32,7 @@ namespace JetBrains.ReSharper.Psi.Secret.CodeInspections.Highlightings
         {
             get
             {
-                return myMessage;
+                return this.myMessage;
             }
         }
 
@@ -57,10 +54,10 @@ namespace JetBrains.ReSharper.Psi.Secret.CodeInspections.Highlightings
 
         public DocumentRange CalculateRange()
         {
-            var sourceFile = startElement.GetSourceFile();
+            var sourceFile = this.startElement.GetSourceFile();
             if (sourceFile != null)
             {
-                var range = startElement.GetNavigationRange().JoinRight(endElement.GetNavigationRange());
+                var range = this.startElement.GetNavigationRange().JoinRight(this.endElement.GetNavigationRange());
                 return range;
             }
 

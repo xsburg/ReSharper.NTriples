@@ -1,19 +1,12 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using JetBrains.Application.Settings;
-using JetBrains.DocumentModel;
 using JetBrains.ReSharper.Daemon;
 using JetBrains.ReSharper.Daemon.Stages;
-using JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve;
-using JetBrains.ReSharper.Psi.Secret.CodeInspections.Highlightings;
-using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
-using JetBrains.ReSharper.Psi.Secret.Resolve;
-using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.ReSharper.Psi.Tree;
-using IStatement = JetBrains.ReSharper.Psi.Secret.Tree.IStatement;
+using ReSharper.NTriples.CodeInspections.Highlightings;
+using ReSharper.NTriples.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
+namespace ReSharper.NTriples.CodeInspections
 {
     internal class SuggestionHighlighterProcess : SecretIncrementalDaemonStageProcessBase
     {

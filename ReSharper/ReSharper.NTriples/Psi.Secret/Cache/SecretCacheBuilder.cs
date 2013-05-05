@@ -12,13 +12,14 @@ using System.Collections.Generic;
 using System.IO;
 using JetBrains.Annotations;
 using JetBrains.DocumentModel;
-using JetBrains.ReSharper.Psi.Secret.Impl;
-using JetBrains.ReSharper.Psi.Secret.Resolve;
-using JetBrains.ReSharper.Psi.Secret.Tree;
-using JetBrains.ReSharper.Psi.Secret.Util;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Tree;
+using ReSharper.NTriples.Impl;
+using ReSharper.NTriples.Resolve;
+using ReSharper.NTriples.Tree;
+using ReSharper.NTriples.Util;
 
-namespace JetBrains.ReSharper.Psi.Secret.Cache
+namespace ReSharper.NTriples.Cache
 {
     internal class SecretCacheBuilder : IRecursiveElementProcessor
     {

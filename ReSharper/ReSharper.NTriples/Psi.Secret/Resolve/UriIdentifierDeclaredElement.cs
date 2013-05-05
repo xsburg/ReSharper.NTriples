@@ -8,20 +8,20 @@
 // </summary>
 // ***********************************************************************
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using JetBrains.DocumentModel;
 using JetBrains.ProjectModel;
-using JetBrains.ReSharper.Psi.Secret.Cache;
-using JetBrains.ReSharper.Psi.Secret.Impl;
-using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
 using JetBrains.Util.DataStructures;
+using ReSharper.NTriples.Cache;
+using ReSharper.NTriples.Impl;
+using ReSharper.NTriples.Impl.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.Resolve
+namespace ReSharper.NTriples.Resolve
 {
     internal class UriIdentifierDeclaredElement : IDeclaredElement, IUriIdentifierDeclaredElement
     {
@@ -151,9 +151,9 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
 
         public IList<IDeclaration> GetDeclarations()
         {
-            if (parent != null)
+            if (this.parent != null)
             {
-                return parent.GetDeclarations();
+                return this.parent.GetDeclarations();
             }
 
             var result = new List<IDeclaration>();
@@ -167,9 +167,9 @@ namespace JetBrains.ReSharper.Psi.Secret.Resolve
 
         public IList<IDeclaration> GetDeclarationsIn(IPsiSourceFile sourceFile)
         {
-            if (parent != null)
+            if (this.parent != null)
             {
-                return parent.GetDeclarationsIn(sourceFile);
+                return this.parent.GetDeclarationsIn(sourceFile);
             }
 
             var declarations = GetDeclarationsIn(sourceFile, this);

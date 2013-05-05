@@ -10,24 +10,24 @@
 using System;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.Secret.Parsing;
-namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
-  internal partial class IfStatement : SecretCompositeElement, JetBrains.ReSharper.Psi.Secret.Tree.IIfStatement {
+using ReSharper.NTriples.Parsing;
+namespace ReSharper.NTriples.Impl.Tree {
+  internal partial class IfStatement : SecretCompositeElement, ReSharper.NTriples.Tree.IIfStatement {
     public const short IF_FORMULA= ChildRole.LAST + 1;
     public const short THEN_FORMULA= ChildRole.LAST + 2;
     public const short ELSE_FORMULA= ChildRole.LAST + 3;
     internal IfStatement() : base() {
     }
     public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType NodeType {
-      get { return JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.IF_STATEMENT; }
+      get { return ReSharper.NTriples.Impl.Tree.ElementType.IF_STATEMENT; }
     }
-    public override void Accept(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor visitor) {
+    public override void Accept(ReSharper.NTriples.Tree.TreeNodeVisitor visitor) {
       visitor.VisitIfStatement(this);
     }
-    public override void Accept<TContext>(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor<TContext> visitor, TContext context) {
+    public override void Accept<TContext>(ReSharper.NTriples.Tree.TreeNodeVisitor<TContext> visitor, TContext context) {
       visitor.VisitIfStatement(this, context);
     }
-    public override TReturn Accept<TContext, TReturn>(JetBrains.ReSharper.Psi.Secret.Tree.TreeNodeVisitor<TContext, TReturn> visitor, TContext context) {
+    public override TReturn Accept<TContext, TReturn>(ReSharper.NTriples.Tree.TreeNodeVisitor<TContext, TReturn> visitor, TContext context) {
       return visitor.VisitIfStatement(this, context);
     }
     private static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeDictionary<short> CHILD_ROLES = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeDictionary<short>(
@@ -39,39 +39,39 @@ namespace JetBrains.ReSharper.Psi.Secret.Impl.Tree {
       JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement current = GetNextFilteredChild(null);
       if (current == null) return 0;
       if (child.parent != this) return 0;
-      if (current.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.IF_KEYWORD) {
-        if (current.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.IF_KEYWORD) {
+      if (current.NodeType == ReSharper.NTriples.Impl.Tree.TokenType.IF_KEYWORD) {
+        if (current.NodeType == ReSharper.NTriples.Impl.Tree.TokenType.IF_KEYWORD) {
           current = GetNextFilteredChild(current);
           if (current == null) return 0;
         } else return 0;
       }
-      else if (current.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.IF_NOT_KEYWORD) {
-        if (current.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.IF_NOT_KEYWORD) {
+      else if (current.NodeType == ReSharper.NTriples.Impl.Tree.TokenType.IF_NOT_KEYWORD) {
+        if (current.NodeType == ReSharper.NTriples.Impl.Tree.TokenType.IF_NOT_KEYWORD) {
           current = GetNextFilteredChild(current);
           if (current == null) return 0;
         } else return 0;
       }
       else return 0;
-      if (current.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.FORMULA) {
+      if (current.NodeType == ReSharper.NTriples.Impl.Tree.ElementType.FORMULA) {
         if (current == child) return IF_FORMULA;
         current = GetNextFilteredChild(current);
         if (current == null) return 0;
       } else return 0;
-      if (current.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.THEN_KEYWORD) {
+      if (current.NodeType == ReSharper.NTriples.Impl.Tree.TokenType.THEN_KEYWORD) {
         current = GetNextFilteredChild(current);
         if (current == null) return 0;
       } else return 0;
-      if (current.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.FORMULA) {
+      if (current.NodeType == ReSharper.NTriples.Impl.Tree.ElementType.FORMULA) {
         if (current == child) return THEN_FORMULA;
         current = GetNextFilteredChild(current);
         if (current == null) return 0;
       } else return 0;
-      if (current.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.ELSE_KEYWORD) {
-        if (current.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.TokenType.ELSE_KEYWORD) {
+      if (current.NodeType == ReSharper.NTriples.Impl.Tree.TokenType.ELSE_KEYWORD) {
+        if (current.NodeType == ReSharper.NTriples.Impl.Tree.TokenType.ELSE_KEYWORD) {
           current = GetNextFilteredChild(current);
           if (current == null) return 0;
         } else return 0;
-        if (current.NodeType == JetBrains.ReSharper.Psi.Secret.Impl.Tree.ElementType.FORMULA) {
+        if (current.NodeType == ReSharper.NTriples.Impl.Tree.ElementType.FORMULA) {
           if (current == child) return ELSE_FORMULA;
           current = GetNextFilteredChild(current);
           if (current == null) return 0;

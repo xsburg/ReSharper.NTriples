@@ -8,18 +8,19 @@
 // </summary>
 // ***********************************************************************
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.ReSharper.Psi.Secret.Cache;
-using JetBrains.ReSharper.Psi.Secret.Resolve;
-using JetBrains.ReSharper.Psi.Secret.Tree;
-using JetBrains.ReSharper.Psi.Secret.Util;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
-using IIdentifier = JetBrains.ReSharper.Psi.Secret.Tree.IIdentifier;
+using ReSharper.NTriples.Cache;
+using ReSharper.NTriples.Resolve;
+using ReSharper.NTriples.Tree;
+using ReSharper.NTriples.Util;
+using IIdentifier = ReSharper.NTriples.Tree.IIdentifier;
+using ISecretFile = ReSharper.NTriples.Tree.ISecretFile;
 
-namespace JetBrains.ReSharper.Psi.Secret.Completion
+namespace ReSharper.NTriples.Completion
 {
     internal static class KeywordCompletionUtil
     {

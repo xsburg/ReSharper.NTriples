@@ -11,15 +11,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.DocumentModel;
-using JetBrains.ReSharper.Psi.Secret.Cache;
-using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
-using JetBrains.ReSharper.Psi.Secret.Parsing;
-using JetBrains.ReSharper.Psi.Secret.Resolve;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Tree;
-using IStatement = JetBrains.ReSharper.Psi.Secret.Tree.IStatement;
+using ReSharper.NTriples.Cache;
+using ReSharper.NTriples.Parsing;
+using ReSharper.NTriples.Resolve;
+using IStatement = ReSharper.NTriples.Tree.IStatement;
 
-namespace JetBrains.ReSharper.Psi.Secret.Impl
+namespace ReSharper.NTriples.Impl
 {
     public static class SecretIdentifierFilter
     {

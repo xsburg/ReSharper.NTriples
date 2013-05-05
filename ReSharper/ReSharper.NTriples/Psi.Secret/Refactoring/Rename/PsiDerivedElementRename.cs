@@ -15,10 +15,8 @@ using JetBrains.Application;
 using JetBrains.Application.Progress;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Feature.Services.Util;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Resolve;
-using JetBrains.ReSharper.Psi.Secret.Cache;
-using JetBrains.ReSharper.Psi.Secret.Impl.Tree;
-using JetBrains.ReSharper.Psi.Secret.Resolve;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Refactorings;
 using JetBrains.ReSharper.Refactorings.Conflicts;
@@ -28,8 +26,12 @@ using JetBrains.ReSharper.Refactorings.RenameModel;
 using JetBrains.ReSharper.Refactorings.Util;
 using JetBrains.ReSharper.Refactorings.Workflow;
 using JetBrains.Util;
+using ReSharper.NTriples.Cache;
+using ReSharper.NTriples.Impl;
+using ReSharper.NTriples.Impl.Tree;
+using ReSharper.NTriples.Resolve;
 
-namespace JetBrains.ReSharper.Psi.Secret.Refactoring.Rename
+namespace ReSharper.NTriples.Refactoring.Rename
 {
     internal class PsiDerivedElementRename : AtomicRenameBase
     {

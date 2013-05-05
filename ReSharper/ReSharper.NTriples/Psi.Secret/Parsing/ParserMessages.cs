@@ -11,7 +11,7 @@
 using System;
 using JetBrains.Util;
 
-namespace JetBrains.ReSharper.Psi.Secret.Parsing
+namespace ReSharper.NTriples.Parsing
 {
     // ReSharper disable InconsistentNaming
     public class ParserMessages

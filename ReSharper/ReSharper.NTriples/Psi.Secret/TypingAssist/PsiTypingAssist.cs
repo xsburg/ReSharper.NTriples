@@ -18,10 +18,10 @@ using JetBrains.DocumentModel;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Feature.Services.Options;
 using JetBrains.ReSharper.Feature.Services.TypingAssist;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.CodeStyle;
 using JetBrains.ReSharper.Psi.Impl.CodeStyle;
 using JetBrains.ReSharper.Psi.Parsing;
-using JetBrains.ReSharper.Psi.Secret.Parsing;
 using JetBrains.ReSharper.Psi.Services;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Text;
@@ -29,8 +29,10 @@ using JetBrains.TextControl;
 using JetBrains.TextControl.DataConstants;
 using JetBrains.TextControl.Util;
 using JetBrains.Util;
+using ReSharper.NTriples.Impl;
+using ReSharper.NTriples.Parsing;
 
-namespace JetBrains.ReSharper.Psi.Secret.TypingAssist
+namespace ReSharper.NTriples.TypingAssist
 {
     /*public abstract class CSharpTypingAssistBase : TypingAssistForCLikeLanguage<SecretLanguage, SecretCodeFormatter>, ITypingHandler
     {

@@ -9,8 +9,9 @@
 // ***********************************************************************
 
 using JetBrains.Annotations;
+using JetBrains.ReSharper.Psi;
 
-namespace JetBrains.ReSharper.Psi.Secret
+namespace ReSharper.NTriples.Impl
 {
     [LanguageDefinition(LanguageName)]
     public class SecretLanguage : KnownLanguage

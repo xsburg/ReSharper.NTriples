@@ -10,7 +10,7 @@
 
 using System.Collections.Generic;
 
-namespace JetBrains.ReSharper.Psi.Secret.Cache
+namespace ReSharper.NTriples.Cache
 {
     public class SecretFileCache
     {

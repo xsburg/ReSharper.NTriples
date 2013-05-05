@@ -19,7 +19,7 @@ using Microsoft.Build.Evaluation;
 using Microsoft.Build.Execution;
 using ILogger = Microsoft.Build.Framework.ILogger;
 
-namespace JetBrains.ReSharper.Psi.Secret.Cache
+namespace ReSharper.NTriples.Cache
 {
     [SolutionComponent]
     internal class MSBuildPropertiesCache

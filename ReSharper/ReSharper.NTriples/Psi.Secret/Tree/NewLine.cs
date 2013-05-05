@@ -8,10 +8,13 @@
 // </summary>
 // ***********************************************************************
 
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.Secret.Parsing;
+using JetBrains.ReSharper.Psi.Secret;
+using ReSharper.NTriples.Impl;
+using ReSharper.NTriples.Parsing;
 
-namespace JetBrains.ReSharper.Psi.Secret.Tree
+namespace ReSharper.NTriples.Tree
 {
     internal class NewLine : WhitespaceBase
     {

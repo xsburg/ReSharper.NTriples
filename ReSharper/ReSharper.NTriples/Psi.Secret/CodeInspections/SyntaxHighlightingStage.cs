@@ -13,13 +13,14 @@ using JetBrains.Annotations;
 using JetBrains.Application.Settings;
 using JetBrains.ReSharper.Daemon;
 using JetBrains.ReSharper.Daemon.Stages;
-using JetBrains.ReSharper.Psi.Secret.CodeInspections.Highlightings;
-using JetBrains.ReSharper.Psi.Secret.Parsing;
-using JetBrains.ReSharper.Psi.Secret.Tree;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
+using ReSharper.NTriples.CodeInspections.Highlightings;
+using ReSharper.NTriples.Parsing;
+using ReSharper.NTriples.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.CodeInspections
+namespace ReSharper.NTriples.CodeInspections
 {
     [DaemonStage]
     public class SyntaxHighlightingStage : SecretDaemonStageBase
