@@ -1,0 +1,10 @@
+﻿@prefix family: <http://ontology.org/ontology/family#>.
+@prefix relation: <http://ontology.org/ontology/relation#>.
+@prefix names: <http://ontology.org/ontology/names#>.
+@prefix info: <http://ontology.org/ontology/info#>.
+
+family:jack relation:father names:john.
+family:stan relation:father names:john.
+
+family:stan relation:hasMother nam{caret}es:mary. 
+family:stan relation:hasFather names:piter.

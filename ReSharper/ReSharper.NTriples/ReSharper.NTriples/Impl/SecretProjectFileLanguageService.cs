@@ -14,7 +14,6 @@ using JetBrains.ReSharper.Psi.Parsing;
 using JetBrains.Text;
 using JetBrains.UI.Icons;
 using ReSharper.NTriples.Resources;
-using ReSharper.NTriples.Resources.N3PluginSymbolIcons;
 
 namespace ReSharper.NTriples.Impl
 {

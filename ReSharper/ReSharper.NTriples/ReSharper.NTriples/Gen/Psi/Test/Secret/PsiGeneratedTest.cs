@@ -265,6 +265,10 @@ namespace ReSharper.NTriples.Impl.Tree
       if (!CanVisitFurther(param)) return;
       VisitElement (level, param, caller);
       {
+        ReSharper.NTriples.Tree.IFacts child = ((ReSharper.NTriples.Tree.IStatement)param).FactsElement;
+        TestFacts (level + 1, (ReSharper.NTriples.Tree.IFacts)child, "FactsElement");
+      }
+      {
         ReSharper.NTriples.Tree.ISubject child = ((ReSharper.NTriples.Tree.IStatement)param).Subject;
         TestSubject (level + 1, (ReSharper.NTriples.Tree.ISubject)child, "Subject");
       }

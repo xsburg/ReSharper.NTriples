@@ -39,6 +39,9 @@ namespace ReSharper.NTriples.Impl.Tree {
     public override short GetChildRole (JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement child) {
       return CHILD_ROLES[child.NodeType];
     }
+    public virtual ReSharper.NTriples.Tree.IFacts FactsElement {
+      get { return (ReSharper.NTriples.Tree.IFacts) FindChildByRole(FACTS); }
+    }
     public virtual ReSharper.NTriples.Tree.ISubject Subject {
       get { return (ReSharper.NTriples.Tree.ISubject) FindChildByRole(SUBJECT); }
     }
@@ -61,6 +64,48 @@ namespace ReSharper.NTriples.Impl.Tree {
         CompositeElement current = this;
     
         return new JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<ReSharper.NTriples.Tree.IFact>(current, ReSharper.NTriples.Impl.Tree.Statement.FACTS, ReSharper.NTriples.Impl.Tree.Facts.FACTS);
+      }
+    }
+    public virtual ReSharper.NTriples.Tree.IFacts SetFactsElement (ReSharper.NTriples.Tree.IFacts param)
+    {
+      using (JetBrains.Application.WriteLockCookie.Create (this.IsPhysical()))
+      {
+        TreeElement current = null, next = GetNextFilteredChild (current), result = null;
+        next = GetNextFilteredChild (current);
+        if (next.NodeType == ReSharper.NTriples.Impl.Tree.ElementType.SUBJECT) {
+          next = GetNextFilteredChild (current);
+          if (next == null) {
+            return (ReSharper.NTriples.Tree.IFacts)result;
+          } else {
+            if (next.NodeType == ReSharper.NTriples.Impl.Tree.ElementType.SUBJECT) {
+              current = next;
+            } else {
+              return (ReSharper.NTriples.Tree.IFacts)result;
+            }
+          }
+          next = GetNextFilteredChild (current);
+          if (next == null) {
+            if (param == null) return null;
+            result = current = (TreeElement)JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.AddChildAfter (this, current, (JetBrains.ReSharper.Psi.Tree.ITreeNode)param);
+          } else {
+            if (next.NodeType == ReSharper.NTriples.Impl.Tree.ElementType.FACTS) {
+              if (param != null) {
+                result = current = (TreeElement)JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.ReplaceChild(next, (JetBrains.ReSharper.Psi.Tree.ITreeNode)param);
+              } else {
+                current = GetNextFilteredChild (next);
+                JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.DeleteChild (next);
+              }
+            } else {
+              if (param == null) return null;
+              result = (TreeElement)JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.AddChildBefore(next, (JetBrains.ReSharper.Psi.Tree.ITreeNode)param);
+              current = next;
+            }
+          }
+        }
+        else if (next.NodeType == ReSharper.NTriples.Impl.Tree.ElementType.KEYWORD_STATEMENT) {
+        }
+        else return null;
+        return (ReSharper.NTriples.Tree.IFacts)result;
       }
     }
     public virtual ReSharper.NTriples.Tree.ISubject SetSubject (ReSharper.NTriples.Tree.ISubject param)

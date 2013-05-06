@@ -8,7 +8,10 @@
 // </summary>
 // ***********************************************************************
 
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using JetBrains.Annotations;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi;
@@ -148,6 +151,28 @@ namespace ReSharper.NTriples.Util
             throw new ElementFactoryException(string.Format("Cannot create file '{0}'", text));
         }
 
+        public override ISentence CreateSentence(string subject, IDictionary<string, string[]> facts)
+        {
+            var separator = facts.Count > 1 || (facts.Count == 1 && facts.First().Value.Length > 1)
+                                ? Environment.NewLine + Indent
+                                : " ";
+            var factsText = string.Join(";" + Environment.NewLine + Indent, facts.Select(this.GetFact));
+            var text = string.Format("{0}{1}{2}.", subject, separator, factsText);
+            var file = this.CreateSecretFile(text, true);
+            var sentence = file.SentencesEnumerable.First();
+            return sentence;
+        }
+
+        private string GetFact(KeyValuePair<string, string[]> pair)
+        {
+            var predicate = pair.Key;
+            var objectsText = pair.Value.Length > 1
+                                  ? string.Join(",", pair.Value.Select(o => Environment.NewLine + Indent + Indent + o))
+                                  : pair.Value[0];
+            return string.Format("{0} {1}", predicate, objectsText);
+        }
+
+        private const string Indent = "    ";
         private SecretParser CreateParser(string text)
         {
             return

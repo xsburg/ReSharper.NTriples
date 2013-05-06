@@ -8,9 +8,12 @@
 // </summary>
 // ***********************************************************************
 
+using System;
+using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi.Find.Test;
 using JetBrains.ReSharper.Psi.Search;
 using JetBrains.ReSharper.TestFramework;
+using JetBrains.TextControl;
 using NUnit.Framework;
 using ReSharper.NTriples.Impl;
 

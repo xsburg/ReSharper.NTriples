@@ -64,7 +64,7 @@
     <Compile Include="CodeInspections\ContextErrorHighlighterProcess.cs" />
     <Compile Include="CodeInspections\ContextErrorHighlightingStage.cs" />
     <Compile Include="CodeInspections\Highlightings\SecretUnresolvedReferenceHighlighting.cs" />
-    <Compile Include="CodeInspections\Highlightings\SuggestionHighlighting.cs" />
+    <Compile Include="CodeInspections\Highlightings\SuggestionRangeHighlighting.cs" />
     <Compile Include="CodeInspections\SuggestionHighlighterProcess.cs" />
     <Compile Include="CodeInspections\SuggestionHighlightingStage.cs" />
     <Compile Include="Completion\ReferencesBetterFilter.cs" />
@@ -115,6 +115,8 @@
     <Compile Include="Intentions\CreateFromUsage\SecretIntentionResult.cs" />
     <Compile Include="Intentions\CreateFromUsage\SecretIntentionResultBehavior.cs" />
     <Compile Include="Intentions\CreateFromUsage\SecretPrefixBuilder.cs" />
+    <Compile Include="Intentions\QuickFix\FactsSimplificationQuickFix.cs" />
+    <Compile Include="Intentions\QuickFix\StatementsSimplificationQuickFix.cs" />
     <Compile Include="Intentions\SecretIntentionsUtil.cs" />
     <Compile Include="Intentions\SecretPrefixInserter.cs" />
     <Compile Include="Refactoring\Rename\PsiAtomicRename.cs" />

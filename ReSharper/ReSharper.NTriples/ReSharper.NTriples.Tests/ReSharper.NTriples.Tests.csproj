@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions.cs" />
+    <Compile Include="FactsSimplificationQuickFixTest.cs" />
     <Compile Include="NTriplesHighlightingTest.cs" />
     <Compile Include="NTriplesCompletionTest.cs" />
     <Compile Include="NTriplesFindTest.cs" />
@@ -56,6 +57,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NTriplesParserTest.cs" />
     <Compile Include="NTriplesRefactoringRenameTest.cs" />
+    <Compile Include="StatementSimplificationQuickFixAvailabilityTest.cs" />
+    <Compile Include="StatementsSimplificationQuickFixTest.cs" />
     <None Include="Test\Data\Completion\keywords-in-anonymous-identifier-before-prefix-valid-tree.n3" />
     <None Include="Test\Data\Completion\keywords-directives-valid-tree.n3" />
     <None Include="Test\Data\Completion\keywords-directives-valid-tree.n3.gold" />
@@ -92,6 +95,12 @@
     <None Include="Test\Data\Find\prefix.n3" />
     <None Include="Test\Data\Highlighting\unresolvedPrefix.n3" />
     <None Include="Test\Data\Highlighting\unresolvedPrefix.n3.gold" />
+    <None Include="Test\Data\Intentions\QuickFixes\FactsSimplification\factsSimplification.n3" />
+    <None Include="Test\Data\Intentions\QuickFixes\FactsSimplification\factsSimplification.n3.gold" />
+    <None Include="Test\Data\Intentions\QuickFixes\StatementsSimplification\statementsSimplification-facts.n3" />
+    <None Include="Test\Data\Intentions\QuickFixes\StatementsSimplification\statementsSimplification-facts.n3.gold" />
+    <None Include="Test\Data\Intentions\QuickFixes\StatementsSimplification\statementsSimplification-statements.n3" />
+    <None Include="Test\Data\Intentions\QuickFixes\StatementsSimplification\statementsSimplification-statements.n3.gold" />
     <None Include="Test\Data\Lexing\comment.n3" />
     <None Include="Test\Data\Lexing\comment.n3.gold" />
     <None Include="Test\Data\Lexing\complex-test-1.n3.gold" />
@@ -160,7 +169,7 @@
     <None Include="Test\Data\Refactoring\Rename\prefix.n3.gold" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Psi.Secret\ReSharper.NTriples.csproj">
+    <ProjectReference Include="..\ReSharper.NTriples\ReSharper.NTriples.csproj">
       <Project>{f161d712-214a-4d7f-a610-708b057fc5f3}</Project>
       <Name>ReSharper.NTriples</Name>
     </ProjectReference>
