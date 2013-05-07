@@ -1,0 +1,9 @@
+# ${SHOW_SIGNATURES:false}
+# ${CASE_SENSITIVE_COMPLETION:false}
+# ${COMPLETION_TYPE:Auto}
+
+@prefix family: <http://ontology:org/ontology#family>.
+@prefix relation: <http://ontology:org/ontology#relation>.
+@prefix invalid: <http://ontology:org/ontology#invalid>.
+i{caret}
+family:stan a asd:asd.

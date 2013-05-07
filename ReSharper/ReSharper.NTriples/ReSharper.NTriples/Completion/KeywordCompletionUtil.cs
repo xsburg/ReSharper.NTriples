@@ -29,67 +29,75 @@ namespace ReSharper.NTriples.Completion
         public static IEnumerable<string> GetAplicableKeywords(ISecretFile file, TreeTextRange referenceRange, SecretCodeCompletionContext context)
         {
             var list = new List<string>();
-            var token = file.FindNodeAt(referenceRange);
-            if (token == null)
+            var node = file.FindNodeAt(referenceRange);
+            if (node == null)
             {
                 return list;
             }
 
-            var references = file.FindReferencesAt(referenceRange);
-
-            if (references.Length == 0 && token.Parent is ISentences && token.Parent.Parent is ISecretFile)
+            var isTopLevel = IsTopLevel(node);
+            var kind = GetKind(node);
+            if (isTopLevel && (kind == IdentifierKind.Subject || kind == IdentifierKind.Other))
             {
                 list.AddRange(DirectiveKeywords);
                 list.AddRange(MetaKeywords);
             }
-            else if (references.OfType<SecretPrefixReference>().Any() || context.ReparsedContext.Reference is SecretPrefixReference)
+
+            if (kind == IdentifierKind.Object)
             {
-                IdentifierKind kind;
-                IIdentifier identifier;
-                if (token.Parent is IAnonymousIdentifier)
+                list.AddRange(ObjectLiteralKeywords);
+            }
+            else if (kind == IdentifierKind.Predicate)
+            {
+                var isOfExpression = node.Parent as IIsOfExpression;
+                if (isOfExpression != null && isOfExpression.IsKeyword != null && isOfExpression.Expression != null)
                 {
-                    kind = IdentifierKind.Predicate;
-                }
-                else if ((identifier = token.GetParent<IIdentifier>(2) as IIdentifier) != null)
-                {
-                    kind = identifier.GetKind();
+                    // is-of identifier continuation
+                    list.Add(OfPredicateKeyword);
                 }
                 else
                 {
-                    if (token.Parent is IObjects || HasPrevSibling<IPredicate>(token))
-                    {
-                        kind = IdentifierKind.Object;
-                    }
-                    else if (token.Parent is IFacts || token.Parent is IIsOfExpression || HasPrevSibling<ISubject>(token))
-                    {
-                        kind = IdentifierKind.Predicate;
-                    }
-                    else
-                    {
-                        return EmptyList<string>.InstanceList;
-                    }
-                }
-
-                if (kind == IdentifierKind.Object)
-                {
-                    list.AddRange(ObjectLiteralKeywords);
-                }
-                else if (kind == IdentifierKind.Predicate)
-                {
-                    var isOfExpression = token.Parent as IIsOfExpression;
-                    if (isOfExpression != null && isOfExpression.IsKeyword != null && isOfExpression.Expression != null)
-                    {
-                        // is-of identifier continuation
-                        list.Add(OfPredicateKeyword);
-                    }
-                    else
-                    {
-                        list.AddRange(PredicateKeywords);
-                    }
+                    list.AddRange(PredicateKeywords);
                 }
             }
 
+            //MessageBox.ShowInfo(string.Format("{0}, {1}", isTopLevel, kind));
             return list;
+        }
+
+        private static IdentifierKind GetKind(ITreeNode node)
+        {
+            var kind = IdentifierKind.Other;
+
+            IIdentifier identifier;
+            if (node.Parent is IAnonymousIdentifier)
+            {
+                kind = IdentifierKind.Predicate;
+            }
+            else if ((identifier = node.GetParent<IIdentifier>(3) as IIdentifier) != null)
+            {
+                kind = identifier.GetKind();
+            }
+            else
+            {
+                if (node.Parent is IObjects || HasPrevSibling<IPredicate>(node)) // that is wrong!
+                {
+                    kind = IdentifierKind.Object;
+                }
+                else if (node.Parent is IFacts || node.Parent is IFact || node.Parent is IIsOfExpression || HasPrevSibling<ISubject>(node))
+                {
+                    kind = IdentifierKind.Predicate;
+                }
+            }
+
+            return kind;
+        }
+
+        private static bool IsTopLevel(ITreeNode node)
+        {
+            var ai = node.GetContainingNode<IAnonymousIdentifier>();
+            var f = node.GetContainingNode<IFormula>();
+            return ai == null && f == null;
         }
 
         private static bool HasPrevSibling<T>(ITreeNode node) where T : ITreeNode
@@ -135,11 +143,16 @@ namespace ReSharper.NTriples.Completion
 
         private static readonly string[] MetaKeywords = new[]
             {
-                "in",
                 "@for",
+                "@in",
+                "@for",
+                "@out",
+                "@axis",
+                "@meta",
                 "out",
+                "in",
                 "axis",
-                "meta"
+                "meta",
             };
     }
 }

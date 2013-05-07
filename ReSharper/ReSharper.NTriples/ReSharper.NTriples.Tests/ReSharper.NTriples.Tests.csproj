@@ -59,6 +59,7 @@
     <Compile Include="NTriplesRefactoringRenameTest.cs" />
     <Compile Include="StatementSimplificationQuickFixAvailabilityTest.cs" />
     <Compile Include="StatementsSimplificationQuickFixTest.cs" />
+    <None Include="Test\Data\Completion\typing-prefix-or-global-keyword.n3" />
     <None Include="Test\Data\Completion\keywords-in-anonymous-identifier-before-prefix-valid-tree.n3" />
     <None Include="Test\Data\Completion\keywords-directives-valid-tree.n3" />
     <None Include="Test\Data\Completion\keywords-directives-valid-tree.n3.gold" />
