@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="ReSharper NTriples Language Support" Language="1033" Version="1.0.0.0"
+  <?include Variables.wxi?>
+	<Product Id="*" Name="ReSharper NTriples Language Support" Language="1033" Version="$(var.ProductVersion)"
            Manufacturer="Stephan Burguchev" UpgradeCode="d597582f-423b-4008-bfd6-3c7b4882a70e">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perUser" />
 

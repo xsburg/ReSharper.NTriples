@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://nant.sourceforge.net/nightly/2011-05-08-0.91/nant.xsd"
+         name="common-targets.include">
+  <target name="update-project-version" description="Take a project version from TeamCity, SVN or leave a predefined one">
+    <if test="${environment::variable-exists('BUILD_NUMBER')}">
+      <!-- take version from TeamCity environment -->
+      <property name="project.version" value="${environment::get-variable('BUILD_NUMBER')}" />
+      <regex pattern="^(?'project_version_major'\d+)\.(?'project_version_minor'\d+)\.(?'project_version_build'\d+)\.(?'project_version_revision'\d+)(?'project_version_release_code'.*)$" input="${project.version}" failonerror="false" />
+      <if test="${property::exists('project_version_major')}">
+        <property name="project.version.major" value="${project_version_major}" />
+        <property name="project.version.minor" value="${project_version_minor}" />
+        <property name="project.version.build" value="${project_version_build}" />
+        <property name="project.version.revision" value="${project_version_revision}" />
+        <property name="project.version.release_code" value="${project_version_release_code}" />
+      </if>
+    </if>
+    <if test="${not environment::variable-exists('BUILD_NUMBER') and svn.enable}">
+      <!-- take version from SVN -->
+      <call target="svn-get-revision" />
+    </if>
+  </target>
+
+  <target name="svn-get-revision">
+    <exec program="svn.exe"
+          commandline="log --xml --limit 1 --trust-server-cert --no-auth-cache --non-interactive --username ${svn.username} --password ${svn.password}"
+          output="_revision.xml" />
+    <xmlpeek file="_revision.xml"
+             xpath="/log/logentry/@revision"
+             property="svn.revision" />
+    <delete file="_revision.xml" />
+    <echo message="Using Subversion revision number: ${svn.revision}" />
+    <property name="project.version.revision" value="${svn.revision}" />
+    <property name="project.version"
+              value="${project.version.major}.${project.version.minor}.${project.version.build}.${project.version.revision}${project.version.release_code}" />
+  </target>
+  
+  <script language="C#" prefix="util">
+    <code>
+      <![CDATA[
+        [Function("generateGuid")]
+        public static string GUIDGen(  ) {
+            return Guid.NewGuid().ToString("D").ToUpper();
+        }
+       ]]>
+    </code>
+  </script>
+</project>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://nant.sourceforge.net/nightly/2011-05-08-0.91/nant.xsd"
+         name="ReSharper.NTriples" default="build">
+
+  <include buildfile="properties.include" />
+  <include buildfile="common-targets.include" />
+  
+  <property name="solution.name" value="ReSharper.NTriples" />
+
+  <target name="build" description="Builds the binaries for the current configuration">
+    <echo message="Building version ${project.version}" />
+    <echo message="Building platform ${project.platform}" />
+    <call target="set-version" />
+    
+    <msbuild project="src\${solution.name}\${solution.name}.sln" target="Build" verbosity="minimal">
+      <property name="Configuration" value="${project.config}" />
+      <property name="Platform" value="${project.platform}" />
+    </msbuild>
+    
+    <property name="project.out" value="bin\${project.platform}\${project.config}" />
+    <mkdir dir="${dir.build}" failonerror="false" />
+    <!-- copy build output -->
+    <copy todir="${dir.build}" overwrite="true">
+      <fileset basedir="src\${solution.name}\${solution.name}.Installer\bin\${project.config}" failonempty="true">
+        <include name="*.msi" />
+        <include name="*.wixpdb" />
+      </fileset>
+    </copy>
+    <copy todir="${dir.build}" overwrite="true">
+      <fileset basedir="src\${solution.name}\${solution.name}.Tests\${project.out}" failonempty="true">
+        <include name="ReSharper.NTriples*.dll" />
+        <include name="ReSharper.NTriples*.pdb" />
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="clean">
+    <msbuild project="src\ReSharper.NTriples\ReSharper.NTriples.sln" target="Clean" verbosity="minimal">
+      <property name="Configuration" value="${project.config}" />
+      <property name="Platform" value="${project.platform}" />
+    </msbuild>
+    <delete failonerror="false" includeemptydirs="false">
+      <fileset basedir="${dir.build}">
+        <include name="**/*"/>
+      </fileset>
+    </delete>
+  </target>
+  
+  <target name="set-version">
+    <update-assembly-info>
+      <fileset>
+        <include name="src/ReSharper.NTriples/ReSharper.NTriples/**/AssemblyInfo.*" />
+      </fileset>
+      <attributes>
+        <attribute name="AssemblyCompany" value="${company.fullname}" />
+        <attribute name="AssemblyProduct" value="${project.name}" />
+        <attribute name="AssemblyCopyright" value="${company.copyright}" />
+        <attribute name="AssemblyVersion" value="${project.version}" />
+        <attribute name="AssemblyFileVersion" value="${project.version}" />
+        <attribute name="AssemblyInformationalVersion" value="${project.version}" />
+      </attributes>
+    </update-assembly-info>
+    
+    <copy file="src/ReSharper.NTriples/ReSharper.NTriples.Installer/Variables.wxi.template" tofile="src/ReSharper.NTriples/ReSharper.NTriples.Installer/Variables.wxi" overwrite="true">
+      <filterchain>
+        <replacetokens>
+          <token key="ProductVersionValue" value="${project.version}" />
+        </replacetokens>
+        <tabstospaces />
+      </filterchain>
+    </copy>
+  </target>
+</project>

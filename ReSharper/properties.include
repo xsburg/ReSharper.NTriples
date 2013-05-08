@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://nant.sourceforge.net/nightly/2011-05-08-0.91/nant.xsd" name="properties.include">
+  <!-- global framework settings -->
+  <property name="target.framework" value="${framework::get-target-framework()}" />
+  <property name="framework.assembly.dir" value="${framework::get-assembly-directory(target.framework)}" />
+  <property name="language.default" value="ru-RU" overwrite="false" />
+  <!-- directories -->
+  <property name="dir.build" value="${path::get-full-path('build')}" overwrite="false" />
+  <property name="dir.packages" value="${path::get-full-path('packages')}" overwrite="false" />
+  <!-- company -->
+  <property name="company.name" value="" overwrite="false" />
+  <property name="company.website" value="http://sburg.net" overwrite="false" />
+  <property name="company.fullname" value="Stephan Burguchev" overwrite="false" />
+  <property name="company.copyright" value="Copyright © Stephan Burguchev 2013" overwrite="false" />
+  <!-- svn settings -->
+  <property name="svn.enable" value="false" overwrite="false" />
+  <property name="svn.username" value="" overwrite="false" />
+  <property name="svn.password" value="" overwrite="false" />
+  <!-- project name -->
+  <property name="project.name" value="ReSharper NTriples Language Support" overwrite="false" />
+  <!-- project settings -->
+  <property name="project.platform" value="x86" overwrite="false" />
+  <property name="project.config" value="release" overwrite="false" />
+  <!-- project version -->
+  <property name="project.version.major" value="1" overwrite="false" />
+  <property name="project.version.minor" value="0" overwrite="false" />
+  <property name="project.version.build" value="0" overwrite="false" />
+  <property name="project.version.revision" value="0" overwrite="false" />
+  <property name="project.version.release_code" value="" overwrite="false" />
+  <property name="project.version" value="1.0.0.0" overwrite="false" />
+</project>

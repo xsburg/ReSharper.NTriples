@@ -1,4 +1,4 @@
-// ***********************************************************************
+﻿// ***********************************************************************
 // <author>Stephan B</author>
 // <copyright company="Comindware">
 //   Copyright (c) Comindware 2010-2013. All rights reserved.
@@ -20,8 +20,8 @@ using JetBrains.Application.PluginSupport;
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Stephan Burguchev")]
-[assembly: AssemblyProduct("ReSharper NTriples Plugin")]
-[assembly: AssemblyCopyright("Copyright © Stephan Burguchev, 2013")]
+[assembly: AssemblyProduct("ReSharper NTriples Language Support")]
+[assembly: AssemblyCopyright("Copyright © Stephan Burguchev 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: AssemblyVersion("1.0.0.0")]

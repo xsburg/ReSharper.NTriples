@@ -31,6 +31,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="n3_icon_large.ico" />
+    <Content Include="Variables.wxi" />
+    <Content Include="Variables.wxi.template" />
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <!--
