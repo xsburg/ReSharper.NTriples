@@ -23,7 +23,8 @@
     
     <property name="project.out" value="bin\${project.platform}\${project.config}" />
     <mkdir dir="${dir.build}" failonerror="false" />
-    <!-- copy build output -->
+    
+    <!-- build output copy -->
     <copy todir="${dir.build}" overwrite="true">
       <fileset basedir="src\${solution.name}\${solution.name}.Installer\bin\${project.config}" failonempty="true">
         <include name="*.msi" />
@@ -31,9 +32,15 @@
       </fileset>
     </copy>
     <copy todir="${dir.build}" overwrite="true">
+      <fileset basedir="src\${solution.name}\${solution.name}\${project.out}" failonempty="true">
+        <include name="ReSharper.NTriples.dll" />
+        <include name="ReSharper.NTriples.pdb" />
+      </fileset>
+    </copy>
+    <copy todir="${dir.build}" overwrite="true">
       <fileset basedir="src\${solution.name}\${solution.name}.Tests\${project.out}" failonempty="true">
-        <include name="ReSharper.NTriples*.dll" />
-        <include name="ReSharper.NTriples*.pdb" />
+        <include name="ReSharper.NTriples.Tests.dll" />
+        <include name="ReSharper.NTriples.Tests.pdb" />
       </fileset>
     </copy>
   </target>

@@ -36,9 +36,10 @@ set-version:
   [msbuild]   ReSharper.NTriples -> D:\Documents\svn_netvisor\trunk\RND\ReSharper\src\ReSharper.NTriples\ReSharper.NTriples\bin\x86\Release UnitTests\ReSharper.NTriples.dll
   [msbuild]   ReSharper.NTriples.Tests -> D:\Documents\svn_netvisor\trunk\RND\ReSharper\src\ReSharper.NTriples\ReSharper.NTriples.Tests\bin\x86\Release\ReSharper.NTriples.Tests.dll
      [copy] Copying 2 files to 'D:\Documents\svn_netvisor\trunk\RND\ReSharper\build'.
-     [copy] Copying 4 files to 'D:\Documents\svn_netvisor\trunk\RND\ReSharper\build'.
+     [copy] Copying 2 files to 'D:\Documents\svn_netvisor\trunk\RND\ReSharper\build'.
+     [copy] Copying 2 files to 'D:\Documents\svn_netvisor\trunk\RND\ReSharper\build'.
 
 BUILD SUCCEEDED
 
-Total time: 16.6 seconds.
+Total time: 14.5 seconds.
 
