@@ -16,6 +16,10 @@
       <property name="Configuration" value="${project.config}" />
       <property name="Platform" value="${project.platform}" />
     </msbuild>
+    <msbuild project="src\${solution.name}\${solution.name}.sln" target="Build" verbosity="minimal">
+      <property name="Configuration" value="Release UnitTests" />
+      <property name="Platform" value="${project.platform}" />
+    </msbuild>
     
     <property name="project.out" value="bin\${project.platform}\${project.config}" />
     <mkdir dir="${dir.build}" failonerror="false" />
