@@ -92,6 +92,7 @@
     <None Include="Test\Data\Completion\prefix-valid-tree.n3" />
     <None Include="Test\Data\Completion\prefix-valid-tree.n3.gold" />
     <None Include="Test\Data\Completion\prefixUri-valid-tree.n3.gold" />
+    <None Include="Test\Data\Completion\typing-prefix-or-global-keyword.n3.gold" />
     <None Include="Test\Data\Find\localName.n3" />
     <None Include="Test\Data\Find\prefix.n3" />
     <None Include="Test\Data\Highlighting\unresolvedPrefix.n3" />

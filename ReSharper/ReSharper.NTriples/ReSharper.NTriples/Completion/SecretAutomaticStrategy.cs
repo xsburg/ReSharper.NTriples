@@ -69,12 +69,12 @@ namespace ReSharper.NTriples.Completion
 
         private static bool IsIdentBody(char c)
         {
-            return char.IsLetterOrDigit(c) || c == '_';
+            return char.IsLetterOrDigit(c) || c == '_' || c == '@';
         }
 
         private static bool IsIdentStart(char c)
         {
-            return char.IsLetter(c) || c == ':';
+            return char.IsLetter(c) || c == ':' || c == '@';
         }
     }
 }

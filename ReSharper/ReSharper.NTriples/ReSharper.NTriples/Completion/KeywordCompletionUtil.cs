@@ -24,7 +24,8 @@ namespace ReSharper.NTriples.Completion
 {
     internal static class KeywordCompletionUtil
     {
-        private const string OfPredicateKeyword = "@of";
+        private const string OfPredicateKeyword1 = "@of";
+        private const string OfPredicateKeyword2 = "of";
 
         public static IEnumerable<string> GetAplicableKeywords(ISecretFile file, TreeTextRange referenceRange, SecretCodeCompletionContext context)
         {
@@ -43,25 +44,15 @@ namespace ReSharper.NTriples.Completion
                 list.AddRange(MetaKeywords);
             }
 
-            if (kind == IdentifierKind.Object)
+            if (kind != IdentifierKind.Subject)
             {
-                list.AddRange(ObjectLiteralKeywords);
-            }
-            else if (kind == IdentifierKind.Predicate)
-            {
-                var isOfExpression = node.Parent as IIsOfExpression;
-                if (isOfExpression != null && isOfExpression.IsKeyword != null && isOfExpression.Expression != null)
-                {
-                    // is-of identifier continuation
-                    list.Add(OfPredicateKeyword);
-                }
-                else
-                {
-                    list.AddRange(PredicateKeywords);
-                }
+                list.AddRange(PredicateKeywords);
+                list.Add(OfPredicateKeyword1);
+                list.Add(OfPredicateKeyword2);
             }
 
-            //MessageBox.ShowInfo(string.Format("{0}, {1}", isTopLevel, kind));
+            list.AddRange(ObjectLiteralKeywords);
+
             return list;
         }
 
@@ -110,6 +101,12 @@ namespace ReSharper.NTriples.Completion
                     return true;
                 }
 
+                var tokenType = prevSibling.GetTokenType();
+                if (tokenType == null || !tokenType.IsWhitespace)
+                {
+                    return false;
+                }
+
                 prevSibling = prevSibling.PrevSibling;
             }
 
@@ -143,7 +140,6 @@ namespace ReSharper.NTriples.Completion
 
         private static readonly string[] MetaKeywords = new[]
             {
-                "@for",
                 "@in",
                 "@for",
                 "@out",

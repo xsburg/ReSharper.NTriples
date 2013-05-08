@@ -3,4 +3,9 @@ family
 relation
 @has
 @is
+@of
 a
+false
+null
+of
+true
