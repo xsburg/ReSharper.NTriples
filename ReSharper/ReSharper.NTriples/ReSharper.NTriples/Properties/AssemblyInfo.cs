@@ -16,11 +16,11 @@ using JetBrains.Application.PluginSupport;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("ReSharperSecretLanguage")]
-[assembly: AssemblyDescription("The Secret Language ReSharper support")]
+[assembly: AssemblyTitle("ReSharper NTriples Language Support")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Stephan Burguchev")]
-[assembly: AssemblyProduct("ReSharperSecretLanguage")]
+[assembly: AssemblyProduct("ReSharper NTriples Plugin")]
 [assembly: AssemblyCopyright("Copyright © Stephan Burguchev, 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

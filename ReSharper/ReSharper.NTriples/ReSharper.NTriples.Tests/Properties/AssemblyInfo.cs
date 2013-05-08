@@ -75,4 +75,9 @@ public class TestEnvironmentAssembly : ReSharperTestEnvironmentAssembly
     }
 }
 
+[assembly: AssemblyTitleAttribute("")]
+
 // ReSharper restore CheckNamespace
+
+
+[assembly: AssemblyTitleAttribute("")]
