@@ -95,7 +95,7 @@ namespace ReSharper.NTriples.Intentions.CreateFromUsage
             if (!string.IsNullOrEmpty(name))
             {
                 // Looking for declarations of the same name
-                var cache = this.myElement.GetSolution().GetComponent<SecretCache>();
+                var cache = this.myElement.GetSolution().GetComponent<NTriplesCache>();
                 var uris = cache.GetPrefixDeclarationSymbols(name).Select(s => s.Uri).Distinct().ToArray();
                 if (uris.Length == 0)
                 {

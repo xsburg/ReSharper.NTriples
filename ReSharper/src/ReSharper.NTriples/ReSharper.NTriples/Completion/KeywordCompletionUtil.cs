@@ -27,7 +27,7 @@ namespace ReSharper.NTriples.Completion
         private const string OfPredicateKeyword1 = "@of";
         private const string OfPredicateKeyword2 = "of";
 
-        public static IEnumerable<string> GetAplicableKeywords(ISecretFile file, TreeTextRange referenceRange, SecretCodeCompletionContext context)
+        public static IEnumerable<string> GetAplicableKeywords(ISecretFile file, TreeTextRange referenceRange, NTriplesCodeCompletionContext context)
         {
             var list = new List<string>();
             var node = file.FindNodeAt(referenceRange);

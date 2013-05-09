@@ -16,11 +16,10 @@ using ReSharper.NTriples.Tree;
 
 namespace ReSharper.NTriples.CodeInspections.Highlightings
 {
-    [StaticSeverityHighlighting(Severity.SUGGESTION, HighlightingGroupIds.BestPractice,
-        OverlapResolve = OverlapResolveKind.WARNING)]
-    public class SuggestionRangeHighlighting<TTreeElement> : IHighlightingWithRange, ICustomAttributeIdHighlighting where TTreeElement : ITreeNode
+    [StaticSeverityHighlighting(Severity.SUGGESTION, HighlightingGroupIds.BestPractice, OverlapResolve = OverlapResolveKind.WARNING)]
+    public class SuggestionRangeHighlighting<TTreeElement>
+        : IHighlightingWithRange, ICustomAttributeIdHighlighting where TTreeElement : ITreeNode
     {
-        private const string AtributeId = HighlightingAttributeIds.SUGGESTION_ATTRIBUTE;
         private readonly string myMessage;
 
         public SuggestionRangeHighlighting(TTreeElement startElement, TTreeElement endElement, string myMessage)
@@ -34,7 +33,7 @@ namespace ReSharper.NTriples.CodeInspections.Highlightings
         {
             get
             {
-                return AtributeId;
+                return HighlightingAttributeIds.SUGGESTION_ATTRIBUTE;
             }
         }
 

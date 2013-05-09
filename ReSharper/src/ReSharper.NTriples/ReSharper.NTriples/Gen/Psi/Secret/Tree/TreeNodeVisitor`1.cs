@@ -108,8 +108,8 @@ namespace ReSharper.NTriples.Tree {
     public virtual void VisitPrefixName ([JetBrains.Annotations.NotNull] ReSharper.NTriples.Tree.IPrefixName prefixNameParam, TContext context) {
       VisitNode (prefixNameParam, context);
     }
-    public virtual void VisitPrefixUri ([JetBrains.Annotations.NotNull] ReSharper.NTriples.Tree.IPrefixUri prefixUriParam, TContext context) {
-      VisitNode (prefixUriParam, context);
+    public virtual void VisitPrefixUri ([JetBrains.Annotations.NotNull] ReSharper.NTriples.Tree.IPrefixUri prefixUriParam, TContext consumer) {
+      VisitNode (prefixUriParam, consumer);
     }
     public virtual void VisitSentence ([JetBrains.Annotations.NotNull] ReSharper.NTriples.Tree.ISentence sentenceParam, TContext context) {
       VisitNode (sentenceParam, context);

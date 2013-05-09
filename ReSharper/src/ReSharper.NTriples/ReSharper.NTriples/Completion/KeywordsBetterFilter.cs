@@ -27,7 +27,7 @@ namespace ReSharper.NTriples.Completion
 
         public IEnumerable<ILookupItem> FilterItems(ICollection<ILookupItem> items)
         {
-            return items.Where(x => x is SecretKeywordLookupItem || x is TemplateLookupItem);
+            return items.Where(x => x is NTriplesKeywordLookupItem || x is TemplateLookupItem);
         }
     }
 }

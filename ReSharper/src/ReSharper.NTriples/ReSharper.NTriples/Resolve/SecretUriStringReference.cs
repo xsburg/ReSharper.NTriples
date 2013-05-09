@@ -59,7 +59,7 @@ namespace ReSharper.NTriples.Resolve
             var @namespace = uriString.GetNamespace();
             if (string.IsNullOrEmpty(@namespace))
             {
-                var cache = this.myOwner.GetSolution().GetComponent<SecretCache>();
+                var cache = this.myOwner.GetSolution().GetComponent<NTriplesCache>();
                 var psiServices = this.myOwner.GetPsiServices();
 
                 var elements = cache.GetAllUriIdentifiersInNamespace(@namespace)

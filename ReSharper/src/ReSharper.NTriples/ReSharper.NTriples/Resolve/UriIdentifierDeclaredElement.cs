@@ -132,7 +132,7 @@ namespace ReSharper.NTriples.Resolve
 
         public static HybridCollection<IPsiSourceFile> GetSourceFiles(IUriIdentifierDeclaredElement declaredElement)
         {
-            var cache = declaredElement.GetSolution().GetComponent<SecretCache>();
+            var cache = declaredElement.GetSolution().GetComponent<NTriplesCache>();
             return new HybridCollection<IPsiSourceFile>(
                 cache.GetFilesContainingUri(declaredElement.GetNamespace(), declaredElement.GetLocalName()));
         }

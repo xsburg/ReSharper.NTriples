@@ -21,7 +21,7 @@ using ReSharper.NTriples.Tree;
 
 namespace ReSharper.NTriples.CodeInspections
 {
-    internal class ContextErrorHighlighterProcess : SecretIncrementalDaemonStageProcessBase
+    internal class ContextErrorHighlighterProcess : NTriplesIncrementalDaemonStageProcessBase
     {
         public ContextErrorHighlighterProcess(IDaemonProcess daemonProcess, IContextBoundSettingsStore settingsStore)
             : base(daemonProcess, settingsStore)
@@ -43,7 +43,7 @@ namespace ReSharper.NTriples.CodeInspections
                         range,
                         prefixParam,
                         consumer,
-                        new SecretUnresolvedReferenceHighlighting<SecretPrefixReference>(
+                        new NTriplesUnresolvedReferenceHighlighting<SecretPrefixReference>(
                             prefix, prefix.PrefixReference, string.Format("Unresolved prefix '{0}'", prefix.GetText())));
                 }
             }

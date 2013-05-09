@@ -9,7 +9,7 @@ using ReSharper.NTriples.Tree;
 
 namespace ReSharper.NTriples.CodeInspections
 {
-    internal class SuggestionHighlighterProcess : SecretIncrementalDaemonStageProcessBase
+    internal class SuggestionHighlighterProcess : NTriplesIncrementalDaemonStageProcessBase
     {
         public SuggestionHighlighterProcess(IDaemonProcess daemonProcess, IContextBoundSettingsStore settingsStore)
             : base(daemonProcess, settingsStore)

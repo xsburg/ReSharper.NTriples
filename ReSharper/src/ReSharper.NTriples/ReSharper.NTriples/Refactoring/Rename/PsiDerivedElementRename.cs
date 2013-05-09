@@ -128,10 +128,10 @@ namespace ReSharper.NTriples.Refactoring.Rename
 
             psiServices.PsiManager.UpdateCaches();
 
-            SecretCache cache = null;
+            NTriplesCache cache = null;
             if (this.myDeclarations.Any())
             {
-                cache = this.myDeclarations[0].GetSolution().GetComponent<SecretCache>();
+                cache = this.myDeclarations[0].GetSolution().GetComponent<NTriplesCache>();
             }
 
             foreach (var declaration in this.myDeclarations)

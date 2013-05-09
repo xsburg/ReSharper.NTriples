@@ -56,7 +56,7 @@ namespace ReSharper.NTriples.Resolve
 
             var localName = (LocalName)this.myOwner;
             var @namespace = localName.GetNamespace();
-            var cache = this.myOwner.GetSolution().GetComponent<SecretCache>();
+            var cache = this.myOwner.GetSolution().GetComponent<NTriplesCache>();
             var psiServices = this.myOwner.GetPsiServices();
 
             var elements = cache.GetAllUriIdentifiersInNamespace(@namespace)

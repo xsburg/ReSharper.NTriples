@@ -36,11 +36,18 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="JetBrains.Platform.ReSharper.VisualStudio.v10.v11">
+      <HintPath>C:\Program Files (x86)\JetBrains\ReSharper\v7.1\SDK\Bin\JetBrains.Platform.ReSharper.VisualStudio.v10.v11.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Build" />
     <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Microsoft.VisualStudio.CoreUtility, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Text.Logic, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Text.UI.Wpf, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xaml" />
@@ -52,42 +59,45 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cache\SecretFileCache.cs" />
-    <Compile Include="Cache\ISecretSymbol.cs" />
+    <Compile Include="Cache\NTriplesFileCache.cs" />
+    <Compile Include="Cache\INTriplesSymbol.cs" />
     <Compile Include="Cache\MSBuildPropertiesCache.cs" />
-    <Compile Include="Cache\SecretCache.cs" />
-    <Compile Include="Cache\SecretCacheBuilder.cs" />
-    <Compile Include="Cache\SecretPrefixDeclarationSymbol.cs" />
-    <Compile Include="Cache\SecretUriIdentifierSymbol.cs" />
-    <Compile Include="Cache\SecretSymbolBase.cs" />
+    <Compile Include="Cache\NTriplesCache.cs" />
+    <Compile Include="Cache\NTriplesCacheBuilder.cs" />
+    <Compile Include="Cache\NTriplesPrefixDeclarationSymbol.cs" />
+    <Compile Include="Cache\NTriplesUriIdentifierSymbol.cs" />
+    <Compile Include="Cache\NTriplesSymbolBase.cs" />
     <Compile Include="Cache\IdentifierKind.cs" />
     <Compile Include="CodeInspections\ContextErrorHighlighterProcess.cs" />
     <Compile Include="CodeInspections\ContextErrorHighlightingStage.cs" />
-    <Compile Include="CodeInspections\Highlightings\SecretUnresolvedReferenceHighlighting.cs" />
+    <Compile Include="CodeInspections\Highlightings\WarningRangeHighlighting.cs" />
+    <Compile Include="CodeInspections\Highlightings\NTriplesUnresolvedReferenceHighlighting.cs" />
     <Compile Include="CodeInspections\Highlightings\SuggestionRangeHighlighting.cs" />
     <Compile Include="CodeInspections\SuggestionHighlighterProcess.cs" />
     <Compile Include="CodeInspections\SuggestionHighlightingStage.cs" />
+    <Compile Include="CodeInspections\WarningHighlighterProcess.cs" />
+    <Compile Include="CodeInspections\WarningHighlightingStage.cs" />
     <Compile Include="Completion\ReferencesBetterFilter.cs" />
-    <Compile Include="Feature\Finding\GotoMember\SecretFileMemberData.cs" />
-    <Compile Include="Feature\Finding\GotoMember\SecretFileMembersMap.cs" />
-    <Compile Include="Feature\Finding\GotoMember\SecretGotoSymbolProvider.cs" />
-    <Compile Include="Feature\Services\MatchingBrace\ISecretContextActionDataProvider.cs" />
-    <Compile Include="Feature\Services\MatchingBrace\SecretContextActionDataBuilder.cs" />
-    <Compile Include="Feature\Services\MatchingBrace\SecretContextActionDataProvider.cs" />
-    <Compile Include="Feature\Services\MatchingBrace\SecretMatchingBraceContextHighlighter.cs" />
+    <Compile Include="Feature\Finding\GotoMember\NTriplesFileMemberData.cs" />
+    <Compile Include="Feature\Finding\GotoMember\NTriplesFileMembersMap.cs" />
+    <Compile Include="Feature\Finding\GotoMember\NTriplesGotoSymbolProvider.cs" />
+    <Compile Include="Feature\Services\MatchingBrace\INTriplesContextActionDataProvider.cs" />
+    <Compile Include="Feature\Services\MatchingBrace\NTriplesContextActionDataBuilder.cs" />
+    <Compile Include="Feature\Services\MatchingBrace\NTriplesContextActionDataProvider.cs" />
+    <Compile Include="Feature\Services\MatchingBrace\NTriplesMatchingBraceContextHighlighter.cs" />
     <Compile Include="Completion\IntellisenseEnabledSettingPsi.cs" />
     <Compile Include="Completion\KeywordsBetterFilter.cs" />
-    <Compile Include="Completion\SecretAutomaticStrategy.cs" />
-    <Compile Include="Completion\SecretAutopopupEnabledSettingsKey.cs" />
-    <Compile Include="Completion\SecretCodeCompletionContextProvider.cs" />
-    <Compile Include="Completion\SecretCodeCompletionItemsProvider.cs" />
-    <Compile Include="Completion\SecretCodeCompletionKeywordsItemsProvider.cs" />
-    <Compile Include="Completion\SecretIntellisenseManager.cs" />
-    <Compile Include="Completion\SecretReparsedCompletionContext.cs" />
-    <Compile Include="Feature\Finding\GotoMember\SecretGotoFileMemberProvider.cs" />
-    <Compile Include="Feature\Services\MatchingBrace\SecretMatchingBraceProvider.cs" />
-    <Compile Include="Feature\Services\FindUsages\SecretReferenceSearcher.cs" />
-    <Compile Include="Feature\Services\FindUsages\SecretSearcherFactory.cs" />
+    <Compile Include="Completion\NTriplesAutomaticStrategy.cs" />
+    <Compile Include="Completion\NTriplesAutopopupEnabledSettingsKey.cs" />
+    <Compile Include="Completion\NTriplesCodeCompletionContextProvider.cs" />
+    <Compile Include="Completion\NTriplesCodeCompletionItemsProvider.cs" />
+    <Compile Include="Completion\NTriplesCodeCompletionKeywordsProvider.cs" />
+    <Compile Include="Completion\NTriplesIntellisenseManager.cs" />
+    <Compile Include="Completion\NTriplesReparsedCompletionContext.cs" />
+    <Compile Include="Feature\Finding\GotoMember\NTriplesGotoFileMemberProvider.cs" />
+    <Compile Include="Feature\Services\MatchingBrace\NTriplesMatchingBraceProvider.cs" />
+    <Compile Include="Feature\Services\FindUsages\NTriplesReferenceSearcher.cs" />
+    <Compile Include="Feature\Services\FindUsages\NTriplesSearcherFactory.cs" />
     <None Include="Formatter\ISecretCodeFormatterFactory.cs" />
     <None Include="Formatter\SecretCodeFormatter.cs" />
     <None Include="Formatter\SecretCodeFormatterFactory.cs" />
@@ -150,15 +160,15 @@
     <Compile Include="TypingAssist\SecretBracketMatcher.cs" />
     <Compile Include="TypingAssist\PsiTypingAssist.cs" />
     <Compile Include="CodeInspections\ErrorElementHighlightingStage.cs" />
-    <Compile Include="CodeInspections\Highlightings\SecretErrorElementHighlighting.cs" />
+    <Compile Include="CodeInspections\Highlightings\NTriplesErrorElementHighlighting.cs" />
     <Compile Include="CodeInspections\SyntaxHighlightingStage.cs" />
-    <Compile Include="CodeInspections\Highlightings\SecretSyntaxHighlighting.cs" />
-    <Compile Include="CodeInspections\SecretDaemonStageBase.cs" />
-    <Compile Include="CodeInspections\SecretDaemonStageProcessBase.cs" />
-    <Compile Include="CodeInspections\SecretIncrementalDaemonStageProcessBase.cs" />
-    <Compile Include="Completion\SecretCodeCompletionContext.cs" />
+    <Compile Include="CodeInspections\Highlightings\NTriplesSyntaxHighlighting.cs" />
+    <Compile Include="CodeInspections\NTriplesDaemonStageBase.cs" />
+    <Compile Include="CodeInspections\NTriplesDaemonStageProcessBase.cs" />
+    <Compile Include="CodeInspections\NTriplesIncrementalDaemonStageProcessBase.cs" />
+    <Compile Include="Completion\NTriplesCodeCompletionContext.cs" />
     <Compile Include="Completion\KeywordCompletionUtil.cs" />
-    <Compile Include="Completion\SecretKeywordLookupItem.cs" />
+    <Compile Include="Completion\NTriplesKeywordLookupItem.cs" />
     <Compile Include="Gen\**\*.cs" />
     <Compile Include="Impl\Tree\ChildRole.cs" />
     <Compile Include="Impl\SecretWordIndexLanguageProvider.cs" />
@@ -193,7 +203,7 @@
     <Compile Include="Tree\Whitespace.cs" />
     <Compile Include="Tree\WhitespaceBase.cs" />
     <CsLex Include="Parsing\SecretLexer.gen.lex" />
-    <ParserGen Include="Parsing\secret.psi" />
+    <ParserGen Include="Parsing\ntriples.psi" />
     <None Include="Parsing\TokenTypeGenerated.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TokenTypeGenerated.cs</LastGenOutput>
@@ -269,6 +279,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
     <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release UnitTests|AnyCPU'">
     <OutputPath>bin\Release UnitTests\</OutputPath>
@@ -287,6 +298,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(ReSharperSdkTargets)\Plugin.Targets" />

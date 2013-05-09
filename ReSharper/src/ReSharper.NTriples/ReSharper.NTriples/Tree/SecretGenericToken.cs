@@ -11,7 +11,6 @@
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Parsing;
-using JetBrains.ReSharper.Psi.Secret;
 using ReSharper.NTriples.Impl;
 
 namespace ReSharper.NTriples.Tree

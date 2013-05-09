@@ -43,7 +43,7 @@ namespace ReSharper.NTriples.Resolve
             }
             
             var psiServices = file.GetPsiServices();
-            var cache = this.TreeNode.GetSolution().GetComponent<SecretCache>();
+            var cache = this.TreeNode.GetSolution().GetComponent<NTriplesCache>();
             var uriList = cache.GetAllPrefixDeclarationSymbols().Select(s => s.Uri).Distinct().ToArray();
             var elements = uriList.Select(u => new PrefixUriDeclaredElement(file, u, psiServices));
             return ResolveUtil.CreateSymbolTable(elements, 0);

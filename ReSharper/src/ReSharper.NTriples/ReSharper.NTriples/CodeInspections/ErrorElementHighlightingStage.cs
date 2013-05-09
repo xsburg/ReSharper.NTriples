@@ -22,7 +22,7 @@ using ReSharper.NTriples.CodeInspections.Highlightings;
 namespace ReSharper.NTriples.CodeInspections
 {
     [DaemonStage(StagesBefore = new[] { typeof(LanguageSpecificDaemonStage) })]
-    public class ErrorElementHighlightingStage : SecretDaemonStageBase
+    public class ErrorElementHighlightingStage : NTriplesDaemonStageBase
     {
         public ErrorElementHighlightingStage(CodeAnnotationsCache codeAnnotationsCache)
         {
@@ -47,7 +47,7 @@ namespace ReSharper.NTriples.CodeInspections
             return ErrorStripeRequest.STRIPE_AND_ERRORS;
         }
 
-        private class KeywordHighlightingProcess : SecretIncrementalDaemonStageProcessBase
+        private class KeywordHighlightingProcess : NTriplesIncrementalDaemonStageProcessBase
         {
             public KeywordHighlightingProcess(IDaemonProcess process, IContextBoundSettingsStore settingsStore)
                 : base(process, settingsStore)
@@ -80,7 +80,7 @@ namespace ReSharper.NTriples.CodeInspections
 
             private void AddHighlighting([NotNull] IHighlightingConsumer consumer, [NotNull] ITreeNode expression)
             {
-                consumer.AddHighlighting(new SecretErrorElementHighlighting(expression), this.File);
+                consumer.AddHighlighting(new NTriplesErrorElementHighlighting(expression), this.File);
             }
         }
     }

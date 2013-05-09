@@ -17,7 +17,7 @@ using JetBrains.Util;
 namespace ReSharper.NTriples.CodeInspections
 {
     [DaemonStage(StagesBefore = new[] { typeof(SyntaxHighlightingStage) }, StagesAfter = new[] { typeof(CollectUsagesStage) })]
-    public class ContextErrorHighlightingStage : SecretDaemonStageBase
+    public class ContextErrorHighlightingStage : NTriplesDaemonStageBase
     {
         public override IEnumerable<IDaemonStageProcess> CreateProcess(
             IDaemonProcess process, IContextBoundSettingsStore settings, DaemonProcessKind processKind)

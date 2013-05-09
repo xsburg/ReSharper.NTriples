@@ -13,7 +13,6 @@ using JetBrains.Application;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Parsing;
-using JetBrains.ReSharper.Psi.Secret;
 using JetBrains.Text;
 using JetBrains.Util;
 using JetBrains.Util.DataStructures;

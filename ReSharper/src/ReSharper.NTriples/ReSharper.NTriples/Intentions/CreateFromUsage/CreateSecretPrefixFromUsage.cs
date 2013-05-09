@@ -28,7 +28,7 @@ namespace ReSharper.NTriples.Intentions.CreateFromUsage
     internal class CreateSecretPrefixFromUsage
         : CreateFromUsageActionBase<ICreateSecretPrefixIntention, SecretPrefixReference>, IQuickFix
     {
-        public CreateSecretPrefixFromUsage(SecretUnresolvedReferenceHighlighting<SecretPrefixReference> error)
+        public CreateSecretPrefixFromUsage(NTriplesUnresolvedReferenceHighlighting<SecretPrefixReference> error)
             : base(error.Reference)
         {
         }
