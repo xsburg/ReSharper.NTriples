@@ -14,10 +14,13 @@ using JetBrains.ReSharper.Daemon.Impl;
 using ReSharper.NTriples.Impl;
 using ReSharper.NTriples.Tree;
 
+[assembly: RegisterConfigurableSeverity("UnresolvedNTripletReference", null, HighlightingGroupIds.LanguageUsage,
+    "Unresolved reference", @"Unresolved language element reference", Severity.ERROR, false, Internal = true)]
+
 namespace ReSharper.NTriples.CodeInspections.Highlightings
 {
     [ConfigurableSeverityHighlighting(
-        "UnresolvedReference",
+        "UnresolvedNTripletReference",
         SecretLanguage.LanguageName,
         OverlapResolve = OverlapResolveKind.UNRESOLVED_ERROR,
         ToolTipFormatString = Error)]
