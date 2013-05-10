@@ -192,13 +192,13 @@ namespace ReSharper.NTriples.Impl.Tree
             }
 
             var prefix = prefixElement.PrefixReference.GetName();
-            var secretFile = (NTriplesFile)this.GetContainingFile();
-            if (secretFile == null)
+            var psiFile = (NTriplesFile)this.GetContainingFile();
+            if (psiFile == null)
             {
                 return prefix;
             }
 
-            var declaration = secretFile.GetPrefixDeclaredElements(prefix).FirstOrDefault() as IPrefixDeclaration;
+            var declaration = psiFile.GetPrefixDeclaredElements(prefix).FirstOrDefault() as IPrefixDeclaration;
             if (declaration != null && declaration.UriString != null)
             {
                 return declaration.UriString.GetText();

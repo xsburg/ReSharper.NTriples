@@ -20,14 +20,12 @@ using JetBrains.ReSharper.Psi.Tree;
 using ReSharper.NTriples.Parsing;
 using ReSharper.NTriples.Resolve;
 
-//using JetBrains.ReSharper.Psi.Secret.Formatter;
-
 namespace ReSharper.NTriples.Impl
 {
     [Language(typeof(NTriplesLanguage))]
     public class NTriplesLanguageService : LanguageService
     {
-        //private readonly SecretCodeFormatter formatter;
+        //private readonly NTriplesCodeFormatter formatter;
         internal static readonly NodeTypeSet WHITESPACE_OR_COMMENT = new NodeTypeSet(
             new[]
                 {
@@ -39,7 +37,7 @@ namespace ReSharper.NTriples.Impl
         private readonly NTriplesWordIndexLanguageProvider wordIndexLanguageProvider = new NTriplesWordIndexLanguageProvider();
 
         public NTriplesLanguageService(
-            PsiLanguageType psiLanguageType, IConstantValueService constantValueService /*, SecretCodeFormatter formatter*/)
+            PsiLanguageType psiLanguageType, IConstantValueService constantValueService /*, NTriplesCodeFormatter formatter*/)
             : base(psiLanguageType, constantValueService)
         {
             //this.formatter = formatter;

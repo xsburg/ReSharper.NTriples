@@ -65,19 +65,19 @@ namespace ReSharper.NTriples.Intentions.CreateFromUsage
 
         private ITreeNode FindAnchor()
         {
-            var secretFile = (INTriplesFile)this.myElement.GetContainingFile();
-            if (secretFile == null)
+            var psiFile = (INTriplesFile)this.myElement.GetContainingFile();
+            if (psiFile == null)
             {
                 throw new FormatException("The element has no file assigned.");
             }
 
             // Last prefix declaration or simply first sentence
-            var anchor = secretFile.SentencesEnumerable.Reverse().FirstOrDefault(
+            var anchor = psiFile.SentencesEnumerable.Reverse().FirstOrDefault(
                 s =>
                 {
                     var directive = s.FirstChild as IDirective;
                     return directive != null && directive.FirstChild is IPrefixDeclaration;
-                }) ?? secretFile.SentencesEnumerable.First();
+                }) ?? psiFile.SentencesEnumerable.First();
 
             return anchor;
         }

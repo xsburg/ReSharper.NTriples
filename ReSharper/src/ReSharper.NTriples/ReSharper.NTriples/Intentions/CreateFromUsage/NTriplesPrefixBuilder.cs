@@ -32,7 +32,7 @@ namespace ReSharper.NTriples.Intentions.CreateFromUsage
             var uri = uriString.GetText();
             var initialRange = uriString.GetNavigationRange().TextRange.StartOffset;
             holders.Add(
-                new FindersTemplateFieldHolder(new TemplateField(uri, initialRange), new SecretBasicTemplateFinder(uriString)));
+                new FindersTemplateFieldHolder(new TemplateField(uri, initialRange), new NTriplesBasicTemplateFinder(uriString)));
 
             return new NTriplesIntentionResult(
                 holders,
@@ -42,11 +42,11 @@ namespace ReSharper.NTriples.Intentions.CreateFromUsage
         }
     }
 
-    public class SecretBasicTemplateFinder : ITemplateFieldFinder
+    public class NTriplesBasicTemplateFinder : ITemplateFieldFinder
     {
         private readonly ITreeNode myNode;
 
-        public SecretBasicTemplateFinder(ITreeNode node)
+        public NTriplesBasicTemplateFinder(ITreeNode node)
         {
             this.myNode = node;
         }

@@ -26,10 +26,10 @@ using JetBrains.Application.PluginSupport;
 [assembly: AssemblyCulture("")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-[assembly: ActionsXml("ReSharperSecretLanguage.Actions.xml")]
+[assembly: ActionsXml("ReSharperNTriplesLanguage.Actions.xml")]
 
 // The following information is displayed by ReSharper in the Plugins dialog
 
-[assembly: PluginTitle("The Secret Language")]
-[assembly: PluginDescription("The Secret Language ReSharper support")]
+[assembly: PluginTitle("N-Triples Language Support")]
+[assembly: PluginDescription("N-Triples Language Support for Visual Studio and ReSharper")]
 [assembly: PluginVendor("Stephan Burguchev")]

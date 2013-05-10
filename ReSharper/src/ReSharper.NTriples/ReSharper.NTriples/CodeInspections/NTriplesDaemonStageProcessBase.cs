@@ -71,13 +71,13 @@ namespace ReSharper.NTriples.CodeInspections
 
         public virtual void ProcessAfterInterior(ITreeNode element, IHighlightingConsumer consumer)
         {
-            var secretElement = element as INTriplesTreeNode;
-            if (secretElement != null)
+            var triplesElement = element as INTriplesTreeNode;
+            if (triplesElement != null)
             {
-                var tokenNode = secretElement as ITokenNode;
+                var tokenNode = triplesElement as ITokenNode;
                 if (tokenNode == null || !tokenNode.GetTokenType().IsWhitespace)
                 {
-                    secretElement.Accept(this, consumer);
+                    triplesElement.Accept(this, consumer);
                 }
             }
             else

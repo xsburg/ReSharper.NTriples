@@ -57,7 +57,7 @@ namespace ReSharper.NTriples.Impl.Tree
             if (languageService != null)
             {
                 var parser =
-                    (ISecretParser)
+                    (INTriplesParser)
                     languageService.CreateParser(
                         new ProjectedLexer(cachingLexer, new TextRange(currStartOffset.Offset, currStartOffset.Offset + newLength)),
                         GetPsiModule(),
@@ -70,7 +70,7 @@ namespace ReSharper.NTriples.Impl.Tree
                 }
                 if ((newElement.GetTextLength() == newLength) && (";".Equals(newElement.GetText().Substring(newElement.GetTextLength() - 1))))
                 {
-                    var psiFile = GetContainingNode<SecretFile>();
+                    var psiFile = GetContainingNode<NTriplesFile>();
                     if (psiFile != null)
                     {
                         psiFile.ClearTables();

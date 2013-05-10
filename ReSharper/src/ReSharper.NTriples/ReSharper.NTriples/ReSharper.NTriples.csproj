@@ -12,7 +12,7 @@
     <AssemblyName>ReSharper.NTriples</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <PsiLanguageName>Secret</PsiLanguageName>
+    <PsiLanguageName>NTriples</PsiLanguageName>
     <TargetFrameworkProfile />
     <ParserGenOutputBase>$(MSBuildProjectDirectory)\Gen</ParserGenOutputBase>
   </PropertyGroup>
@@ -59,6 +59,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Gen\**\*.cs" />
     <Compile Include="Cache\NTriplesCacheBase.cs" />
     <Compile Include="Cache\NTriplesFileCache.cs" />
     <Compile Include="Cache\INTriplesSymbol.cs" />
@@ -171,147 +172,6 @@
     <Compile Include="Completion\NTriplesCodeCompletionContext.cs" />
     <Compile Include="Completion\KeywordCompletionUtil.cs" />
     <Compile Include="Completion\NTriplesKeywordLookupItem.cs" />
-    <Compile Include="Gen\Parsing\Secret\ErrorMessages.cs" />
-    <Compile Include="Gen\Parsing\Secret\NTriplesParserGenerated.cs" />
-    <Compile Include="Gen\Parsing\Secret\TokenBitsets.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\AnonymousIdentifierNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\AxisDirectiveNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\CutStatementNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\DataLiteralNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\DirectiveNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\ExpressionNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\ExtensionDirectiveNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\FactNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\FactsNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\ForAllDirectiveNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\FormulaNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\ForSomeDirectiveNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\FromStatementNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\FunctorStatementNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\HasExpressionNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IAnonymousIdentifier.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IAxisDirective.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\ICutStatement.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IDataLiteral.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IdentifierNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IDirective.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IExpression.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IExtensionDirective.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IFact.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IFacts.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IForAllDirective.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IFormula.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IForSomeDirective.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IFromStatement.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IfStatementNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IFunctorStatement.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IHasExpression.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IIdentifier.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IIfStatement.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IIsOfExpression.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IKeywordStatement.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IList.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\ILiteral.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\ILiteral_keywords.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\ILocalName.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IMeta.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\AnonymousIdentifier.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\AxisDirective.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\CutStatement.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\DataLiteral.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\Directive.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\ElementBitsets.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\ElementType.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\Expression.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\ExtensionDirective.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\Fact.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\Facts.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\ForAllDirective.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\Formula.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\ForSomeDirective.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\FromStatement.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\FunctorStatement.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\HasExpression.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\Identifier.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\IfStatement.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\IsOfExpression.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\KeywordStatement.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\List.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\LocalName.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\Meta.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\NotStatement.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\NTriplesFile.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\Objects.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\OrStatement.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\Predicate.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\Prefix.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\PrefixDeclaration.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\PrefixName.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\PrefixUri.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\Sentence.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\Sentences.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\SmartVar.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\Statement.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\Subject.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\TokenType.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\UriIdentifier.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\UriIdentifiers.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\UriString.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\UseExternalDirective.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\VariableIdentifier.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Impl\Variables.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\INotStatement.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\INTriplesFile.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IObjects.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IOrStatement.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IPredicate.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IPrefix.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IPrefixDeclaration.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IPrefixName.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IPrefixUri.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\ISentence.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\ISentences.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\ISmartVar.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IsOfExpressionNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IStatement.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\ISubject.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IUriIdentifier.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IUriIdentifiers.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IUriString.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IUseExternalDirective.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IVariableIdentifier.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\IVariables.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\KeywordStatementNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\ListNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\LiteralNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\Literal_keywordsNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\LocalNameNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\MetaNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\NotStatementNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\NTriplesFileNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\ObjectsNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\OrStatementNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\PredicateNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\PrefixDeclarationNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\PrefixNameNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\PrefixNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\PrefixUriNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\SentenceNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\SentencesNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\SmartVarNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\StatementNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\SubjectNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\TreeNodeVisitor.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\TreeNodeVisitor`1.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\TreeNodeVisitor`2.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\UriIdentifierNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\UriIdentifiersNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\UriStringNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\UseExternalDirectiveNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\VariableIdentifierNavigator.cs" />
-    <Compile Include="Gen\Psi\Secret\Tree\VariablesNavigator.cs" />
-    <Compile Include="Gen\Psi\Test\NTriples\PsiGeneratedTest.cs" />
-    <Compile Include="Gen\Psi\Test\Secret\PsiGeneratedTest.cs" />
     <Compile Include="Impl\Tree\ChildRole.cs" />
     <Compile Include="Impl\NTriplesWordIndexLanguageProvider.cs" />
     <Compile Include="Parsing\INTriplesParser.cs" />
@@ -380,10 +240,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Gen\Parsing\" />
-    <Folder Include="Gen\Psi\" />
-  </ItemGroup>
   <PropertyGroup>
     <ReSharperSdkTargets Condition=" '$(ReSharperSdkTargets)' == '' ">$(MSBuildExtensionsPath)\JetBrains\ReSharper.SDK\v7.1</ReSharperSdkTargets>
   </PropertyGroup>
@@ -398,6 +254,7 @@
     <UseVSHostingProcess>true</UseVSHostingProcess>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+    <NoWarn>0618</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -407,6 +264,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <NoWarn>0618</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug UnitTests|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
@@ -427,6 +285,7 @@
     <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
     <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
     <UseVSHostingProcess>true</UseVSHostingProcess>
+    <NoWarn>0618</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release UnitTests|AnyCPU'">
     <OutputPath>bin\Release UnitTests\</OutputPath>
@@ -446,6 +305,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <UseVSHostingProcess>true</UseVSHostingProcess>
+    <NoWarn>0618</NoWarn>
   </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(ReSharperSdkTargets)\Plugin.Targets" />

@@ -2,7 +2,7 @@ using System.Windows.Forms;
 using JetBrains.ActionManagement;
 using JetBrains.Application.DataContext;
 
-namespace ReSharperSecretLanguage
+namespace ReSharperNTriplesLanguage
 {
     [ActionHandler("ReSharperNTriplesLanguage.About")]
     public class AboutAction : IActionHandler
@@ -10,7 +10,7 @@ namespace ReSharperSecretLanguage
         public void Execute(IDataContext context, DelegateExecute nextExecute)
         {
             MessageBox.Show(
-                "The Secret Language\nStephan Burguchev\n\nThe NTriples Language ReSharper support",
+                "The NTriples Language\nStephan Burguchev\n\nThe NTriples Language ReSharper support",
                 "About The NTriples Language",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);

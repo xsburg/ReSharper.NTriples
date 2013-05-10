@@ -114,8 +114,8 @@ namespace ReSharper.NTriples.Resolve
         public static IList<IDeclaration> GetDeclarationsIn(
             IPsiSourceFile sourceFile, IUriIdentifierDeclaredElement declaredElement)
         {
-            var secretFile = sourceFile.GetPsiFile<NTriplesLanguage>(new DocumentRange(sourceFile.Document, 0)) as NTriplesFile;
-            if (secretFile == null)
+            var psiFile = sourceFile.GetPsiFile<NTriplesLanguage>(new DocumentRange(sourceFile.Document, 0)) as NTriplesFile;
+            if (psiFile == null)
             {
                 return EmptyList<IDeclaration>.InstanceList;
             }
@@ -126,7 +126,7 @@ namespace ReSharper.NTriples.Resolve
                 return EmptyList<IDeclaration>.InstanceList;
             }
 
-            var uriIdentifiers = secretFile.GetUriIdentifiers(uri);
+            var uriIdentifiers = psiFile.GetUriIdentifiers(uri);
             return uriIdentifiers;
         }
 

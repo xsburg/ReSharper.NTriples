@@ -217,7 +217,7 @@ namespace ReSharper.NTriples.Parsing
             }
         }
 
-        private class GenericTokenNodeType : SecretTokenNodeType
+        private class GenericTokenNodeType : NTriplesTokenNodeType
         {
             private readonly string representation;
 
@@ -241,7 +241,7 @@ namespace ReSharper.NTriples.Parsing
             }
         }
 
-        private sealed class IdentifierNodeType : SecretTokenNodeType
+        private sealed class IdentifierNodeType : NTriplesTokenNodeType
         {
             public IdentifierNodeType() : base("IDENTIFIER")
             {
@@ -268,7 +268,7 @@ namespace ReSharper.NTriples.Parsing
             }
         }
 
-        private sealed class NewLineNodeType : SecretTokenNodeType
+        private sealed class NewLineNodeType : NTriplesTokenNodeType
         {
             public NewLineNodeType() : base("NEW_LINE")
             {
@@ -288,7 +288,7 @@ namespace ReSharper.NTriples.Parsing
             }
         }
 
-        private sealed class PrefixIdentifierNodeType : SecretTokenNodeType
+        private sealed class PrefixIdentifierNodeType : NTriplesTokenNodeType
         {
             public PrefixIdentifierNodeType()
                 : base("PREFIX_IDENTIFIER")
@@ -309,9 +309,9 @@ namespace ReSharper.NTriples.Parsing
             }
         }
 
-        private abstract class SecretTokenNodeType : TokenNodeType
+        private abstract class NTriplesTokenNodeType : TokenNodeType
         {
-            protected SecretTokenNodeType(string s)
+            protected NTriplesTokenNodeType(string s)
                 : base(s)
             {
             }
@@ -370,7 +370,7 @@ namespace ReSharper.NTriples.Parsing
             }
         }
 
-        private sealed class VariableIdentifierNodeType : SecretTokenNodeType
+        private sealed class VariableIdentifierNodeType : NTriplesTokenNodeType
         {
             public VariableIdentifierNodeType()
                 : base("VARIABLE_IDENTIFIER")
@@ -391,7 +391,7 @@ namespace ReSharper.NTriples.Parsing
             }
         }
 
-        private sealed class WhitespaceNodeType : SecretTokenNodeType
+        private sealed class WhitespaceNodeType : NTriplesTokenNodeType
         {
             public WhitespaceNodeType() : base("WHITE_SPACE")
             {

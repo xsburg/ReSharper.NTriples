@@ -5,9 +5,9 @@ options {
     psiStubsPackageName="ReSharper.NTriples.Impl.Tree";
     psiStubsBaseClass="NTriplesCompositeElement";
     tokenTypePrefix="";
-    parserTargetSubdir="Parsing/Secret";
-    psiInterfacesTargetSubdir="Psi/Secret/Tree";
-    psiStubsTargetSubdir="Psi/Secret/Tree/Impl";
+    parserTargetSubdir="Parsing/NTriples";
+    psiInterfacesTargetSubdir="Psi/NTriples/Tree";
+    psiStubsTargetSubdir="Psi/NTriples/Tree/Impl";
     elementTypePrefix="";
     visitorClassName="TreeNodeVisitor";
     visitorMethodSuffix="";
@@ -38,7 +38,7 @@ errorhandling NTriplesFile
     options
     {
       customInterface;
-      stubBase = "SecretFileElement";
+      stubBase = "NTriplesFileElement";
     }
     extras
     {
