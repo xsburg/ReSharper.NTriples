@@ -1,9 +1,9 @@
 options {
     parserPackage="ReSharper.NTriples.Parsing";
-    parserClassName="SecretParserGenerated";
+    parserClassName="NTriplesParserGenerated";
     psiInterfacePackageName="ReSharper.NTriples.Tree";
     psiStubsPackageName="ReSharper.NTriples.Impl.Tree";
-    psiStubsBaseClass="SecretCompositeElement";
+    psiStubsBaseClass="NTriplesCompositeElement";
     tokenTypePrefix="";
     parserTargetSubdir="Parsing/Secret";
     psiInterfacesTargetSubdir="Psi/Secret/Tree";
@@ -11,17 +11,17 @@ options {
     elementTypePrefix="";
     visitorClassName="TreeNodeVisitor";
     visitorMethodSuffix="";
-    testTargetSubdir="Psi/Test/Secret";
+    testTargetSubdir="Psi/Test/NTriples";
     disableReflection;
     separateHierarchies;
     "treeElementClassFQName"="JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement";
-    "compositeElementClassFQName"="SecretCompositeElement";
+    "compositeElementClassFQName"="NTriplesCompositeElement";
     "psiElementVisitorClassFQName"="ReSharper.NTriples.Tree.TreeNodeVisitor";
-    "tokenTypeClassFQName"="ReSharper.NTriples.Parsing.SecretTokenType";
+    "tokenTypeClassFQName"="ReSharper.NTriples.Parsing.NTriplesTokenType";
     "visitMethodPrefix"="Visit";
     "lexerClassName"="JetBrains.ReSharper.Psi.Parsing.ILexer<int>";
     "psiClassesPrefix"="";
-    "psiElementClassFQName"="ReSharper.NTriples.Tree.ISecretTreeNode";
+    "psiElementClassFQName"="ReSharper.NTriples.Tree.INTriplesTreeNode";
     customImplPackage="ReSharper.NTriples.Impl.Tree";
     customInterfacePackage="ReSharper.NTriples.Tree";
     "interfaceNamePrefix"="I";
@@ -29,12 +29,12 @@ options {
     "customImplSuffix"="";
     "objectClassFQName"="System.Object";
     tokenBitsetThreshold=4;
-    elementTypeBaseClass="ReSharper.NTriples.Tree.SecretCompositeNodeType";
+    elementTypeBaseClass="ReSharper.NTriples.Tree.NTriplesCompositeNodeType";
     parserMessagesClass="ReSharper.NTriples.Parsing.ParserMessages";
     generateWorkingPsi;
 }
 
-errorhandling SecretFile
+errorhandling NTriplesFile
     options
     {
       customInterface;
@@ -42,7 +42,7 @@ errorhandling SecretFile
     }
     extras
     {
-        get {methodName = "Sentences" path = <SecretFile:SENTENCES/sentences:SENTENCES> };
+        get {methodName = "Sentences" path = <NTriplesFile:SENTENCES/sentences:SENTENCES> };
     }
   :
     sentences<SENTENCES>

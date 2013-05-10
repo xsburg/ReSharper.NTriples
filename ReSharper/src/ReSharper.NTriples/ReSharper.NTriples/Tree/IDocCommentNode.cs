@@ -10,7 +10,7 @@
 
 namespace ReSharper.NTriples.Tree
 {
-    public interface IDocCommentNode : ISecretCommentNode
+    public interface IDocCommentNode : INTriplesCommentNode
     {
         IDocCommentNode ReplaceBy(IDocCommentNode docCommentNode);
     }

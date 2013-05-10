@@ -4,14 +4,13 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretElementFactoryImpl.cs
+//   NTriplesElementFactoryImpl.cs
 // </summary>
 // ***********************************************************************
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using JetBrains.Annotations;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi;
@@ -25,6 +24,7 @@ namespace ReSharper.NTriples.Util
 {
     public class NTriplesElementFactoryImpl : NTriplesElementFactory
     {
+        private const string Indent = "    ";
         private readonly NTriplesLanguageService myLanguageService;
         private readonly IPsiModule myModule;
 
@@ -44,7 +44,7 @@ namespace ReSharper.NTriples.Util
         public override ILocalName CreateLocalNameExpression(string name)
         {
             var text = string.Format("foo:{0} a false.", name);
-            var node = this.CreateSecretFile(text);
+            var node = this.CreateNTriplesFile(text);
 
             var expression = node.SentencesEnumerable.First().Statement.Subject.FirstChild;
             if (expression != null)
@@ -72,7 +72,7 @@ namespace ReSharper.NTriples.Util
             }
 
             var text = string.Format("@prefix {0}: <{1}>.", name, uri);
-            var file = this.CreateSecretFile(text, true);
+            var file = this.CreateNTriplesFile(text, true);
             var sentence = file.SentencesEnumerable.First();
             return sentence;
         }
@@ -80,7 +80,7 @@ namespace ReSharper.NTriples.Util
         public override IPrefix CreatePrefixExpression(string name)
         {
             var text = string.Format("{0}:bar a false.", name);
-            var node = this.CreateSecretFile(text);
+            var node = this.CreateNTriplesFile(text);
 
             var expression = node.SentencesEnumerable.First().Statement.Subject.FirstChild;
             if (expression != null)
@@ -103,7 +103,7 @@ namespace ReSharper.NTriples.Util
         public override IPrefixName CreatePrefixNameExpression(string name)
         {
             var text = string.Format("@prefix {0}: <http://foo.bar>.", name);
-            var node = this.CreateSecretFile(text);
+            var node = this.CreateNTriplesFile(text);
 
             var prefixDeclaration = (IPrefixDeclaration)node.SentencesEnumerable.First().Directive.FirstChild;
             if (prefixDeclaration != null && prefixDeclaration.PrefixName != null)
@@ -114,10 +114,36 @@ namespace ReSharper.NTriples.Util
             throw new ElementFactoryException(string.Format("Cannot create file '{0}'", text));
         }
 
+        public override IPrefixUri CreatePrefixUriExpression(string name)
+        {
+            var text = string.Format("@prefix foo: <{0}>.", name);
+            var node = this.CreateNTriplesFile(text);
+
+            var prefixDeclaration = (IPrefixDeclaration)node.SentencesEnumerable.First().Directive.FirstChild;
+            if (prefixDeclaration != null && prefixDeclaration.PrefixUri != null)
+            {
+                return prefixDeclaration.PrefixUri;
+            }
+
+            throw new ElementFactoryException(string.Format("Cannot create file '{0}'", text));
+        }
+
+        public override ISentence CreateSentence(string subject, IDictionary<string, string[]> facts)
+        {
+            var separator = facts.Count > 1 || (facts.Count == 1 && facts.First().Value.Length > 1)
+                                ? Environment.NewLine + Indent
+                                : " ";
+            var factsText = string.Join(";" + Environment.NewLine + Indent, facts.Select(this.GetFact));
+            var text = string.Format("{0}{1}{2}.", subject, separator, factsText);
+            var file = this.CreateNTriplesFile(text, true);
+            var sentence = file.SentencesEnumerable.First();
+            return sentence;
+        }
+
         public override IUriString CreateUriStringExpression(string name)
         {
             var text = string.Format("<{0}> a false.", name);
-            var node = this.CreateSecretFile(text);
+            var node = this.CreateNTriplesFile(text);
 
             var expression = node.SentencesEnumerable.First().Statement.Subject.FirstChild;
             if (expression != null)
@@ -137,30 +163,24 @@ namespace ReSharper.NTriples.Util
             throw new ElementFactoryException(string.Format("Cannot create file '{0}'", text));
         }
 
-        public override IPrefixUri CreatePrefixUriExpression(string name)
+        private NTriplesParser CreateParser(string text)
         {
-            var text = string.Format("@prefix foo: <{0}>.", name);
-            var node = this.CreateSecretFile(text);
-
-            var prefixDeclaration = (IPrefixDeclaration)node.SentencesEnumerable.First().Directive.FirstChild;
-            if (prefixDeclaration != null && prefixDeclaration.PrefixUri != null)
-            {
-                return prefixDeclaration.PrefixUri;
-            }
-
-            throw new ElementFactoryException(string.Format("Cannot create file '{0}'", text));
+            return
+                (NTriplesParser)
+                this.myLanguageService.CreateParser(
+                    this.myLanguageService.GetPrimaryLexerFactory().CreateLexer(new StringBuffer(text)), null, null);
         }
 
-        public override ISentence CreateSentence(string subject, IDictionary<string, string[]> facts)
+        private INTriplesFile CreateNTriplesFile(string text, bool restoreWhitespaces = false)
         {
-            var separator = facts.Count > 1 || (facts.Count == 1 && facts.First().Value.Length > 1)
-                                ? Environment.NewLine + Indent
-                                : " ";
-            var factsText = string.Join(";" + Environment.NewLine + Indent, facts.Select(this.GetFact));
-            var text = string.Format("{0}{1}{2}.", subject, separator, factsText);
-            var file = this.CreateSecretFile(text, true);
-            var sentence = file.SentencesEnumerable.First();
-            return sentence;
+            var node = this.CreateParser(text).ParseNTriplesFile(false, restoreWhitespaces) as INTriplesFile;
+            if (node == null)
+            {
+                throw new ElementFactoryException(string.Format("Cannot create file '{0}'", text));
+            }
+
+            SandBox.CreateSandBoxFor(node, this.myModule);
+            return node;
         }
 
         private string GetFact(KeyValuePair<string, string[]> pair)
@@ -170,27 +190,6 @@ namespace ReSharper.NTriples.Util
                                   ? string.Join(",", pair.Value.Select(o => Environment.NewLine + Indent + Indent + o))
                                   : pair.Value[0];
             return string.Format("{0} {1}", predicate, objectsText);
-        }
-
-        private const string Indent = "    ";
-        private SecretParser CreateParser(string text)
-        {
-            return
-                (SecretParser)
-                this.myLanguageService.CreateParser(
-                    this.myLanguageService.GetPrimaryLexerFactory().CreateLexer(new StringBuffer(text)), null, null);
-        }
-
-        private ISecretFile CreateSecretFile(string text, bool restoreWhitespaces = false)
-        {
-            var node = this.CreateParser(text).ParseSecretFile(false, restoreWhitespaces) as ISecretFile;
-            if (node == null)
-            {
-                throw new ElementFactoryException(string.Format("Cannot create file '{0}'", text));
-            }
-
-            SandBox.CreateSandBoxFor(node, this.myModule);
-            return node;
         }
 
         /*public override IRuleName CreateIdentifierExpression(string name)

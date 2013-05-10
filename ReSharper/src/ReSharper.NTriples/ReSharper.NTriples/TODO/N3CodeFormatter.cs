@@ -6,7 +6,7 @@ using JetBrains.ReSharper.Psi.CodeStyle;
 using JetBrains.ReSharper.Psi.Impl.CodeStyle;
 using JetBrains.ReSharper.Psi.Tree;
 
-namespace ReSharperSecretLanguage
+namespace ReSharperNTriplesLanguage
 {
     [Language(typeof(N3Language))]
     public class N3CodeFormatter : CodeFormatterBase

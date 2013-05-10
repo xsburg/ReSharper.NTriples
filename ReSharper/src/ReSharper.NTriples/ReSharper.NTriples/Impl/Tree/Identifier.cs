@@ -8,11 +8,8 @@
 // </summary>
 // ***********************************************************************
 
-using JetBrains.ReSharper.Psi.Tree;
 using ReSharper.NTriples.Cache;
-using ReSharper.NTriples.Parsing;
 using ReSharper.NTriples.Tree;
-using IStatement = ReSharper.NTriples.Tree.IStatement;
 
 namespace ReSharper.NTriples.Impl.Tree
 {
@@ -61,7 +58,7 @@ namespace ReSharper.NTriples.Impl.Tree
             {
                 var predicate = fact.Predicate;
                 if (predicate != null && predicate.FirstChild != null &&
-                    predicate.FirstChild.GetTokenType() == SecretTokenType.A_KEYWORD)
+                    predicate.FirstChild.GetTokenType() == NTriplesTokenType.A_KEYWORD)
                 {
                     foreach (var obj in fact.ObjectsEnumerable)
                     {

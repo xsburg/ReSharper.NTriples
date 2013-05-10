@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretCompletionTest.cs
+//   NTriplesCompletionTest.cs
 // </summary>
 // ***********************************************************************
 
@@ -20,14 +20,14 @@ namespace ReSharper.NTriples.Tests
 {
     [TestFixture]
     [TestReferences("System.Core.dll")]
-    [TestFileExtension(NTriplesProjectFileType.SecretExtension)]
+    [TestFileExtension(NTriplesProjectFileType.NTriplesExtension)]
     public class NTriplesCompletionTest : CodeCompletionTestBase
     {
         private readonly string[] files;
 
         public NTriplesCompletionTest()
         {
-            this.files = this.TestDataPath2.GetDirectoryEntries("*" + NTriplesProjectFileType.SecretExtension, true)
+            this.files = this.TestDataPath2.GetDirectoryEntries("*" + NTriplesProjectFileType.NTriplesExtension, true)
                              .Select(f => Path.GetFileNameWithoutExtension(f.FullPath))
                              .ToArray();
         }

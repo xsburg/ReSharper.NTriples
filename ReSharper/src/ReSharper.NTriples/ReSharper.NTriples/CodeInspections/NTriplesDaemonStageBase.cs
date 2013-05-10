@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretDaemonStageBase.cs
+//   NTriplesDaemonStageBase.cs
 // </summary>
 // ***********************************************************************
 
@@ -22,11 +22,11 @@ namespace ReSharper.NTriples.CodeInspections
     public abstract class NTriplesDaemonStageBase : IDaemonStage
     {
         [CanBeNull]
-        public static ISecretFile GetSecretFile(IPsiSourceFile sourceFile)
+        public static INTriplesFile GetNTriplesFile(IPsiSourceFile sourceFile)
         {
             PsiManager manager = PsiManager.GetInstance(sourceFile.GetSolution());
             manager.AssertAllDocumentAreCommited();
-            return manager.GetPsiFile<NTriplesLanguage>(new DocumentRange(sourceFile.Document, 0)) as ISecretFile;
+            return manager.GetPsiFile<NTriplesLanguage>(new DocumentRange(sourceFile.Document, 0)) as INTriplesFile;
         }
 
         public abstract IEnumerable<IDaemonStageProcess> CreateProcess(
@@ -55,7 +55,7 @@ namespace ReSharper.NTriples.CodeInspections
                 return false;
             }
 
-            ISecretFile file = GetSecretFile(sourceFile);
+            INTriplesFile file = GetNTriplesFile(sourceFile);
             return file != null && file.Language.Is<NTriplesLanguage>();
         }
     }

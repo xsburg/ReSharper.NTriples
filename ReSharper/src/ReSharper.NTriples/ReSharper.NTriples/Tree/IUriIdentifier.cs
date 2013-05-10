@@ -16,7 +16,7 @@ namespace ReSharper.NTriples.Tree
     /*public partial interface IUriIdentifier : IDeclaration//, IChameleonNode
     {
         void SetReferenceName(string shortName);
-        string GetFullName(ISecretFile file);
+        string GetFullName(INTriplesFile file);
     }*/
 
     public partial interface IUriIdentifier

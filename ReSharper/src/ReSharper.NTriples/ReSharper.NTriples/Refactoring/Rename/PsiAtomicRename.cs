@@ -232,7 +232,7 @@ namespace ReSharper.NTriples.Refactoring.Rename
                 {
                     ((NTriplesPrefixReference)reference).SetName(this.NewName);
                     reference.CurrentResolveResult = null;
-                    ((SecretFile)((PrefixDeclaredElement)this.myElement).File).ClearTables();
+                    ((NTriplesFile)((PrefixDeclaredElement)this.myElement).File).ClearTables();
                 }
             }
         }

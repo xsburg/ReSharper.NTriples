@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   ISecretContextActionDataProvider.cs
+//   INTriplesContextActionDataProvider.cs
 // </summary>
 // ***********************************************************************
 
@@ -13,7 +13,7 @@ using ReSharper.NTriples.Tree;
 
 namespace ReSharper.NTriples.Feature.Services.MatchingBrace
 {
-    public interface INTriplesContextActionDataProvider : IContextActionDataProvider<ISecretFile>
+    public interface INTriplesContextActionDataProvider : IContextActionDataProvider<INTriplesFile>
     {
     }
 }

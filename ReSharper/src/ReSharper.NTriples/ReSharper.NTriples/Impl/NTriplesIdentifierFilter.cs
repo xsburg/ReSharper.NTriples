@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretIdentifierFilter.cs
+//   NTriplesIdentifierFilter.cs
 // </summary>
 // ***********************************************************************
 
@@ -44,7 +44,7 @@ namespace ReSharper.NTriples.Impl
             {
                 var predicate = fact.Predicate;
                 if (predicate != null && predicate.FirstChild != null &&
-                    predicate.FirstChild.GetTokenType() == SecretTokenType.A_KEYWORD)
+                    predicate.FirstChild.GetTokenType() == NTriplesTokenType.A_KEYWORD)
                 {
                     return true;
                 }

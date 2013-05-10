@@ -9,16 +9,12 @@
 // ***********************************************************************
 
 using System.Collections.Generic;
-using System.Linq;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Tree;
-using JetBrains.Util;
 using ReSharper.NTriples.Cache;
-using ReSharper.NTriples.Resolve;
 using ReSharper.NTriples.Tree;
 using ReSharper.NTriples.Util;
 using IIdentifier = ReSharper.NTriples.Tree.IIdentifier;
-using ISecretFile = ReSharper.NTriples.Tree.ISecretFile;
 
 namespace ReSharper.NTriples.Completion
 {
@@ -27,7 +23,46 @@ namespace ReSharper.NTriples.Completion
         private const string OfPredicateKeyword1 = "@of";
         private const string OfPredicateKeyword2 = "of";
 
-        public static IEnumerable<string> GetAplicableKeywords(ISecretFile file, TreeTextRange referenceRange, NTriplesCodeCompletionContext context)
+        private static readonly string[] DirectiveKeywords = new[]
+            {
+                "@prefix",
+                "@std_prefix",
+                "@extension",
+                "@using",
+                "@axis-default",
+                "@forAll",
+                "@forSome"
+            };
+
+        private static readonly string[] MetaKeywords = new[]
+            {
+                "@in",
+                "@for",
+                "@out",
+                "@axis",
+                "@meta",
+                "out",
+                "in",
+                "axis",
+                "meta",
+            };
+
+        private static readonly string[] ObjectLiteralKeywords = new[]
+            {
+                "true",
+                "false",
+                "null"
+            };
+
+        private static readonly string[] PredicateKeywords = new[]
+            {
+                "a",
+                "@has",
+                "@is"
+            };
+
+        public static IEnumerable<string> GetAplicableKeywords(
+            INTriplesFile file, TreeTextRange referenceRange, NTriplesCodeCompletionContext context)
         {
             var list = new List<string>();
             var node = file.FindNodeAt(referenceRange);
@@ -75,20 +110,14 @@ namespace ReSharper.NTriples.Completion
                 {
                     kind = IdentifierKind.Object;
                 }
-                else if (node.Parent is IFacts || node.Parent is IFact || node.Parent is IIsOfExpression || HasPrevSibling<ISubject>(node))
+                else if (node.Parent is IFacts || node.Parent is IFact || node.Parent is IIsOfExpression ||
+                         HasPrevSibling<ISubject>(node))
                 {
                     kind = IdentifierKind.Predicate;
                 }
             }
 
             return kind;
-        }
-
-        private static bool IsTopLevel(ITreeNode node)
-        {
-            var ai = node.GetContainingNode<IAnonymousIdentifier>();
-            var f = node.GetContainingNode<IFormula>();
-            return ai == null && f == null;
         }
 
         private static bool HasPrevSibling<T>(ITreeNode node) where T : ITreeNode
@@ -113,42 +142,11 @@ namespace ReSharper.NTriples.Completion
             return false;
         }
 
-        private static readonly string[] PredicateKeywords = new[]
-            {
-                "a",
-                "@has",
-                "@is"
-            };
-
-        private static readonly string[] DirectiveKeywords = new[]
-            {
-                "@prefix",
-                "@std_prefix",
-                "@extension",
-                "@using",
-                "@axis-default",
-                "@forAll",
-                "@forSome"
-            };
-
-        private static readonly string[] ObjectLiteralKeywords = new[]
-            {
-                "true",
-                "false",
-                "null"
-            };
-
-        private static readonly string[] MetaKeywords = new[]
-            {
-                "@in",
-                "@for",
-                "@out",
-                "@axis",
-                "@meta",
-                "out",
-                "in",
-                "axis",
-                "meta",
-            };
+        private static bool IsTopLevel(ITreeNode node)
+        {
+            var ai = node.GetContainingNode<IAnonymousIdentifier>();
+            var f = node.GetContainingNode<IFormula>();
+            return ai == null && f == null;
+        }
     }
 }

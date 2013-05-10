@@ -136,7 +136,7 @@ namespace ReSharper.NTriples.Refactoring.Rename
 
             foreach (var declaration in this.myDeclarations)
             {
-                var file = (SecretFile)declaration.Root();
+                var file = (NTriplesFile)declaration.Root();
                 file.ClearTables();
                 //cache.MarkAsDirty(declaration.GetSourceFile());
             }

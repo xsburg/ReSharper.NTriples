@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   CreateSecretPrefixFromUsage.cs
+//   CreateNTriplesPrefixFromUsage.cs
 // </summary>
 // ***********************************************************************
 

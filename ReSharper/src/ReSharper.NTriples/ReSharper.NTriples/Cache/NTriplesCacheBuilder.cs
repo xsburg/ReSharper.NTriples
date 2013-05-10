@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretCacheBuilder.cs
+//   NTriplesCacheBuilder.cs
 // </summary>
 // ***********************************************************************
 
@@ -23,10 +23,10 @@ namespace ReSharper.NTriples.Cache
 {
     internal class NTriplesCacheBuilder : IRecursiveElementProcessor
     {
-        private readonly ISecretFile file;
+        private readonly INTriplesFile file;
         private readonly List<INTriplesSymbol> mySymbols = new List<INTriplesSymbol>();
 
-        private NTriplesCacheBuilder(ISecretFile file)
+        private NTriplesCacheBuilder(INTriplesFile file)
         {
             this.file = file;
         }
@@ -42,7 +42,7 @@ namespace ReSharper.NTriples.Cache
         [CanBeNull]
         public static ICollection<INTriplesSymbol> Build(IPsiSourceFile sourceFile)
         {
-            var file = sourceFile.GetPsiFile<NTriplesLanguage>(new DocumentRange(sourceFile.Document, 0)) as ISecretFile;
+            var file = sourceFile.GetPsiFile<NTriplesLanguage>(new DocumentRange(sourceFile.Document, 0)) as INTriplesFile;
             if (file == null)
             {
                 return null;
@@ -53,14 +53,16 @@ namespace ReSharper.NTriples.Cache
         public static NTriplesFileCache Read(BinaryReader reader, IPsiSourceFile sourceFile)
         {
             var uriIdentifierSymbols = ReadSymbolsOfType<NTriplesUriIdentifierSymbol>(reader, sourceFile);
-            return new NTriplesFileCache(uriIdentifierSymbols);
+            var prefixDeclarationSymbols = ReadSymbolsOfType<NTriplesPrefixDeclarationSymbol>(reader, sourceFile);
+            return new NTriplesFileCache(uriIdentifierSymbols, prefixDeclarationSymbols);
         }
 
         public static void Write(NTriplesFileCache fileCache, BinaryWriter writer)
         {
-            var uriIdentifiers = fileCache.UriIdentifiers;
-            writer.Write(uriIdentifiers.Count);
-            uriIdentifiers.Apply(i => i.Write(writer));
+            writer.Write(fileCache.UriIdentifiers.Count);
+            fileCache.UriIdentifiers.Apply(i => i.Write(writer));
+            writer.Write(fileCache.PrefixDeclarations.Count);
+            fileCache.PrefixDeclarations.Apply(i => i.Write(writer));
         }
 
         public bool InteriorShouldBeProcessed(ITreeNode element)
@@ -105,7 +107,7 @@ namespace ReSharper.NTriples.Cache
         }
 
         [CanBeNull]
-        private static ICollection<INTriplesSymbol> Build(ISecretFile file)
+        private static ICollection<INTriplesSymbol> Build(INTriplesFile file)
         {
             var ret = new NTriplesCacheBuilder(file);
             file.ProcessDescendants(ret);

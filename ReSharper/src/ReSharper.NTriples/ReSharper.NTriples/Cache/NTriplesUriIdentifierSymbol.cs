@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretUriIdentifierSymbol.cs
+//   NTriplesUriIdentifierSymbol.cs
 // </summary>
 // ***********************************************************************
 
@@ -19,7 +19,8 @@ namespace ReSharper.NTriples.Cache
         {
         }
 
-        public NTriplesUriIdentifierSymbol(string @namespace, string localName, IdentifierKind kind, bool important, int offset, IPsiSourceFile psiSourceFile)
+        public NTriplesUriIdentifierSymbol(
+            string @namespace, string localName, IdentifierKind kind, bool important, int offset, IPsiSourceFile psiSourceFile)
             : base(@namespace + localName, offset, psiSourceFile)
         {
             this.LocalName = localName;
@@ -28,8 +29,8 @@ namespace ReSharper.NTriples.Cache
             this.Namespace = @namespace;
         }
 
-        public IdentifierKind Kind { get; private set; }
         public bool Important { get; private set; }
+        public IdentifierKind Kind { get; private set; }
         public string LocalName { get; private set; }
         public string Namespace { get; private set; }
 

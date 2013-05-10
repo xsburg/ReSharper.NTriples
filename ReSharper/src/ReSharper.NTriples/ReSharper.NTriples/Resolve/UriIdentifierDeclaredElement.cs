@@ -26,7 +26,6 @@ namespace ReSharper.NTriples.Resolve
     internal class UriIdentifierDeclaredElement : IDeclaredElement, IUriIdentifierDeclaredElement
     {
         private readonly bool filterDeclarations;
-        private readonly IUriIdentifierDeclaredElement parent;
         private readonly IdentifierKind kind;
         private readonly string localName;
         private readonly IFile myFile;
@@ -34,6 +33,7 @@ namespace ReSharper.NTriples.Resolve
         private readonly string myName;
         private readonly IPsiServices myServices;
         private readonly string ns;
+        private readonly IUriIdentifierDeclaredElement parent;
         private string myNewName;
 
         public UriIdentifierDeclaredElement(
@@ -114,7 +114,7 @@ namespace ReSharper.NTriples.Resolve
         public static IList<IDeclaration> GetDeclarationsIn(
             IPsiSourceFile sourceFile, IUriIdentifierDeclaredElement declaredElement)
         {
-            var secretFile = sourceFile.GetPsiFile<NTriplesLanguage>(new DocumentRange(sourceFile.Document, 0)) as SecretFile;
+            var secretFile = sourceFile.GetPsiFile<NTriplesLanguage>(new DocumentRange(sourceFile.Document, 0)) as NTriplesFile;
             if (secretFile == null)
             {
                 return EmptyList<IDeclaration>.InstanceList;

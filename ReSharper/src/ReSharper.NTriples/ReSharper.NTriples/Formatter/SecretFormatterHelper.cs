@@ -42,15 +42,15 @@ namespace JetBrains.ReSharper.Psi.Secret.Formatter
         public static void MakeIndent(this ITreeNode indentNode, string indent)
         {
             var lastSpace = indentNode.PrevSibling as IWhitespaceNode;
-            if (lastSpace != null && lastSpace.GetTokenType() != SecretTokenType.NEW_LINE)
+            if (lastSpace != null && lastSpace.GetTokenType() != NTriplesTokenType.NEW_LINE)
             {
                 ITreeNode firstSpace =
-                    lastSpace.LeftWhitespaces().TakeWhile(ws => ws.GetTokenType() != SecretTokenType.NEW_LINE).LastOrDefault() ??
+                    lastSpace.LeftWhitespaces().TakeWhile(ws => ws.GetTokenType() != NTriplesTokenType.NEW_LINE).LastOrDefault() ??
                     lastSpace;
                 Debug.Assert(firstSpace != null, "firstSpace != null");
                 if (firstSpace != lastSpace)
                 {
-                    while ((firstSpace != null) && (firstSpace.GetTokenType() != SecretTokenType.NEW_LINE) &&
+                    while ((firstSpace != null) && (firstSpace.GetTokenType() != NTriplesTokenType.NEW_LINE) &&
                            (firstSpace.GetNextToken() != lastSpace))
                     {
                         firstSpace = firstSpace.GetNextToken();
@@ -103,7 +103,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Formatter
                         return CreateNewLine("\r\n");
                     }
                     // consistency check (remove in release?)
-                    if (!SecretLexer.IsWhitespace(text))
+                    if (!NTriplesLexer.IsWhitespace(text))
                     {
                         throw new ApplicationException("Inconsistent space structure");
                     }
@@ -115,7 +115,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Formatter
         {
             return
                 fromNode.GetWhitespacesTo(toNode)
-                        .Where(wsNode => (wsNode.GetTokenType() == SecretTokenType.NEW_LINE) && (wsNode is IWhitespaceNode))
+                        .Where(wsNode => (wsNode.GetTokenType() == NTriplesTokenType.NEW_LINE) && (wsNode is IWhitespaceNode))
                         .Cast<IWhitespaceNode>();
         }
     }

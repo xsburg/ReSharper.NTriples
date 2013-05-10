@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   StatementSimplificationSuggestionHighlighting.cs
+//   WarningRangeHighlighting.cs
 // </summary>
 // ***********************************************************************
 
@@ -12,11 +12,11 @@ using JetBrains.DocumentModel;
 using JetBrains.ReSharper.Daemon;
 using JetBrains.ReSharper.Daemon.Impl;
 using JetBrains.ReSharper.Psi.Tree;
-using ReSharper.NTriples.Tree;
 
 namespace ReSharper.NTriples.CodeInspections.Highlightings
 {
-    [StaticSeverityHighlighting(Severity.ERROR, HighlightingGroupIds.CompilerWarnings, OverlapResolve = OverlapResolveKind.WARNING)]
+    [StaticSeverityHighlighting(Severity.ERROR, HighlightingGroupIds.CompilerWarnings, OverlapResolve = OverlapResolveKind.WARNING
+        )]
     public class WarningRangeHighlighting<TTreeElement>
         : IHighlightingWithRange, ICustomAttributeIdHighlighting where TTreeElement : ITreeNode
     {

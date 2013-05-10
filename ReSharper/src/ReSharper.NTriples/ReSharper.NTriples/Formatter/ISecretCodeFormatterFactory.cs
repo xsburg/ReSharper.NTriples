@@ -11,11 +11,11 @@
 using JetBrains.Annotations;
 using JetBrains.ReSharper.Psi.Impl.CodeStyle;
 
-namespace JetBrains.ReSharper.Psi.Secret.Formatter
+namespace ReSharper.NTriples.Formatter
 {
-    internal interface ISecretCodeFormatterFactory
+    internal interface INTriplesCodeFormatterFactory
     {
         [NotNull]
-        SecretFormattingVisitor CreateFormattingVisitor([NotNull] CodeFormattingContext formattingData);
+        NTriplesFormattingVisitor CreateFormattingVisitor([NotNull] CodeFormattingContext formattingData);
     }
 }

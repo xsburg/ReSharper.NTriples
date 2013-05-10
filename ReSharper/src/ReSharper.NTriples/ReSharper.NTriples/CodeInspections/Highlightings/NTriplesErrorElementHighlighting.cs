@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretErrorElementHighlighting.cs
+//   NTriplesErrorElementHighlighting.cs
 // </summary>
 // ***********************************************************************
 
@@ -12,10 +12,11 @@ using JetBrains.DocumentModel;
 using JetBrains.ReSharper.Daemon;
 using JetBrains.ReSharper.Daemon.Impl;
 using JetBrains.ReSharper.Psi.Tree;
+using ReSharper.NTriples.Impl;
 
 namespace ReSharper.NTriples.CodeInspections.Highlightings
 {
-    [ConfigurableSeverityHighlighting("SyntaxError", "Secret", OverlapResolve = OverlapResolveKind.ERROR,
+    [ConfigurableSeverityHighlighting("SyntaxError", NTriplesLanguage.LanguageName, OverlapResolve = OverlapResolveKind.ERROR,
         ToolTipFormatString = Error)]
     internal class NTriplesErrorElementHighlighting : IHighlightingWithRange, ICustomAttributeIdHighlighting
     {

@@ -13,10 +13,10 @@ using JetBrains.ReSharper.Feature.Services.CodeCompletion.Settings;
 
 namespace ReSharper.NTriples.Completion
 {
-    [SettingsKey(typeof(IntellisenseEnabledSettingsKey), "Override VS IntelliSense for Secret")]
+    [SettingsKey(typeof(IntellisenseEnabledSettingsKey), "Override VS IntelliSense for NTriples")]
     public class IntellisenseEnabledSettingPsi
     {
-        [SettingsEntry(false, "Secret (*.n3 files)")]
+        [SettingsEntry(false, "NTriples (*.n3 files)")]
         public bool IntellisenseEnabled;
     }
 }

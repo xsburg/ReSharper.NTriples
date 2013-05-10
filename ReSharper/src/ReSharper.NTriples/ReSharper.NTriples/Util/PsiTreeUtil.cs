@@ -144,7 +144,8 @@ namespace ReSharper.NTriples.Util
                 ITreeNode newNode;
                 if (parent is IPrefixName)
                 {
-                    newNode = NTriplesElementFactory.GetInstance(parent.GetPsiModule()).CreatePrefixNameExpression(name).FirstChild;
+                    newNode =
+                        NTriplesElementFactory.GetInstance(parent.GetPsiModule()).CreatePrefixNameExpression(name).FirstChild;
                 }
                 else if (parent is IPrefix)
                 {

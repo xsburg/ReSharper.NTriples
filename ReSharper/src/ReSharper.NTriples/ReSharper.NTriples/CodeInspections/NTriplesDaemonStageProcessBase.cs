@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretDaemonStageProcessBase.cs
+//   NTriplesDaemonStageProcessBase.cs
 // </summary>
 // ***********************************************************************
 
@@ -19,13 +19,14 @@ using ReSharper.NTriples.Tree;
 
 namespace ReSharper.NTriples.CodeInspections
 {
-    public abstract class NTriplesDaemonStageProcessBase :
-        TreeNodeVisitor<IHighlightingConsumer>,
-        IRecursiveElementProcessor<IHighlightingConsumer>,
-        IDaemonStageProcess
+    public abstract class NTriplesDaemonStageProcessBase
+        :
+            TreeNodeVisitor<IHighlightingConsumer>,
+            IRecursiveElementProcessor<IHighlightingConsumer>,
+            IDaemonStageProcess
     {
         private readonly IDaemonProcess myDaemonProcess;
-        private readonly ISecretFile myFile;
+        private readonly INTriplesFile myFile;
 
         private readonly IContextBoundSettingsStore mySettingsStore;
 
@@ -33,7 +34,7 @@ namespace ReSharper.NTriples.CodeInspections
         {
             this.myDaemonProcess = process;
             this.mySettingsStore = settingsStore;
-            this.myFile = NTriplesDaemonStageBase.GetSecretFile(this.myDaemonProcess.SourceFile);
+            this.myFile = NTriplesDaemonStageBase.GetNTriplesFile(this.myDaemonProcess.SourceFile);
         }
 
         public IDaemonProcess DaemonProcess
@@ -44,7 +45,7 @@ namespace ReSharper.NTriples.CodeInspections
             }
         }
 
-        protected ISecretFile File
+        protected INTriplesFile File
         {
             get
             {
@@ -70,7 +71,7 @@ namespace ReSharper.NTriples.CodeInspections
 
         public virtual void ProcessAfterInterior(ITreeNode element, IHighlightingConsumer consumer)
         {
-            var secretElement = element as ISecretTreeNode;
+            var secretElement = element as INTriplesTreeNode;
             if (secretElement != null)
             {
                 var tokenNode = secretElement as ITokenNode;
@@ -90,7 +91,7 @@ namespace ReSharper.NTriples.CodeInspections
         }
 
         protected void HighlightInFile(
-            Action<ISecretFile, IHighlightingConsumer> fileHighlighter, Action<DaemonStageResult> commiter)
+            Action<INTriplesFile, IHighlightingConsumer> fileHighlighter, Action<DaemonStageResult> commiter)
         {
             var consumer = new DefaultHighlightingConsumer(this, this.mySettingsStore);
             fileHighlighter(this.File, consumer);

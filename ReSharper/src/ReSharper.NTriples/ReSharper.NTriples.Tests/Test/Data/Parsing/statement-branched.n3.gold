@@ -1,5 +1,5 @@
 ﻿Language: PsiLanguageType:NTriples
-ISecretFile
+INTriplesFile
   NewLine(type:NEW_LINE, text:\n) spaces:"\n"
   NewLine(type:NEW_LINE, text:\n) spaces:"\n"
   ISentences
@@ -11,7 +11,7 @@ ISecretFile
               IUriIdentifier
                 IPrefix
                   Identifier(type:IDENTIFIER, text:family)
-                SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                NTriplesTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                 ILocalName
                   Identifier(type:IDENTIFIER, text:jack)
         NewLine(type:NEW_LINE, text:\n) spaces:"\n"
@@ -24,7 +24,7 @@ ISecretFile
                   IUriIdentifier
                     IPrefix
                       Identifier(type:IDENTIFIER, text:relation)
-                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                    NTriplesTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:father)
             Whitespace(type:WHITE_SPACE, text: ) spaces:" "
@@ -34,10 +34,10 @@ ISecretFile
                   IUriIdentifier
                     IPrefix
                       Identifier(type:IDENTIFIER, text:names)
-                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                    NTriplesTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:john)
-          SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
+          NTriplesTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
           NewLine(type:NEW_LINE, text:\n) spaces:"\n"
           Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
           IFact
@@ -47,7 +47,7 @@ ISecretFile
                   IUriIdentifier
                     IPrefix
                       Identifier(type:IDENTIFIER, text:relation)
-                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                    NTriplesTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:mother)
             Whitespace(type:WHITE_SPACE, text: ) spaces:" "
@@ -57,10 +57,10 @@ ISecretFile
                   IUriIdentifier
                     IPrefix
                       Identifier(type:IDENTIFIER, text:names)
-                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                    NTriplesTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:mary)
-          SecretTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
+          NTriplesTokenType+SemicolonTokenElement(type:SEMICOLON, text:;)
           NewLine(type:NEW_LINE, text:\n) spaces:"\n"
           Whitespace(type:WHITE_SPACE, text:    ) spaces:"    "
           IFact
@@ -70,7 +70,7 @@ ISecretFile
                   IUriIdentifier
                     IPrefix
                       Identifier(type:IDENTIFIER, text:relation)
-                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                    NTriplesTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:brothers)
             NewLine(type:NEW_LINE, text:\n) spaces:"\n"
@@ -81,10 +81,10 @@ ISecretFile
                   IUriIdentifier
                     IPrefix
                       Identifier(type:IDENTIFIER, text:names)
-                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                    NTriplesTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:billy)
-              SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+              NTriplesTokenType+CommaTokenElement(type:COMMA, text:,)
               NewLine(type:NEW_LINE, text:\n) spaces:"\n"
               Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
               IExpression
@@ -92,8 +92,8 @@ ISecretFile
                   IUriIdentifier
                     IPrefix
                       Identifier(type:IDENTIFIER, text:names)
-                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                    NTriplesTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:dilly)
-    SecretTokenType+DotTokenElement(type:DOT, text:.)
+    NTriplesTokenType+DotTokenElement(type:DOT, text:.)
 

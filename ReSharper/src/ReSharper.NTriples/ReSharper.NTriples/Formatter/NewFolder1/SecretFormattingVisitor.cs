@@ -20,7 +20,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Formatter
       }
     }
 
-    public override IEnumerable<string> VisitSecretFile(ISecretFile psiFile, FormattingStageContext context)
+    public override IEnumerable<string> VisitSecretFile(INTriplesFile psiFile, FormattingStageContext context)
     {
       if (!this.myIsGenerated)
       {

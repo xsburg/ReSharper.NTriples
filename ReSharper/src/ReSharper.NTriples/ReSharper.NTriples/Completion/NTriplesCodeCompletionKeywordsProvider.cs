@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretCodeCompletionKeywordsItemsProvider.cs
+//   NTriplesCodeCompletionKeywordsProvider.cs
 // </summary>
 // ***********************************************************************
 
@@ -35,14 +35,14 @@ namespace ReSharper.NTriples.Completion
 
         protected override bool AddLookupItems(NTriplesCodeCompletionContext context, GroupedItemsCollector collector)
         {
-            var secretFile = context.BasicContext.File as ISecretFile;
-            if (secretFile == null)
+            var psiFile = context.BasicContext.File as INTriplesFile;
+            if (psiFile == null)
             {
                 return false;
             }
 
             var keywords =
-                KeywordCompletionUtil.GetAplicableKeywords(secretFile, context.BasicContext.SelectedTreeRange, context)
+                KeywordCompletionUtil.GetAplicableKeywords(psiFile, context.BasicContext.SelectedTreeRange, context)
                                      .Select(CreateKeywordLookupItem);
             foreach (TextLookupItemBase textLookupItem in keywords)
             {
@@ -80,7 +80,7 @@ namespace ReSharper.NTriples.Completion
 
         private TextLookupRanges EvaluateRanges(ISpecificCodeCompletionContext context)
         {
-            var file = context.BasicContext.File as ISecretFile;
+            var file = context.BasicContext.File as INTriplesFile;
 
             DocumentRange selectionRange = context.BasicContext.SelectedRange;
 

@@ -19,7 +19,7 @@ namespace ReSharper.NTriples.Tests
     {
         public static string[] GetFilesToTest(this BaseTestNoShell testClass)
         {
-            return testClass.TestDataPath2.GetDirectoryEntries("*" + NTriplesProjectFileType.SecretExtension, true)
+            return testClass.TestDataPath2.GetDirectoryEntries("*" + NTriplesProjectFileType.NTriplesExtension, true)
                             .Select(f => Path.GetFileNameWithoutExtension(f.FullPath))
                             .ToArray();
         }

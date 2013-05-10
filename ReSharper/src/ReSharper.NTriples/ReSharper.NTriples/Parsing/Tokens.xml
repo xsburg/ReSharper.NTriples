@@ -1,4 +1,4 @@
-﻿<Tokens TokenTypeNamespace="JetBrains.ReSharper.Psi.Secret.Parsing" TokenTypeClass="SecretTokenType"
+﻿<Tokens TokenTypeNamespace="ReSharper.NTriples.Parsing" TokenTypeClass="NTriplesTokenType"
         KeywordNodeType="KeywordTokenNodeType" KeywordTokenElement="FixedTokenElement" TokenNodeType="FixedTokenNodeType"
         TokenTokenElement="FixedTokenElement">
   <Token name="URI_BEGIN" representation="&lt;" />

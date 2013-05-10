@@ -150,7 +150,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Formatter
 
         private IEnumerable<string> CalcSpaces(FormattingStageContext context)
         {
-            var psiTreeNode = context.Parent as ISecretTreeNode;
+            var psiTreeNode = context.Parent as INTriplesTreeNode;
             /*if(context.RightChild is IQuantifier)// TODO
       {
         return new  List<string> {""};

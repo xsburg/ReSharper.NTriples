@@ -1,10 +1,10 @@
 // ***********************************************************************
-// <author>Stephan B</author>
-// <copyright company="Comindware">
-//   Copyright (c) Comindware 2010-2013. All rights reserved.
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   N3ProjectFileType.cs
+//   NTriplesProjectFileType.cs
 // </summary>
 // ***********************************************************************
 
@@ -16,7 +16,7 @@ namespace ReSharper.NTriples.Impl
     [ProjectFileTypeDefinition(Name)]
     public class NTriplesProjectFileType : KnownProjectFileType
     {
-        public const string SecretExtension = ".n3";
+        public const string NTriplesExtension = ".n3";
         public new const string Name = "NTriples";
         public new static readonly NTriplesProjectFileType Instance;
 
@@ -33,7 +33,7 @@ namespace ReSharper.NTriples.Impl
         {
         }
 
-        private NTriplesProjectFileType() : base(Name, "The N-Triples File", new[] { SecretExtension })
+        private NTriplesProjectFileType() : base(Name, "The N-Triples File", new[] { NTriplesExtension })
         {
         }
     }

@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretUriStringReference.cs
+//   NTriplesUriStringReference.cs
 // </summary>
 // ***********************************************************************
 
@@ -49,7 +49,7 @@ namespace ReSharper.NTriples.Resolve
 
         public override ISymbolTable GetReferenceSymbolTable(bool useReferenceName)
         {
-            var file = this.TreeNode.GetContainingFile() as SecretFile;
+            var file = this.TreeNode.GetContainingFile() as NTriplesFile;
             if (file == null)
             {
                 return EmptySymbolTable.INSTANCE;

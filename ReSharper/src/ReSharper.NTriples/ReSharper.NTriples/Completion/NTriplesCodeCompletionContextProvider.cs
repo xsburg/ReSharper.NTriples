@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretCodeCompletionContextProvider.cs
+//   NTriplesCodeCompletionContextProvider.cs
 // </summary>
 // ***********************************************************************
 
@@ -52,7 +52,7 @@ namespace ReSharper.NTriples.Completion
 
         public override bool IsApplicable(CodeCompletionContext context)
         {
-            var psiFile = context.File as SecretFile;
+            var psiFile = context.File as NTriplesFile;
             return psiFile != null;
         }
 

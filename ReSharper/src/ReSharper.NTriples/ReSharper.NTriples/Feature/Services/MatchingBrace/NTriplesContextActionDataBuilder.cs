@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretContextActionDataBuilder.cs
+//   NTriplesContextActionDataBuilder.cs
 // </summary>
 // ***********************************************************************
 
@@ -36,7 +36,7 @@ namespace ReSharper.NTriples.Feature.Services.MatchingBrace
 
             var file =
                 psiSourceFile.GetPsiFile<NTriplesLanguage>(new DocumentRange(textControl.Document, textControl.Caret.Offset())) as
-                ISecretFile;
+                INTriplesFile;
             if (file == null || !file.IsValid() || !file.Language.Is<NTriplesLanguage>())
             {
                 return null;

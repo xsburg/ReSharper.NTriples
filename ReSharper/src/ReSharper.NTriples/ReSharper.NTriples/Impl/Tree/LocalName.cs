@@ -1,4 +1,14 @@
-﻿using System.Collections.Generic;
+﻿// ***********************************************************************
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
+// </copyright>
+// <summary>
+//   LocalName.cs
+// </summary>
+// ***********************************************************************
+
+using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using JetBrains.ReSharper.Psi;
@@ -13,7 +23,108 @@ namespace ReSharper.NTriples.Impl.Tree
 {
     internal partial class LocalName : IUriIdentifierDeclaredElement
     {
-        #region IDeclaredElement Members
+        private readonly IList<IPsiSourceFile> filesScope = new List<IPsiSourceFile>();
+        private NTriplesLocalNameReference myLocalNameReference;
+
+        public bool CaseSensistiveName
+        {
+            get
+            {
+                return true;
+            }
+        }
+
+        public IDeclaredElement DeclaredElement
+        {
+            get
+            {
+                return this;
+            }
+        }
+
+        public string DeclaredName
+        {
+            get
+            {
+                return this.GetDeclaredName();
+            }
+        }
+
+        /*public IChameleonNode ReSync(CachingLexer cachingLexer, TreeTextRange changedRange, int insertedTextLen)
+        {
+            TreeOffset currStartOffset = GetTreeStartOffset();
+            int currLength = GetTextLength();
+
+            Logger.Assert(changedRange.StartOffset >= currStartOffset && changedRange.EndOffset <= (currStartOffset + currLength),
+              "changedRange.StartOffset >= currStartOffset && changedRange.EndOffset <= (currStartOffset+currLength)");
+
+            int newLength = currLength - changedRange.Length + insertedTextLen;
+
+            LanguageService languageService = Language.LanguageService();
+            if (languageService != null)
+            {
+                var parser =
+                    (INTriplesParser)
+                    languageService.CreateParser(
+                        new ProjectedLexer(cachingLexer, new TextRange(currStartOffset.Offset, currStartOffset.Offset + newLength)),
+                        GetPsiModule(),
+                        GetSourceFile());
+                throw new NotImplementedException();
+                /*TreeElement newElement = parser.ParseStatement();
+                if (newElement.GetTextLength() == 0)
+                {
+                    return null;
+                }
+                if ((newElement.GetTextLength() == newLength) && (";".Equals(newElement.GetText().Substring(newElement.GetTextLength() - 1))))
+                {
+                    var psiFile = GetContainingNode<NTriplesFile>();
+                    if (psiFile != null)
+                    {
+                        psiFile.ClearTables();
+                    }
+                    return newElement as IRuleDeclaration;
+                }#2#
+            }
+
+            return null;
+        }*/
+
+        public bool IsOpened
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        public NTriplesLocalNameReference LocalNameReference
+        {
+            get
+            {
+                lock (this)
+                {
+                    return this.myLocalNameReference ?? (this.myLocalNameReference = new NTriplesLocalNameReference(this));
+                }
+            }
+        }
+
+        public PsiLanguageType PresentationLanguage
+        {
+            get
+            {
+                return NTriplesLanguage.Instance;
+            }
+        }
+
+        public bool ScopeToMainFile { get; set; }
+
+        public string ShortName
+        {
+            get
+            {
+                return this.GetText();
+            }
+        }
 
         public IList<IDeclaration> GetDeclarations()
         {
@@ -35,13 +146,40 @@ namespace ReSharper.NTriples.Impl.Tree
             return UriIdentifierDeclaredElement.GetDeclarationsIn(sourceFile, this);
         }
 
-        private readonly IList<IPsiSourceFile> filesScope = new List<IPsiSourceFile>();
+        public DeclaredElementType GetElementType()
+        {
+            return NTriplesDeclaredElementType.UriIdentifier;
+        }
 
-        public bool ScopeToMainFile { get; set; }
+        public override ReferenceCollection GetFirstClassReferences()
+        {
+            return new ReferenceCollection(this.LocalNameReference);
+        }
+
+        public IdentifierKind GetKind()
+        {
+            var uriIdentifier = this.Parent as UriIdentifier;
+            if (uriIdentifier == null)
+            {
+                return IdentifierKind.Other;
+            }
+
+            return uriIdentifier.GetKind();
+        }
+
+        public string GetLocalName()
+        {
+            return this.GetText();
+        }
+
+        public TreeTextRange GetNameRange()
+        {
+            return this.GetTreeTextRange();
+        }
 
         public string GetNamespace()
         {
-            var uriIdentifier = Parent as UriIdentifier;
+            var uriIdentifier = this.Parent as UriIdentifier;
             if (uriIdentifier == null)
             {
                 return null;
@@ -54,7 +192,7 @@ namespace ReSharper.NTriples.Impl.Tree
             }
 
             var prefix = prefixElement.PrefixReference.GetName();
-            var secretFile = (SecretFile)this.GetContainingFile();
+            var secretFile = (NTriplesFile)this.GetContainingFile();
             if (secretFile == null)
             {
                 return prefix;
@@ -69,11 +207,6 @@ namespace ReSharper.NTriples.Impl.Tree
             return prefix;
         }
 
-        public string GetLocalName()
-        {
-            return this.GetText();
-        }
-
         public string GetUri()
         {
             var ns = this.GetNamespace();
@@ -85,17 +218,12 @@ namespace ReSharper.NTriples.Impl.Tree
             return ns + this.GetText();
         }
 
-        public DeclaredElementType GetElementType()
-        {
-            return NTriplesDeclaredElementType.UriIdentifier;
-        }
-
-        public XmlNode GetXMLDoc(bool inherit)
+        public XmlNode GetXMLDescriptionSummary(bool inherit)
         {
             return null;
         }
 
-        public XmlNode GetXMLDescriptionSummary(bool inherit)
+        public XmlNode GetXMLDoc(bool inherit)
         {
             return null;
         }
@@ -105,134 +233,19 @@ namespace ReSharper.NTriples.Impl.Tree
             return false;
         }
 
-        public string ShortName
-        {
-            get
-            {
-                return this.GetText();
-            }
-        }
-
-        public bool CaseSensistiveName
-        {
-            get { return true; }
-        }
-
-        public PsiLanguageType PresentationLanguage
-        {
-            get { return NTriplesLanguage.Instance; }
-        }
-
-        public IdentifierKind GetKind()
-        {
-            var uriIdentifier = Parent as UriIdentifier;
-            if (uriIdentifier == null)
-            {
-                return IdentifierKind.Other;
-            }
-
-            return uriIdentifier.GetKind();
-        }
-
-        #endregion
-
-        #region IRuleDeclaration Members
-
         public void SetName(string name)
         {
             PsiTreeUtil.ReplaceChild(this, this.FirstChild, name);
         }
 
-        public TreeTextRange GetNameRange()
+        public void SetReferenceName(string shortName)
         {
-            return this.GetTreeTextRange();
-        }
-
-        public IDeclaredElement DeclaredElement
-        {
-            get
-            {
-                return this;
-            }
-        }
-
-        public string DeclaredName
-        {
-            get { return this.GetDeclaredName(); }
-        }
-
-        /*public IChameleonNode ReSync(CachingLexer cachingLexer, TreeTextRange changedRange, int insertedTextLen)
-        {
-            TreeOffset currStartOffset = GetTreeStartOffset();
-            int currLength = GetTextLength();
-
-            Logger.Assert(changedRange.StartOffset >= currStartOffset && changedRange.EndOffset <= (currStartOffset + currLength),
-              "changedRange.StartOffset >= currStartOffset && changedRange.EndOffset <= (currStartOffset+currLength)");
-
-            int newLength = currLength - changedRange.Length + insertedTextLen;
-
-            LanguageService languageService = Language.LanguageService();
-            if (languageService != null)
-            {
-                var parser =
-                    (ISecretParser)
-                    languageService.CreateParser(
-                        new ProjectedLexer(cachingLexer, new TextRange(currStartOffset.Offset, currStartOffset.Offset + newLength)),
-                        GetPsiModule(),
-                        GetSourceFile());
-                throw new NotImplementedException();
-                /*TreeElement newElement = parser.ParseStatement();
-                if (newElement.GetTextLength() == 0)
-                {
-                    return null;
-                }
-                if ((newElement.GetTextLength() == newLength) && (";".Equals(newElement.GetText().Substring(newElement.GetTextLength() - 1))))
-                {
-                    var psiFile = GetContainingNode<SecretFile>();
-                    if (psiFile != null)
-                    {
-                        psiFile.ClearTables();
-                    }
-                    return newElement as IRuleDeclaration;
-                }#2#
-            }
-
-            return null;
-        }*/
-
-        #endregion
-
-        public bool IsOpened
-        {
-            get { return false; }
+            this.LocalNameReference.SetName(shortName);
         }
 
         private string GetDeclaredName()
         {
             return this.GetText();
-        }
-
-        private NTriplesLocalNameReference myLocalNameReference;
-
-        public NTriplesLocalNameReference LocalNameReference
-        {
-            get
-            {
-                lock (this)
-                {
-                    return this.myLocalNameReference ?? (this.myLocalNameReference = new NTriplesLocalNameReference(this));
-                }
-            }
-        }
-
-        public override ReferenceCollection GetFirstClassReferences()
-        {
-            return new ReferenceCollection(this.LocalNameReference);
-        }
-
-        public void SetReferenceName(string shortName)
-        {
-            this.LocalNameReference.SetName(shortName);
         }
     }
 }

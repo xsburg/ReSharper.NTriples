@@ -1,9 +1,19 @@
-﻿using JetBrains.ReSharper.Psi;
+﻿// ***********************************************************************
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
+// </copyright>
+// <summary>
+//   NTriplesPrefixUriReference.cs
+// </summary>
+// ***********************************************************************
+
+using System.Linq;
+using JetBrains.ProjectModel;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve;
 using JetBrains.ReSharper.Psi.Resolve;
 using JetBrains.ReSharper.Psi.Tree;
-using JetBrains.ProjectModel;
-using System.Linq;
 using ReSharper.NTriples.Cache;
 using ReSharper.NTriples.Impl.Tree;
 using ReSharper.NTriples.Tree;
@@ -36,12 +46,12 @@ namespace ReSharper.NTriples.Resolve
 
         public override ISymbolTable GetReferenceSymbolTable(bool useReferenceName)
         {
-            var file = this.TreeNode.GetContainingFile() as SecretFile;
+            var file = this.TreeNode.GetContainingFile() as NTriplesFile;
             if (file == null)
             {
                 return EmptySymbolTable.INSTANCE;
             }
-            
+
             var psiServices = file.GetPsiServices();
             var cache = this.TreeNode.GetSolution().GetComponent<NTriplesCache>();
             var uriList = cache.GetAllPrefixDeclarationSymbols().Select(s => s.Uri).Distinct().ToArray();

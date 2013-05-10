@@ -1,4 +1,14 @@
-﻿using System.Collections.Generic;
+﻿// ***********************************************************************
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
+// </copyright>
+// <summary>
+//   PrefixDeclaration.cs
+// </summary>
+// ***********************************************************************
+
+using System.Collections.Generic;
 using System.Xml;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Tree;
@@ -9,79 +19,28 @@ namespace ReSharper.NTriples.Impl.Tree
 {
     internal partial class PrefixDeclaration : IDeclaredElement
     {
-        #region IDeclaredElement Members
-
-        public IList<IDeclaration> GetDeclarations()
-        {
-            var list = new List<IDeclaration> { this };
-            return list;
-        }
-
-        public IList<IDeclaration> GetDeclarationsIn(IPsiSourceFile sourceFile)
-        {
-            var list = new List<IDeclaration> { this };
-            return list;
-        }
-
-        public DeclaredElementType GetElementType()
-        {
-            return NTriplesDeclaredElementType.Prefix;
-        }
-
-        public XmlNode GetXMLDoc(bool inherit)
-        {
-            return null;
-        }
-
-        public XmlNode GetXMLDescriptionSummary(bool inherit)
-        {
-            return null;
-        }
-
-        public bool IsSynthetic()
-        {
-            return false;
-        }
-
-        public string ShortName
-        {
-            get { return PrefixName.GetText(); }
-        }
-
         public bool CaseSensistiveName
         {
-            get { return true; }
-        }
-
-        public PsiLanguageType PresentationLanguage
-        {
-            get { return NTriplesLanguage.Instance; }
-        }
-
-        #endregion
-
-        #region IRuleDeclaration Members
-
-        public void SetName(string name)
-        {
-            PsiTreeUtil.ReplaceChild(PrefixName, PrefixName.FirstChild, name);
-        }
-
-        public TreeTextRange GetNameRange()
-        {
-            ITreeNode prefixName = PrefixName;
-            int offset = prefixName.GetNavigationRange().TextRange.StartOffset;
-            return new TreeTextRange(new TreeOffset(offset), this.GetDeclaredName().Length);
+            get
+            {
+                return true;
+            }
         }
 
         public IDeclaredElement DeclaredElement
         {
-            get { return this; }
+            get
+            {
+                return this;
+            }
         }
 
         public string DeclaredName
         {
-            get { return this.GetDeclaredName(); }
+            get
+            {
+                return this.GetDeclaredName();
+            }
         }
 
         /*public IChameleonNode ReSync(CachingLexer cachingLexer, TreeTextRange changedRange, int insertedTextLen)
@@ -125,14 +84,81 @@ namespace ReSharper.NTriples.Impl.Tree
 
         public bool IsOpened
         {
-            get { return false; }
+            get
+            {
+                return false;
+            }
         }
 
-        #endregion
+        public PsiLanguageType PresentationLanguage
+        {
+            get
+            {
+                return NTriplesLanguage.Instance;
+            }
+        }
+
+        public string ShortName
+        {
+            get
+            {
+                return this.PrefixName.GetText();
+            }
+        }
+
+        public IList<IDeclaration> GetDeclarations()
+        {
+            var list = new List<IDeclaration>
+                {
+                    this
+                };
+            return list;
+        }
+
+        public IList<IDeclaration> GetDeclarationsIn(IPsiSourceFile sourceFile)
+        {
+            var list = new List<IDeclaration>
+                {
+                    this
+                };
+            return list;
+        }
+
+        public DeclaredElementType GetElementType()
+        {
+            return NTriplesDeclaredElementType.Prefix;
+        }
+
+        public TreeTextRange GetNameRange()
+        {
+            ITreeNode prefixName = this.PrefixName;
+            int offset = prefixName.GetNavigationRange().TextRange.StartOffset;
+            return new TreeTextRange(new TreeOffset(offset), this.GetDeclaredName().Length);
+        }
+
+        public XmlNode GetXMLDescriptionSummary(bool inherit)
+        {
+            return null;
+        }
+
+        public XmlNode GetXMLDoc(bool inherit)
+        {
+            return null;
+        }
+
+        public bool IsSynthetic()
+        {
+            return false;
+        }
+
+        public void SetName(string name)
+        {
+            PsiTreeUtil.ReplaceChild(this.PrefixName, this.PrefixName.FirstChild, name);
+        }
 
         private string GetDeclaredName()
         {
-            return PrefixName.GetText();
+            return this.PrefixName.GetText();
         }
     }
 }

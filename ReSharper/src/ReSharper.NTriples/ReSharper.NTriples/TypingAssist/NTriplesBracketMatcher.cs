@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretBracketMatcher.cs
+//   NTriplesBracketMatcher.cs
 // </summary>
 // ***********************************************************************
 
@@ -21,9 +21,9 @@ namespace ReSharper.NTriples.TypingAssist
             : base(
                 new[]
                     {
-                        new Pair<TokenNodeType, TokenNodeType>(SecretTokenType.L_BRACE, SecretTokenType.R_BRACE),
-                        new Pair<TokenNodeType, TokenNodeType>(SecretTokenType.L_BRACKET, SecretTokenType.R_BRACKET),
-                        new Pair<TokenNodeType, TokenNodeType>(SecretTokenType.L_PARENTHESES, SecretTokenType.R_PARENTHESES)
+                        new Pair<TokenNodeType, TokenNodeType>(NTriplesTokenType.L_BRACE, NTriplesTokenType.R_BRACE),
+                        new Pair<TokenNodeType, TokenNodeType>(NTriplesTokenType.L_BRACKET, NTriplesTokenType.R_BRACKET),
+                        new Pair<TokenNodeType, TokenNodeType>(NTriplesTokenType.L_PARENTHESES, NTriplesTokenType.R_PARENTHESES)
                     })
         {
         }

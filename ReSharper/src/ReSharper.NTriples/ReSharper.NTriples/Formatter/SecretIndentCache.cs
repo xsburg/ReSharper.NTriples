@@ -17,7 +17,7 @@ using ReSharper.NTriples.Tree;
 
 namespace JetBrains.ReSharper.Psi.Secret.Formatter
 {
-    public class SecretIndentCache : IndentCache<ISecretTreeNode>
+    public class SecretIndentCache : IndentCache<INTriplesTreeNode>
     {
         public SecretIndentCache(
             ICodeFormatterImpl codeFormatter,

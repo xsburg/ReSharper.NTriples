@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretFileCache.cs
+//   NTriplesFileCache.cs
 // </summary>
 // ***********************************************************************
 
@@ -14,12 +14,14 @@ namespace ReSharper.NTriples.Cache
 {
     public class NTriplesFileCache
     {
-        public NTriplesFileCache(IList<NTriplesUriIdentifierSymbol> uriIdentifiers)
+        public NTriplesFileCache(
+            IList<NTriplesUriIdentifierSymbol> uriIdentifiers, IList<NTriplesPrefixDeclarationSymbol> prefixDeclarationData)
         {
             this.UriIdentifiers = uriIdentifiers;
+            this.PrefixDeclarations = prefixDeclarationData;
         }
 
-
+        public IList<NTriplesPrefixDeclarationSymbol> PrefixDeclarations { get; private set; }
         public IList<NTriplesUriIdentifierSymbol> UriIdentifiers { get; private set; }
     }
 }

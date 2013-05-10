@@ -1,138 +1,138 @@
 ﻿Language: PsiLanguageType:NTriples
-ISecretFile
+INTriplesFile
   NewLine(type:NEW_LINE, text:\n) spaces:"\n"
   NewLine(type:NEW_LINE, text:\n) spaces:"\n"
   ISentences
     ISentence
       IDirective
         IPrefixDeclaration
-          SecretTokenType+PrefixKeywordTokenElement(type:PREFIX_KEYWORD, text:@prefix)
+          NTriplesTokenType+PrefixKeywordTokenElement(type:PREFIX_KEYWORD, text:@prefix)
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           IPrefixName
             Identifier(type:IDENTIFIER, text:logics)
-          SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+          NTriplesTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          SecretTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
+          NTriplesTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
           IPrefixUri
-            SecretGenericToken(type:URI_STRING, text:http://my-ontology.org#logics)
-          SecretTokenType+UriEndTokenElement(type:URI_END, text:>)
-    SecretTokenType+DotTokenElement(type:DOT, text:.)
+            NTriplesGenericToken(type:URI_STRING, text:http://my-ontology.org#logics)
+          NTriplesTokenType+UriEndTokenElement(type:URI_END, text:>)
+    NTriplesTokenType+DotTokenElement(type:DOT, text:.)
     NewLine(type:NEW_LINE, text:\n) spaces:"\n"
     ISentence
       IDirective
         IPrefixDeclaration
-          SecretTokenType+StdPrefixKeywordTokenElement(type:STD_PREFIX_KEYWORD, text:@std_prefix)
+          NTriplesTokenType+StdPrefixKeywordTokenElement(type:STD_PREFIX_KEYWORD, text:@std_prefix)
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           IPrefixName
             Identifier(type:IDENTIFIER, text:someStandard)
-          SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+          NTriplesTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          SecretTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
+          NTriplesTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
           IPrefixUri
-            SecretGenericToken(type:URI_STRING, text:http://my-ontology.org/logics#someStandard)
-          SecretTokenType+UriEndTokenElement(type:URI_END, text:>)
-    SecretTokenType+DotTokenElement(type:DOT, text:.)
+            NTriplesGenericToken(type:URI_STRING, text:http://my-ontology.org/logics#someStandard)
+          NTriplesTokenType+UriEndTokenElement(type:URI_END, text:>)
+    NTriplesTokenType+DotTokenElement(type:DOT, text:.)
     NewLine(type:NEW_LINE, text:\n) spaces:"\n"
     ISentence
       IDirective
         IExtensionDirective
-          SecretTokenType+ExtensionKeywordTokenElement(type:EXTENSION_KEYWORD, text:@extension)
+          NTriplesTokenType+ExtensionKeywordTokenElement(type:EXTENSION_KEYWORD, text:@extension)
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           IUriIdentifier
-            SecretTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
+            NTriplesTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
             IUriString
-              SecretGenericToken(type:URI_STRING, text:http://my-ontology.org#logics)
-            SecretTokenType+UriEndTokenElement(type:URI_END, text:>)
+              NTriplesGenericToken(type:URI_STRING, text:http://my-ontology.org#logics)
+            NTriplesTokenType+UriEndTokenElement(type:URI_END, text:>)
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           IUriIdentifier
-            SecretTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
+            NTriplesTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
             IUriString
-              SecretGenericToken(type:URI_STRING, text:http://my-ontology.org/logics#someStandard)
-            SecretTokenType+UriEndTokenElement(type:URI_END, text:>)
-    SecretTokenType+DotTokenElement(type:DOT, text:.)
+              NTriplesGenericToken(type:URI_STRING, text:http://my-ontology.org/logics#someStandard)
+            NTriplesTokenType+UriEndTokenElement(type:URI_END, text:>)
+    NTriplesTokenType+DotTokenElement(type:DOT, text:.)
     NewLine(type:NEW_LINE, text:\n) spaces:"\n"
     ISentence
       IDirective
         IUseExternalDirective
-          SecretTokenType+UsingKeywordTokenElement(type:USING_KEYWORD, text:@using)
+          NTriplesTokenType+UsingKeywordTokenElement(type:USING_KEYWORD, text:@using)
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          SecretTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
-          SecretGenericToken(type:URI_STRING, text:logics.n3)
-          SecretTokenType+UriEndTokenElement(type:URI_END, text:>)
+          NTriplesTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
+          NTriplesGenericToken(type:URI_STRING, text:logics.n3)
+          NTriplesTokenType+UriEndTokenElement(type:URI_END, text:>)
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           IUriIdentifiers
             IUriIdentifier
               IPrefix
                 Identifier(type:IDENTIFIER, text:foo)
-              SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+              NTriplesTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
               ILocalName
                 Identifier(type:IDENTIFIER, text:bar)
-            SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+            NTriplesTokenType+CommaTokenElement(type:COMMA, text:,)
             Whitespace(type:WHITE_SPACE, text: ) spaces:" "
             IUriIdentifiers
               IUriIdentifier
-                SecretTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
+                NTriplesTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
                 IUriString
-                  SecretGenericToken(type:URI_STRING, text:http://my-ontology.org#logics)
-                SecretTokenType+UriEndTokenElement(type:URI_END, text:>)
-    SecretTokenType+DotTokenElement(type:DOT, text:.)
+                  NTriplesGenericToken(type:URI_STRING, text:http://my-ontology.org#logics)
+                NTriplesTokenType+UriEndTokenElement(type:URI_END, text:>)
+    NTriplesTokenType+DotTokenElement(type:DOT, text:.)
     NewLine(type:NEW_LINE, text:\n) spaces:"\n"
     ISentence
       IDirective
         IAxisDirective
-          SecretTokenType+DefaultAxisKeywordTokenElement(type:DEFAULT_AXIS_KEYWORD, text:@axis-default)
+          NTriplesTokenType+DefaultAxisKeywordTokenElement(type:DEFAULT_AXIS_KEYWORD, text:@axis-default)
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           IUriIdentifiers
             IUriIdentifier
               IPrefix
                 Identifier(type:IDENTIFIER, text:foo)
-              SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+              NTriplesTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
               ILocalName
                 Identifier(type:IDENTIFIER, text:bar)
-            SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+            NTriplesTokenType+CommaTokenElement(type:COMMA, text:,)
             Whitespace(type:WHITE_SPACE, text: ) spaces:" "
             IUriIdentifiers
               IUriIdentifier
-                SecretTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
+                NTriplesTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
                 IUriString
-                  SecretGenericToken(type:URI_STRING, text:http://my-ontology.org#logics)
-                SecretTokenType+UriEndTokenElement(type:URI_END, text:>)
-    SecretTokenType+DotTokenElement(type:DOT, text:.)
+                  NTriplesGenericToken(type:URI_STRING, text:http://my-ontology.org#logics)
+                NTriplesTokenType+UriEndTokenElement(type:URI_END, text:>)
+    NTriplesTokenType+DotTokenElement(type:DOT, text:.)
     NewLine(type:NEW_LINE, text:\n) spaces:"\n"
     ISentence
       IDirective
         IForAllDirective
-          SecretTokenType+ForAllKeywordTokenElement(type:FOR_ALL_KEYWORD, text:@forAll)
+          NTriplesTokenType+ForAllKeywordTokenElement(type:FOR_ALL_KEYWORD, text:@forAll)
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           IUriIdentifiers
             IUriIdentifier
               IPrefix
                 Identifier(type:IDENTIFIER, text:foo)
-              SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+              NTriplesTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
               ILocalName
                 Identifier(type:IDENTIFIER, text:bar)
-            SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+            NTriplesTokenType+CommaTokenElement(type:COMMA, text:,)
             Whitespace(type:WHITE_SPACE, text: ) spaces:" "
             IUriIdentifiers
               IUriIdentifier
                 IPrefix
                   Identifier(type:IDENTIFIER, text:foo)
-                SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                NTriplesTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                 ILocalName
                   Identifier(type:IDENTIFIER, text:bar)
-    SecretTokenType+DotTokenElement(type:DOT, text:.)
+    NTriplesTokenType+DotTokenElement(type:DOT, text:.)
     NewLine(type:NEW_LINE, text:\n) spaces:"\n"
     ISentence
       IDirective
         IForSomeDirective
-          SecretTokenType+ForSomeKeywordTokenElement(type:FOR_SOME_KEYWORD, text:@forSome)
+          NTriplesTokenType+ForSomeKeywordTokenElement(type:FOR_SOME_KEYWORD, text:@forSome)
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           IUriIdentifiers
             IUriIdentifier
-              SecretTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
+              NTriplesTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
               IUriString
-                SecretGenericToken(type:URI_STRING, text:http://my-ontology.org#logics)
-              SecretTokenType+UriEndTokenElement(type:URI_END, text:>)
-    SecretTokenType+DotTokenElement(type:DOT, text:.)
+                NTriplesGenericToken(type:URI_STRING, text:http://my-ontology.org#logics)
+              NTriplesTokenType+UriEndTokenElement(type:URI_END, text:>)
+    NTriplesTokenType+DotTokenElement(type:DOT, text:.)
   NewLine(type:NEW_LINE, text:\n) spaces:"\n"
 

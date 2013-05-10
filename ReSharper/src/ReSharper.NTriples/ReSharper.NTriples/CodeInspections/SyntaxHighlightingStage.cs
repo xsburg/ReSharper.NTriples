@@ -96,7 +96,7 @@ namespace ReSharper.NTriples.CodeInspections
                     {
                         //this.AddSyntaxHighlighting(consumer, node, VsPredefinedHighlighterIds.Literal);
                     }
-                    else if (token.GetTokenType() == SecretTokenType.NAMESPACE_SEPARATOR)
+                    else if (token.GetTokenType() == NTriplesTokenType.NAMESPACE_SEPARATOR)
                     {
                         this.AddSyntaxHighlighting(consumer, node, prefixHighlighting);
                     }

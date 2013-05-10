@@ -1,4 +1,14 @@
-﻿using System;
+﻿// ***********************************************************************
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
+// </copyright>
+// <summary>
+//   FactsSimplificationQuickFix.cs
+// </summary>
+// ***********************************************************************
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Application.Progress;
@@ -64,6 +74,13 @@ namespace ReSharper.NTriples.Intentions.QuickFix
             return null;
         }
 
+        private static string GetPredicateText(IFact f)
+        {
+            return f.Predicate != null
+                       ? f.Predicate.GetText()
+                       : "";
+        }
+
         private List<IFact> CollectFacts()
         {
             var facts = new List<IFact>();
@@ -83,13 +100,6 @@ namespace ReSharper.NTriples.Intentions.QuickFix
 
             facts.Add(fact);
             return facts;
-        }
-
-        private static string GetPredicateText(IFact f)
-        {
-            return f.Predicate != null
-                       ? f.Predicate.GetText()
-                       : "";
         }
     }
 }

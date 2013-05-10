@@ -15,7 +15,7 @@ using ReSharper.NTriples.Parsing;
 
 namespace ReSharper.NTriples.Tree
 {
-    internal class UriString : SecretTokenBase
+    internal class UriString : NTriplesTokenBase
     {
         private readonly string myText;
 
@@ -36,7 +36,7 @@ namespace ReSharper.NTriples.Tree
         {
             get
             {
-                return SecretTokenType.URI_STRING;
+                return NTriplesTokenType.URI_STRING;
             }
         }
 

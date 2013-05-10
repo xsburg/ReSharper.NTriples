@@ -34,20 +34,20 @@ using ReSharper.NTriples.Parsing;
 
 namespace ReSharper.NTriples.TypingAssist
 {
-    /*public abstract class CSharpTypingAssistBase : TypingAssistForCLikeLanguage<SecretLanguage, SecretCodeFormatter>, ITypingHandler
+    /*public abstract class CSharpTypingAssistBase : TypingAssistForCLikeLanguage<NTriplesLanguage, NTriplesCodeFormatter>, ITypingHandler
     {
         private static readonly NodeTypeSet TypeParamTokens = new NodeTypeSet(new NodeType[10]
     {
-      (NodeType) SecretTokenType.IDENTIFIER,
-      (NodeType) SecretTokenType.LT,
-      (NodeType) SecretTokenType.GT,
-      (NodeType) SecretTokenType.ASTERISK,
-      (NodeType) SecretTokenType.LBRACKET,
-      (NodeType) SecretTokenType.RBRACKET,
-      (NodeType) SecretTokenType.DOUBLE_COLON,
-      (NodeType) SecretTokenType.DOT,
-      (NodeType) SecretTokenType.COMMA,
-      (NodeType) SecretTokenType.QUEST
+      (NodeType) NTriplesTokenType.IDENTIFIER,
+      (NodeType) NTriplesTokenType.LT,
+      (NodeType) NTriplesTokenType.GT,
+      (NodeType) NTriplesTokenType.ASTERISK,
+      (NodeType) NTriplesTokenType.LBRACKET,
+      (NodeType) NTriplesTokenType.RBRACKET,
+      (NodeType) NTriplesTokenType.DOUBLE_COLON,
+      (NodeType) NTriplesTokenType.DOT,
+      (NodeType) NTriplesTokenType.COMMA,
+      (NodeType) NTriplesTokenType.QUEST
     });
 
         static CSharpTypingAssistBase()
@@ -81,14 +81,14 @@ namespace ReSharper.NTriples.TypingAssist
                 TokenNodeType tokenType2 = tokenType1;
                 int currentTokenIndex = lexer.CurrentTokenIndex;
                 int currentPosition = lexer.CurrentPosition;
-                if (tokenType1 == SecretTokenType.LBRACE)
+                if (tokenType1 == NTriplesTokenType.LBRACE)
                 {
-                    var csharpBraceMatcher = new SecretBraceMatcher();
+                    var csharpBraceMatcher = new NTriplesBraceMatcher();
                     lexer.Start();
                     bool flag = false;
                     do
                     {
-                        SecretBraceMatcher.ProceedStack(lexer.TokenType);
+                        NTriplesBraceMatcher.ProceedStack(lexer.TokenType);
                         if (lexer.CurrentTokenIndex == currentTokenIndex)
                             flag = true;
                         lexer.Advance();
@@ -110,7 +110,7 @@ namespace ReSharper.NTriples.TypingAssist
                     }
                     while ((tokenType2 = lexer.TokenType) != null);
                     lexer.CurrentPosition = currentPosition;
-                    if (tokenType1 == SecretTokenType.LBRACE)
+                    if (tokenType1 == NTriplesTokenType.LBRACE)
                         bracketMatcher = (BracketMatcher)new CSharpBraceMatcher();
                     return !bracketMatcher.FindMatchingBracket(lexer);
                 }
@@ -159,7 +159,7 @@ namespace ReSharper.NTriples.TypingAssist
             ITokenNode tokenNode1 = file.FindTokenAt(range.StartOffset) as ITokenNode;
             if (tokenNode1 == null || !base.IsRBrace(textControl, (ITreeNode)tokenNode1))
                 return false;
-            if (tokenNode1.GetTokenType() != SecretTokenType.RBRACE)
+            if (tokenNode1.GetTokenType() != NTriplesTokenType.RBRACE)
                 return true;
             TreeOffset treeOffset = TreeNodeExtensions.GetTreeTextRange((ITreeNode)tokenNode1).EndOffset;
             string text = "}";
@@ -233,7 +233,7 @@ namespace ReSharper.NTriples.TypingAssist
                         {
                             treeOffset = TreeNodeExtensions.GetTreeTextRange((ITreeNode)statementOnSameLine).EndOffset;
                             ITokenNode lastTokenIn = TreeNodeExtensions.FindLastTokenIn((ITreeNode)statementOnSameLine);
-                            if (lastTokenIn != null && lastTokenIn.GetTokenType() == SecretTokenType.END_OF_LINE_COMMENT)
+                            if (lastTokenIn != null && lastTokenIn.GetTokenType() == NTriplesTokenType.END_OF_LINE_COMMENT)
                             {
                                 text = Environment.NewLine + "}";
                                 break;
@@ -286,10 +286,10 @@ namespace ReSharper.NTriples.TypingAssist
                     ITextControl textControl = typingContext.TextControl;
                     CachingLexer cachingLexer = this.GetCachingLexer(textControl);
                     int num1 = this.TextControlToLexer(textControl, ITextControlCaretEx.Offset(textControl.Caret) - 1);
-                    if (num1 < 0 || !cachingLexer.FindTokenAt(num1) || cachingLexer.TokenStart != num1 || cachingLexer.TokenType != SecretTokenType.LBRACKET && cachingLexer.TokenType != SecretTokenType.LPARENTH && !this.IsCustomLParenth(textControl, cachingLexer))
+                    if (num1 < 0 || !cachingLexer.FindTokenAt(num1) || cachingLexer.TokenStart != num1 || cachingLexer.TokenType != NTriplesTokenType.LBRACKET && cachingLexer.TokenType != NTriplesTokenType.LPARENTH && !this.IsCustomLParenth(textControl, cachingLexer))
                         return true;
                     TokenNodeType nextTokenType = LexerUtil.LookaheadToken<int>((ILexer<int>)cachingLexer, 1);
-                    if (nextTokenType != null && nextTokenType != SecretTokenType.WHITE_SPACE && (nextTokenType != SecretTokenType.NEW_LINE && nextTokenType != SecretTokenType.C_STYLE_COMMENT) && (nextTokenType != SecretTokenType.END_OF_LINE_COMMENT && nextTokenType != SecretTokenType.SEMICOLON && (nextTokenType != SecretTokenType.COMMA && nextTokenType != SecretTokenType.RBRACKET)) && (nextTokenType != SecretTokenType.RBRACE && nextTokenType != SecretTokenType.RPARENTH && !this.IsCustomTokenSuitableForCloseParenth(nextTokenType, textControl, cachingLexer)) || !this.NeedAutoinsertCloseBracket(textControl, cachingLexer) || typingContext.EnsureWritable() != EnsureWritableResult.SUCCESS)
+                    if (nextTokenType != null && nextTokenType != NTriplesTokenType.WHITE_SPACE && (nextTokenType != NTriplesTokenType.NEW_LINE && nextTokenType != NTriplesTokenType.C_STYLE_COMMENT) && (nextTokenType != NTriplesTokenType.END_OF_LINE_COMMENT && nextTokenType != NTriplesTokenType.SEMICOLON && (nextTokenType != NTriplesTokenType.COMMA && nextTokenType != NTriplesTokenType.RBRACKET)) && (nextTokenType != NTriplesTokenType.RBRACE && nextTokenType != NTriplesTokenType.RPARENTH && !this.IsCustomTokenSuitableForCloseParenth(nextTokenType, textControl, cachingLexer)) || !this.NeedAutoinsertCloseBracket(textControl, cachingLexer) || typingContext.EnsureWritable() != EnsureWritableResult.SUCCESS)
                         return true;
                     char @char = typingContext.Char;
                     int num2 = this.LexerToTextControl(textControl, num1);
@@ -349,7 +349,7 @@ namespace ReSharper.NTriples.TypingAssist
                         this.FormatNonCSharpRBrace(textControl, file, num, CodeFormatProfile.SOFT);
                         return true;
                     }
-                    else if (tokenNode.GetTokenType() != SecretTokenType.RBRACE)
+                    else if (tokenNode.GetTokenType() != NTriplesTokenType.RBRACE)
                     {
                         this.FormatCustomRBrace(textControl, tokenNode, CodeFormatProfile.SOFT, (IContextBoundSettingsStore)null);
                         return true;
@@ -381,12 +381,12 @@ namespace ReSharper.NTriples.TypingAssist
 
         protected virtual bool IsLBrace(ITextControl textControl, CachingLexer lexer)
         {
-            return lexer.TokenType == SecretTokenType.LBRACE;
+            return lexer.TokenType == NTriplesTokenType.LBRACE;
         }
 
         protected virtual bool IsRBrace(ITextControl textControl, CachingLexer lexer)
         {
-            return lexer.TokenType == SecretTokenType.RBRACE;
+            return lexer.TokenType == NTriplesTokenType.RBRACE;
         }
 
         protected virtual bool ShouldSkipToken(CachingLexer lexer)
@@ -402,9 +402,9 @@ namespace ReSharper.NTriples.TypingAssist
             if (pos1 < 0 || !cachingLexer.FindTokenAt(pos1))
                 return false;
             TokenNodeType tokenType1 = cachingLexer.TokenType;
-            if (tokenType1 != SecretTokenType.WHITE_SPACE && tokenType1 != SecretTokenType.NEW_LINE && !this.ShouldSkipToken(cachingLexer))
+            if (tokenType1 != NTriplesTokenType.WHITE_SPACE && tokenType1 != NTriplesTokenType.NEW_LINE && !this.ShouldSkipToken(cachingLexer))
                 return false;
-            for (; tokenType1 == SecretTokenType.WHITE_SPACE || tokenType1 == SecretTokenType.NEW_LINE || this.ShouldSkipToken(cachingLexer); tokenType1 = cachingLexer.TokenType)
+            for (; tokenType1 == NTriplesTokenType.WHITE_SPACE || tokenType1 == NTriplesTokenType.NEW_LINE || this.ShouldSkipToken(cachingLexer); tokenType1 = cachingLexer.TokenType)
                 cachingLexer.Advance(-1);
             if (!this.IsLBrace(textControl, cachingLexer))
                 return false;
@@ -414,7 +414,7 @@ namespace ReSharper.NTriples.TypingAssist
                 cachingLexer.Advance();
                 tokenType2 = cachingLexer.TokenType;
             }
-            while (tokenType2 == SecretTokenType.WHITE_SPACE || tokenType2 == SecretTokenType.NEW_LINE || this.ShouldSkipToken(cachingLexer));
+            while (tokenType2 == NTriplesTokenType.WHITE_SPACE || tokenType2 == NTriplesTokenType.NEW_LINE || this.ShouldSkipToken(cachingLexer));
             if (!this.IsRBrace(textControl, cachingLexer))
                 return false;
             pos = cachingLexer.TokenEnd;
@@ -424,15 +424,15 @@ namespace ReSharper.NTriples.TypingAssist
         protected virtual bool NeedSkipCloseBracket(ITextControl textControl, CachingLexer lexer, char charTyped)
         {
             TokenNodeType tokenType1 = lexer.TokenType;
-            if ((int)charTyped == 41 && tokenType1 != SecretTokenType.RPARENTH || (int)charTyped == 93 && tokenType1 != SecretTokenType.RBRACKET || ((int)charTyped == 125 && tokenType1 != SecretTokenType.RBRACE || (int)charTyped == 62 && tokenType1 != SecretTokenType.GT))
+            if ((int)charTyped == 41 && tokenType1 != NTriplesTokenType.RPARENTH || (int)charTyped == 93 && tokenType1 != NTriplesTokenType.RBRACKET || ((int)charTyped == 125 && tokenType1 != NTriplesTokenType.RBRACE || (int)charTyped == 62 && tokenType1 != NTriplesTokenType.GT))
                 return false;
-            TokenNodeType tokenNodeType = (int)charTyped == 62 ? SecretTokenType.LT : ((int)charTyped == 41 ? SecretTokenType.LPARENTH : ((int)charTyped == 93 ? SecretTokenType.LBRACKET : SecretTokenType.LBRACE));
-            bool flag = tokenNodeType == SecretTokenType.LT;
+            TokenNodeType tokenNodeType = (int)charTyped == 62 ? NTriplesTokenType.LT : ((int)charTyped == 41 ? NTriplesTokenType.LPARENTH : ((int)charTyped == 93 ? NTriplesTokenType.LBRACKET : NTriplesTokenType.LBRACE));
+            bool flag = tokenNodeType == NTriplesTokenType.LT;
             BracketMatcher bracketMatcher = flag ? (BracketMatcher)new CSharpAngleBracketMatcher() : (BracketMatcher)new CSharpBracketMatcher();
             int? nullable = new int?();
             lexer.Advance(-1);
             TokenNodeType tokenType2;
-            while ((tokenType2 = lexer.TokenType) != null && (!flag || tokenType2.IsComment || (tokenType2.IsWhitespace || CSharpTypingAssistBase.TypeParamTokens[(NodeType)tokenType2]) || SecretTokenType.TYPE_KEYWORDS[(NodeType)tokenType2]))
+            while ((tokenType2 = lexer.TokenType) != null && (!flag || tokenType2.IsComment || (tokenType2.IsWhitespace || CSharpTypingAssistBase.TypeParamTokens[(NodeType)tokenType2]) || NTriplesTokenType.TYPE_KEYWORDS[(NodeType)tokenType2]))
             {
                 if (bracketMatcher.Direction(tokenType2) == 1 && bracketMatcher.IsStackEmpty())
                 {
@@ -480,11 +480,11 @@ namespace ReSharper.NTriples.TypingAssist
                 CachingLexer cachingLexer1 = this.GetCachingLexer(textControl);
                 IBuffer buffer = cachingLexer1.Buffer;
                 int charPos1 = this.TextControlToLexer(textControl, ITextControlCaretEx.Offset(textControl.Caret));
-                TokenNodeType correspondingTokenType = (int)typingContext.Char == 39 ? SecretTokenType.CHARACTER_LITERAL : SecretTokenType.STRING_LITERAL;
+                TokenNodeType correspondingTokenType = (int)typingContext.Char == 39 ? NTriplesTokenType.CHARACTER_LITERAL : NTriplesTokenType.STRING_LITERAL;
                 if (charPos1 < 0 || !cachingLexer1.FindTokenAt(charPos1))
                     return false;
                 TokenNodeType tokenType = cachingLexer1.TokenType;
-                if (correspondingTokenType == SecretTokenType.CHARACTER_LITERAL || (int)buffer[cachingLexer1.TokenStart] != 64)
+                if (correspondingTokenType == NTriplesTokenType.CHARACTER_LITERAL || (int)buffer[cachingLexer1.TokenStart] != 64)
                 {
                     int index = charPos1 - 1;
                     while (index >= 0 && (int)buffer[index] == 92)
@@ -503,7 +503,7 @@ namespace ReSharper.NTriples.TypingAssist
                 {
                     if (tokenType != null && !this.IsStopperTokenForStringLiteral(tokenType))
                         return false;
-                    while (cachingLexer1.TokenType == SecretTokenType.WHITE_SPACE)
+                    while (cachingLexer1.TokenType == NTriplesTokenType.WHITE_SPACE)
                         cachingLexer1.Advance();
                     bool flag = cachingLexer1.TokenType == correspondingTokenType && (cachingLexer1.TokenEnd > cachingLexer1.TokenStart + 1 && (int)cachingLexer1.Buffer[cachingLexer1.TokenStart] == (int)typingContext.Char && (int)cachingLexer1.Buffer[cachingLexer1.TokenEnd - 1] == (int)typingContext.Char);
                     if (flag)
@@ -526,7 +526,7 @@ namespace ReSharper.NTriples.TypingAssist
                     {
                         if (!cachingLexer2.FindTokenAt(charPos1))
                             return true;
-                        bool isStringWithAt = cachingLexer2.TokenType == SecretTokenType.STRING_LITERAL && cachingLexer2.TokenStart == charPos1 - 1 && (int)cachingLexer2.Buffer[cachingLexer2.TokenStart] == 64;
+                        bool isStringWithAt = cachingLexer2.TokenType == NTriplesTokenType.STRING_LITERAL && cachingLexer2.TokenStart == charPos1 - 1 && (int)cachingLexer2.Buffer[cachingLexer2.TokenStart] == 64;
                         if (cachingLexer2.TokenStart != charPos1 && !isStringWithAt)
                             return true;
                         int offset = this.LexerToTextControl(textControl, charPos1);
@@ -594,8 +594,8 @@ namespace ReSharper.NTriples.TypingAssist
 
         protected virtual bool IsStopperTokenForStringLiteral([NotNull] TokenNodeType tokenType)
         {
-            if (tokenType != SecretTokenType.WHITE_SPACE && tokenType != SecretTokenType.NEW_LINE && (tokenType != SecretTokenType.C_STYLE_COMMENT && tokenType != SecretTokenType.END_OF_LINE_COMMENT) && (tokenType != SecretTokenType.SEMICOLON && tokenType != SecretTokenType.COMMA && (tokenType != SecretTokenType.RBRACKET && tokenType != SecretTokenType.RBRACE)) && (tokenType != SecretTokenType.RPARENTH && tokenType != SecretTokenType.STRING_LITERAL))
-                return tokenType == SecretTokenType.CHARACTER_LITERAL;
+            if (tokenType != NTriplesTokenType.WHITE_SPACE && tokenType != NTriplesTokenType.NEW_LINE && (tokenType != NTriplesTokenType.C_STYLE_COMMENT && tokenType != NTriplesTokenType.END_OF_LINE_COMMENT) && (tokenType != NTriplesTokenType.SEMICOLON && tokenType != NTriplesTokenType.COMMA && (tokenType != NTriplesTokenType.RBRACKET && tokenType != NTriplesTokenType.RBRACE)) && (tokenType != NTriplesTokenType.RPARENTH && tokenType != NTriplesTokenType.STRING_LITERAL))
+                return tokenType == NTriplesTokenType.CHARACTER_LITERAL;
             else
                 return true;
         }
@@ -611,7 +611,7 @@ namespace ReSharper.NTriples.TypingAssist
                 textControl.FillVirtualSpaceUntilCaret();
                 int pos = this.TextControlToLexer(textControl, ITextControlCaretEx.Offset(textControl.Caret));
                 CachingLexer cachingLexer = this.GetCachingLexer(textControl);
-                if (pos < 0 || !cachingLexer.FindTokenAt(pos) || (cachingLexer.TokenStart != pos || cachingLexer.TokenType != SecretTokenType.SEMICOLON) || !this.GetTypingAssistOption<TypingAssistSettings, bool>(textControl, TypingAssistOptions.SmartParenthEnabledExpression))
+                if (pos < 0 || !cachingLexer.FindTokenAt(pos) || (cachingLexer.TokenStart != pos || cachingLexer.TokenType != NTriplesTokenType.SEMICOLON) || !this.GetTypingAssistOption<TypingAssistSettings, bool>(textControl, TypingAssistOptions.SmartParenthEnabledExpression))
                 {
                     typingContext.CallNext();
                 }
@@ -645,7 +645,7 @@ namespace ReSharper.NTriples.TypingAssist
             ITextControl textControl = typingContext.TextControl;
             int num1 = this.TextControlToLexer(textControl, ITextControlCaretEx.Offset(textControl.Caret));
             CachingLexer cachingLexer = this.GetCachingLexer(textControl);
-            if (cachingLexer.FindTokenAt(num1) && cachingLexer.TokenType == SecretTokenType.C_STYLE_COMMENT)
+            if (cachingLexer.FindTokenAt(num1) && cachingLexer.TokenType == NTriplesTokenType.C_STYLE_COMMENT)
             {
                 string str = LexerUtil.GetCurrTokenText((ILexer)cachingLexer).Substring(0, num1 - cachingLexer.TokenStart);
                 int startIndex = str.LastIndexOf('\n');
@@ -682,7 +682,7 @@ namespace ReSharper.NTriples.TypingAssist
                     }
                 }
             }
-            if (Shell.Instance.ProgramConfiguration != ProgramConfigurations.STANDALONE || num1 < 2 || (!cachingLexer.FindTokenAt(num1 - 1) || cachingLexer.TokenType != SecretTokenType.END_OF_LINE_COMMENT) || (num1 != cachingLexer.TokenStart + 2 || cachingLexer.TokenEnd - cachingLexer.TokenStart != 2 || typingContext.EnsureWritable() != EnsureWritableResult.SUCCESS))
+            if (Shell.Instance.ProgramConfiguration != ProgramConfigurations.STANDALONE || num1 < 2 || (!cachingLexer.FindTokenAt(num1 - 1) || cachingLexer.TokenType != NTriplesTokenType.END_OF_LINE_COMMENT) || (num1 != cachingLexer.TokenStart + 2 || cachingLexer.TokenEnd - cachingLexer.TokenStart != 2 || typingContext.EnsureWritable() != EnsureWritableResult.SUCCESS))
                 return false;
             using (ICommandProcessorEx.UsingCommand(this.CommandProcessor, "Smart /"))
             {
@@ -747,7 +747,7 @@ namespace ReSharper.NTriples.TypingAssist
             if (num <= 0)
                 return false;
             CachingLexer cachingLexer = this.GetCachingLexer(textControl);
-            if (!cachingLexer.FindTokenAt(num - 1) || cachingLexer.TokenType != SecretTokenType.STRING_LITERAL || num == cachingLexer.TokenEnd)
+            if (!cachingLexer.FindTokenAt(num - 1) || cachingLexer.TokenType != NTriplesTokenType.STRING_LITERAL || num == cachingLexer.TokenEnd)
                 return false;
             string text1 = textControl.Document.GetText(new TextRange(cachingLexer.TokenStart, cachingLexer.TokenEnd));
             if ((int)text1[0] == 64)
@@ -763,10 +763,10 @@ namespace ReSharper.NTriples.TypingAssist
             if (file == null)
                 return false;
             ITokenNode tokenNode1 = FileExtensions.FindTokenAt(file, textControl.Document, offset2 - 1) as ITokenNode;
-            if (tokenNode1 == null || tokenNode1.GetTokenType() != SecretTokenType.STRING_LITERAL)
+            if (tokenNode1 == null || tokenNode1.GetTokenType() != NTriplesTokenType.STRING_LITERAL)
                 return false;
             ITokenNode tokenNode2 = file.FindTokenAt(FileExtensions.Translate(file, new DocumentRange(textControl.Document, offset2 + text2.Length)).StartOffset) as ITokenNode;
-            if (tokenNode2 == null || tokenNode2.GetTokenType() != SecretTokenType.STRING_LITERAL)
+            if (tokenNode2 == null || tokenNode2.GetTokenType() != NTriplesTokenType.STRING_LITERAL)
                 return false;
             using (PsiTransactionCookie.CreateAutoCommitCookieWithCachesUpdate(this.PsiServices, "Format code"))
                 CodeFormatterHelper.Format((ICodeFormatter)this.GetCodeFormatter((ITreeNode)tokenNode1), (ITreeNode)tokenNode1, (ITreeNode)tokenNode2, CodeFormatProfile.SOFT);
@@ -793,7 +793,7 @@ namespace ReSharper.NTriples.TypingAssist
             CachingLexer cachingLexer = this.GetCachingLexer(textControl);
             if (!cachingLexer.FindTokenAt(charPos - 1))
                 return false;
-            if (cachingLexer.TokenType == SecretTokenType.WHITE_SPACE)
+            if (cachingLexer.TokenType == NTriplesTokenType.WHITE_SPACE)
             {
                 charPos = cachingLexer.TokenStart;
                 cachingLexer.Advance(-1);
@@ -859,7 +859,7 @@ namespace ReSharper.NTriples.TypingAssist
                 tokenNode = TokenNodeExtesions.GetNextToken(tokenNode);
             rBraceNode = file.FindTokenAt(rBraceTreePos + newLine.Length + str.Length) as ITokenNode;
             ICSharpCodeFormatter codeFormatter = this.GetCodeFormatter((ITreeNode)lBraceNode);
-            if (lBraceNode.GetTokenType() == SecretTokenType.LBRACE && this.GetTypingAssistOption<TypingAssistSettings, bool>(textControl, TypingAssistOptions.FormatBlockOnRBraceExpression))
+            if (lBraceNode.GetTokenType() == NTriplesTokenType.LBRACE && this.GetTypingAssistOption<TypingAssistSettings, bool>(textControl, TypingAssistOptions.FormatBlockOnRBraceExpression))
             {
                 ICSharpTreeNode blockParentNode = StatementUtil.GetBlockParentNode(lBraceNode.Parent as IBlock);
                 if (blockParentNode != null)
@@ -872,7 +872,7 @@ namespace ReSharper.NTriples.TypingAssist
                 this.OverrideSettingsForFormattingOnEnter(local_1);
                 codeFormatter.Format((ITreeNode)lBraceNode, codeFormatter.GetProfile(CodeFormatProfile.GENERATOR), (IProgressIndicator)null, local_1);
                 codeFormatter.Format(FormatterImplHelper.FindFormattingRangeToLeft((ITreeNode)rBraceNode, (Func<ITokenNode, bool>)null), (ITreeNode)rBraceNode, codeFormatter.GetProfile(CodeFormatProfile.GENERATOR), (IProgressIndicator)null, local_1);
-                if (rBraceNode.GetTokenType() != SecretTokenType.RBRACE)
+                if (rBraceNode.GetTokenType() != NTriplesTokenType.RBRACE)
                     this.FormatCustomRBrace(textControl, rBraceNode, CodeFormatProfile.INDENT, local_1);
                 else
                     codeFormatter.Format(lBraceNode.Parent, codeFormatter.GetProfile(CodeFormatProfile.INDENT), (IProgressIndicator)null, local_1);
@@ -1103,22 +1103,22 @@ namespace ReSharper.NTriples.TypingAssist
 
         protected override bool IsLBrace(ITextControl textControl, ITreeNode node)
         {
-            return TreeNodeExtensions.GetTokenType(node) == SecretTokenType.L_BRACE;
+            return TreeNodeExtensions.GetTokenType(node) == NTriplesTokenType.L_BRACE;
         }
 
         protected override bool IsRBrace(ITextControl textControl, ITreeNode node)
         {
-            return TreeNodeExtensions.GetTokenType(node) == SecretTokenType.R_BRACE;
+            return TreeNodeExtensions.GetTokenType(node) == NTriplesTokenType.R_BRACE;
         }
 
         protected override bool IsSemicolon(ITextControl textControl, ITreeNode node)
         {
-            return TreeNodeExtensions.GetTokenType(node) == SecretTokenType.SEMICOLON;
+            return TreeNodeExtensions.GetTokenType(node) == NTriplesTokenType.SEMICOLON;
         }
 
         protected virtual bool FindMatchingBrace(ITextControl textControl, CachingLexer lexer, out int rBracePos)
         {
-            return new SecretBracketMatcher().FindMatchingBracket(lexer, out rBracePos);
+            return new NTriplesBracketMatcher().FindMatchingBracket(lexer, out rBracePos);
         }
 
         protected virtual string GetIndent(ITextControl textControl, int lexerOffset)
@@ -1136,14 +1136,14 @@ namespace ReSharper.NTriples.TypingAssist
             if (offset1 <= 0)
                 return false;
             CachingLexer cachingLexer = this.GetCachingLexer(textControl);
-            if (!cachingLexer.FindTokenAt(offset1 - 1) || cachingLexer.TokenType != SecretTokenType.END_OF_LINE_COMMENT || (offset1 - cachingLexer.TokenStart < 3 || !LexerUtil.GetCurrTokenText((ILexer)cachingLexer).StartsWith("///")))
+            if (!cachingLexer.FindTokenAt(offset1 - 1) || cachingLexer.TokenType != NTriplesTokenType.END_OF_LINE_COMMENT || (offset1 - cachingLexer.TokenStart < 3 || !LexerUtil.GetCurrTokenText((ILexer)cachingLexer).StartsWith("///")))
                 return false;
             string indent = this.GetIndent(textControl, cachingLexer.TokenStart);
-            ILexer lexer = PsiLanguageTypeExtensions.LanguageService((PsiLanguageType)SecretLanguage.Instance).GetPrimaryLexerFactory().CreateLexer((IBuffer)new StringBuffer(indent));
+            ILexer lexer = PsiLanguageTypeExtensions.LanguageService((PsiLanguageType)NTriplesLanguage.Instance).GetPrimaryLexerFactory().CreateLexer((IBuffer)new StringBuffer(indent));
             lexer.Start();
             while (lexer.TokenType != null)
             {
-                if (lexer.TokenType != SecretTokenType.WHITE_SPACE)
+                if (lexer.TokenType != NTriplesTokenType.WHITE_SPACE)
                     return false;
                 lexer.Advance();
             }
@@ -1161,12 +1161,12 @@ namespace ReSharper.NTriples.TypingAssist
             int num1 = ITextControlCaretEx.Offset(textControl.Caret);
             int offset = this.TextControlToLexer(textControl, num1);
             CachingLexer cachingLexer = this.GetCachingLexer(textControl);
-            if (offset < 0 || !cachingLexer.FindTokenAt(offset) || cachingLexer.TokenType == SecretTokenType.STRING_LITERAL)
+            if (offset < 0 || !cachingLexer.FindTokenAt(offset) || cachingLexer.TokenType == NTriplesTokenType.STRING_LITERAL)
                 return;
-            while (cachingLexer.TokenType == SecretTokenType.WHITE_SPACE)
+            while (cachingLexer.TokenType == NTriplesTokenType.WHITE_SPACE)
                 cachingLexer.Advance();
             offset = cachingLexer.TokenType == null ? offset : cachingLexer.TokenStart;
-            string text = cachingLexer.TokenType == SecretTokenType.NEW_LINE || cachingLexer.TokenType == null ? "partial class " : string.Empty;
+            string text = cachingLexer.TokenType == NTriplesTokenType.NEW_LINE || cachingLexer.TokenType == null ? "partial class " : string.Empty;
             IPsiSourceFile psiSourceFile = PsiSourceFileExtensions.GetPsiSourceFile(textControl.Document, this.Solution);
             if (psiSourceFile == null || !psiSourceFile.IsValid())
                 return;
@@ -1175,7 +1175,7 @@ namespace ReSharper.NTriples.TypingAssist
                 textControl.Document.InsertText(num2, text);
             this.PsiServices.PsiManager.CommitAllDocuments();
             DocumentRange range = new DocumentRange(textControl.Document, offset);
-            IFile file = PsiManagerExtensions.GetPsiFile<SecretLanguage>(psiSourceFile, range);
+            IFile file = PsiManagerExtensions.GetPsiFile<NTriplesLanguage>(psiSourceFile, range);
             ITokenNode tokenNode = file == null ? (ITokenNode)null : FileExtensions.FindTokenAt(file, textControl.Document, offset) as ITokenNode;
             if (tokenNode == null)
             {
@@ -1245,7 +1245,7 @@ namespace ReSharper.NTriples.TypingAssist
         private bool DoHandleDeletingPlus(ITextControl textControl, int charPos)
         {
             CachingLexer cachingLexer = this.GetCachingLexer(textControl);
-            if (!cachingLexer.FindTokenAt(charPos) || cachingLexer.TokenType != SecretTokenType.PLUS)
+            if (!cachingLexer.FindTokenAt(charPos) || cachingLexer.TokenType != NTriplesTokenType.PLUS)
                 return false;
             int currentPosition = cachingLexer.CurrentPosition;
             cachingLexer.Advance(-1);
@@ -1265,7 +1265,7 @@ namespace ReSharper.NTriples.TypingAssist
         {
             while (lexer.TokenType != null && lexer.TokenType.IsWhitespace)
                 lexer.Advance(deltha);
-            return lexer.TokenType == SecretTokenType.STRING_LITERAL && (int)textControl.Document.Buffer[this.LexerToTextControl(textControl, lexer.TokenStart)] != 64;
+            return lexer.TokenType == NTriplesTokenType.STRING_LITERAL && (int)textControl.Document.Buffer[this.LexerToTextControl(textControl, lexer.TokenStart)] != 64;
         }
 
         private bool DoHandleBackspacePressed(ITextControl textControl)
@@ -1286,7 +1286,7 @@ namespace ReSharper.NTriples.TypingAssist
                 CachingLexer cachingLexer = this.GetCachingLexer(textControl);
                 if (!cachingLexer.FindTokenAt(index))
                     return false;
-                if (cachingLexer.TokenType == SecretTokenType.STRING_LITERAL || cachingLexer.TokenType == SecretTokenType.CHARACTER_LITERAL)
+                if (cachingLexer.TokenType == NTriplesTokenType.STRING_LITERAL || cachingLexer.TokenType == NTriplesTokenType.CHARACTER_LITERAL)
                 {
                     if (index != cachingLexer.TokenEnd - 1 || (int)ch != (int)textControl.Document.Buffer[ITextControlCaretEx.Offset(textControl.Caret)])
                         return false;
@@ -1302,9 +1302,9 @@ namespace ReSharper.NTriples.TypingAssist
                     TokenNodeType tokenType1 = cachingLexer.TokenType;
                     cachingLexer.Advance(-1);
                     TokenNodeType tokenType2 = cachingLexer.TokenType;
-                    if (tokenType2 == SecretTokenType.LBRACE && tokenType1 == SecretTokenType.RBRACE || tokenType2 == SecretTokenType.LBRACKET && tokenType1 == SecretTokenType.RBRACKET || tokenType2 == SecretTokenType.LPARENTH && tokenType1 == SecretTokenType.RPARENTH)
+                    if (tokenType2 == NTriplesTokenType.LBRACE && tokenType1 == NTriplesTokenType.RBRACE || tokenType2 == NTriplesTokenType.LBRACKET && tokenType1 == NTriplesTokenType.RBRACKET || tokenType2 == NTriplesTokenType.LPARENTH && tokenType1 == NTriplesTokenType.RPARENTH)
                     {
-                        var csharpBracketMatcher = new SecretBracketMatcher();
+                        var csharpBracketMatcher = new NTriplesBracketMatcher();
                         TokenNodeType tokenType3 = tokenType2;
                         int currentPosition = cachingLexer.CurrentPosition;
                         do
@@ -1326,7 +1326,7 @@ namespace ReSharper.NTriples.TypingAssist
                     else
                     {
                         IBuffer buffer = cachingLexer.Buffer;
-                        if (tokenType1 != SecretTokenType.BAD_CHARACTER || (int)buffer[index] != 39 || (tokenType2 != SecretTokenType.BAD_CHARACTER || (int)buffer[index - 1] != 39))
+                        if (tokenType1 != NTriplesTokenType.BAD_CHARACTER || (int)buffer[index] != 39 || (tokenType2 != NTriplesTokenType.BAD_CHARACTER || (int)buffer[index - 1] != 39))
                             return false;
                         int offset = index - 1;
                         int num = this.LexerToTextControl(textControl, offset);
@@ -1366,7 +1366,7 @@ namespace ReSharper.NTriples.TypingAssist
                 IDocument document = textControl.Document;
                 CachingLexer cachingLexer = this.GetCachingLexer(textControl);
                 int num = this.TextControlToLexer(textControl, ITextControlCaretEx.Offset(textControl.Caret));
-                if (num < 0 || !cachingLexer.FindTokenAt(num) || (cachingLexer.TokenType != SecretTokenType.END_OF_LINE_COMMENT || cachingLexer.TokenStart >= num))
+                if (num < 0 || !cachingLexer.FindTokenAt(num) || (cachingLexer.TokenType != NTriplesTokenType.END_OF_LINE_COMMENT || cachingLexer.TokenStart >= num))
                     return true;
                 int startOffset = this.LexerToTextControl(textControl, cachingLexer.TokenStart);
                 int endOffset = this.LexerToTextControl(textControl, cachingLexer.TokenEnd);
@@ -1382,7 +1382,7 @@ namespace ReSharper.NTriples.TypingAssist
 
         protected virtual bool IsNewLineToken(CachingLexer lexer)
         {
-            return lexer.TokenType == SecretTokenType.NEW_LINE;
+            return lexer.TokenType == NTriplesTokenType.NEW_LINE;
         }
 
         public static string GetCodeBehindIndent(CSharpTypingAssistBase typingAssist, ITextControl textControl, int lexerOffset, string indent)
@@ -1391,9 +1391,9 @@ namespace ReSharper.NTriples.TypingAssist
             CachingLexer cachingLexer = typingAssist.GetCachingLexer(textControl);
             if (cachingLexer == null || !cachingLexer.FindTokenAt(lexerOffset - 1))
                 return indent;
-            while (cachingLexer.TokenType == SecretTokenType.WHITE_SPACE)
+            while (cachingLexer.TokenType == NTriplesTokenType.WHITE_SPACE)
                 cachingLexer.Advance(-1);
-            if (cachingLexer.TokenType == null || cachingLexer.TokenType is ISecretTokenNodeType)
+            if (cachingLexer.TokenType == null || cachingLexer.TokenType is INTriplesTokenNodeType)
                 return indent;
             int tokenEnd = cachingLexer.TokenEnd;
             int num2 = indent.Length - (num1 - tokenEnd);
@@ -1486,7 +1486,7 @@ namespace ReSharper.NTriples.TypingAssist
         {
             int charPos = lexer.TokenEnd;
             int lBracePos = charPos - 1;
-            if (lexer.TokenType != SecretTokenType.L_BRACE)
+            if (lexer.TokenType != NTriplesTokenType.L_BRACE)
             {
                 return false;
             }
@@ -1520,7 +1520,7 @@ namespace ReSharper.NTriples.TypingAssist
             }
 
             var rBraceToken = file.FindTokenAt(treeLBraceRange.StartOffset) as ITokenNode;
-            if (rBraceToken == null || rBraceToken.GetTokenType() != SecretTokenType.R_BRACE)
+            if (rBraceToken == null || rBraceToken.GetTokenType() != NTriplesTokenType.R_BRACE)
             {
                 return false;
             }
@@ -1556,7 +1556,7 @@ namespace ReSharper.NTriples.TypingAssist
             }
 
             var tokenNode = file.FindTokenAt(textControl.Document, charPos - 1) as ITokenNode;
-            if (tokenNode == null || tokenNode.GetTokenType() != SecretTokenType.SEMICOLON)
+            if (tokenNode == null || tokenNode.GetTokenType() != NTriplesTokenType.SEMICOLON)
             {
                 return;
             }
@@ -1572,7 +1572,7 @@ namespace ReSharper.NTriples.TypingAssist
             // Select the correct start node for formatting
             ITreeNode startNode = node.FindFormattingRangeToLeft() ?? node.FirstChild;
 
-            //SecretCodeFormatter codeFormatter = this.GetCodeFormatter(tokenNode);
+            //NTriplesCodeFormatter codeFormatter = this.GetCodeFormatter(tokenNode);
             using (PsiTransactionCookie.CreateAutoCommitCookieWithCachesUpdate(this.PsiServices, "Format code"))
             {
                 using (WriteLockCookie.Create())
@@ -1603,12 +1603,12 @@ namespace ReSharper.NTriples.TypingAssist
                 return false;
             }
 
-            if (lexer.TokenType == SecretTokenType.WHITE_SPACE)
+            if (lexer.TokenType == NTriplesTokenType.WHITE_SPACE)
             {
                 charPos = lexer.TokenStart;
                 lexer.Advance(-1);
             }
-            if (lexer.TokenType != SecretTokenType.L_BRACE)
+            if (lexer.TokenType != NTriplesTokenType.L_BRACE)
             {
                 return false;
             }
@@ -1626,8 +1626,8 @@ namespace ReSharper.NTriples.TypingAssist
                 lexer = this.GetCachingLexer(textControl);
                 lexer.FindTokenAt(lBracePos);
                 Logger.Assert(
-                    lexer.TokenType == SecretTokenType.L_BRACE,
-                    "The condition (lexer.tokenTypeName == SecretTokenType.L_BRACE) is false.");
+                    lexer.TokenType == NTriplesTokenType.L_BRACE,
+                    "The condition (lexer.tokenTypeName == NTriplesTokenType.L_BRACE) is false.");
             }
 
             // Find the matched R_BRACE and check they are on the same line
@@ -1659,13 +1659,13 @@ namespace ReSharper.NTriples.TypingAssist
             TreeOffset rBraceTreePos = file.Translate(new DocumentRange(textControl.Document, rBracePos)).StartOffset;
 
             var lBraceNode = file.FindTokenAt(lBraceTreePos) as ITokenNode;
-            if (lBraceNode == null || lBraceNode.GetTokenType() != SecretTokenType.L_BRACE)
+            if (lBraceNode == null || lBraceNode.GetTokenType() != NTriplesTokenType.L_BRACE)
             {
                 return false;
             }
 
             var rBraceNode = file.FindTokenAt(rBraceTreePos) as ITokenNode;
-            if (rBraceNode == null || rBraceNode.GetTokenType() != SecretTokenType.R_BRACE)
+            if (rBraceNode == null || rBraceNode.GetTokenType() != NTriplesTokenType.R_BRACE)
             {
                 return false;
             }
@@ -1689,7 +1689,7 @@ namespace ReSharper.NTriples.TypingAssist
                 return;
             }
 
-            if (mixedLexer.TokenType == SecretTokenType.STRING_LITERAL)
+            if (mixedLexer.TokenType == NTriplesTokenType.STRING_LITERAL)
             {
                 return;
             }
@@ -1699,7 +1699,7 @@ namespace ReSharper.NTriples.TypingAssist
                 return;
             }
 
-            while (mixedLexer.TokenType == SecretTokenType.WHITE_SPACE)
+            while (mixedLexer.TokenType == NTriplesTokenType.WHITE_SPACE)
             {
                 mixedLexer.Advance();
             }
@@ -1707,7 +1707,7 @@ namespace ReSharper.NTriples.TypingAssist
             offset = mixedLexer.TokenType == null
                          ? offset
                          : mixedLexer.TokenStart;
-            var extraText = (mixedLexer.TokenType == SecretTokenType.NEW_LINE || mixedLexer.TokenType == null)
+            var extraText = (mixedLexer.TokenType == NTriplesTokenType.NEW_LINE || mixedLexer.TokenType == null)
                                 ? "foo "
                                 : String.Empty;
 
@@ -1758,7 +1758,7 @@ namespace ReSharper.NTriples.TypingAssist
                 }
 
                 //TODO
-                //SecretCodeFormatter codeFormatter = this.GetCodeFormatter(file);
+                //NTriplesCodeFormatter codeFormatter = this.GetCodeFormatter(file);
                 int offsetInToken = rangeInJsTree.Offset - tokenNode.GetTreeStartOffset().Offset;
 
                 using (PsiTransactionCookie.CreateAutoCommitCookieWithCachesUpdate(this.PsiServices, "Typing assist"))
@@ -1878,18 +1878,18 @@ namespace ReSharper.NTriples.TypingAssist
                     {
                         return true;
                     }
-                    if (lexer.TokenType != SecretTokenType.L_BRACKET && lexer.TokenType != SecretTokenType.L_PARENTHESES)
+                    if (lexer.TokenType != NTriplesTokenType.L_BRACKET && lexer.TokenType != NTriplesTokenType.L_PARENTHESES)
                     {
                         return true;
                     }
 
                     // check that next token is good one
                     TokenNodeType nextTokenType = lexer.LookaheadToken(1);
-                    if (nextTokenType != null && nextTokenType != SecretTokenType.WHITE_SPACE &&
-                        nextTokenType != SecretTokenType.NEW_LINE &&
-                        nextTokenType != SecretTokenType.END_OF_LINE_COMMENT && nextTokenType != SecretTokenType.SEMICOLON &&
-                        nextTokenType != SecretTokenType.R_BRACKET && nextTokenType != SecretTokenType.R_BRACE &&
-                        nextTokenType != SecretTokenType.R_PARENTHESES)
+                    if (nextTokenType != null && nextTokenType != NTriplesTokenType.WHITE_SPACE &&
+                        nextTokenType != NTriplesTokenType.NEW_LINE &&
+                        nextTokenType != NTriplesTokenType.END_OF_LINE_COMMENT && nextTokenType != NTriplesTokenType.SEMICOLON &&
+                        nextTokenType != NTriplesTokenType.R_BRACKET && nextTokenType != NTriplesTokenType.R_BRACE &&
+                        nextTokenType != NTriplesTokenType.R_PARENTHESES)
                     {
                         return true;
                     }
@@ -1936,7 +1936,7 @@ namespace ReSharper.NTriples.TypingAssist
                 CachingLexer lexer = this.GetCachingLexer(textControl);
                 IBuffer buffer = lexer.Buffer;
                 int charPos = this.TextControlToLexer(textControl, textControl.Caret.Offset());
-                TokenNodeType correspondingTokenType = SecretTokenType.BAD_CHARACTER; // was STRING_LITERAL;
+                TokenNodeType correspondingTokenType = NTriplesTokenType.BAD_CHARACTER; // was STRING_LITERAL;
 
                 if (charPos < 0 || !lexer.FindTokenAt(charPos))
                 {
@@ -1965,7 +1965,7 @@ namespace ReSharper.NTriples.TypingAssist
 
 
                 // find next not whitespace token
-                while (lexer.TokenType == SecretTokenType.WHITE_SPACE)
+                while (lexer.TokenType == NTriplesTokenType.WHITE_SPACE)
                 {
                     lexer.Advance();
                 }
@@ -1988,7 +1988,7 @@ namespace ReSharper.NTriples.TypingAssist
                         return true;
                     }
 
-                    bool isStringWithAt = lexer.TokenType == SecretTokenType.STRING_LITERAL && lexer.TokenStart == charPos - 1 &&
+                    bool isStringWithAt = lexer.TokenType == NTriplesTokenType.STRING_LITERAL && lexer.TokenStart == charPos - 1 &&
                                           lexer.Buffer[lexer.TokenStart] == '@';
                     if ((lexer.TokenStart != charPos) && !isStringWithAt)
                     {
@@ -2101,7 +2101,7 @@ namespace ReSharper.NTriples.TypingAssist
                 int charPos = this.TextControlToLexer(textControl, textControl.Caret.Offset());
                 CachingLexer lexer = this.GetCachingLexer(textControl);
                 if (charPos < 0 || !lexer.FindTokenAt(charPos) || lexer.TokenStart != charPos ||
-                    lexer.TokenType != SecretTokenType.SEMICOLON)
+                    lexer.TokenType != NTriplesTokenType.SEMICOLON)
                 {
                     typingContext.CallNext();
                 }
@@ -2126,20 +2126,20 @@ namespace ReSharper.NTriples.TypingAssist
 
         private bool IsStopperTokenForStringLiteral(TokenNodeType tokenType)
         {
-            return tokenType == SecretTokenType.WHITE_SPACE || tokenType == SecretTokenType.NEW_LINE ||
-                   tokenType == SecretTokenType.END_OF_LINE_COMMENT ||
-                   tokenType == SecretTokenType.SEMICOLON || tokenType == SecretTokenType.COMMA ||
-                   tokenType == SecretTokenType.R_BRACKET || tokenType == SecretTokenType.R_BRACE ||
-                   tokenType == SecretTokenType.R_PARENTHESES || tokenType == SecretTokenType.STRING_LITERAL;
+            return tokenType == NTriplesTokenType.WHITE_SPACE || tokenType == NTriplesTokenType.NEW_LINE ||
+                   tokenType == NTriplesTokenType.END_OF_LINE_COMMENT ||
+                   tokenType == NTriplesTokenType.SEMICOLON || tokenType == NTriplesTokenType.COMMA ||
+                   tokenType == NTriplesTokenType.R_BRACKET || tokenType == NTriplesTokenType.R_BRACE ||
+                   tokenType == NTriplesTokenType.R_PARENTHESES || tokenType == NTriplesTokenType.STRING_LITERAL;
         }
 
         private bool NeedSkipCloseBracket(CachingLexer lexer, char charTyped)
         {
             // check if the next token matches the typed char
             TokenNodeType nextToken = lexer.TokenType;
-            if ((charTyped == ')' && nextToken != SecretTokenType.R_PARENTHESES) ||
-                (charTyped == ']' && nextToken != SecretTokenType.R_BRACKET) ||
-                (charTyped == '}' && nextToken != SecretTokenType.R_BRACE))
+            if ((charTyped == ')' && nextToken != NTriplesTokenType.R_PARENTHESES) ||
+                (charTyped == ']' && nextToken != NTriplesTokenType.R_BRACKET) ||
+                (charTyped == '}' && nextToken != NTriplesTokenType.R_BRACE))
             {
                 return false;
             }
@@ -2147,10 +2147,10 @@ namespace ReSharper.NTriples.TypingAssist
             // find the leftmost non-closed bracket (excluding typed) of typed class so that there are no opened brackets of other type
             var bracketMatcher = new NTriplesBracketMatcher();
             TokenNodeType searchTokenType = charTyped == ')'
-                                                ? SecretTokenType.L_PARENTHESES
+                                                ? NTriplesTokenType.L_PARENTHESES
                                                 : charTyped == ']'
-                                                      ? SecretTokenType.L_BRACKET
-                                                      : SecretTokenType.L_BRACE;
+                                                      ? NTriplesTokenType.L_BRACKET
+                                                      : NTriplesTokenType.L_BRACE;
             int? leftParenthPos = null;
             TokenNodeType tokenType;
             for (lexer.Advance(-1); (tokenType = lexer.TokenType) != null; lexer.Advance(-1))

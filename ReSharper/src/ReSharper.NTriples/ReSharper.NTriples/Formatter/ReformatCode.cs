@@ -22,7 +22,7 @@ using JetBrains.ReSharper.Psi.Secret.Tree;
 using JetBrains.Util;
 using ReSharper.NTriples.Tree;
 
-namespace JetBrains.ReSharper.Psi.Secret.Formatter
+namespace ReSharper.NTriples.Formatter
 {
     [CodeCleanupModule]
     public class ReformatCode : ICodeCleanupModule
@@ -49,13 +49,13 @@ namespace JetBrains.ReSharper.Psi.Secret.Formatter
         {
             get
             {
-                return SecretLanguage.Instance;
+                return NTriplesLanguage.Instance;
             }
         }
 
         public bool IsAvailable(IPsiSourceFile sourceFile)
         {
-            return sourceFile.IsLanguageSupported<SecretLanguage>();
+            return sourceFile.IsLanguageSupported<NTriplesLanguage>();
         }
 
         public void Process(
@@ -70,10 +70,10 @@ namespace JetBrains.ReSharper.Psi.Secret.Formatter
                 return;
             }
 
-            ISecretFile[] files = sourceFile.GetPsiFiles<SecretLanguage>().Cast<ISecretFile>().ToArray();
+            INTriplesFile[] files = sourceFile.GetPsiFiles<NTriplesLanguage>().Cast<INTriplesFile>().ToArray();
             using (progressIndicator.SafeTotal("Reformat Psi", files.Length))
             {
-                foreach (ISecretFile file in files)
+                foreach (INTriplesFile file in files)
                 {
                     using (IProgressIndicator pi = progressIndicator.CreateSubProgress(1))
                     {

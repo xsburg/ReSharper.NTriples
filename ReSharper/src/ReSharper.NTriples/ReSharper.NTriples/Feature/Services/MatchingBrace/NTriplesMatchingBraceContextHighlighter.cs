@@ -4,18 +4,9 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretMatchingBraceContextHighlighter.cs
+//   NTriplesMatchingBraceContextHighlighter.cs
 // </summary>
 // ***********************************************************************
-
-using JetBrains.ReSharper.Feature.Services.Bulbs;
-using JetBrains.ReSharper.Feature.Services.ContextHighlighters;
-using JetBrains.ReSharper.Psi.Parsing;
-using JetBrains.ReSharper.Psi.Tree;
-using JetBrains.TextControl;
-using JetBrains.UI.RichText;
-using ReSharper.NTriples.Feature.Services.MatchingBrace;
-using ReSharper.NTriples.Parsing;
 
 namespace ReSharper.NTriples.Feature.Services.MatchingBrace
 {
@@ -36,9 +27,9 @@ namespace ReSharper.NTriples.Feature.Services.MatchingBrace
             // TODO: Place here logic to display @in and @out declaration texts
             // the text below is CSharp highlighter example
             return null;
-            /*if (lBraceNode == null || lBraceNode.GetTokenType() != SecretTokenType.L_BRACE)
+            /*if (lBraceNode == null || lBraceNode.GetTokenType() != NTriplesTokenType.L_BRACE)
                 return null;
-            /*if (lBraceNode.GetTokenType() == SecretTokenType.PP_SHARP)
+            /*if (lBraceNode.GetTokenType() == NTriplesTokenType.PP_SHARP)
             {
                 ITreeNode treeNode = lBraceNode;
                 do
@@ -47,8 +38,8 @@ namespace ReSharper.NTriples.Feature.Services.MatchingBrace
                     if (treeNode == null)
                         return null;
                 }
-                while (treeNode.GetTokenType() == SecretTokenType.WHITE_SPACE);
-                if (treeNode.GetTokenType() == SecretTokenType.PP_START_REGION)
+                while (treeNode.GetTokenType() == NTriplesTokenType.WHITE_SPACE);
+                if (treeNode.GetTokenType() == NTriplesTokenType.PP_START_REGION)
                     return MatchingBraceUtil.PrepareRichText(textControl, treeNode, lBraceNode, true);
                 else
                     return null;
@@ -101,49 +92,49 @@ namespace ReSharper.NTriples.Feature.Services.MatchingBrace
 
         protected override bool IsLeftBracket(TokenNodeType tokenType)
         {
-            return tokenType == SecretTokenType.L_BRACE || tokenType == SecretTokenType.L_PARENTHESES ||
-                   tokenType == SecretTokenType.L_BRACKET || tokenType == SecretTokenType.URI_BEGIN;
+            return tokenType == NTriplesTokenType.L_BRACE || tokenType == NTriplesTokenType.L_PARENTHESES ||
+                   tokenType == NTriplesTokenType.L_BRACKET || tokenType == NTriplesTokenType.URI_BEGIN;
         }
 
         protected override bool IsRightBracket(TokenNodeType tokenType)
         {
-            return tokenType == SecretTokenType.R_BRACE || tokenType == SecretTokenType.R_PARENTHESES ||
-                   tokenType == SecretTokenType.R_BRACKET || tokenType == SecretTokenType.URI_END;
+            return tokenType == NTriplesTokenType.R_BRACE || tokenType == NTriplesTokenType.R_PARENTHESES ||
+                   tokenType == NTriplesTokenType.R_BRACKET || tokenType == NTriplesTokenType.URI_END;
         }
 
         protected override bool Match(TokenNodeType token1, TokenNodeType token2)
         {
-            if (token1 == SecretTokenType.L_BRACE)
+            if (token1 == NTriplesTokenType.L_BRACE)
             {
-                return token2 == SecretTokenType.R_BRACE;
+                return token2 == NTriplesTokenType.R_BRACE;
             }
-            if (token1 == SecretTokenType.L_PARENTHESES)
+            if (token1 == NTriplesTokenType.L_PARENTHESES)
             {
-                return token2 == SecretTokenType.R_PARENTHESES;
+                return token2 == NTriplesTokenType.R_PARENTHESES;
             }
-            if (token1 == SecretTokenType.L_BRACKET)
+            if (token1 == NTriplesTokenType.L_BRACKET)
             {
-                return token2 == SecretTokenType.R_BRACKET;
+                return token2 == NTriplesTokenType.R_BRACKET;
             }
-            if (token1 == SecretTokenType.URI_BEGIN)
+            if (token1 == NTriplesTokenType.URI_BEGIN)
             {
-                return token2 == SecretTokenType.URI_END;
+                return token2 == NTriplesTokenType.URI_END;
             }
-            if (token1 == SecretTokenType.R_BRACE)
+            if (token1 == NTriplesTokenType.R_BRACE)
             {
-                return token2 == SecretTokenType.L_BRACE;
+                return token2 == NTriplesTokenType.L_BRACE;
             }
-            if (token1 == SecretTokenType.R_PARENTHESES)
+            if (token1 == NTriplesTokenType.R_PARENTHESES)
             {
-                return token2 == SecretTokenType.L_PARENTHESES;
+                return token2 == NTriplesTokenType.L_PARENTHESES;
             }
-            if (token1 == SecretTokenType.R_BRACKET)
+            if (token1 == NTriplesTokenType.R_BRACKET)
             {
-                return token2 == SecretTokenType.L_BRACKET;
+                return token2 == NTriplesTokenType.L_BRACKET;
             }
-            if (token1 == SecretTokenType.URI_END)
+            if (token1 == NTriplesTokenType.URI_END)
             {
-                return token2 == SecretTokenType.URI_BEGIN;
+                return token2 == NTriplesTokenType.URI_BEGIN;
             }
             return false;
         }
@@ -176,7 +167,7 @@ namespace ReSharper.NTriples.Feature.Services.MatchingBrace
             }
             else
             {
-                if (tokenType != SecretTokenType.STRING_LITERAL)
+                if (tokenType != NTriplesTokenType.STRING_LITERAL)
                 {
                     return;
                 }
@@ -230,7 +221,7 @@ namespace ReSharper.NTriples.Feature.Services.MatchingBrace
             }
             else
             {
-                if (tokenType != SecretTokenType.STRING_LITERAL)
+                if (tokenType != NTriplesTokenType.STRING_LITERAL)
                 {
                     return;
                 }

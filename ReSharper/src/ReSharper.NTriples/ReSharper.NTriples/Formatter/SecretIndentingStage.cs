@@ -68,7 +68,7 @@ namespace JetBrains.ReSharper.Psi.Secret.Formatter
                 return null;
             }
 
-            var psiTreeNode = context.Parent as ISecretTreeNode;
+            var psiTreeNode = context.Parent as INTriplesTreeNode;
 
             return psiTreeNode != null
                        ? psiTreeNode.Accept(ourIndentVisitor, context)

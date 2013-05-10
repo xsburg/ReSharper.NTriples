@@ -4,14 +4,14 @@ using JetBrains.Application.DataContext;
 
 namespace ReSharperSecretLanguage
 {
-    [ActionHandler("ReSharperSecretLanguage.About")]
+    [ActionHandler("ReSharperNTriplesLanguage.About")]
     public class AboutAction : IActionHandler
     {
         public void Execute(IDataContext context, DelegateExecute nextExecute)
         {
             MessageBox.Show(
-                "The Secret Language\nStephan Burguchev\n\nThe Secret Language ReSharper support",
-                "About The Secret Language",
+                "The Secret Language\nStephan Burguchev\n\nThe NTriples Language ReSharper support",
+                "About The NTriples Language",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }

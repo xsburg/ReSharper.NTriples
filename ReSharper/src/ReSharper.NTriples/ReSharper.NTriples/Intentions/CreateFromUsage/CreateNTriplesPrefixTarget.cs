@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   CreateSecretPrefixTarget.cs
+//   CreateNTriplesPrefixTarget.cs
 // </summary>
 // ***********************************************************************
 
@@ -65,7 +65,7 @@ namespace ReSharper.NTriples.Intentions.CreateFromUsage
 
         private ITreeNode FindAnchor()
         {
-            var secretFile = (ISecretFile)this.myElement.GetContainingFile();
+            var secretFile = (INTriplesFile)this.myElement.GetContainingFile();
             if (secretFile == null)
             {
                 throw new FormatException("The element has no file assigned.");
@@ -84,7 +84,7 @@ namespace ReSharper.NTriples.Intentions.CreateFromUsage
 
         private string TryFindUri(NTriplesPrefixReference reference)
         {
-            var file = (ISecretFile)this.myElement.GetContainingFile();
+            var file = (INTriplesFile)this.myElement.GetContainingFile();
             if (file == null)
             {
                 throw new FormatException("The element has no file assigned.");

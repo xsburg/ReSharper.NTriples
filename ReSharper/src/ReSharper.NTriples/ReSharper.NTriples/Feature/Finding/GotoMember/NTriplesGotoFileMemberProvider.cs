@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretGotoFileMemberProvider.cs
+//   NTriplesGotoFileMemberProvider.cs
 // </summary>
 // ***********************************************************************
 
@@ -39,7 +39,7 @@ namespace ReSharper.NTriples.Feature.Finding.GotoMember
 
             var primaryMembersData = this.GetPrimaryMembers(fileMemberScope);
 
-            var secretFileMembersMap = new NTriplesFileMembersMap();
+            var fileMembersMap = new NTriplesFileMembersMap();
 
             var result = new Collection<MatchingInfo>();
             foreach (var data in primaryMembersData)
@@ -51,7 +51,7 @@ namespace ReSharper.NTriples.Feature.Finding.GotoMember
                     continue;
                 }
 
-                secretFileMembersMap.Add(matchedText.A, data);
+                fileMembersMap.Add(matchedText.A, data);
 
                 var matchingIndicies = matchedText.B
                                            ? matcher.MatchingIndicies(matchedText.A)
@@ -65,14 +65,14 @@ namespace ReSharper.NTriples.Feature.Finding.GotoMember
                         matchedText.B));
             }
 
-            gotoContext.PutData(NTriplesFileMembersMap.SecretFileMembersMapKey, secretFileMembersMap);
+            gotoContext.PutData(NTriplesFileMembersMap.NTriplesFileMembersMapKey, fileMembersMap);
             return result;
         }
 
         public IEnumerable<IOccurence> GetOccurencesByMatchingInfo(
             MatchingInfo navigationInfo, INavigationScope scope, GotoContext gotoContext)
         {
-            var fileMembersMap = gotoContext.GetData(NTriplesFileMembersMap.SecretFileMembersMapKey);
+            var fileMembersMap = gotoContext.GetData(NTriplesFileMembersMap.NTriplesFileMembersMapKey);
             if (fileMembersMap == null)
             {
                 yield break;
@@ -103,13 +103,15 @@ namespace ReSharper.NTriples.Feature.Finding.GotoMember
                 localName.ScopeToMainFile = true;
             }
 
-            var declaredElementOccurence = new DeclaredElementOccurence(fileMemberData.Element, new OccurencePresentationOptions
-                {
-                    ContainerStyle = !(fileMemberData.Element is ITypeElement)
-                                         ? fileMemberData.ContainerDisplayStyle
-                                         : ContainerDisplayStyle.NoContainer,
-                    LocationStyle = GlobalLocationStyle.None
-                });
+            var declaredElementOccurence = new DeclaredElementOccurence(
+                fileMemberData.Element,
+                new OccurencePresentationOptions
+                    {
+                        ContainerStyle = !(fileMemberData.Element is ITypeElement)
+                                             ? fileMemberData.ContainerDisplayStyle
+                                             : ContainerDisplayStyle.NoContainer,
+                        LocationStyle = GlobalLocationStyle.None
+                    });
 
             if (localName != null)
             {
@@ -133,7 +135,7 @@ namespace ReSharper.NTriples.Feature.Finding.GotoMember
             }
 
             var psiManager = primarySourceFile.GetSolution().GetComponent<PsiManager>();
-            var file = psiManager.GetPrimaryPsiFile(primarySourceFile) as SecretFile;
+            var file = psiManager.GetPrimaryPsiFile(primarySourceFile) as NTriplesFile;
             if (file == null)
             {
                 return EmptyList<NTriplesFileMemberData>.InstanceList;

@@ -16,7 +16,7 @@ using ReSharper.NTriples.Parsing;
 
 namespace ReSharper.NTriples.Tree
 {
-    internal class Identifier : SecretTokenBase, ISecretIdentifier
+    internal class Identifier : NTriplesTokenBase, INTriplesIdentifier
     {
         private readonly string myText;
 
@@ -45,7 +45,7 @@ namespace ReSharper.NTriples.Tree
         {
             get
             {
-                return SecretTokenType.IDENTIFIER;
+                return NTriplesTokenType.IDENTIFIER;
             }
         }
 

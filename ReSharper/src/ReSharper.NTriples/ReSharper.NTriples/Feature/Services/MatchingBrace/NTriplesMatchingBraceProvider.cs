@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretMatchingBraceProvider.cs
+//   NTriplesMatchingBraceProvider.cs
 // </summary>
 // ***********************************************************************
 
@@ -23,19 +23,19 @@ namespace ReSharper.NTriples.Feature.Services.MatchingBrace
         {
             if ((this.IsLeftBracket(x) && this.IsLeftBracket(y)) || (this.IsRightBracket(x) && this.IsRightBracket(y)))
             {
-                if (x == SecretTokenType.L_BRACE)
+                if (x == NTriplesTokenType.L_BRACE)
                 {
                     return 1;
                 }
-                if (y == SecretTokenType.L_BRACE)
+                if (y == NTriplesTokenType.L_BRACE)
                 {
                     return -1;
                 }
-                if (x == SecretTokenType.R_BRACE)
+                if (x == NTriplesTokenType.R_BRACE)
                 {
                     return 1;
                 }
-                if (y == SecretTokenType.R_BRACE)
+                if (y == NTriplesTokenType.R_BRACE)
                 {
                     return -1;
                 }
@@ -45,8 +45,8 @@ namespace ReSharper.NTriples.Feature.Services.MatchingBrace
 
         public bool IsLeftBracket(TokenNodeType tokenType)
         {
-            if (((tokenType != SecretTokenType.L_BRACE) && (tokenType != SecretTokenType.L_PARENTHESES)) &&
-                (tokenType != SecretTokenType.L_BRACKET))
+            if (((tokenType != NTriplesTokenType.L_BRACE) && (tokenType != NTriplesTokenType.L_PARENTHESES)) &&
+                (tokenType != NTriplesTokenType.L_BRACKET))
             {
                 return false;
             }
@@ -55,8 +55,8 @@ namespace ReSharper.NTriples.Feature.Services.MatchingBrace
 
         public bool IsRightBracket(TokenNodeType tokenType)
         {
-            if (((tokenType != SecretTokenType.R_BRACE) && (tokenType != SecretTokenType.R_PARENTHESES)) &&
-                (tokenType != SecretTokenType.R_BRACKET))
+            if (((tokenType != NTriplesTokenType.R_BRACE) && (tokenType != NTriplesTokenType.R_PARENTHESES)) &&
+                (tokenType != NTriplesTokenType.R_BRACKET))
             {
                 return false;
             }
@@ -65,29 +65,29 @@ namespace ReSharper.NTriples.Feature.Services.MatchingBrace
 
         public bool Match(TokenNodeType token1, TokenNodeType token2)
         {
-            if (token1 == SecretTokenType.L_BRACE)
+            if (token1 == NTriplesTokenType.L_BRACE)
             {
-                return (token2 == SecretTokenType.R_BRACE);
+                return (token2 == NTriplesTokenType.R_BRACE);
             }
-            if (token1 == SecretTokenType.L_PARENTHESES)
+            if (token1 == NTriplesTokenType.L_PARENTHESES)
             {
-                return (token2 == SecretTokenType.R_PARENTHESES);
+                return (token2 == NTriplesTokenType.R_PARENTHESES);
             }
-            if (token1 == SecretTokenType.L_BRACKET)
+            if (token1 == NTriplesTokenType.L_BRACKET)
             {
-                return (token2 == SecretTokenType.R_BRACKET);
+                return (token2 == NTriplesTokenType.R_BRACKET);
             }
-            if (token1 == SecretTokenType.R_BRACE)
+            if (token1 == NTriplesTokenType.R_BRACE)
             {
-                return (token2 == SecretTokenType.L_BRACE);
+                return (token2 == NTriplesTokenType.L_BRACE);
             }
-            if (token1 == SecretTokenType.R_PARENTHESES)
+            if (token1 == NTriplesTokenType.R_PARENTHESES)
             {
-                return (token2 == SecretTokenType.L_PARENTHESES);
+                return (token2 == NTriplesTokenType.L_PARENTHESES);
             }
-            if (token1 == SecretTokenType.R_BRACKET)
+            if (token1 == NTriplesTokenType.R_BRACKET)
             {
-                return (token2 == SecretTokenType.L_BRACKET);
+                return (token2 == NTriplesTokenType.L_BRACKET);
             }
 
             return false;

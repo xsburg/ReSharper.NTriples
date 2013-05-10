@@ -1,5 +1,5 @@
 ﻿Language: PsiLanguageType:NTriples
-ISecretFile
+INTriplesFile
   NewLine(type:NEW_LINE, text:\n) spaces:"\n"
   NewLine(type:NEW_LINE, text:\n) spaces:"\n"
   ISentences
@@ -11,23 +11,23 @@ ISecretFile
               IUriIdentifier
                 IPrefix
                   Identifier(type:IDENTIFIER, text:foo)
-                SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                NTriplesTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                 ILocalName
                   Identifier(type:IDENTIFIER, text:bar)
-            SecretTokenType+ExpressionTailOperatorTokenElement(type:EXPRESSION_TAIL_OPERATOR, text:^)
+            NTriplesTokenType+ExpressionTailOperatorTokenElement(type:EXPRESSION_TAIL_OPERATOR, text:^)
             IIdentifier
               IUriIdentifier
                 IPrefix
                   Identifier(type:IDENTIFIER, text:foo)
-                SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                NTriplesTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                 ILocalName
                   Identifier(type:IDENTIFIER, text:bar)
-            SecretTokenType+ExpressionTailOperatorTokenElement(type:EXPRESSION_TAIL_OPERATOR, text:^)
+            NTriplesTokenType+ExpressionTailOperatorTokenElement(type:EXPRESSION_TAIL_OPERATOR, text:^)
             IIdentifier
               IUriIdentifier
                 IPrefix
                   Identifier(type:IDENTIFIER, text:foo)
-                SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                NTriplesTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                 ILocalName
                   Identifier(type:IDENTIFIER, text:bar)
         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
@@ -36,11 +36,11 @@ ISecretFile
             IPredicate
               IExpression
                 IIdentifier
-                  SecretTokenType+FalseKeywordTokenElement(type:FALSE_KEYWORD, text:false)
+                  NTriplesTokenType+FalseKeywordTokenElement(type:FALSE_KEYWORD, text:false)
             Whitespace(type:WHITE_SPACE, text: ) spaces:" "
             IObjects
               IExpression
                 IIdentifier
-                  SecretTokenType+FalseKeywordTokenElement(type:FALSE_KEYWORD, text:false)
-    SecretTokenType+DotTokenElement(type:DOT, text:.)
+                  NTriplesTokenType+FalseKeywordTokenElement(type:FALSE_KEYWORD, text:false)
+    NTriplesTokenType+DotTokenElement(type:DOT, text:.)
 

@@ -1,3 +1,13 @@
+// ***********************************************************************
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
+// </copyright>
+// <summary>
+//   SuggestionHighlighterProcess.cs
+// </summary>
+// ***********************************************************************
+
 using System;
 using System.Linq;
 using JetBrains.Application.Settings;
@@ -6,6 +16,7 @@ using JetBrains.ReSharper.Daemon.Stages;
 using JetBrains.ReSharper.Psi.Tree;
 using ReSharper.NTriples.CodeInspections.Highlightings;
 using ReSharper.NTriples.Tree;
+using IStatement = ReSharper.NTriples.Tree.IStatement;
 
 namespace ReSharper.NTriples.CodeInspections
 {
@@ -55,12 +66,12 @@ namespace ReSharper.NTriples.CodeInspections
             }
         }
 
-        public override void VisitStatement(Tree.IStatement statementParam, IHighlightingConsumer consumer)
+        public override void VisitStatement(IStatement statementParam, IHighlightingConsumer consumer)
         {
             var canBeSimplified = statementParam.FactsEnumerable.GroupBy(x => x.Predicate.GetText()).Any(x => x.Count() >= 2);
             if (canBeSimplified)
             {
-                AddFactsSuggestionHighlighting(
+                this.AddFactsSuggestionHighlighting(
                     consumer,
                     "Facts can be simplified",
                     statementParam.FactsEnumerable.First(),
@@ -68,9 +79,10 @@ namespace ReSharper.NTriples.CodeInspections
             }
         }
 
-        private void AddSentenceSuggestionHighlighting(IHighlightingConsumer consumer, string message, ISentence startElement, ISentence endElement)
+        private void AddFactsSuggestionHighlighting(
+            IHighlightingConsumer consumer, string message, IFact startElement, IFact endElement)
         {
-            var highlighting = new SuggestionRangeHighlighting<ISentence>(startElement, endElement, message);
+            var highlighting = new SuggestionRangeHighlighting<IFact>(startElement, endElement, message);
             IFile file = startElement.GetContainingFile();
             if (file != null)
             {
@@ -78,9 +90,10 @@ namespace ReSharper.NTriples.CodeInspections
             }
         }
 
-        private void AddFactsSuggestionHighlighting(IHighlightingConsumer consumer, string message, IFact startElement, IFact endElement)
+        private void AddSentenceSuggestionHighlighting(
+            IHighlightingConsumer consumer, string message, ISentence startElement, ISentence endElement)
         {
-            var highlighting = new SuggestionRangeHighlighting<IFact>(startElement, endElement, message);
+            var highlighting = new SuggestionRangeHighlighting<ISentence>(startElement, endElement, message);
             IFile file = startElement.GetContainingFile();
             if (file != null)
             {

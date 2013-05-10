@@ -1,4 +1,14 @@
-﻿using JetBrains.ReSharper.Psi.ExtensionsAPI.Caches2;
+﻿// ***********************************************************************
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
+// </copyright>
+// <summary>
+//   NTriplesWordIndexLanguageProvider.cs
+// </summary>
+// ***********************************************************************
+
+using JetBrains.ReSharper.Psi.ExtensionsAPI.Caches2;
 using JetBrains.ReSharper.Psi.Impl.Caches2.WordIndex;
 
 namespace ReSharper.NTriples.Impl

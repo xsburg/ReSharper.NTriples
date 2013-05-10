@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   CreateSecretPrefixContext.cs
+//   CreateNTriplesPrefixContext.cs
 // </summary>
 // ***********************************************************************
 
@@ -57,7 +57,7 @@ namespace ReSharper.NTriples.Intentions.CreateFromUsage
             }
         }
 
-        public ICreationTarget Target
+        public new ICreationTarget Target
         {
             get
             {

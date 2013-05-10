@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretLexerTestBase.cs
+//   NTriplesLexerTestBase.cs
 // </summary>
 // ***********************************************************************
 
@@ -25,7 +25,7 @@ using ReSharper.NTriples.Parsing;
 namespace ReSharper.NTriples.Tests
 {
     [Category("Lexer")]
-    [TestFileExtension(NTriplesProjectFileType.SecretExtension)]
+    [TestFileExtension(NTriplesProjectFileType.NTriplesExtension)]
     public abstract class NTriplesLexerTestBase : BaseTestWithSingleProject
     {
         private Encoding myEncoding;
@@ -41,7 +41,7 @@ namespace ReSharper.NTriples.Tests
 
         protected ILexer CreateLexer(StreamReader sr)
         {
-            return new SecretLexer(new StringBuffer(sr.ReadToEnd()));
+            return new NTriplesLexer(new StringBuffer(sr.ReadToEnd()));
         }
 
         protected ILexer CreateLexer(IProjectFile projectFile, StreamReader sr)

@@ -12,7 +12,7 @@ using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.TextControl;
 using JetBrains.Util;
 
-namespace ReSharperSecretLanguage
+namespace ReSharperNTriplesLanguage
 {
     /// <summary>
     ///     This is an example context action. The test project demonstrates tests for

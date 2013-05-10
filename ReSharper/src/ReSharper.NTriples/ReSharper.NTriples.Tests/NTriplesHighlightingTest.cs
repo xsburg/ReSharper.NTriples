@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretHighlightingTest.cs
+//   NTriplesHighlightingTest.cs
 // </summary>
 // ***********************************************************************
 
@@ -24,7 +24,7 @@ namespace ReSharper.NTriples.Tests
     [TestFixture]
     [Category("Highlighting")]
     [TestNetFramework4]
-    [TestFileExtension(NTriplesProjectFileType.SecretExtension)]
+    [TestFileExtension(NTriplesProjectFileType.NTriplesExtension)]
     public class NTriplesHighlightingTest : HighlightingTestBase
     {
         private readonly string[] files;

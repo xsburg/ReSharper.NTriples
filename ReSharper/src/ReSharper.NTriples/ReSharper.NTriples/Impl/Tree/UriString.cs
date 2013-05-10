@@ -1,4 +1,14 @@
-﻿using System.Collections.Generic;
+﻿// ***********************************************************************
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
+// </copyright>
+// <summary>
+//   UriString.cs
+// </summary>
+// ***********************************************************************
+
+using System.Collections.Generic;
 using System.Xml;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Tree;
@@ -10,68 +20,14 @@ namespace ReSharper.NTriples.Impl.Tree
 {
     internal partial class UriString : IDeclaredElement, IUriIdentifierDeclaredElement
     {
-        #region IDeclaredElement Members
-
-        public IList<IDeclaration> GetDeclarations()
-        {
-            return UriIdentifierDeclaredElement.GetDeclarations(this);
-        }
-
-        public IList<IDeclaration> GetDeclarationsIn(IPsiSourceFile sourceFile)
-        {
-            return UriIdentifierDeclaredElement.GetDeclarationsIn(sourceFile, this);
-        }
-
-        public DeclaredElementType GetElementType()
-        {
-            return NTriplesDeclaredElementType.UriIdentifier;
-        }
-
-        public XmlNode GetXMLDoc(bool inherit)
-        {
-            return null;
-        }
-
-        public XmlNode GetXMLDescriptionSummary(bool inherit)
-        {
-            return null;
-        }
-
-        public bool IsSynthetic()
-        {
-            return false;
-        }
-
-        public string ShortName
-        {
-            get
-            {
-                return this.GetText();
-            }
-        }
+        private NTriplesUriStringReference myUriStringReference;
 
         public bool CaseSensistiveName
         {
-            get { return true; }
-        }
-
-        public PsiLanguageType PresentationLanguage
-        {
-            get { return NTriplesLanguage.Instance; }
-        }
-
-        #endregion
-
-        #region IRuleDeclaration Members
-
-        public void SetName(string name)
-        {
-            PsiTreeUtil.ReplaceChild(this, this.Value, name);
-        }
-
-        public TreeTextRange GetNameRange()
-        {
-            return this.GetTreeTextRange();
+            get
+            {
+                return true;
+            }
         }
 
         public IDeclaredElement DeclaredElement
@@ -84,7 +40,10 @@ namespace ReSharper.NTriples.Impl.Tree
 
         public string DeclaredName
         {
-            get { return this.GetDeclaredName(); }
+            get
+            {
+                return this.GetDeclaredName();
+            }
         }
 
         /*public IChameleonNode ReSync(CachingLexer cachingLexer, TreeTextRange changedRange, int insertedTextLen)
@@ -126,19 +85,29 @@ namespace ReSharper.NTriples.Impl.Tree
             return null;
         }*/
 
-        #endregion
-
         public bool IsOpened
         {
-            get { return false; }
+            get
+            {
+                return false;
+            }
         }
 
-        private string GetDeclaredName()
+        public PsiLanguageType PresentationLanguage
         {
-            return this.GetText();
+            get
+            {
+                return NTriplesLanguage.Instance;
+            }
         }
 
-        private NTriplesUriStringReference myUriStringReference;
+        public string ShortName
+        {
+            get
+            {
+                return this.GetText();
+            }
+        }
 
         public NTriplesUriStringReference UriStringReference
         {
@@ -151,21 +120,40 @@ namespace ReSharper.NTriples.Impl.Tree
             }
         }
 
-        public string GetNamespace()
+        public IList<IDeclaration> GetDeclarations()
         {
-            var fullName = Value.GetText();
-            var index = fullName.LastIndexOf('#');
-            if (index == -1)
+            return UriIdentifierDeclaredElement.GetDeclarations(this);
+        }
+
+        public IList<IDeclaration> GetDeclarationsIn(IPsiSourceFile sourceFile)
+        {
+            return UriIdentifierDeclaredElement.GetDeclarationsIn(sourceFile, this);
+        }
+
+        public DeclaredElementType GetElementType()
+        {
+            return NTriplesDeclaredElementType.UriIdentifier;
+        }
+
+        public override ReferenceCollection GetFirstClassReferences()
+        {
+            return new ReferenceCollection(this.UriStringReference);
+        }
+
+        public IdentifierKind GetKind()
+        {
+            var uriIdentifier = this.Parent as UriIdentifier;
+            if (uriIdentifier == null)
             {
-                return "";
+                return IdentifierKind.Other;
             }
 
-            return fullName.Substring(0, index + 1);
+            return uriIdentifier.GetKind();
         }
 
         public string GetLocalName()
         {
-            var fullName = Value.GetText();
+            var fullName = this.Value.GetText();
             var index = fullName.LastIndexOf('#');
             if (index == -1 || index == fullName.Length - 1)
             {
@@ -175,32 +163,58 @@ namespace ReSharper.NTriples.Impl.Tree
             return fullName.Substring(index + 1);
         }
 
-        public string GetUri()
+        public TreeTextRange GetNameRange()
         {
-            return Value == null
-                       ? null
-                       : Value.GetText();
+            return this.GetTreeTextRange();
         }
 
-        public IdentifierKind GetKind()
+        public string GetNamespace()
         {
-            var uriIdentifier = Parent as UriIdentifier;
-            if (uriIdentifier == null)
+            var fullName = this.Value.GetText();
+            var index = fullName.LastIndexOf('#');
+            if (index == -1)
             {
-                return IdentifierKind.Other;
+                return "";
             }
 
-            return uriIdentifier.GetKind();
+            return fullName.Substring(0, index + 1);
         }
 
-        public override ReferenceCollection GetFirstClassReferences()
+        public string GetUri()
         {
-            return new ReferenceCollection(this.UriStringReference);
+            return this.Value == null
+                       ? null
+                       : this.Value.GetText();
+        }
+
+        public XmlNode GetXMLDescriptionSummary(bool inherit)
+        {
+            return null;
+        }
+
+        public XmlNode GetXMLDoc(bool inherit)
+        {
+            return null;
+        }
+
+        public bool IsSynthetic()
+        {
+            return false;
+        }
+
+        public void SetName(string name)
+        {
+            PsiTreeUtil.ReplaceChild(this, this.Value, name);
         }
 
         public void SetReferenceName(string shortName)
         {
             this.UriStringReference.SetName(shortName);
+        }
+
+        private string GetDeclaredName()
+        {
+            return this.GetText();
         }
     }
 }

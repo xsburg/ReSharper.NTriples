@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretAutopopupEnabledSettingsKey.cs
+//   NTriplesAutopopupEnabledSettingsKey.cs
 // </summary>
 // ***********************************************************************
 
@@ -13,7 +13,7 @@ using JetBrains.ReSharper.Feature.Services.CodeCompletion.Settings;
 
 namespace ReSharper.NTriples.Completion
 {
-    [SettingsKey(typeof(AutopopupEnabledSettingsKey), "Secret")]
+    [SettingsKey(typeof(AutopopupEnabledSettingsKey), "NTriples")]
     public class NTriplesAutopopupEnabledSettingsKey
     {
         [SettingsEntry(AutopopupType.HardAutopopup, "After colon")]

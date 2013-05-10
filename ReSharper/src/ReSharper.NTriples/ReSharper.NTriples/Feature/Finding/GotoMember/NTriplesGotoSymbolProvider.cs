@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   ClrGotoSymbolProvider.cs
+//   NTriplesGotoSymbolProvider.cs
 // </summary>
 // ***********************************************************************
 
@@ -29,12 +29,12 @@ namespace ReSharper.NTriples.Feature.Finding.GotoMember
 {
     [FeaturePart]
     public class NTriplesGotoSymbolProvider
-        : //CachedGotoSymbolBase<SecretCache>,
-          IGotoSymbolProvider,
-          IOccurenceNavigationProvider,
-          //IChainedSymbolProvider,
-          //IChainedSearchProvider,
-          IApplicableGotoProvider
+        : //CachedGotoSymbolBase<NTriplesCache>,
+            IGotoSymbolProvider,
+            IOccurenceNavigationProvider,
+            //IChainedSymbolProvider,
+            //IChainedSearchProvider,
+            IApplicableGotoProvider
     {
         /*public IEnumerable<ChainedNavigationItemData> GetNextChainedScopes(
             GotoContext gotoContext, IdentifierMatcher matcher, INavigationScope containingScope, CheckForInterrupt checkCancelled)
@@ -45,36 +45,13 @@ namespace ReSharper.NTriples.Feature.Finding.GotoMember
             return ChainedScopesUtil.GetNextCodeModelScope(matcher, containingScope, checkCancelled, cache, true);
         }
 */
-        protected IOccurence CreateOccurence(NTriplesFileMemberData fileMemberData)
-        {
-            var localName = fileMemberData.Element as LocalName;
-            if (localName != null)
-            {
-                localName.ScopeToMainFile = true;
-            }
-
-            var declaredElementOccurence = new DeclaredElementOccurence(fileMemberData.Element, new OccurencePresentationOptions
-            {
-                ContainerStyle = !(fileMemberData.Element is ITypeElement)
-                                     ? fileMemberData.ContainerDisplayStyle
-                                     : ContainerDisplayStyle.NoContainer,
-                LocationStyle = GlobalLocationStyle.None
-            });
-
-            if (localName != null)
-            {
-                localName.ScopeToMainFile = false;
-            }
-
-            return declaredElementOccurence;
-        }
 
         public IEnumerable<MatchingInfo> FindMatchingInfos(
             IdentifierMatcher matcher, INavigationScope scope, CheckForInterrupt checkCancelled, GotoContext gotoContext)
         {
             var primaryMembersData = this.GetPrimaryMembers(scope.GetSolution());
 
-            var secretFileMembersMap = new NTriplesFileMembersMap();
+            var fileMembersMap = new NTriplesFileMembersMap();
 
             var result = new Collection<MatchingInfo>();
             foreach (var data in primaryMembersData)
@@ -86,7 +63,7 @@ namespace ReSharper.NTriples.Feature.Finding.GotoMember
                     continue;
                 }
 
-                secretFileMembersMap.Add(matchedText.A, data);
+                fileMembersMap.Add(matchedText.A, data);
 
                 var matchingIndicies = matchedText.B
                                            ? matcher.MatchingIndicies(matchedText.A)
@@ -100,43 +77,14 @@ namespace ReSharper.NTriples.Feature.Finding.GotoMember
                         matchedText.B));
             }
 
-            gotoContext.PutData(NTriplesFileMembersMap.SecretFileMembersMapKey, secretFileMembersMap);
+            gotoContext.PutData(NTriplesFileMembersMap.NTriplesFileMembersMapKey, fileMembersMap);
             return result;
-        }
-
-        private IEnumerable<JetTuple<string, bool>> GetQuickSearchTexts(IDeclaredElement declaredElement)
-        {
-            return new[] { JetTuple.Of(declaredElement.ShortName, true) };
-        }
-
-        protected virtual bool IsSourceFileAvailable(IPsiSourceFile sourceFile)
-        {
-            return sourceFile.IsValid();
-        }
-
-        private IEnumerable<NTriplesFileMemberData> GetPrimaryMembers(ISolution solution)
-        {
-            var cache = solution.GetComponent<NTriplesCache>();
-            //var subjects = cache.GetImportantSubjects().ToArray();
-
-            var symbolsByFile = cache.GetAllUriIdentifierSymbolsByFile();
-            var services = solution.GetPsiServices();
-            foreach (var symbols in symbolsByFile)
-            {
-                var file = symbols.Key;
-                var sourceFile = file.GetPsiFile(NTriplesLanguage.Instance, new DocumentRange(file.Document, 0));
-                foreach (var symbol in symbols.Value)
-                {
-                    var uriIdentifier = new UriIdentifierDeclaredElement(sourceFile, symbol.Namespace, symbol.LocalName, symbol.Kind, services, true);
-                    yield return new NTriplesFileMemberData(uriIdentifier, ContainerDisplayStyle.NoContainer);
-                }
-            }
         }
 
         public IEnumerable<IOccurence> GetOccurencesByMatchingInfo(
             MatchingInfo navigationInfo, INavigationScope scope, GotoContext gotoContext)
         {
-            var fileMembersMap = gotoContext.GetData(NTriplesFileMembersMap.SecretFileMembersMapKey);
+            var fileMembersMap = gotoContext.GetData(NTriplesFileMembersMap.NTriplesFileMembersMapKey);
             if (fileMembersMap == null)
             {
                 yield break;
@@ -208,6 +156,32 @@ namespace ReSharper.NTriples.Feature.Finding.GotoMember
             return true;
         }
 
+        protected IOccurence CreateOccurence(NTriplesFileMemberData fileMemberData)
+        {
+            var localName = fileMemberData.Element as LocalName;
+            if (localName != null)
+            {
+                localName.ScopeToMainFile = true;
+            }
+
+            var declaredElementOccurence = new DeclaredElementOccurence(
+                fileMemberData.Element,
+                new OccurencePresentationOptions
+                    {
+                        ContainerStyle = !(fileMemberData.Element is ITypeElement)
+                                             ? fileMemberData.ContainerDisplayStyle
+                                             : ContainerDisplayStyle.NoContainer,
+                        LocationStyle = GlobalLocationStyle.None
+                    });
+
+            if (localName != null)
+            {
+                localName.ScopeToMainFile = false;
+            }
+
+            return declaredElementOccurence;
+        }
+
         protected NTriplesCache GetCache(ISolution solution)
         {
             // always perform unscoped search
@@ -217,6 +191,36 @@ namespace ReSharper.NTriples.Feature.Finding.GotoMember
         protected virtual bool IsDeclaredElementVisible(IClrDeclaredElement element)
         {
             return true;
+        }
+
+        protected virtual bool IsSourceFileAvailable(IPsiSourceFile sourceFile)
+        {
+            return sourceFile.IsValid();
+        }
+
+        private IEnumerable<NTriplesFileMemberData> GetPrimaryMembers(ISolution solution)
+        {
+            var cache = solution.GetComponent<NTriplesCache>();
+            //var subjects = cache.GetImportantSubjects().ToArray();
+
+            var symbolsByFile = cache.GetAllUriIdentifierSymbolsByFile();
+            var services = solution.GetPsiServices();
+            foreach (var symbols in symbolsByFile)
+            {
+                var file = symbols.Key;
+                var sourceFile = file.GetPsiFile(NTriplesLanguage.Instance, new DocumentRange(file.Document, 0));
+                foreach (var symbol in symbols.Value)
+                {
+                    var uriIdentifier = new UriIdentifierDeclaredElement(
+                        sourceFile, symbol.Namespace, symbol.LocalName, symbol.Kind, services, true);
+                    yield return new NTriplesFileMemberData(uriIdentifier, ContainerDisplayStyle.NoContainer);
+                }
+            }
+        }
+
+        private IEnumerable<JetTuple<string, bool>> GetQuickSearchTexts(IDeclaredElement declaredElement)
+        {
+            return new[] { JetTuple.Of(declaredElement.ShortName, true) };
         }
     }
 }

@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretUnresolvedReferenceHighlighting.cs
+//   NTriplesUnresolvedReferenceHighlighting.cs
 // </summary>
 // ***********************************************************************
 
@@ -28,9 +28,9 @@ namespace ReSharper.NTriples.CodeInspections.Highlightings
     {
         private const string Error = "Unresolved prefix";
         private readonly string errorMessage;
-        private readonly ISecretTreeNode myElement;
+        private readonly INTriplesTreeNode myElement;
 
-        public NTriplesUnresolvedReferenceHighlighting(ISecretTreeNode element, TReference reference, string errorMessage)
+        public NTriplesUnresolvedReferenceHighlighting(INTriplesTreeNode element, TReference reference, string errorMessage)
         {
             this.myElement = element;
             this.Reference = reference;

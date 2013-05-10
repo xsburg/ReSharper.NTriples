@@ -18,7 +18,7 @@ using JetBrains.Util;
 
 namespace ReSharper.NTriples.Tree
 {
-    internal class Comment : SecretGenericToken, ISecretCommentNode, IChameleonNode
+    internal class Comment : NTriplesGenericToken, INTriplesCommentNode, IChameleonNode
     {
         public Comment(TokenNodeType nodeType, string text)
             : base(nodeType, text)

@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretDeclaredElementType.cs
+//   NTriplesDeclaredElementType.cs
 // </summary>
 // ***********************************************************************
 
@@ -23,11 +23,11 @@ namespace ReSharper.NTriples.Resolve
         public static readonly NTriplesDeclaredElementType Prefix = new NTriplesDeclaredElementType(
             "Prefix", PsiXamlThemedIcons.XamlNamespaceAlias.Id);
 
-        public static readonly NTriplesDeclaredElementType UriIdentifier = new NTriplesDeclaredElementType(
-            "UriIdentifier", PsiXamlThemedIcons.XamlPredefinedObjectElement.Id);
-
         public static readonly NTriplesDeclaredElementType PrefixUri = new NTriplesDeclaredElementType(
             "PrefixUri", PsiSymbolsThemedIcons.Namespace.Id);
+
+        public static readonly NTriplesDeclaredElementType UriIdentifier = new NTriplesDeclaredElementType(
+            "UriIdentifier", PsiXamlThemedIcons.XamlPredefinedObjectElement.Id);
 
         private static readonly PsiLanguageType Language = NTriplesLanguage.Instance;
 

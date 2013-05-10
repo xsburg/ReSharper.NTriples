@@ -12,7 +12,7 @@ using System;
 
 namespace ReSharper.NTriples.Tree
 {
-    internal abstract class WhitespaceBase : SecretTokenBase, IWhitespaceNode
+    internal abstract class WhitespaceBase : NTriplesTokenBase, IWhitespaceNode
     {
         private readonly string myText;
 

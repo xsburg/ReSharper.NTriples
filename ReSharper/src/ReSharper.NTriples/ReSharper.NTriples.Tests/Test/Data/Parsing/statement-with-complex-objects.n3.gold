@@ -1,5 +1,5 @@
 ﻿Language: PsiLanguageType:NTriples
-ISecretFile
+INTriplesFile
   NewLine(type:NEW_LINE, text:\n) spaces:"\n"
   NewLine(type:NEW_LINE, text:\n) spaces:"\n"
   ISentences
@@ -11,7 +11,7 @@ ISecretFile
               IUriIdentifier
                 IPrefix
                   Identifier(type:IDENTIFIER, text:family)
-                SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                NTriplesTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                 ILocalName
                   Identifier(type:IDENTIFIER, text:stan)
         NewLine(type:NEW_LINE, text:\n) spaces:"\n"
@@ -24,7 +24,7 @@ ISecretFile
                   IUriIdentifier
                     IPrefix
                       Identifier(type:IDENTIFIER, text:itemKind)
-                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                    NTriplesTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:stuff)
             NewLine(type:NEW_LINE, text:\n) spaces:"\n"
@@ -36,11 +36,11 @@ ISecretFile
               IExpression
                 IIdentifier
                   IUriIdentifier
-                    SecretTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
+                    NTriplesTokenType+UriBeginTokenElement(type:URI_BEGIN, text:<)
                     IUriString
-                      SecretGenericToken(type:URI_STRING, text:http://domain.com/ontology#name)
-                    SecretTokenType+UriEndTokenElement(type:URI_END, text:>)
-              SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+                      NTriplesGenericToken(type:URI_STRING, text:http://domain.com/ontology#name)
+                    NTriplesTokenType+UriEndTokenElement(type:URI_END, text:>)
+              NTriplesTokenType+CommaTokenElement(type:COMMA, text:,)
               NewLine(type:NEW_LINE, text:\n) spaces:"\n"
               Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
               IExpression
@@ -48,10 +48,10 @@ ISecretFile
                   IUriIdentifier
                     IPrefix
                       Identifier(type:IDENTIFIER, text:basics)
-                    SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                    NTriplesTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                     ILocalName
                       Identifier(type:IDENTIFIER, text:billy)
-              SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+              NTriplesTokenType+CommaTokenElement(type:COMMA, text:,)
               NewLine(type:NEW_LINE, text:\n) spaces:"\n"
               Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
               Comment(type:END_OF_LINE_COMMENT, text:# list of literals)(CommentType:END_OF_LINE_COMMENT)
@@ -60,40 +60,40 @@ ISecretFile
               IExpression
                 IIdentifier
                   IList
-                    SecretTokenType+LParenthesesTokenElement(type:L_PARENTHESES, text:()
+                    NTriplesTokenType+LParenthesesTokenElement(type:L_PARENTHESES, text:()
                     NewLine(type:NEW_LINE, text:\n) spaces:"\n"
                     Whitespace(type:WHITE_SPACE, text:            ) spaces:"            "
                     IExpression
                       IIdentifier
                         IDataLiteral
-                          SecretGenericToken(type:STRING_LITERAL, text:"text literal")
+                          NTriplesGenericToken(type:STRING_LITERAL, text:"text literal")
                     NewLine(type:NEW_LINE, text:\n) spaces:"\n"
                     Whitespace(type:WHITE_SPACE, text:            ) spaces:"            "
                     IExpression
                       IIdentifier
-                        SecretGenericToken(type:INTEGER_LITERAL, text:1408)
+                        NTriplesGenericToken(type:INTEGER_LITERAL, text:1408)
                     NewLine(type:NEW_LINE, text:\n) spaces:"\n"
                     Whitespace(type:WHITE_SPACE, text:            ) spaces:"            "
                     IExpression
                       IIdentifier
-                        SecretGenericToken(type:DOUBLE_LITERAL, text:13.666)
+                        NTriplesGenericToken(type:DOUBLE_LITERAL, text:13.666)
                     NewLine(type:NEW_LINE, text:\n) spaces:"\n"
                     Whitespace(type:WHITE_SPACE, text:            ) spaces:"            "
                     IExpression
                       IIdentifier
                         IDataLiteral
-                          SecretGenericToken(type:STRING_LITERAL, text:"PT18H")
-                          SecretTokenType+DataSuffixTokenElement(type:DATA_SUFFIX, text:^^)
+                          NTriplesGenericToken(type:STRING_LITERAL, text:"PT18H")
+                          NTriplesTokenType+DataSuffixTokenElement(type:DATA_SUFFIX, text:^^)
                           IUriIdentifier
                             IPrefix
                               Identifier(type:IDENTIFIER, text:xsd)
-                            SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                            NTriplesTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                             ILocalName
                               Identifier(type:IDENTIFIER, text:duration)
                     NewLine(type:NEW_LINE, text:\n) spaces:"\n"
                     Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
-                    SecretTokenType+RParenthesesTokenElement(type:R_PARENTHESES, text:))
-              SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+                    NTriplesTokenType+RParenthesesTokenElement(type:R_PARENTHESES, text:))
+              NTriplesTokenType+CommaTokenElement(type:COMMA, text:,)
               NewLine(type:NEW_LINE, text:\n) spaces:"\n"
               Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
               Comment(type:END_OF_LINE_COMMENT, text:# literal keywords)(CommentType:END_OF_LINE_COMMENT)
@@ -101,20 +101,20 @@ ISecretFile
               Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
               IExpression
                 IIdentifier
-                  SecretTokenType+TrueKeywordTokenElement(type:TRUE_KEYWORD, text:true)
-              SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+                  NTriplesTokenType+TrueKeywordTokenElement(type:TRUE_KEYWORD, text:true)
+              NTriplesTokenType+CommaTokenElement(type:COMMA, text:,)
               NewLine(type:NEW_LINE, text:\n) spaces:"\n"
               Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
               IExpression
                 IIdentifier
-                  SecretTokenType+FalseKeywordTokenElement(type:FALSE_KEYWORD, text:false)
-              SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+                  NTriplesTokenType+FalseKeywordTokenElement(type:FALSE_KEYWORD, text:false)
+              NTriplesTokenType+CommaTokenElement(type:COMMA, text:,)
               NewLine(type:NEW_LINE, text:\n) spaces:"\n"
               Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
               IExpression
                 IIdentifier
-                  SecretTokenType+NullKeywordTokenElement(type:NULL_KEYWORD, text:null)
-              SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+                  NTriplesTokenType+NullKeywordTokenElement(type:NULL_KEYWORD, text:null)
+              NTriplesTokenType+CommaTokenElement(type:COMMA, text:,)
               NewLine(type:NEW_LINE, text:\n) spaces:"\n"
               Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
               Comment(type:END_OF_LINE_COMMENT, text:# variables (it should not be in a regular statement but the parser accepts it))(CommentType:END_OF_LINE_COMMENT)
@@ -124,14 +124,14 @@ ISecretFile
                 IIdentifier
                   IVariableIdentifier
                     VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?)
-              SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+              NTriplesTokenType+CommaTokenElement(type:COMMA, text:,)
               NewLine(type:NEW_LINE, text:\n) spaces:"\n"
               Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
               IExpression
                 IIdentifier
                   IVariableIdentifier
                     VariableIdentifier(type:VARIABLE_IDENTIFIER, text:?someVar)
-              SecretTokenType+CommaTokenElement(type:COMMA, text:,)
+              NTriplesTokenType+CommaTokenElement(type:COMMA, text:,)
               NewLine(type:NEW_LINE, text:\n) spaces:"\n"
               Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
               Comment(type:END_OF_LINE_COMMENT, text:# and a simple formula)(CommentType:END_OF_LINE_COMMENT)
@@ -140,7 +140,7 @@ ISecretFile
               IExpression
                 IIdentifier
                   IFormula
-                    SecretTokenType+LBraceTokenElement(type:L_BRACE, text:{)
+                    NTriplesTokenType+LBraceTokenElement(type:L_BRACE, text:{)
                     Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                     ISentences
                       ISentence
@@ -151,14 +151,14 @@ ISecretFile
                                 IUriIdentifier
                                   IPrefix
                                     Identifier(type:IDENTIFIER, text:family)
-                                  SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                                  NTriplesTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                   ILocalName
                                     Identifier(type:IDENTIFIER, text:jack)
                           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                           IFacts
                             IFact
                               IPredicate
-                                SecretTokenType+AKeywordTokenElement(type:A_KEYWORD, text:a)
+                                NTriplesTokenType+AKeywordTokenElement(type:A_KEYWORD, text:a)
                               Whitespace(type:WHITE_SPACE, text: ) spaces:" "
                               IObjects
                                 IExpression
@@ -166,12 +166,12 @@ ISecretFile
                                     IUriIdentifier
                                       IPrefix
                                         Identifier(type:IDENTIFIER, text:limbs)
-                                      SecretTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
+                                      NTriplesTokenType+NamespaceSeparatorTokenElement(type:NAMESPACE_SEPARATOR, text::)
                                       ILocalName
                                         Identifier(type:IDENTIFIER, text:dick)
                     Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-                    SecretTokenType+RBraceTokenElement(type:R_BRACE, text:})
+                    NTriplesTokenType+RBraceTokenElement(type:R_BRACE, text:})
     NewLine(type:NEW_LINE, text:\n) spaces:"\n"
     Whitespace(type:WHITE_SPACE, text:        ) spaces:"        "
-    SecretTokenType+DotTokenElement(type:DOT, text:.)
+    NTriplesTokenType+DotTokenElement(type:DOT, text:.)
 

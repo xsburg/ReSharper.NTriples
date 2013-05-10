@@ -42,7 +42,7 @@ namespace ReSharper.NTriples.Tree
         {
             get
             {
-                return SecretTokenType.NEW_LINE;
+                return NTriplesTokenType.NEW_LINE;
             }
         }
     }

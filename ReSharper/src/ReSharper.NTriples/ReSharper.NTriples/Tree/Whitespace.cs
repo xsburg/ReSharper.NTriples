@@ -42,7 +42,7 @@ namespace ReSharper.NTriples.Tree
         {
             get
             {
-                return SecretTokenType.WHITE_SPACE;
+                return NTriplesTokenType.WHITE_SPACE;
             }
         }
     }

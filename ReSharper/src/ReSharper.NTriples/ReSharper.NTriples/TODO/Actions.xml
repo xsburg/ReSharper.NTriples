@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <actions>
   <insert group-id="ReSharper" position="last">
-    <action-group id="ReSharperSecretLanguage" text="ReSharperSecretLanguage">
-      <action id="ReSharperSecretLanguage.About" text="About The Secret Language" />
+    <action-group id="ReSharperNTriplesLanguage" text="ReSharperNTriplesLanguage">
+      <action id="ReSharperNTriplesLanguage.About" text="About The NTriples Language" />
       <!-- to break up elements use <separator/> -->
     </action-group>
   </insert>

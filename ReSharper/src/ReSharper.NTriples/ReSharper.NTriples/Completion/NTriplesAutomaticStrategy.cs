@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretAutomaticStrategy.cs
+//   NTriplesAutomaticStrategy.cs
 // </summary>
 // ***********************************************************************
 
@@ -54,7 +54,7 @@ namespace ReSharper.NTriples.Completion
 
         public bool AcceptsFile(IFile file, ITextControl textControl)
         {
-            return file is ISecretFile;
+            return file is INTriplesFile;
         }
 
         public AutopopupType IsEnabledInSettings(IContextBoundSettingsStore settingsStore, ITextControl textControl)

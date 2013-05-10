@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretElementFactory.cs
+//   NTriplesElementFactory.cs
 // </summary>
 // ***********************************************************************
 
@@ -14,7 +14,6 @@ using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Tree;
 using ReSharper.NTriples.Tree;
-using IStatement = ReSharper.NTriples.Tree.IStatement;
 
 namespace ReSharper.NTriples.Util
 {
@@ -37,8 +36,8 @@ namespace ReSharper.NTriples.Util
 
         public abstract IPrefix CreatePrefixExpression(string name);
         public abstract IPrefixName CreatePrefixNameExpression(string name);
-        public abstract IUriString CreateUriStringExpression(string name);
         public abstract IPrefixUri CreatePrefixUriExpression(string name);
         public abstract ISentence CreateSentence(string subject, IDictionary<string, string[]> facts);
+        public abstract IUriString CreateUriStringExpression(string name);
     }
 }

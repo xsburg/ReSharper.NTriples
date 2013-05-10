@@ -4,17 +4,18 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretCodeCompletionItemsProvider.cs
+//   NTriplesCodeCompletionItemsProvider.cs
 // </summary>
 // ***********************************************************************
 
+using System.Collections.Generic;
+using System.Linq;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Impl;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure;
 using JetBrains.ReSharper.Feature.Services.Lookup;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Resolve;
-using System.Linq;
 using ReSharper.NTriples.Impl;
 using ReSharper.NTriples.Impl.Tree;
 using ReSharper.NTriples.Resolve;
@@ -23,7 +24,7 @@ namespace ReSharper.NTriples.Completion
 {
     [Language(typeof(NTriplesLanguage))]
     internal class NTriplesCodeCompletionItemsProvider
-        : ItemsProviderWithReference<NTriplesCodeCompletionContext, NTriplesReferenceBase, SecretFile>
+        : ItemsProviderWithReference<NTriplesCodeCompletionContext, NTriplesReferenceBase, NTriplesFile>
     {
         protected override void AddItemsGroups(
             NTriplesCodeCompletionContext context, GroupedItemsCollector collector, IntellisenseManager intellisenseManager)
@@ -31,19 +32,11 @@ namespace ReSharper.NTriples.Completion
             collector.AddFilter(new ReferencesBetterFilter());
         }
 
-        protected override void DecorateItems(NTriplesCodeCompletionContext context, System.Collections.Generic.IEnumerable<ILookupItem> items)
-        {
-            foreach (var item in items.OfType<DeclaredElementLookupItem>())
-            {
-                item.OrderingString = item.Text.ToLowerInvariant();
-            }
-        }
-
         protected override bool AddLookupItems(NTriplesCodeCompletionContext context, GroupedItemsCollector collector)
         {
             TextLookupRanges ranges;
             CodeCompletionContext basicContext = context.BasicContext;
-            var file = basicContext.File as SecretFile;
+            var file = basicContext.File as NTriplesFile;
             if (file == null)
             {
                 return false;
@@ -87,6 +80,14 @@ namespace ReSharper.NTriples.Completion
                 }
             }
             return flag;
+        }
+
+        protected override void DecorateItems(NTriplesCodeCompletionContext context, IEnumerable<ILookupItem> items)
+        {
+            foreach (var item in items.OfType<DeclaredElementLookupItem>())
+            {
+                item.OrderingString = item.Text.ToLowerInvariant();
+            }
         }
 
         protected override bool IsAvailable(NTriplesCodeCompletionContext context)

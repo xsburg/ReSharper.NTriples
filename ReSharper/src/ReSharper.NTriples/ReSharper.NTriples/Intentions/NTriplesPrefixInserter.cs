@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretPrefixInserter.cs
+//   NTriplesPrefixInserter.cs
 // </summary>
 // ***********************************************************************
 
@@ -36,7 +36,7 @@ namespace ReSharper.NTriples.Intentions
                 Debug.Assert(anchor != null, "anchor != null");
                 var parent = anchor.Parent;
 
-                var dot = ModificationUtil.AddChildAfter(parent, anchor, SecretTokenType.CreateDot());
+                var dot = ModificationUtil.AddChildAfter(parent, anchor, NTriplesTokenType.CreateDot());
                 var whiteSpace = ModificationUtil.AddChildAfter(parent, dot, new NewLine("\n"));
                 return ModificationUtil.AddChildAfter(parent, whiteSpace, this.myDeclarationToAdd);
             }

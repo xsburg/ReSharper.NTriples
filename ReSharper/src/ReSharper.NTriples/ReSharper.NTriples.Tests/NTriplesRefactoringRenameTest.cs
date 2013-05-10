@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SecretRefactoringRenameTest.cs
+//   NTriplesRefactoringRenameTest.cs
 // </summary>
 // ***********************************************************************
 
@@ -19,14 +19,14 @@ using ReSharper.NTriples.Impl;
 namespace ReSharper.NTriples.Tests
 {
     [TestFixture]
-    [TestFileExtension(NTriplesProjectFileType.SecretExtension)]
+    [TestFileExtension(NTriplesProjectFileType.NTriplesExtension)]
     public class NTriplesRefactoringRenameTest : RenameTestBase
     {
         private readonly string[] files;
 
         public NTriplesRefactoringRenameTest()
         {
-            this.files = this.TestDataPath2.GetDirectoryEntries("*" + NTriplesProjectFileType.SecretExtension, true)
+            this.files = this.TestDataPath2.GetDirectoryEntries("*" + NTriplesProjectFileType.NTriplesExtension, true)
                              .Select(f => Path.GetFileNameWithoutExtension(f.FullPath))
                              .ToArray();
         }

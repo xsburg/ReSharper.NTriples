@@ -4,12 +4,13 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   StatementSimplificationQuickFix.cs
+//   StatementsSimplificationQuickFix.cs
 // </summary>
 // ***********************************************************************
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Application.Progress;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Daemon;
@@ -21,8 +22,6 @@ using JetBrains.TextControl;
 using JetBrains.Util;
 using ReSharper.NTriples.CodeInspections.Highlightings;
 using ReSharper.NTriples.Tree;
-using JetBrains.ReSharper.Feature.Services.Html;
-using System.Linq;
 using ReSharper.NTriples.Util;
 
 namespace ReSharper.NTriples.Intentions.QuickFix
@@ -61,8 +60,8 @@ namespace ReSharper.NTriples.Intentions.QuickFix
             var sentences = this.CollectSentences();
             var facts =
                 sentences.SelectMany(s => s.Statement.FactsEnumerable)
-                          .GroupBy(GetPredicateText)
-                          .ToDictionary(g => g.Key, g => g.SelectMany(x => x.ObjectsEnumerable).Select(o => o.GetText()).ToArray());
+                         .GroupBy(GetPredicateText)
+                         .ToDictionary(g => g.Key, g => g.SelectMany(x => x.ObjectsEnumerable).Select(o => o.GetText()).ToArray());
             var subjectText = startSentence.Statement.Subject.GetText();
             var newSentence = NTriplesElementFactory.GetInstance(startSentence).CreateSentence(subjectText, facts);
 

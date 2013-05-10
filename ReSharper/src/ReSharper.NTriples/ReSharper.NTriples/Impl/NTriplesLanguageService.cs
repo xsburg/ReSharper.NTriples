@@ -1,3 +1,13 @@
+// ***********************************************************************
+// <author>Stephan Burguchev</author>
+// <copyright company="Stephan Burguchev">
+//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
+// </copyright>
+// <summary>
+//   NTriplesLanguageService.cs
+// </summary>
+// ***********************************************************************
+
 using System;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.CodeStyle;
@@ -18,44 +28,54 @@ namespace ReSharper.NTriples.Impl
     public class NTriplesLanguageService : LanguageService
     {
         //private readonly SecretCodeFormatter formatter;
+        internal static readonly NodeTypeSet WHITESPACE_OR_COMMENT = new NodeTypeSet(
+            new[]
+                {
+                    NTriplesTokenType.WHITE_SPACE,
+                    NTriplesTokenType.NEW_LINE,
+                    NTriplesTokenType.END_OF_LINE_COMMENT
+                });
+
         private readonly NTriplesWordIndexLanguageProvider wordIndexLanguageProvider = new NTriplesWordIndexLanguageProvider();
 
-        public NTriplesLanguageService(PsiLanguageType psiLanguageType, IConstantValueService constantValueService/*, SecretCodeFormatter formatter*/)
+        public NTriplesLanguageService(
+            PsiLanguageType psiLanguageType, IConstantValueService constantValueService /*, SecretCodeFormatter formatter*/)
             : base(psiLanguageType, constantValueService)
         {
             //this.formatter = formatter;
         }
 
-        public override ILexerFactory GetPrimaryLexerFactory()
+        public override ILanguageCacheProvider CacheProvider
         {
-            return new NTriplesLexerFactory();
-        }
-
-        public override bool IsValidName(DeclaredElementType elementType, string name)
-        {
-            return NamingUtil.IsIdentifier(name) || Uri.IsWellFormedUriString(name, UriKind.Absolute);
-        }
-
-        public override ILexer CreateFilteringLexer(ILexer lexer)
-        {
-            return new SecretFilteringLexer(lexer);
-        }
-
-        public override IParser CreateParser(ILexer lexer, IPsiModule module, IPsiSourceFile sourceFile)
-        {
-            var typedLexer = (lexer as ILexer<int>) ?? lexer.ToCachingLexer();
-            return new Parser(typedLexer, sourceFile);
+            get
+            {
+                return null;
+            }
         }
 
         public override ICodeFormatter CodeFormatter
         {
             //get { return formatter; }
-            get { return null; }
+            get
+            {
+                return null;
+            }
         }
 
-        public override bool IsFilteredNode(ITreeNode node)
+        public override bool SupportTypeMemberCache
         {
-            return node.IsWhitespaceToken();
+            get
+            {
+                return false;
+            }
+        }
+
+        public override ITypePresenter TypePresenter
+        {
+            get
+            {
+                return null;
+            }
         }
 
         public override IWordIndexLanguageProvider WordIndexLanguageProvider
@@ -64,21 +84,6 @@ namespace ReSharper.NTriples.Impl
             {
                 return this.wordIndexLanguageProvider;
             }
-        }
-
-        public override ILanguageCacheProvider CacheProvider
-        {
-            get { return null; }
-        }
-
-        public override bool SupportTypeMemberCache
-        {
-            get { return false; }
-        }
-
-        public override ITypePresenter TypePresenter
-        {
-            get { return null; }
         }
 
         public override IDeclaredElementPointer<T> CreateElementPointer<T>(T declaredElement)
@@ -106,15 +111,33 @@ namespace ReSharper.NTriples.Impl
             return sourceElementPointer;
         }
 
-        internal static readonly NodeTypeSet WHITESPACE_OR_COMMENT = new NodeTypeSet(
-            new[]
-                {
-                    SecretTokenType.WHITE_SPACE,
-                    SecretTokenType.NEW_LINE,
-                    SecretTokenType.END_OF_LINE_COMMENT
-                });
+        public override ILexer CreateFilteringLexer(ILexer lexer)
+        {
+            return new NTriplesFilteringLexer(lexer);
+        }
 
-        private class Parser : SecretParser
+        public override IParser CreateParser(ILexer lexer, IPsiModule module, IPsiSourceFile sourceFile)
+        {
+            var typedLexer = (lexer as ILexer<int>) ?? lexer.ToCachingLexer();
+            return new Parser(typedLexer, sourceFile);
+        }
+
+        public override ILexerFactory GetPrimaryLexerFactory()
+        {
+            return new NTriplesLexerFactory();
+        }
+
+        public override bool IsFilteredNode(ITreeNode node)
+        {
+            return node.IsWhitespaceToken();
+        }
+
+        public override bool IsValidName(DeclaredElementType elementType, string name)
+        {
+            return NamingUtil.IsIdentifier(name) || Uri.IsWellFormedUriString(name, UriKind.Absolute);
+        }
+
+        private class Parser : NTriplesParser
         {
             public Parser(ILexer lexer, IPsiSourceFile sourceFile)
                 : base(lexer)
