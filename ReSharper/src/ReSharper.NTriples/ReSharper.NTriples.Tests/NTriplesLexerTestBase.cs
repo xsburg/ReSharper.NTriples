@@ -25,7 +25,7 @@ using ReSharper.NTriples.Parsing;
 namespace ReSharper.NTriples.Tests
 {
     [Category("Lexer")]
-    [TestFileExtension(SecretProjectFileType.SecretExtension)]
+    [TestFileExtension(NTriplesProjectFileType.SecretExtension)]
     public abstract class NTriplesLexerTestBase : BaseTestWithSingleProject
     {
         private Encoding myEncoding;

@@ -70,6 +70,7 @@
     <Compile Include="Cache\IdentifierKind.cs" />
     <Compile Include="CodeInspections\ContextErrorHighlighterProcess.cs" />
     <Compile Include="CodeInspections\ContextErrorHighlightingStage.cs" />
+    <Compile Include="CodeInspections\Highlightings\VsPredefinedHighlighterIds.cs" />
     <Compile Include="CodeInspections\Highlightings\WarningRangeHighlighting.cs" />
     <Compile Include="CodeInspections\Highlightings\NTriplesUnresolvedReferenceHighlighting.cs" />
     <Compile Include="CodeInspections\Highlightings\SuggestionRangeHighlighting.cs" />
@@ -108,7 +109,7 @@
     <None Include="Formatter\SecretIndentingStage.cs" />
     <None Include="Formatter\NewFolder1\SecretIndentVisitor.cs" />
     <None Include="Formatter\ReformatCode.cs" />
-    <Compile Include="Impl\SecretIdentifierFilter.cs" />
+    <Compile Include="Impl\NTriplesIdentifierFilter.cs" />
     <Compile Include="Impl\Tree\Identifier.cs" />
     <Compile Include="Impl\Tree\LocalName.cs" />
     <Compile Include="Impl\Tree\PrefixUri.cs" />
@@ -116,34 +117,34 @@
     <Compile Include="Impl\Tree\Prefix.cs" />
     <Compile Include="Impl\Tree\PrefixDeclaration.cs" />
     <Compile Include="Impl\Tree\UriString.cs" />
-    <Compile Include="Intentions\CreateFromUsage\CreateSecretPrefixContext.cs" />
-    <Compile Include="Intentions\CreateFromUsage\CreateSecretPrefixFromUsage.cs" />
-    <Compile Include="Intentions\CreateFromUsage\CreateSecretPrefixIntention.cs" />
+    <Compile Include="Intentions\CreateFromUsage\CreateNTriplesPrefixContext.cs" />
+    <Compile Include="Intentions\CreateFromUsage\CreateNTriplesPrefixFromUsage.cs" />
+    <Compile Include="Intentions\CreateFromUsage\CreateNTriplesPrefixIntention.cs" />
     <Compile Include="Intentions\CreateFromUsage\CreatePsiRuleItem.cs" />
-    <Compile Include="Intentions\CreateFromUsage\CreateSecretPrefixTarget.cs" />
-    <Compile Include="Intentions\CreateFromUsage\ICreateSecretPrefixIntention.cs" />
-    <Compile Include="Intentions\CreateFromUsage\SecretIntentionResult.cs" />
-    <Compile Include="Intentions\CreateFromUsage\SecretIntentionResultBehavior.cs" />
-    <Compile Include="Intentions\CreateFromUsage\SecretPrefixBuilder.cs" />
+    <Compile Include="Intentions\CreateFromUsage\CreateNTriplesPrefixTarget.cs" />
+    <Compile Include="Intentions\CreateFromUsage\ICreateNTriplesPrefixIntention.cs" />
+    <Compile Include="Intentions\CreateFromUsage\NTriplesIntentionResult.cs" />
+    <Compile Include="Intentions\CreateFromUsage\NTriplesIntentionResultBehavior.cs" />
+    <Compile Include="Intentions\CreateFromUsage\NTriplesPrefixBuilder.cs" />
     <Compile Include="Intentions\QuickFix\FactsSimplificationQuickFix.cs" />
     <Compile Include="Intentions\QuickFix\StatementsSimplificationQuickFix.cs" />
-    <Compile Include="Intentions\SecretIntentionsUtil.cs" />
-    <Compile Include="Intentions\SecretPrefixInserter.cs" />
+    <Compile Include="Intentions\NTriplesIntentionsUtil.cs" />
+    <Compile Include="Intentions\NTriplesPrefixInserter.cs" />
     <Compile Include="Refactoring\Rename\PsiAtomicRename.cs" />
     <Compile Include="Refactoring\Rename\PsiDerivedElementRename.cs" />
     <Compile Include="Refactoring\Rename\PsiRenamesFactory.cs" />
     <Compile Include="Resolve\IUriIdentifierDeclaredElement.cs" />
     <Compile Include="Resolve\PrefixUriDeclaredElement.cs" />
-    <Compile Include="Resolve\SecretLocalNameReference.cs" />
-    <Compile Include="Resolve\SecretPrefixUriReference.cs" />
-    <Compile Include="Resolve\SecretUriStringReference.cs" />
+    <Compile Include="Resolve\NTriplesLocalNameReference.cs" />
+    <Compile Include="Resolve\NTriplesPrefixUriReference.cs" />
+    <Compile Include="Resolve\NTriplesUriStringReference.cs" />
     <Compile Include="Resolve\UriIdentifierDeclaredElement.cs" />
     <Compile Include="Resolve\PrefixDeclaredElement.cs" />
-    <Compile Include="Resolve\SecretDeclaredElementType.cs" />
-    <Compile Include="Resolve\SecretReferenceBase.cs" />
-    <Compile Include="Resolve\SecretPrefixReference.cs" />
+    <Compile Include="Resolve\NTriplesDeclaredElementType.cs" />
+    <Compile Include="Resolve\NTriplesReferenceBase.cs" />
+    <Compile Include="Resolve\NTriplesPrefixReference.cs" />
     <Compile Include="Resolve\UnresolvedNamespacePrefixDeclaredElement.cs" />
-    <Compile Include="Services\SecretDeclaredElementPresenter.cs" />
+    <Compile Include="Services\NTriplesDeclaredElementPresenter.cs" />
     <Compile Include="Tree\IIdentifier.cs" />
     <Compile Include="Tree\ILocalName.cs" />
     <Compile Include="Tree\IPrefix.cs" />
@@ -154,10 +155,10 @@
     <Compile Include="Tree\PrefixIdentifier.cs" />
     <Compile Include="Tree\VariableIdentifier.cs" />
     <Compile Include="Util\EnumerableExtensions.cs" />
-    <Compile Include="Util\SecretElementFactory.cs" />
-    <Compile Include="Util\SecretElementFactoryImpl.cs" />
+    <Compile Include="Util\NTriplesElementFactory.cs" />
+    <Compile Include="Util\NTriplesElementFactoryImpl.cs" />
     <Compile Include="Util\PsiTreeUtil.cs" />
-    <Compile Include="TypingAssist\SecretBracketMatcher.cs" />
+    <Compile Include="TypingAssist\NTriplesBracketMatcher.cs" />
     <Compile Include="TypingAssist\PsiTypingAssist.cs" />
     <Compile Include="CodeInspections\ErrorElementHighlightingStage.cs" />
     <Compile Include="CodeInspections\Highlightings\NTriplesErrorElementHighlighting.cs" />
@@ -171,7 +172,7 @@
     <Compile Include="Completion\NTriplesKeywordLookupItem.cs" />
     <Compile Include="Gen\**\*.cs" />
     <Compile Include="Impl\Tree\ChildRole.cs" />
-    <Compile Include="Impl\SecretWordIndexLanguageProvider.cs" />
+    <Compile Include="Impl\NTriplesWordIndexLanguageProvider.cs" />
     <Compile Include="Parsing\ISecretParser.cs" />
     <Compile Include="Parsing\ParserMessages.cs" />
     <Compile Include="Parsing\SecretMissingTokensInserter.cs" />
@@ -181,7 +182,7 @@
     <Compile Include="Parsing\SecretLexerState.cs" />
     <Compile Include="Parsing\SecretLexer.gen_lex.cs" />
     <Compile Include="Parsing\SecretParser.cs" />
-    <Compile Include="Impl\SecretLanguageService.cs" />
+    <Compile Include="Impl\NTriplesLanguageService.cs" />
     <Compile Include="Tree\Comment.cs" />
     <Compile Include="Tree\CommentType.cs" />
     <Compile Include="Tree\DocComment.cs" />
@@ -209,9 +210,9 @@
       <LastGenOutput>TokenTypeGenerated.cs</LastGenOutput>
     </None>
     <None Include="TODO\N3CodeFormatter.cs" />
-    <Compile Include="Impl\SecretLanguage.cs" />
-    <Compile Include="Impl\SecretLexerFactory.cs" />
-    <Compile Include="Impl\SecretProjectFileType.cs" />
+    <Compile Include="Impl\NTriplesLanguage.cs" />
+    <Compile Include="Impl\NTriplesLexerFactory.cs" />
+    <Compile Include="Impl\NTriplesProjectFileType.cs" />
     <Compile Include="Parsing\SecretTokenType.cs" />
     <Compile Include="Parsing\TokenTypeGenerated.cs">
       <AutoGen>True</AutoGen>
@@ -220,7 +221,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="TODO\AboutAction.cs" />
-    <Compile Include="Impl\SecretProjectFileLanguageService.cs" />
+    <Compile Include="Impl\NTriplesProjectFileLanguageService.cs" />
     <Compile Include="Resources\N3PluginSymbolIcons\ThemedIcons.N3PluginSymbol.Generated.cs" />
     <None Include="TODO\ReverseStringAction.cs" />
   </ItemGroup>

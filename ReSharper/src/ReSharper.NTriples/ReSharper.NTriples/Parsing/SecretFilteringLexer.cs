@@ -41,7 +41,7 @@ namespace ReSharper.NTriples.Parsing
 
         protected override bool Skip(TokenNodeType tokenType)
         {
-            return SecretLanguageService.WHITESPACE_OR_COMMENT[tokenType];
+            return NTriplesLanguageService.WHITESPACE_OR_COMMENT[tokenType];
         }
     }
 }

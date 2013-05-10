@@ -21,9 +21,9 @@ using ReSharper.NTriples.Resolve;
 
 namespace ReSharper.NTriples.Completion
 {
-    [Language(typeof(SecretLanguage))]
+    [Language(typeof(NTriplesLanguage))]
     internal class NTriplesCodeCompletionItemsProvider
-        : ItemsProviderWithReference<NTriplesCodeCompletionContext, SecretReferenceBase, SecretFile>
+        : ItemsProviderWithReference<NTriplesCodeCompletionContext, NTriplesReferenceBase, SecretFile>
     {
         protected override void AddItemsGroups(
             NTriplesCodeCompletionContext context, GroupedItemsCollector collector, IntellisenseManager intellisenseManager)
@@ -55,17 +55,17 @@ namespace ReSharper.NTriples.Completion
             }
 
             bool flag = false;
-            SecretReferenceBase reference = this.GetReference(file, basicContext.SelectedTreeRange);
+            NTriplesReferenceBase reference = this.GetReference(file, basicContext.SelectedTreeRange);
             if (reference != null)
             {
                 ranges = this.EvaluateRanges(reference, null, context);
                 collector.AddRanges(ranges);
                 flag = this.EvaluateLookupItems(reference, null, context, collector, ranges);
             }
-            else if (context.ReparsedContext.Reference is SecretPrefixReference)
+            else if (context.ReparsedContext.Reference is NTriplesPrefixReference)
             {
                 // A special case for prefix suggestions without context (among whitespaces between sentences)
-                reference = context.ReparsedContext.Reference as SecretReferenceBase;
+                reference = context.ReparsedContext.Reference as NTriplesReferenceBase;
                 ranges = context.Ranges;
                 collector.AddRanges(ranges);
                 flag = this.EvaluateLookupItems(reference, null, context, collector, ranges);

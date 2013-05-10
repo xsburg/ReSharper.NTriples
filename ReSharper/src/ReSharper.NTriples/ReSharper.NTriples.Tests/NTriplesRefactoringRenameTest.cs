@@ -19,14 +19,14 @@ using ReSharper.NTriples.Impl;
 namespace ReSharper.NTriples.Tests
 {
     [TestFixture]
-    [TestFileExtension(SecretProjectFileType.SecretExtension)]
+    [TestFileExtension(NTriplesProjectFileType.SecretExtension)]
     public class NTriplesRefactoringRenameTest : RenameTestBase
     {
         private readonly string[] files;
 
         public NTriplesRefactoringRenameTest()
         {
-            this.files = this.TestDataPath2.GetDirectoryEntries("*" + SecretProjectFileType.SecretExtension, true)
+            this.files = this.TestDataPath2.GetDirectoryEntries("*" + NTriplesProjectFileType.SecretExtension, true)
                              .Select(f => Path.GetFileNameWithoutExtension(f.FullPath))
                              .ToArray();
         }

@@ -42,7 +42,7 @@ namespace ReSharper.NTriples.Feature.Services.FindUsages
 
         public IDomainSpecificSearcher CreateConstantExpressionSearcher(ConstantValue constantValue, bool onlyLiteralExpression)
         {
-            return new ConstantExpressionDomainSpecificSearcher<SecretLanguage>(constantValue, onlyLiteralExpression);
+            return new ConstantExpressionDomainSpecificSearcher<NTriplesLanguage>(constantValue, onlyLiteralExpression);
         }
 
         public IDomainSpecificSearcher CreateConstructorSpecialReferenceSearcher(ICollection<IConstructor> constructors)
@@ -124,7 +124,7 @@ namespace ReSharper.NTriples.Feature.Services.FindUsages
             if (uriIdentifier != null)
             {
                 var declarations = element.GetDeclarations();
-                var subjects = SecretIdentifierFilter.GetImportantSubjects(declarations).ToArray();
+                var subjects = NTriplesIdentifierFilter.GetImportantSubjects(declarations).ToArray();
 
                 Func<IDeclaration, Pair<IDeclaredElement, Predicate<FindResult>>> selector =
                     e => new Pair<IDeclaredElement, Predicate<FindResult>>(e.DeclaredElement, JetPredicate<FindResult>.True);
@@ -144,7 +144,7 @@ namespace ReSharper.NTriples.Feature.Services.FindUsages
 
         public bool IsCompatibleWithLanguage(PsiLanguageType languageType)
         {
-            return languageType.Is<SecretLanguage>();
+            return languageType.Is<NTriplesLanguage>();
         }
 
         public ICollection<FindResult> TransformNavigationTargets(ICollection<FindResult> targets)

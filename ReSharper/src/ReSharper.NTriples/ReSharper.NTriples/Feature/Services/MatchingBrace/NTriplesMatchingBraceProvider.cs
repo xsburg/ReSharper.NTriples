@@ -16,7 +16,7 @@ using ReSharper.NTriples.Parsing;
 
 namespace ReSharper.NTriples.Feature.Services.MatchingBrace
 {
-    [Language(typeof(SecretLanguage))]
+    [Language(typeof(NTriplesLanguage))]
     internal class NTriplesMatchingBraceProvider : ISimpleMatchingBraceProvider
     {
         public int Compare(TokenNodeType x, TokenNodeType y)

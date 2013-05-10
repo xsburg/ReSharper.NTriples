@@ -17,7 +17,7 @@ namespace ReSharper.NTriples.Impl.Tree
 
         public override PsiLanguageType Language
         {
-            get { return SecretLanguage.Instance; }
+            get { return NTriplesLanguage.Instance; }
         }
 
         public ISymbolTable FilePrefixesSymbolTable

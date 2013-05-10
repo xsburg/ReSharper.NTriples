@@ -15,9 +15,9 @@ using ReSharper.NTriples.Parsing;
 
 namespace ReSharper.NTriples.TypingAssist
 {
-    public class SecretBracketMatcher : BracketMatcher
+    public class NTriplesBracketMatcher : BracketMatcher
     {
-        public SecretBracketMatcher()
+        public NTriplesBracketMatcher()
             : base(
                 new[]
                     {

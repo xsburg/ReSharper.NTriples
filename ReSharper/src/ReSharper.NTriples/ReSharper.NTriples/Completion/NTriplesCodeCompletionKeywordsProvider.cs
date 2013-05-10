@@ -23,7 +23,7 @@ using ReSharper.NTriples.Tree;
 
 namespace ReSharper.NTriples.Completion
 {
-    [Language(typeof(SecretLanguage))]
+    [Language(typeof(NTriplesLanguage))]
     public class NTriplesCodeCompletionKeywordsProvider : ItemsProviderOfSpecificContext<NTriplesCodeCompletionContext>
     {
         protected override void AddItemsGroups(
@@ -64,7 +64,7 @@ namespace ReSharper.NTriples.Completion
             }
 
             var correctContext = context.ReparsedContext.Reference == null ||
-                                 context.ReparsedContext.Reference is SecretPrefixReference;
+                                 context.ReparsedContext.Reference is NTriplesPrefixReference;
             return correctContext;
         }
 

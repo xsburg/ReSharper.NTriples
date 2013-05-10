@@ -24,7 +24,7 @@ namespace ReSharper.NTriples.Impl.Tree
 
         public DeclaredElementType GetElementType()
         {
-            return SecretDeclaredElementType.UriIdentifier;
+            return NTriplesDeclaredElementType.UriIdentifier;
         }
 
         public XmlNode GetXMLDoc(bool inherit)
@@ -57,7 +57,7 @@ namespace ReSharper.NTriples.Impl.Tree
 
         public PsiLanguageType PresentationLanguage
         {
-            get { return SecretLanguage.Instance; }
+            get { return NTriplesLanguage.Instance; }
         }
 
         #endregion
@@ -138,15 +138,15 @@ namespace ReSharper.NTriples.Impl.Tree
             return this.GetText();
         }
 
-        private SecretUriStringReference myUriStringReference;
+        private NTriplesUriStringReference myUriStringReference;
 
-        public SecretUriStringReference UriStringReference
+        public NTriplesUriStringReference UriStringReference
         {
             get
             {
                 lock (this)
                 {
-                    return this.myUriStringReference ?? (this.myUriStringReference = new SecretUriStringReference(this));
+                    return this.myUriStringReference ?? (this.myUriStringReference = new NTriplesUriStringReference(this));
                 }
             }
         }

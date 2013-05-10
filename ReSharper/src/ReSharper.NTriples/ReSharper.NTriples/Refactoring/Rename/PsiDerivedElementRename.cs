@@ -54,7 +54,7 @@ namespace ReSharper.NTriples.Refactoring.Rename
             this.myDoNotShowBindingConflicts = doNotShowBindingConflicts;
             this.mySecondaryElements = new List<IDeclaredElementPointer<IDeclaredElement>>();
             this.mySecondaryElements =
-                RenameRefactoringService.Instance.GetRenameService(SecretLanguage.Instance)
+                RenameRefactoringService.Instance.GetRenameService(NTriplesLanguage.Instance)
                                         .GetSecondaryElements(declaredElement)
                                         .Select(x => x.CreateElementPointer())
                                         .ToList();

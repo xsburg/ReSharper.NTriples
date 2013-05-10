@@ -87,7 +87,7 @@ namespace ReSharper.NTriples.Impl.Tree
 
         public DeclaredElementType GetElementType()
         {
-            return SecretDeclaredElementType.UriIdentifier;
+            return NTriplesDeclaredElementType.UriIdentifier;
         }
 
         public XmlNode GetXMLDoc(bool inherit)
@@ -120,7 +120,7 @@ namespace ReSharper.NTriples.Impl.Tree
 
         public PsiLanguageType PresentationLanguage
         {
-            get { return SecretLanguage.Instance; }
+            get { return NTriplesLanguage.Instance; }
         }
 
         public IdentifierKind GetKind()
@@ -212,15 +212,15 @@ namespace ReSharper.NTriples.Impl.Tree
             return this.GetText();
         }
 
-        private SecretLocalNameReference myLocalNameReference;
+        private NTriplesLocalNameReference myLocalNameReference;
 
-        public SecretLocalNameReference LocalNameReference
+        public NTriplesLocalNameReference LocalNameReference
         {
             get
             {
                 lock (this)
                 {
-                    return this.myLocalNameReference ?? (this.myLocalNameReference = new SecretLocalNameReference(this));
+                    return this.myLocalNameReference ?? (this.myLocalNameReference = new NTriplesLocalNameReference(this));
                 }
             }
         }

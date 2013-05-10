@@ -35,9 +35,9 @@ namespace ReSharper.NTriples.Feature.Services.MatchingBrace
             }
 
             var file =
-                psiSourceFile.GetPsiFile<SecretLanguage>(new DocumentRange(textControl.Document, textControl.Caret.Offset())) as
+                psiSourceFile.GetPsiFile<NTriplesLanguage>(new DocumentRange(textControl.Document, textControl.Caret.Offset())) as
                 ISecretFile;
-            if (file == null || !file.IsValid() || !file.Language.Is<SecretLanguage>())
+            if (file == null || !file.IsValid() || !file.Language.Is<NTriplesLanguage>())
             {
                 return null;
             }

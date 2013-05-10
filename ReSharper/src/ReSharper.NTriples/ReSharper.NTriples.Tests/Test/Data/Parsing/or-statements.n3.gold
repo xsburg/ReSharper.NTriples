@@ -1,4 +1,4 @@
-﻿Language: PsiLanguageType:Secret
+﻿Language: PsiLanguageType:NTriples
 ISecretFile
   NewLine(type:NEW_LINE, text:\n) spaces:"\n"
   NewLine(type:NEW_LINE, text:\n) spaces:"\n"

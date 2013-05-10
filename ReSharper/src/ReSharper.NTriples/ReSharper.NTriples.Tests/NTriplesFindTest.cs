@@ -22,7 +22,7 @@ namespace ReSharper.NTriples.Tests
     [TestFixture]
     [Category("Find")]
     [TestNetFramework4]
-    [TestFileExtension(SecretProjectFileType.SecretExtension)]
+    [TestFileExtension(NTriplesProjectFileType.SecretExtension)]
     public class NTriplesFindTest : FindUsagesTestBase
     {
         private readonly string[] files;

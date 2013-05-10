@@ -20,14 +20,14 @@ namespace ReSharper.NTriples.Tests
 {
     [TestFixture]
     [TestReferences("System.Core.dll")]
-    [TestFileExtension(SecretProjectFileType.SecretExtension)]
+    [TestFileExtension(NTriplesProjectFileType.SecretExtension)]
     public class NTriplesCompletionTest : CodeCompletionTestBase
     {
         private readonly string[] files;
 
         public NTriplesCompletionTest()
         {
-            this.files = this.TestDataPath2.GetDirectoryEntries("*" + SecretProjectFileType.SecretExtension, true)
+            this.files = this.TestDataPath2.GetDirectoryEntries("*" + NTriplesProjectFileType.SecretExtension, true)
                              .Select(f => Path.GetFileNameWithoutExtension(f.FullPath))
                              .ToArray();
         }

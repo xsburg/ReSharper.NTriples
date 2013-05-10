@@ -14,7 +14,7 @@ using JetBrains.ReSharper.Psi.Resolve;
 
 namespace ReSharper.NTriples.Services
 {
-    internal class SecretDeclaredElementPresenter : IDeclaredElementPresenter
+    internal class NTriplesDeclaredElementPresenter : IDeclaredElementPresenter
     {
         public string Format(
             DeclaredElementPresenterStyle style,

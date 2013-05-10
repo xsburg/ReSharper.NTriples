@@ -16,12 +16,12 @@ using JetBrains.ReSharper.Psi.Tree;
 
 namespace ReSharper.NTriples.Resolve
 {
-    public abstract class SecretReferenceBase : TreeReferenceBase<ITreeNode>, ICompleteableReference
+    public abstract class NTriplesReferenceBase : TreeReferenceBase<ITreeNode>, ICompleteableReference
     {
         protected readonly ITreeNode TreeNode;
         protected string Name;
 
-        protected SecretReferenceBase(ITreeNode node)
+        protected NTriplesReferenceBase(ITreeNode node)
             : base(node)
         {
             this.TreeNode = node;

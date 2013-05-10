@@ -144,23 +144,23 @@ namespace ReSharper.NTriples.Util
                 ITreeNode newNode;
                 if (parent is IPrefixName)
                 {
-                    newNode = SecretElementFactory.GetInstance(parent.GetPsiModule()).CreatePrefixNameExpression(name).FirstChild;
+                    newNode = NTriplesElementFactory.GetInstance(parent.GetPsiModule()).CreatePrefixNameExpression(name).FirstChild;
                 }
                 else if (parent is IPrefix)
                 {
-                    newNode = SecretElementFactory.GetInstance(parent.GetPsiModule()).CreatePrefixExpression(name).FirstChild;
+                    newNode = NTriplesElementFactory.GetInstance(parent.GetPsiModule()).CreatePrefixExpression(name).FirstChild;
                 }
                 else if (parent is IPrefixUri)
                 {
-                    newNode = SecretElementFactory.GetInstance(parent.GetPsiModule()).CreatePrefixUriExpression(name).FirstChild;
+                    newNode = NTriplesElementFactory.GetInstance(parent.GetPsiModule()).CreatePrefixUriExpression(name).FirstChild;
                 }
                 else if (parent is ILocalName)
                 {
-                    newNode = SecretElementFactory.GetInstance(parent.GetPsiModule()).CreateLocalNameExpression(name).FirstChild;
+                    newNode = NTriplesElementFactory.GetInstance(parent.GetPsiModule()).CreateLocalNameExpression(name).FirstChild;
                 }
                 else if (parent is IUriString)
                 {
-                    newNode = SecretElementFactory.GetInstance(parent.GetPsiModule()).CreateUriStringExpression(name).FirstChild;
+                    newNode = NTriplesElementFactory.GetInstance(parent.GetPsiModule()).CreateUriStringExpression(name).FirstChild;
                 }
                 else
                 {

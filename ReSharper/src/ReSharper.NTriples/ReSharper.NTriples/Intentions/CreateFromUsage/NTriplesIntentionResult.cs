@@ -25,14 +25,14 @@ using JetBrains.Util;
 
 namespace ReSharper.NTriples.Intentions.CreateFromUsage
 {
-    public class SecretIntentionResult
+    public class NTriplesIntentionResult
     {
         private readonly ITreeNode myAnchor;
         private readonly IDeclaration myDeclaration;
         private readonly List<ITemplateFieldHolder> myHolders;
         private readonly DocumentRange myPreferredSelection;
 
-        public SecretIntentionResult(
+        public NTriplesIntentionResult(
             List<ITemplateFieldHolder> holders, IDeclaration declaration, ITreeNode anchor, DocumentRange range)
         {
             this.myDeclaration = declaration;
@@ -97,7 +97,7 @@ namespace ReSharper.NTriples.Intentions.CreateFromUsage
                 hotspotSession.Execute();
             }
 
-            Shell.Instance.GetComponent<SecretIntentionResultBehavior>().OnHotspotSessionExecutionStarted(this, textControl);
+            Shell.Instance.GetComponent<NTriplesIntentionResultBehavior>().OnHotspotSessionExecutionStarted(this, textControl);
         }
 
         private static HotspotInfo[] GetFieldInfos(IDeclaration declaration, IEnumerable<ITemplateFieldHolder> templateArguments)

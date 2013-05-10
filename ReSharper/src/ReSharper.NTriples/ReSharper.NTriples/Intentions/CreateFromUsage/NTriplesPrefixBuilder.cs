@@ -17,13 +17,13 @@ using ReSharper.NTriples.Tree;
 
 namespace ReSharper.NTriples.Intentions.CreateFromUsage
 {
-    public static class SecretPrefixBuilder
+    public static class NTriplesPrefixBuilder
     {
-        public static SecretIntentionResult Create(CreateSecretPrefixContext context)
+        public static NTriplesIntentionResult Create(CreateNTriplesPrefixContext context)
         {
             var sentence = context.Declaration;
 
-            sentence = SecretIntentionsUtil.AddToTarget(sentence, context.Target);
+            sentence = NTriplesIntentionsUtil.AddToTarget(sentence, context.Target);
 
             var holders = new List<ITemplateFieldHolder>();
 
@@ -34,7 +34,7 @@ namespace ReSharper.NTriples.Intentions.CreateFromUsage
             holders.Add(
                 new FindersTemplateFieldHolder(new TemplateField(uri, initialRange), new SecretBasicTemplateFinder(uriString)));
 
-            return new SecretIntentionResult(
+            return new NTriplesIntentionResult(
                 holders,
                 prefixDeclaration,
                 context.Anchor,

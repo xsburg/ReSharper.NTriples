@@ -20,7 +20,7 @@ using IStatement = ReSharper.NTriples.Tree.IStatement;
 
 namespace ReSharper.NTriples.Impl
 {
-    public static class SecretIdentifierFilter
+    public static class NTriplesIdentifierFilter
     {
         public static IEnumerable<IUriIdentifierDeclaredElement> GetImportantSubjects(IEnumerable<IDeclaration> elements)
         {

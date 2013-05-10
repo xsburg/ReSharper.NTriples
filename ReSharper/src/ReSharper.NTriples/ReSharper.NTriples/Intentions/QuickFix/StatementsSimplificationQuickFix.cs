@@ -64,7 +64,7 @@ namespace ReSharper.NTriples.Intentions.QuickFix
                           .GroupBy(GetPredicateText)
                           .ToDictionary(g => g.Key, g => g.SelectMany(x => x.ObjectsEnumerable).Select(o => o.GetText()).ToArray());
             var subjectText = startSentence.Statement.Subject.GetText();
-            var newSentence = SecretElementFactory.GetInstance(startSentence).CreateSentence(subjectText, facts);
+            var newSentence = NTriplesElementFactory.GetInstance(startSentence).CreateSentence(subjectText, facts);
 
             ModificationUtil.DeleteChildRange(this.highlighter.StartElement, this.highlighter.EndElement.PrevSibling);
             ModificationUtil.ReplaceChild(sentences.Last(), newSentence);

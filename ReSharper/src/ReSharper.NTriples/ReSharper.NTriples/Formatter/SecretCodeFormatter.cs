@@ -19,13 +19,13 @@ using ReSharper.NTriples.Impl;
 
 namespace JetBrains.ReSharper.Psi.Secret.Formatter
 {
-    [Language(typeof(SecretLanguage))]
+    [Language(typeof(NTriplesLanguage))]
     public class SecretCodeFormatter : CodeFormatterBase
     {
-        private readonly SecretLanguage myLanguage;
+        private readonly NTriplesLanguage myLanguage;
 
         public SecretCodeFormatter(
-            Lifetime lifetime, SecretLanguage language, ISettingsStore settingsStore, ISettingsOptimization settingsOptimization)
+            Lifetime lifetime, NTriplesLanguage language, ISettingsStore settingsStore, ISettingsOptimization settingsOptimization)
             : base(settingsStore)
         {
             this.myLanguage = language;

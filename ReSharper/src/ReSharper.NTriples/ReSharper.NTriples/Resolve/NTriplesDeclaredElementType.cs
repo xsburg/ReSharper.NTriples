@@ -17,27 +17,27 @@ using ReSharper.NTriples.Services;
 
 namespace ReSharper.NTriples.Resolve
 {
-    public class SecretDeclaredElementType : DeclaredElementType
+    public class NTriplesDeclaredElementType : DeclaredElementType
     {
         // Full list of PSI symbols is located here: http://www.jetbrains.com/resharper/webhelp/Reference__Symbol_Icons.html
-        public static readonly SecretDeclaredElementType Prefix = new SecretDeclaredElementType(
+        public static readonly NTriplesDeclaredElementType Prefix = new NTriplesDeclaredElementType(
             "Prefix", PsiXamlThemedIcons.XamlNamespaceAlias.Id);
 
-        public static readonly SecretDeclaredElementType UriIdentifier = new SecretDeclaredElementType(
+        public static readonly NTriplesDeclaredElementType UriIdentifier = new NTriplesDeclaredElementType(
             "UriIdentifier", PsiXamlThemedIcons.XamlPredefinedObjectElement.Id);
 
-        public static readonly SecretDeclaredElementType PrefixUri = new SecretDeclaredElementType(
+        public static readonly NTriplesDeclaredElementType PrefixUri = new NTriplesDeclaredElementType(
             "PrefixUri", PsiSymbolsThemedIcons.Namespace.Id);
 
-        private static readonly PsiLanguageType Language = SecretLanguage.Instance;
+        private static readonly PsiLanguageType Language = NTriplesLanguage.Instance;
 
         private readonly IDeclaredElementPresenter myElementPresenter;
         private readonly IconId myIconId;
 
-        private SecretDeclaredElementType(string name, IconId iconId)
+        private NTriplesDeclaredElementType(string name, IconId iconId)
             : base(name)
         {
-            this.myElementPresenter = new SecretDeclaredElementPresenter();
+            this.myElementPresenter = new NTriplesDeclaredElementPresenter();
             this.myIconId = iconId;
         }
 
@@ -45,7 +45,7 @@ namespace ReSharper.NTriples.Resolve
         {
             get
             {
-                return "Secret";
+                return "N-Triples";
             }
         }
 

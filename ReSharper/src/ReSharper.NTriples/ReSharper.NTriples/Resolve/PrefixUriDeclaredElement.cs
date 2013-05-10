@@ -58,7 +58,7 @@ namespace ReSharper.NTriples.Resolve
         {
             get
             {
-                return SecretLanguage.Instance;
+                return NTriplesLanguage.Instance;
             }
         }
 
@@ -82,7 +82,7 @@ namespace ReSharper.NTriples.Resolve
 
         public DeclaredElementType GetElementType()
         {
-            return SecretDeclaredElementType.PrefixUri;
+            return NTriplesDeclaredElementType.PrefixUri;
         }
 
         public IPsiServices GetPsiServices()

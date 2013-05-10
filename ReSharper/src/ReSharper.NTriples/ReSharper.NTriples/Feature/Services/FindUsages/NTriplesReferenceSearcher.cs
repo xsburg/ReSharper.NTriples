@@ -112,13 +112,13 @@ namespace ReSharper.NTriples.Feature.Services.FindUsages
                 return false;
             }
 
-            IFile psiFile = sourceFile.GetPsiFile<SecretLanguage>(new DocumentRange(sourceFile.Document, 0));
+            IFile psiFile = sourceFile.GetPsiFile<NTriplesLanguage>(new DocumentRange(sourceFile.Document, 0));
             return psiFile != null && this.ProcessElement(psiFile, consumer);
         }
 
         private bool CanContainReferencesTo(IPsiSourceFile sourceFile)
         {
-            return Equals(sourceFile.PrimaryPsiLanguage, SecretLanguage.Instance);
+            return Equals(sourceFile.PrimaryPsiLanguage, NTriplesLanguage.Instance);
         }
     }
 }

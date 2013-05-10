@@ -124,7 +124,7 @@ namespace ReSharper.NTriples.Feature.Finding.GotoMember
             foreach (var symbols in symbolsByFile)
             {
                 var file = symbols.Key;
-                var sourceFile = file.GetPsiFile(SecretLanguage.Instance, new DocumentRange(file.Document, 0));
+                var sourceFile = file.GetPsiFile(NTriplesLanguage.Instance, new DocumentRange(file.Document, 0));
                 foreach (var symbol in symbols.Value)
                 {
                     var uriIdentifier = new UriIdentifierDeclaredElement(sourceFile, symbol.Namespace, symbol.LocalName, symbol.Kind, services, true);

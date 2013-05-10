@@ -17,13 +17,13 @@ using ReSharper.NTriples.Tree;
 
 namespace ReSharper.NTriples.Intentions.CreateFromUsage
 {
-    public class CreateSecretPrefixContext : CreateContextBase
+    public class CreateNTriplesPrefixContext : CreateContextBase
     {
         private readonly ITreeNode myAnchor;
         private readonly IDocument myDocument;
-        private readonly CreateSecretPrefixTarget myTarget;
+        private readonly CreateNTriplesPrefixTarget myTarget;
 
-        public CreateSecretPrefixContext(CreateSecretPrefixTarget target)
+        public CreateNTriplesPrefixContext(CreateNTriplesPrefixTarget target)
         {
             this.myTarget = target;
             this.myAnchor = target.Anchor;

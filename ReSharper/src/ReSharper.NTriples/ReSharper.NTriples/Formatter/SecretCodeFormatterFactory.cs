@@ -14,7 +14,7 @@ using ReSharper.NTriples.Impl;
 
 namespace JetBrains.ReSharper.Psi.Secret.Formatter
 {
-    [ProjectFileType(typeof(SecretProjectFileType))]
+    [ProjectFileType(typeof(NTriplesProjectFileType))]
     public class SecretCodeFormatterFactory : ISecretCodeFormatterFactory
     {
         public SecretFormattingVisitor CreateFormattingVisitor(CodeFormattingContext context)

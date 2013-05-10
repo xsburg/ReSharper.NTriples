@@ -14,7 +14,7 @@ namespace ReSharper.NTriples.Tree
 {
     public partial interface IPrefixUri
     {
-        SecretPrefixUriReference PrefixUriReference { get; }
+        NTriplesPrefixUriReference PrefixUriReference { get; }
         void SetName(string shortName);
     }
 }

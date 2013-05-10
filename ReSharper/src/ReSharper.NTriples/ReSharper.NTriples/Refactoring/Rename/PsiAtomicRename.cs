@@ -54,7 +54,7 @@ namespace ReSharper.NTriples.Refactoring.Rename
             this.myElement = declaredElement;
             this.mySecondaryElements = new List<IDeclaredElementPointer<IDeclaredElement>>();
             this.mySecondaryElements =
-                RenameRefactoringService.Instance.GetRenameService(SecretLanguage.Instance)
+                RenameRefactoringService.Instance.GetRenameService(NTriplesLanguage.Instance)
                                         .GetSecondaryElements(declaredElement)
                                         .Select(x => x.CreateElementPointer())
                                         .ToList();
@@ -230,7 +230,7 @@ namespace ReSharper.NTriples.Refactoring.Rename
                 ((PrefixDeclaredElement)this.myElement).SetName(this.NewName);
                 foreach (IReference reference in referencesToRename)
                 {
-                    ((SecretPrefixReference)reference).SetName(this.NewName);
+                    ((NTriplesPrefixReference)reference).SetName(this.NewName);
                     reference.CurrentResolveResult = null;
                     ((SecretFile)((PrefixDeclaredElement)this.myElement).File).ClearTables();
                 }

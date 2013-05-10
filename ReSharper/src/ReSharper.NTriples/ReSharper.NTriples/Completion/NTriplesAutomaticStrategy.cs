@@ -43,7 +43,7 @@ namespace ReSharper.NTriples.Completion
         {
             get
             {
-                return SecretLanguage.Instance;
+                return NTriplesLanguage.Instance;
             }
         }
 

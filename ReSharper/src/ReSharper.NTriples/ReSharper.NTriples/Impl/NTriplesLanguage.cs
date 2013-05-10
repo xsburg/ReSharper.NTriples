@@ -14,22 +14,22 @@ using JetBrains.ReSharper.Psi;
 namespace ReSharper.NTriples.Impl
 {
     [LanguageDefinition(LanguageName)]
-    public class SecretLanguage : KnownLanguage
+    public class NTriplesLanguage : KnownLanguage
     {
-        public const string LanguageName = "Secret";
+        public const string LanguageName = "NTriples";
 
         [UsedImplicitly]
-        public static readonly SecretLanguage Instance;
+        public static readonly NTriplesLanguage Instance;
 
-        protected SecretLanguage([NotNull] string name) : base(name)
+        protected NTriplesLanguage([NotNull] string name) : base(name)
         {
         }
 
-        protected SecretLanguage([NotNull] string name, [NotNull] string presentableName) : base(name, presentableName)
+        protected NTriplesLanguage([NotNull] string name, [NotNull] string presentableName) : base(name, presentableName)
         {
         }
 
-        private SecretLanguage() : base(LanguageName, "The Great Secret")
+        private NTriplesLanguage() : base(LanguageName, "N-Triples")
         {
         }
     }

@@ -24,7 +24,7 @@ namespace ReSharper.NTriples.Tests
     [TestFixture]
     [Category("Highlighting")]
     [TestNetFramework4]
-    [TestFileExtension(SecretProjectFileType.SecretExtension)]
+    [TestFileExtension(NTriplesProjectFileType.SecretExtension)]
     public class NTriplesHighlightingTest : HighlightingTestBase
     {
         private readonly string[] files;
@@ -38,7 +38,7 @@ namespace ReSharper.NTriples.Tests
         {
             get
             {
-                return SecretLanguage.Instance;
+                return NTriplesLanguage.Instance;
             }
         }
 

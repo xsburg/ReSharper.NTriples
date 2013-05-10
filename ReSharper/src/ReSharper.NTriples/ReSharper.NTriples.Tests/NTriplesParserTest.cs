@@ -17,14 +17,14 @@ using ReSharper.NTriples.Impl;
 
 namespace ReSharper.NTriples.Tests
 {
-    [TestFileExtension(SecretProjectFileType.SecretExtension)]
+    [TestFileExtension(NTriplesProjectFileType.SecretExtension)]
     public class NTriplesParserTest : ParserTestBase
     {
         private readonly string[] files;
 
         public NTriplesParserTest()
         {
-            this.files = this.TestDataPath2.GetDirectoryEntries("*" + SecretProjectFileType.SecretExtension, true)
+            this.files = this.TestDataPath2.GetDirectoryEntries("*" + NTriplesProjectFileType.SecretExtension, true)
                              .Select(f => Path.GetFileNameWithoutExtension(f.FullPath))
                              .ToArray();
         }

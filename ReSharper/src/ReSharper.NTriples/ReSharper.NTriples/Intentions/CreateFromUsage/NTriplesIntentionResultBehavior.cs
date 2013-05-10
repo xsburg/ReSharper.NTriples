@@ -16,21 +16,21 @@ using JetBrains.TextControl;
 namespace ReSharper.NTriples.Intentions.CreateFromUsage
 {
     [ShellComponent]
-    public class SecretIntentionResultBehavior
+    public class NTriplesIntentionResultBehavior
     {
-        public SecretIntentionResultBehavior(HotspotSessionExecutor hotspotSessionExecutor)
+        public NTriplesIntentionResultBehavior(HotspotSessionExecutor hotspotSessionExecutor)
         {
             this.HotspotSessionExecutor = hotspotSessionExecutor;
         }
 
         private HotspotSessionExecutor HotspotSessionExecutor { get; set; }
 
-        public void OnHotspotSessionExecutionStarted(SecretIntentionResult result, ITextControl textControl)
+        public void OnHotspotSessionExecutionStarted(NTriplesIntentionResult result, ITextControl textControl)
         {
             this.OnHotspotSessionExecutionStartedInternal(result, textControl);
         }
 
-        protected static void SetCaretPosition(ITextControl textControl, SecretIntentionResult result)
+        protected static void SetCaretPosition(ITextControl textControl, NTriplesIntentionResult result)
         {
             if (result.PreferredSelection != DocumentRange.InvalidRange)
             {
@@ -38,7 +38,7 @@ namespace ReSharper.NTriples.Intentions.CreateFromUsage
             }
         }
 
-        protected virtual void OnHotspotSessionExecutionStartedInternal(SecretIntentionResult result, ITextControl textControl)
+        protected virtual void OnHotspotSessionExecutionStartedInternal(NTriplesIntentionResult result, ITextControl textControl)
         {
             var hotspotSessionUi = this.HotspotSessionExecutor.CurrentSession;
             if (hotspotSessionUi == null)

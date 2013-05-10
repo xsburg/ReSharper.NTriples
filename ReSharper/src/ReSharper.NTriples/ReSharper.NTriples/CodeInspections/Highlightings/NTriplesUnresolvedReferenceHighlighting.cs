@@ -21,7 +21,7 @@ namespace ReSharper.NTriples.CodeInspections.Highlightings
 {
     [ConfigurableSeverityHighlighting(
         "UnresolvedNTripletReference",
-        SecretLanguage.LanguageName,
+        NTriplesLanguage.LanguageName,
         OverlapResolve = OverlapResolveKind.UNRESOLVED_ERROR,
         ToolTipFormatString = Error)]
     internal class NTriplesUnresolvedReferenceHighlighting<TReference> : ICustomAttributeIdHighlighting, IHighlightingWithRange

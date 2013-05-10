@@ -145,7 +145,7 @@ namespace ReSharper.NTriples.Feature.Finding.GotoMember
                 primaryMembers.AddFirst(new NTriplesFileMemberData(declaredElement, ContainerDisplayStyle.Namespace));
             }
 
-            var subjects = SecretIdentifierFilter.GetImportantSubjects(file.GetAllUriIdentifierDeclaredElements());
+            var subjects = NTriplesIdentifierFilter.GetImportantSubjects(file.GetAllUriIdentifierDeclaredElements());
             foreach (var declaredElement in subjects)
             {
                 primaryMembers.AddFirst(new NTriplesFileMemberData(declaredElement, ContainerDisplayStyle.Namespace));

@@ -13,11 +13,11 @@ using ReSharper.NTriples.Tree;
 
 namespace ReSharper.NTriples.Intentions
 {
-    internal static class SecretIntentionsUtil
+    internal static class NTriplesIntentionsUtil
     {
         public static ISentence AddToTarget(ISentence declarationToAdd, ICreationTarget target)
         {
-            var inserter = new SecretPrefixInserter(declarationToAdd, target);
+            var inserter = new NTriplesPrefixInserter(declarationToAdd, target);
             return inserter.InsertRule();
         }
     }

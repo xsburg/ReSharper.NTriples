@@ -58,7 +58,7 @@ namespace ReSharper.NTriples.Intentions.QuickFix
             }
 
             var subjectText = statement.Subject.GetText();
-            var newSentence = SecretElementFactory.GetInstance(startFact).CreateSentence(subjectText, facts);
+            var newSentence = NTriplesElementFactory.GetInstance(startFact).CreateSentence(subjectText, facts);
 
             ModificationUtil.ReplaceChild(statement, newSentence);
             return null;

@@ -22,19 +22,19 @@ using ReSharper.NTriples.Util;
 
 namespace ReSharper.NTriples.Intentions.CreateFromUsage
 {
-    public class CreateSecretPrefixTarget : ICreationTarget
+    public class CreateNTriplesPrefixTarget : ICreationTarget
     {
         private readonly ISentence myDeclaration;
         private readonly ITreeNode myElement;
 
-        public CreateSecretPrefixTarget(SecretPrefixReference reference)
+        public CreateNTriplesPrefixTarget(NTriplesPrefixReference reference)
         {
             this.myElement = reference.GetTreeNode();
             string name = reference.GetName();
 
             var uri = this.TryFindUri(reference);
             this.myDeclaration =
-                SecretElementFactory.GetInstance(this.myElement.GetPsiModule()).CreatePrefixDeclarationSentence(name, uri);
+                NTriplesElementFactory.GetInstance(this.myElement.GetPsiModule()).CreatePrefixDeclarationSentence(name, uri);
             this.Anchor = this.FindAnchor();
         }
 
@@ -82,7 +82,7 @@ namespace ReSharper.NTriples.Intentions.CreateFromUsage
             return anchor;
         }
 
-        private string TryFindUri(SecretPrefixReference reference)
+        private string TryFindUri(NTriplesPrefixReference reference)
         {
             var file = (ISecretFile)this.myElement.GetContainingFile();
             if (file == null)

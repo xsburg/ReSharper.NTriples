@@ -24,7 +24,7 @@ namespace ReSharper.NTriples.Tree
         {
             get
             {
-                return SecretLanguage.Instance;
+                return NTriplesLanguage.Instance;
             }
         }
 

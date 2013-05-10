@@ -21,11 +21,11 @@ using JetBrains.Util;
 
 namespace ReSharper.NTriples.Intentions.CreateFromUsage
 {
-    public class CreatePsiRuleItem : CreateFromUsageItemBase<CreateSecretPrefixContext>, IPartBulbItem
+    public class CreatePsiRuleItem : CreateFromUsageItemBase<CreateNTriplesPrefixContext>, IPartBulbItem
     {
         private readonly string myFormatText;
 
-        public CreatePsiRuleItem(JetBrains.Util.Lazy.Lazy<CreateSecretPrefixContext> context, string format)
+        public CreatePsiRuleItem(JetBrains.Util.Lazy.Lazy<CreateNTriplesPrefixContext> context, string format)
             : base(context)
         {
             this.myFormatText = format;
@@ -60,9 +60,9 @@ namespace ReSharper.NTriples.Intentions.CreateFromUsage
             return tmp => result.ExecuteTemplate();
         }
 
-        private SecretIntentionResult ExecutePsiIntention()
+        private NTriplesIntentionResult ExecutePsiIntention()
         {
-            return LanguageManager.Instance.GetService<ICreateSecretPrefixIntention>(
+            return LanguageManager.Instance.GetService<ICreateNTriplesPrefixIntention>(
                 this.GetContext().Target.GetTargetDeclaration().Language).ExecuteEx(this.GetContext());
         }
     }

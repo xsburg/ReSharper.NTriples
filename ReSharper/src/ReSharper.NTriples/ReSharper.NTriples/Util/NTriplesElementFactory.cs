@@ -18,18 +18,18 @@ using IStatement = ReSharper.NTriples.Tree.IStatement;
 
 namespace ReSharper.NTriples.Util
 {
-    public abstract class SecretElementFactory
+    public abstract class NTriplesElementFactory
     {
         protected ISolution Solution { get; set; }
 
-        public static SecretElementFactory GetInstance([NotNull] IPsiModule module)
+        public static NTriplesElementFactory GetInstance([NotNull] IPsiModule module)
         {
-            return new SecretElementFactoryImpl(module);
+            return new NTriplesElementFactoryImpl(module);
         }
 
-        public static SecretElementFactory GetInstance([NotNull] ITreeNode context)
+        public static NTriplesElementFactory GetInstance([NotNull] ITreeNode context)
         {
-            return new SecretElementFactoryImpl(context.GetPsiModule());
+            return new NTriplesElementFactoryImpl(context.GetPsiModule());
         }
 
         public abstract ILocalName CreateLocalNameExpression(string name);

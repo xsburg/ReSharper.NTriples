@@ -49,7 +49,7 @@ namespace ReSharper.NTriples.Refactoring.Rename
 
         public override bool IsApplicable(IDeclaredElement declaredElement)
         {
-            return declaredElement.PresentationLanguage.Is<SecretLanguage>();
+            return declaredElement.PresentationLanguage.Is<NTriplesLanguage>();
         }
     }
 }

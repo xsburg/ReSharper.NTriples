@@ -23,22 +23,22 @@ using ReSharper.NTriples.Tree;
 
 namespace ReSharper.NTriples.Util
 {
-    public class SecretElementFactoryImpl : SecretElementFactory
+    public class NTriplesElementFactoryImpl : NTriplesElementFactory
     {
-        private readonly SecretLanguageService myLanguageService;
+        private readonly NTriplesLanguageService myLanguageService;
         private readonly IPsiModule myModule;
 
-        public SecretElementFactoryImpl([NotNull] IPsiModule module)
+        public NTriplesElementFactoryImpl([NotNull] IPsiModule module)
             : this(module, module.GetSolution())
         {
         }
 
-        private SecretElementFactoryImpl([NotNull] IPsiModule module, [NotNull] ISolution solution)
+        private NTriplesElementFactoryImpl([NotNull] IPsiModule module, [NotNull] ISolution solution)
         {
             this.myModule = module;
             this.Solution = solution;
             this.Solution.GetPsiServices();
-            this.myLanguageService = (SecretLanguageService)SecretLanguage.Instance.LanguageService();
+            this.myLanguageService = (NTriplesLanguageService)NTriplesLanguage.Instance.LanguageService();
         }
 
         public override ILocalName CreateLocalNameExpression(string name)

@@ -17,10 +17,10 @@ using ReSharper.NTriples.Resources;
 
 namespace ReSharper.NTriples.Impl
 {
-    [ProjectFileType(typeof(SecretProjectFileType))]
-    public class SecretProjectFileLanguageService : ProjectFileLanguageService
+    [ProjectFileType(typeof(NTriplesProjectFileType))]
+    public class NTriplesProjectFileLanguageService : ProjectFileLanguageService
     {
-        public SecretProjectFileLanguageService(SecretProjectFileType projectFileType)
+        public NTriplesProjectFileLanguageService(NTriplesProjectFileType projectFileType)
             : base(projectFileType)
         {
         }
@@ -37,14 +37,14 @@ namespace ReSharper.NTriples.Impl
         {
             get
             {
-                return SecretLanguage.Instance;
+                return NTriplesLanguage.Instance;
             }
         }
 
         public override ILexerFactory GetMixedLexerFactory(ISolution solution, IBuffer buffer, IPsiSourceFile sourceFile = null)
         {
             {
-                return new SecretLexerFactory();
+                return new NTriplesLexerFactory();
             }
         }
     }

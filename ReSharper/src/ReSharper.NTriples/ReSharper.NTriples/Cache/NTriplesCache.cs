@@ -144,7 +144,7 @@ namespace ReSharper.NTriples.Cache
                     }
 
                     var declaredElement = uriIdentifier.DescendantDeclaredElement;
-                    if (declaredElement == null || !SecretIdentifierFilter.IsImportantSubject(declaredElement))
+                    if (declaredElement == null || !NTriplesIdentifierFilter.IsImportantSubject(declaredElement))
                     {
                         continue;
                     }
@@ -182,7 +182,7 @@ namespace ReSharper.NTriples.Cache
 
         private static IUriIdentifier GetUriIdentifier(IPsiSourceFile sourceFile, NTriplesUriIdentifierSymbol symbol)
         {
-            var file = sourceFile.GetPsiFile<SecretLanguage>(new DocumentRange(sourceFile.Document, 0));
+            var file = sourceFile.GetPsiFile<NTriplesLanguage>(new DocumentRange(sourceFile.Document, 0));
             if (file == null)
             {
                 return null;
@@ -479,7 +479,7 @@ namespace ReSharper.NTriples.Cache
 
         private static bool Accepts(IPsiSourceFile sourceFile)
         {
-            return sourceFile.GetAllPossiblePsiLanguages().Any(x => x.Is<SecretLanguage>());
+            return sourceFile.GetAllPossiblePsiLanguages().Any(x => x.Is<NTriplesLanguage>());
         }
 
         private static string FixNamespace(string @namespace)

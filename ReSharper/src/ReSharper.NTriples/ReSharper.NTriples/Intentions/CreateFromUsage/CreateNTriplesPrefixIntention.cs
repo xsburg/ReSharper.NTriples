@@ -4,14 +4,21 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   ICreateSecretPrefixIntention.cs
+//   CreateSecretPrefixIntention.cs
 // </summary>
 // ***********************************************************************
 
+using JetBrains.ReSharper.Psi;
+using ReSharper.NTriples.Impl;
+
 namespace ReSharper.NTriples.Intentions.CreateFromUsage
 {
-    public interface ICreateSecretPrefixIntention
+    [Language(typeof(NTriplesLanguage))]
+    internal class CreateNTriplesPrefixIntention : ICreateNTriplesPrefixIntention
     {
-        SecretIntentionResult ExecuteEx(CreateSecretPrefixContext context);
+        public NTriplesIntentionResult ExecuteEx(CreateNTriplesPrefixContext context)
+        {
+            return NTriplesPrefixBuilder.Create(context);
+        }
     }
 }

@@ -14,13 +14,13 @@ using ReSharper.NTriples.Resolve;
 
 namespace ReSharper.NTriples.Impl
 {
-    [Language(typeof(SecretLanguage))]
-    public class SecretLanguageService : LanguageService
+    [Language(typeof(NTriplesLanguage))]
+    public class NTriplesLanguageService : LanguageService
     {
         //private readonly SecretCodeFormatter formatter;
-        private readonly SecretWordIndexLanguageProvider wordIndexLanguageProvider = new SecretWordIndexLanguageProvider();
+        private readonly NTriplesWordIndexLanguageProvider wordIndexLanguageProvider = new NTriplesWordIndexLanguageProvider();
 
-        public SecretLanguageService(PsiLanguageType psiLanguageType, IConstantValueService constantValueService/*, SecretCodeFormatter formatter*/)
+        public NTriplesLanguageService(PsiLanguageType psiLanguageType, IConstantValueService constantValueService/*, SecretCodeFormatter formatter*/)
             : base(psiLanguageType, constantValueService)
         {
             //this.formatter = formatter;
@@ -28,7 +28,7 @@ namespace ReSharper.NTriples.Impl
 
         public override ILexerFactory GetPrimaryLexerFactory()
         {
-            return new SecretLexerFactory();
+            return new NTriplesLexerFactory();
         }
 
         public override bool IsValidName(DeclaredElementType elementType, string name)

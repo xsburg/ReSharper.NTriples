@@ -71,7 +71,7 @@ public class TestEnvironmentAssembly : ReSharperTestEnvironmentAssembly
     private static IEnumerable<Assembly> GetAssembliesToLoad()
     {
         yield return Assembly.GetExecutingAssembly();
-        yield return typeof(SecretLanguage).Assembly;
+        yield return typeof(NTriplesLanguage).Assembly;
     }
 }
 

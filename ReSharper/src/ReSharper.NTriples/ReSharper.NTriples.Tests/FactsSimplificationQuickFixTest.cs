@@ -6,7 +6,7 @@ using ReSharper.NTriples.Intentions.QuickFix;
 
 namespace ReSharper.NTriples.Tests
 {
-    [TestFileExtension(SecretProjectFileType.SecretExtension)]
+    [TestFileExtension(NTriplesProjectFileType.SecretExtension)]
     [TestFixture]
     public class FactsSimplificationQuickFixTest : QuickFixTestBase<FactsSimplificationQuickFix>
     {

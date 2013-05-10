@@ -25,7 +25,7 @@ namespace ReSharper.NTriples.Impl.Tree
 
         public DeclaredElementType GetElementType()
         {
-            return SecretDeclaredElementType.Prefix;
+            return NTriplesDeclaredElementType.Prefix;
         }
 
         public XmlNode GetXMLDoc(bool inherit)
@@ -55,7 +55,7 @@ namespace ReSharper.NTriples.Impl.Tree
 
         public PsiLanguageType PresentationLanguage
         {
-            get { return SecretLanguage.Instance; }
+            get { return NTriplesLanguage.Instance; }
         }
 
         #endregion

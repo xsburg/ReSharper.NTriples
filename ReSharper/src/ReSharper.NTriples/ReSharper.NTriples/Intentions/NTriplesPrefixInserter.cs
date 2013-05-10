@@ -17,12 +17,12 @@ using ReSharper.NTriples.Tree;
 
 namespace ReSharper.NTriples.Intentions
 {
-    internal class SecretPrefixInserter
+    internal class NTriplesPrefixInserter
     {
         private readonly ISentence myDeclarationToAdd;
         private readonly ICreationTarget myTarget;
 
-        public SecretPrefixInserter(ISentence declarationToAdd, ICreationTarget target)
+        public NTriplesPrefixInserter(ISentence declarationToAdd, ICreationTarget target)
         {
             this.myDeclarationToAdd = declarationToAdd;
             this.myTarget = target;

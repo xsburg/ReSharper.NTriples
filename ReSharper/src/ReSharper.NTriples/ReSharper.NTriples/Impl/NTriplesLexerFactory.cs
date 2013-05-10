@@ -14,9 +14,9 @@ using ReSharper.NTriples.Parsing;
 
 namespace ReSharper.NTriples.Impl
 {
-    public class SecretLexerFactory : ILexerFactory
+    public class NTriplesLexerFactory : ILexerFactory
     {
-        public static readonly SecretLexerFactory Instance = new SecretLexerFactory();
+        public static readonly NTriplesLexerFactory Instance = new NTriplesLexerFactory();
 
         public ILexer CreateLexer(IBuffer buffer)
         {

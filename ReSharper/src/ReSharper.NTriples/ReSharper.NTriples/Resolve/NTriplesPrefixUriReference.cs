@@ -11,9 +11,9 @@ using ReSharper.NTriples.Util;
 
 namespace ReSharper.NTriples.Resolve
 {
-    public class SecretPrefixUriReference : SecretReferenceBase
+    public class NTriplesPrefixUriReference : NTriplesReferenceBase
     {
-        public SecretPrefixUriReference(ITreeNode node)
+        public NTriplesPrefixUriReference(ITreeNode node)
             : base(node)
         {
         }

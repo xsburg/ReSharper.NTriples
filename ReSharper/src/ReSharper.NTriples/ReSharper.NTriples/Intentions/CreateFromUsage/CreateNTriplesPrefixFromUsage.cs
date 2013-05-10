@@ -25,10 +25,10 @@ using ReSharper.NTriples.Resolve;
 namespace ReSharper.NTriples.Intentions.CreateFromUsage
 {
     [QuickFix]
-    internal class CreateSecretPrefixFromUsage
-        : CreateFromUsageActionBase<ICreateSecretPrefixIntention, SecretPrefixReference>, IQuickFix
+    internal class CreateNTriplesPrefixFromUsage
+        : CreateFromUsageActionBase<ICreateNTriplesPrefixIntention, NTriplesPrefixReference>, IQuickFix
     {
-        public CreateSecretPrefixFromUsage(NTriplesUnresolvedReferenceHighlighting<SecretPrefixReference> error)
+        public CreateNTriplesPrefixFromUsage(NTriplesUnresolvedReferenceHighlighting<NTriplesPrefixReference> error)
             : base(error.Reference)
         {
         }
@@ -52,12 +52,12 @@ namespace ReSharper.NTriples.Intentions.CreateFromUsage
 
         protected override ICreationTarget GetTarget()
         {
-            return new CreateSecretPrefixTarget(this.Reference);
+            return new CreateNTriplesPrefixTarget(this.Reference);
         }
 
-        private CreateSecretPrefixContext GetContext()
+        private CreateNTriplesPrefixContext GetContext()
         {
-            return new CreateSecretPrefixContext(this.GetTarget() as CreateSecretPrefixTarget);
+            return new CreateNTriplesPrefixContext(this.GetTarget() as CreateNTriplesPrefixTarget);
         }
     }
 }

@@ -3,7 +3,7 @@ using JetBrains.ReSharper.Psi.Impl.Caches2.WordIndex;
 
 namespace ReSharper.NTriples.Impl
 {
-    internal class SecretWordIndexLanguageProvider : IWordIndexLanguageProvider
+    internal class NTriplesWordIndexLanguageProvider : IWordIndexLanguageProvider
     {
         public bool CaseSensitiveIdentifiers
         {

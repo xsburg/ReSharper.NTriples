@@ -26,7 +26,7 @@ namespace ReSharper.NTriples.CodeInspections
         {
             PsiManager manager = PsiManager.GetInstance(sourceFile.GetSolution());
             manager.AssertAllDocumentAreCommited();
-            return manager.GetPsiFile<SecretLanguage>(new DocumentRange(sourceFile.Document, 0)) as ISecretFile;
+            return manager.GetPsiFile<NTriplesLanguage>(new DocumentRange(sourceFile.Document, 0)) as ISecretFile;
         }
 
         public abstract IEnumerable<IDaemonStageProcess> CreateProcess(
@@ -56,7 +56,7 @@ namespace ReSharper.NTriples.CodeInspections
             }
 
             ISecretFile file = GetSecretFile(sourceFile);
-            return file != null && file.Language.Is<SecretLanguage>();
+            return file != null && file.Language.Is<NTriplesLanguage>();
         }
     }
 }

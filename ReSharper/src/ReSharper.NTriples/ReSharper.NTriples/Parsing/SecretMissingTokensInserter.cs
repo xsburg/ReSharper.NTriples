@@ -136,7 +136,7 @@ namespace ReSharper.NTriples.Parsing
             {
                 get
                 {
-                    return SecretLanguage.Instance;
+                    return NTriplesLanguage.Instance;
                 }
             }
 
@@ -181,7 +181,7 @@ namespace ReSharper.NTriples.Parsing
             {
                 get
                 {
-                    return SecretLanguage.Instance;
+                    return NTriplesLanguage.Instance;
                 }
             }
         }

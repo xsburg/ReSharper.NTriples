@@ -6,15 +6,15 @@ namespace ReSharper.NTriples.Impl.Tree
 {
     internal partial class Prefix
     {
-        private SecretPrefixReference myPrefixReference;
+        private NTriplesPrefixReference myPrefixReference;
 
-        public SecretPrefixReference PrefixReference
+        public NTriplesPrefixReference PrefixReference
         {
             get
             {
                 lock (this)
                 {
-                    return this.myPrefixReference ?? (this.myPrefixReference = new SecretPrefixReference(this));
+                    return this.myPrefixReference ?? (this.myPrefixReference = new NTriplesPrefixReference(this));
                 }
             }
         }

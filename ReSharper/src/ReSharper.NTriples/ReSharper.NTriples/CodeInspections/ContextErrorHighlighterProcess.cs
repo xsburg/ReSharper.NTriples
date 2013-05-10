@@ -43,7 +43,7 @@ namespace ReSharper.NTriples.CodeInspections
                         range,
                         prefixParam,
                         consumer,
-                        new NTriplesUnresolvedReferenceHighlighting<SecretPrefixReference>(
+                        new NTriplesUnresolvedReferenceHighlighting<NTriplesPrefixReference>(
                             prefix, prefix.PrefixReference, string.Format("Unresolved prefix '{0}'", prefix.GetText())));
                 }
             }

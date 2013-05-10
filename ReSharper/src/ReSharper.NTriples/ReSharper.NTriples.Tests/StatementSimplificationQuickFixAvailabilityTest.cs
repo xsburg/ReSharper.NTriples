@@ -9,7 +9,7 @@ using ReSharper.NTriples.Tree;
 
 namespace ReSharper.NTriples.Tests
 {
-    [TestFileExtension(SecretProjectFileType.SecretExtension)]
+    [TestFileExtension(NTriplesProjectFileType.SecretExtension)]
     [TestFixture]
     public class StatementSimplificationQuickFixAvailabilityTest : QuickFixAvailabilityTestBase
     {

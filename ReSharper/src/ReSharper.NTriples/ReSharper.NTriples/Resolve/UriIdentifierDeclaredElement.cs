@@ -76,7 +76,7 @@ namespace ReSharper.NTriples.Resolve
         {
             get
             {
-                return SecretLanguage.Instance;
+                return NTriplesLanguage.Instance;
             }
         }
 
@@ -114,7 +114,7 @@ namespace ReSharper.NTriples.Resolve
         public static IList<IDeclaration> GetDeclarationsIn(
             IPsiSourceFile sourceFile, IUriIdentifierDeclaredElement declaredElement)
         {
-            var secretFile = sourceFile.GetPsiFile<SecretLanguage>(new DocumentRange(sourceFile.Document, 0)) as SecretFile;
+            var secretFile = sourceFile.GetPsiFile<NTriplesLanguage>(new DocumentRange(sourceFile.Document, 0)) as SecretFile;
             if (secretFile == null)
             {
                 return EmptyList<IDeclaration>.InstanceList;
@@ -175,7 +175,7 @@ namespace ReSharper.NTriples.Resolve
             var declarations = GetDeclarationsIn(sourceFile, this);
             if (this.filterDeclarations)
             {
-                return SecretIdentifierFilter.GetImportantSubjects(declarations).Cast<IDeclaration>().ToArray();
+                return NTriplesIdentifierFilter.GetImportantSubjects(declarations).Cast<IDeclaration>().ToArray();
             }
 
             return declarations;
@@ -183,7 +183,7 @@ namespace ReSharper.NTriples.Resolve
 
         public DeclaredElementType GetElementType()
         {
-            return SecretDeclaredElementType.UriIdentifier;
+            return NTriplesDeclaredElementType.UriIdentifier;
         }
 
         public override int GetHashCode()

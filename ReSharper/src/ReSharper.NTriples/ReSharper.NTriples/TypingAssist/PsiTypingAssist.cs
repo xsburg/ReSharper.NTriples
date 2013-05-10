@@ -1405,7 +1405,7 @@ namespace ReSharper.NTriples.TypingAssist
     }*/
 
     [SolutionComponent]
-    public class PsiTypingAssist : TypingAssistLanguageBase<SecretLanguage, ICodeFormatter /*concrete class*/>, ITypingHandler
+    public class PsiTypingAssist : TypingAssistLanguageBase<NTriplesLanguage, ICodeFormatter /*concrete class*/>, ITypingHandler
     {
         public PsiTypingAssist(
             Lifetime lifetime,
@@ -1437,13 +1437,13 @@ namespace ReSharper.NTriples.TypingAssist
 
         public bool QuickCheckAvailability(ITextControl textControl, IPsiSourceFile projectFile)
         {
-            return projectFile.LanguageType.Is<SecretProjectFileType>();
+            return projectFile.LanguageType.Is<NTriplesProjectFileType>();
         }
 
         protected override bool IsSupported(ITextControl textControl)
         {
             IPsiSourceFile projectFile = textControl.Document.GetPsiSourceFile(this.Solution);
-            if (projectFile == null || !projectFile.LanguageType.Is<SecretProjectFileType>() || !projectFile.IsValid())
+            if (projectFile == null || !projectFile.LanguageType.Is<NTriplesProjectFileType>() || !projectFile.IsValid())
             {
                 return false;
             }
@@ -1458,7 +1458,7 @@ namespace ReSharper.NTriples.TypingAssist
                 TokenNodeType typedToken = lexer.TokenType;
 
                 // find the leftmost non-closed bracket (including typed) of typed class so that there are no opened brackets of other type
-                var bracketMatcher = new SecretBracketMatcher();
+                var bracketMatcher = new NTriplesBracketMatcher();
                 TokenNodeType tokenType = typedToken;
 
                 int leftParenthPos = lexer.CurrentPosition;
@@ -1632,7 +1632,7 @@ namespace ReSharper.NTriples.TypingAssist
 
             // Find the matched R_BRACE and check they are on the same line
             int rBracePos;
-            if (!new SecretBracketMatcher().FindMatchingBracket(lexer, out rBracePos))
+            if (!new NTriplesBracketMatcher().FindMatchingBracket(lexer, out rBracePos))
             {
                 return false;
             }
@@ -1729,7 +1729,7 @@ namespace ReSharper.NTriples.TypingAssist
                 }
 
                 this.PsiServices.PsiManager.CommitAllDocuments();
-                var file = projectItem.GetPsiFile<SecretLanguage>(new DocumentRange(textControl.Document, offset));
+                var file = projectItem.GetPsiFile<NTriplesLanguage>(new DocumentRange(textControl.Document, offset));
 
                 if (file == null)
                 {
@@ -2145,7 +2145,7 @@ namespace ReSharper.NTriples.TypingAssist
             }
 
             // find the leftmost non-closed bracket (excluding typed) of typed class so that there are no opened brackets of other type
-            var bracketMatcher = new SecretBracketMatcher();
+            var bracketMatcher = new NTriplesBracketMatcher();
             TokenNodeType searchTokenType = charTyped == ')'
                                                 ? SecretTokenType.L_PARENTHESES
                                                 : charTyped == ']'

@@ -42,7 +42,7 @@ namespace ReSharper.NTriples.Cache
         [CanBeNull]
         public static ICollection<INTriplesSymbol> Build(IPsiSourceFile sourceFile)
         {
-            var file = sourceFile.GetPsiFile<SecretLanguage>(new DocumentRange(sourceFile.Document, 0)) as ISecretFile;
+            var file = sourceFile.GetPsiFile<NTriplesLanguage>(new DocumentRange(sourceFile.Document, 0)) as ISecretFile;
             if (file == null)
             {
                 return null;
@@ -80,7 +80,7 @@ namespace ReSharper.NTriples.Cache
                 var ns = uriIdentifier.GetNamespace() ?? "";
                 var ln = uriIdentifier.GetLocalName();
                 var kind = uriIdentifier.GetKind();
-                var important = SecretIdentifierFilter.IsImportantSubject(uriIdentifier);
+                var important = NTriplesIdentifierFilter.IsImportantSubject(uriIdentifier);
                 int offset = element.GetNavigationRange().TextRange.StartOffset;
                 var psiSourceFile = element.GetSourceFile();
                 this.mySymbols.Add(new NTriplesUriIdentifierSymbol(ns, ln, kind, important, offset, psiSourceFile));
