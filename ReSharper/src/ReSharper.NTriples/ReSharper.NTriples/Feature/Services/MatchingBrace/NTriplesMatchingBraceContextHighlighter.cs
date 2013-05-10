@@ -8,6 +8,14 @@
 // </summary>
 // ***********************************************************************
 
+using JetBrains.ReSharper.Feature.Services.Bulbs;
+using JetBrains.ReSharper.Feature.Services.ContextHighlighters;
+using JetBrains.ReSharper.Psi.Parsing;
+using JetBrains.ReSharper.Psi.Tree;
+using JetBrains.TextControl;
+using JetBrains.UI.RichText;
+using ReSharper.NTriples.Parsing;
+
 namespace ReSharper.NTriples.Feature.Services.MatchingBrace
 {
 #if !UNITTEST
