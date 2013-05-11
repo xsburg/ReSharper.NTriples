@@ -100,7 +100,7 @@ namespace ReSharper.NTriples.Impl
                 file,
                 element.GetNamespace(),
                 element.GetLocalName(),
-                element.GetKind(),
+                element.GetInfo(),
                 element.GetPsiServices(),
                 true,
                 element);

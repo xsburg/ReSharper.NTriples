@@ -432,10 +432,10 @@ errorhandling list
 
 expression
   :
-    identifier<IDENTIFIER>
+    identifier<IDENTIFIER, Identifiers>
     (
       EXPRESSION_TAIL_OPERATOR
-      identifier<IDENTIFIER>
+      identifier<IDENTIFIER, Identifiers>
     )*
   ;
 

@@ -20,17 +20,15 @@ namespace ReSharper.NTriples.Cache
         }
 
         public NTriplesUriIdentifierSymbol(
-            string @namespace, string localName, IdentifierKind kind, bool important, int offset, IPsiSourceFile psiSourceFile)
+            string @namespace, string localName, IdentifierInfo info, int offset, IPsiSourceFile psiSourceFile)
             : base(@namespace + localName, offset, psiSourceFile)
         {
             this.LocalName = localName;
-            this.Kind = kind;
-            this.Important = important;
+            this.Info = info;
             this.Namespace = @namespace;
         }
 
-        public bool Important { get; private set; }
-        public IdentifierKind Kind { get; private set; }
+        public IdentifierInfo Info { get; private set; }
         public string LocalName { get; private set; }
         public string Namespace { get; private set; }
 
@@ -39,8 +37,7 @@ namespace ReSharper.NTriples.Cache
             base.Read(reader);
             this.Namespace = reader.ReadString();
             this.LocalName = reader.ReadString();
-            this.Important = reader.ReadBoolean();
-            this.Kind = (IdentifierKind)reader.ReadInt32();
+            this.Info = IdentifierInfo.Read(reader);
         }
 
         public override void Write(BinaryWriter writer)
@@ -48,8 +45,7 @@ namespace ReSharper.NTriples.Cache
             base.Write(writer);
             writer.Write(this.Namespace);
             writer.Write(this.LocalName);
-            writer.Write(this.Important);
-            writer.Write((int)this.Kind);
+            this.Info.Write(writer);
         }
     }
 }

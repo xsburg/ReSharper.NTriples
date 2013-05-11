@@ -26,7 +26,7 @@ namespace ReSharper.NTriples.Resolve
     internal class UriIdentifierDeclaredElement : IDeclaredElement, IUriIdentifierDeclaredElement
     {
         private readonly bool filterDeclarations;
-        private readonly IdentifierKind kind;
+        private readonly IdentifierInfo info;
         private readonly string localName;
         private readonly IFile myFile;
 
@@ -40,7 +40,7 @@ namespace ReSharper.NTriples.Resolve
             IFile file,
             string @namespace,
             string localName,
-            IdentifierKind kind,
+            IdentifierInfo info,
             IPsiServices services,
             bool filterDeclarations = false,
             IUriIdentifierDeclaredElement parent = null)
@@ -53,7 +53,7 @@ namespace ReSharper.NTriples.Resolve
             this.myServices = services;
             this.filterDeclarations = filterDeclarations;
             this.parent = parent;
-            this.kind = kind;
+            this.info = info;
         }
 
         public bool CaseSensistiveName
@@ -193,7 +193,7 @@ namespace ReSharper.NTriples.Resolve
 
         public IdentifierKind GetKind()
         {
-            return this.kind;
+            return this.info.Kind;
         }
 
         public string GetLocalName()
@@ -219,6 +219,11 @@ namespace ReSharper.NTriples.Resolve
         public string GetUri()
         {
             return this.GetNamespace() + this.GetLocalName();
+        }
+
+        public IdentifierInfo GetInfo()
+        {
+            return info;
         }
 
         public XmlNode GetXMLDescriptionSummary(bool inherit)

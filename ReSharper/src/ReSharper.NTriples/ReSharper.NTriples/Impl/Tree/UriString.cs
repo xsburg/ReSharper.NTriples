@@ -187,6 +187,17 @@ namespace ReSharper.NTriples.Impl.Tree
                        : this.Value.GetText();
         }
 
+        public IdentifierInfo GetInfo()
+        {
+            var uriIdentifier = this.Parent as UriIdentifier;
+            if (uriIdentifier == null)
+            {
+                return new IdentifierInfo(IdentifierKind.Other);
+            }
+
+            return uriIdentifier.GetInfo();
+        }
+
         public XmlNode GetXMLDescriptionSummary(bool inherit)
         {
             return null;

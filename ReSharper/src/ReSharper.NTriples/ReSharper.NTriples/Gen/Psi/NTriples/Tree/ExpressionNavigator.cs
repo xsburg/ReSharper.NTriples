@@ -13,5 +13,17 @@ using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using ReSharper.NTriples.Impl.Tree;
 namespace ReSharper.NTriples.Tree {
   public static partial class ExpressionNavigator {
+    [JetBrains.Annotations.Pure]
+    [JetBrains.Annotations.CanBeNull]
+    [JetBrains.Annotations.ContractAnnotation("null <= null")]
+    public static ReSharper.NTriples.Tree.IExpression GetByIdentifier (ReSharper.NTriples.Tree.IIdentifier param) {
+      if (param == null) return null;
+      TreeElement current = (TreeElement)param;
+      if (current.parent is ReSharper.NTriples.Impl.Tree.Expression) {
+        if (current.parent.GetChildRole (current) != ReSharper.NTriples.Impl.Tree.Expression.IDENTIFIER) return null;
+        current = current.parent;
+      } else return null;
+      return (ReSharper.NTriples.Tree.IExpression) current;
+    }
   }
 }

@@ -58,6 +58,11 @@ namespace ReSharper.NTriples.Impl.Tree
     {
       if (!CanVisitFurther(param)) return;
       VisitElement (level, param, caller);
+      {
+        JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<ReSharper.NTriples.Tree.IIdentifier> children = ((ReSharper.NTriples.Tree.IExpression)param).Identifiers;
+        foreach (ReSharper.NTriples.Tree.IIdentifier child in children)
+        TestIdentifier (level + 1, (ReSharper.NTriples.Tree.IIdentifier)child, "Identifiers");
+      }
     }
       internal static void TestExtensionDirective (int level, ReSharper.NTriples.Tree.IExtensionDirective param, String caller)
     {

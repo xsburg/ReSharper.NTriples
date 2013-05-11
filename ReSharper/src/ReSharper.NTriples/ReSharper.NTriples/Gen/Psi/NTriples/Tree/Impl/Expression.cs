@@ -37,6 +37,12 @@ namespace ReSharper.NTriples.Impl.Tree {
     public override short GetChildRole (JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement child) {
       return CHILD_ROLES[child.NodeType];
     }
+    public JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<ReSharper.NTriples.Tree.IIdentifier> Identifiers {
+      get { return FindListOfChildrenByRole<ReSharper.NTriples.Tree.IIdentifier>(IDENTIFIER); }
+    }
+    public JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<ReSharper.NTriples.Tree.IIdentifier> IdentifiersEnumerable {
+      get { return AsChildrenEnumerable<ReSharper.NTriples.Tree.IIdentifier>(IDENTIFIER); }
+    }
     public override string ToString() {
       return "IExpression";
     }

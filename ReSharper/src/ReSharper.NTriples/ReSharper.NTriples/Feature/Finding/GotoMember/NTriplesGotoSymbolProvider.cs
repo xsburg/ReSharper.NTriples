@@ -212,7 +212,7 @@ namespace ReSharper.NTriples.Feature.Finding.GotoMember
                 foreach (var symbol in symbols.Value)
                 {
                     var uriIdentifier = new UriIdentifierDeclaredElement(
-                        sourceFile, symbol.Namespace, symbol.LocalName, symbol.Kind, services, true);
+                        sourceFile, symbol.Namespace, symbol.LocalName, symbol.Info, services, true);
                     yield return new NTriplesFileMemberData(uriIdentifier, ContainerDisplayStyle.NoContainer);
                 }
             }

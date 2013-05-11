@@ -9,6 +9,7 @@
 // ***********************************************************************
 
 using ReSharper.NTriples.Cache;
+using ReSharper.NTriples.Parsing;
 using ReSharper.NTriples.Tree;
 
 namespace ReSharper.NTriples.Impl.Tree
@@ -17,57 +18,12 @@ namespace ReSharper.NTriples.Impl.Tree
     {
         public IdentifierKind GetKind()
         {
-            var kind = IdentifierKind.Other;
-            var parent2 = this.Parent;
-            while (parent2 != null && !(parent2 is ISentence) && !(parent2 is IAnonymousIdentifier))
-            {
-                if (parent2 is ISubject)
-                {
-                    kind = IdentifierKind.Subject;
-                    break;
-                }
-
-                if (parent2 is IPredicate)
-                {
-                    kind = IdentifierKind.Predicate;
-                    break;
-                }
-
-                if (parent2 is IObjects)
-                {
-                    kind = IdentifierKind.Object;
-                    break;
-                }
-
-                parent2 = parent2.Parent;
-            }
-
-            return kind;
+            return NTriplesIdentifierFilter.GetIdentifierKind(this);
         }
 
-        /*public IdentifierRole GetIdentifierRole()
+        public IdentifierInfo GetInfo()
         {
-            var statement = this.GetContainingNode<IStatement>();
-            if (statement == null)
-            {
-                return IdentifierRole.None;
-            }
-
-            
-            foreach (var fact in statement.FactsEnumerable)
-            {
-                var predicate = fact.Predicate;
-                if (predicate != null && predicate.FirstChild != null &&
-                    predicate.FirstChild.GetTokenType() == NTriplesTokenType.A_KEYWORD)
-                {
-                    foreach (var obj in fact.ObjectsEnumerable)
-                    {
-                        
-                    }
-                }
-            }
-
-            return false;
-        }*/
+            return NTriplesIdentifierFilter.GetIdentifierInfo(this);
+        }
     }
 }

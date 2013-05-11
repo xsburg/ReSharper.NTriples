@@ -19,5 +19,6 @@ namespace ReSharper.NTriples.Resolve
         string GetLocalName();
         string GetNamespace();
         string GetUri();
+        IdentifierInfo GetInfo();
     }
 }

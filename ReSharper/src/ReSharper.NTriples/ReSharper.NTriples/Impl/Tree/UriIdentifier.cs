@@ -56,5 +56,16 @@ namespace ReSharper.NTriples.Impl.Tree
                        ? null
                        : this.DescendantDeclaredElement.GetUri();
         }
+
+        public IdentifierInfo GetInfo()
+        {
+            var identifier = this.Parent as Identifier;
+            if (identifier == null)
+            {
+                return new IdentifierInfo(IdentifierKind.Other);
+            }
+
+            return identifier.GetInfo();
+        }
     }
 }

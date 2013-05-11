@@ -64,7 +64,7 @@ namespace ReSharper.NTriples.Resolve
 
                 var elements = cache.GetAllUriIdentifiersInNamespace(@namespace)
                                     .Select(
-                                        x => new UriIdentifierDeclaredElement(file, x.Namespace, x.LocalName, x.Kind, psiServices));
+                                        x => new UriIdentifierDeclaredElement(file, x.Namespace, x.LocalName, x.Info, psiServices));
 
                 var symbolTable = ResolveUtil.CreateSymbolTable(elements, 0);
                 return symbolTable;

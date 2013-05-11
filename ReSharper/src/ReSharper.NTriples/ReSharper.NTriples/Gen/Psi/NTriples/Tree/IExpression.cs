@@ -10,5 +10,7 @@
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 namespace ReSharper.NTriples.Tree {
   public partial interface IExpression : ReSharper.NTriples.Tree.INTriplesTreeNode {
+    JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<ReSharper.NTriples.Tree.IIdentifier> Identifiers { get; }
+    JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<ReSharper.NTriples.Tree.IIdentifier> IdentifiersEnumerable { get; }
   }
 }

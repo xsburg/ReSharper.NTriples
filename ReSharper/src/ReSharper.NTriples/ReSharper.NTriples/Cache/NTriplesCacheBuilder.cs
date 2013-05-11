@@ -81,11 +81,10 @@ namespace ReSharper.NTriples.Cache
             {
                 var ns = uriIdentifier.GetNamespace() ?? "";
                 var ln = uriIdentifier.GetLocalName();
-                var kind = uriIdentifier.GetKind();
-                var important = NTriplesIdentifierFilter.IsImportantSubject(uriIdentifier);
+                var info = uriIdentifier.GetInfo();
                 int offset = element.GetNavigationRange().TextRange.StartOffset;
                 var psiSourceFile = element.GetSourceFile();
-                this.mySymbols.Add(new NTriplesUriIdentifierSymbol(ns, ln, kind, important, offset, psiSourceFile));
+                this.mySymbols.Add(new NTriplesUriIdentifierSymbol(ns, ln, info, offset, psiSourceFile));
                 return;
             }
 

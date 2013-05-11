@@ -80,13 +80,13 @@ namespace ReSharper.NTriples.Cache
             return result;
         }
 
-        public IEnumerable<IUriIdentifierDeclaredElement> GetImportantSubjects()
+        public IEnumerable<IUriIdentifierDeclaredElement> GetTypeDeclarationSubjects()
         {
             bool foundImportant = false;
             foreach (var pair in this.myProjectFileToSymbolsUriIdentifierMap)
             {
                 var sourceFile = pair.Key;
-                foreach (var symbol in pair.Value)
+                foreach (var symbol in pair.Value.Where(_ => _.Info.IsTypeDeclaration))
                 {
                     var uriIdentifier = GetUriIdentifier(sourceFile, symbol);
                     if (uriIdentifier == null)
@@ -95,7 +95,7 @@ namespace ReSharper.NTriples.Cache
                     }
 
                     var declaredElement = uriIdentifier.DescendantDeclaredElement;
-                    if (declaredElement == null || !NTriplesIdentifierFilter.IsImportantSubject(declaredElement))
+                    if (declaredElement == null)
                     {
                         continue;
                     }
