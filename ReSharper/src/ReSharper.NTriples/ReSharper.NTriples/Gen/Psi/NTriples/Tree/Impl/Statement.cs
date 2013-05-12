@@ -15,6 +15,7 @@ namespace ReSharper.NTriples.Impl.Tree {
   internal partial class Statement : NTriplesCompositeElement, ReSharper.NTriples.Tree.IStatement {
     public const short SUBJECT= ChildRole.LAST + 1;
     public const short FACTS= ChildRole.LAST + 2;
+    public const short KEYWORD_STATEMENT= ChildRole.LAST + 3;
     internal Statement() : base() {
     }
     public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType NodeType {
@@ -34,6 +35,7 @@ namespace ReSharper.NTriples.Impl.Tree {
       {
         new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(ReSharper.NTriples.Impl.Tree.ElementType.FACTS, FACTS),
         new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(ReSharper.NTriples.Impl.Tree.ElementType.SUBJECT, SUBJECT),
+        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(ReSharper.NTriples.Impl.Tree.ElementType.KEYWORD_STATEMENT, KEYWORD_STATEMENT),
       }
     );
     public override short GetChildRole (JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement child) {
@@ -41,6 +43,9 @@ namespace ReSharper.NTriples.Impl.Tree {
     }
     public virtual ReSharper.NTriples.Tree.IFacts FactsElement {
       get { return (ReSharper.NTriples.Tree.IFacts) FindChildByRole(FACTS); }
+    }
+    public virtual ReSharper.NTriples.Tree.IKeywordStatement KeywordStatement {
+      get { return (ReSharper.NTriples.Tree.IKeywordStatement) FindChildByRole(KEYWORD_STATEMENT); }
     }
     public virtual ReSharper.NTriples.Tree.ISubject Subject {
       get { return (ReSharper.NTriples.Tree.ISubject) FindChildByRole(SUBJECT); }
@@ -106,6 +111,58 @@ namespace ReSharper.NTriples.Impl.Tree {
         }
         else return null;
         return (ReSharper.NTriples.Tree.IFacts)result;
+      }
+    }
+    public virtual ReSharper.NTriples.Tree.IKeywordStatement SetKeywordStatement (ReSharper.NTriples.Tree.IKeywordStatement param)
+    {
+      using (JetBrains.Application.WriteLockCookie.Create (this.IsPhysical()))
+      {
+        TreeElement current = null, next = GetNextFilteredChild (current), result = null;
+        next = GetNextFilteredChild (current);
+        if (next.NodeType == ReSharper.NTriples.Impl.Tree.ElementType.SUBJECT) {
+          next = GetNextFilteredChild (current);
+          if (next == null) {
+            return (ReSharper.NTriples.Tree.IKeywordStatement)result;
+          } else {
+            if (next.NodeType == ReSharper.NTriples.Impl.Tree.ElementType.SUBJECT) {
+              current = next;
+            } else {
+              return (ReSharper.NTriples.Tree.IKeywordStatement)result;
+            }
+          }
+          next = GetNextFilteredChild (current);
+          if (next == null) {
+            return (ReSharper.NTriples.Tree.IKeywordStatement)result;
+          } else {
+            if (next.NodeType == ReSharper.NTriples.Impl.Tree.ElementType.FACTS) {
+              current = next;
+            } else {
+              return (ReSharper.NTriples.Tree.IKeywordStatement)result;
+            }
+          }
+        }
+        else if (next.NodeType == ReSharper.NTriples.Impl.Tree.ElementType.KEYWORD_STATEMENT) {
+          next = GetNextFilteredChild (current);
+          if (next == null) {
+            if (param == null) return null;
+            result = current = (TreeElement)JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.AddChildAfter (this, current, (JetBrains.ReSharper.Psi.Tree.ITreeNode)param);
+          } else {
+            if (next.NodeType == ReSharper.NTriples.Impl.Tree.ElementType.KEYWORD_STATEMENT) {
+              if (param != null) {
+                result = current = (TreeElement)JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.ReplaceChild(next, (JetBrains.ReSharper.Psi.Tree.ITreeNode)param);
+              } else {
+                current = GetNextFilteredChild (next);
+                JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.DeleteChild (next);
+              }
+            } else {
+              if (param == null) return null;
+              result = (TreeElement)JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.AddChildBefore(next, (JetBrains.ReSharper.Psi.Tree.ITreeNode)param);
+              current = next;
+            }
+          }
+        }
+        else return null;
+        return (ReSharper.NTriples.Tree.IKeywordStatement)result;
       }
     }
     public virtual ReSharper.NTriples.Tree.ISubject SetSubject (ReSharper.NTriples.Tree.ISubject param)

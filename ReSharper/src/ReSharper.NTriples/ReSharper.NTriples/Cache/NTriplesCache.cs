@@ -25,10 +25,22 @@ namespace ReSharper.NTriples.Cache
     [PsiComponent]
     public class NTriplesCache : NTriplesCacheBase
     {
-        private readonly OneToSetMap<string, NTriplesPrefixDeclarationSymbol> myNameToSymbolsPrefixDeclarationMap =
+        private readonly OneToSetMap<string, NTriplesPrefixDeclarationSymbol> myNameToPrefixDeclarationSymbolsMap =
             new OneToSetMap<string, NTriplesPrefixDeclarationSymbol>();
 
-        private readonly OneToSetMap<string, NTriplesUriIdentifierSymbol> myNameToSymbolsUriIdentifierMap =
+        private readonly OneToSetMap<string, NTriplesUriIdentifierSymbol> myUriToUriIdentifierSymbolsMap =
+            new OneToSetMap<string, NTriplesUriIdentifierSymbol>();
+
+        private readonly OneToSetMap<string, NTriplesUriIdentifierSymbol> myUriToTypePropertyDeclarationSymbolsMap =
+            new OneToSetMap<string, NTriplesUriIdentifierSymbol>();
+
+        private readonly OneToSetMap<string, NTriplesUriIdentifierSymbol> myUriToTypeDeclarationSymbolsMap =
+            new OneToSetMap<string, NTriplesUriIdentifierSymbol>();
+
+        private readonly OneToSetMap<string, NTriplesUriIdentifierSymbol> myUriToTypeInstantiationSymbolsMap =
+            new OneToSetMap<string, NTriplesUriIdentifierSymbol>();
+
+        private readonly OneToSetMap<string, NTriplesUriIdentifierSymbol> myUriToSubjectSymbolsMap =
             new OneToSetMap<string, NTriplesUriIdentifierSymbol>();
 
         private readonly OneToListMap<IPsiSourceFile, NTriplesPrefixDeclarationSymbol> myProjectFileToSymbolsPrefixDeclarationMap
@@ -51,12 +63,12 @@ namespace ReSharper.NTriples.Cache
 
         public IEnumerable<NTriplesPrefixDeclarationSymbol> GetAllPrefixDeclarationSymbols()
         {
-            return this.myNameToSymbolsPrefixDeclarationMap.SelectMany(x => x.Value);
+            return this.myNameToPrefixDeclarationSymbolsMap.SelectMany(x => x.Value);
         }
 
         public IEnumerable<NTriplesUriIdentifierSymbol> GetAllUriIdentifierSymbols()
         {
-            return this.myNameToSymbolsUriIdentifierMap.SelectMany(x => x.Value);
+            return this.myUriToUriIdentifierSymbolsMap.SelectMany(x => x.Value);
         }
 
         public OneToListMap<IPsiSourceFile, NTriplesUriIdentifierSymbol> GetAllUriIdentifierSymbolsByFile()
@@ -67,7 +79,7 @@ namespace ReSharper.NTriples.Cache
         public IEnumerable<NTriplesUriIdentifierSymbol> GetAllUriIdentifiersInNamespace(string @namespace)
         {
             @namespace = FixNamespace(@namespace);
-            return this.myNameToSymbolsUriIdentifierMap.SelectMany(x => x.Value).Where(s => s.Namespace == @namespace);
+            return this.myUriToUriIdentifierSymbolsMap.SelectMany(x => x.Value).Where(s => s.Namespace == @namespace);
         }
 
         public IList<IPsiSourceFile> GetFilesContainingUri(string @namespace, string localName)
@@ -80,7 +92,44 @@ namespace ReSharper.NTriples.Cache
             return result;
         }
 
-        public IEnumerable<IUriIdentifierDeclaredElement> GetTypeDeclarationSubjects()
+        public IEnumerable<string> GetInstanceTypes(string subjectUri)
+        {
+            return this.myUriToTypeInstantiationSymbolsMap[subjectUri].SelectMany(s => s.Info.DeclaredTypeNames);
+        }
+
+        public IEnumerable<NTriplesUriIdentifierSymbol> GetTypeDeclarations(string subjectUri)
+        {
+            return
+                this.myUriToTypeInstantiationSymbolsMap[subjectUri].Concat(this.myUriToTypeDeclarationSymbolsMap[subjectUri])
+                                                                   .Where(
+                                                                       s =>
+                                                                       s.Info.IsClassDeclaration || s.Info.DeclaredTypeNames.Any());
+        }
+
+        public bool HasTypeDeclarations(string subjectUri)
+        {
+            return this.myUriToTypeInstantiationSymbolsMap[subjectUri]
+                .Concat(this.myUriToTypeDeclarationSymbolsMap[subjectUri])
+                .Any(s => s.Info.IsClassDeclaration || s.Info.DeclaredTypeNames.Any());
+        }
+
+        public IEnumerable<string> GetAvailableProperties(IEnumerable<string> typesUri)
+        {
+            return typesUri.SelectMany(uri => this.myUriToTypePropertyDeclarationSymbolsMap[uri])
+                           .SelectMany(s => s.Info.DeclaredTypePropertyNames);
+        }
+
+        public IEnumerable<NTriplesUriIdentifierSymbol> GetSubjects(string uri)
+        {
+            return this.myUriToSubjectSymbolsMap[uri];
+        }
+
+        public bool HasSubjects(string uri)
+        {
+            return this.myUriToSubjectSymbolsMap.ContainsKey(uri);
+        }
+
+        /*public IEnumerable<IUriIdentifierDeclaredElement> GetTypeDeclarationSubjects()
         {
             bool foundImportant = false;
             foreach (var pair in this.myProjectFileToSymbolsUriIdentifierMap)
@@ -129,11 +178,11 @@ namespace ReSharper.NTriples.Cache
                     }
                 }
             }
-        }
+        }*/
 
         public IEnumerable<NTriplesPrefixDeclarationSymbol> GetPrefixDeclarationSymbols(string name)
         {
-            return this.myNameToSymbolsPrefixDeclarationMap.SelectMany(x => x.Value).Where(s => s.Name == name);
+            return this.myNameToPrefixDeclarationSymbolsMap.SelectMany(x => x.Value).Where(s => s.Name == name);
         }
 
         public IEnumerable<INTriplesSymbol> GetUriIdentifierSymbolsDeclaredInFile(IPsiSourceFile sourceFile)
@@ -149,8 +198,12 @@ namespace ReSharper.NTriples.Cache
             {
                 foreach (NTriplesUriIdentifierSymbol oldDeclaration in this.myProjectFileToSymbolsUriIdentifierMap[sourceFile])
                 {
-                    string oldName = oldDeclaration.Name;
-                    this.myNameToSymbolsUriIdentifierMap.Remove(oldName, oldDeclaration);
+                    string oldUri = oldDeclaration.Namespace + oldDeclaration.LocalName;
+                    this.myUriToUriIdentifierSymbolsMap.Remove(oldUri, oldDeclaration);
+                    this.myUriToTypePropertyDeclarationSymbolsMap.Remove(oldUri, oldDeclaration);
+                    this.myUriToTypeDeclarationSymbolsMap.Remove(oldUri, oldDeclaration);
+                    this.myUriToTypeInstantiationSymbolsMap.Remove(oldUri, oldDeclaration);
+                    this.myUriToSubjectSymbolsMap.Remove(oldUri, oldDeclaration);
                 }
             }
             // prefix declarations
@@ -161,7 +214,7 @@ namespace ReSharper.NTriples.Cache
                         this.myProjectFileToSymbolsPrefixDeclarationMap[sourceFile])
                 {
                     string oldName = oldDeclaration.Name;
-                    this.myNameToSymbolsPrefixDeclarationMap.Remove(oldName, oldDeclaration);
+                    this.myNameToPrefixDeclarationSymbolsMap.Remove(oldName, oldDeclaration);
                 }
             }
 
@@ -189,17 +242,35 @@ namespace ReSharper.NTriples.Cache
                 }
             }
 
-            // add to projectFile to data map...
             this.myProjectFileToSymbolsUriIdentifierMap.AddValueRange(sourceFile, uriIdentifierData);
             foreach (NTriplesUriIdentifierSymbol declaration in uriIdentifierData)
             {
-                this.myNameToSymbolsUriIdentifierMap.Add(declaration.Name, declaration);
+                var uri = declaration.Namespace + declaration.LocalName;
+                this.myUriToUriIdentifierSymbolsMap.Add(uri, declaration);
+
+                if (declaration.Info.Kind == IdentifierKind.Subject)
+                {
+                    myUriToSubjectSymbolsMap.Add(uri, declaration);
+                }
+
+                if (declaration.Info.IsTypePropertyDeclaration)
+                {
+                    this.myUriToTypePropertyDeclarationSymbolsMap.Add(uri, declaration);
+                }
+
+                if (declaration.Info.IsClassDeclaration)
+                {
+                    this.myUriToTypeDeclarationSymbolsMap.Add(uri, declaration);
+                } else if (declaration.Info.DeclaredTypeNames.Any())
+                {
+                    this.myUriToTypeInstantiationSymbolsMap.Add(uri, declaration);
+                }
             }
 
             this.myProjectFileToSymbolsPrefixDeclarationMap.AddValueRange(sourceFile, prefixDeclarationData);
             foreach (NTriplesPrefixDeclarationSymbol declaration in prefixDeclarationData)
             {
-                this.myNameToSymbolsPrefixDeclarationMap.Add(declaration.Name, declaration);
+                this.myNameToPrefixDeclarationSymbolsMap.Add(declaration.Name, declaration);
             }
 
             return new NTriplesFileCache(uriIdentifierData, prefixDeclarationData);
@@ -214,24 +285,6 @@ namespace ReSharper.NTriples.Cache
         private static string FixNamespace(string @namespace)
         {
             return @namespace ?? "";
-        }
-
-        private static IUriIdentifier GetUriIdentifier(IPsiSourceFile sourceFile, NTriplesUriIdentifierSymbol symbol)
-        {
-            var file = sourceFile.GetPsiFile<NTriplesLanguage>(new DocumentRange(sourceFile.Document, 0));
-            if (file == null)
-            {
-                return null;
-            }
-
-            var treeNode = file.FindNodeAt(new TreeTextRange(new TreeOffset(symbol.Offset), 1));
-            if (treeNode == null)
-            {
-                return null;
-            }
-
-            var uriIdentifier = treeNode.GetContainingNode<IUriIdentifier>();
-            return uriIdentifier;
         }
     }
 }

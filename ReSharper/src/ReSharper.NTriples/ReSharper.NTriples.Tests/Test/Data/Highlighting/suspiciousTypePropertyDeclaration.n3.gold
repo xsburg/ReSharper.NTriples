@@ -1,0 +1,26 @@
+﻿@prefix names: <http://ontology.org/ontology/names#>.
+@prefix relation: <http://ontology.org/ontology/relation#>.
+@prefix logics: <http://comindware.com/logics#>.
+
+logics:Stub a logics:Stub.
+logics:Class a logics:Class.
+relation:brother logics:Stub "foo".
+relation:father logics:Stub "foo".
+relation:mother logics:Stub "foo".
+names:stan logics:Stub "foo".
+names:mary logics:Stub "foo".
+names:john logics:Stub "foo".
+logics:property logics:Stub "foo".
+
+names:Person a logics:Class;
+    logics:property
+        relation:father,
+        relation:mother.
+
+names:jack a names:Person;
+    relation:father names:stan;
+    relation:mother names:mary;
+    |relation:brother|(0) names:john.
+
+---------------------------------------------------------
+(0): ReSharper Warning: Suspicious property declaration: the property is not defined in class <http://ontology.org/ontology/names#Person>.

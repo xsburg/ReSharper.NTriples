@@ -1,31 +1,21 @@
-// ***********************************************************************
-// <author>Stephan Burguchev</author>
-// <copyright company="Stephan Burguchev">
-//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
-// </copyright>
-// <summary>
-//   SuggestionRangeHighlighting.cs
-// </summary>
-// ***********************************************************************
-
 using JetBrains.DocumentModel;
 using JetBrains.ReSharper.Daemon;
 using JetBrains.ReSharper.Daemon.Impl;
 using JetBrains.ReSharper.Psi.Tree;
 using ReSharper.NTriples.Impl;
 
-[assembly: RegisterConfigurableSeverity("SuggestionRangeHighlighting", null, HighlightingGroupIds.BestPractice,
-    "Suggestion highlighting", @"Suggestion highlighting", Severity.SUGGESTION, false, Internal = true)]
+[assembly: RegisterConfigurableSeverity("HintRangeHighlighting", null, HighlightingGroupIds.BestPractice,
+    "Hint highlighting", @"Hint highlighting", Severity.HINT, false, Internal = true)]
 
 namespace ReSharper.NTriples.CodeInspections.Highlightings
 {
-    [ConfigurableSeverityHighlighting("SuggestionRangeHighlighting", NTriplesLanguage.LanguageName, OverlapResolve = OverlapResolveKind.DEADCODE)]
-    public class SuggestionRangeHighlighting<TTreeElement>
+    [ConfigurableSeverityHighlighting("HintRangeHighlighting", NTriplesLanguage.LanguageName, OverlapResolve = OverlapResolveKind.DEADCODE)]
+    public class HintRangeHighlighting<TTreeElement>
         : IHighlightingWithRange, ICustomAttributeIdHighlighting where TTreeElement : ITreeNode
     {
         private readonly string myMessage;
 
-        public SuggestionRangeHighlighting(TTreeElement startElement, TTreeElement endElement, string myMessage)
+        public HintRangeHighlighting(TTreeElement startElement, TTreeElement endElement, string myMessage)
         {
             this.StartElement = startElement;
             this.EndElement = endElement;
@@ -36,7 +26,7 @@ namespace ReSharper.NTriples.CodeInspections.Highlightings
         {
             get
             {
-                return HighlightingAttributeIds.SUGGESTION_ATTRIBUTE;
+                return HighlightingAttributeIds.HINT_ATTRIBUTE;
             }
         }
 

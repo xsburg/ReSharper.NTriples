@@ -29,9 +29,9 @@ namespace ReSharper.NTriples.Intentions.QuickFix
     [QuickFix]
     public class FactsSimplificationQuickFix : ContextActionBase, IQuickFix
     {
-        private readonly SuggestionRangeHighlighting<IFact> highlighter;
+        private readonly HintRangeHighlighting<IFact> highlighter;
 
-        public FactsSimplificationQuickFix(SuggestionRangeHighlighting<IFact> highlighter)
+        public FactsSimplificationQuickFix(HintRangeHighlighting<IFact> highlighter)
         {
             this.highlighter = highlighter;
         }

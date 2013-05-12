@@ -2,9 +2,19 @@
 @prefix relation: <http://ontology.org/ontology/relation#>.
 @prefix names: <http://ontology.org/ontology/names#>.
 @prefix info: <http://ontology.org/ontology/info#>.
+@prefix logics: <http://ontology.org/ontology/logics#>.
 
-family:stan relation:hasMother names:mary. 
+logics:Class a logics:Class.
+logics:Stub a logics:Stub.
+family:stan a logics:Stub.
+relation:hasMother a logics:Stub.
+names:mary a logics:Stub.
+names:piter a logics:Stub.
+names:bob a logics:Stub.
+relation:hasFather a logics:Stub.
+
+family:stan2 relation:hasMother names:mary. 
 family:stan
     relation:hasFather 
-        na{caret}mes:piter,
-        names:bob.
+        names:piter,
+       {caret} names:bob.

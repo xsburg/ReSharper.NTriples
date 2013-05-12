@@ -4,7 +4,7 @@
 //   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
 // </copyright>
 // <summary>
-//   SuggestionRangeHighlighting.cs
+//   WarningRangeHighlighting.cs
 // </summary>
 // ***********************************************************************
 
@@ -14,18 +14,18 @@ using JetBrains.ReSharper.Daemon.Impl;
 using JetBrains.ReSharper.Psi.Tree;
 using ReSharper.NTriples.Impl;
 
-[assembly: RegisterConfigurableSeverity("SuggestionRangeHighlighting", null, HighlightingGroupIds.BestPractice,
-    "Suggestion highlighting", @"Suggestion highlighting", Severity.SUGGESTION, false, Internal = true)]
+[assembly: RegisterConfigurableSeverity("ErrorRangeHighlighting", null, HighlightingGroupIds.LanguageUsage,
+    "Error highlighting", @"Error highlighting", Severity.ERROR, false, Internal = true)]
 
 namespace ReSharper.NTriples.CodeInspections.Highlightings
 {
-    [ConfigurableSeverityHighlighting("SuggestionRangeHighlighting", NTriplesLanguage.LanguageName, OverlapResolve = OverlapResolveKind.DEADCODE)]
-    public class SuggestionRangeHighlighting<TTreeElement>
+    [ConfigurableSeverityHighlighting("ErrorRangeHighlighting", NTriplesLanguage.LanguageName, OverlapResolve = OverlapResolveKind.ERROR)]
+    public class ErrorRangeHighlighting<TTreeElement>
         : IHighlightingWithRange, ICustomAttributeIdHighlighting where TTreeElement : ITreeNode
     {
         private readonly string myMessage;
 
-        public SuggestionRangeHighlighting(TTreeElement startElement, TTreeElement endElement, string myMessage)
+        public ErrorRangeHighlighting(TTreeElement startElement, TTreeElement endElement, string myMessage)
         {
             this.StartElement = startElement;
             this.EndElement = endElement;
@@ -36,7 +36,7 @@ namespace ReSharper.NTriples.CodeInspections.Highlightings
         {
             get
             {
-                return HighlightingAttributeIds.SUGGESTION_ATTRIBUTE;
+                return HighlightingAttributeIds.ERROR_ATTRIBUTE;
             }
         }
 

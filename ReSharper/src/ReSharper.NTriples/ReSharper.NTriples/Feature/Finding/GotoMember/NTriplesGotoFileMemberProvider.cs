@@ -8,20 +8,31 @@
 // </summary>
 // ***********************************************************************
 
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text;
 using JetBrains.Annotations;
 using JetBrains.Application;
+using JetBrains.CommonControls;
+using JetBrains.IDE;
 using JetBrains.ProjectModel;
+using JetBrains.ProjectModel.Model2.Assemblies.Interfaces;
 using JetBrains.ReSharper.Feature.Services.Goto;
+using JetBrains.ReSharper.Feature.Services.Navigation;
 using JetBrains.ReSharper.Feature.Services.Occurences;
 using JetBrains.ReSharper.Feature.Services.Search;
 using JetBrains.ReSharper.Psi;
+using JetBrains.ReSharper.Psi.Search;
 using JetBrains.Text;
+using JetBrains.UI.PopupWindowManager;
+using JetBrains.UI.RichText;
 using JetBrains.Util;
+using ReSharper.NTriples.Cache;
 using ReSharper.NTriples.Impl;
 using ReSharper.NTriples.Impl.Tree;
+using ReSharper.NTriples.Resolve;
 
 namespace ReSharper.NTriples.Feature.Finding.GotoMember
 {
@@ -88,7 +99,7 @@ namespace ReSharper.NTriples.Feature.Finding.GotoMember
                 }
             }
         }
-
+        
         public virtual bool IsApplicable(INavigationScope scope, GotoContext gotoContext)
         {
             return true;
@@ -110,7 +121,8 @@ namespace ReSharper.NTriples.Feature.Finding.GotoMember
                         ContainerStyle = !(fileMemberData.Element is ITypeElement)
                                              ? fileMemberData.ContainerDisplayStyle
                                              : ContainerDisplayStyle.NoContainer,
-                        LocationStyle = GlobalLocationStyle.None
+                        LocationStyle = GlobalLocationStyle.None,
+                        TextDisplayStyle = TextDisplayStyle.IdentifierAndContext
                     });
 
             if (localName != null)
@@ -147,7 +159,7 @@ namespace ReSharper.NTriples.Feature.Finding.GotoMember
                 primaryMembers.AddFirst(new NTriplesFileMemberData(declaredElement, ContainerDisplayStyle.Namespace));
             }
 
-            var subjects = NTriplesIdentifierFilter.GetImportantSubjects(file.GetAllUriIdentifierDeclaredElements());
+            var subjects = file.GetAllUriIdentifierDeclaredElements().Where(e => ((IUriIdentifierDeclaredElement)e).GetKind() == IdentifierKind.Subject);
             foreach (var declaredElement in subjects)
             {
                 primaryMembers.AddFirst(new NTriplesFileMemberData(declaredElement, ContainerDisplayStyle.Namespace));

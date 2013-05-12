@@ -151,31 +151,56 @@ namespace ReSharper.NTriples.Resolve
 
         public IList<IDeclaration> GetDeclarations()
         {
-            if (this.parent != null)
+            /*if (this.parent != null)
             {
                 return this.parent.GetDeclarations();
             }
-
-            var result = new List<IDeclaration>();
+*/
+            var declarations = new List<IDeclaration>();
             foreach (var sourceFile in this.GetSourceFiles())
             {
-                result.AddRange(this.GetDeclarationsIn(sourceFile));
+                declarations.AddRange(GetDeclarationsIn(sourceFile, this));
             }
 
-            return result;
+            if (this.filterDeclarations)
+            {
+                var actualDeclarations = NTriplesIdentifierFilter.GetTypeDeclarations(declarations).Cast<IDeclaration>().ToArray();
+                if (!actualDeclarations.Any())
+                {
+                    var subjects = declarations.Where(d => ((IUriIdentifierDeclaredElement)d).GetKind() == IdentifierKind.Subject).ToArray();
+                    if (subjects.Any())
+                    {
+                        actualDeclarations = subjects;
+                    }
+                    else if (declarations.Any())
+                    {
+                        actualDeclarations = new[] { declarations.First() };
+                    }
+                }
+
+                return actualDeclarations;
+            }
+
+            return declarations;
         }
 
         public IList<IDeclaration> GetDeclarationsIn(IPsiSourceFile sourceFile)
         {
-            if (this.parent != null)
+            /*if (this.parent != null)
             {
                 return this.parent.GetDeclarationsIn(sourceFile);
             }
-
+*/
             var declarations = GetDeclarationsIn(sourceFile, this);
             if (this.filterDeclarations)
             {
-                return NTriplesIdentifierFilter.GetImportantSubjects(declarations).Cast<IDeclaration>().ToArray();
+                var actualDeclarations = NTriplesIdentifierFilter.GetTypeDeclarations(declarations).Cast<IDeclaration>().ToArray();
+                if (!actualDeclarations.Any() && (declarations.Any()) && !NTriplesIdentifierFilter.HasTypeDeclaration(declarations.First()))
+                {
+                    actualDeclarations = new[] { declarations.First() };
+                }
+
+                return actualDeclarations;
             }
 
             return declarations;

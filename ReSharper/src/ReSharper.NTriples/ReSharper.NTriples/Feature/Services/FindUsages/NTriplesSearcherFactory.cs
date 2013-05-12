@@ -124,13 +124,26 @@ namespace ReSharper.NTriples.Feature.Services.FindUsages
             if (uriIdentifier != null)
             {
                 var declarations = element.GetDeclarations();
-                var subjects = NTriplesIdentifierFilter.GetImportantSubjects(declarations).ToArray();
+                var actualDecalrations = NTriplesIdentifierFilter.GetTypeDeclarations(declarations).ToArray();
+                if (!actualDecalrations.Any())
+                {
+                    var subjects =
+                        declarations.OfType<IUriIdentifierDeclaredElement>().Where(d => d.GetKind() == IdentifierKind.Subject).ToArray();
+                    if (subjects.Any())
+                    {
+                        actualDecalrations = subjects;
+                    }
+                    else
+                    {
+                        actualDecalrations = new[] { (IUriIdentifierDeclaredElement)declarations.First() };
+                    }
+                }
 
                 Func<IDeclaration, Pair<IDeclaredElement, Predicate<FindResult>>> selector =
                     e => new Pair<IDeclaredElement, Predicate<FindResult>>(e.DeclaredElement, JetPredicate<FindResult>.True);
-                if (subjects.Any())
+                if (actualDecalrations.Any())
                 {
-                    return subjects.Cast<IDeclaration>().Select(selector);
+                    return actualDecalrations.Cast<IDeclaration>().Select(selector);
                 }
 
                 if (declarations.Any())

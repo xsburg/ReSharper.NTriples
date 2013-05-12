@@ -27,7 +27,7 @@ namespace ReSharper.NTriples.Cache
 {
     public abstract class NTriplesCacheBase : ICache
     {
-        protected const int Version = 8;
+        protected const int Version = 9;
         private readonly JetHashSet<IPsiSourceFile> myDirtyFiles = new JetHashSet<IPsiSourceFile>();
         private readonly IPersistentIndexManager myPersistentIdIndex;
         private readonly IPsiConfiguration myPsiConfiguration;

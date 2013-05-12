@@ -13,7 +13,7 @@ using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using ReSharper.NTriples.Parsing;
 namespace ReSharper.NTriples.Impl.Tree {
   internal partial class Objects : NTriplesCompositeElement, ReSharper.NTriples.Tree.IObjects {
-    public const short IDENTIFIERS= ChildRole.LAST + 1;
+    public const short EXPRESSIONS= ChildRole.LAST + 1;
     internal Objects() : base() {
     }
     public override JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType NodeType {
@@ -31,7 +31,7 @@ namespace ReSharper.NTriples.Impl.Tree {
     private static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeDictionary<short> CHILD_ROLES = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeDictionary<short>(
       new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>[]
       {
-        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(ReSharper.NTriples.Impl.Tree.ElementType.EXPRESSION, IDENTIFIERS),
+        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(ReSharper.NTriples.Impl.Tree.ElementType.EXPRESSION, EXPRESSIONS),
       }
     );
     public override short GetChildRole (JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement child) {

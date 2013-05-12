@@ -143,7 +143,7 @@ errorhandling statement
       subject<SUBJECT, Subject>
       facts<FACTS, FactsElement>
     )
-    | keywordStatement
+    | keywordStatement<KEYWORD_STATEMENT, KeywordStatement>
   ;
 
 keywordStatement
@@ -257,7 +257,7 @@ errorhandling fact
     extras
     {
         get { methodName = "PredicateIdentifiers" path = <fact:PREDICATE/predicate:EXPRESSION/expression:IDENTIFIER> };
-        get { methodName = "Objects" path = <fact:OBJECTS/objects:IDENTIFIERS> };
+        get { methodName = "Objects" path = <fact:OBJECTS/objects:EXPRESSIONS> };
     }
   :
     predicate<PREDICATE, Predicate>
@@ -293,10 +293,10 @@ isOfExpression
 
 errorhandling objects
   :
-    expression<IDENTIFIERS>
+    expression<EXPRESSIONS>
     (
       COMMA
-      expression<IDENTIFIERS>
+      expression<EXPRESSIONS>
     )*
   ;
 

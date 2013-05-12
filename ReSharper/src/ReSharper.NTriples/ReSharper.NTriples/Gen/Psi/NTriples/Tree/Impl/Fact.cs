@@ -50,7 +50,7 @@ namespace ReSharper.NTriples.Impl.Tree {
         var result = JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<ReSharper.NTriples.Tree.IExpression>.Empty;
         CompositeElement current0 = (CompositeElement)current.FindChildByRole (ReSharper.NTriples.Impl.Tree.Fact.OBJECTS);
         if (current0 != null) {
-          result = ((CompositeElement)current0).FindListOfChildrenByRole<ReSharper.NTriples.Tree.IExpression> (ReSharper.NTriples.Impl.Tree.Objects.IDENTIFIERS);
+          result = ((CompositeElement)current0).FindListOfChildrenByRole<ReSharper.NTriples.Tree.IExpression> (ReSharper.NTriples.Impl.Tree.Objects.EXPRESSIONS);
         }
         return result;
       }
@@ -60,7 +60,7 @@ namespace ReSharper.NTriples.Impl.Tree {
       {
         CompositeElement current = this;
     
-        return new JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<ReSharper.NTriples.Tree.IExpression>(current, ReSharper.NTriples.Impl.Tree.Fact.OBJECTS, ReSharper.NTriples.Impl.Tree.Objects.IDENTIFIERS);
+        return new JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<ReSharper.NTriples.Tree.IExpression>(current, ReSharper.NTriples.Impl.Tree.Fact.OBJECTS, ReSharper.NTriples.Impl.Tree.Objects.EXPRESSIONS);
       }
     }
     public virtual JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<ReSharper.NTriples.Tree.IIdentifier>  PredicateIdentifiers {

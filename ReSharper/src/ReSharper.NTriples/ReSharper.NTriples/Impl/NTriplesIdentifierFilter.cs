@@ -11,14 +11,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.DocumentModel;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Tree;
+using JetBrains.Util;
 using ReSharper.NTriples.Cache;
 using ReSharper.NTriples.Parsing;
 using ReSharper.NTriples.Resolve;
 using ReSharper.NTriples.Tree;
+using IExpression = ReSharper.NTriples.Tree.IExpression;
 using IStatement = ReSharper.NTriples.Tree.IStatement;
 using IIdentifier = ReSharper.NTriples.Tree.IIdentifier;
+using JetBrains.ProjectModel;
 
 namespace ReSharper.NTriples.Impl
 {
@@ -28,6 +32,7 @@ namespace ReSharper.NTriples.Impl
         private const string Property = Prefix + "Property";
         private const string UserProperty = Prefix + "UserProperty";
         private const string Prefix = "http://comindware.com/logics#";
+        private const string TypePropertyDeclaration = Prefix + "property";
 
         public static IdentifierInfo GetIdentifierInfo(IIdentifier identifier)
         {
@@ -71,52 +76,87 @@ namespace ReSharper.NTriples.Impl
         private static IdentifierInfo AnalizeStatement(IStatement statement)
         {
             var typeDeclarations = new List<string>();
+            var typePropertyDeclarations = new List<string>();
             foreach (var fact in statement.FactsEnumerable)
             {
                 var predicate = fact.Predicate;
                 if (predicate != null && predicate.FirstChild != null &&
                     predicate.FirstChild.GetTokenType() == NTriplesTokenType.A_KEYWORD)
                 {
-                    foreach (var expression in fact.ObjectsEnumerable)
-                    {
-                        using (var e = expression.IdentifiersEnumerable.GetEnumerator())
-                        {
-                            IIdentifier identifier;
-                            IUriIdentifier uriIdentifier;
-                            string uri;
-                            if (e.MoveNext() &&
-                                (identifier = e.Current) != null &&
-                                !e.MoveNext() &&
-                                (uriIdentifier = identifier.FirstChild as IUriIdentifier) != null &&
-                                !string.IsNullOrEmpty(uri = uriIdentifier.GetUri()))
-                            {
-                                // The expression has the only child identifier that is the URI identifier that is not empty
-                                typeDeclarations.Add(uri);
-                            }
-                        }
-                    }
+                    typeDeclarations.AddRange(
+                        fact.ObjectsEnumerable.Select(expression => expression.ToUri()).Where(uri => uri != null));
+                }
+                else if (GetExpressionUri(fact.PredicateIdentifiersEnumerable) == TypePropertyDeclaration)
+                {
+                    typePropertyDeclarations.AddRange(fact.ObjectsEnumerable.SelectNotNull(e => e.ToUri()));
                 }
             }
 
-            bool isClass = false;
-            bool isProperty = false;
-            bool isUserProperty = false;
-            foreach (var declaration in typeDeclarations)
+            bool isClass = typeDeclarations.Any(declaration => declaration == Class);
+            if (isClass || typePropertyDeclarations.Count > 0)
             {
-                if (declaration == Class)
+                return IdentifierInfo.CreateClassDeclaration(isClass, typePropertyDeclarations.ToArray());
+            }
+            
+            if (typeDeclarations.Any())
+            {
+                return IdentifierInfo.CreateClassInstantiation(typeDeclarations.ToArray());
+            }
+
+            return new IdentifierInfo(IdentifierKind.Subject);
+        }
+
+        public static string ToUri(this ISubject subject)
+        {
+            var expression = subject.FirstChild as IExpression;
+            if (expression == null)
+            {
+                return null;
+            }
+
+            return GetExpressionUri(expression.IdentifiersEnumerable);
+        }
+
+        public static string ToUri(this IPredicate predicate)
+        {
+            var expression = predicate.FirstChild as IExpression;
+            if (expression == null)
+            {
+                return null;
+            }
+
+            return GetExpressionUri(expression.IdentifiersEnumerable);
+        }
+
+        public static string ToUri(this IExpression expression)
+        {
+            if (expression == null)
+            {
+                return null;
+            }
+
+            return GetExpressionUri(expression.IdentifiersEnumerable);
+        }
+
+        private static string GetExpressionUri(TreeNodeEnumerable<IIdentifier> expressionIdentifiers)
+        {
+            using (var e = expressionIdentifiers.GetEnumerator())
+            {
+                IIdentifier identifier;
+                IUriIdentifier uriIdentifier;
+                string uri;
+                if (e.MoveNext() &&
+                    (identifier = e.Current) != null &&
+                    !e.MoveNext() &&
+                    (uriIdentifier = identifier.FirstChild as IUriIdentifier) != null &&
+                    !string.IsNullOrEmpty(uri = uriIdentifier.GetUri()))
                 {
-                    isClass = true;
-                } else if (declaration == Property)
-                {
-                    isProperty = true;
-                }
-                else if (declaration == UserProperty)
-                {
-                    isUserProperty = true;
+                    // The expression has the only child identifier that is the URI identifier that is not empty
+                    return uri;
                 }
             }
 
-            return new IdentifierInfo(IdentifierKind.Subject, isClass, isProperty, isUserProperty, typeDeclarations.ToArray());
+            return null;
         }
 
         public static IdentifierKind GetIdentifierKind(IIdentifier identifier)
@@ -149,31 +189,88 @@ namespace ReSharper.NTriples.Impl
             return kind;
         }
 
-        public static IEnumerable<IUriIdentifierDeclaredElement> GetImportantSubjects(IEnumerable<IDeclaration> elements)
+        public static IEnumerable<IUriIdentifierDeclaredElement> GetTypeDeclarations(IEnumerable<IDeclaration> elements)
         {
-            return GetImportantSubjects((IEnumerable)elements);
+            return GetTypeDeclarations(elements.OfType<IUriIdentifierDeclaredElement>().ToArray());
         }
 
-        public static IEnumerable<IUriIdentifierDeclaredElement> GetImportantSubjects(IEnumerable<IDeclaredElement> elements)
+        public static IEnumerable<IUriIdentifierDeclaredElement> GetTypeDeclarations(IEnumerable<IDeclaredElement> elements)
         {
-            return GetImportantSubjects((IEnumerable)elements);
+            return GetTypeDeclarations(elements.OfType<IUriIdentifierDeclaredElement>().ToArray());
         }
 
         public static bool IsImportantSubject(IUriIdentifierDeclaredElement uriIdentifier)
         {
-            return uriIdentifier.GetInfo().IsTypeDeclaration;
+            return uriIdentifier.GetInfo().IsClassDeclaration;
         }
 
-        private static IEnumerable<IUriIdentifierDeclaredElement> GetImportantSubjects(IEnumerable elements)
+        private static IEnumerable<IUriIdentifierDeclaredElement> GetTypeDeclarations(IList<IUriIdentifierDeclaredElement> declaredUriElements)
         {
-            var subjects =
-                elements.OfType<IUriIdentifierDeclaredElement>().Where(e => e.GetKind() == IdentifierKind.Subject).ToArray();
+            if (!declaredUriElements.Any())
+            {
+                return EmptyList<IUriIdentifierDeclaredElement>.InstanceList;
+            }
 
-            var importantSubjects = subjects.Where(IsImportantSubject).ToArray();
+            var uriElement = declaredUriElements[0];
+            var uri = uriElement.GetUri();
+            var cache = ((ITreeNode)uriElement).GetSolution().GetComponent<NTriplesCache>();
+            var typeDeclarations = cache.GetTypeDeclarations(uri).SelectNotNull(GetDeclaredElement).ToArray();
+            typeDeclarations = typeDeclarations.Intersect(declaredUriElements).ToArray();
 
-            return importantSubjects.Any()
-                       ? importantSubjects
-                       : subjects;
+            return typeDeclarations;
+        }
+
+        public static bool HasTypeDeclaration(IDeclaration element)
+        {
+            var uriDeclaredElement = element as IUriIdentifierDeclaredElement;
+            if (uriDeclaredElement == null)
+            {
+                return false;
+            }
+
+            var uri = uriDeclaredElement.GetUri();
+            if (string.IsNullOrEmpty(uri))
+            {
+                return false;
+            }
+
+            var cache = element.GetSolution().GetComponent<NTriplesCache>();
+            return cache.HasTypeDeclarations(uri);
+        }
+
+        private static IUriIdentifierDeclaredElement GetDeclaredElement(NTriplesUriIdentifierSymbol symbol)
+        {
+            var file = symbol.SourceFile.GetPsiFile<NTriplesLanguage>(new DocumentRange(symbol.SourceFile.Document, 0));
+            if (file == null)
+            {
+                return null;
+            }
+
+            var treeNode = file.FindNodeAt(new TreeTextRange(new TreeOffset(symbol.Offset), 1));
+            if (treeNode == null)
+            {
+                return null;
+            }
+
+            var uriIdentifier = treeNode.GetContainingNode<IUriIdentifier>();
+            if (uriIdentifier == null)
+            {
+                return null;
+            }
+
+            return uriIdentifier.DescendantDeclaredElement;
+        }
+
+        public static IEnumerable<IExpression> GetPropertyExpressions(this IStatement statement)
+        {
+            return statement.FactsEnumerable.Where(fact => fact.Predicate.ToUri() == TypePropertyDeclaration)
+                .SelectMany(propertyFact => propertyFact.ObjectsEnumerable);
+        }
+
+        public static IEnumerable<string> GetPropertyUris(this IStatement statement)
+        {
+            return statement.FactsEnumerable.Where(fact => fact.Predicate.ToUri() == TypePropertyDeclaration)
+                .SelectMany(propertyFact => propertyFact.ObjectsEnumerable).SelectNotNull(ToUri);
         }
     }
 }

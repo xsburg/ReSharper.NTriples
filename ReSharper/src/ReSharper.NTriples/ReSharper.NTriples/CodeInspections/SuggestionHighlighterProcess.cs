@@ -82,7 +82,7 @@ namespace ReSharper.NTriples.CodeInspections
         private void AddFactsSuggestionHighlighting(
             IHighlightingConsumer consumer, string message, IFact startElement, IFact endElement)
         {
-            var highlighting = new SuggestionRangeHighlighting<IFact>(startElement, endElement, message);
+            var highlighting = new HintRangeHighlighting<IFact>(startElement, endElement, message);
             IFile file = startElement.GetContainingFile();
             if (file != null)
             {
@@ -93,7 +93,7 @@ namespace ReSharper.NTriples.CodeInspections
         private void AddSentenceSuggestionHighlighting(
             IHighlightingConsumer consumer, string message, ISentence startElement, ISentence endElement)
         {
-            var highlighting = new SuggestionRangeHighlighting<ISentence>(startElement, endElement, message);
+            var highlighting = new HintRangeHighlighting<ISentence>(startElement, endElement, message);
             IFile file = startElement.GetContainingFile();
             if (file != null)
             {

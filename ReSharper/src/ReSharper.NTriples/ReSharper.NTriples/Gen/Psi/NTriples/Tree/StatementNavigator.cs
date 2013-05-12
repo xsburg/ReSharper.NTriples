@@ -44,6 +44,18 @@ namespace ReSharper.NTriples.Tree {
     [JetBrains.Annotations.Pure]
     [JetBrains.Annotations.CanBeNull]
     [JetBrains.Annotations.ContractAnnotation("null <= null")]
+    public static ReSharper.NTriples.Tree.IStatement GetByKeywordStatement (ReSharper.NTriples.Tree.IKeywordStatement param) {
+      if (param == null) return null;
+      TreeElement current = (TreeElement)param;
+      if (current.parent is ReSharper.NTriples.Impl.Tree.Statement) {
+        if (current.parent.GetChildRole (current) != ReSharper.NTriples.Impl.Tree.Statement.KEYWORD_STATEMENT) return null;
+        current = current.parent;
+      } else return null;
+      return (ReSharper.NTriples.Tree.IStatement) current;
+    }
+    [JetBrains.Annotations.Pure]
+    [JetBrains.Annotations.CanBeNull]
+    [JetBrains.Annotations.ContractAnnotation("null <= null")]
     public static ReSharper.NTriples.Tree.IStatement GetBySubject (ReSharper.NTriples.Tree.ISubject param) {
       if (param == null) return null;
       TreeElement current = (TreeElement)param;

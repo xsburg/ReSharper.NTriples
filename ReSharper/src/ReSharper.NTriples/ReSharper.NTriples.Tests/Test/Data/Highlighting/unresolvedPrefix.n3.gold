@@ -1,12 +1,17 @@
 ﻿@prefix names: <http://ontology.org/ontology/names#>.
 @prefix relation: <http://ontology.org/ontology/relation#>.
 
-names:jack
-    relation:father names:john;
-    relation:mother names:mary.
+|names:jack
+    |relation:father|(1) |names:john|(2);
+    |relation:mother|(3) |names:mary|(4).
 
-names:jack |skills|(0):skill |skills|(1):carpenter.
+names:jack |skills|(5):skill |skills|(6):carpenter|(0).
 
 ---------------------------------------------------------
-(0): ReSharper Error Highlighting: Unresolved prefix 'skills'
-(1): ReSharper Error Highlighting: Unresolved prefix 'skills'
+(0): ReSharper Hint: Statements can be simplified
+(1): ReSharper Warning: There are no statements where the URI http://ontology.org/ontology/relation#father is a subject
+(2): ReSharper Warning: There are no statements where the URI http://ontology.org/ontology/names#john is a subject
+(3): ReSharper Warning: There are no statements where the URI http://ontology.org/ontology/relation#mother is a subject
+(4): ReSharper Warning: There are no statements where the URI http://ontology.org/ontology/names#mary is a subject
+(5): ReSharper Error Highlighting: Unresolved prefix 'skills'
+(6): ReSharper Error Highlighting: Unresolved prefix 'skills'

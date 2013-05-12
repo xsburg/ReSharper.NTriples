@@ -1,22 +1,15 @@
-// ***********************************************************************
-// <author>Stephan Burguchev</author>
-// <copyright company="Stephan Burguchev">
-//   Copyright (c) Stephan Burguchev 2012-2013. All rights reserved.
-// </copyright>
-// <summary>
-//   WarningRangeHighlighting.cs
-// </summary>
-// ***********************************************************************
-
 using JetBrains.DocumentModel;
 using JetBrains.ReSharper.Daemon;
 using JetBrains.ReSharper.Daemon.Impl;
 using JetBrains.ReSharper.Psi.Tree;
+using ReSharper.NTriples.Impl;
+
+[assembly: RegisterConfigurableSeverity("WarningRangeHighlighting", null, HighlightingGroupIds.CompilerWarnings,
+    "Warning highlighting", @"Warning highlighting", Severity.WARNING, false, Internal = true)]
 
 namespace ReSharper.NTriples.CodeInspections.Highlightings
 {
-    [StaticSeverityHighlighting(Severity.ERROR, HighlightingGroupIds.CompilerWarnings, OverlapResolve = OverlapResolveKind.WARNING
-        )]
+    [ConfigurableSeverityHighlighting("WarningRangeHighlighting", NTriplesLanguage.LanguageName, OverlapResolve = OverlapResolveKind.WARNING)]
     public class WarningRangeHighlighting<TTreeElement>
         : IHighlightingWithRange, ICustomAttributeIdHighlighting where TTreeElement : ITreeNode
     {
@@ -33,7 +26,7 @@ namespace ReSharper.NTriples.CodeInspections.Highlightings
         {
             get
             {
-                return HighlightingAttributeIds.ERROR_ATTRIBUTE;
+                return HighlightingAttributeIds.WARNING_ATTRIBUTE;
             }
         }
 

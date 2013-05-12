@@ -60,6 +60,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cache\IdentifierInfo.cs" />
+    <Compile Include="CodeInspections\Highlightings\HintRangeHighlighting.cs" />
+    <Compile Include="CodeInspections\Highlightings\WarningRangeHighlighting.cs" />
     <Compile Include="Gen\**\*.cs" />
     <Compile Include="Cache\NTriplesCacheBase.cs" />
     <Compile Include="Cache\NTriplesFileCache.cs" />
@@ -74,7 +76,7 @@
     <Compile Include="CodeInspections\ContextErrorHighlighterProcess.cs" />
     <Compile Include="CodeInspections\ContextErrorHighlightingStage.cs" />
     <Compile Include="CodeInspections\Highlightings\VsPredefinedHighlighterIds.cs" />
-    <Compile Include="CodeInspections\Highlightings\WarningRangeHighlighting.cs" />
+    <Compile Include="CodeInspections\Highlightings\ErrorRangeHighlighting.cs" />
     <Compile Include="CodeInspections\Highlightings\NTriplesUnresolvedReferenceHighlighting.cs" />
     <Compile Include="CodeInspections\Highlightings\SuggestionRangeHighlighting.cs" />
     <Compile Include="CodeInspections\SuggestionHighlighterProcess.cs" />

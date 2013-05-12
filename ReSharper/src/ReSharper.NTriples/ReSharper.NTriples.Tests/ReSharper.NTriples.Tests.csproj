@@ -95,6 +95,8 @@
     <None Include="Test\Data\Completion\typing-prefix-or-global-keyword.n3.gold" />
     <None Include="Test\Data\Find\localName.n3" />
     <None Include="Test\Data\Find\prefix.n3" />
+    <None Include="Test\Data\Highlighting\suspiciousTypePropertyDeclaration.n3" />
+    <None Include="Test\Data\Highlighting\suspiciousTypePropertyDeclaration.n3.gold" />
     <None Include="Test\Data\Highlighting\unresolvedPrefix.n3" />
     <None Include="Test\Data\Highlighting\unresolvedPrefix.n3.gold" />
     <None Include="Test\Data\Intentions\QuickFixes\FactsSimplification\factsSimplification.n3" />

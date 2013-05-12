@@ -20,7 +20,7 @@ namespace ReSharper.NTriples.Tree {
       if (param == null) return null;
       TreeElement current = (TreeElement)param;
       if (current.parent is ReSharper.NTriples.Impl.Tree.Objects) {
-        if (current.parent.GetChildRole (current) != ReSharper.NTriples.Impl.Tree.Objects.IDENTIFIERS) return null;
+        if (current.parent.GetChildRole (current) != ReSharper.NTriples.Impl.Tree.Objects.EXPRESSIONS) return null;
         current = current.parent;
       } else return null;
       if (current.parent is ReSharper.NTriples.Impl.Tree.Fact) {

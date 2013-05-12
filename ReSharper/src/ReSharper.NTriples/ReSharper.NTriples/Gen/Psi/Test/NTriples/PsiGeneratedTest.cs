@@ -274,6 +274,10 @@ namespace ReSharper.NTriples.Impl.Tree
         TestFacts (level + 1, (ReSharper.NTriples.Tree.IFacts)child, "FactsElement");
       }
       {
+        ReSharper.NTriples.Tree.IKeywordStatement child = ((ReSharper.NTriples.Tree.IStatement)param).KeywordStatement;
+        TestKeywordStatement (level + 1, (ReSharper.NTriples.Tree.IKeywordStatement)child, "KeywordStatement");
+      }
+      {
         ReSharper.NTriples.Tree.ISubject child = ((ReSharper.NTriples.Tree.IStatement)param).Subject;
         TestSubject (level + 1, (ReSharper.NTriples.Tree.ISubject)child, "Subject");
       }
