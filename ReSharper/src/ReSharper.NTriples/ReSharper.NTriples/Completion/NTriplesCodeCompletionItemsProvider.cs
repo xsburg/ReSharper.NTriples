@@ -10,6 +10,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Impl;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure;
@@ -86,6 +87,8 @@ namespace ReSharper.NTriples.Completion
         {
             foreach (var item in items.OfType<DeclaredElementLookupItem>())
             {
+                item.DisplayName.Text = item.Text;
+                item.DisplayName.Text = item.Text;
                 item.OrderingString = item.Text.ToLowerInvariant();
             }
         }

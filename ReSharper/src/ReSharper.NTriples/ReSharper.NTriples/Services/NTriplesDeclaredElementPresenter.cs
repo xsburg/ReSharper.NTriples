@@ -11,6 +11,7 @@
 using System;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Resolve;
+using ReSharper.NTriples.Resolve;
 
 namespace ReSharper.NTriples.Services
 {
@@ -23,11 +24,12 @@ namespace ReSharper.NTriples.Services
             out DeclaredElementPresenterMarking marking)
         {
             marking = new DeclaredElementPresenterMarking();
-            /*var ruleDeclaration = element as IRuleDeclaration;
-            if (ruleDeclaration != null)
+            var uriIdentifier = element as IUriIdentifierDeclaredElement;
+            if (uriIdentifier != null)
             {
-                return ruleDeclaration.RuleName.GetText();
-            }*/
+                return uriIdentifier.GetUri();
+            }
+
             return element.ShortName;
         }
 
