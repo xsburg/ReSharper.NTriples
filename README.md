@@ -1,14 +1,13 @@
-ReSharper.NTriples
-==================
-
 ReSharper Support for the N-Triples Language
+-----------------------------------------------------------------
 
-The project is a comprehensive support for one of the dialects of the N-Triples language. N-Triples is a line-based, plain text format for encoding an RDF graph. See [RDF][designIssues][homePage] for details.
 
-Feature List
-------------
 
-Currently the features below were completely implemented.
+The project is a comprehensive support for a dialect of the N-Triples language. N-Triples is a line-based, plain text format for encoding an [RDF](http://en.wikipedia.org/wiki/Resource_Description_Framework) graph. See [here](http://www.w3.org/TR/rdf-testcases/#ntriples) and [here](http://www.w3.org/DesignIssues/Notation3) for details.
+
+## Feature List
+
+Currently the features below are completely implemented.
 
 1. General
       - Syntax highlighting
@@ -19,17 +18,17 @@ Currently the features below were completely implemented.
       - Uri completion
       - Keywords completion (context dependent)
 3. Code Inspection (Highlightings)
-     3.1 Errors
+    3. Errors
       - Syntax error highlighting
       - Unresolved prefix error highlighting
       - URI validation highlighting
       - Prefix URI validation highlighting
       - URI identifier validation highlighting
-     3.2 Warnings
+    3. Warnings
       - Duplicated prefix highlighting
       - Not-defined URI highlighting
       - Suspicious property declaration highlighting
-     3.3 Hints
+    3. Hints
       - Statement simplification highlighting
       - Fact simplification highlighting
       - Matching brace highlighting
@@ -38,7 +37,7 @@ Currently the features below were completely implemented.
       - Simplify statement intention
       - Simplify fact intention
 5. Refactoring
-     5.1 Rename
+    5. Rename
       - Prefix rename refactoring
       - Local name rename refactoring
 6. Navigation
@@ -49,8 +48,7 @@ Currently the features below were completely implemented.
 7. Typing assist
       - Matching brace typing assist
 
-TODO list
----------
+## TODO list
 
 1. General
      - Usage declaration path highlighting (syntax highlighting feature)
@@ -84,7 +82,3 @@ TODO list
      - Statements move
      - Primitive statement members move
 
-
-[RDF]: http://en.wikipedia.org/wiki/Resource_Description_Framework
-[homePage]: http://www.w3.org/TR/rdf-testcases/#ntriples
-[designIssues]: http://www.w3.org/DesignIssues/Notation3
