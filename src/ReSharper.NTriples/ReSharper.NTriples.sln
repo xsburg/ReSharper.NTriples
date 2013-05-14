@@ -6,6 +6,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReSharper.NTriples.Tests", "ReSharper.NTriples.Tests\ReSharper.NTriples.Tests.csproj", "{0EC2B637-2639-4D41-B9CD-1E8C9E224E81}"
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "ReSharper.NTriples.Installer", "ReSharper.NTriples.Installer\ReSharper.NTriples.Installer.wixproj", "{68D10A4C-D5D5-4387-B7C3-0482314B3AB6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F161D712-214A-4D7F-A610-708B057FC5F3} = {F161D712-214A-4D7F-A610-708B057FC5F3}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

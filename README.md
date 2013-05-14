@@ -18,17 +18,17 @@ Currently the features below are completely implemented.
       - Uri completion
       - Keywords completion (context dependent)
 3. Code Inspection (Highlightings)
-    3. Errors
+    - Errors
       - Syntax error highlighting
       - Unresolved prefix error highlighting
       - URI validation highlighting
       - Prefix URI validation highlighting
       - URI identifier validation highlighting
-    3. Warnings
+    - Warnings
       - Duplicated prefix highlighting
       - Not-defined URI highlighting
       - Suspicious property declaration highlighting
-    3. Hints
+    - Hints
       - Statement simplification highlighting
       - Fact simplification highlighting
       - Matching brace highlighting
@@ -37,7 +37,7 @@ Currently the features below are completely implemented.
       - Simplify statement intention
       - Simplify fact intention
 5. Refactoring
-    5. Rename
+    - Rename
       - Prefix rename refactoring
       - Local name rename refactoring
 6. Navigation
@@ -48,20 +48,20 @@ Currently the features below are completely implemented.
 7. Typing assist
       - Matching brace typing assist
 
-## TODO list
+## TODO List
 
 1. General
      - Usage declaration path highlighting (syntax highlighting feature)
      - Solution-wide setting for predefined values (now are hard-coded)
      - Solution-wide cache optimization
-     - Optimize using highlighting
+     - Optimize usings directive feature
      - Prefix usage mouse-over tooltip
 2. Code Completion
      - Reduced completion set for automatic completion
      - Property-only completion set for type declaration smart completion
      - Custom icons for URI identifiers declaring types
 3. Code Inspections
-     - Separated highlighting (to be able to suppress a particular highlighting)
+     - Separated highlighting (ability to suppress a particular highlighting)
      - Predefined URI identifiers white-list (configurable in solution-wide settings)
      - Gutter marks left of type declaration identifiers
      - Even more code inspections (detailed use-case analysis to be done)
@@ -81,4 +81,6 @@ Currently the features below are completely implemented.
 9. Code-manipulation
      - Statements move
      - Primitive statement members move
+10. C# Integration
+     - Integrate find usages with C#
 
