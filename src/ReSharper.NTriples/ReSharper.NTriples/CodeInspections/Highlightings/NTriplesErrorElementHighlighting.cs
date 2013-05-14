@@ -12,16 +12,14 @@ using JetBrains.DocumentModel;
 using JetBrains.ReSharper.Daemon;
 using JetBrains.ReSharper.Daemon.Impl;
 using JetBrains.ReSharper.Psi.Tree;
-using ReSharper.NTriples.Impl;
 
 namespace ReSharper.NTriples.CodeInspections.Highlightings
 {
-    [ConfigurableSeverityHighlighting("SyntaxError", NTriplesLanguage.LanguageName, OverlapResolve = OverlapResolveKind.ERROR,
-        ToolTipFormatString = Error)]
+    [StaticSeverityHighlighting(Severity.ERROR, "Syntax errors", OverlapResolve = OverlapResolveKind.ERROR,
+        ShowToolTipInStatusBar = false)]
     internal class NTriplesErrorElementHighlighting : IHighlightingWithRange, ICustomAttributeIdHighlighting
     {
         private const string AtributeId = HighlightingAttributeIds.ERROR_ATTRIBUTE;
-        private const string Error = "Syntax error";
         private readonly ITreeNode myElement;
 
         public NTriplesErrorElementHighlighting(ITreeNode element)
