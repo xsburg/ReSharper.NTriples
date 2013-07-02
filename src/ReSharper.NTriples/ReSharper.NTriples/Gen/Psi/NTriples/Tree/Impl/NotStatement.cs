@@ -10,6 +10,7 @@
 using System;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
+using ReSharper.NTriples.Tree;
 using ReSharper.NTriples.Parsing;
 namespace ReSharper.NTriples.Impl.Tree {
   internal partial class NotStatement : NTriplesCompositeElement, ReSharper.NTriples.Tree.INotStatement {
@@ -34,7 +35,7 @@ namespace ReSharper.NTriples.Impl.Tree {
         new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(ReSharper.NTriples.Impl.Tree.ElementType.FORMULA, FORMULA),
       }
     );
-    public override short GetChildRole (JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement child) {
+    public override short GetChildRole(JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement child) {
       return CHILD_ROLES[child.NodeType];
     }
     public override string ToString() {

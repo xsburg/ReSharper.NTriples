@@ -26,33 +26,32 @@ namespace ReSharper.NTriples.Intentions.CreateFromUsage
 {
     [QuickFix]
     internal class CreateNTriplesPrefixFromUsage
-        : CreateFromUsageActionBase<ICreateNTriplesPrefixIntention, NTriplesPrefixReference>, IQuickFix
+        : CreateFromUsageActionBase<NTriplesPrefixReference>, IQuickFix
     {
         public CreateNTriplesPrefixFromUsage(NTriplesUnresolvedReferenceHighlighting<NTriplesPrefixReference> error)
             : base(error.Reference)
         {
         }
 
-        public void CreateBulbItems(BulbMenu menu, Severity severity)
+        protected override ICreationTarget GetTarget()
         {
-            menu.ArrangeQuickFixes(this.Items.Select(_ => Pair.Of(_, severity)));
+            return new CreateNTriplesPrefixTarget(this.Reference);
+        }
+
+        protected override IEnumerable<IBulbAction> CreateBulbActions()
+        {
+            Debug.Assert(Reference != null, "Reference != null");
+            yield return new CreatePsiRuleItem(Lazy.Of(this.GetContext), string.Format("Create prefix {0}", this.Reference.GetName()));
+        }
+
+        IEnumerable<IntentionAction> IQuickFix.CreateBulbItems()
+        {
+            return Items.ToQuickFixAction();
         }
 
         public bool IsAvailable(IUserDataHolder cache)
         {
-            return ((this.Reference != null) && (this.Reference.IsValid()));
-        }
-
-        protected override IEnumerable<IBulbAction> CreateBulbItems()
-        {
-            Debug.Assert(this.Reference != null, "Reference != null");
-            yield return
-                new CreatePsiRuleItem(Lazy.Of(this.GetContext), string.Format("Create prefix '{0}'", this.Reference.GetName()));
-        }
-
-        protected override ICreationTarget GetTarget()
-        {
-            return new CreateNTriplesPrefixTarget(this.Reference);
+            return ((Reference != null) && (Reference.IsValid()));
         }
 
         private CreateNTriplesPrefixContext GetContext()

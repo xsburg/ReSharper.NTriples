@@ -10,6 +10,7 @@
 using System;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
+using ReSharper.NTriples.Tree;
 using ReSharper.NTriples.Parsing;
 namespace ReSharper.NTriples.Impl.Tree {
   internal partial class UseExternalDirective : NTriplesCompositeElement, ReSharper.NTriples.Tree.IUseExternalDirective {

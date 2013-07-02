@@ -10,6 +10,7 @@
 using System;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
+using ReSharper.NTriples.Tree;
 using ReSharper.NTriples.Parsing;
 namespace ReSharper.NTriples.Impl.Tree {
   internal partial class IfStatement : NTriplesCompositeElement, ReSharper.NTriples.Tree.IIfStatement {
@@ -35,7 +36,7 @@ namespace ReSharper.NTriples.Impl.Tree {
       {
       }
     );
-    public override short GetChildRole (JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement child) {
+    public override short GetChildRole(JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement child) {
       JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement current = GetNextFilteredChild(null);
       if (current == null) return 0;
       if (child.parent != this) return 0;

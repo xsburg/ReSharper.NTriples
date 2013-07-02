@@ -54,10 +54,9 @@ namespace ReSharper.NTriples.Cache
             Lifetime lifetime,
             IPsiServices psiServices,
             IShellLocks shellLocks,
-            CacheManager cacheManager,
             IPsiConfiguration psiConfiguration,
             IPersistentIndexManager persistentIdIndex)
-            : base(lifetime, psiServices, shellLocks, cacheManager, psiConfiguration, persistentIdIndex)
+            : base(lifetime, shellLocks, psiConfiguration, persistentIdIndex)
         {
         }
 

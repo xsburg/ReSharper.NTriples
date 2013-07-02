@@ -13,9 +13,10 @@ using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.CodeStyle;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Caches2;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.Impl.PsiManagerImpl;
+using JetBrains.ReSharper.Psi.Modules;
 using JetBrains.ReSharper.Psi.Naming.Impl;
 using JetBrains.ReSharper.Psi.Parsing;
+using JetBrains.ReSharper.Psi.Pointers;
 using JetBrains.ReSharper.Psi.Tree;
 using ReSharper.NTriples.Parsing;
 using ReSharper.NTriples.Resolve;
@@ -34,7 +35,10 @@ namespace ReSharper.NTriples.Impl
                     NTriplesTokenType.END_OF_LINE_COMMENT
                 });
 
-        private readonly NTriplesWordIndexLanguageProvider wordIndexLanguageProvider = new NTriplesWordIndexLanguageProvider();
+        public override bool IsCaseSensitive
+        {
+            get { return true; }
+        }
 
         public NTriplesLanguageService(
             PsiLanguageType psiLanguageType, IConstantValueService constantValueService /*, NTriplesCodeFormatter formatter*/)
@@ -73,14 +77,6 @@ namespace ReSharper.NTriples.Impl
             get
             {
                 return null;
-            }
-        }
-
-        public override IWordIndexLanguageProvider WordIndexLanguageProvider
-        {
-            get
-            {
-                return this.wordIndexLanguageProvider;
             }
         }
 
@@ -123,11 +119,6 @@ namespace ReSharper.NTriples.Impl
         public override ILexerFactory GetPrimaryLexerFactory()
         {
             return new NTriplesLexerFactory();
-        }
-
-        public override bool IsFilteredNode(ITreeNode node)
-        {
-            return node.IsWhitespaceToken();
         }
 
         public override bool IsValidName(DeclaredElementType elementType, string name)

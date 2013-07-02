@@ -8,7 +8,7 @@
 // </summary>
 // ***********************************************************************
 
-using JetBrains.TextControl.Markup;
+using JetBrains.TextControl.DocumentMarkup;
 using ReSharper.NTriples.CodeInspections.Highlightings;
 
 [assembly: RegisterHighlighter(VsPredefinedHighlighterIds.Comment, EffectType = EffectType.TEXT)]

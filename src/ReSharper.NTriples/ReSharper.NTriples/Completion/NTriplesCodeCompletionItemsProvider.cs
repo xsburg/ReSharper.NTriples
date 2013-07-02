@@ -25,7 +25,7 @@ namespace ReSharper.NTriples.Completion
 {
     [Language(typeof(NTriplesLanguage))]
     internal class NTriplesCodeCompletionItemsProvider
-        : ItemsProviderWithReference<NTriplesCodeCompletionContext, NTriplesReferenceBase, NTriplesFile>
+        : ItemsProviderOfSpecificContext<NTriplesCodeCompletionContext>
     {
         protected override void AddItemsGroups(
             NTriplesCodeCompletionContext context, GroupedItemsCollector collector, IntellisenseManager intellisenseManager)

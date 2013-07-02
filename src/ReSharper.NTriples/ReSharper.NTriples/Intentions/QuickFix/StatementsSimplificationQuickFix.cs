@@ -44,10 +44,10 @@ namespace ReSharper.NTriples.Intentions.QuickFix
             }
         }
 
-        public void CreateBulbItems(BulbMenu menu, Severity severity)
+        /*public void CreateBulbItems(BulbMenu menu, Severity severity)
         {
             menu.ArrangeQuickFix(this, severity);
-        }
+        }*/
 
         public override bool IsAvailable(IUserDataHolder cache)
         {

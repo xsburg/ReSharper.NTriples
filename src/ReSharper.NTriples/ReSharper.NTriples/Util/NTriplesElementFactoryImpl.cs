@@ -15,6 +15,7 @@ using JetBrains.Annotations;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
+using JetBrains.ReSharper.Psi.Modules;
 using JetBrains.Text;
 using ReSharper.NTriples.Impl;
 using ReSharper.NTriples.Parsing;

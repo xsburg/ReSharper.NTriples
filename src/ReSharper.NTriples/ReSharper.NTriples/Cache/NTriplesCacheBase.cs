@@ -18,6 +18,8 @@ using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Caches;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
+using JetBrains.ReSharper.Psi.Files;
+using JetBrains.ReSharper.Psi.Modules;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.Util.Caches;
 using JetBrains.Util;
@@ -36,9 +38,7 @@ namespace ReSharper.NTriples.Cache
 
         protected NTriplesCacheBase(
             Lifetime lifetime,
-            IPsiServices psiServices,
             IShellLocks shellLocks,
-            CacheManager cacheManager,
             IPsiConfiguration psiConfiguration,
             IPersistentIndexManager persistentIdIndex)
         {
@@ -48,7 +48,7 @@ namespace ReSharper.NTriples.Cache
 
             //using (ReadLockCookie.Create())
             //{
-            lifetime.AddBracket(() => cacheManager.RegisterCache(this), () => cacheManager.UnregisterCache(this));
+            //lifetime.AddBracket(() => cacheManager.RegisterCache(this), () => cacheManager.UnregisterCache(this));
             //}
         }
 
@@ -106,7 +106,6 @@ namespace ReSharper.NTriples.Cache
                 }) != LoadResult.OK)
             {
                 // clear all...
-                ((ICache)this).Release();
                 return null;
             }
             return data;
@@ -160,20 +159,17 @@ namespace ReSharper.NTriples.Cache
         {
         }
 
-        public void OnDocumentChange(ProjectFileDocumentCopyChange args)
+        public void OnDocumentChange(IPsiSourceFile sourceFile, ProjectFileDocumentCopyChange change)
         {
-            foreach (IPsiSourceFile sourceFile in args.ProjectFile.ToSourceFiles())
+            myShellLocks.AssertWriteAccessAllowed();
+            if (Accepts(sourceFile))
             {
-                this.myShellLocks.AssertWriteAccessAllowed();
-                if (Accepts(sourceFile))
-                {
-                    this.myShellLocks.AssertWriteAccessAllowed();
-                    this.myDirtyFiles.Add(sourceFile);
-                }
+                myShellLocks.AssertWriteAccessAllowed();
+                myDirtyFiles.Add(sourceFile);
             }
         }
 
-        public void OnFileRemoved(IPsiSourceFile sourceFile)
+        public void Drop(IPsiSourceFile sourceFile)
         {
             this.myShellLocks.AssertWriteAccessAllowed();
 
@@ -273,7 +269,7 @@ namespace ReSharper.NTriples.Cache
 
         protected static bool Accepts(IPsiSourceFile sourceFile)
         {
-            return sourceFile.GetAllPossiblePsiLanguages().Any(x => x.Is<NTriplesLanguage>());
+            return sourceFile.GetLanguages().Any(x => x.Is<NTriplesLanguage>());
         }
 
         protected abstract void ClearCache(IPsiSourceFile sourceFile);

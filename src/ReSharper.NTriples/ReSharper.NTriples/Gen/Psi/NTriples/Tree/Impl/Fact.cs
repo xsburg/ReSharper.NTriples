@@ -10,6 +10,7 @@
 using System;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
+using ReSharper.NTriples.Tree;
 using ReSharper.NTriples.Parsing;
 namespace ReSharper.NTriples.Impl.Tree {
   internal partial class Fact : NTriplesCompositeElement, ReSharper.NTriples.Tree.IFact {
@@ -32,11 +33,11 @@ namespace ReSharper.NTriples.Impl.Tree {
     private static readonly JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeDictionary<short> CHILD_ROLES = new JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeTypeDictionary<short>(
       new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>[]
       {
-        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(ReSharper.NTriples.Impl.Tree.ElementType.OBJECTS, OBJECTS),
         new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(ReSharper.NTriples.Impl.Tree.ElementType.PREDICATE, PREDICATE),
+        new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(ReSharper.NTriples.Impl.Tree.ElementType.OBJECTS, OBJECTS),
       }
     );
-    public override short GetChildRole (JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement child) {
+    public override short GetChildRole(JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement child) {
       return CHILD_ROLES[child.NodeType];
     }
     public virtual ReSharper.NTriples.Tree.IPredicate Predicate {
@@ -89,24 +90,24 @@ namespace ReSharper.NTriples.Impl.Tree {
     }
     public virtual ReSharper.NTriples.Tree.IPredicate SetPredicate (ReSharper.NTriples.Tree.IPredicate param)
     {
-      using (JetBrains.Application.WriteLockCookie.Create (this.IsPhysical()))
+      using (JetBrains.Application.WriteLockCookie.Create(this.IsPhysical()))
       {
-        TreeElement current = null, next = GetNextFilteredChild (current), result = null;
+        TreeElement current = null, next = GetNextFilteredChild(current), result = null;
         next = GetNextFilteredChild (current);
         if (next == null) {
           if (param == null) return null;
-          result = current = (TreeElement)JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.AddChildAfter (this, current, (JetBrains.ReSharper.Psi.Tree.ITreeNode)param);
+          result = current = (TreeElement) JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.AddChildAfter(this, current, (JetBrains.ReSharper.Psi.Tree.ITreeNode) param);
         } else {
           if (next.NodeType == ReSharper.NTriples.Impl.Tree.ElementType.PREDICATE) {
             if (param != null) {
-              result = current = (TreeElement)JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.ReplaceChild(next, (JetBrains.ReSharper.Psi.Tree.ITreeNode)param);
+              result = current = (TreeElement) JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.ReplaceChild(next, (JetBrains.ReSharper.Psi.Tree.ITreeNode) param);
             } else {
-              current = GetNextFilteredChild (next);
-              JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.DeleteChild (next);
+              current = GetNextFilteredChild(next);
+              JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.DeleteChild(next);
             }
           } else {
             if (param == null) return null;
-            result = (TreeElement)JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.AddChildBefore(next, (JetBrains.ReSharper.Psi.Tree.ITreeNode)param);
+            result = (TreeElement) JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.ModificationUtil.AddChildBefore(next, (JetBrains.ReSharper.Psi.Tree.ITreeNode) param);
             current = next;
           }
         }

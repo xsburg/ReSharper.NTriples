@@ -34,7 +34,6 @@ namespace ReSharper.NTriples.Parsing {
         case ParsingContext.UNDEFINED: return false;
         default:
         throw new System.InvalidOperationException("Unknown context");
-        return false;
       }
     }
     protected virtual TreeElement match(JetBrains.ReSharper.Psi.Parsing.TokenNodeType tokenType) {

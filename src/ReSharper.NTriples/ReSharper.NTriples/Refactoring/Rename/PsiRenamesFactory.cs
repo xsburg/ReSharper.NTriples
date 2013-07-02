@@ -16,7 +16,7 @@ using ReSharper.NTriples.Impl;
 
 namespace ReSharper.NTriples.Refactoring.Rename
 {
-    [FeaturePart]
+    [ShellFeaturePart]
     public class PsiRenamesFactory : AtomicRenamesFactory
     {
         public static string NameFromCamelCase(string s)

@@ -36,7 +36,7 @@ using ReSharper.NTriples.Resolve;
 
 namespace ReSharper.NTriples.Feature.Finding.GotoMember
 {
-    [FeaturePart]
+    [ShellFeaturePart]
     public class NTriplesGotoFileMemberProvider : IGotoFileMemberProvider
     {
         public IEnumerable<MatchingInfo> FindMatchingInfos(

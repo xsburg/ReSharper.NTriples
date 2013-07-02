@@ -176,7 +176,6 @@
     <Compile Include="Completion\KeywordCompletionUtil.cs" />
     <Compile Include="Completion\NTriplesKeywordLookupItem.cs" />
     <Compile Include="Impl\Tree\ChildRole.cs" />
-    <Compile Include="Impl\NTriplesWordIndexLanguageProvider.cs" />
     <Compile Include="Parsing\INTriplesParser.cs" />
     <Compile Include="Parsing\ParserMessages.cs" />
     <Compile Include="Parsing\NTriplesMissingTokensInserter.cs" />
@@ -209,20 +208,11 @@
     <Compile Include="Tree\WhitespaceBase.cs" />
     <CsLex Include="Parsing\NTriplesLexer.gen.lex" />
     <ParserGen Include="Parsing\ntriples.psi" />
-    <None Include="Parsing\TokenTypeGenerated.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>TokenTypeGenerated.cs</LastGenOutput>
-    </None>
     <None Include="TODO\N3CodeFormatter.cs" />
     <Compile Include="Impl\NTriplesLanguage.cs" />
     <Compile Include="Impl\NTriplesLexerFactory.cs" />
     <Compile Include="Impl\NTriplesProjectFileType.cs" />
     <Compile Include="Parsing\NTriplesTokenType.cs" />
-    <Compile Include="Parsing\TokenTypeGenerated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TokenTypeGenerated.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="TODO\AboutAction.cs" />
     <Compile Include="Impl\NTriplesProjectFileLanguageService.cs" />
@@ -244,7 +234,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
-    <ReSharperSdkTargets Condition=" '$(ReSharperSdkTargets)' == '' ">$(MSBuildExtensionsPath)\JetBrains\ReSharper.SDK\v7.1</ReSharperSdkTargets>
+    <ReSharperSdkTargets Condition=" '$(ReSharperSdkTargets)' == '' ">$(MSBuildExtensionsPath)\JetBrains\ReSharper.SDK\v8.0</ReSharperSdkTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -314,10 +304,13 @@
   <Import Project="$(ReSharperSdkTargets)\Plugin.Targets" />
   <Import Project="$(ReSharperSdkTools)\MSBuild\JetBrains.Build.Common.Targets" />
   <Import Project="$(ReSharperSdkTools)\MSBuild\JetBrains.Build.Platform.ThemedIconsConverter.Targets" />
-  <Import Project="$(ReSharperSdkTools)\parserGen\ParserGen.Targets" />
-  <Import Project="$(ReSharperSdkTools)\CsLex\CsLex.Targets" />
+  <Import Project="$(ReSharperSdkTools)\PsiGen\PsiGen.Targets" />
+  <Import Project="$(ReSharperSdkTools)\PsiGen\CsLex.Targets" />
   <Target Name="BeforeBuild">
     <MakeDir Directories="$(MSBuildProjectDirectory)\obj" />
-    <Copy SourceFiles="$(ReSharperSdkTools)\parserGen\Unicode.lex" DestinationFolder="$(MSBuildProjectDirectory)\obj" />
+    <Copy SourceFiles="$(ReSharperSdkTools)\PsiGen\Unicode.lex" DestinationFolder="$(MSBuildProjectDirectory)\obj" />
   </Target>
+  <PropertyGroup>
+    <ParserGenOutputBase>$(MSBuildProjectDirectory)\Gen</ParserGenOutputBase>
+  </PropertyGroup>
 </Project>

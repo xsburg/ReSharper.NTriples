@@ -10,6 +10,7 @@
 using System;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
+using ReSharper.NTriples.Tree;
 using ReSharper.NTriples.Parsing;
 namespace ReSharper.NTriples.Impl.Tree {
   internal partial class Expression : NTriplesCompositeElement, ReSharper.NTriples.Tree.IExpression {
@@ -34,13 +35,13 @@ namespace ReSharper.NTriples.Impl.Tree {
         new System.Collections.Generic.KeyValuePair<JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.NodeType, short>(ReSharper.NTriples.Impl.Tree.ElementType.IDENTIFIER, IDENTIFIER),
       }
     );
-    public override short GetChildRole (JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement child) {
+    public override short GetChildRole(JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement child) {
       return CHILD_ROLES[child.NodeType];
     }
-    public JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<ReSharper.NTriples.Tree.IIdentifier> Identifiers {
+    public virtual JetBrains.ReSharper.Psi.Tree.TreeNodeCollection<ReSharper.NTriples.Tree.IIdentifier> Identifiers {
       get { return FindListOfChildrenByRole<ReSharper.NTriples.Tree.IIdentifier>(IDENTIFIER); }
     }
-    public JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<ReSharper.NTriples.Tree.IIdentifier> IdentifiersEnumerable {
+    public virtual JetBrains.ReSharper.Psi.Tree.TreeNodeEnumerable<ReSharper.NTriples.Tree.IIdentifier> IdentifiersEnumerable {
       get { return AsChildrenEnumerable<ReSharper.NTriples.Tree.IIdentifier>(IDENTIFIER); }
     }
     public override string ToString() {

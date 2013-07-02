@@ -68,7 +68,7 @@ namespace ReSharper.NTriples.Impl.Tree {
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType URI_STRING = ReSharper.NTriples.Parsing.NTriplesTokenType.URI_STRING;
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType USING_KEYWORD = ReSharper.NTriples.Parsing.NTriplesTokenType.USING_KEYWORD;
     public static readonly JetBrains.ReSharper.Psi.Parsing.TokenNodeType VARIABLE_IDENTIFIER = ReSharper.NTriples.Parsing.NTriplesTokenType.VARIABLE_IDENTIFIER;
-    //  public const short FIRST_TYPE = null + 1;
+    //  public const short FIRST_TYPE =  + 1;
     //  public const short LAST_TYPE = $lasttype;
   }
 }
