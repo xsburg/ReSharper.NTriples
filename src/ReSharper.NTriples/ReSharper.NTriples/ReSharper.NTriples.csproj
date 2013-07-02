@@ -135,6 +135,11 @@
     <Compile Include="Intentions\QuickFix\StatementsSimplificationQuickFix.cs" />
     <Compile Include="Intentions\NTriplesIntentionsUtil.cs" />
     <Compile Include="Intentions\NTriplesPrefixInserter.cs" />
+    <Compile Include="Parsing\TokenTypeGenerated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TokenTypeGenerated.tt</DependentUpon>
+    </Compile>
     <Compile Include="Refactoring\Rename\PsiAtomicRename.cs" />
     <Compile Include="Refactoring\Rename\PsiDerivedElementRename.cs" />
     <Compile Include="Refactoring\Rename\PsiRenamesFactory.cs" />
@@ -208,6 +213,10 @@
     <Compile Include="Tree\WhitespaceBase.cs" />
     <CsLex Include="Parsing\NTriplesLexer.gen.lex" />
     <ParserGen Include="Parsing\ntriples.psi" />
+    <None Include="Parsing\TokenTypeGenerated.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TokenTypeGenerated.cs</LastGenOutput>
+    </None>
     <None Include="TODO\N3CodeFormatter.cs" />
     <Compile Include="Impl\NTriplesLanguage.cs" />
     <Compile Include="Impl\NTriplesLexerFactory.cs" />

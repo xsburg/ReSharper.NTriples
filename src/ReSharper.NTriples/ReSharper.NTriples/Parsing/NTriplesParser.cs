@@ -13,6 +13,7 @@ using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Parsing;
 using JetBrains.ReSharper.Psi.Tree;
+using JetBrains.ReSharper.Psi.Util;
 using ReSharper.NTriples.Impl.Tree;
 
 namespace ReSharper.NTriples.Parsing
@@ -22,9 +23,12 @@ namespace ReSharper.NTriples.Parsing
         protected IPsiSourceFile SourceFile;
         private readonly SeldomInterruptChecker myCheckForInterrupt;
         private readonly ILexer originalLexer;
+        private CommonIdentifierIntern commonIdentifierIntern;
+        private ITokenIntern myTokenIntern;
 
-        public NTriplesParser(ILexer lexer)
+        public NTriplesParser(ILexer lexer, CommonIdentifierIntern commonIdentifierIntern)
         {
+            this.commonIdentifierIntern = commonIdentifierIntern;
             this.originalLexer = lexer;
             this.myCheckForInterrupt = new SeldomInterruptChecker();
             this.setLexer(new NTriplesFilteringLexer(lexer));
@@ -32,9 +36,14 @@ namespace ReSharper.NTriples.Parsing
 
         public IFile ParseFile()
         {
-            var file = (NTriplesFile)this.parseNTriplesFile();
-            this.InsertMissingTokens(file, false);
-            return file;
+            return commonIdentifierIntern.DoWithIdentifierIntern(intern =>
+            {
+                myTokenIntern = intern;
+                var file = (NTriplesFile)parseNTriplesFile();
+                InsertMissingTokens(file, false, intern);
+                myTokenIntern = null;
+                return file;
+            });
         }
 
         public TreeElement ParseNTriplesFile(bool isFileReal, bool restoreWhitespaces = false)
@@ -42,7 +51,7 @@ namespace ReSharper.NTriples.Parsing
             TreeElement file = base.parseNTriplesFile();
             if (restoreWhitespaces)
             {
-                this.InsertMissingTokens(file, false);
+                this.InsertMissingTokens(file, false, myTokenIntern);
             }
 
             var psiFile = file as NTriplesFile;
@@ -315,9 +324,9 @@ namespace ReSharper.NTriples.Parsing
             return element;
         }
 
-        private void InsertMissingTokens(TreeElement result, bool trimMissingTokens)
+        private void InsertMissingTokens(TreeElement result, bool trimMissingTokens, ITokenIntern intern)
         {
-            NTriplesMissingTokensInserter.Run(result, this.originalLexer, this, trimMissingTokens, this.myCheckForInterrupt);
+            NTriplesMissingTokensInserter.Run(result, this.originalLexer, this, trimMissingTokens, this.myCheckForInterrupt, intern);
         }
     }
 }

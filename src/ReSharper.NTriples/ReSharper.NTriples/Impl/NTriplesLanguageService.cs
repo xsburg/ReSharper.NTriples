@@ -18,6 +18,7 @@ using JetBrains.ReSharper.Psi.Naming.Impl;
 using JetBrains.ReSharper.Psi.Parsing;
 using JetBrains.ReSharper.Psi.Pointers;
 using JetBrains.ReSharper.Psi.Tree;
+using JetBrains.ReSharper.Psi.Util;
 using ReSharper.NTriples.Parsing;
 using ReSharper.NTriples.Resolve;
 
@@ -26,6 +27,8 @@ namespace ReSharper.NTriples.Impl
     [Language(typeof(NTriplesLanguage))]
     public class NTriplesLanguageService : LanguageService
     {
+        private readonly CommonIdentifierIntern commonIdentifierIntern;
+
         //private readonly NTriplesCodeFormatter formatter;
         internal static readonly NodeTypeSet WHITESPACE_OR_COMMENT = new NodeTypeSet(
             new[]
@@ -41,9 +44,10 @@ namespace ReSharper.NTriples.Impl
         }
 
         public NTriplesLanguageService(
-            PsiLanguageType psiLanguageType, IConstantValueService constantValueService /*, NTriplesCodeFormatter formatter*/)
+            PsiLanguageType psiLanguageType, IConstantValueService constantValueService, CommonIdentifierIntern commonIdentifierIntern)
             : base(psiLanguageType, constantValueService)
         {
+            this.commonIdentifierIntern = commonIdentifierIntern;
             //this.formatter = formatter;
         }
 
@@ -113,7 +117,7 @@ namespace ReSharper.NTriples.Impl
         public override IParser CreateParser(ILexer lexer, IPsiModule module, IPsiSourceFile sourceFile)
         {
             var typedLexer = (lexer as ILexer<int>) ?? lexer.ToCachingLexer();
-            return new Parser(typedLexer, sourceFile);
+            return new Parser(typedLexer, sourceFile, commonIdentifierIntern);
         }
 
         public override ILexerFactory GetPrimaryLexerFactory()
@@ -128,8 +132,8 @@ namespace ReSharper.NTriples.Impl
 
         private class Parser : NTriplesParser
         {
-            public Parser(ILexer lexer, IPsiSourceFile sourceFile)
-                : base(lexer)
+            public Parser(ILexer lexer, IPsiSourceFile sourceFile, CommonIdentifierIntern commonIdentifierIntern)
+                : base(lexer, commonIdentifierIntern)
             {
                 this.SourceFile = sourceFile;
             }

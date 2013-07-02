@@ -12,6 +12,7 @@ using JetBrains.DocumentModel;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Feature.Services.Bulbs;
 using JetBrains.ReSharper.Psi;
+using JetBrains.ReSharper.Psi.Files;
 using JetBrains.TextControl;
 using ReSharper.NTriples.Impl;
 using ReSharper.NTriples.Tree;
@@ -23,7 +24,7 @@ namespace ReSharper.NTriples.Feature.Services.MatchingBrace
     {
         public IContextActionDataProvider Build(ISolution solution, ITextControl textControl)
         {
-            if (!solution.GetPsiServices().CacheManager.IsIdle)
+            if (!solution.GetPsiServices().Caches.IsIdle.Value)
             {
                 return null;
             }

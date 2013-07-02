@@ -14,6 +14,7 @@ using JetBrains.Application.Settings;
 using JetBrains.DocumentModel;
 using JetBrains.ReSharper.Daemon;
 using JetBrains.ReSharper.Psi;
+using JetBrains.ReSharper.Psi.Files;
 using ReSharper.NTriples.Impl;
 using ReSharper.NTriples.Tree;
 
@@ -24,9 +25,9 @@ namespace ReSharper.NTriples.CodeInspections
         [CanBeNull]
         public static INTriplesFile GetNTriplesFile(IPsiSourceFile sourceFile)
         {
-            PsiManager manager = PsiManager.GetInstance(sourceFile.GetSolution());
-            manager.AssertAllDocumentAreCommited();
-            return manager.GetPsiFile<NTriplesLanguage>(new DocumentRange(sourceFile.Document, 0)) as INTriplesFile;
+            var psiServices = sourceFile.GetPsiServices();
+            psiServices.Files.AssertAllDocumentAreCommited();
+            return psiServices.Files.GetDominantPsiFile<NTriplesLanguage>(sourceFile) as INTriplesFile;
         }
 
         public abstract IEnumerable<IDaemonStageProcess> CreateProcess(

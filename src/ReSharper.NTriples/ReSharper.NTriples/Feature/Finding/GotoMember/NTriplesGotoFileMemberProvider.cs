@@ -24,6 +24,7 @@ using JetBrains.ReSharper.Feature.Services.Navigation;
 using JetBrains.ReSharper.Feature.Services.Occurences;
 using JetBrains.ReSharper.Feature.Services.Search;
 using JetBrains.ReSharper.Psi;
+using JetBrains.ReSharper.Psi.Files;
 using JetBrains.ReSharper.Psi.Search;
 using JetBrains.Text;
 using JetBrains.UI.PopupWindowManager;
@@ -39,72 +40,6 @@ namespace ReSharper.NTriples.Feature.Finding.GotoMember
     [ShellFeaturePart]
     public class NTriplesGotoFileMemberProvider : IGotoFileMemberProvider
     {
-        public IEnumerable<MatchingInfo> FindMatchingInfos(
-            IdentifierMatcher matcher, INavigationScope scope, CheckForInterrupt checkCancelled, GotoContext gotoContext)
-        {
-            var fileMemberScope = scope as FileMemberNavigationScope;
-            if (fileMemberScope == null)
-            {
-                return EmptyList<MatchingInfo>.InstanceList;
-            }
-
-            var primaryMembersData = this.GetPrimaryMembers(fileMemberScope);
-
-            var fileMembersMap = new NTriplesFileMembersMap();
-
-            var result = new Collection<MatchingInfo>();
-            foreach (var data in primaryMembersData)
-            {
-                var quickSearchTexts = this.GetQuickSearchTexts(data.Element);
-                var matchedText = quickSearchTexts.FirstOrDefault(tuple => matcher.Matches(tuple.A));
-                if (matchedText == null)
-                {
-                    continue;
-                }
-
-                fileMembersMap.Add(matchedText.A, data);
-
-                var matchingIndicies = matchedText.B
-                                           ? matcher.MatchingIndicies(matchedText.A)
-                                           : EmptyArray<IdentifierMatch>.Instance;
-                result.Add(
-                    new MatchingInfo(
-                        matchedText.A,
-                        matcher.Filter == "*"
-                            ? EmptyList<IdentifierMatch>.InstanceList
-                            : matchingIndicies,
-                        matchedText.B));
-            }
-
-            gotoContext.PutData(NTriplesFileMembersMap.NTriplesFileMembersMapKey, fileMembersMap);
-            return result;
-        }
-
-        public IEnumerable<IOccurence> GetOccurencesByMatchingInfo(
-            MatchingInfo navigationInfo, INavigationScope scope, GotoContext gotoContext)
-        {
-            var fileMembersMap = gotoContext.GetData(NTriplesFileMembersMap.NTriplesFileMembersMapKey);
-            if (fileMembersMap == null)
-            {
-                yield break;
-            }
-
-            var membersData = fileMembersMap[navigationInfo.Identifier];
-            foreach (var clrFileMemberData in membersData)
-            {
-                var occurence = this.CreateOccurence(clrFileMemberData);
-                if (occurence != null)
-                {
-                    yield return occurence;
-                }
-            }
-        }
-        
-        public virtual bool IsApplicable(INavigationScope scope, GotoContext gotoContext)
-        {
-            return true;
-        }
-
         [CanBeNull]
         protected IOccurence CreateOccurence(NTriplesFileMemberData fileMemberData)
         {
@@ -146,8 +81,7 @@ namespace ReSharper.NTriples.Feature.Finding.GotoMember
                 return EmptyList<NTriplesFileMemberData>.InstanceList;
             }
 
-            var psiManager = primarySourceFile.GetSolution().GetComponent<PsiManager>();
-            var file = psiManager.GetPrimaryPsiFile(primarySourceFile) as NTriplesFile;
+            var file = primarySourceFile.GetPrimaryPsiFile() as NTriplesFile;
             if (file == null)
             {
                 return EmptyList<NTriplesFileMemberData>.InstanceList;
@@ -171,6 +105,78 @@ namespace ReSharper.NTriples.Feature.Finding.GotoMember
         private IEnumerable<JetTuple<string, bool>> GetQuickSearchTexts(IDeclaredElement declaredElement)
         {
             return new[] { JetTuple.Of(declaredElement.ShortName, true) };
+        }
+
+        public bool IsApplicable(INavigationScope scope, GotoContext gotoContext, IdentifierMatcher matcher)
+        {
+            return true;
+        }
+
+        public IEnumerable<MatchingInfo> FindMatchingInfos(
+            IdentifierMatcher matcher,
+            INavigationScope scope,
+            GotoContext gotoContext,
+            CheckForInterrupt checkCancelled)
+        {
+            var fileMemberScope = scope as FileMemberNavigationScope;
+            if (fileMemberScope == null)
+            {
+                return EmptyList<MatchingInfo>.InstanceList;
+            }
+
+            var primaryMembersData = this.GetPrimaryMembers(fileMemberScope);
+
+            var fileMembersMap = new NTriplesFileMembersMap();
+
+            var result = new Collection<MatchingInfo>();
+            foreach (var data in primaryMembersData)
+            {
+                var quickSearchTexts = this.GetQuickSearchTexts(data.Element);
+                var matchedText = quickSearchTexts.FirstOrDefault(tuple => matcher.Matches(tuple.A));
+                if (matchedText == null)
+                {
+                    continue;
+                }
+
+                fileMembersMap.Add(matchedText.A, data);
+
+                var matchingIndicies = matchedText.B
+                    ? matcher.MatchingIndicies(matchedText.A)
+                    : EmptyArray<IdentifierMatch>.Instance;
+                result.Add(
+                    new MatchingInfo(
+                        matchedText.A,
+                        matcher.Filter == "*"
+                            ? EmptyList<IdentifierMatch>.InstanceList
+                            : matchingIndicies,
+                        matchedText.B));
+            }
+
+            gotoContext.PutData(NTriplesFileMembersMap.NTriplesFileMembersMapKey, fileMembersMap);
+            return result;
+        }
+
+        public IEnumerable<IOccurence> GetOccurencesByMatchingInfo(
+            MatchingInfo navigationInfo,
+            INavigationScope scope,
+            GotoContext gotoContext,
+            CheckForInterrupt checkForInterrupt)
+        {
+            var fileMembersMap = gotoContext.GetData(NTriplesFileMembersMap.NTriplesFileMembersMapKey);
+            if (fileMembersMap == null)
+            {
+                yield break;
+            }
+
+            var membersData = fileMembersMap[navigationInfo.Identifier];
+            foreach (var clrFileMemberData in membersData)
+            {
+                var occurence = this.CreateOccurence(clrFileMemberData);
+                if (occurence != null)
+                {
+                    yield return occurence;
+                }
+            }
         }
     }
 }

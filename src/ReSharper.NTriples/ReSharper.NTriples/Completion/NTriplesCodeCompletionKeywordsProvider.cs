@@ -97,11 +97,11 @@ namespace ReSharper.NTriples.Completion
                         tokenRange.TextRange.StartOffset,
                         Math.Max(tokenRange.TextRange.EndOffset, selectionRange.TextRange.EndOffset));
 
-                    return new TextLookupRanges(insertRange, false, replaceRange);
+                    return new TextLookupRanges(insertRange, replaceRange);
                 }
             }
 
-            return new TextLookupRanges(TextRange.InvalidRange, false, TextRange.InvalidRange);
+            return new TextLookupRanges(TextRange.InvalidRange, TextRange.InvalidRange);
         }
     }
 }

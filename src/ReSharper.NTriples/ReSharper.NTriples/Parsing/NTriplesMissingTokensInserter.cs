@@ -13,6 +13,7 @@ using JetBrains.Application;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Parsing;
+using JetBrains.ReSharper.Psi.Util;
 using JetBrains.Text;
 using JetBrains.Util;
 using JetBrains.Util.DataStructures;
@@ -27,8 +28,8 @@ namespace ReSharper.NTriples.Parsing
         private new readonly DataIntern<string> myWhitespaceIntern = new DataIntern<string>();
 
         private NTriplesMissingTokensInserter(
-            ILexer lexer, ITokenOffsetProvider offsetProvider, SeldomInterruptChecker interruptChecker)
-            : base(offsetProvider, interruptChecker)
+            ILexer lexer, ITokenOffsetProvider offsetProvider, SeldomInterruptChecker interruptChecker, ITokenIntern intern)
+            : base(offsetProvider, interruptChecker, intern)
         {
             this.myLexer = lexer;
         }
@@ -38,7 +39,8 @@ namespace ReSharper.NTriples.Parsing
             ILexer lexer,
             ITokenOffsetProvider offsetProvider,
             bool trimTokens,
-            SeldomInterruptChecker interruptChecker)
+            SeldomInterruptChecker interruptChecker,
+            ITokenIntern intern)
         {
             Assertion.Assert(node.parent == null, "node.parent == null");
 
@@ -48,7 +50,7 @@ namespace ReSharper.NTriples.Parsing
                 return;
             }
 
-            var inserter = new NTriplesMissingTokensInserter(lexer, offsetProvider, interruptChecker);
+            var inserter = new NTriplesMissingTokensInserter(lexer, offsetProvider, interruptChecker, intern);
             lexer.Start();
 
             if (trimTokens)
@@ -158,7 +160,7 @@ namespace ReSharper.NTriples.Parsing
                 public static readonly NodeType Instance = new DummyNodeType();
 
                 private DummyNodeType()
-                    : base("DummyContainer")
+                    : base("DummyContainer", 0)
                 {
                 }
 

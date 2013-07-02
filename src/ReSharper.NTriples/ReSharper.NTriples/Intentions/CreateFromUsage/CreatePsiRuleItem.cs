@@ -50,7 +50,7 @@ namespace ReSharper.NTriples.Intentions.CreateFromUsage
 
             Assertion.Assert(result.ResultDeclaration != null, "result.ResultDeclaration != null");
             Assertion.Assert(result.ResultDeclaration.IsValid(), "result.ResultDeclaration.IsValid()");
-            result.ResultDeclaration.GetPsiServices().PsiManager.UpdateCaches();
+            result.ResultDeclaration.GetPsiServices().Caches.Update();
             var postExecute = this.GetContext().Target as ITargetPostExecute;
             if (result.ResultDeclaration.DeclaredElement != null && postExecute != null)
             {

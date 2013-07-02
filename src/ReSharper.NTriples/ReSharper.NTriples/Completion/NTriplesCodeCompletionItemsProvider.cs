@@ -45,11 +45,12 @@ namespace ReSharper.NTriples.Completion
 
             if (context.BasicContext.CodeCompletionType != CodeCompletionType.AutomaticCompletion)
             {
-                context.BasicContext.CompletionManager.PsiServices.PsiManager.UpdateCaches();
+                context.BasicContext.CompletionManager.PsiServices.Caches.Update();
             }
 
             bool flag = false;
-            NTriplesReferenceBase reference = this.GetReference(file, basicContext.SelectedTreeRange);
+            // TODO: restore this logic!
+            /*NTriplesReferenceBase reference = this.GetReference(file, basicContext.SelectedTreeRange);
             if (reference != null)
             {
                 ranges = this.EvaluateRanges(reference, null, context);
@@ -79,7 +80,7 @@ namespace ReSharper.NTriples.Completion
                         flag = true;
                     }
                 }
-            }
+            }*/
             return flag;
         }
 

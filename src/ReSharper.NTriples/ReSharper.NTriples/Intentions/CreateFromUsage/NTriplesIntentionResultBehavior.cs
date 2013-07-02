@@ -9,6 +9,7 @@
 // ***********************************************************************
 
 using JetBrains.Application;
+using JetBrains.DataFlow;
 using JetBrains.DocumentModel;
 using JetBrains.ReSharper.Feature.Services.LiveTemplates.Hotspots;
 using JetBrains.TextControl;
@@ -47,14 +48,17 @@ namespace ReSharper.NTriples.Intentions.CreateFromUsage
             }
             else
             {
-                hotspotSessionUi.HotspotSession.Closed += (session, type) =>
-                {
-                    if (type != TerminationType.Finished)
+                hotspotSessionUi.HotspotSession.Closed.Advise(
+                    EternalLifetime.Instance,
+                    args =>
                     {
-                        return;
-                    }
-                    SetCaretPosition(textControl, result);
-                };
+                        if (args.TerminationType != TerminationType.Finished)
+                        {
+                            return;
+                        }
+
+                        SetCaretPosition(textControl, result);
+                    });
             }
         }
     }

@@ -39,6 +39,14 @@ namespace ReSharper.NTriples.Completion
             }
         }
 
+        public bool ForceHideCompletion
+        {
+            get
+            {
+                return false;
+            }
+        }
+
         public PsiLanguageType Language
         {
             get

@@ -15,6 +15,7 @@ using JetBrains.ReSharper.Psi.Parsing;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Text;
 using JetBrains.Util;
+using JetBrains.Util.Logging;
 
 namespace ReSharper.NTriples.Tree
 {

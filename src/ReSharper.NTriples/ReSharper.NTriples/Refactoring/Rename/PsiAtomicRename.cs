@@ -127,7 +127,7 @@ namespace ReSharper.NTriples.Refactoring.Rename
                 pi.Advance();
             }
 
-            psiServices.PsiManager.UpdateCaches();
+            psiServices.Caches.Update();
 
             IDeclaredElement newDeclaredElement;
             if (this.myDeclarations.Count > 0)

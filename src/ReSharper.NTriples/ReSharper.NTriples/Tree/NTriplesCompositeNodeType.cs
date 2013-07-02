@@ -14,8 +14,8 @@ namespace ReSharper.NTriples.Tree
 {
     public abstract class NTriplesCompositeNodeType : CompositeNodeType
     {
-        protected NTriplesCompositeNodeType(string s)
-            : base(s)
+        protected NTriplesCompositeNodeType(string s, int index)
+            : base(s, index)
         {
         }
     }

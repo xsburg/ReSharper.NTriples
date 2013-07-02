@@ -22,6 +22,7 @@ using JetBrains.ReSharper.Feature.Services.LiveTemplates.LiveTemplates;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
+using JetBrains.Util.Logging;
 
 namespace ReSharper.NTriples.Intentions.CreateFromUsage
 {
@@ -67,7 +68,6 @@ namespace ReSharper.NTriples.Intentions.CreateFromUsage
             Debug.Assert(Shell.Instance.Invocator != null, "Shell.Instance.Invocator != null");
             Shell.Instance.Invocator.Dispatcher.AssertAccess();
 
-            Assertion.Assert(!PsiManager.GetInstance(solution).HasActiveTransaction, "PSI transaction is active");
             solution.GetComponent<SolutionDocumentTransactionManager>().AssertNotUnderTransaction();
 
             IFile file = this.myAnchor.GetContainingFile();

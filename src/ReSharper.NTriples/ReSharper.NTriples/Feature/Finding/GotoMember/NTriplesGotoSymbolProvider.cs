@@ -18,6 +18,7 @@ using JetBrains.ReSharper.Feature.Services.Goto;
 using JetBrains.ReSharper.Feature.Services.Occurences;
 using JetBrains.ReSharper.Feature.Services.Search;
 using JetBrains.ReSharper.Psi;
+using JetBrains.ReSharper.Psi.Files;
 using JetBrains.Text;
 using JetBrains.Util;
 using ReSharper.NTriples.Cache;
@@ -47,7 +48,7 @@ namespace ReSharper.NTriples.Feature.Finding.GotoMember
 */
 
         public IEnumerable<MatchingInfo> FindMatchingInfos(
-            IdentifierMatcher matcher, INavigationScope scope, CheckForInterrupt checkCancelled, GotoContext gotoContext)
+            IdentifierMatcher matcher, INavigationScope scope, GotoContext gotoContext, CheckForInterrupt checkCancelled)
         {
             var primaryMembersData = this.GetPrimaryMembers(scope.GetSolution());
 
@@ -82,7 +83,7 @@ namespace ReSharper.NTriples.Feature.Finding.GotoMember
         }
 
         public IEnumerable<IOccurence> GetOccurencesByMatchingInfo(
-            MatchingInfo navigationInfo, INavigationScope scope, GotoContext gotoContext)
+            MatchingInfo navigationInfo, INavigationScope scope, GotoContext gotoContext, CheckForInterrupt checkCancelled)
         {
             var fileMembersMap = gotoContext.GetData(NTriplesFileMembersMap.NTriplesFileMembersMapKey);
             if (fileMembersMap == null)
@@ -146,7 +147,7 @@ namespace ReSharper.NTriples.Feature.Finding.GotoMember
                     (x => (IOccurence)new DeclaredElementOccurence((IDeclaredElement)x, OccurenceType.Occurence)));*/
         }
 
-        public bool IsApplicable(INavigationScope scope, GotoContext gotoContext)
+        public bool IsApplicable(INavigationScope scope, GotoContext gotoContext, IdentifierMatcher matcher)
         {
             if (!(scope is SolutionNavigationScope))
             {

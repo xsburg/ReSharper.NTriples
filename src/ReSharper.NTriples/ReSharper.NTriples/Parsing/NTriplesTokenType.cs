@@ -311,8 +311,10 @@ namespace ReSharper.NTriples.Parsing
 
         private abstract class NTriplesTokenNodeType : TokenNodeType
         {
+            private static int myIndex = 1;
+
             protected NTriplesTokenNodeType(string s)
-                : base(s)
+                : base(s, myIndex++)
             {
             }
 
