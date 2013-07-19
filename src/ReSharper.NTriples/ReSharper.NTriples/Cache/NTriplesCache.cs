@@ -52,7 +52,6 @@ namespace ReSharper.NTriples.Cache
 
         public NTriplesCache(
             Lifetime lifetime,
-            IPsiServices psiServices,
             IShellLocks shellLocks,
             IPsiConfiguration psiConfiguration,
             IPersistentIndexManager persistentIdIndex)

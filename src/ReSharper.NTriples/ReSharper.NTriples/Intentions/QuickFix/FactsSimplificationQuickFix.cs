@@ -51,22 +51,26 @@ namespace ReSharper.NTriples.Intentions.QuickFix
 
         protected override Action<ITextControl> ExecutePsiTransaction(ISolution solution, IProgressIndicator progress)
         {
-            var startFact = this.highlighter.StartElement;
-            var factElements = this.CollectFacts();
-            var facts = factElements.GroupBy(GetPredicateText)
-                                    .ToDictionary(
-                                        g => g.Key, g => g.SelectMany(x => x.ObjectsEnumerable).Select(o => o.GetText()).ToArray());
-            var statement = startFact.GetContainingNode<IStatement>();
-            if (statement == null)
+            using (JetBrains.Application.WriteLockCookie.Create(true))
             {
+                var startFact = this.highlighter.StartElement;
+                var factElements = this.CollectFacts();
+                var facts = factElements.GroupBy(GetPredicateText)
+                    .ToDictionary(
+                        g => g.Key,
+                        g => g.SelectMany(x => x.ObjectsEnumerable).Select(o => o.GetText()).ToArray());
+                var statement = startFact.GetContainingNode<IStatement>();
+                if (statement == null)
+                {
+                    return null;
+                }
+
+                var subjectText = statement.Subject.GetText();
+                var newSentence = NTriplesElementFactory.GetInstance(startFact).CreateSentence(subjectText, facts);
+
+                ModificationUtil.ReplaceChild(statement, newSentence);
                 return null;
             }
-
-            var subjectText = statement.Subject.GetText();
-            var newSentence = NTriplesElementFactory.GetInstance(startFact).CreateSentence(subjectText, facts);
-
-            ModificationUtil.ReplaceChild(statement, newSentence);
-            return null;
         }
 
         private static string GetPredicateText(IFact f)

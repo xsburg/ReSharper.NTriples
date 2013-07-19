@@ -56,19 +56,22 @@ namespace ReSharper.NTriples.Intentions.QuickFix
 
         protected override Action<ITextControl> ExecutePsiTransaction(ISolution solution, IProgressIndicator progress)
         {
-            var startSentence = this.highlighter.StartElement;
-            var sentences = this.CollectSentences();
-            var facts =
-                sentences.SelectMany(s => s.Statement.FactsEnumerable)
-                         .GroupBy(GetPredicateText)
-                         .ToDictionary(g => g.Key, g => g.SelectMany(x => x.ObjectsEnumerable).Select(o => o.GetText()).ToArray());
-            var subjectText = startSentence.Statement.Subject.GetText();
-            var newSentence = NTriplesElementFactory.GetInstance(startSentence).CreateSentence(subjectText, facts);
+            using (JetBrains.Application.WriteLockCookie.Create(true))
+            {
+                var startSentence = this.highlighter.StartElement;
+                var sentences = this.CollectSentences();
+                var facts =
+                    sentences.SelectMany(s => s.Statement.FactsEnumerable)
+                        .GroupBy(GetPredicateText)
+                        .ToDictionary(g => g.Key, g => g.SelectMany(x => x.ObjectsEnumerable).Select(o => o.GetText()).ToArray());
+                var subjectText = startSentence.Statement.Subject.GetText();
+                var newSentence = NTriplesElementFactory.GetInstance(startSentence).CreateSentence(subjectText, facts);
 
-            ModificationUtil.DeleteChildRange(this.highlighter.StartElement, this.highlighter.EndElement.PrevSibling);
-            ModificationUtil.ReplaceChild(sentences.Last(), newSentence);
+                ModificationUtil.DeleteChildRange(this.highlighter.StartElement, this.highlighter.EndElement.PrevSibling);
+                ModificationUtil.ReplaceChild(sentences.Last(), newSentence);
 
-            return null;
+                return null;
+            }
         }
 
         private static string GetPredicateText(IFact f)
