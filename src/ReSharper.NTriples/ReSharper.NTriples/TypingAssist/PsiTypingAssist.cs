@@ -1435,7 +1435,7 @@ namespace ReSharper.NTriples.TypingAssist
             //typingAssistManager.AddTypingHandler(lifetime, ';', this, this.HandleSemicolonTyped, this.IsTypingSmartParenthesisHandlerAvailable);
 
             /*
-      typingAssistManager.AddActionHandler(lifetime, TextControlActions.BACKSPACE_ACTION_ID, this, this.HandleEnterPressed, this.IsActionHandlerAvailabile);*/
+            typingAssistManager.AddActionHandler(lifetime, TextControlActions.BACKSPACE_ACTION_ID, this, this.HandleEnterPressed, this.IsActionHandlerAvailabile);*/
         }
 
         public bool QuickCheckAvailability(ITextControl textControl, IPsiSourceFile projectFile)

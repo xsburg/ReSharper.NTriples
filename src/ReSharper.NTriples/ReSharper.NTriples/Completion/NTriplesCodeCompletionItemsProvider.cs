@@ -24,8 +24,7 @@ using ReSharper.NTriples.Resolve;
 namespace ReSharper.NTriples.Completion
 {
     [Language(typeof(NTriplesLanguage))]
-    internal class NTriplesCodeCompletionItemsProvider
-        : ItemsProviderOfSpecificContext<NTriplesCodeCompletionContext>
+    internal class NTriplesCodeCompletionItemsProvider : ItemsProviderOfSpecificContext<NTriplesCodeCompletionContext>
     {
         protected override void AddItemsGroups(
             NTriplesCodeCompletionContext context, GroupedItemsCollector collector, IntellisenseManager intellisenseManager)
@@ -35,53 +34,25 @@ namespace ReSharper.NTriples.Completion
 
         protected override bool AddLookupItems(NTriplesCodeCompletionContext context, GroupedItemsCollector collector)
         {
-            TextLookupRanges ranges;
-            CodeCompletionContext basicContext = context.BasicContext;
-            var file = basicContext.File as NTriplesFile;
-            if (file == null)
+            IReference reference = context.ReparsedContext.Reference;
+            if (reference == null)
             {
                 return false;
             }
 
-            if (context.BasicContext.CodeCompletionType != CodeCompletionType.AutomaticCompletion)
-            {
-                context.BasicContext.CompletionManager.PsiServices.Caches.Update();
-            }
-
-            bool flag = false;
-            // TODO: restore this logic!
-            /*NTriplesReferenceBase reference = this.GetReference(file, basicContext.SelectedTreeRange);
-            if (reference != null)
-            {
-                ranges = this.EvaluateRanges(reference, null, context);
-                collector.AddRanges(ranges);
-                flag = this.EvaluateLookupItems(reference, null, context, collector, ranges);
-            }
-            else if (context.ReparsedContext.Reference is NTriplesPrefixReference)
-            {
-                // A special case for prefix suggestions without context (among whitespaces between sentences)
-                reference = context.ReparsedContext.Reference as NTriplesReferenceBase;
-                ranges = context.Ranges;
-                collector.AddRanges(ranges);
-                flag = this.EvaluateLookupItems(reference, null, context, collector, ranges);
-            }
-            else
-            {
-                ranges = this.EvaluateRangesWithoutReference(context);
-            }
-
-            var enumerable = this.GetReparseParameters(basicContext.SelectedRange.TextRange, reference, context);
-            if (context.BasicContext.CodeCompletionType != CodeCompletionType.AutomaticCompletion)
-            {
-                foreach (var parameters in enumerable)
+            reference.GetReferenceSymbolTable(false).ForAllSymbolInfos(
+                info =>
                 {
-                    if (this.EvaluateLookupItemsAfterReparse(parameters, context, collector, ranges))
-                    {
-                        flag = true;
-                    }
-                }
-            }*/
-            return flag;
+                    var item = new DeclaredElementLookupItemImpl(
+                        new DeclaredElementInstance(info.GetDeclaredElement(), EmptySubstitution.INSTANCE),
+                        context,
+                        NTriplesLanguage.Instance,
+                        context.BasicContext.LookupItemsOwner);
+                    item.InitializeRanges(context.Ranges, context.BasicContext);
+                    collector.AddAtDefaultPlace(item);
+                });
+
+            return true;
         }
 
         protected override void DecorateItems(NTriplesCodeCompletionContext context, IEnumerable<ILookupItem> items)

@@ -46,7 +46,7 @@ namespace ReSharper.NTriples.Intentions.CreateFromUsage
 
         IEnumerable<IntentionAction> IQuickFix.CreateBulbItems()
         {
-            return Items.ToQuickFixAction();
+            return CreateBulbActions().ToQuickFixAction();
         }
 
         public bool IsAvailable(IUserDataHolder cache)
