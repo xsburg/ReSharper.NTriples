@@ -7,6 +7,9 @@
   <!-- directories -->
   <property name="dir.build" value="${path::get-full-path('build')}" overwrite="false" />
   <property name="dir.packages" value="${path::get-full-path('packages')}" overwrite="false" />
+  <property name="dir.ReSharperSdk" value="${path::get-full-path('SDK')}" overwrite="false" />
+  <property name="dir.ReSharperSdkTools" value="${path::get-full-path('SDK/Tools')}" overwrite="false" />
+  <property name="dir.ReSharperSdkTargets" value="${path::get-full-path('SDK/Targets')}" overwrite="false" />
   <!-- company -->
   <property name="company.name" value="" overwrite="false" />
   <property name="company.website" value="http://sburg.net" overwrite="false" />

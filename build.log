@@ -1,6 +1,9 @@
-Buildfile: file:///D:/Documents/svn_netvisor/trunk/RND/ReSharper/default.build
+Buildfile: file:///D:/work/git/ReSharper.NTriples/default.build
 Target framework: Microsoft .NET Framework 4.0
 Target(s) specified: build 
+
+
+prepare-sdk:
 
 
 build:
@@ -10,36 +13,30 @@ build:
 
 set-version:
 
-[update-assembly-info] AssemblyInfo file 'D:\Documents\svn_netvisor\trunk\RND\ReSharper\src\ReSharper.NTriples\ReSharper.NTriples\Properties\AssemblyInfo.cs' updated.
-     [copy] Copying 1 file to 'D:\Documents\svn_netvisor\trunk\RND\ReSharper\src\ReSharper.NTriples\ReSharper.NTriples.Installer\Variables.wxi'.
-  [msbuild] Intentions\CreateFromUsage\CreateSecretPrefixContext.cs(60,32): warning CS0108: 'ReSharper.NTriples.Intentions.CreateFromUsage.CreateSecretPrefixContext.Target' hides inherited member 'JetBrains.ReSharper.Feature.Services.Intentions.CreateDeclaration.CreateContextBase.Target'. Use the new keyword if hiding was intended. [D:\Documents\svn_netvisor\trunk\RND\ReSharper\src\ReSharper.NTriples\ReSharper.NTriples\ReSharper.NTriples.csproj]
-  [msbuild] Completion\SecretCodeCompletionItemsProvider.cs(25,20): warning CS0618: 'JetBrains.ReSharper.Feature.Services.CodeCompletion.Impl.ItemsProviderWithReference<ReSharper.NTriples.Completion.SecretCodeCompletionContext,ReSharper.NTriples.Resolve.SecretReferenceBase,ReSharper.NTriples.Impl.Tree.SecretFile>' is obsolete: 'Use ReparsedCodeCompletionContext, Luke!' [D:\Documents\svn_netvisor\trunk\RND\ReSharper\src\ReSharper.NTriples\ReSharper.NTriples\ReSharper.NTriples.csproj]
-  [msbuild] Intentions\CreateFromUsage\SecretIntentionResult.cs(67,26): warning CS0618: 'JetBrains.Application.Shell.Invocator' is obsolete: 'Import IThreading (if you already have IShellLocks, it'll do).' [D:\Documents\svn_netvisor\trunk\RND\ReSharper\src\ReSharper.NTriples\ReSharper.NTriples\ReSharper.NTriples.csproj]
-  [msbuild] Intentions\CreateFromUsage\SecretIntentionResult.cs(68,13): warning CS0618: 'JetBrains.Application.Shell.Invocator' is obsolete: 'Import IThreading (if you already have IShellLocks, it'll do).' [D:\Documents\svn_netvisor\trunk\RND\ReSharper\src\ReSharper.NTriples\ReSharper.NTriples\ReSharper.NTriples.csproj]
-  [msbuild] Intentions\CreateFromUsage\SecretIntentionResult.cs(82,21): warning CS0612: 'JetBrains.Application.Shell.IsInInternalMode' is obsolete [D:\Documents\svn_netvisor\trunk\RND\ReSharper\src\ReSharper.NTriples\ReSharper.NTriples\ReSharper.NTriples.csproj]
-  [msbuild] Intentions\CreateFromUsage\SecretIntentionResult.cs(82,56): warning CS0618: 'JetBrains.Application.Shell.IsTestShell' is obsolete: 'Use separate test components (can be inherited from real ones)' [D:\Documents\svn_netvisor\trunk\RND\ReSharper\src\ReSharper.NTriples\ReSharper.NTriples\ReSharper.NTriples.csproj]
-  [msbuild] Intentions\CreateFromUsage\SecretIntentionResult.cs(91,49): warning CS0618: 'JetBrains.ReSharper.Feature.Services.LiveTemplates.LiveTemplates.LiveTemplatesManager.Instance' is obsolete: 'Inject it!' [D:\Documents\svn_netvisor\trunk\RND\ReSharper\src\ReSharper.NTriples\ReSharper.NTriples\ReSharper.NTriples.csproj]
-  [msbuild] Gen\Parsing\Secret\SecretParserGenerated.cs(37,9): warning CS0162: Unreachable code detected [D:\Documents\svn_netvisor\trunk\RND\ReSharper\src\ReSharper.NTriples\ReSharper.NTriples\ReSharper.NTriples.csproj]
-  [msbuild] Impl\SecretLanguageService.cs(36,20): warning CS0618: 'JetBrains.ReSharper.Psi.Naming.Impl.NamingUtil.IsIdentifier(string)' is obsolete: 'Use NamingManager.IsIdentifier' [D:\Documents\svn_netvisor\trunk\RND\ReSharper\src\ReSharper.NTriples\ReSharper.NTriples\ReSharper.NTriples.csproj]
-  [msbuild]   ReSharper.NTriples -> D:\Documents\svn_netvisor\trunk\RND\ReSharper\src\ReSharper.NTriples\ReSharper.NTriples\bin\x86\Release\ReSharper.NTriples.dll
-  [msbuild]   ReSharper.NTriples.Tests -> D:\Documents\svn_netvisor\trunk\RND\ReSharper\src\ReSharper.NTriples\ReSharper.NTriples.Tests\bin\x86\Release\ReSharper.NTriples.Tests.dll
-  [msbuild] D:\Documents\svn_netvisor\trunk\RND\ReSharper\src\ReSharper.NTriples\ReSharper.NTriples.Installer\Product.wxs(57): warning LGHT1076: ICE91: The file 'ReSharper.NTriples.dll' will be installed to the per user directory 'R.Plugins.NTriples' that doesn't vary based on ALLUSERS value. This file won't be copied to each user's profile even if a per machine installation is desired. [D:\Documents\svn_netvisor\trunk\RND\ReSharper\src\ReSharper.NTriples\ReSharper.NTriples.Installer\ReSharper.NTriples.Installer.wixproj]
-  [msbuild] Intentions\CreateFromUsage\CreateSecretPrefixContext.cs(60,32): warning CS0108: 'ReSharper.NTriples.Intentions.CreateFromUsage.CreateSecretPrefixContext.Target' hides inherited member 'JetBrains.ReSharper.Feature.Services.Intentions.CreateDeclaration.CreateContextBase.Target'. Use the new keyword if hiding was intended. [D:\Documents\svn_netvisor\trunk\RND\ReSharper\src\ReSharper.NTriples\ReSharper.NTriples\ReSharper.NTriples.csproj]
-  [msbuild] Completion\SecretCodeCompletionItemsProvider.cs(25,20): warning CS0618: 'JetBrains.ReSharper.Feature.Services.CodeCompletion.Impl.ItemsProviderWithReference<ReSharper.NTriples.Completion.SecretCodeCompletionContext,ReSharper.NTriples.Resolve.SecretReferenceBase,ReSharper.NTriples.Impl.Tree.SecretFile>' is obsolete: 'Use ReparsedCodeCompletionContext, Luke!' [D:\Documents\svn_netvisor\trunk\RND\ReSharper\src\ReSharper.NTriples\ReSharper.NTriples\ReSharper.NTriples.csproj]
-  [msbuild] Intentions\CreateFromUsage\SecretIntentionResult.cs(67,26): warning CS0618: 'JetBrains.Application.Shell.Invocator' is obsolete: 'Import IThreading (if you already have IShellLocks, it'll do).' [D:\Documents\svn_netvisor\trunk\RND\ReSharper\src\ReSharper.NTriples\ReSharper.NTriples\ReSharper.NTriples.csproj]
-  [msbuild] Intentions\CreateFromUsage\SecretIntentionResult.cs(68,13): warning CS0618: 'JetBrains.Application.Shell.Invocator' is obsolete: 'Import IThreading (if you already have IShellLocks, it'll do).' [D:\Documents\svn_netvisor\trunk\RND\ReSharper\src\ReSharper.NTriples\ReSharper.NTriples\ReSharper.NTriples.csproj]
-  [msbuild] Intentions\CreateFromUsage\SecretIntentionResult.cs(82,21): warning CS0612: 'JetBrains.Application.Shell.IsInInternalMode' is obsolete [D:\Documents\svn_netvisor\trunk\RND\ReSharper\src\ReSharper.NTriples\ReSharper.NTriples\ReSharper.NTriples.csproj]
-  [msbuild] Intentions\CreateFromUsage\SecretIntentionResult.cs(82,56): warning CS0618: 'JetBrains.Application.Shell.IsTestShell' is obsolete: 'Use separate test components (can be inherited from real ones)' [D:\Documents\svn_netvisor\trunk\RND\ReSharper\src\ReSharper.NTriples\ReSharper.NTriples\ReSharper.NTriples.csproj]
-  [msbuild] Intentions\CreateFromUsage\SecretIntentionResult.cs(91,49): warning CS0618: 'JetBrains.ReSharper.Feature.Services.LiveTemplates.LiveTemplates.LiveTemplatesManager.Instance' is obsolete: 'Inject it!' [D:\Documents\svn_netvisor\trunk\RND\ReSharper\src\ReSharper.NTriples\ReSharper.NTriples\ReSharper.NTriples.csproj]
-  [msbuild] Gen\Parsing\Secret\SecretParserGenerated.cs(37,9): warning CS0162: Unreachable code detected [D:\Documents\svn_netvisor\trunk\RND\ReSharper\src\ReSharper.NTriples\ReSharper.NTriples\ReSharper.NTriples.csproj]
-  [msbuild] Impl\SecretLanguageService.cs(36,20): warning CS0618: 'JetBrains.ReSharper.Psi.Naming.Impl.NamingUtil.IsIdentifier(string)' is obsolete: 'Use NamingManager.IsIdentifier' [D:\Documents\svn_netvisor\trunk\RND\ReSharper\src\ReSharper.NTriples\ReSharper.NTriples\ReSharper.NTriples.csproj]
-  [msbuild]   ReSharper.NTriples -> D:\Documents\svn_netvisor\trunk\RND\ReSharper\src\ReSharper.NTriples\ReSharper.NTriples\bin\x86\Release UnitTests\ReSharper.NTriples.dll
-  [msbuild]   ReSharper.NTriples.Tests -> D:\Documents\svn_netvisor\trunk\RND\ReSharper\src\ReSharper.NTriples\ReSharper.NTriples.Tests\bin\x86\Release\ReSharper.NTriples.Tests.dll
-     [copy] Copying 2 files to 'D:\Documents\svn_netvisor\trunk\RND\ReSharper\build'.
-     [copy] Copying 2 files to 'D:\Documents\svn_netvisor\trunk\RND\ReSharper\build'.
-     [copy] Copying 2 files to 'D:\Documents\svn_netvisor\trunk\RND\ReSharper\build'.
+[update-assembly-info] AssemblyInfo file 'D:\work\git\ReSharper.NTriples\src\ReSharper.NTriples\ReSharper.NTriples\Properties\AssemblyInfo.cs' updated.
+     [copy] Copying 1 file to 'D:\work\git\ReSharper.NTriples\src\ReSharper.NTriples\ReSharper.NTriples.Installer\Variables.wxi'.
+  [msbuild] Generated 0 files
+  [msbuild] Skipped generation of 140 files
+  [msbuild] Deleted 0 obsolete files
+  [msbuild] D:\work\git\ReSharper.NTriples\SDK\Tools\PsiGen\PsiGen.Targets : warning : D:\work\git\ReSharper.NTriples\src\ReSharper.NTriples\ReSharper.NTriples\Parsing\ntriples.psi(%1$d,0): warning : Generation of setters for complex alternatives is not fully supported yet [D:\work\git\ReSharper.NTriples\src\ReSharper.NTriples\ReSharper.NTriples\ReSharper.NTriples.csproj]
+  [msbuild] D:\work\git\ReSharper.NTriples\SDK\Tools\PsiGen\PsiGen.Targets : warning : 1 warning(s) [D:\work\git\ReSharper.NTriples\src\ReSharper.NTriples\ReSharper.NTriples\ReSharper.NTriples.csproj]
+  [msbuild]   @(PsiLanguageNames -> 'D:\work\git\ReSharper.NTriples\src\ReSharper.NTriples\ReSharper.NTriples\Parsing\ntriples.psi --(*)--> D:\work\git\ReSharper.NTriples\src\ReSharper.NTriples\ReSharper.NTriples\Gen/Parsing\ntriples.psi', '\n'
+  [msbuild]   ReSharper.NTriples -> D:\work\git\ReSharper.NTriples\src\ReSharper.NTriples\ReSharper.NTriples\bin\x86\Release\ReSharper.NTriples.dll
+  [msbuild]   ReSharper.NTriples.Tests -> D:\work\git\ReSharper.NTriples\src\ReSharper.NTriples\ReSharper.NTriples.Tests\bin\x86\Release\ReSharper.NTriples.Tests.dll
+  [msbuild] D:\work\git\ReSharper.NTriples\src\ReSharper.NTriples\ReSharper.NTriples.Installer\Product.wxs(57): warning LGHT1076: ICE91: The file 'ReSharper.NTriples.dll' will be installed to the per user directory 'R.Plugins.NTriples' that doesn't vary based on ALLUSERS value. This file won't be copied to each user's profile even if a per machine installation is desired. [D:\work\git\ReSharper.NTriples\src\ReSharper.NTriples\ReSharper.NTriples.Installer\ReSharper.NTriples.Installer.wixproj]
+  [msbuild] Generated 0 files
+  [msbuild] Skipped generation of 140 files
+  [msbuild] Deleted 0 obsolete files
+  [msbuild] D:\work\git\ReSharper.NTriples\SDK\Tools\PsiGen\PsiGen.Targets : warning : D:\work\git\ReSharper.NTriples\src\ReSharper.NTriples\ReSharper.NTriples\Parsing\ntriples.psi(%1$d,0): warning : Generation of setters for complex alternatives is not fully supported yet [D:\work\git\ReSharper.NTriples\src\ReSharper.NTriples\ReSharper.NTriples\ReSharper.NTriples.csproj]
+  [msbuild] D:\work\git\ReSharper.NTriples\SDK\Tools\PsiGen\PsiGen.Targets : warning : 1 warning(s) [D:\work\git\ReSharper.NTriples\src\ReSharper.NTriples\ReSharper.NTriples\ReSharper.NTriples.csproj]
+  [msbuild]   @(PsiLanguageNames -> 'D:\work\git\ReSharper.NTriples\src\ReSharper.NTriples\ReSharper.NTriples\Parsing\ntriples.psi --(*)--> D:\work\git\ReSharper.NTriples\src\ReSharper.NTriples\ReSharper.NTriples\Gen/Parsing\ntriples.psi', '\n'
+  [msbuild]   ReSharper.NTriples -> D:\work\git\ReSharper.NTriples\src\ReSharper.NTriples\ReSharper.NTriples\bin\x86\Release UnitTests\ReSharper.NTriples.dll
+  [msbuild]   ReSharper.NTriples.Tests -> D:\work\git\ReSharper.NTriples\src\ReSharper.NTriples\ReSharper.NTriples.Tests\bin\x86\Release\ReSharper.NTriples.Tests.dll
+     [copy] Copying 2 files to 'D:\work\git\ReSharper.NTriples\build'.
+     [copy] Copying 2 files to 'D:\work\git\ReSharper.NTriples\build'.
+     [copy] Copying 2 files to 'D:\work\git\ReSharper.NTriples\build'.
 
 BUILD SUCCEEDED
 
-Total time: 14.5 seconds.
+Total time: 23.7 seconds.
 
