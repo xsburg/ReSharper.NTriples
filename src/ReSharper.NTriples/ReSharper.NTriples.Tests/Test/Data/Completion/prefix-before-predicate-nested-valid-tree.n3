@@ -1,6 +1,7 @@
+# ${COMPLETE_ITEM:some-item-that-does-not-exist}
 # ${SHOW_SIGNATURES:false}
 # ${CASE_SENSITIVE_COMPLETION:false}
-# ${COMPLETION_TYPE:Auto}
+# ${COMPLETION_TYPE:Replace}
 
 @prefix family: <http://ontology:org/ontology#family>.
 @prefix relation: <http://ontology:org/ontology#relation>.

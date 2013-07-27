@@ -8,18 +8,23 @@
 // </summary>
 // ***********************************************************************
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using JetBrains.DocumentModel;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Impl;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure;
 using JetBrains.ReSharper.Feature.Services.Lookup;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Resolve;
+using JetBrains.ReSharper.Psi.Tree;
+using JetBrains.Util;
 using ReSharper.NTriples.Impl;
 using ReSharper.NTriples.Impl.Tree;
 using ReSharper.NTriples.Resolve;
+using ReSharper.NTriples.Tree;
 
 namespace ReSharper.NTriples.Completion
 {
@@ -29,6 +34,10 @@ namespace ReSharper.NTriples.Completion
         protected override void AddItemsGroups(
             NTriplesCodeCompletionContext context, GroupedItemsCollector collector, IntellisenseManager intellisenseManager)
         {
+            collector.AddRanges(
+                new TextLookupRanges(
+                    context.BasicContext.SelectedRange.TextRange,
+                    context.BasicContext.SelectedRange.TextRange));
             collector.AddFilter(new ReferencesBetterFilter());
         }
 
