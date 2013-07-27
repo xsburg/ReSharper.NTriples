@@ -8,6 +8,7 @@
   <property name="solution.name" value="ReSharper.NTriples" />
 
   <target name="prepare-sdk">
+    <mkdir dir="SDK" />
     <get src="${resharper-sdk-url}" dest="SDK/ReSharperSDK.zip" if="${not file::exists('SDK/ReSharperSDK.zip')}" />
     <unzip zipfile="SDK/ReSharperSDK.zip" todir="SDK" if="${not file::exists('SDK/ReSharperSDK.zip')}" />
   </target>
