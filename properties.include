@@ -31,4 +31,6 @@
   <property name="project.version.revision" value="0" overwrite="false" />
   <property name="project.version.release_code" value="" overwrite="false" />
   <property name="project.version" value="1.0.0.0" overwrite="false" />
+  <!-- others -->
+  <property name="resharper-sdk-url" value="http://download.jetbrains.com/resharper/ReSharperSDK-8.0.1086.zip" overwrite="false" />
 </project>
