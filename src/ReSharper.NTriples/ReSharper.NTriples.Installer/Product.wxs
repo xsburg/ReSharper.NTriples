@@ -17,16 +17,16 @@
     </Feature>
 
     <Property Id="RESHARPERDIR2010" Secure="yes">
-      <RegistrySearch Id="RSInstallRegistry2010" Root="HKLM" Key="Software\JetBrains\ReSharper\v8.0\vs10.0"
+      <RegistrySearch Id="RSInstallRegistry2010" Root="HKLM" Key="Software\JetBrains\ReSharper\v8.1\vs10.0"
         Name="InstallDir" Type="directory" />
     </Property>
 
     <Property Id="RESHARPERDIR2012" Secure="yes">
-      <RegistrySearch Id="RSInstallRegistry2012" Root="HKLM" Key="Software\JetBrains\ReSharper\v8.0\vs11.0"
+      <RegistrySearch Id="RSInstallRegistry2012" Root="HKLM" Key="Software\JetBrains\ReSharper\v8.1\vs11.0"
         Name="InstallDir" Type="directory" />
     </Property>
 
-    <Condition Message='ReSharper 8.0 and Visual Studio 2010 or 2012 are required to proceed with the installation.'>
+    <Condition Message='ReSharper 8.1 and Visual Studio 2010 or 2012 are required to proceed with the installation.'>
       Installed OR (RESHARPERDIR2010 OR RESHARPERDIR2012)
     </Condition>
     
