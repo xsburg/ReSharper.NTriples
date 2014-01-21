@@ -16,6 +16,8 @@
     <PsiLanguageName>NTriples</PsiLanguageName>
     <TargetFrameworkProfile />
     <ParserGenOutputBase>$(MSBuildProjectDirectory)\Gen</ParserGenOutputBase>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -321,7 +323,7 @@
   <PropertyGroup>
     <ParserGenOutputBase>$(MSBuildProjectDirectory)\Gen</ParserGenOutputBase>
   </PropertyGroup>
-  <Import Project="..\packages\JetBrains.ReSharper.SDK.8.1.555\build\JetBrains.ReSharper.SDK.Targets" 
-          Condition="Exists('..\packages\JetBrains.ReSharper.SDK.8.1.555\build\JetBrains.ReSharper.SDK.Targets')" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Import Project="..\packages\JetBrains.ReSharper.SDK.8.1.555\build\JetBrains.ReSharper.SDK.Targets" Condition="Exists('..\packages\JetBrains.ReSharper.SDK.8.1.555\build\JetBrains.ReSharper.SDK.Targets')" />
   <Import Project="$(ReSharperSdkTools)\MSBuild\JetBrains.Build.Common.Targets" />
 </Project>

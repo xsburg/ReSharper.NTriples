@@ -10,6 +10,13 @@ Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "ReSharper.NTriples.Installe
 		{F161D712-214A-4D7F-A610-708B057FC5F3} = {F161D712-214A-4D7F-A610-708B057FC5F3}
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{EF2653DD-3894-4177-9491-1C2BBD22B785}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug UnitTests|Any CPU = Debug UnitTests|Any CPU
