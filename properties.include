@@ -4,12 +4,13 @@
   <property name="target.framework" value="${framework::get-target-framework()}" />
   <property name="framework.assembly.dir" value="${framework::get-assembly-directory(target.framework)}" />
   <property name="language.default" value="ru-RU" overwrite="false" />
+  <property name="solution.name" value="ReSharper.NTriples" />
   <!-- directories -->
   <property name="dir.build" value="${path::get-full-path('build')}" overwrite="false" />
   <property name="dir.packages" value="${path::get-full-path('packages')}" overwrite="false" />
-  <property name="dir.ReSharperSdk" value="${path::get-full-path('SDK')}" overwrite="false" />
-  <property name="dir.ReSharperSdkTools" value="${path::get-full-path('SDK/Tools')}" overwrite="false" />
-  <property name="dir.ReSharperSdkTargets" value="${path::get-full-path('SDK/Targets')}" overwrite="false" />
+  <property name="dir.ReSharperSdk" value="${path::get-full-path('src/ReSharper.NTriples/packages/JetBrains.ReSharper.SDK.8.1.555')}" overwrite="false" />
+  <property name="dir.ReSharperSdkTools" value="${path::get-full-path('src/ReSharper.NTriples/packages/JetBrains.ReSharper.SDK.8.1.555/tools')}" overwrite="false" />
+  <property name="dir.ReSharperSdkTargets" value="${path::get-full-path('src/ReSharper.NTriples/packages/JetBrains.ReSharper.SDK.8.1.555/build')}" overwrite="false" />
   <!-- company -->
   <property name="company.name" value="" overwrite="false" />
   <property name="company.website" value="http://sburg.net" overwrite="false" />
