@@ -5,7 +5,7 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-#pragma warning disable 0168, 0219, 0108, 0414
+#pragma warning disable 0168, 0219, 0108, 0414, 0114
 // ReSharper disable RedundantNameQualifier
 namespace ReSharper.NTriples.Tree {
   public abstract partial class TreeNodeVisitor<TContext> {
