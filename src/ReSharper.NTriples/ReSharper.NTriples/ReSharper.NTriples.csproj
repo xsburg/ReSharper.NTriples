@@ -318,7 +318,9 @@
   <Import Project="$(ReSharperSdkTools)\PsiGen\CsLex.Targets" />-->
   <Target Name="BeforeBuild">
     <MakeDir Directories="$(MSBuildProjectDirectory)\obj" />
-    <!--<Copy SourceFiles="$(ReSharperSdkTools)\PsiGen\Unicode.lex" DestinationFolder="$(MSBuildProjectDirectory)\obj" />-->
+    <Copy SourceFiles="..\packages\JetBrains.ReSharper.SDK.8.1.555\tools\PsiGen\Unicode.lex" 
+          DestinationFolder="$(MSBuildProjectDirectory)\obj"
+          Condition="Exists('..\packages\JetBrains.ReSharper.SDK.8.1.555\tools\PsiGen\Unicode.lex')" />
   </Target>
   <PropertyGroup>
     <ParserGenOutputBase>$(MSBuildProjectDirectory)\Gen</ParserGenOutputBase>
