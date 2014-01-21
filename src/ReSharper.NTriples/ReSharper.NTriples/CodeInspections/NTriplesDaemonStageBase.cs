@@ -26,7 +26,7 @@ namespace ReSharper.NTriples.CodeInspections
         public static INTriplesFile GetNTriplesFile(IPsiSourceFile sourceFile)
         {
             var psiServices = sourceFile.GetPsiServices();
-            psiServices.Files.AssertAllDocumentAreCommited();
+            psiServices.Files.AssertAllDocumentAreCommitted();
             return psiServices.Files.GetDominantPsiFile<NTriplesLanguage>(sourceFile) as INTriplesFile;
         }
 

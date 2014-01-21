@@ -8,6 +8,7 @@
 // </summary>
 // ***********************************************************************
 
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -15,8 +16,8 @@ using JetBrains.Application;
 using JetBrains.DocumentModel;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Feature.Services.Goto;
+using JetBrains.ReSharper.Feature.Services.Navigation.Search;
 using JetBrains.ReSharper.Feature.Services.Occurences;
-using JetBrains.ReSharper.Feature.Services.Search;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Files;
 using JetBrains.Text;
@@ -48,7 +49,7 @@ namespace ReSharper.NTriples.Feature.Finding.GotoMember
 */
 
         public IEnumerable<MatchingInfo> FindMatchingInfos(
-            IdentifierMatcher matcher, INavigationScope scope, GotoContext gotoContext, CheckForInterrupt checkCancelled)
+            IdentifierMatcher matcher, INavigationScope scope, GotoContext gotoContext, Func<bool> checkCancelled)
         {
             var primaryMembersData = this.GetPrimaryMembers(scope.GetSolution());
 
@@ -83,7 +84,7 @@ namespace ReSharper.NTriples.Feature.Finding.GotoMember
         }
 
         public IEnumerable<IOccurence> GetOccurencesByMatchingInfo(
-            MatchingInfo navigationInfo, INavigationScope scope, GotoContext gotoContext, CheckForInterrupt checkCancelled)
+            MatchingInfo navigationInfo, INavigationScope scope, GotoContext gotoContext, Func<bool> checkCancelled)
         {
             var fileMembersMap = gotoContext.GetData(NTriplesFileMembersMap.NTriplesFileMembersMapKey);
             if (fileMembersMap == null)

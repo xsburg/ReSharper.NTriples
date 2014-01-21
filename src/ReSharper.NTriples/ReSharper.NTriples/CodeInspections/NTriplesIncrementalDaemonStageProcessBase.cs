@@ -46,7 +46,7 @@ namespace ReSharper.NTriples.CodeInspections
                         });
             };
 
-            using (IMultiCoreFibers fibers = this.DaemonProcess.CreateFibers())
+            using (var fibers = this.DaemonProcess.CreateFibers())
             {
                 fibers.EnqueueJob(globalHighlighter);
             }

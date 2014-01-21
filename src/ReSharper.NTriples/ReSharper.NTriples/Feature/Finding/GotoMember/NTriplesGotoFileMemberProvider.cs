@@ -21,8 +21,8 @@ using JetBrains.ProjectModel;
 using JetBrains.ProjectModel.Model2.Assemblies.Interfaces;
 using JetBrains.ReSharper.Feature.Services.Goto;
 using JetBrains.ReSharper.Feature.Services.Navigation;
+using JetBrains.ReSharper.Feature.Services.Navigation.Search;
 using JetBrains.ReSharper.Feature.Services.Occurences;
-using JetBrains.ReSharper.Feature.Services.Search;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Files;
 using JetBrains.ReSharper.Psi.Search;
@@ -116,7 +116,7 @@ namespace ReSharper.NTriples.Feature.Finding.GotoMember
             IdentifierMatcher matcher,
             INavigationScope scope,
             GotoContext gotoContext,
-            CheckForInterrupt checkCancelled)
+            Func<bool> checkCancelled)
         {
             var fileMemberScope = scope as FileMemberNavigationScope;
             if (fileMemberScope == null)
@@ -160,7 +160,7 @@ namespace ReSharper.NTriples.Feature.Finding.GotoMember
             MatchingInfo navigationInfo,
             INavigationScope scope,
             GotoContext gotoContext,
-            CheckForInterrupt checkForInterrupt)
+            Func<bool> checkForInterrupt)
         {
             var fileMembersMap = gotoContext.GetData(NTriplesFileMembersMap.NTriplesFileMembersMapKey);
             if (fileMembersMap == null)
