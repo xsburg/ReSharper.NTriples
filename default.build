@@ -6,14 +6,8 @@
   <include buildfile="common-targets.include" />
   
   <property name="solution.name" value="ReSharper.NTriples" />
-
-  <target name="prepare-sdk">
-    <mkdir dir="SDK" />
-    <get src="${resharper-sdk-url}" dest="SDK/ReSharperSDK.zip" if="${not file::exists('SDK/ReSharperSDK.zip')}" />
-    <unzip zipfile="SDK/ReSharperSDK.zip" todir="SDK" if="${not file::exists('SDK/License.rtf')}" />
-  </target>
   
-  <target name="build" depends="prepare-sdk" description="Builds the binaries for the current configuration">
+  <target name="build" description="Builds the binaries for the current configuration">
     <echo message="Building version ${project.version}" />
     <echo message="Building platform ${project.platform}" />
     <call target="set-version" />
@@ -21,16 +15,10 @@
     <msbuild project="src\${solution.name}\${solution.name}.sln" target="Build" verbosity="minimal">
       <property name="Configuration" value="${project.config}" />
       <property name="Platform" value="${project.platform}" />
-      <property name="ReSharperSdk" value="${dir.ReSharperSdk}" />
-      <property name="ReSharperSdkTools" value="${dir.ReSharperSdkTools}" />
-      <property name="ReSharperSdkTargets" value="${dir.ReSharperSdkTargets}" />
     </msbuild>
     <msbuild project="src\${solution.name}\${solution.name}.sln" target="Build" verbosity="minimal">
       <property name="Configuration" value="Release UnitTests" />
       <property name="Platform" value="${project.platform}" />
-      <property name="ReSharperSdk" value="${dir.ReSharperSdk}" />
-      <property name="ReSharperSdkTools" value="${dir.ReSharperSdkTools}" />
-      <property name="ReSharperSdkTargets" value="${dir.ReSharperSdkTargets}" />
     </msbuild>
     
     <property name="project.out" value="bin\${project.platform}\${project.config}" />

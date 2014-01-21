@@ -206,5 +206,6 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\JetBrains.ReSharper.SDK.8.1.555\build\JetBrains.ReSharper.SDK.Targets" 
           Condition="Exists('..\packages\JetBrains.ReSharper.SDK.8.1.555\build\JetBrains.ReSharper.SDK.Targets')" />
+  <Import Project="$(ReSharperSdkTools)\MSBuild\JetBrains.Build.Common.Targets" />
   <!--<Import Project="$(ReSharperSdkTargets)\Plugin.Tests.Targets" />-->
 </Project>
