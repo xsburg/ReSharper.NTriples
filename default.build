@@ -5,7 +5,12 @@
   <include buildfile="properties.include" />
   <include buildfile="common-targets.include" />
   
-  <target name="build" description="Builds the binaries for the current configuration">
+  <target name="restorePackages">
+    <exec program="src/ReSharper.NTriples/.nuget/nuget.exe"
+          commandline="restore src/ReSharper.NTriples/ReSharper.NTriples.sln" />
+  </target>
+  
+  <target name="build" description="Builds the binaries for the current configuration" dependsOn="restorePackages">
     <echo message="Building version ${project.version}" />
     <echo message="Building platform ${project.platform}" />
     <call target="set-version" />
