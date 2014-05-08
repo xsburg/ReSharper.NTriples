@@ -10,7 +10,7 @@
           commandline="restore src/ReSharper.NTriples/ReSharper.NTriples.sln" />
   </target>
   
-  <target name="build" description="Builds the binaries for the current configuration" dependsOn="restorePackages">
+  <target name="build" description="Builds the binaries for the current configuration" depends="restorePackages">
     <echo message="Building version ${project.version}" />
     <echo message="Building platform ${project.platform}" />
     <call target="set-version" />
