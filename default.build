@@ -13,16 +13,10 @@
     <msbuild project="src\${solution.name}\${solution.name}.sln" target="Build" verbosity="minimal">
       <property name="Configuration" value="${project.config}" />
       <property name="Platform" value="${project.platform}" />
-      <property name="ReSharperSdk" value="${dir.ReSharperSdk}" />
-      <property name="ReSharperSdkTools" value="${dir.ReSharperSdkTools}" />
-      <property name="ReSharperSdkTargets" value="${dir.ReSharperSdkTargets}" />
     </msbuild>
     <msbuild project="src\${solution.name}\${solution.name}.sln" target="Build" verbosity="minimal">
       <property name="Configuration" value="Release UnitTests" />
       <property name="Platform" value="${project.platform}" />
-      <property name="ReSharperSdk" value="${dir.ReSharperSdk}" />
-      <property name="ReSharperSdkTools" value="${dir.ReSharperSdkTools}" />
-      <property name="ReSharperSdkTargets" value="${dir.ReSharperSdkTargets}" />
     </msbuild>
     
     <property name="project.out" value="bin\${project.platform}\${project.config}" />
@@ -80,6 +74,7 @@
       <filterchain>
         <replacetokens>
           <token key="ProductVersionValue" value="${project.version}" />
+          <token key="ReSharperVersionValue" value="${resharper.version}" />
         </replacetokens>
         <tabstospaces />
       </filterchain>

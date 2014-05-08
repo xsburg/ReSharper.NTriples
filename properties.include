@@ -8,9 +8,6 @@
   <!-- directories -->
   <property name="dir.build" value="${path::get-full-path('build')}" overwrite="false" />
   <property name="dir.packages" value="${path::get-full-path('packages')}" overwrite="false" />
-  <property name="dir.ReSharperSdk" value="${path::get-full-path('src/ReSharper.NTriples/packages/JetBrains.ReSharper.SDK.8.1.555')}" overwrite="false" />
-  <property name="dir.ReSharperSdkTools" value="${path::get-full-path('src/ReSharper.NTriples/packages/JetBrains.ReSharper.SDK.8.1.555/tools')}" overwrite="false" />
-  <property name="dir.ReSharperSdkTargets" value="${path::get-full-path('src/ReSharper.NTriples/packages/JetBrains.ReSharper.SDK.8.1.555/build')}" overwrite="false" />
   <!-- company -->
   <property name="company.name" value="" overwrite="false" />
   <property name="company.website" value="http://sburg.net" overwrite="false" />
@@ -33,5 +30,5 @@
   <property name="project.version.release_code" value="" overwrite="false" />
   <property name="project.version" value="1.0.0.0" overwrite="false" />
   <!-- others -->
-  <property name="resharper-sdk-url" value="http://download.jetbrains.com/resharper/ReSharperSDK-8.0.1086.zip" overwrite="false" />
+  <property name="resharper.version" value="8.2" overwrite="false" />
 </project>

@@ -167,3 +167,5 @@ $RECYCLE.BIN/
 *.user
 src/ReSharper.NTriples/ReSharper.NTriples/Parsing/NTriplesLexer.gen_lex.depends
 src/ReSharper.NTriples/ReSharper.NTriples/Gen/NTriples.timestamp
+/src/ReSharper.NTriples/packages
+/src/ReSharper.NTriples/ReSharper.NTriples.sln.DotSettings

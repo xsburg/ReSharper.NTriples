@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <?include Variables.wxi?>
-	<Product Id="*" Name="ReSharper NTriples Language Support" Language="1033" Version="$(var.ProductVersion)"
+  <Product Id="*" Name="ReSharper NTriples Language Support" Language="1033" Version="$(var.ProductVersion)"
            Manufacturer="Stephan Burguchev" UpgradeCode="d597582f-423b-4008-bfd6-3c7b4882a70e">
-		<Package InstallerVersion="200" Compressed="yes" InstallScope="perUser" />
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perUser" />
 
-		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
 
     <Media Id="1" Cabinet="contents.cab" EmbedCab="yes" CompressionLevel="high"/>
 
@@ -17,16 +17,21 @@
     </Feature>
 
     <Property Id="RESHARPERDIR2010" Secure="yes">
-      <RegistrySearch Id="RSInstallRegistry2010" Root="HKLM" Key="Software\JetBrains\ReSharper\v8.1\vs10.0"
+      <RegistrySearch Id="RSInstallRegistry2010" Root="HKLM" Key="Software\JetBrains\ReSharper\v$(var.ReSharperVersion)\vs10.0"
         Name="InstallDir" Type="directory" />
     </Property>
 
     <Property Id="RESHARPERDIR2012" Secure="yes">
-      <RegistrySearch Id="RSInstallRegistry2012" Root="HKLM" Key="Software\JetBrains\ReSharper\v8.1\vs11.0"
+      <RegistrySearch Id="RSInstallRegistry2012" Root="HKLM" Key="Software\JetBrains\ReSharper\v$(var.ReSharperVersion)\vs11.0"
         Name="InstallDir" Type="directory" />
     </Property>
 
-    <Condition Message='ReSharper 8.1 and Visual Studio 2010 or 2012 are required to proceed with the installation.'>
+    <Property Id="RESHARPERDIR2013" Secure="yes">
+      <RegistrySearch Id="RSInstallRegistry2013" Root="HKLM" Key="Software\JetBrains\ReSharper\v$(var.ReSharperVersion)\vs12.0"
+        Name="InstallDir" Type="directory" />
+    </Property>
+
+    <Condition Message='ReSharper $(var.ReSharperVersion) and Visual Studio 2010 or 2012 are required to proceed with the installation.'>
       Installed OR (RESHARPERDIR2010 OR RESHARPERDIR2012)
     </Condition>
     
@@ -35,9 +40,9 @@
     </UI>
   
     <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
-	</Product>
+  </Product>
     
-	<Fragment>
+  <Fragment>
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="LocalAppDataFolder">
         <Directory Id="D.AppDataFolder.JetBrains" Name="JetBrains">
@@ -65,5 +70,5 @@
         <RemoveFolder Id="R.Plugins.NTriples.Remove" Directory="R.Plugins.NTriples" On="uninstall" />
       </Component>
     </DirectoryRef>
-	</Fragment>
+  </Fragment>
 </Wix>

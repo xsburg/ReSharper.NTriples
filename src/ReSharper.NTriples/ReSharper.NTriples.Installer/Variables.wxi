@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Include>
   <?define ProductVersion="1.0.0.0" ?>
+  <?define ReSharperVersion="8.2" ?>
 </Include>
