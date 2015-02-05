@@ -31,8 +31,8 @@
         Name="InstallDir" Type="directory" />
     </Property>
 
-    <Condition Message='ReSharper $(var.ReSharperVersion) and Visual Studio 2010 or 2012 are required to proceed with the installation.'>
-      Installed OR (RESHARPERDIR2010 OR RESHARPERDIR2012)
+    <Condition Message='ReSharper $(var.ReSharperVersion) and Visual Studio 2010 or 2012 or 2013 are required to proceed with the installation.'>
+        Installed OR (RESHARPERDIR2010 OR RESHARPERDIR2012 OR RESHARPERDIR2013)
     </Condition>
     
     <UI>
